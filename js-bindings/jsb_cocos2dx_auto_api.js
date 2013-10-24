@@ -1174,6 +1174,11 @@ setGrid : function () {},
 getBoundingBox : function () {},
 
 /**
+ * @method updatePhysicsTransform
+ */
+updatePhysicsTransform : function () {},
+
+/**
  * @method draw
  */
 draw : function () {},

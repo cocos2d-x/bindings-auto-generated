@@ -266,6 +266,7 @@ JSBool js_cocos2dx_Node_getComponent(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getContentSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setGrid(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getBoundingBox(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_updatePhysicsTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_transformAncestors(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setUserObject(JSContext *cx, uint32_t argc, jsval *vp);
