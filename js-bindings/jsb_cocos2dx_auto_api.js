@@ -737,6 +737,11 @@ removeComponent : function () {},
 setPhysicsBody : function () {},
 
 /**
+ * @method pause
+ */
+pause : function () {},
+
+/**
  * @method convertToWorldSpaceAR
  * @return A value converted from C/C++ "cocos2d::Point"
  * @param {cocos2d::Point}
@@ -811,6 +816,12 @@ removeChild : function () {},
 convertToWorldSpace : function () {},
 
 /**
+ * @method getEventDispatcher
+ * @return A value converted from C/C++ "cocos2d::EventDispatcher*"
+ */
+getEventDispatcher : function () {},
+
+/**
  * @method setSkewX
  * @param {float}
  */
@@ -859,6 +870,11 @@ getNodeToParentTransform : function () {},
  * @param {cocos2d::Point}
  */
 convertToNodeSpace : function () {},
+
+/**
+ * @method resume
+ */
+resume : function () {},
 
 /**
  * @method getPhysicsBody
@@ -962,11 +978,6 @@ setShaderProgram : function () {},
  * @return A value converted from C/C++ "float"
  */
 getRotation : function () {},
-
-/**
- * @method resumeSchedulerAndActions
- */
-resumeSchedulerAndActions : function () {},
 
 /**
  * @method getZOrder
@@ -1102,11 +1113,6 @@ setVisible : function () {},
 getParentToNodeTransform : function () {},
 
 /**
- * @method pauseSchedulerAndActions
- */
-pauseSchedulerAndActions : function () {},
-
-/**
  * @method getVertexZ
  * @return A value converted from C/C++ "float"
  */
@@ -1177,6 +1183,12 @@ getBoundingBox : function () {},
  * @method updatePhysicsTransform
  */
 updatePhysicsTransform : function () {},
+
+/**
+ * @method setEventDispatcher
+ * @param {cocos2d::EventDispatcher*}
+ */
+setEventDispatcher : function () {},
 
 /**
  * @method draw
@@ -7534,76 +7546,10 @@ createWithTTF : function () {},
 cc.Layer = {
 
 /**
- * @method isKeyboardEnabled
- * @return A value converted from C/C++ "bool"
- */
-isKeyboardEnabled : function () {},
-
-/**
- * @method setAccelerometerInterval
- * @param {double}
- */
-setAccelerometerInterval : function () {},
-
-/**
- * @method isSwallowsTouches
- * @return A value converted from C/C++ "bool"
- */
-isSwallowsTouches : function () {},
-
-/**
- * @method getTouchMode
- * @return A value converted from C/C++ "cocos2d::Touch::DispatchMode"
- */
-getTouchMode : function () {},
-
-/**
  * @method init
  * @return A value converted from C/C++ "bool"
  */
 init : function () {},
-
-/**
- * @method isTouchEnabled
- * @return A value converted from C/C++ "bool"
- */
-isTouchEnabled : function () {},
-
-/**
- * @method setTouchEnabled
- * @param {bool}
- */
-setTouchEnabled : function () {},
-
-/**
- * @method setKeyboardEnabled
- * @param {bool}
- */
-setKeyboardEnabled : function () {},
-
-/**
- * @method setTouchMode
- * @param {cocos2d::Touch::DispatchMode}
- */
-setTouchMode : function () {},
-
-/**
- * @method isAccelerometerEnabled
- * @return A value converted from C/C++ "bool"
- */
-isAccelerometerEnabled : function () {},
-
-/**
- * @method setSwallowsTouches
- * @param {bool}
- */
-setSwallowsTouches : function () {},
-
-/**
- * @method setAccelerometerEnabled
- * @param {bool}
- */
-setAccelerometerEnabled : function () {},
 
 /**
  * @method create
