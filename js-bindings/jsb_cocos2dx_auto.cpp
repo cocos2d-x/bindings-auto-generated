@@ -60950,13 +60950,13 @@ void js_register_cocos2dx_SimpleAudioEngine(JSContext *cx, JSObject *global) {
 
 void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	// first, try to get the ns
-	jsval nsval;
+	JS::RootedValue nsval(cx);
 	JSObject *ns;
 	JS_GetProperty(cx, obj, "cc", &nsval);
 	if (nsval == JSVAL_VOID) {
 		ns = JS_NewObject(cx, NULL, NULL, NULL);
 		nsval = OBJECT_TO_JSVAL(ns);
-		JS_SetProperty(cx, obj, "cc", &nsval);
+		JS_SetProperty(cx, obj, "cc", nsval);
 	} else {
 		JS_ValueToObject(cx, nsval, &ns);
 	}
