@@ -183,11 +183,10 @@ Scale9Sprite : function () {},
 cc.Control = {
 
 /**
- * @method onTouchEnded
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
+ * @method setEnabled
+ * @param {bool}
  */
-onTouchEnded : function () {},
+setEnabled : function () {},
 
 /**
  * @method onTouchMoved
@@ -197,40 +196,17 @@ onTouchEnded : function () {},
 onTouchMoved : function () {},
 
 /**
- * @method setSelected
- * @param {bool}
+ * @method getState
+ * @return A value converted from C/C++ "cocos2d::extension::Control::State"
  */
-setSelected : function () {},
+getState : function () {},
 
 /**
- * @method hasVisibleParents
- * @return A value converted from C/C++ "bool"
+ * @method onTouchEnded
+ * @param {cocos2d::Touch*}
+ * @param {cocos2d::Event*}
  */
-hasVisibleParents : function () {},
-
-/**
- * @method setHighlighted
- * @param {bool}
- */
-setHighlighted : function () {},
-
-/**
- * @method isHighlighted
- * @return A value converted from C/C++ "bool"
- */
-isHighlighted : function () {},
-
-/**
- * @method isOpacityModifyRGB
- * @return A value converted from C/C++ "bool"
- */
-isOpacityModifyRGB : function () {},
-
-/**
- * @method isEnabled
- * @return A value converted from C/C++ "bool"
- */
-isEnabled : function () {},
+onTouchEnded : function () {},
 
 /**
  * @method sendActionsForControlEvents
@@ -239,34 +215,23 @@ isEnabled : function () {},
 sendActionsForControlEvents : function () {},
 
 /**
- * @method setOpacityModifyRGB
+ * @method setSelected
  * @param {bool}
  */
-setOpacityModifyRGB : function () {},
+setSelected : function () {},
 
 /**
- * @method isSelected
+ * @method isEnabled
  * @return A value converted from C/C++ "bool"
  */
-isSelected : function () {},
+isEnabled : function () {},
 
 /**
- * @method init
+ * @method isTouchInside
  * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::Touch*}
  */
-init : function () {},
-
-/**
- * @method setEnabled
- * @param {bool}
- */
-setEnabled : function () {},
-
-/**
- * @method getState
- * @return A value converted from C/C++ "cocos2d::extension::Control::State"
- */
-getState : function () {},
+isTouchInside : function () {},
 
 /**
  * @method onTouchCancelled
@@ -289,6 +254,42 @@ needsLayout : function () {},
 onTouchBegan : function () {},
 
 /**
+ * @method hasVisibleParents
+ * @return A value converted from C/C++ "bool"
+ */
+hasVisibleParents : function () {},
+
+/**
+ * @method isSelected
+ * @return A value converted from C/C++ "bool"
+ */
+isSelected : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ */
+init : function () {},
+
+/**
+ * @method setHighlighted
+ * @param {bool}
+ */
+setHighlighted : function () {},
+
+/**
+ * @method setOpacityModifyRGB
+ * @param {bool}
+ */
+setOpacityModifyRGB : function () {},
+
+/**
+ * @method isOpacityModifyRGB
+ * @return A value converted from C/C++ "bool"
+ */
+isOpacityModifyRGB : function () {},
+
+/**
  * @method getTouchLocation
  * @return A value converted from C/C++ "cocos2d::Point"
  * @param {cocos2d::Touch*}
@@ -296,11 +297,10 @@ onTouchBegan : function () {},
 getTouchLocation : function () {},
 
 /**
- * @method isTouchInside
+ * @method isHighlighted
  * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Touch*}
  */
-isTouchInside : function () {},
+isHighlighted : function () {},
 
 /**
  * @method create
