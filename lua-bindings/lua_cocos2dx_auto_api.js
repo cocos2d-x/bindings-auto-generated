@@ -772,6 +772,11 @@ removeComponent : function () {},
 setPhysicsBody : function () {},
 
 /**
+ * @method pause
+ */
+pause : function () {},
+
+/**
  * @method convertToWorldSpaceAR
  * @return A value converted from C/C++ "cocos2d::Point"
  * @param {cocos2d::Point}
@@ -846,6 +851,12 @@ removeChild : function () {},
 convertToWorldSpace : function () {},
 
 /**
+ * @method getEventDispatcher
+ * @return A value converted from C/C++ "cocos2d::EventDispatcher*"
+ */
+getEventDispatcher : function () {},
+
+/**
  * @method setSkewX
  * @param {float}
  */
@@ -894,6 +905,11 @@ getNodeToParentTransform : function () {},
  * @param {cocos2d::Point}
  */
 convertToNodeSpace : function () {},
+
+/**
+ * @method resume
+ */
+resume : function () {},
 
 /**
  * @method getPhysicsBody
@@ -997,11 +1013,6 @@ setShaderProgram : function () {},
  * @return A value converted from C/C++ "float"
  */
 getRotation : function () {},
-
-/**
- * @method resumeSchedulerAndActions
- */
-resumeSchedulerAndActions : function () {},
 
 /**
  * @method getZOrder
@@ -1137,11 +1148,6 @@ setVisible : function () {},
 getParentToNodeTransform : function () {},
 
 /**
- * @method pauseSchedulerAndActions
- */
-pauseSchedulerAndActions : function () {},
-
-/**
  * @method getVertexZ
  * @return A value converted from C/C++ "float"
  */
@@ -1207,6 +1213,17 @@ setGrid : function () {},
  * @return A value converted from C/C++ "cocos2d::Rect"
  */
 getBoundingBox : function () {},
+
+/**
+ * @method updatePhysicsTransform
+ */
+updatePhysicsTransform : function () {},
+
+/**
+ * @method setEventDispatcher
+ * @param {cocos2d::EventDispatcher*}
+ */
+setEventDispatcher : function () {},
 
 /**
  * @method draw
@@ -7249,10 +7266,25 @@ LabelBMFont : function () {},
 cc.Label = {
 
 /**
+ * @method addChild
+ * @param {cocos2d::Node*}
+ * @param {int}
+ * @param {int}
+ */
+addChild : function () {},
+
+/**
  * @method getString
  * @return A value converted from C/C++ "const char*"
  */
 getString : function () {},
+
+/**
+ * @method getXOffsetForChar
+ * @return A value converted from C/C++ "int"
+ * @param {unsigned short}
+ */
+getXOffsetForChar : function () {},
 
 /**
  * @method setScale
@@ -7275,7 +7307,7 @@ setCascadeOpacityEnabled : function () {},
 /**
  * @method getLetterPosXRight
  * @return A value converted from C/C++ "float"
- * @param {cocos2d::Sprite*}
+ * @param {int}
  */
 getLetterPosXRight : function () {},
 
@@ -7368,19 +7400,18 @@ getYOffsetForChar : function () {},
 updateDisplayedOpacity : function () {},
 
 /**
- * @method getXOffsetForChar
- * @return A value converted from C/C++ "int"
- * @param {unsigned short}
- */
-getXOffsetForChar : function () {},
-
-/**
- * @method getSpriteForChar
- * @return A value converted from C/C++ "cocos2d::Sprite*"
- * @param {unsigned short}
+ * @method recordPlaceholderInfo
+ * @return A value converted from C/C++ "bool"
  * @param {int}
  */
-getSpriteForChar : function () {},
+recordPlaceholderInfo : function () {},
+
+/**
+ * @method getLetterPosXLeft
+ * @return A value converted from C/C++ "float"
+ * @param {int}
+ */
+getLetterPosXLeft : function () {},
 
 /**
  * @method getOpacity
@@ -7389,10 +7420,10 @@ getSpriteForChar : function () {},
 getOpacity : function () {},
 
 /**
- * @method getChildrenLetters
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @method getStringNumLines
+ * @return A value converted from C/C++ "int"
  */
-getChildrenLetters : function () {},
+getStringNumLines : function () {},
 
 /**
  * @method setLineBreakWithoutSpace
@@ -7411,12 +7442,6 @@ setScaleY : function () {},
  * @param {float}
  */
 setScaleX : function () {},
-
-/**
- * @method getStringNumLines
- * @return A value converted from C/C++ "int"
- */
-getStringNumLines : function () {},
 
 /**
  * @method getCharAtStringPosition
@@ -7444,19 +7469,19 @@ getColor : function () {},
 getDisplayedOpacity : function () {},
 
 /**
- * @method getLetterPosXLeft
- * @return A value converted from C/C++ "float"
- * @param {cocos2d::Sprite*}
- */
-getLetterPosXLeft : function () {},
-
-/**
  * @method getKerningForCharsPair
  * @return A value converted from C/C++ "int"
  * @param {unsigned short}
  * @param {unsigned short}
  */
 getKerningForCharsPair : function () {},
+
+/**
+ * @method getLetter
+ * @return A value converted from C/C++ "cocos2d::Sprite*"
+ * @param {int}
+ */
+getLetter : function () {},
 
 /**
  * @method setLabelContentSize
@@ -7483,6 +7508,12 @@ setColor : function () {},
 getDisplayedColor : function () {},
 
 /**
+ * @method getLettersInfo
+ * @return A value converted from C/C++ "vector*"
+ */
+getLettersInfo : function () {},
+
+/**
  * @method setText
  * @return A value converted from C/C++ "bool"
  * @param {const char*}
@@ -7505,13 +7536,6 @@ getUTF8String : function () {},
 getTextAlignment : function () {},
 
 /**
- * @method getSpriteChild
- * @return A value converted from C/C++ "cocos2d::Sprite*"
- * @param {int}
- */
-getSpriteChild : function () {},
-
-/**
  * @method isCascadeColorEnabled
  * @return A value converted from C/C++ "bool"
  */
@@ -7528,6 +7552,15 @@ updateDisplayedColor : function () {},
  * @param {cocos2d::TextHAlignment}
  */
 setAlignment : function () {},
+
+/**
+ * @method recordLetterInfo
+ * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::Point}
+ * @param {unsigned short}
+ * @param {int}
+ */
+recordLetterInfo : function () {},
 
 /**
  * @method createWithBMFont
@@ -7560,154 +7593,10 @@ createWithTTF : function () {},
 cc.Layer = {
 
 /**
- * @method onTouchEnded
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchEnded : function () {},
-
-/**
- * @method isKeyboardEnabled
- * @return A value converted from C/C++ "bool"
- */
-isKeyboardEnabled : function () {},
-
-/**
- * @method setAccelerometerInterval
- * @param {double}
- */
-setAccelerometerInterval : function () {},
-
-/**
- * @method isSwallowsTouches
- * @return A value converted from C/C++ "bool"
- */
-isSwallowsTouches : function () {},
-
-/**
- * @method onAcceleration
- * @param {cocos2d::Acceleration*}
- * @param {cocos2d::Event*}
- */
-onAcceleration : function () {},
-
-/**
- * @method getTouchMode
- * @return A value converted from C/C++ "cocos2d::Touch::DispatchMode"
- */
-getTouchMode : function () {},
-
-/**
- * @method onTouchesBegan
- * @param {std::vector<cocos2d::Touch *, std::allocator<cocos2d::Touch *> >}
- * @param {cocos2d::Event*}
- */
-onTouchesBegan : function () {},
-
-/**
  * @method init
  * @return A value converted from C/C++ "bool"
  */
 init : function () {},
-
-/**
- * @method onKeyPressed
- * @param {cocos2d::EventKeyboard::KeyCode}
- * @param {cocos2d::Event*}
- */
-onKeyPressed : function () {},
-
-/**
- * @method isTouchEnabled
- * @return A value converted from C/C++ "bool"
- */
-isTouchEnabled : function () {},
-
-/**
- * @method setTouchEnabled
- * @param {bool}
- */
-setTouchEnabled : function () {},
-
-/**
- * @method onTouchMoved
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchMoved : function () {},
-
-/**
- * @method onTouchesEnded
- * @param {std::vector<cocos2d::Touch *, std::allocator<cocos2d::Touch *> >}
- * @param {cocos2d::Event*}
- */
-onTouchesEnded : function () {},
-
-/**
- * @method setKeyboardEnabled
- * @param {bool}
- */
-setKeyboardEnabled : function () {},
-
-/**
- * @method onTouchCancelled
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchCancelled : function () {},
-
-/**
- * @method onTouchBegan
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchBegan : function () {},
-
-/**
- * @method setTouchMode
- * @param {cocos2d::Touch::DispatchMode}
- */
-setTouchMode : function () {},
-
-/**
- * @method isAccelerometerEnabled
- * @return A value converted from C/C++ "bool"
- */
-isAccelerometerEnabled : function () {},
-
-/**
- * @method onKeyReleased
- * @param {cocos2d::EventKeyboard::KeyCode}
- * @param {cocos2d::Event*}
- */
-onKeyReleased : function () {},
-
-/**
- * @method setSwallowsTouches
- * @param {bool}
- */
-setSwallowsTouches : function () {},
-
-/**
- * @method setAccelerometerEnabled
- * @param {bool}
- */
-setAccelerometerEnabled : function () {},
-
-/**
- * @method onTouchesCancelled
- * @param {std::vector<cocos2d::Touch *, std::allocator<cocos2d::Touch *> >}
- * @param {cocos2d::Event*}
- */
-onTouchesCancelled : function () {},
-
-/**
- * @method onTouchesMoved
- * @param {std::vector<cocos2d::Touch *, std::allocator<cocos2d::Touch *> >}
- * @param {cocos2d::Event*}
- */
-onTouchesMoved : function () {},
 
 /**
  * @method create
