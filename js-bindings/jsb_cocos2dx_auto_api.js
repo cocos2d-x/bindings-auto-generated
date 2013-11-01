@@ -7235,10 +7235,25 @@ LabelBMFont : function () {},
 cc.Label = {
 
 /**
+ * @method addChild
+ * @param {cocos2d::Node*}
+ * @param {int}
+ * @param {int}
+ */
+addChild : function () {},
+
+/**
  * @method getString
  * @return A value converted from C/C++ "const char*"
  */
 getString : function () {},
+
+/**
+ * @method getXOffsetForChar
+ * @return A value converted from C/C++ "int"
+ * @param {unsigned short}
+ */
+getXOffsetForChar : function () {},
 
 /**
  * @method setScale
@@ -7261,7 +7276,7 @@ setCascadeOpacityEnabled : function () {},
 /**
  * @method getLetterPosXRight
  * @return A value converted from C/C++ "float"
- * @param {cocos2d::Sprite*}
+ * @param {int}
  */
 getLetterPosXRight : function () {},
 
@@ -7354,19 +7369,18 @@ getYOffsetForChar : function () {},
 updateDisplayedOpacity : function () {},
 
 /**
- * @method getXOffsetForChar
- * @return A value converted from C/C++ "int"
- * @param {unsigned short}
- */
-getXOffsetForChar : function () {},
-
-/**
- * @method getSpriteForChar
- * @return A value converted from C/C++ "cocos2d::Sprite*"
- * @param {unsigned short}
+ * @method recordPlaceholderInfo
+ * @return A value converted from C/C++ "bool"
  * @param {int}
  */
-getSpriteForChar : function () {},
+recordPlaceholderInfo : function () {},
+
+/**
+ * @method getLetterPosXLeft
+ * @return A value converted from C/C++ "float"
+ * @param {int}
+ */
+getLetterPosXLeft : function () {},
 
 /**
  * @method getOpacity
@@ -7375,10 +7389,10 @@ getSpriteForChar : function () {},
 getOpacity : function () {},
 
 /**
- * @method getChildrenLetters
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @method getStringNumLines
+ * @return A value converted from C/C++ "int"
  */
-getChildrenLetters : function () {},
+getStringNumLines : function () {},
 
 /**
  * @method setLineBreakWithoutSpace
@@ -7397,12 +7411,6 @@ setScaleY : function () {},
  * @param {float}
  */
 setScaleX : function () {},
-
-/**
- * @method getStringNumLines
- * @return A value converted from C/C++ "int"
- */
-getStringNumLines : function () {},
 
 /**
  * @method getCharAtStringPosition
@@ -7430,19 +7438,19 @@ getColor : function () {},
 getDisplayedOpacity : function () {},
 
 /**
- * @method getLetterPosXLeft
- * @return A value converted from C/C++ "float"
- * @param {cocos2d::Sprite*}
- */
-getLetterPosXLeft : function () {},
-
-/**
  * @method getKerningForCharsPair
  * @return A value converted from C/C++ "int"
  * @param {unsigned short}
  * @param {unsigned short}
  */
 getKerningForCharsPair : function () {},
+
+/**
+ * @method getLetter
+ * @return A value converted from C/C++ "cocos2d::Sprite*"
+ * @param {int}
+ */
+getLetter : function () {},
 
 /**
  * @method setLabelContentSize
@@ -7469,6 +7477,12 @@ setColor : function () {},
 getDisplayedColor : function () {},
 
 /**
+ * @method getLettersInfo
+ * @return A value converted from C/C++ "vector*"
+ */
+getLettersInfo : function () {},
+
+/**
  * @method setText
  * @return A value converted from C/C++ "bool"
  * @param {const char*}
@@ -7491,13 +7505,6 @@ getUTF8String : function () {},
 getTextAlignment : function () {},
 
 /**
- * @method getSpriteChild
- * @return A value converted from C/C++ "cocos2d::Sprite*"
- * @param {int}
- */
-getSpriteChild : function () {},
-
-/**
  * @method isCascadeColorEnabled
  * @return A value converted from C/C++ "bool"
  */
@@ -7514,6 +7521,15 @@ updateDisplayedColor : function () {},
  * @param {cocos2d::TextHAlignment}
  */
 setAlignment : function () {},
+
+/**
+ * @method recordLetterInfo
+ * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::Point}
+ * @param {unsigned short}
+ * @param {int}
+ */
+recordLetterInfo : function () {},
 
 /**
  * @method createWithBMFont
