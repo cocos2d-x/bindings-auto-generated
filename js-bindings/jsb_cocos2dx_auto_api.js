@@ -7477,12 +7477,6 @@ setColor : function () {},
 getDisplayedColor : function () {},
 
 /**
- * @method getLettersInfo
- * @return A value converted from C/C++ "vector*"
- */
-getLettersInfo : function () {},
-
-/**
  * @method setText
  * @return A value converted from C/C++ "bool"
  * @param {const char*}

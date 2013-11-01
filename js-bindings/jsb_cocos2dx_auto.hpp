@@ -2055,7 +2055,6 @@ JSBool js_cocos2dx_Label_setLabelContentSize(JSContext *cx, uint32_t argc, jsval
 JSBool js_cocos2dx_Label_assignNewUTF8String(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_setColor(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Label_getLettersInfo(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_setText(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getUTF8String(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getTextAlignment(JSContext *cx, uint32_t argc, jsval *vp);
