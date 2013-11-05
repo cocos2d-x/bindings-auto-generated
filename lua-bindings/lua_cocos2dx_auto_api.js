@@ -631,7 +631,7 @@ hasPremultipliedAlpha : function () {},
 
 /**
  * @method getPixelsHigh
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "long"
  */
 getPixelsHigh : function () {},
 
@@ -641,8 +641,8 @@ getPixelsHigh : function () {},
  * @param {MipmapInfo*}
  * @param {int}
  * @param {cocos2d::Texture2D::PixelFormat}
- * @param {unsigned int}
- * @param {unsigned int}
+ * @param {long}
+ * @param {long}
  */
 initWithMipmaps : function () {},
 
@@ -699,7 +699,7 @@ getContentSizeInPixels : function () {},
 
 /**
  * @method getPixelsWide
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "long"
  */
 getPixelsWide : function () {},
 
@@ -973,7 +973,7 @@ isVisible : function () {},
 
 /**
  * @method getChildrenCount
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "long"
  */
 getChildrenCount : function () {},
 
@@ -6985,7 +6985,7 @@ draw : function () {},
  * @method initWithTexture
  * @return A value converted from C/C++ "bool"
  * @param {cocos2d::Texture2D*}
- * @param {int}
+ * @param {long}
  */
 initWithTexture : function () {},
 
@@ -7045,7 +7045,7 @@ highestAtlasIndexInChild : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::SpriteBatchNode*"
  * @param {const char*}
- * @param {int}
+ * @param {long}
  */
 create : function () {},
 

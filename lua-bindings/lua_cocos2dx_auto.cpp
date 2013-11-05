@@ -4459,8 +4459,8 @@ int lua_cocos2dx_Texture2D_getPixelsHigh(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getPixelsHigh();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        long ret = cobj->getPixelsHigh();
+        #pragma warning NO CONVERSION FROM NATIVE FOR long;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPixelsHigh",argc, 0);
@@ -4501,13 +4501,13 @@ int lua_cocos2dx_Texture2D_initWithMipmaps(lua_State* tolua_S)
         MipmapInfo* arg0;
         int arg1;
         cocos2d::Texture2D::PixelFormat arg2;
-        unsigned int arg3;
-        unsigned int arg4;
+        long arg3;
+        long arg4;
         #pragma warning NO CONVERSION TO NATIVE FOR MipmapInfo*;
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_uint32(tolua_S, 5,&arg3);
-        ok &= luaval_to_uint32(tolua_S, 6,&arg4);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithMipmaps(arg0, arg1, arg2, arg3, arg4);
@@ -5108,8 +5108,8 @@ int lua_cocos2dx_Texture2D_getPixelsWide(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getPixelsWide();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        long ret = cobj->getPixelsWide();
+        #pragma warning NO CONVERSION FROM NATIVE FOR long;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPixelsWide",argc, 0);
@@ -7400,8 +7400,8 @@ int lua_cocos2dx_Node_getChildrenCount(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getChildrenCount();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        long ret = cobj->getChildrenCount();
+        #pragma warning NO CONVERSION FROM NATIVE FOR long;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getChildrenCount",argc, 0);
@@ -51580,8 +51580,8 @@ int lua_cocos2dx_SpriteBatchNode_init(lua_State* tolua_S)
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
-            int arg1;
-            ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+            long arg1;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithFile(arg0, arg1);
@@ -51717,7 +51717,7 @@ int lua_cocos2dx_SpriteBatchNode_initWithTexture(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::Texture2D* arg0;
-        int arg1;
+        long arg1;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Texture2D",0)){
 					ok = false;
@@ -51728,7 +51728,7 @@ int lua_cocos2dx_SpriteBatchNode_initWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithTexture(arg0, arg1);
@@ -52181,9 +52181,9 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
     if (argc == 2)
     {
         const char* arg0;
-        int arg1;
+        long arg1;
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0, arg1);

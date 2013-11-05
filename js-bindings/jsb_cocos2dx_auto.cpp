@@ -2540,9 +2540,9 @@ JSBool js_cocos2dx_Texture2D_getPixelsHigh(JSContext *cx, uint32_t argc, jsval *
 	cocos2d::Texture2D* cobj = (cocos2d::Texture2D *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Texture2D_getPixelsHigh : Invalid Native Object");
 	if (argc == 0) {
-		unsigned int ret = cobj->getPixelsHigh();
+		long ret = cobj->getPixelsHigh();
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR long;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -2562,13 +2562,13 @@ JSBool js_cocos2dx_Texture2D_initWithMipmaps(JSContext *cx, uint32_t argc, jsval
 		MipmapInfo* arg0;
 		int arg1;
 		cocos2d::Texture2D::PixelFormat arg2;
-		unsigned int arg3;
-		unsigned int arg4;
+		long arg3;
+		long arg4;
 		#pragma warning NO CONVERSION TO NATIVE FOR MipmapInfo*;
 		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		ok &= jsval_to_uint32(cx, argv[3], &arg3);
-		ok &= jsval_to_uint32(cx, argv[4], &arg4);
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Texture2D_initWithMipmaps : Error processing arguments");
 		bool ret = cobj->initWithMipmaps(arg0, arg1, arg2, arg3, arg4);
 		jsval jsret;
@@ -2901,9 +2901,9 @@ JSBool js_cocos2dx_Texture2D_getPixelsWide(JSContext *cx, uint32_t argc, jsval *
 	cocos2d::Texture2D* cobj = (cocos2d::Texture2D *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Texture2D_getPixelsWide : Invalid Native Object");
 	if (argc == 0) {
-		unsigned int ret = cobj->getPixelsWide();
+		long ret = cobj->getPixelsWide();
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR long;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -4076,9 +4076,9 @@ JSBool js_cocos2dx_Node_getChildrenCount(JSContext *cx, uint32_t argc, jsval *vp
 	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getChildrenCount : Invalid Native Object");
 	if (argc == 0) {
-		unsigned int ret = cobj->getChildrenCount();
+		long ret = cobj->getChildrenCount();
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR long;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -34042,8 +34042,8 @@ JSBool js_cocos2dx_SpriteBatchNode_init(JSContext *cx, uint32_t argc, jsval *vp)
 			const char* arg0;
 			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+			long arg1;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithFile(arg0, arg1);
 			jsval jsret;
@@ -34110,7 +34110,7 @@ JSBool js_cocos2dx_SpriteBatchNode_initWithTexture(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_initWithTexture : Invalid Native Object");
 	if (argc == 2) {
 		cocos2d::Texture2D* arg0;
-		int arg1;
+		long arg1;
 		do {
 			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
 			js_proxy_t *proxy;
@@ -34119,7 +34119,7 @@ JSBool js_cocos2dx_SpriteBatchNode_initWithTexture(JSContext *cx, uint32_t argc,
 			arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_initWithTexture : Error processing arguments");
 		bool ret = cobj->initWithTexture(arg0, arg1);
 		jsval jsret;
@@ -34338,9 +34338,9 @@ JSBool js_cocos2dx_SpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *v
 	}
 	if (argc == 2) {
 		const char* arg0;
-		int arg1;
+		long arg1;
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_create : Error processing arguments");
 		cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0, arg1);
 		jsval jsret;
