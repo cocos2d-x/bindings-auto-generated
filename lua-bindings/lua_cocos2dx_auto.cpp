@@ -185,11 +185,12 @@ int lua_cocos2dx_Object_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Object();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Object");
         }
         else
@@ -1680,11 +1681,12 @@ int lua_cocos2dx_Speed_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Speed();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Speed");
         }
         else
@@ -2223,11 +2225,12 @@ int lua_cocos2dx_Follow_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Follow();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Follow");
         }
         else
@@ -3123,11 +3126,12 @@ int lua_cocos2dx_GLProgram_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::GLProgram();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"GLProgram");
         }
         else
@@ -3575,11 +3579,12 @@ int lua_cocos2dx_Touch_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Touch();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Touch");
         }
         else
@@ -5388,11 +5393,12 @@ int lua_cocos2dx_Texture2D_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Texture2D();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Texture2D");
         }
         else
@@ -10084,11 +10090,12 @@ int lua_cocos2dx_Node_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Node();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Node");
         }
         else
@@ -10865,11 +10872,12 @@ int lua_cocos2dx_NodeRGBA_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::NodeRGBA();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"NodeRGBA");
         }
         else
@@ -12441,11 +12449,12 @@ int lua_cocos2dx_AnimationFrame_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::AnimationFrame();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"AnimationFrame");
         }
         else
@@ -13433,11 +13442,12 @@ int lua_cocos2dx_Animation_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Animation();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Animation");
         }
         else
@@ -15243,11 +15253,12 @@ int lua_cocos2dx_RepeatForever_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::RepeatForever();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"RepeatForever");
         }
         else
@@ -17193,11 +17204,12 @@ int lua_cocos2dx_SkewTo_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::SkewTo();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"SkewTo");
         }
         else
@@ -21624,11 +21636,12 @@ int lua_cocos2dx_Animate_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Animate();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Animate");
         }
         else
@@ -22176,11 +22189,12 @@ int lua_cocos2dx_TargetedAction_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TargetedAction();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TargetedAction");
         }
         else
@@ -22401,11 +22415,12 @@ int lua_cocos2dx_ActionCamera_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ActionCamera();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ActionCamera");
         }
         else
@@ -22767,11 +22782,12 @@ int lua_cocos2dx_OrbitCamera_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::OrbitCamera();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"OrbitCamera");
         }
         else
@@ -23415,11 +23431,12 @@ int lua_cocos2dx_ActionManager_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ActionManager();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ActionManager");
         }
         else
@@ -29169,11 +29186,12 @@ int lua_cocos2dx_Show_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Show();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Show");
         }
         else
@@ -29423,11 +29441,12 @@ int lua_cocos2dx_Hide_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Hide();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Hide");
         }
         else
@@ -29677,11 +29696,12 @@ int lua_cocos2dx_ToggleVisibility_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ToggleVisibility();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ToggleVisibility");
         }
         else
@@ -29996,11 +30016,12 @@ int lua_cocos2dx_RemoveSelf_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::RemoveSelf();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"RemoveSelf");
         }
         else
@@ -30296,11 +30317,12 @@ int lua_cocos2dx_FlipX_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::FlipX();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"FlipX");
         }
         else
@@ -30596,11 +30618,12 @@ int lua_cocos2dx_FlipY_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::FlipY();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"FlipY");
         }
         else
@@ -30896,11 +30919,12 @@ int lua_cocos2dx_Place_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Place();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Place");
         }
         else
@@ -31252,11 +31276,12 @@ int lua_cocos2dx_CallFunc_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::CallFunc();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"CallFunc");
         }
         else
@@ -40429,11 +40454,12 @@ int lua_cocos2dx_CardinalSplineTo_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::CardinalSplineTo();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"CardinalSplineTo");
         }
         else
@@ -40694,11 +40720,12 @@ int lua_cocos2dx_CardinalSplineBy_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::CardinalSplineBy();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"CardinalSplineBy");
         }
         else
@@ -41856,11 +41883,12 @@ int lua_cocos2dx_AtlasNode_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::AtlasNode();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"AtlasNode");
         }
         else
@@ -42189,11 +42217,12 @@ int lua_cocos2dx_DrawNode_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::DrawNode();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"DrawNode");
         }
         else
@@ -42764,11 +42793,12 @@ int lua_cocos2dx_Camera_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Camera();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Camera");
         }
         else
@@ -43149,11 +43179,12 @@ int lua_cocos2dx_LabelAtlas_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::LabelAtlas();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LabelAtlas");
         }
         else
@@ -46551,11 +46582,12 @@ int lua_cocos2dx_Grid3D_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Grid3D();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Grid3D");
         }
         else
@@ -46819,11 +46851,12 @@ int lua_cocos2dx_TiledGrid3D_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TiledGrid3D();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TiledGrid3D");
         }
         else
@@ -49607,11 +49640,12 @@ int lua_cocos2dx_Sprite_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Sprite();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Sprite");
         }
         else
@@ -50958,11 +50992,12 @@ int lua_cocos2dx_LabelTTF_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::LabelTTF();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LabelTTF");
         }
         else
@@ -52314,11 +52349,12 @@ int lua_cocos2dx_SpriteBatchNode_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::SpriteBatchNode();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"SpriteBatchNode");
         }
         else
@@ -53903,11 +53939,12 @@ int lua_cocos2dx_LabelBMFont_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::LabelBMFont();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LabelBMFont");
         }
         else
@@ -56406,11 +56443,12 @@ int lua_cocos2dx_Layer_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Layer();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Layer");
         }
         else
@@ -57132,11 +57170,12 @@ int lua_cocos2dx_LayerRGBA_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::LayerRGBA();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LayerRGBA");
         }
         else
@@ -57663,11 +57702,12 @@ int lua_cocos2dx_LayerColor_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::LayerColor();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LayerColor");
         }
         else
@@ -58649,11 +58689,12 @@ int lua_cocos2dx_LayerMultiplex_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::LayerMultiplex();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LayerMultiplex");
         }
         else
@@ -59073,11 +59114,12 @@ int lua_cocos2dx_Scene_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Scene();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Scene");
         }
         else
@@ -59492,11 +59534,12 @@ int lua_cocos2dx_TransitionScene_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionScene();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionScene");
         }
         else
@@ -59671,11 +59714,12 @@ int lua_cocos2dx_TransitionSceneOriented_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionSceneOriented();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionSceneOriented");
         }
         else
@@ -59788,11 +59832,12 @@ int lua_cocos2dx_TransitionRotoZoom_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionRotoZoom();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionRotoZoom");
         }
         else
@@ -59903,11 +59948,12 @@ int lua_cocos2dx_TransitionJumpZoom_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionJumpZoom();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionJumpZoom");
         }
         else
@@ -60175,11 +60221,12 @@ int lua_cocos2dx_TransitionMoveInL_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionMoveInL();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionMoveInL");
         }
         else
@@ -60334,11 +60381,12 @@ int lua_cocos2dx_TransitionMoveInR_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionMoveInR();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionMoveInR");
         }
         else
@@ -60491,11 +60539,12 @@ int lua_cocos2dx_TransitionMoveInT_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionMoveInT();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionMoveInT");
         }
         else
@@ -60648,11 +60697,12 @@ int lua_cocos2dx_TransitionMoveInB_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionMoveInB();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionMoveInB");
         }
         else
@@ -60922,11 +60972,12 @@ int lua_cocos2dx_TransitionSlideInL_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionSlideInL();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionSlideInL");
         }
         else
@@ -61134,11 +61185,12 @@ int lua_cocos2dx_TransitionSlideInR_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionSlideInR();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionSlideInR");
         }
         else
@@ -61345,11 +61397,12 @@ int lua_cocos2dx_TransitionSlideInB_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionSlideInB();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionSlideInB");
         }
         else
@@ -61556,11 +61609,12 @@ int lua_cocos2dx_TransitionSlideInT_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionSlideInT();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionSlideInT");
         }
         else
@@ -61738,11 +61792,12 @@ int lua_cocos2dx_TransitionShrinkGrow_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionShrinkGrow();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionShrinkGrow");
         }
         else
@@ -61896,11 +61951,12 @@ int lua_cocos2dx_TransitionFlipX_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionFlipX();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionFlipX");
         }
         else
@@ -62052,11 +62108,12 @@ int lua_cocos2dx_TransitionFlipY_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionFlipY();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionFlipY");
         }
         else
@@ -62208,11 +62265,12 @@ int lua_cocos2dx_TransitionFlipAngular_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionFlipAngular();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionFlipAngular");
         }
         else
@@ -62364,11 +62422,12 @@ int lua_cocos2dx_TransitionZoomFlipX_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionZoomFlipX();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionZoomFlipX");
         }
         else
@@ -62520,11 +62579,12 @@ int lua_cocos2dx_TransitionZoomFlipY_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionZoomFlipY();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionZoomFlipY");
         }
         else
@@ -62676,11 +62736,12 @@ int lua_cocos2dx_TransitionZoomFlipAngular_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionZoomFlipAngular();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionZoomFlipAngular");
         }
         else
@@ -62912,11 +62973,12 @@ int lua_cocos2dx_TransitionFade_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionFade();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionFade");
         }
         else
@@ -63069,11 +63131,12 @@ int lua_cocos2dx_TransitionCrossFade_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionCrossFade();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionCrossFade");
         }
         else
@@ -63250,11 +63313,12 @@ int lua_cocos2dx_TransitionTurnOffTiles_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionTurnOffTiles();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionTurnOffTiles");
         }
         else
@@ -63484,11 +63548,12 @@ int lua_cocos2dx_TransitionSplitCols_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionSplitCols();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionSplitCols");
         }
         else
@@ -63655,11 +63720,12 @@ int lua_cocos2dx_TransitionSplitRows_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionSplitRows();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionSplitRows");
         }
         else
@@ -63891,11 +63957,12 @@ int lua_cocos2dx_TransitionFadeTR_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionFadeTR();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionFadeTR");
         }
         else
@@ -64064,11 +64131,12 @@ int lua_cocos2dx_TransitionFadeBL_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionFadeBL();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionFadeBL");
         }
         else
@@ -64236,11 +64304,12 @@ int lua_cocos2dx_TransitionFadeUp_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionFadeUp();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionFadeUp");
         }
         else
@@ -64408,11 +64477,12 @@ int lua_cocos2dx_TransitionFadeDown_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionFadeDown();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionFadeDown");
         }
         else
@@ -64638,11 +64708,12 @@ int lua_cocos2dx_TransitionPageTurn_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionPageTurn();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionPageTurn");
         }
         else
@@ -64756,11 +64827,12 @@ int lua_cocos2dx_TransitionProgress_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionProgress();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TransitionProgress");
         }
         else
@@ -65550,11 +65622,12 @@ int lua_cocos2dx_MenuItem_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::MenuItem();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MenuItem");
         }
         else
@@ -66088,11 +66161,12 @@ int lua_cocos2dx_MenuItemLabel_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::MenuItemLabel();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MenuItemLabel");
         }
         else
@@ -66237,11 +66311,12 @@ int lua_cocos2dx_MenuItemAtlasFont_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::MenuItemAtlasFont();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MenuItemAtlasFont");
         }
         else
@@ -66661,11 +66736,12 @@ int lua_cocos2dx_MenuItemFont_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::MenuItemFont();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MenuItemFont");
         }
         else
@@ -67266,11 +67342,12 @@ int lua_cocos2dx_MenuItemSprite_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::MenuItemSprite();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MenuItemSprite");
         }
         else
@@ -67605,11 +67682,12 @@ int lua_cocos2dx_MenuItemImage_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::MenuItemImage();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MenuItemImage");
         }
         else
@@ -68112,11 +68190,12 @@ int lua_cocos2dx_MenuItemToggle_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::MenuItemToggle();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MenuItemToggle");
         }
         else
@@ -68994,11 +69073,12 @@ int lua_cocos2dx_Menu_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Menu();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Menu");
         }
         else
@@ -70291,11 +70371,12 @@ int lua_cocos2dx_MotionStreak_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::MotionStreak();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MotionStreak");
         }
         else
@@ -71244,11 +71325,12 @@ int lua_cocos2dx_ProgressTimer_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ProgressTimer();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ProgressTimer");
         }
         else
@@ -71954,11 +72036,12 @@ int lua_cocos2dx_Image_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Image();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Image");
         }
         else
@@ -73398,11 +73481,12 @@ int lua_cocos2dx_RenderTexture_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::RenderTexture();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"RenderTexture");
         }
         else
@@ -74411,11 +74495,12 @@ int lua_cocos2dx_ParticleBatchNode_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleBatchNode();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleBatchNode");
         }
         else
@@ -78989,11 +79074,12 @@ int lua_cocos2dx_ParticleSystem_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleSystem();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleSystem");
         }
         else
@@ -79453,11 +79539,12 @@ int lua_cocos2dx_ParticleSystemQuad_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleSystemQuad();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleSystemQuad");
         }
         else
@@ -79690,11 +79777,12 @@ int lua_cocos2dx_ParticleFire_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleFire();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleFire");
         }
         else
@@ -79925,11 +80013,12 @@ int lua_cocos2dx_ParticleFireworks_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleFireworks();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleFireworks");
         }
         else
@@ -80160,11 +80249,12 @@ int lua_cocos2dx_ParticleSun_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleSun();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleSun");
         }
         else
@@ -80395,11 +80485,12 @@ int lua_cocos2dx_ParticleGalaxy_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleGalaxy();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleGalaxy");
         }
         else
@@ -80630,11 +80721,12 @@ int lua_cocos2dx_ParticleFlower_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleFlower();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleFlower");
         }
         else
@@ -80865,11 +80957,12 @@ int lua_cocos2dx_ParticleMeteor_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleMeteor();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleMeteor");
         }
         else
@@ -81100,11 +81193,12 @@ int lua_cocos2dx_ParticleSpiral_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleSpiral();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleSpiral");
         }
         else
@@ -81335,11 +81429,12 @@ int lua_cocos2dx_ParticleExplosion_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleExplosion();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleExplosion");
         }
         else
@@ -81570,11 +81665,12 @@ int lua_cocos2dx_ParticleSmoke_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleSmoke();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleSmoke");
         }
         else
@@ -81805,11 +81901,12 @@ int lua_cocos2dx_ParticleSnow_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleSnow();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleSnow");
         }
         else
@@ -82040,11 +82137,12 @@ int lua_cocos2dx_ParticleRain_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParticleRain();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleRain");
         }
         else
@@ -83260,11 +83358,12 @@ int lua_cocos2dx_ShaderCache_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ShaderCache();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ShaderCache");
         }
         else
@@ -83673,11 +83772,12 @@ int lua_cocos2dx_AnimationCache_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::AnimationCache();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"AnimationCache");
         }
         else
@@ -85393,11 +85493,12 @@ int lua_cocos2dx_TextureCache_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TextureCache();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TextureCache");
         }
         else
@@ -85810,11 +85911,12 @@ int lua_cocos2dx_ParallaxNode_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ParallaxNode();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParallaxNode");
         }
         else
@@ -86306,11 +86408,12 @@ int lua_cocos2dx_TMXObjectGroup_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXObjectGroup();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TMXObjectGroup");
         }
         else
@@ -86458,11 +86561,12 @@ int lua_cocos2dx_TMXLayerInfo_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXLayerInfo();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TMXLayerInfo");
         }
         else
@@ -86562,11 +86666,12 @@ int lua_cocos2dx_TMXTilesetInfo_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXTilesetInfo();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TMXTilesetInfo");
         }
         else
@@ -88050,11 +88155,12 @@ int lua_cocos2dx_TMXMapInfo_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXMapInfo();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TMXMapInfo");
         }
         else
@@ -89352,11 +89458,12 @@ int lua_cocos2dx_TMXLayer_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXLayer();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TMXLayer");
         }
         else
@@ -90239,11 +90346,12 @@ int lua_cocos2dx_TMXTiledMap_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXTiledMap();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TMXTiledMap");
         }
         else
@@ -90626,11 +90734,12 @@ int lua_cocos2dx_TileMapAtlas_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TileMapAtlas();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TileMapAtlas");
         }
         else
@@ -90903,11 +91012,12 @@ int lua_cocos2dx_Timer_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Timer();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Timer");
         }
         else
@@ -91050,11 +91160,12 @@ int lua_cocos2dx_Scheduler_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Scheduler();
-        if (nullptr != dynamic_cast<cocos2d::Object *>(cobj)) 
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
         {
-            cobj->autorelease();
-            int ID = (cobj) ? (int)cobj->_ID : -1;
-            int* luaID = (cobj) ? &cobj->_luaID : NULL;
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
             toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Scheduler");
         }
         else
