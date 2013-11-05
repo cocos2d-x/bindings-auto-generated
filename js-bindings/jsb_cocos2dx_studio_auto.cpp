@@ -513,7 +513,7 @@ JSBool js_cocos2dx_studio_Bone_getColliderBodyList(JSContext *cx, uint32_t argc,
 	cocostudio::Bone* cobj = (cocostudio::Bone *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getColliderBodyList : Invalid Native Object");
 	if (argc == 0) {
-		Array* ret = cobj->getColliderBodyList();
+		cocos2d::Array* ret = cobj->getColliderBodyList();
 		jsval jsret;
 		jsret = ccarray_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -590,8 +590,15 @@ JSBool js_cocos2dx_studio_Bone_addDisplay(JSContext *cx, uint32_t argc, jsval *v
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_addDisplay : Invalid Native Object");
 	do {
 		if (argc == 2) {
-			Node* arg0;
-			#pragma warning NO CONVERSION TO NATIVE FOR Node*;
+			cocos2d::Node* arg0;
+			do {
+				if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+				js_proxy_t *proxy;
+				JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+				proxy = jsb_get_js_proxy(tmpObj);
+				arg0 = (cocos2d::Node*)(proxy ? proxy->ptr : NULL);
+				JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+			} while (0);
 			if (!ok) { ok = JS_TRUE; break; }
 			int arg1;
 			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
@@ -633,7 +640,7 @@ JSBool js_cocos2dx_studio_Bone_getNodeToWorldTransform(JSContext *cx, uint32_t a
 	cocostudio::Bone* cobj = (cocostudio::Bone *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getNodeToWorldTransform : Invalid Native Object");
 	if (argc == 0) {
-		AffineTransform ret = cobj->getNodeToWorldTransform();
+		cocos2d::AffineTransform ret = cobj->getNodeToWorldTransform();
 		jsval jsret;
 		jsret = ccaffinetransform_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -706,7 +713,7 @@ JSBool js_cocos2dx_studio_Bone_getNodeToArmatureTransform(JSContext *cx, uint32_
 	cocostudio::Bone* cobj = (cocostudio::Bone *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getNodeToArmatureTransform : Invalid Native Object");
 	if (argc == 0) {
-		AffineTransform ret = cobj->getNodeToArmatureTransform();
+		cocos2d::AffineTransform ret = cobj->getNodeToArmatureTransform();
 		jsval jsret;
 		jsret = ccaffinetransform_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1607,7 +1614,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getAnimationDatas(JSContext *cx, u
 	cocostudio::ArmatureDataManager* cobj = (cocostudio::ArmatureDataManager *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_getAnimationDatas : Invalid Native Object");
 	if (argc == 0) {
-		Dictionary* ret = cobj->getAnimationDatas();
+		cocos2d::Dictionary* ret = cobj->getAnimationDatas();
 		jsval jsret;
 		jsret = ccdictionary_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1715,7 +1722,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getTextureDatas(JSContext *cx, uin
 	cocostudio::ArmatureDataManager* cobj = (cocostudio::ArmatureDataManager *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_getTextureDatas : Invalid Native Object");
 	if (argc == 0) {
-		Dictionary* ret = cobj->getTextureDatas();
+		cocos2d::Dictionary* ret = cobj->getTextureDatas();
 		jsval jsret;
 		jsret = ccdictionary_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1900,7 +1907,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getArmatureDatas(JSContext *cx, ui
 	cocostudio::ArmatureDataManager* cobj = (cocostudio::ArmatureDataManager *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_getArmatureDatas : Invalid Native Object");
 	if (argc == 0) {
-		Dictionary* ret = cobj->getArmatureDatas();
+		cocos2d::Dictionary* ret = cobj->getArmatureDatas();
 		jsval jsret;
 		jsret = ccdictionary_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2463,7 +2470,7 @@ JSBool js_cocos2dx_studio_Armature_getNodeToParentTransform(JSContext *cx, uint3
 	if (argc == 0) {
 		cocos2d::AffineTransform ret = cobj->getNodeToParentTransform();
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR const AffineTransform;
+		jsret = ccaffinetransform_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -2505,7 +2512,7 @@ JSBool js_cocos2dx_studio_Armature_getBoundingBox(JSContext *cx, uint32_t argc, 
 	cocostudio::Armature* cobj = (cocostudio::Armature *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getBoundingBox : Invalid Native Object");
 	if (argc == 0) {
-		Rect ret = cobj->getBoundingBox();
+		cocos2d::Rect ret = cobj->getBoundingBox();
 		jsval jsret;
 		jsret = ccrect_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2593,8 +2600,15 @@ JSBool js_cocos2dx_studio_Armature_setTextureAtlas(JSContext *cx, uint32_t argc,
 	cocostudio::Armature* cobj = (cocostudio::Armature *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_setTextureAtlas : Invalid Native Object");
 	if (argc == 1) {
-		TextureAtlas* arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR TextureAtlas*;
+		cocos2d::TextureAtlas* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::TextureAtlas*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Armature_setTextureAtlas : Error processing arguments");
 		cobj->setTextureAtlas(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -2725,7 +2739,7 @@ JSBool js_cocos2dx_studio_Armature_getBoneDic(JSContext *cx, uint32_t argc, jsva
 	cocostudio::Armature* cobj = (cocostudio::Armature *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getBoneDic : Invalid Native Object");
 	if (argc == 0) {
-		Dictionary* ret = cobj->getBoneDic();
+		cocos2d::Dictionary* ret = cobj->getBoneDic();
 		jsval jsret;
 		jsret = ccdictionary_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2742,9 +2756,16 @@ JSBool js_cocos2dx_studio_Armature_getTextureAtlas(JSContext *cx, uint32_t argc,
 	cocostudio::Armature* cobj = (cocostudio::Armature *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getTextureAtlas : Invalid Native Object");
 	if (argc == 0) {
-		TextureAtlas* ret = cobj->getTextureAtlas();
+		cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR TextureAtlas*;
+		do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::TextureAtlas>(cx, ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -2987,7 +3008,7 @@ JSBool js_cocos2dx_studio_Skin_getNodeToWorldTransformAR(JSContext *cx, uint32_t
 	cocostudio::Skin* cobj = (cocostudio::Skin *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Skin_getNodeToWorldTransformAR : Invalid Native Object");
 	if (argc == 0) {
-		AffineTransform ret = cobj->getNodeToWorldTransformAR();
+		cocos2d::AffineTransform ret = cobj->getNodeToWorldTransformAR();
 		jsval jsret;
 		jsret = ccaffinetransform_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -3004,7 +3025,7 @@ JSBool js_cocos2dx_studio_Skin_getNodeToWorldTransform(JSContext *cx, uint32_t a
 	cocostudio::Skin* cobj = (cocostudio::Skin *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Skin_getNodeToWorldTransform : Invalid Native Object");
 	if (argc == 0) {
-		AffineTransform ret = cobj->getNodeToWorldTransform();
+		cocos2d::AffineTransform ret = cobj->getNodeToWorldTransform();
 		jsval jsret;
 		jsret = ccaffinetransform_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);

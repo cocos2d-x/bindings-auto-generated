@@ -134,7 +134,7 @@ getTweenData : function () {},
 
 /**
  * @method getColliderBodyList
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getColliderBodyList : function () {},
 
@@ -152,7 +152,7 @@ setArmature : function () {},
 
 /**
  * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "AffineTransform"
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getNodeToWorldTransform : function () {},
 
@@ -171,7 +171,7 @@ setChildArmature : function () {},
 
 /**
  * @method getNodeToArmatureTransform
- * @return A value converted from C/C++ "AffineTransform"
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getNodeToArmatureTransform : function () {},
 
@@ -349,7 +349,7 @@ cc.ArmatureDataManager = {
 
 /**
  * @method getAnimationDatas
- * @return A value converted from C/C++ "Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::Dictionary*"
  */
 getAnimationDatas : function () {},
 
@@ -368,7 +368,7 @@ addArmatureData : function () {},
 
 /**
  * @method getTextureDatas
- * @return A value converted from C/C++ "Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::Dictionary*"
  */
 getTextureDatas : function () {},
 
@@ -419,7 +419,7 @@ removeArmatureData : function () {},
 
 /**
  * @method getArmatureDatas
- * @return A value converted from C/C++ "Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::Dictionary*"
  */
 getArmatureDatas : function () {},
 
@@ -557,7 +557,7 @@ setParentBone : function () {},
 
 /**
  * @method getBoundingBox
- * @return A value converted from C/C++ "Rect"
+ * @return A value converted from C/C++ "cocos2d::Rect"
  */
 getBoundingBox : function () {},
 
@@ -580,7 +580,7 @@ setArmatureData : function () {},
 
 /**
  * @method setTextureAtlas
- * @param {TextureAtlas*}
+ * @param {cocos2d::TextureAtlas*}
  */
 setTextureAtlas : function () {},
 
@@ -617,13 +617,13 @@ getAnimation : function () {},
 
 /**
  * @method getBoneDic
- * @return A value converted from C/C++ "Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::Dictionary*"
  */
 getBoneDic : function () {},
 
 /**
  * @method getTextureAtlas
- * @return A value converted from C/C++ "TextureAtlas*"
+ * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
  */
 getTextureAtlas : function () {},
 
@@ -648,13 +648,13 @@ getBone : function () {},
 
 /**
  * @method getNodeToWorldTransformAR
- * @return A value converted from C/C++ "AffineTransform"
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getNodeToWorldTransformAR : function () {},
 
 /**
  * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "AffineTransform"
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getNodeToWorldTransform : function () {},
 

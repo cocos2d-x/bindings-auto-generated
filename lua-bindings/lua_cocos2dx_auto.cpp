@@ -36816,16 +36816,7 @@ int lua_cocos2dx_ShuffleTiles_placeTile(lua_State* tolua_S)
         cocos2d::Point arg0;
         cocos2d::Tile* arg1;
         ok &= luaval_to_point(tolua_S, 2, &arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"Tile",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Tile*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        #pragma warning NO CONVERSION TO NATIVE FOR Tile*;
         if(!ok)
             return 0;
         cobj->placeTile(arg0, arg1);
@@ -55958,7 +55949,7 @@ int lua_cocos2dx_Label_recordLetterInfo(lua_State* tolua_S)
         cocos2d::Point arg0;
         unsigned short arg1;
         int arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR const Point;
+        ok &= luaval_to_point(tolua_S, 2, &arg0);
         #pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
@@ -85697,14 +85688,14 @@ int lua_cocos2dx_ParallaxNode_getParallaxArray(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 0) {
-            const _ccArray* ret = cobj->getParallaxArray();
-            #pragma warning NO CONVERSION FROM NATIVE FOR const _ccArray*;
+            cocos2d::_ccArray* ret = cobj->getParallaxArray();
+            #pragma warning NO CONVERSION FROM NATIVE FOR _ccArray*;
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
-            _ccArray* ret = cobj->getParallaxArray();
+            cocos2d::_ccArray* ret = cobj->getParallaxArray();
             #pragma warning NO CONVERSION FROM NATIVE FOR _ccArray*;
             return 1;
         }
@@ -85744,7 +85735,7 @@ int lua_cocos2dx_ParallaxNode_setParallaxArray(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        _ccArray* arg0;
+        cocos2d::_ccArray* arg0;
         #pragma warning NO CONVERSION TO NATIVE FOR _ccArray*;
         if(!ok)
             return 0;
@@ -90426,7 +90417,7 @@ int lua_cocos2dx_TileMapAtlas_getTGAInfo(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        sImageTGA* ret = cobj->getTGAInfo();
+        cocos2d::sImageTGA* ret = cobj->getTGAInfo();
         #pragma warning NO CONVERSION FROM NATIVE FOR sImageTGA*;
         return 1;
     }
@@ -90552,7 +90543,7 @@ int lua_cocos2dx_TileMapAtlas_setTGAInfo(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        sImageTGA* arg0;
+        cocos2d::sImageTGA* arg0;
         #pragma warning NO CONVERSION TO NATIVE FOR sImageTGA*;
         if(!ok)
             return 0;

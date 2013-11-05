@@ -17311,10 +17311,28 @@ int lua_cocos2dx_extension_CCBAnimationManager_moveAnimationsFromNode(lua_State*
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        Node* arg0;
-        Node* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR Node*;
-        #pragma warning NO CONVERSION TO NATIVE FOR Node*;
+        cocos2d::Node* arg0;
+        cocos2d::Node* arg1;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        do {
+				if (!luaval_is_usertype(tolua_S,3,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg1 = (cocos2d::Node*)tolua_tousertype(tolua_S,3,0);
+					if (nullptr == arg1){
+						LUA_PRECONDITION( arg1, "Invalid Native Object");
+			}}} while (0);
         if(!ok)
             return 0;
         cobj->moveAnimationsFromNode(arg0, arg1);
@@ -17399,7 +17417,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getDocumentCallbackNames(lua_Stat
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getDocumentCallbackNames();
+        cocos2d::Array* ret = cobj->getDocumentCallbackNames();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -17451,8 +17469,20 @@ int lua_cocos2dx_extension_CCBAnimationManager_actionForSoundChannel(lua_State* 
 			}}} while (0);
         if(!ok)
             return 0;
-        Object* ret = cobj->actionForSoundChannel(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR Object*;
+        cocos2d::Object* ret = cobj->actionForSoundChannel(arg0);
+        do {
+			if (NULL != ret){
+				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != cobj) {
+					int ID = ret ? (int)(cobj->_ID) : -1;
+					int* luaID = ret ? &(cobj->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "actionForSoundChannel",argc, 1);
@@ -17490,11 +17520,29 @@ int lua_cocos2dx_extension_CCBAnimationManager_setBaseValue(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 3) 
     {
-        Object* arg0;
-        Node* arg1;
+        cocos2d::Object* arg0;
+        cocos2d::Node* arg1;
         const char* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR Object*;
-        #pragma warning NO CONVERSION TO NATIVE FOR Node*;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        do {
+				if (!luaval_is_usertype(tolua_S,3,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg1 = (cocos2d::Node*)tolua_tousertype(tolua_S,3,0);
+					if (nullptr == arg1){
+						LUA_PRECONDITION( arg1, "Invalid Native Object");
+			}}} while (0);
         std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
@@ -17538,7 +17586,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getDocumentOutletNodes(lua_State*
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getDocumentOutletNodes();
+        cocos2d::Array* ret = cobj->getDocumentOutletNodes();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -17577,9 +17625,18 @@ int lua_cocos2dx_extension_CCBAnimationManager_addNode(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        Node* arg0;
-        Dictionary* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR Node*;
+        cocos2d::Node* arg0;
+        cocos2d::Dictionary* arg1;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
         ok &= luaval_to_dictionary(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
@@ -17662,8 +17719,17 @@ int lua_cocos2dx_extension_CCBAnimationManager_setRootNode(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        Node* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR Node*;
+        cocos2d::Node* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
         if(!ok)
             return 0;
         cobj->setRootNode(arg0);
@@ -17792,7 +17858,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getSequences(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getSequences();
+        cocos2d::Array* ret = cobj->getSequences();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -17834,7 +17900,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getRootContainerSize(lua_State* t
         if(!ok)
             return 0;
         cocos2d::Size ret = cobj->getRootContainerSize();
-        #pragma warning NO CONVERSION FROM NATIVE FOR const Size;
+        size_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRootContainerSize",argc, 0);
@@ -17914,12 +17980,21 @@ int lua_cocos2dx_extension_CCBAnimationManager_getContainerSize(lua_State* tolua
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        Node* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR Node*;
+        cocos2d::Node* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
         if(!ok)
             return 0;
         cocos2d::Size ret = cobj->getContainerSize(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR const Size;
+        size_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getContainerSize",argc, 1);
@@ -17970,8 +18045,20 @@ int lua_cocos2dx_extension_CCBAnimationManager_actionForCallbackChannel(lua_Stat
 			}}} while (0);
         if(!ok)
             return 0;
-        Object* ret = cobj->actionForCallbackChannel(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR Object*;
+        cocos2d::Object* ret = cobj->actionForCallbackChannel(arg0);
+        do {
+			if (NULL != ret){
+				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != cobj) {
+					int ID = ret ? (int)(cobj->_ID) : -1;
+					int* luaID = ret ? &(cobj->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "actionForCallbackChannel",argc, 1);
@@ -18011,7 +18098,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getDocumentOutletNames(lua_State*
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getDocumentOutletNames();
+        cocos2d::Array* ret = cobj->getDocumentOutletNames();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -18135,7 +18222,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getKeyframeCallbacks(lua_State* t
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getKeyframeCallbacks();
+        cocos2d::Array* ret = cobj->getKeyframeCallbacks();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -18176,7 +18263,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getDocumentCallbackControlEvents(
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getDocumentCallbackControlEvents();
+        cocos2d::Array* ret = cobj->getDocumentCallbackControlEvents();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -18216,7 +18303,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_setRootContainerSize(lua_State* t
     if (argc == 1) 
     {
         cocos2d::Size arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR const Size;
+        ok &= luaval_to_size(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setRootContainerSize(arg0);
@@ -18427,8 +18514,20 @@ int lua_cocos2dx_extension_CCBAnimationManager_getRootNode(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Node* ret = cobj->getRootNode();
-        #pragma warning NO CONVERSION FROM NATIVE FOR Node*;
+        cocos2d::Node* ret = cobj->getRootNode();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != cobj) {
+					int ID = ret ? (int)(cobj->_ID) : -1;
+					int* luaID = ret ? &(cobj->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRootNode",argc, 0);
@@ -18466,8 +18565,17 @@ int lua_cocos2dx_extension_CCBAnimationManager_addDocumentOutletNode(lua_State* 
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        Node* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR Node*;
+        cocos2d::Node* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
         if(!ok)
             return 0;
         cobj->addDocumentOutletNode(arg0);
@@ -18551,8 +18659,17 @@ int lua_cocos2dx_extension_CCBAnimationManager_addDocumentCallbackNode(lua_State
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        Node* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR Node*;
+        cocos2d::Node* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
         if(!ok)
             return 0;
         cobj->addDocumentCallbackNode(arg0);
@@ -18680,7 +18797,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getDocumentCallbackNodes(lua_Stat
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getDocumentCallbackNodes();
+        cocos2d::Array* ret = cobj->getDocumentCallbackNodes();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -18719,7 +18836,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_setSequences(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        Array* arg0;
+        cocos2d::Array* arg0;
         ok &= luaval_to_array(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -18981,7 +19098,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerCallbackNames(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getOwnerCallbackNames();
+        cocos2d::Array* ret = cobj->getOwnerCallbackNames();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -19104,8 +19221,17 @@ int lua_cocos2dx_extension_CCBReader_addOwnerOutletNode(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        Node* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR Node*;
+        cocos2d::Node* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
         if(!ok)
             return 0;
         cobj->addOwnerOutletNode(arg0);
@@ -19148,7 +19274,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerCallbackNodes(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getOwnerCallbackNodes();
+        cocos2d::Array* ret = cobj->getOwnerCallbackNodes();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -19282,7 +19408,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerCallbackControlEvents(lua_State* to
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getOwnerCallbackControlEvents();
+        cocos2d::Array* ret = cobj->getOwnerCallbackControlEvents();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -19323,7 +19449,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerOutletNodes(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getOwnerOutletNodes();
+        cocos2d::Array* ret = cobj->getOwnerOutletNodes();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -19447,7 +19573,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerOutletNames(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getOwnerOutletNames();
+        cocos2d::Array* ret = cobj->getOwnerOutletNames();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -19591,7 +19717,7 @@ int lua_cocos2dx_extension_CCBReader_getAnimationManagersForNodes(lua_State* tol
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getAnimationManagersForNodes();
+        cocos2d::Array* ret = cobj->getAnimationManagersForNodes();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -19632,7 +19758,7 @@ int lua_cocos2dx_extension_CCBReader_getNodesWithAnimationManagers(lua_State* to
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getNodesWithAnimationManagers();
+        cocos2d::Array* ret = cobj->getNodesWithAnimationManagers();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -20065,7 +20191,7 @@ int lua_cocos2dx_extension_BaseData_getColor(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Color4B ret = cobj->getColor();
+        cocos2d::Color4B ret = cobj->getColor();
         color4b_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -20220,7 +20346,7 @@ int lua_cocos2dx_extension_BaseData_setColor(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Color4B arg0;
-        ok &= luaval_to_color4b(tolua_S, 2, &arg0);
+        ok &=luaval_to_color4b(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setColor(arg0);
@@ -22517,8 +22643,17 @@ int lua_cocos2dx_extension_ContourData_addVertex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        Point* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR Point*;
+        cocos2d::Point* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Point",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Point*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
         if(!ok)
             return 0;
         cobj->addVertex(arg0);
@@ -23838,7 +23973,7 @@ int lua_cocos2dx_extension_Bone_getColliderBodyList(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Array* ret = cobj->getColliderBodyList();
+        cocos2d::Array* ret = cobj->getColliderBodyList();
         array_to_luaval(tolua_S,ret);
         return 1;
     }
@@ -23974,8 +24109,17 @@ int lua_cocos2dx_extension_Bone_addDisplay(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 2) {
-            Node* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR Node*;
+            cocos2d::Node* arg0;
+            do {
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
 
             if (!ok) { ok = true; break; }
             int arg1;
@@ -24046,7 +24190,7 @@ int lua_cocos2dx_extension_Bone_getNodeToWorldTransform(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        AffineTransform ret = cobj->getNodeToWorldTransform();
+        cocos2d::AffineTransform ret = cobj->getNodeToWorldTransform();
         affinetransform_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -24191,7 +24335,7 @@ int lua_cocos2dx_extension_Bone_getNodeToArmatureTransform(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        AffineTransform ret = cobj->getNodeToArmatureTransform();
+        cocos2d::AffineTransform ret = cobj->getNodeToArmatureTransform();
         affinetransform_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -25614,7 +25758,7 @@ int lua_cocos2dx_extension_ArmatureDataManager_getAnimationDatas(lua_State* tolu
     {
         if(!ok)
             return 0;
-        Dictionary* ret = cobj->getAnimationDatas();
+        cocos2d::Dictionary* ret = cobj->getAnimationDatas();
         dictionary_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -25806,7 +25950,7 @@ int lua_cocos2dx_extension_ArmatureDataManager_getTextureDatas(lua_State* tolua_
     {
         if(!ok)
             return 0;
-        Dictionary* ret = cobj->getTextureDatas();
+        cocos2d::Dictionary* ret = cobj->getTextureDatas();
         dictionary_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -26188,7 +26332,7 @@ int lua_cocos2dx_extension_ArmatureDataManager_getArmatureDatas(lua_State* tolua
     {
         if(!ok)
             return 0;
-        Dictionary* ret = cobj->getArmatureDatas();
+        cocos2d::Dictionary* ret = cobj->getArmatureDatas();
         dictionary_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -27171,7 +27315,7 @@ int lua_cocos2dx_extension_Armature_getNodeToParentTransform(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::AffineTransform ret = cobj->getNodeToParentTransform();
-        #pragma warning NO CONVERSION FROM NATIVE FOR const AffineTransform;
+        affinetransform_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodeToParentTransform",argc, 0);
@@ -27262,7 +27406,7 @@ int lua_cocos2dx_extension_Armature_getBoundingBox(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Rect ret = cobj->getBoundingBox();
+        cocos2d::Rect ret = cobj->getBoundingBox();
         rect_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -27443,8 +27587,17 @@ int lua_cocos2dx_extension_Armature_setTextureAtlas(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        TextureAtlas* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR TextureAtlas*;
+        cocos2d::TextureAtlas* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"TextureAtlas",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::TextureAtlas*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
         if(!ok)
             return 0;
         cobj->setTextureAtlas(arg0);
@@ -27634,16 +27787,7 @@ int lua_cocos2dx_extension_Armature_setBody(lua_State* tolua_S)
     if (argc == 1) 
     {
         cpBody* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cpBody",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cpBody*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        #pragma warning NO CONVERSION TO NATIVE FOR cpBody*;
         if(!ok)
             return 0;
         cobj->setBody(arg0);
@@ -27780,7 +27924,7 @@ int lua_cocos2dx_extension_Armature_getBoneDic(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        Dictionary* ret = cobj->getBoneDic();
+        cocos2d::Dictionary* ret = cobj->getBoneDic();
         dictionary_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -27821,8 +27965,20 @@ int lua_cocos2dx_extension_Armature_getTextureAtlas(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        TextureAtlas* ret = cobj->getTextureAtlas();
-        #pragma warning NO CONVERSION FROM NATIVE FOR TextureAtlas*;
+        cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != cobj) {
+					int ID = ret ? (int)(cobj->_ID) : -1;
+					int* luaID = ret ? &(cobj->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureAtlas");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"TextureAtlas");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureAtlas",argc, 0);
@@ -28106,7 +28262,7 @@ int lua_cocos2dx_extension_Skin_getNodeToWorldTransformAR(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        AffineTransform ret = cobj->getNodeToWorldTransformAR();
+        cocos2d::AffineTransform ret = cobj->getNodeToWorldTransformAR();
         affinetransform_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -28147,7 +28303,7 @@ int lua_cocos2dx_extension_Skin_getNodeToWorldTransform(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        AffineTransform ret = cobj->getNodeToWorldTransform();
+        cocos2d::AffineTransform ret = cobj->getNodeToWorldTransform();
         affinetransform_to_luaval(tolua_S, ret);
         return 1;
     }

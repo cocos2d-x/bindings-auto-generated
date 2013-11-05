@@ -2152,8 +2152,8 @@ cc.AnimationManager = {
 
 /**
  * @method moveAnimationsFromNode
- * @param {Node*}
- * @param {Node*}
+ * @param {cocos2d::Node*}
+ * @param {cocos2d::Node*}
  */
 moveAnimationsFromNode : function () {},
 
@@ -2165,35 +2165,35 @@ setAutoPlaySequenceId : function () {},
 
 /**
  * @method getDocumentCallbackNames
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getDocumentCallbackNames : function () {},
 
 /**
  * @method actionForSoundChannel
- * @return A value converted from C/C++ "Object*"
+ * @return A value converted from C/C++ "cocos2d::Object*"
  * @param {cocosbuilder::CCBSequenceProperty*}
  */
 actionForSoundChannel : function () {},
 
 /**
  * @method setBaseValue
- * @param {Object*}
- * @param {Node*}
+ * @param {cocos2d::Object*}
+ * @param {cocos2d::Node*}
  * @param {const char*}
  */
 setBaseValue : function () {},
 
 /**
  * @method getDocumentOutletNodes
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getDocumentOutletNodes : function () {},
 
 /**
  * @method addNode
- * @param {Node*}
- * @param {Dictionary*}
+ * @param {cocos2d::Node*}
+ * @param {cocos2d::Dictionary*}
  */
 addNode : function () {},
 
@@ -2205,7 +2205,7 @@ getLastCompletedSequenceName : function () {},
 
 /**
  * @method setRootNode
- * @param {Node*}
+ * @param {cocos2d::Node*}
  */
 setRootNode : function () {},
 
@@ -2224,7 +2224,7 @@ addDocumentOutletName : function () {},
 
 /**
  * @method getSequences
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getSequences : function () {},
 
@@ -2243,20 +2243,20 @@ setDocumentControllerName : function () {},
 /**
  * @method getContainerSize
  * @return A value converted from C/C++ "cocos2d::Size"
- * @param {Node*}
+ * @param {cocos2d::Node*}
  */
 getContainerSize : function () {},
 
 /**
  * @method actionForCallbackChannel
- * @return A value converted from C/C++ "Object*"
+ * @return A value converted from C/C++ "cocos2d::Object*"
  * @param {cocosbuilder::CCBSequenceProperty*}
  */
 actionForCallbackChannel : function () {},
 
 /**
  * @method getDocumentOutletNames
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getDocumentOutletNames : function () {},
 
@@ -2274,13 +2274,13 @@ init : function () {},
 
 /**
  * @method getKeyframeCallbacks
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getKeyframeCallbacks : function () {},
 
 /**
  * @method getDocumentCallbackControlEvents
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getDocumentCallbackControlEvents : function () {},
 
@@ -2317,13 +2317,13 @@ addDocumentCallbackName : function () {},
 
 /**
  * @method getRootNode
- * @return A value converted from C/C++ "Node*"
+ * @return A value converted from C/C++ "cocos2d::Node*"
  */
 getRootNode : function () {},
 
 /**
  * @method addDocumentOutletNode
- * @param {Node*}
+ * @param {cocos2d::Node*}
  */
 addDocumentOutletNode : function () {},
 
@@ -2336,7 +2336,7 @@ getSequenceDuration : function () {},
 
 /**
  * @method addDocumentCallbackNode
- * @param {Node*}
+ * @param {cocos2d::Node*}
  */
 addDocumentCallbackNode : function () {},
 
@@ -2355,13 +2355,13 @@ getSequenceId : function () {},
 
 /**
  * @method getDocumentCallbackNodes
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getDocumentCallbackNodes : function () {},
 
 /**
  * @method setSequences
- * @param {Array*}
+ * @param {cocos2d::Array*}
  */
 setSequences : function () {},
 
@@ -2397,7 +2397,7 @@ addOwnerOutletName : function () {},
 
 /**
  * @method getOwnerCallbackNames
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getOwnerCallbackNames : function () {},
 
@@ -2415,13 +2415,13 @@ setCCBRootPath : function () {},
 
 /**
  * @method addOwnerOutletNode
- * @param {Node*}
+ * @param {cocos2d::Node*}
  */
 addOwnerOutletNode : function () {},
 
 /**
  * @method getOwnerCallbackNodes
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getOwnerCallbackNodes : function () {},
 
@@ -2440,13 +2440,13 @@ getCCBRootPath : function () {},
 
 /**
  * @method getOwnerCallbackControlEvents
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getOwnerCallbackControlEvents : function () {},
 
 /**
  * @method getOwnerOutletNodes
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getOwnerOutletNodes : function () {},
 
@@ -2464,7 +2464,7 @@ addOwnerCallbackControlEvents : function () {},
 
 /**
  * @method getOwnerOutletNames
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getOwnerOutletNames : function () {},
 
@@ -2483,13 +2483,13 @@ readCallbackKeyframesForSeq : function () {},
 
 /**
  * @method getAnimationManagersForNodes
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getAnimationManagersForNodes : function () {},
 
 /**
  * @method getNodesWithAnimationManagers
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getNodesWithAnimationManagers : function () {},
 
@@ -2514,7 +2514,7 @@ cc.BaseData = {
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "Color4B"
+ * @return A value converted from C/C++ "cocos2d::Color4B"
  */
 getColor : function () {},
 
@@ -2893,7 +2893,7 @@ init : function () {},
 
 /**
  * @method addVertex
- * @param {Point*}
+ * @param {cocos2d::Point*}
  */
 addVertex : function () {},
 
@@ -3068,7 +3068,7 @@ getTweenData : function () {},
 
 /**
  * @method getColliderBodyList
- * @return A value converted from C/C++ "Array*"
+ * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getColliderBodyList : function () {},
 
@@ -3086,7 +3086,7 @@ setArmature : function () {},
 
 /**
  * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "AffineTransform"
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getNodeToWorldTransform : function () {},
 
@@ -3105,7 +3105,7 @@ setChildArmature : function () {},
 
 /**
  * @method getNodeToArmatureTransform
- * @return A value converted from C/C++ "AffineTransform"
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getNodeToArmatureTransform : function () {},
 
@@ -3283,7 +3283,7 @@ cc.ArmatureDataManager = {
 
 /**
  * @method getAnimationDatas
- * @return A value converted from C/C++ "Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::Dictionary*"
  */
 getAnimationDatas : function () {},
 
@@ -3302,7 +3302,7 @@ addArmatureData : function () {},
 
 /**
  * @method getTextureDatas
- * @return A value converted from C/C++ "Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::Dictionary*"
  */
 getTextureDatas : function () {},
 
@@ -3353,7 +3353,7 @@ removeArmatureData : function () {},
 
 /**
  * @method getArmatureDatas
- * @return A value converted from C/C++ "Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::Dictionary*"
  */
 getArmatureDatas : function () {},
 
@@ -3491,7 +3491,7 @@ setParentBone : function () {},
 
 /**
  * @method getBoundingBox
- * @return A value converted from C/C++ "Rect"
+ * @return A value converted from C/C++ "cocos2d::Rect"
  */
 getBoundingBox : function () {},
 
@@ -3514,7 +3514,7 @@ setArmatureData : function () {},
 
 /**
  * @method setTextureAtlas
- * @param {TextureAtlas*}
+ * @param {cocos2d::TextureAtlas*}
  */
 setTextureAtlas : function () {},
 
@@ -3557,13 +3557,13 @@ getAnimation : function () {},
 
 /**
  * @method getBoneDic
- * @return A value converted from C/C++ "Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::Dictionary*"
  */
 getBoneDic : function () {},
 
 /**
  * @method getTextureAtlas
- * @return A value converted from C/C++ "TextureAtlas*"
+ * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
  */
 getTextureAtlas : function () {},
 
@@ -3588,13 +3588,13 @@ getBone : function () {},
 
 /**
  * @method getNodeToWorldTransformAR
- * @return A value converted from C/C++ "AffineTransform"
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getNodeToWorldTransformAR : function () {},
 
 /**
  * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "AffineTransform"
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getNodeToWorldTransform : function () {},
 

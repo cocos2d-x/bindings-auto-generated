@@ -24661,14 +24661,7 @@ JSBool js_cocos2dx_ShuffleTiles_placeTile(JSContext *cx, uint32_t argc, jsval *v
 		cocos2d::Point arg0;
 		cocos2d::Tile* arg1;
 		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
-		do {
-			if (!argv[1].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[1]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg1 = (cocos2d::Tile*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg1, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
+		#pragma warning NO CONVERSION TO NATIVE FOR Tile*;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ShuffleTiles_placeTile : Error processing arguments");
 		cobj->placeTile(arg0, arg1);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -36412,7 +36405,7 @@ JSBool js_cocos2dx_Label_recordLetterInfo(JSContext *cx, uint32_t argc, jsval *v
 		cocos2d::Point arg0;
 		unsigned short arg1;
 		int arg2;
-		#pragma warning NO CONVERSION TO NATIVE FOR const Point;
+		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
 		#pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_recordLetterInfo : Error processing arguments");
@@ -56976,9 +56969,9 @@ JSBool js_cocos2dx_ParallaxNode_getParallaxArray(JSContext *cx, uint32_t argc, j
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ParallaxNode_getParallaxArray : Invalid Native Object");
 	do {
 		if (argc == 0) {
-			const _ccArray* ret = cobj->getParallaxArray();
+			cocos2d::_ccArray* ret = cobj->getParallaxArray();
 			jsval jsret;
-			#pragma warning NO CONVERSION FROM NATIVE FOR const _ccArray*;
+			#pragma warning NO CONVERSION FROM NATIVE FOR _ccArray*;
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
 		}
@@ -56986,7 +56979,7 @@ JSBool js_cocos2dx_ParallaxNode_getParallaxArray(JSContext *cx, uint32_t argc, j
 
 	do {
 		if (argc == 0) {
-			_ccArray* ret = cobj->getParallaxArray();
+			cocos2d::_ccArray* ret = cobj->getParallaxArray();
 			jsval jsret;
 			#pragma warning NO CONVERSION FROM NATIVE FOR _ccArray*;
 			JS_SET_RVAL(cx, vp, jsret);
@@ -57006,7 +56999,7 @@ JSBool js_cocos2dx_ParallaxNode_setParallaxArray(JSContext *cx, uint32_t argc, j
 	cocos2d::ParallaxNode* cobj = (cocos2d::ParallaxNode *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ParallaxNode_setParallaxArray : Invalid Native Object");
 	if (argc == 1) {
-		_ccArray* arg0;
+		cocos2d::_ccArray* arg0;
 		#pragma warning NO CONVERSION TO NATIVE FOR _ccArray*;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ParallaxNode_setParallaxArray : Error processing arguments");
 		cobj->setParallaxArray(arg0);
@@ -59799,7 +59792,7 @@ JSBool js_cocos2dx_TileMapAtlas_getTGAInfo(JSContext *cx, uint32_t argc, jsval *
 	cocos2d::TileMapAtlas* cobj = (cocos2d::TileMapAtlas *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TileMapAtlas_getTGAInfo : Invalid Native Object");
 	if (argc == 0) {
-		sImageTGA* ret = cobj->getTGAInfo();
+		cocos2d::sImageTGA* ret = cobj->getTGAInfo();
 		jsval jsret;
 		#pragma warning NO CONVERSION FROM NATIVE FOR sImageTGA*;
 		JS_SET_RVAL(cx, vp, jsret);
@@ -59862,7 +59855,7 @@ JSBool js_cocos2dx_TileMapAtlas_setTGAInfo(JSContext *cx, uint32_t argc, jsval *
 	cocos2d::TileMapAtlas* cobj = (cocos2d::TileMapAtlas *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TileMapAtlas_setTGAInfo : Invalid Native Object");
 	if (argc == 1) {
-		sImageTGA* arg0;
+		cocos2d::sImageTGA* arg0;
 		#pragma warning NO CONVERSION TO NATIVE FOR sImageTGA*;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TileMapAtlas_setTGAInfo : Error processing arguments");
 		cobj->setTGAInfo(arg0);
