@@ -457,15 +457,39 @@ ccs.Bone = {
 isTransformDirty : function () {},
 
 /**
+ * @method isIgnoreMovementBoneData
+ * @return A value converted from C/C++ "bool"
+ */
+isIgnoreMovementBoneData : function () {},
+
+/**
  * @method updateZOrder
  */
 updateZOrder : function () {},
+
+/**
+ * @method setTransformDirty
+ * @param {bool}
+ */
+setTransformDirty : function () {},
 
 /**
  * @method getDisplayRenderNode
  * @return A value converted from C/C++ "cocos2d::Node*"
  */
 getDisplayRenderNode : function () {},
+
+/**
+ * @method addChildBone
+ * @param {cocostudio::Bone*}
+ */
+addChildBone : function () {},
+
+/**
+ * @method getWorldInfo
+ * @return A value converted from C/C++ "cocostudio::BaseData*"
+ */
+getWorldInfo : function () {},
 
 /**
  * @method getTween
@@ -497,16 +521,22 @@ updateColor : function () {},
 getName : function () {},
 
 /**
- * @method setTransformDirty
- * @param {bool}
+ * @method setOpacity
+ * @param {unsigned char}
  */
-setTransformDirty : function () {},
+setOpacity : function () {},
 
 /**
- * @method addChildBone
- * @param {cocostudio::Bone*}
+ * @method getDisplayRenderNodeType
+ * @return A value converted from C/C++ "cocostudio::DisplayType"
  */
-addChildBone : function () {},
+getDisplayRenderNodeType : function () {},
+
+/**
+ * @method removeDisplay
+ * @param {int}
+ */
+removeDisplay : function () {},
 
 /**
  * @method updateDisplayedOpacity
@@ -525,6 +555,12 @@ setParentBone : function () {},
  * @param {int}
  */
 setZOrder : function () {},
+
+/**
+ * @method getColliderFilter
+ * @return A value converted from C/C++ "cocostudio::ColliderFilter*"
+ */
+getColliderFilter : function () {},
 
 /**
  * @method setName
@@ -551,16 +587,16 @@ getChildArmature : function () {},
 update : function () {},
 
 /**
- * @method setDisplayManager
- * @param {cocostudio::DisplayManager*}
- */
-setDisplayManager : function () {},
-
-/**
  * @method getTweenData
  * @return A value converted from C/C++ "cocostudio::FrameData*"
  */
 getTweenData : function () {},
+
+/**
+ * @method setColliderFilter
+ * @param {cocostudio::ColliderFilter*}
+ */
+setColliderFilter : function () {},
 
 /**
  * @method getColliderBodyList
@@ -585,6 +621,12 @@ setArmature : function () {},
  * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getNodeToWorldTransform : function () {},
+
+/**
+ * @method setColor
+ * @param {cocos2d::Color3B}
+ */
+setColor : function () {},
 
 /**
  * @method removeChildBone
@@ -662,12 +704,6 @@ ccs.ArmatureAnimation = {
 getSpeedScale : function () {},
 
 /**
- * @method getAnimationScale
- * @return A value converted from C/C++ "float"
- */
-getAnimationScale : function () {},
-
-/**
  * @method play
  * @param {const char*}
  * @param {int}
@@ -683,10 +719,16 @@ play : function () {},
 pause : function () {},
 
 /**
- * @method setAnimationScale
+ * @method setAnimationInternal
  * @param {float}
  */
-setAnimationScale : function () {},
+setAnimationInternal : function () {},
+
+/**
+ * @method gotoAndPause
+ * @param {int}
+ */
+gotoAndPause : function () {},
 
 /**
  * @method resume
@@ -733,6 +775,12 @@ getAnimationData : function () {},
 playByIndex : function () {},
 
 /**
+ * @method gotoAndPlay
+ * @param {int}
+ */
+gotoAndPlay : function () {},
+
+/**
  * @method init
  * @return A value converted from C/C++ "bool"
  * @param {cocostudio::Armature*}
@@ -750,12 +798,6 @@ getMovementCount : function () {},
  * @return A value converted from C/C++ "std::string"
  */
 getCurrentMovementID : function () {},
-
-/**
- * @method setAnimationInternal
- * @param {float}
- */
-setAnimationInternal : function () {},
 
 /**
  * @method create
@@ -793,8 +835,15 @@ removeAnimationData : function () {},
  * @method addArmatureData
  * @param {const char*}
  * @param {cocostudio::ArmatureData*}
+ * @param {const char*}
  */
 addArmatureData : function () {},
+
+/**
+ * @method removeArmatureFileInfo
+ * @param {const char*}
+ */
+removeArmatureFileInfo : function () {},
 
 /**
  * @method getTextureDatas
@@ -824,14 +873,10 @@ getArmatureData : function () {},
 getAnimationData : function () {},
 
 /**
- * @method removeAll
- */
-removeAll : function () {},
-
-/**
  * @method addAnimationData
  * @param {const char*}
  * @param {cocostudio::AnimationData*}
+ * @param {const char*}
  */
 addAnimationData : function () {},
 
@@ -863,6 +908,7 @@ removeTextureData : function () {},
  * @method addTextureData
  * @param {const char*}
  * @param {cocostudio::TextureData*}
+ * @param {const char*}
  */
 addTextureData : function () {},
 
@@ -874,6 +920,7 @@ isAutoLoadSpriteFile : function () {},
 
 /**
  * @method addSpriteFrameFromFile
+ * @param {const char*}
  * @param {const char*}
  * @param {const char*}
  */
@@ -912,6 +959,19 @@ getBone : function () {},
 changeBoneParent : function () {},
 
 /**
+ * @method getTexureAtlasWithTexture
+ * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
+ * @param {cocos2d::Texture2D*}
+ */
+getTexureAtlasWithTexture : function () {},
+
+/**
+ * @method setBody
+ * @param {cpBody*}
+ */
+setBody : function () {},
+
+/**
  * @method setAnimation
  * @param {cocostudio::ArmatureAnimation*}
  */
@@ -943,10 +1003,10 @@ setVersion : function () {},
 updateOffsetPoint : function () {},
 
 /**
- * @method getParentBone
- * @return A value converted from C/C++ "cocostudio::Bone*"
+ * @method setColliderFilter
+ * @param {cocostudio::ColliderFilter*}
  */
-getParentBone : function () {},
+setColliderFilter : function () {},
 
 /**
  * @method setName
@@ -1034,10 +1094,10 @@ update : function () {},
 getArmatureData : function () {},
 
 /**
- * @method setBody
- * @param {cpBody*}
+ * @method getParentBone
+ * @return A value converted from C/C++ "cocostudio::Bone*"
  */
-setBody : function () {},
+getParentBone : function () {},
 
 /**
  * @method getVersion
@@ -1113,14 +1173,14 @@ updateArmatureTransform : function () {},
 /**
  * @method initWithSpriteFrameName
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  */
 initWithSpriteFrameName : function () {},
 
 /**
  * @method initWithFile
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  */
 initWithFile : function () {},
 
