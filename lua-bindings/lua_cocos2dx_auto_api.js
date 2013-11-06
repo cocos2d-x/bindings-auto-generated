@@ -5959,7 +5959,7 @@ cc.LabelAtlas = {
 
 /**
  * @method setString
- * @param {const char*}
+ * @param {std::string}
  */
 setString : function () {},
 
@@ -6516,7 +6516,7 @@ setAnchorPoint : function () {},
 
 /**
  * @method setDisplayFrameWithAnimationName
- * @param {const char*}
+ * @param {std::string}
  * @param {int}
  */
 setDisplayFrameWithAnimationName : function () {},
@@ -6548,7 +6548,7 @@ updateDisplayedOpacity : function () {},
 /**
  * @method initWithSpriteFrameName
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  */
 initWithSpriteFrameName : function () {},
 
@@ -6737,7 +6737,7 @@ setVisible : function () {},
 /**
  * @method createWithSpriteFrameName
  * @return A value converted from C/C++ "cocos2d::Sprite*"
- * @param {const char*}
+ * @param {std::string}
  */
 createWithSpriteFrameName : function () {},
 
@@ -6816,7 +6816,7 @@ initWithStringAndTextDefinition : function () {},
 
 /**
  * @method setString
- * @param {const char*}
+ * @param {std::string}
  */
 setString : function () {},
 
@@ -7137,8 +7137,8 @@ isCascadeOpacityEnabled : function () {},
 /**
  * @method initWithString
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
- * @param {const char*}
+ * @param {std::string}
+ * @param {std::string}
  * @param {float}
  * @param {cocos2d::TextHAlignment}
  * @param {cocos2d::Point}
@@ -7370,7 +7370,7 @@ isCascadeOpacityEnabled : function () {},
 
 /**
  * @method setString
- * @param {const char*}
+ * @param {std::string}
  */
 setString : function () {},
 
@@ -7510,7 +7510,7 @@ getDisplayedColor : function () {},
 /**
  * @method setText
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  * @param {float}
  * @param {cocos2d::TextHAlignment}
  * @param {bool}
@@ -7559,8 +7559,8 @@ recordLetterInfo : function () {},
 /**
  * @method createWithBMFont
  * @return A value converted from C/C++ "cocos2d::Label*"
- * @param {const char*}
- * @param {const char*}
+ * @param {std::string}
+ * @param {std::string}
  * @param {cocos2d::TextHAlignment}
  * @param {int}
  */
@@ -7569,8 +7569,8 @@ createWithBMFont : function () {},
 /**
  * @method createWithTTF
  * @return A value converted from C/C++ "cocos2d::Label*"
- * @param {const char*}
- * @param {const char*}
+ * @param {std::string}
+ * @param {std::string}
  * @param {int}
  * @param {int}
  * @param {cocos2d::TextHAlignment}
@@ -10430,7 +10430,7 @@ setEndSpinVar : function () {},
 /**
  * @method initWithFile
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  */
 initWithFile : function () {},
 
@@ -10622,7 +10622,7 @@ getGravity : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::ParticleSystem*"
- * @param {const char*}
+ * @param {std::string}
  */
 create : function () {},
 
@@ -11313,14 +11313,14 @@ cc.AnimationCache = {
 /**
  * @method getAnimation
  * @return A value converted from C/C++ "cocos2d::Animation*"
- * @param {const char*}
+ * @param {std::string}
  */
 getAnimation : function () {},
 
 /**
  * @method addAnimation
  * @param {cocos2d::Animation*}
- * @param {const char*}
+ * @param {std::string}
  */
 addAnimation : function () {},
 
@@ -11338,13 +11338,13 @@ addAnimationsWithDictionary : function () {},
 
 /**
  * @method removeAnimation
- * @param {const char*}
+ * @param {std::string}
  */
 removeAnimation : function () {},
 
 /**
  * @method addAnimationsWithFile
- * @param {const char*}
+ * @param {std::string}
  */
 addAnimationsWithFile : function () {},
 
@@ -11375,7 +11375,7 @@ cc.SpriteFrameCache = {
 /**
  * @method addSpriteFrame
  * @param {cocos2d::SpriteFrame*}
- * @param {const char*}
+ * @param {std::string}
  */
 addSpriteFrame : function () {},
 
@@ -11387,13 +11387,13 @@ removeUnusedSpriteFrames : function () {},
 /**
  * @method getSpriteFrameByName
  * @return A value converted from C/C++ "cocos2d::SpriteFrame*"
- * @param {const char*}
+ * @param {std::string}
  */
 getSpriteFrameByName : function () {},
 
 /**
  * @method removeSpriteFramesFromFile
- * @param {const char*}
+ * @param {std::string}
  */
 removeSpriteFramesFromFile : function () {},
 
@@ -11416,7 +11416,7 @@ removeSpriteFramesFromTexture : function () {},
 
 /**
  * @method removeSpriteFrameByName
- * @param {const char*}
+ * @param {std::string}
  */
 removeSpriteFrameByName : function () {},
 

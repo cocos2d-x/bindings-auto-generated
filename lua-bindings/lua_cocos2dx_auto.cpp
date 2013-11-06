@@ -11654,8 +11654,8 @@ int lua_cocos2dx_SpriteFrame_initWithTextureFilename(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 5) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
@@ -11681,8 +11681,8 @@ int lua_cocos2dx_SpriteFrame_initWithTextureFilename(lua_State* tolua_S)
     }while(0);
     do{
         if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
@@ -11844,8 +11844,8 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
     {
         if (argc == 5)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -11880,8 +11880,8 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
     {
         if (argc == 2)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -42875,8 +42875,8 @@ int lua_cocos2dx_LabelAtlas_setString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->setString(arg0);
@@ -47543,9 +47543,9 @@ int lua_cocos2dx_Sprite_setDisplayFrameWithAnimationName(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
+        std::string arg0;
         int arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -47764,8 +47764,8 @@ int lua_cocos2dx_Sprite_initWithSpriteFrameName(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->initWithSpriteFrameName(arg0);
@@ -47953,8 +47953,8 @@ int lua_cocos2dx_Sprite_initWithFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithFile(arg0);
@@ -47971,8 +47971,8 @@ int lua_cocos2dx_Sprite_initWithFile(lua_State* tolua_S)
     }while(0);
     do{
         if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
@@ -49357,8 +49357,8 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
     {
         if (argc == 1)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::create(arg0);
             do {
@@ -49402,8 +49402,8 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
     {
         if (argc == 2)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -49541,8 +49541,8 @@ int lua_cocos2dx_Sprite_createWithSpriteFrameName(lua_State* tolua_S)
 
     if (argc == 1)
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::Sprite* ret = cocos2d::Sprite::createWithSpriteFrameName(arg0);
@@ -50121,8 +50121,8 @@ int lua_cocos2dx_LabelTTF_setString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->setString(arg0);
@@ -52892,8 +52892,8 @@ int lua_cocos2dx_LabelBMFont_setString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
             bool arg1;
@@ -52906,8 +52906,8 @@ int lua_cocos2dx_LabelBMFont_setString(lua_State* tolua_S)
     }while(0);
     do{
         if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
             cobj->setString(arg0);
@@ -52949,10 +52949,10 @@ int lua_cocos2dx_LabelBMFont_initWithString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
-        const char* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg0;
+        std::string arg1;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         bool ret = cobj->initWithString(arg0, arg1);
@@ -52961,11 +52961,11 @@ int lua_cocos2dx_LabelBMFont_initWithString(lua_State* tolua_S)
     }
     if (argc == 3) 
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         double arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -52975,12 +52975,12 @@ int lua_cocos2dx_LabelBMFont_initWithString(lua_State* tolua_S)
     }
     if (argc == 4) 
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         double arg2;
         cocos2d::TextHAlignment arg3;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         if(!ok)
@@ -52991,13 +52991,13 @@ int lua_cocos2dx_LabelBMFont_initWithString(lua_State* tolua_S)
     }
     if (argc == 5) 
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         double arg2;
         cocos2d::TextHAlignment arg3;
         cocos2d::Point arg4;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         ok &= luaval_to_point(tolua_S, 6, &arg4);
@@ -53771,11 +53771,11 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
     {
         if (argc == 4)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
@@ -53804,11 +53804,11 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
     {
         if (argc == 5)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
@@ -53840,11 +53840,11 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
     {
         if (argc == 3)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
@@ -53870,11 +53870,11 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
     {
         if (argc == 2)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1);
             do {
@@ -54763,8 +54763,8 @@ int lua_cocos2dx_Label_setString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->setString(arg0);
@@ -55701,9 +55701,9 @@ int lua_cocos2dx_Label_setText(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
+        std::string arg0;
         double arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -55713,10 +55713,10 @@ int lua_cocos2dx_Label_setText(lua_State* tolua_S)
     }
     if (argc == 3) 
     {
-        const char* arg0;
+        std::string arg0;
         double arg1;
         cocos2d::TextHAlignment arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
@@ -55727,11 +55727,11 @@ int lua_cocos2dx_Label_setText(lua_State* tolua_S)
     }
     if (argc == 4) 
     {
-        const char* arg0;
+        std::string arg0;
         double arg1;
         cocos2d::TextHAlignment arg2;
         bool arg3;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         ok &= luaval_to_boolean(tolua_S, 5,&arg3);
@@ -56020,10 +56020,10 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
 
     if (argc == 2)
     {
-        const char* arg0;
-        const char* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg0;
+        std::string arg1;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cocos2d::Label* ret = cocos2d::Label::createWithBMFont(arg0, arg1);
@@ -56044,11 +56044,11 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
     }
     if (argc == 3)
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         cocos2d::TextHAlignment arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
             return 0;
@@ -56070,12 +56070,12 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
     }
     if (argc == 4)
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         cocos2d::TextHAlignment arg2;
         int arg3;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         if(!ok)
@@ -56121,11 +56121,11 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
 
     if (argc == 3)
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         int arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
             return 0;
@@ -56147,12 +56147,12 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
     }
     if (argc == 4)
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         int arg2;
         int arg3;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         if(!ok)
@@ -56175,13 +56175,13 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
     }
     if (argc == 5)
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         int arg2;
         int arg3;
         cocos2d::TextHAlignment arg4;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
@@ -56205,14 +56205,14 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
     }
     if (argc == 6)
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         int arg2;
         int arg3;
         cocos2d::TextHAlignment arg4;
         cocos2d::GlyphCollection arg5;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
@@ -56237,15 +56237,15 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
     }
     if (argc == 7)
     {
-        const char* arg0;
-        const char* arg1;
+        std::string arg0;
+        std::string arg1;
         int arg2;
         int arg3;
         cocos2d::TextHAlignment arg4;
         cocos2d::GlyphCollection arg5;
         const char* arg6;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
@@ -77614,8 +77614,8 @@ int lua_cocos2dx_ParticleSystem_initWithFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->initWithFile(arg0);
@@ -78733,8 +78733,8 @@ int lua_cocos2dx_ParticleSystem_initWithDictionary(lua_State* tolua_S)
             ok &= luaval_to_dictionary(tolua_S, 2, &arg0);
 
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithDictionary(arg0, arg1);
@@ -78984,8 +78984,8 @@ int lua_cocos2dx_ParticleSystem_create(lua_State* tolua_S)
 
     if (argc == 1)
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::ParticleSystem* ret = cocos2d::ParticleSystem::create(arg0);
@@ -83434,8 +83434,8 @@ int lua_cocos2dx_AnimationCache_getAnimation(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::Animation* ret = cobj->getAnimation(arg0);
@@ -83490,7 +83490,7 @@ int lua_cocos2dx_AnimationCache_addAnimation(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::Animation* arg0;
-        const char* arg1;
+        std::string arg1;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Animation",0)){
 					ok = false;
@@ -83501,7 +83501,7 @@ int lua_cocos2dx_AnimationCache_addAnimation(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cobj->addAnimation(arg0, arg1);
@@ -83625,8 +83625,8 @@ int lua_cocos2dx_AnimationCache_removeAnimation(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->removeAnimation(arg0);
@@ -83667,8 +83667,8 @@ int lua_cocos2dx_AnimationCache_addAnimationsWithFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->addAnimationsWithFile(arg0);
@@ -83845,12 +83845,12 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
             if (!ok) { ok = true; break; }
             cobj->addSpriteFramesWithFile(arg0, arg1);
@@ -83859,8 +83859,8 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile(lua_State* tolua_S)
     }while(0);
     do{
         if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
             cobj->addSpriteFramesWithFile(arg0);
@@ -83869,8 +83869,8 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile(lua_State* tolua_S)
     }while(0);
     do{
         if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
             cocos2d::Texture2D* arg1;
@@ -83926,7 +83926,7 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFrame(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::SpriteFrame* arg0;
-        const char* arg1;
+        std::string arg1;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"SpriteFrame",0)){
 					ok = false;
@@ -83937,7 +83937,7 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFrame(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cobj->addSpriteFrame(arg0, arg1);
@@ -84018,8 +84018,8 @@ int lua_cocos2dx_SpriteFrameCache_getSpriteFrameByName(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::SpriteFrame* ret = cobj->getSpriteFrameByName(arg0);
@@ -84073,8 +84073,8 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->removeSpriteFramesFromFile(arg0);
@@ -84247,8 +84247,8 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFrameByName(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->removeSpriteFrameByName(arg0);

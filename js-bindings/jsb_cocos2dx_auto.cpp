@@ -6388,8 +6388,8 @@ JSBool js_cocos2dx_SpriteFrame_initWithTextureFilename(JSContext *cx, uint32_t a
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteFrame_initWithTextureFilename : Invalid Native Object");
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Rect arg1;
 			ok &= jsval_to_ccrect(cx, argv[1], &arg1);
@@ -6413,8 +6413,8 @@ JSBool js_cocos2dx_SpriteFrame_initWithTextureFilename(JSContext *cx, uint32_t a
 
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Rect arg1;
 			ok &= jsval_to_ccrect(cx, argv[1], &arg1);
@@ -6491,8 +6491,8 @@ JSBool js_cocos2dx_SpriteFrame_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Rect arg1;
 			ok &= jsval_to_ccrect(cx, argv[1], &arg1);
@@ -6523,8 +6523,8 @@ JSBool js_cocos2dx_SpriteFrame_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Rect arg1;
 			ok &= jsval_to_ccrect(cx, argv[1], &arg1);
@@ -28938,8 +28938,8 @@ JSBool js_cocos2dx_LabelAtlas_setString(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::LabelAtlas* cobj = (cocos2d::LabelAtlas *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelAtlas_setString : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelAtlas_setString : Error processing arguments");
 		cobj->setString(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -31626,9 +31626,9 @@ JSBool js_cocos2dx_Sprite_setDisplayFrameWithAnimationName(JSContext *cx, uint32
 	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_setDisplayFrameWithAnimationName : Invalid Native Object");
 	if (argc == 2) {
-		const char* arg0;
+		std::string arg0;
 		int arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_setDisplayFrameWithAnimationName : Error processing arguments");
 		cobj->setDisplayFrameWithAnimationName(arg0, arg1);
@@ -31726,8 +31726,8 @@ JSBool js_cocos2dx_Sprite_initWithSpriteFrameName(JSContext *cx, uint32_t argc, 
 	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_initWithSpriteFrameName : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_initWithSpriteFrameName : Error processing arguments");
 		bool ret = cobj->initWithSpriteFrameName(arg0);
 		jsval jsret;
@@ -31843,8 +31843,8 @@ JSBool js_cocos2dx_Sprite_initWithFile(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_initWithFile : Invalid Native Object");
 	do {
 		if (argc == 1) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithFile(arg0);
 			jsval jsret;
@@ -31866,8 +31866,8 @@ JSBool js_cocos2dx_Sprite_initWithFile(JSContext *cx, uint32_t argc, jsval *vp)
 
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Rect arg1;
 			ok &= jsval_to_ccrect(cx, argv[1], &arg1);
@@ -32564,8 +32564,8 @@ JSBool js_cocos2dx_Sprite_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 1) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Sprite* ret = cocos2d::Sprite::create(arg0);
 			jsval jsret;
@@ -32601,8 +32601,8 @@ JSBool js_cocos2dx_Sprite_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Rect arg1;
 			ok &= jsval_to_ccrect(cx, argv[1], &arg1);
@@ -32693,8 +32693,8 @@ JSBool js_cocos2dx_Sprite_createWithSpriteFrameName(JSContext *cx, uint32_t argc
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_createWithSpriteFrameName : Error processing arguments");
 		cocos2d::Sprite* ret = cocos2d::Sprite::createWithSpriteFrameName(arg0);
 		jsval jsret;
@@ -33085,8 +33085,8 @@ JSBool js_cocos2dx_LabelTTF_setString(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::LabelTTF* cobj = (cocos2d::LabelTTF *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelTTF_setString : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelTTF_setString : Error processing arguments");
 		cobj->setString(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -34754,8 +34754,8 @@ JSBool js_cocos2dx_LabelBMFont_setString(JSContext *cx, uint32_t argc, jsval *vp
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setString : Invalid Native Object");
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			JSBool arg1;
 			ok &= JS_ValueToBoolean(cx, argv[1], &arg1);
@@ -34768,8 +34768,8 @@ JSBool js_cocos2dx_LabelBMFont_setString(JSContext *cx, uint32_t argc, jsval *vp
 
 	do {
 		if (argc == 1) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cobj->setString(arg0);
 			JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -34789,10 +34789,10 @@ JSBool js_cocos2dx_LabelBMFont_initWithString(JSContext *cx, uint32_t argc, jsva
 	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_initWithString : Invalid Native Object");
 	if (argc == 2) {
-		const char* arg0;
-		const char* arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		std::string arg0;
+		std::string arg1;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_initWithString : Error processing arguments");
 		bool ret = cobj->initWithString(arg0, arg1);
 		jsval jsret;
@@ -34801,11 +34801,11 @@ JSBool js_cocos2dx_LabelBMFont_initWithString(JSContext *cx, uint32_t argc, jsva
 		return JS_TRUE;
 	}
 	if (argc == 3) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		double arg2;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= JS_ValueToNumber(cx, argv[2], &arg2);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_initWithString : Error processing arguments");
 		bool ret = cobj->initWithString(arg0, arg1, arg2);
@@ -34815,12 +34815,12 @@ JSBool js_cocos2dx_LabelBMFont_initWithString(JSContext *cx, uint32_t argc, jsva
 		return JS_TRUE;
 	}
 	if (argc == 4) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		double arg2;
 		cocos2d::TextHAlignment arg3;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= JS_ValueToNumber(cx, argv[2], &arg2);
 		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_initWithString : Error processing arguments");
@@ -34831,13 +34831,13 @@ JSBool js_cocos2dx_LabelBMFont_initWithString(JSContext *cx, uint32_t argc, jsva
 		return JS_TRUE;
 	}
 	if (argc == 5) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		double arg2;
 		cocos2d::TextHAlignment arg3;
 		cocos2d::Point arg4;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= JS_ValueToNumber(cx, argv[2], &arg2);
 		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
 		ok &= jsval_to_ccpoint(cx, argv[4], &arg4);
@@ -35192,11 +35192,11 @@ JSBool js_cocos2dx_LabelBMFont_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 4) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -35221,11 +35221,11 @@ JSBool js_cocos2dx_LabelBMFont_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -35253,11 +35253,11 @@ JSBool js_cocos2dx_LabelBMFont_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 3) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -35279,11 +35279,11 @@ JSBool js_cocos2dx_LabelBMFont_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1);
 			jsval jsret;
@@ -35814,8 +35814,8 @@ JSBool js_cocos2dx_Label_setString(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_setString : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setString : Error processing arguments");
 		cobj->setString(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -36257,9 +36257,9 @@ JSBool js_cocos2dx_Label_setText(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_setText : Invalid Native Object");
 	if (argc == 2) {
-		const char* arg0;
+		std::string arg0;
 		double arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setText : Error processing arguments");
 		bool ret = cobj->setText(arg0, arg1);
@@ -36269,10 +36269,10 @@ JSBool js_cocos2dx_Label_setText(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 	if (argc == 3) {
-		const char* arg0;
+		std::string arg0;
 		double arg1;
 		cocos2d::TextHAlignment arg2;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setText : Error processing arguments");
@@ -36283,11 +36283,11 @@ JSBool js_cocos2dx_Label_setText(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 	if (argc == 4) {
-		const char* arg0;
+		std::string arg0;
 		double arg1;
 		cocos2d::TextHAlignment arg2;
 		JSBool arg3;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		ok &= JS_ValueToBoolean(cx, argv[3], &arg3);
@@ -36424,10 +36424,10 @@ JSBool js_cocos2dx_Label_createWithBMFont(JSContext *cx, uint32_t argc, jsval *v
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 2) {
-		const char* arg0;
-		const char* arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		std::string arg0;
+		std::string arg1;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithBMFont : Error processing arguments");
 		cocos2d::Label* ret = cocos2d::Label::createWithBMFont(arg0, arg1);
 		jsval jsret;
@@ -36443,11 +36443,11 @@ JSBool js_cocos2dx_Label_createWithBMFont(JSContext *cx, uint32_t argc, jsval *v
 		return JS_TRUE;
 	}
 	if (argc == 3) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		cocos2d::TextHAlignment arg2;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithBMFont : Error processing arguments");
 		cocos2d::Label* ret = cocos2d::Label::createWithBMFont(arg0, arg1, arg2);
@@ -36464,12 +36464,12 @@ JSBool js_cocos2dx_Label_createWithBMFont(JSContext *cx, uint32_t argc, jsval *v
 		return JS_TRUE;
 	}
 	if (argc == 4) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		cocos2d::TextHAlignment arg2;
 		int arg3;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithBMFont : Error processing arguments");
@@ -36495,11 +36495,11 @@ JSBool js_cocos2dx_Label_createWithTTF(JSContext *cx, uint32_t argc, jsval *vp)
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 3) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		int arg2;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithTTF : Error processing arguments");
 		cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2);
@@ -36516,12 +36516,12 @@ JSBool js_cocos2dx_Label_createWithTTF(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 	if (argc == 4) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		int arg2;
 		int arg3;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithTTF : Error processing arguments");
@@ -36539,13 +36539,13 @@ JSBool js_cocos2dx_Label_createWithTTF(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 	if (argc == 5) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		int arg2;
 		int arg3;
 		cocos2d::TextHAlignment arg4;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
 		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
@@ -36564,14 +36564,14 @@ JSBool js_cocos2dx_Label_createWithTTF(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 	if (argc == 6) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		int arg2;
 		int arg3;
 		cocos2d::TextHAlignment arg4;
 		cocos2d::GlyphCollection arg5;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
 		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
@@ -36591,15 +36591,15 @@ JSBool js_cocos2dx_Label_createWithTTF(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 	if (argc == 7) {
-		const char* arg0;
-		const char* arg1;
+		std::string arg0;
+		std::string arg1;
 		int arg2;
 		int arg3;
 		cocos2d::TextHAlignment arg4;
 		cocos2d::GlyphCollection arg5;
 		const char* arg6;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
 		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
@@ -51157,8 +51157,8 @@ JSBool js_cocos2dx_ParticleSystem_initWithFile(JSContext *cx, uint32_t argc, jsv
 	cocos2d::ParticleSystem* cobj = (cocos2d::ParticleSystem *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ParticleSystem_initWithFile : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ParticleSystem_initWithFile : Error processing arguments");
 		bool ret = cobj->initWithFile(arg0);
 		jsval jsret;
@@ -51662,8 +51662,8 @@ JSBool js_cocos2dx_ParticleSystem_initWithDictionary(JSContext *cx, uint32_t arg
 			cocos2d::Dictionary* arg0;
 			ok &= jsval_to_ccdictionary(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithDictionary(arg0, arg1);
 			jsval jsret;
@@ -51782,8 +51782,8 @@ JSBool js_cocos2dx_ParticleSystem_create(JSContext *cx, uint32_t argc, jsval *vp
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ParticleSystem_create : Error processing arguments");
 		cocos2d::ParticleSystem* ret = cocos2d::ParticleSystem::create(arg0);
 		jsval jsret;
@@ -55395,8 +55395,8 @@ JSBool js_cocos2dx_AnimationCache_getAnimation(JSContext *cx, uint32_t argc, jsv
 	cocos2d::AnimationCache* cobj = (cocos2d::AnimationCache *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AnimationCache_getAnimation : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AnimationCache_getAnimation : Error processing arguments");
 		cocos2d::Animation* ret = cobj->getAnimation(arg0);
 		jsval jsret;
@@ -55425,7 +55425,7 @@ JSBool js_cocos2dx_AnimationCache_addAnimation(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AnimationCache_addAnimation : Invalid Native Object");
 	if (argc == 2) {
 		cocos2d::Animation* arg0;
-		const char* arg1;
+		std::string arg1;
 		do {
 			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
 			js_proxy_t *proxy;
@@ -55434,7 +55434,7 @@ JSBool js_cocos2dx_AnimationCache_addAnimation(JSContext *cx, uint32_t argc, jsv
 			arg0 = (cocos2d::Animation*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AnimationCache_addAnimation : Error processing arguments");
 		cobj->addAnimation(arg0, arg1);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -55490,8 +55490,8 @@ JSBool js_cocos2dx_AnimationCache_removeAnimation(JSContext *cx, uint32_t argc, 
 	cocos2d::AnimationCache* cobj = (cocos2d::AnimationCache *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AnimationCache_removeAnimation : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AnimationCache_removeAnimation : Error processing arguments");
 		cobj->removeAnimation(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -55510,8 +55510,8 @@ JSBool js_cocos2dx_AnimationCache_addAnimationsWithFile(JSContext *cx, uint32_t 
 	cocos2d::AnimationCache* cobj = (cocos2d::AnimationCache *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AnimationCache_addAnimationsWithFile : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AnimationCache_addAnimationsWithFile : Error processing arguments");
 		cobj->addAnimationsWithFile(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -55674,11 +55674,11 @@ JSBool js_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile(JSContext *cx, uint3
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile : Invalid Native Object");
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			cobj->addSpriteFramesWithFile(arg0, arg1);
 			JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -55688,8 +55688,8 @@ JSBool js_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile(JSContext *cx, uint3
 
 	do {
 		if (argc == 1) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cobj->addSpriteFramesWithFile(arg0);
 			JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -55699,8 +55699,8 @@ JSBool js_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile(JSContext *cx, uint3
 
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Texture2D* arg1;
 			do {
@@ -55731,7 +55731,7 @@ JSBool js_cocos2dx_SpriteFrameCache_addSpriteFrame(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteFrameCache_addSpriteFrame : Invalid Native Object");
 	if (argc == 2) {
 		cocos2d::SpriteFrame* arg0;
-		const char* arg1;
+		std::string arg1;
 		do {
 			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
 			js_proxy_t *proxy;
@@ -55740,7 +55740,7 @@ JSBool js_cocos2dx_SpriteFrameCache_addSpriteFrame(JSContext *cx, uint32_t argc,
 			arg0 = (cocos2d::SpriteFrame*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteFrameCache_addSpriteFrame : Error processing arguments");
 		cobj->addSpriteFrame(arg0, arg1);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -55774,8 +55774,8 @@ JSBool js_cocos2dx_SpriteFrameCache_getSpriteFrameByName(JSContext *cx, uint32_t
 	cocos2d::SpriteFrameCache* cobj = (cocos2d::SpriteFrameCache *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteFrameCache_getSpriteFrameByName : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteFrameCache_getSpriteFrameByName : Error processing arguments");
 		cocos2d::SpriteFrame* ret = cobj->getSpriteFrameByName(arg0);
 		jsval jsret;
@@ -55803,8 +55803,8 @@ JSBool js_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFile(JSContext *cx, ui
 	cocos2d::SpriteFrameCache* cobj = (cocos2d::SpriteFrameCache *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFile : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteFrameCache_removeSpriteFramesFromFile : Error processing arguments");
 		cobj->removeSpriteFramesFromFile(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -55882,8 +55882,8 @@ JSBool js_cocos2dx_SpriteFrameCache_removeSpriteFrameByName(JSContext *cx, uint3
 	cocos2d::SpriteFrameCache* cobj = (cocos2d::SpriteFrameCache *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteFrameCache_removeSpriteFrameByName : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteFrameCache_removeSpriteFrameByName : Error processing arguments");
 		cobj->removeSpriteFrameByName(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
