@@ -54468,10 +54468,10 @@ JSBool js_cocos2dx_FileUtils_getFileData(JSContext *cx, uint32_t argc, jsval *vp
 	if (argc == 3) {
 		const char* arg0;
 		const char* arg1;
-		unsigned long* arg2;
+		long* arg2;
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned long*;
+		#pragma warning NO CONVERSION TO NATIVE FOR long*;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_FileUtils_getFileData : Error processing arguments");
 		unsigned char* ret = cobj->getFileData(arg0, arg1, arg2);
 		jsval jsret;
@@ -54534,10 +54534,10 @@ JSBool js_cocos2dx_FileUtils_getFileDataFromZip(JSContext *cx, uint32_t argc, js
 	if (argc == 3) {
 		const char* arg0;
 		const char* arg1;
-		unsigned long* arg2;
+		long* arg2;
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned long*;
+		#pragma warning NO CONVERSION TO NATIVE FOR long*;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_FileUtils_getFileDataFromZip : Error processing arguments");
 		unsigned char* ret = cobj->getFileDataFromZip(arg0, arg1, arg2);
 		jsval jsret;
