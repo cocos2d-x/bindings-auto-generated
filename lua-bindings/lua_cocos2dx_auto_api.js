@@ -11152,7 +11152,7 @@ fullPathFromRelativeFile : function () {},
  * @return A value converted from C/C++ "unsigned char*"
  * @param {const char*}
  * @param {const char*}
- * @param {unsigned long*}
+ * @param {long*}
  */
 getFileData : function () {},
 
@@ -11173,7 +11173,7 @@ addSearchResolutionsOrder : function () {},
  * @return A value converted from C/C++ "unsigned char*"
  * @param {const char*}
  * @param {const char*}
- * @param {unsigned long*}
+ * @param {long*}
  */
 getFileDataFromZip : function () {},
 

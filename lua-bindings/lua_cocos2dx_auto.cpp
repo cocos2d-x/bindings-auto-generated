@@ -82385,10 +82385,10 @@ int lua_cocos2dx_FileUtils_getFileData(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
-        unsigned long* arg2;
+        long* arg2;
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned long*;
+        #pragma warning NO CONVERSION TO NATIVE FOR long*;
         if(!ok)
             return 0;
         unsigned char* ret = cobj->getFileData(arg0, arg1, arg2);
@@ -82516,10 +82516,10 @@ int lua_cocos2dx_FileUtils_getFileDataFromZip(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
-        unsigned long* arg2;
+        long* arg2;
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned long*;
+        #pragma warning NO CONVERSION TO NATIVE FOR long*;
         if(!ok)
             return 0;
         unsigned char* ret = cobj->getFileDataFromZip(arg0, arg1, arg2);
