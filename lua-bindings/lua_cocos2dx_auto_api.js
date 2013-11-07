@@ -5706,9 +5706,9 @@ updateAtlasValues : function () {},
  * @method initWithTexture
  * @return A value converted from C/C++ "bool"
  * @param {cocos2d::Texture2D*}
- * @param {unsigned int}
- * @param {unsigned int}
- * @param {unsigned int}
+ * @param {long}
+ * @param {long}
+ * @param {long}
  */
 initWithTexture : function () {},
 
@@ -5769,10 +5769,10 @@ getColor : function () {},
 /**
  * @method initWithTileFile
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
- * @param {unsigned int}
- * @param {unsigned int}
- * @param {unsigned int}
+ * @param {std::string}
+ * @param {long}
+ * @param {long}
+ * @param {long}
  */
 initWithTileFile : function () {},
 
@@ -5791,10 +5791,10 @@ setQuadsToDraw : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::AtlasNode*"
- * @param {const char*}
- * @param {unsigned int}
- * @param {unsigned int}
- * @param {unsigned int}
+ * @param {std::string}
+ * @param {long}
+ * @param {long}
+ * @param {long}
  */
 create : function () {},
 
@@ -6796,7 +6796,7 @@ setTextDefinition : function () {},
 
 /**
  * @method setFontName
- * @param {const char*}
+ * @param {std::string}
  */
 setFontName : function () {},
 
@@ -6809,7 +6809,7 @@ getHorizontalAlignment : function () {},
 /**
  * @method initWithStringAndTextDefinition
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  * @param {cocos2d::FontDefinition}
  */
 initWithStringAndTextDefinition : function () {},
@@ -6873,7 +6873,7 @@ getTextDefinition : function () {},
 
 /**
  * @method getFontName
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getFontName : function () {},
 
@@ -6896,7 +6896,7 @@ disableStroke : function () {},
 /**
  * @method createWithFontDefinition
  * @return A value converted from C/C++ "cocos2d::LabelTTF*"
- * @param {const char*}
+ * @param {std::string}
  * @param {cocos2d::FontDefinition}
  */
 createWithFontDefinition : function () {},
@@ -8914,7 +8914,7 @@ getDisabledColor : function () {},
 
 /**
  * @method setString
- * @param {const char*}
+ * @param {std::string}
  */
 setString : function () {},
 
@@ -8964,10 +8964,10 @@ cc.MenuItemAtlasFont = {
 /**
  * @method initWithString
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
- * @param {const char*}
- * @param {int}
- * @param {int}
+ * @param {std::string}
+ * @param {std::string}
+ * @param {long}
+ * @param {long}
  * @param {char}
  * @param {cocos2d::ccMenuCallback}
  */
@@ -8989,56 +8989,56 @@ cc.MenuItemFont = {
 /**
  * @method initWithString
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  * @param {cocos2d::ccMenuCallback}
  */
 initWithString : function () {},
 
 /**
  * @method getFontNameObj
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getFontNameObj : function () {},
 
 /**
  * @method getFontSizeObj
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "long"
  */
 getFontSizeObj : function () {},
 
 /**
  * @method setFontNameObj
- * @param {const char*}
+ * @param {std::string}
  */
 setFontNameObj : function () {},
 
 /**
  * @method setFontSizeObj
- * @param {unsigned int}
+ * @param {long}
  */
 setFontSizeObj : function () {},
 
 /**
  * @method setFontName
- * @param {const char*}
+ * @param {std::string}
  */
 setFontName : function () {},
 
 /**
  * @method getFontSize
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "long"
  */
 getFontSize : function () {},
 
 /**
  * @method getFontName
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getFontName : function () {},
 
 /**
  * @method setFontSize
- * @param {unsigned int}
+ * @param {long}
  */
 setFontSize : function () {},
 
@@ -9157,9 +9157,9 @@ init : function () {},
 /**
  * @method initWithNormalImage
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
- * @param {const char*}
- * @param {const char*}
+ * @param {std::string}
+ * @param {std::string}
+ * @param {std::string}
  * @param {cocos2d::ccMenuCallback}
  */
 initWithNormalImage : function () {},
@@ -11743,7 +11743,7 @@ setTileSize : function () {},
 /**
  * @method initWithTMXFile
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  */
 initWithTMXFile : function () {},
 
@@ -11768,7 +11768,7 @@ setLayers : function () {},
 /**
  * @method parseXMLFile
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  */
 parseXMLFile : function () {},
 
@@ -11780,14 +11780,14 @@ getParentElement : function () {},
 
 /**
  * @method setTMXFileName
- * @param {const char*}
+ * @param {std::string}
  */
 setTMXFileName : function () {},
 
 /**
  * @method parseXMLString
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  */
 parseXMLString : function () {},
 
@@ -11818,8 +11818,8 @@ setParentElement : function () {},
 /**
  * @method initWithXML
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
- * @param {const char*}
+ * @param {std::string}
+ * @param {std::string}
  */
 initWithXML : function () {},
 
@@ -11855,13 +11855,13 @@ getObjectGroups : function () {},
 
 /**
  * @method getTMXFileName
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getTMXFileName : function () {},
 
 /**
  * @method setCurrentString
- * @param {const char*}
+ * @param {std::string}
  */
 setCurrentString : function () {},
 
@@ -11915,7 +11915,7 @@ getProperties : function () {},
 
 /**
  * @method getCurrentString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getCurrentString : function () {},
 
@@ -11928,15 +11928,15 @@ setLayerAttribs : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TMXMapInfo*"
- * @param {const char*}
+ * @param {std::string}
  */
 create : function () {},
 
 /**
  * @method createWithXML
  * @return A value converted from C/C++ "cocos2d::TMXMapInfo*"
- * @param {const char*}
- * @param {const char*}
+ * @param {std::string}
+ * @param {std::string}
  */
 createWithXML : function () {},
 
@@ -12131,7 +12131,7 @@ setObjectGroups : function () {},
 /**
  * @method getProperty
  * @return A value converted from C/C++ "cocos2d::String*"
- * @param {const char*}
+ * @param {std::string}
  */
 getProperty : function () {},
 
@@ -12144,7 +12144,7 @@ setMapSize : function () {},
 /**
  * @method getObjectGroup
  * @return A value converted from C/C++ "cocos2d::TMXObjectGroup*"
- * @param {const char*}
+ * @param {std::string}
  */
 getObjectGroup : function () {},
 
@@ -12164,7 +12164,7 @@ getObjectGroups : function () {},
 /**
  * @method initWithTMXFile
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {std::string}
  */
 initWithTMXFile : function () {},
 
@@ -12195,15 +12195,15 @@ setTileSize : function () {},
 /**
  * @method initWithXML
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
- * @param {const char*}
+ * @param {std::string}
+ * @param {std::string}
  */
 initWithXML : function () {},
 
 /**
  * @method getLayer
  * @return A value converted from C/C++ "cocos2d::TMXLayer*"
- * @param {const char*}
+ * @param {std::string}
  */
 getLayer : function () {},
 
@@ -12228,15 +12228,15 @@ setProperties : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TMXTiledMap*"
- * @param {const char*}
+ * @param {std::string}
  */
 create : function () {},
 
 /**
  * @method createWithXML
  * @return A value converted from C/C++ "cocos2d::TMXTiledMap*"
- * @param {const char*}
- * @param {const char*}
+ * @param {std::string}
+ * @param {std::string}
  */
 createWithXML : function () {},
 

@@ -41237,9 +41237,9 @@ int lua_cocos2dx_AtlasNode_initWithTexture(lua_State* tolua_S)
     if (argc == 4) 
     {
         cocos2d::Texture2D* arg0;
-        unsigned int arg1;
-        unsigned int arg2;
-        unsigned int arg3;
+        long arg1;
+        long arg2;
+        long arg3;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Texture2D",0)){
 					ok = false;
@@ -41250,9 +41250,9 @@ int lua_cocos2dx_AtlasNode_initWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_uint32(tolua_S, 3,&arg1);
-        ok &= luaval_to_uint32(tolua_S, 4,&arg2);
-        ok &= luaval_to_uint32(tolua_S, 5,&arg3);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithTexture(arg0, arg1, arg2, arg3);
@@ -41710,14 +41710,14 @@ int lua_cocos2dx_AtlasNode_initWithTileFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 4) 
     {
-        const char* arg0;
-        unsigned int arg1;
-        unsigned int arg2;
-        unsigned int arg3;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        ok &= luaval_to_uint32(tolua_S, 3,&arg1);
-        ok &= luaval_to_uint32(tolua_S, 4,&arg2);
-        ok &= luaval_to_uint32(tolua_S, 5,&arg3);
+        std::string arg0;
+        long arg1;
+        long arg2;
+        long arg3;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithTileFile(arg0, arg1, arg2, arg3);
@@ -41832,14 +41832,14 @@ int lua_cocos2dx_AtlasNode_create(lua_State* tolua_S)
 
     if (argc == 4)
     {
-        const char* arg0;
-        unsigned int arg1;
-        unsigned int arg2;
-        unsigned int arg3;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        ok &= luaval_to_uint32(tolua_S, 3,&arg1);
-        ok &= luaval_to_uint32(tolua_S, 4,&arg2);
-        ok &= luaval_to_uint32(tolua_S, 5,&arg3);
+        std::string arg0;
+        long arg1;
+        long arg2;
+        long arg3;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cocos2d::AtlasNode* ret = cocos2d::AtlasNode::create(arg0, arg1, arg2, arg3);
@@ -42912,12 +42912,12 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithString(arg0, arg1);
@@ -42927,24 +42927,24 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
     }while(0);
     do{
         if (argc == 5) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
             if (!ok) { ok = true; break; }
-            unsigned int arg2;
-            ok &= luaval_to_uint32(tolua_S, 4,&arg2);
+            long arg2;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
-            unsigned int arg3;
-            ok &= luaval_to_uint32(tolua_S, 5,&arg3);
+            long arg3;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
-            unsigned int arg4;
-            ok &= luaval_to_uint32(tolua_S, 6,&arg4);
+            long arg4;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
@@ -42954,8 +42954,8 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
     }while(0);
     do{
         if (argc == 5) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
             cocos2d::Texture2D* arg1;
@@ -42971,16 +42971,16 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
 			}}} while (0);
 
             if (!ok) { ok = true; break; }
-            unsigned int arg2;
-            ok &= luaval_to_uint32(tolua_S, 4,&arg2);
+            long arg2;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
-            unsigned int arg3;
-            ok &= luaval_to_uint32(tolua_S, 5,&arg3);
+            long arg3;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
-            unsigned int arg4;
-            ok &= luaval_to_uint32(tolua_S, 6,&arg4);
+            long arg4;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
@@ -43095,11 +43095,11 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
     {
         if (argc == 2)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1);
             do {
@@ -43122,20 +43122,20 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
     {
         if (argc == 5)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
-            unsigned int arg2;
-            ok &= luaval_to_uint32(tolua_S, 4,&arg2);
+            long arg2;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
             if (!ok) { ok = true; break; }
-            unsigned int arg3;
-            ok &= luaval_to_uint32(tolua_S, 5,&arg3);
+            long arg3;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
             if (!ok) { ok = true; break; }
-            unsigned int arg4;
-            ok &= luaval_to_uint32(tolua_S, 6,&arg4);
+            long arg4;
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
             if (!ok) { ok = true; break; }
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1, arg2, arg3, arg4);
             do {
@@ -49993,8 +49993,8 @@ int lua_cocos2dx_LabelTTF_setFontName(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->setFontName(arg0);
@@ -50076,9 +50076,9 @@ int lua_cocos2dx_LabelTTF_initWithStringAndTextDefinition(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
+        std::string arg0;
         cocos2d::FontDefinition arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_fontdefinition(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
@@ -50158,12 +50158,12 @@ int lua_cocos2dx_LabelTTF_initWithString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 5) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
             if (!ok) { ok = true; break; }
             double arg2;
@@ -50185,12 +50185,12 @@ int lua_cocos2dx_LabelTTF_initWithString(lua_State* tolua_S)
     }while(0);
     do{
         if (argc == 3) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
             if (!ok) { ok = true; break; }
             double arg2;
@@ -50204,12 +50204,12 @@ int lua_cocos2dx_LabelTTF_initWithString(lua_State* tolua_S)
     }while(0);
     do{
         if (argc == 6) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
             if (!ok) { ok = true; break; }
             double arg2;
@@ -50628,8 +50628,8 @@ int lua_cocos2dx_LabelTTF_getFontName(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getFontName();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getFontName();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFontName",argc, 0);
@@ -50798,11 +50798,11 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
     {
         if (argc == 5)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
@@ -50834,11 +50834,11 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
     {
         if (argc == 3)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
@@ -50864,11 +50864,11 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
     {
         if (argc == 6)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { ok = true; break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
@@ -50945,9 +50945,9 @@ int lua_cocos2dx_LabelTTF_createWithFontDefinition(lua_State* tolua_S)
 
     if (argc == 2)
     {
-        const char* arg0;
+        std::string arg0;
         cocos2d::FontDefinition arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_fontdefinition(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
@@ -65873,8 +65873,8 @@ int lua_cocos2dx_MenuItemLabel_setString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->setString(arg0);
@@ -66241,16 +66241,16 @@ int lua_cocos2dx_MenuItemAtlasFont_initWithString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 6) 
     {
-        const char* arg0;
-        const char* arg1;
-        int arg2;
-        int arg3;
+        std::string arg0;
+        std::string arg1;
+        long arg2;
+        long arg3;
         int32_t arg4;
         cocos2d::ccMenuCallback arg5;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         ok &= luaval_to_int32(tolua_S, 6,&arg4);
         do {
 			/*
@@ -66382,9 +66382,9 @@ int lua_cocos2dx_MenuItemFont_initWithString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
+        std::string arg0;
         cocos2d::ccMenuCallback arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         do {
 			/*
 			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[1]));
@@ -66456,8 +66456,8 @@ int lua_cocos2dx_MenuItemFont_getFontNameObj(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getFontNameObj();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getFontNameObj();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFontNameObj",argc, 0);
@@ -66497,8 +66497,8 @@ int lua_cocos2dx_MenuItemFont_getFontSizeObj(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getFontSizeObj();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        long ret = cobj->getFontSizeObj();
+        #pragma warning NO CONVERSION FROM NATIVE FOR long;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFontSizeObj",argc, 0);
@@ -66536,8 +66536,8 @@ int lua_cocos2dx_MenuItemFont_setFontNameObj(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->setFontNameObj(arg0);
@@ -66578,8 +66578,8 @@ int lua_cocos2dx_MenuItemFont_setFontSizeObj(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        long arg0;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cobj->setFontSizeObj(arg0);
@@ -66610,8 +66610,8 @@ int lua_cocos2dx_MenuItemFont_setFontName(lua_State* tolua_S)
 
     if (argc == 1)
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::MenuItemFont::setFontName(arg0);
@@ -66644,8 +66644,8 @@ int lua_cocos2dx_MenuItemFont_getFontSize(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cocos2d::MenuItemFont::getFontSize();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        long ret = cocos2d::MenuItemFont::getFontSize();
+        #pragma warning NO CONVERSION FROM NATIVE FOR long;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getFontSize",argc, 0);
@@ -66675,8 +66675,8 @@ int lua_cocos2dx_MenuItemFont_getFontName(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cocos2d::MenuItemFont::getFontName();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cocos2d::MenuItemFont::getFontName();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getFontName",argc, 0);
@@ -66704,8 +66704,8 @@ int lua_cocos2dx_MenuItemFont_setFontSize(lua_State* tolua_S)
 
     if (argc == 1)
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        long arg0;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cocos2d::MenuItemFont::setFontSize(arg0);
@@ -67616,13 +67616,13 @@ int lua_cocos2dx_MenuItemImage_initWithNormalImage(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 4) 
     {
-        const char* arg0;
-        const char* arg1;
-        const char* arg2;
+        std::string arg0;
+        std::string arg1;
+        std::string arg2;
         cocos2d::ccMenuCallback arg3;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
+        ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         do {
 			/*
 			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[3]));
@@ -86821,8 +86821,8 @@ int lua_cocos2dx_TMXMapInfo_initWithTMXFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->initWithTMXFile(arg0);
@@ -86988,8 +86988,8 @@ int lua_cocos2dx_TMXMapInfo_parseXMLFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->parseXMLFile(arg0);
@@ -87072,8 +87072,8 @@ int lua_cocos2dx_TMXMapInfo_setTMXFileName(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->setTMXFileName(arg0);
@@ -87114,8 +87114,8 @@ int lua_cocos2dx_TMXMapInfo_parseXMLString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->parseXMLString(arg0);
@@ -87322,10 +87322,10 @@ int lua_cocos2dx_TMXMapInfo_initWithXML(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
-        const char* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg0;
+        std::string arg1;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         bool ret = cobj->initWithXML(arg0, arg1);
@@ -87575,8 +87575,8 @@ int lua_cocos2dx_TMXMapInfo_getTMXFileName(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getTMXFileName();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getTMXFileName();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTMXFileName",argc, 0);
@@ -87614,8 +87614,8 @@ int lua_cocos2dx_TMXMapInfo_setCurrentString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->setCurrentString(arg0);
@@ -87992,8 +87992,8 @@ int lua_cocos2dx_TMXMapInfo_getCurrentString(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getCurrentString();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getCurrentString();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurrentString",argc, 0);
@@ -88063,8 +88063,8 @@ int lua_cocos2dx_TMXMapInfo_create(lua_State* tolua_S)
 
     if (argc == 1)
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::TMXMapInfo* ret = cocos2d::TMXMapInfo::create(arg0);
@@ -88108,10 +88108,10 @@ int lua_cocos2dx_TMXMapInfo_createWithXML(lua_State* tolua_S)
 
     if (argc == 2)
     {
-        const char* arg0;
-        const char* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg0;
+        std::string arg1;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cocos2d::TMXMapInfo* ret = cocos2d::TMXMapInfo::createWithXML(arg0, arg1);
@@ -89595,8 +89595,8 @@ int lua_cocos2dx_TMXTiledMap_getProperty(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::String* ret = cobj->getProperty(arg0);
@@ -89692,8 +89692,8 @@ int lua_cocos2dx_TMXTiledMap_getObjectGroup(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::TMXObjectGroup* ret = cobj->getObjectGroup(arg0);
@@ -89831,8 +89831,8 @@ int lua_cocos2dx_TMXTiledMap_initWithTMXFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->initWithTMXFile(arg0);
@@ -90039,10 +90039,10 @@ int lua_cocos2dx_TMXTiledMap_initWithXML(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
-        const char* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg0;
+        std::string arg1;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         bool ret = cobj->initWithXML(arg0, arg1);
@@ -90084,8 +90084,8 @@ int lua_cocos2dx_TMXTiledMap_getLayer(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::TMXLayer* ret = cobj->getLayer(arg0);
@@ -90254,8 +90254,8 @@ int lua_cocos2dx_TMXTiledMap_create(lua_State* tolua_S)
 
     if (argc == 1)
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::TMXTiledMap* ret = cocos2d::TMXTiledMap::create(arg0);
@@ -90299,10 +90299,10 @@ int lua_cocos2dx_TMXTiledMap_createWithXML(lua_State* tolua_S)
 
     if (argc == 2)
     {
-        const char* arg0;
-        const char* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg0;
+        std::string arg1;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cocos2d::TMXTiledMap* ret = cocos2d::TMXTiledMap::createWithXML(arg0, arg1);

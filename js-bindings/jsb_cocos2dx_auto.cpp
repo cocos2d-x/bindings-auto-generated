@@ -27917,9 +27917,9 @@ JSBool js_cocos2dx_AtlasNode_initWithTexture(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AtlasNode_initWithTexture : Invalid Native Object");
 	if (argc == 4) {
 		cocos2d::Texture2D* arg0;
-		unsigned int arg1;
-		unsigned int arg2;
-		unsigned int arg3;
+		long arg1;
+		long arg2;
+		long arg3;
 		do {
 			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
 			js_proxy_t *proxy;
@@ -27928,9 +27928,9 @@ JSBool js_cocos2dx_AtlasNode_initWithTexture(JSContext *cx, uint32_t argc, jsval
 			arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		ok &= jsval_to_uint32(cx, argv[1], &arg1);
-		ok &= jsval_to_uint32(cx, argv[2], &arg2);
-		ok &= jsval_to_uint32(cx, argv[3], &arg3);
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AtlasNode_initWithTexture : Error processing arguments");
 		bool ret = cobj->initWithTexture(arg0, arg1, arg2, arg3);
 		jsval jsret;
@@ -28147,14 +28147,14 @@ JSBool js_cocos2dx_AtlasNode_initWithTileFile(JSContext *cx, uint32_t argc, jsva
 	cocos2d::AtlasNode* cobj = (cocos2d::AtlasNode *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AtlasNode_initWithTileFile : Invalid Native Object");
 	if (argc == 4) {
-		const char* arg0;
-		unsigned int arg1;
-		unsigned int arg2;
-		unsigned int arg3;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		ok &= jsval_to_uint32(cx, argv[1], &arg1);
-		ok &= jsval_to_uint32(cx, argv[2], &arg2);
-		ok &= jsval_to_uint32(cx, argv[3], &arg3);
+		std::string arg0;
+		long arg1;
+		long arg2;
+		long arg3;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AtlasNode_initWithTileFile : Error processing arguments");
 		bool ret = cobj->initWithTileFile(arg0, arg1, arg2, arg3);
 		jsval jsret;
@@ -28208,14 +28208,14 @@ JSBool js_cocos2dx_AtlasNode_create(JSContext *cx, uint32_t argc, jsval *vp)
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 4) {
-		const char* arg0;
-		unsigned int arg1;
-		unsigned int arg2;
-		unsigned int arg3;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		ok &= jsval_to_uint32(cx, argv[1], &arg1);
-		ok &= jsval_to_uint32(cx, argv[2], &arg2);
-		ok &= jsval_to_uint32(cx, argv[3], &arg3);
+		std::string arg0;
+		long arg1;
+		long arg2;
+		long arg3;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AtlasNode_create : Error processing arguments");
 		cocos2d::AtlasNode* ret = cocos2d::AtlasNode::create(arg0, arg1, arg2, arg3);
 		jsval jsret;
@@ -28962,11 +28962,11 @@ JSBool js_cocos2dx_LabelAtlas_initWithString(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelAtlas_initWithString : Invalid Native Object");
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithString(arg0, arg1);
 			jsval jsret;
@@ -28978,20 +28978,20 @@ JSBool js_cocos2dx_LabelAtlas_initWithString(JSContext *cx, uint32_t argc, jsval
 
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
-			unsigned int arg2;
-			ok &= jsval_to_uint32(cx, argv[2], &arg2);
+			long arg2;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
-			unsigned int arg3;
-			ok &= jsval_to_uint32(cx, argv[3], &arg3);
+			long arg3;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
-			unsigned int arg4;
-			ok &= jsval_to_uint32(cx, argv[4], &arg4);
+			long arg4;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
 			jsval jsret;
@@ -29003,8 +29003,8 @@ JSBool js_cocos2dx_LabelAtlas_initWithString(JSContext *cx, uint32_t argc, jsval
 
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Texture2D* arg1;
 			do {
@@ -29016,14 +29016,14 @@ JSBool js_cocos2dx_LabelAtlas_initWithString(JSContext *cx, uint32_t argc, jsval
 				JSB_PRECONDITION2( arg1, cx, JS_FALSE, "Invalid Native Object");
 			} while (0);
 			if (!ok) { ok = JS_TRUE; break; }
-			unsigned int arg2;
-			ok &= jsval_to_uint32(cx, argv[2], &arg2);
+			long arg2;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
-			unsigned int arg3;
-			ok &= jsval_to_uint32(cx, argv[3], &arg3);
+			long arg3;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
-			unsigned int arg4;
-			ok &= jsval_to_uint32(cx, argv[4], &arg4);
+			long arg4;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
 			jsval jsret;
@@ -29075,11 +29075,11 @@ JSBool js_cocos2dx_LabelAtlas_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 2) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1);
 			jsval jsret;
@@ -29098,20 +29098,20 @@ JSBool js_cocos2dx_LabelAtlas_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
-			unsigned int arg2;
-			ok &= jsval_to_uint32(cx, argv[2], &arg2);
+			long arg2;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
-			unsigned int arg3;
-			ok &= jsval_to_uint32(cx, argv[3], &arg3);
+			long arg3;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
-			unsigned int arg4;
-			ok &= jsval_to_uint32(cx, argv[4], &arg4);
+			long arg4;
+			#pragma warning NO CONVERSION TO NATIVE FOR long;
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1, arg2, arg3, arg4);
 			jsval jsret;
@@ -33024,8 +33024,8 @@ JSBool js_cocos2dx_LabelTTF_setFontName(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::LabelTTF* cobj = (cocos2d::LabelTTF *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelTTF_setFontName : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelTTF_setFontName : Error processing arguments");
 		cobj->setFontName(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -33061,9 +33061,9 @@ JSBool js_cocos2dx_LabelTTF_initWithStringAndTextDefinition(JSContext *cx, uint3
 	cocos2d::LabelTTF* cobj = (cocos2d::LabelTTF *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelTTF_initWithStringAndTextDefinition : Invalid Native Object");
 	if (argc == 2) {
-		const char* arg0;
+		std::string arg0;
 		cocos2d::FontDefinition arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		ok &= jsval_to_FontDefinition(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelTTF_initWithStringAndTextDefinition : Error processing arguments");
 		bool ret = cobj->initWithStringAndTextDefinition(arg0, arg1);
@@ -33109,11 +33109,11 @@ JSBool js_cocos2dx_LabelTTF_initWithString(JSContext *cx, uint32_t argc, jsval *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelTTF_initWithString : Invalid Native Object");
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -33134,11 +33134,11 @@ JSBool js_cocos2dx_LabelTTF_initWithString(JSContext *cx, uint32_t argc, jsval *
 
 	do {
 		if (argc == 3) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -33153,11 +33153,11 @@ JSBool js_cocos2dx_LabelTTF_initWithString(JSContext *cx, uint32_t argc, jsval *
 
 	do {
 		if (argc == 6) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -33361,9 +33361,9 @@ JSBool js_cocos2dx_LabelTTF_getFontName(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::LabelTTF* cobj = (cocos2d::LabelTTF *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelTTF_getFontName : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getFontName();
+		std::string ret = cobj->getFontName();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -33448,11 +33448,11 @@ JSBool js_cocos2dx_LabelTTF_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -33480,11 +33480,11 @@ JSBool js_cocos2dx_LabelTTF_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 3) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -33506,11 +33506,11 @@ JSBool js_cocos2dx_LabelTTF_create(JSContext *cx, uint32_t argc, jsval *vp)
 	
 	do {
 		if (argc == 6) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -33563,9 +33563,9 @@ JSBool js_cocos2dx_LabelTTF_createWithFontDefinition(JSContext *cx, uint32_t arg
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 2) {
-		const char* arg0;
+		std::string arg0;
 		cocos2d::FontDefinition arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		ok &= jsval_to_FontDefinition(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelTTF_createWithFontDefinition : Error processing arguments");
 		cocos2d::LabelTTF* ret = cocos2d::LabelTTF::createWithFontDefinition(arg0, arg1);
@@ -44880,8 +44880,8 @@ JSBool js_cocos2dx_MenuItemLabel_setString(JSContext *cx, uint32_t argc, jsval *
 	cocos2d::MenuItemLabel* cobj = (cocos2d::MenuItemLabel *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItemLabel_setString : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_MenuItemLabel_setString : Error processing arguments");
 		cobj->setString(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -45135,16 +45135,16 @@ JSBool js_cocos2dx_MenuItemAtlasFont_initWithString(JSContext *cx, uint32_t argc
 	cocos2d::MenuItemAtlasFont* cobj = (cocos2d::MenuItemAtlasFont *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItemAtlasFont_initWithString : Invalid Native Object");
 	if (argc == 6) {
-		const char* arg0;
-		const char* arg1;
-		int arg2;
-		int arg3;
+		std::string arg0;
+		std::string arg1;
+		long arg2;
+		long arg3;
 		int32_t arg4;
 		cocos2d::ccMenuCallback arg5;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
 		ok &= jsval_to_int32(cx, argv[4], &arg4);
 		do {
 			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[5]));
@@ -45286,8 +45286,8 @@ JSBool js_cocos2dx_MenuItemFont_setFontNameObj(JSContext *cx, uint32_t argc, jsv
 	cocos2d::MenuItemFont* cobj = (cocos2d::MenuItemFont *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_setFontNameObj : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_setFontNameObj : Error processing arguments");
 		cobj->setFontNameObj(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -45304,9 +45304,9 @@ JSBool js_cocos2dx_MenuItemFont_getFontSizeObj(JSContext *cx, uint32_t argc, jsv
 	cocos2d::MenuItemFont* cobj = (cocos2d::MenuItemFont *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_getFontSizeObj : Invalid Native Object");
 	if (argc == 0) {
-		unsigned int ret = cobj->getFontSizeObj();
+		long ret = cobj->getFontSizeObj();
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR long;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -45323,9 +45323,9 @@ JSBool js_cocos2dx_MenuItemFont_initWithString(JSContext *cx, uint32_t argc, jsv
 	cocos2d::MenuItemFont* cobj = (cocos2d::MenuItemFont *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_initWithString : Invalid Native Object");
 	if (argc == 2) {
-		const char* arg0;
+		std::string arg0;
 		cocos2d::ccMenuCallback arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		do {
 			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[1]));
 			auto lambda = [=](Object* larg0) -> void {
@@ -45367,8 +45367,8 @@ JSBool js_cocos2dx_MenuItemFont_setFontSizeObj(JSContext *cx, uint32_t argc, jsv
 	cocos2d::MenuItemFont* cobj = (cocos2d::MenuItemFont *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_setFontSizeObj : Invalid Native Object");
 	if (argc == 1) {
-		unsigned int arg0;
-		ok &= jsval_to_uint32(cx, argv[0], &arg0);
+		long arg0;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_setFontSizeObj : Error processing arguments");
 		cobj->setFontSizeObj(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -45385,9 +45385,9 @@ JSBool js_cocos2dx_MenuItemFont_getFontNameObj(JSContext *cx, uint32_t argc, jsv
 	cocos2d::MenuItemFont* cobj = (cocos2d::MenuItemFont *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_getFontNameObj : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getFontNameObj();
+		std::string ret = cobj->getFontNameObj();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -45400,8 +45400,8 @@ JSBool js_cocos2dx_MenuItemFont_setFontName(JSContext *cx, uint32_t argc, jsval 
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_setFontName : Error processing arguments");
 		cocos2d::MenuItemFont::setFontName(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -45414,9 +45414,9 @@ JSBool js_cocos2dx_MenuItemFont_setFontName(JSContext *cx, uint32_t argc, jsval 
 JSBool js_cocos2dx_MenuItemFont_getFontSize(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		unsigned int ret = cocos2d::MenuItemFont::getFontSize();
+		long ret = cocos2d::MenuItemFont::getFontSize();
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR long;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -45427,9 +45427,9 @@ JSBool js_cocos2dx_MenuItemFont_getFontSize(JSContext *cx, uint32_t argc, jsval 
 JSBool js_cocos2dx_MenuItemFont_getFontName(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		const char* ret = cocos2d::MenuItemFont::getFontName();
+		std::string ret = cocos2d::MenuItemFont::getFontName();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -45442,8 +45442,8 @@ JSBool js_cocos2dx_MenuItemFont_setFontSize(JSContext *cx, uint32_t argc, jsval 
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 1) {
-		unsigned int arg0;
-		ok &= jsval_to_uint32(cx, argv[0], &arg0);
+		long arg0;
+		#pragma warning NO CONVERSION TO NATIVE FOR long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_setFontSize : Error processing arguments");
 		cocos2d::MenuItemFont::setFontSize(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -46053,13 +46053,13 @@ JSBool js_cocos2dx_MenuItemImage_initWithNormalImage(JSContext *cx, uint32_t arg
 	cocos2d::MenuItemImage* cobj = (cocos2d::MenuItemImage *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItemImage_initWithNormalImage : Invalid Native Object");
 	if (argc == 4) {
-		const char* arg0;
-		const char* arg1;
-		const char* arg2;
+		std::string arg0;
+		std::string arg1;
+		std::string arg2;
 		cocos2d::ccMenuCallback arg3;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		std::string arg2_tmp; ok &= jsval_to_std_string(cx, argv[2], &arg2_tmp); arg2 = arg2_tmp.c_str();
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
+		ok &= jsval_to_std_string(cx, argv[2], &arg2);
 		do {
 			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[3]));
 			auto lambda = [=](Object* larg0) -> void {
@@ -57749,8 +57749,8 @@ JSBool js_cocos2dx_TMXMapInfo_initWithTMXFile(JSContext *cx, uint32_t argc, jsva
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_initWithTMXFile : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_initWithTMXFile : Error processing arguments");
 		bool ret = cobj->initWithTMXFile(arg0);
 		jsval jsret;
@@ -57825,8 +57825,8 @@ JSBool js_cocos2dx_TMXMapInfo_parseXMLFile(JSContext *cx, uint32_t argc, jsval *
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_parseXMLFile : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_parseXMLFile : Error processing arguments");
 		bool ret = cobj->parseXMLFile(arg0);
 		jsval jsret;
@@ -57864,8 +57864,8 @@ JSBool js_cocos2dx_TMXMapInfo_setTMXFileName(JSContext *cx, uint32_t argc, jsval
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_setTMXFileName : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_setTMXFileName : Error processing arguments");
 		cobj->setTMXFileName(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -57884,8 +57884,8 @@ JSBool js_cocos2dx_TMXMapInfo_parseXMLString(JSContext *cx, uint32_t argc, jsval
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_parseXMLString : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_parseXMLString : Error processing arguments");
 		bool ret = cobj->parseXMLString(arg0);
 		jsval jsret;
@@ -57977,10 +57977,10 @@ JSBool js_cocos2dx_TMXMapInfo_initWithXML(JSContext *cx, uint32_t argc, jsval *v
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_initWithXML : Invalid Native Object");
 	if (argc == 2) {
-		const char* arg0;
-		const char* arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		std::string arg0;
+		std::string arg1;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_initWithXML : Error processing arguments");
 		bool ret = cobj->initWithXML(arg0, arg1);
 		jsval jsret;
@@ -58087,9 +58087,9 @@ JSBool js_cocos2dx_TMXMapInfo_getTMXFileName(JSContext *cx, uint32_t argc, jsval
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_getTMXFileName : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getTMXFileName();
+		std::string ret = cobj->getTMXFileName();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -58106,8 +58106,8 @@ JSBool js_cocos2dx_TMXMapInfo_setCurrentString(JSContext *cx, uint32_t argc, jsv
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_setCurrentString : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_setCurrentString : Error processing arguments");
 		cobj->setCurrentString(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -58278,9 +58278,9 @@ JSBool js_cocos2dx_TMXMapInfo_getCurrentString(JSContext *cx, uint32_t argc, jsv
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_getCurrentString : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getCurrentString();
+		std::string ret = cobj->getCurrentString();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -58313,8 +58313,8 @@ JSBool js_cocos2dx_TMXMapInfo_create(JSContext *cx, uint32_t argc, jsval *vp)
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_create : Error processing arguments");
 		cocos2d::TMXMapInfo* ret = cocos2d::TMXMapInfo::create(arg0);
 		jsval jsret;
@@ -58338,10 +58338,10 @@ JSBool js_cocos2dx_TMXMapInfo_createWithXML(JSContext *cx, uint32_t argc, jsval 
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 2) {
-		const char* arg0;
-		const char* arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		std::string arg0;
+		std::string arg1;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_createWithXML : Error processing arguments");
 		cocos2d::TMXMapInfo* ret = cocos2d::TMXMapInfo::createWithXML(arg0, arg1);
 		jsval jsret;
@@ -59266,8 +59266,8 @@ JSBool js_cocos2dx_TMXTiledMap_getProperty(JSContext *cx, uint32_t argc, jsval *
 	cocos2d::TMXTiledMap* cobj = (cocos2d::TMXTiledMap *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_getProperty : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_getProperty : Error processing arguments");
 		cocos2d::String* ret = cobj->getProperty(arg0);
 		jsval jsret;
@@ -59308,8 +59308,8 @@ JSBool js_cocos2dx_TMXTiledMap_getObjectGroup(JSContext *cx, uint32_t argc, jsva
 	cocos2d::TMXTiledMap* cobj = (cocos2d::TMXTiledMap *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_getObjectGroup : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_getObjectGroup : Error processing arguments");
 		cocos2d::TMXObjectGroup* ret = cobj->getObjectGroup(arg0);
 		jsval jsret;
@@ -59376,8 +59376,8 @@ JSBool js_cocos2dx_TMXTiledMap_initWithTMXFile(JSContext *cx, uint32_t argc, jsv
 	cocos2d::TMXTiledMap* cobj = (cocos2d::TMXTiledMap *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_initWithTMXFile : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_initWithTMXFile : Error processing arguments");
 		bool ret = cobj->initWithTMXFile(arg0);
 		jsval jsret;
@@ -59469,10 +59469,10 @@ JSBool js_cocos2dx_TMXTiledMap_initWithXML(JSContext *cx, uint32_t argc, jsval *
 	cocos2d::TMXTiledMap* cobj = (cocos2d::TMXTiledMap *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_initWithXML : Invalid Native Object");
 	if (argc == 2) {
-		const char* arg0;
-		const char* arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		std::string arg0;
+		std::string arg1;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_initWithXML : Error processing arguments");
 		bool ret = cobj->initWithXML(arg0, arg1);
 		jsval jsret;
@@ -59493,8 +59493,8 @@ JSBool js_cocos2dx_TMXTiledMap_getLayer(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::TMXTiledMap* cobj = (cocos2d::TMXTiledMap *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_getLayer : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_getLayer : Error processing arguments");
 		cocos2d::TMXLayer* ret = cobj->getLayer(arg0);
 		jsval jsret;
@@ -59575,8 +59575,8 @@ JSBool js_cocos2dx_TMXTiledMap_create(JSContext *cx, uint32_t argc, jsval *vp)
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_create : Error processing arguments");
 		cocos2d::TMXTiledMap* ret = cocos2d::TMXTiledMap::create(arg0);
 		jsval jsret;
@@ -59600,10 +59600,10 @@ JSBool js_cocos2dx_TMXTiledMap_createWithXML(JSContext *cx, uint32_t argc, jsval
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	if (argc == 2) {
-		const char* arg0;
-		const char* arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		std::string arg0;
+		std::string arg1;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_createWithXML : Error processing arguments");
 		cocos2d::TMXTiledMap* ret = cocos2d::TMXTiledMap::createWithXML(arg0, arg1);
 		jsval jsret;
