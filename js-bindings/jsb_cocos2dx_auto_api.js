@@ -5927,7 +5927,7 @@ updateAtlasValues : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getString : function () {},
 
@@ -6747,7 +6747,7 @@ getFontSize : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getString : function () {},
 
@@ -7046,7 +7046,7 @@ createFontChars : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getString : function () {},
 
@@ -7238,7 +7238,7 @@ addChild : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getString : function () {},
 
@@ -11338,7 +11338,7 @@ setSecureTextEntry : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getString : function () {},
 
@@ -11350,7 +11350,7 @@ getColorSpaceHolder : function () {},
 
 /**
  * @method getPlaceHolder
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getPlaceHolder : function () {},
 
@@ -11374,7 +11374,7 @@ setDelegate : function () {},
 
 /**
  * @method setPlaceHolder
- * @param {const char*}
+ * @param {std::string}
  */
 setPlaceHolder : function () {},
 
@@ -11386,7 +11386,7 @@ isSecureTextEntry : function () {},
 
 /**
  * @method setString
- * @param {const char*}
+ * @param {std::string}
  */
 setString : function () {},
 

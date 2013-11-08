@@ -5970,7 +5970,7 @@ updateAtlasValues : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getString : function () {},
 
@@ -6778,7 +6778,7 @@ getFontSize : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getString : function () {},
 
@@ -7077,7 +7077,7 @@ createFontChars : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getString : function () {},
 
@@ -7269,7 +7269,7 @@ addChild : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getString : function () {},
 

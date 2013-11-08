@@ -29058,9 +29058,9 @@ JSBool js_cocos2dx_LabelAtlas_getString(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::LabelAtlas* cobj = (cocos2d::LabelAtlas *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelAtlas_getString : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getString();
+		std::string ret = cobj->getString();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -33004,9 +33004,9 @@ JSBool js_cocos2dx_LabelTTF_getString(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::LabelTTF* cobj = (cocos2d::LabelTTF *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelTTF_getString : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getString();
+		std::string ret = cobj->getString();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -34604,9 +34604,9 @@ JSBool js_cocos2dx_LabelBMFont_getString(JSContext *cx, uint32_t argc, jsval *vp
 	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getString : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getString();
+		std::string ret = cobj->getString();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -35542,9 +35542,9 @@ JSBool js_cocos2dx_Label_getString(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getString : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getString();
+		std::string ret = cobj->getString();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -56086,9 +56086,9 @@ JSBool js_cocos2dx_TextFieldTTF_getString(JSContext *cx, uint32_t argc, jsval *v
 	cocos2d::TextFieldTTF* cobj = (cocos2d::TextFieldTTF *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TextFieldTTF_getString : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getString();
+		std::string ret = cobj->getString();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -56126,11 +56126,11 @@ JSBool js_cocos2dx_TextFieldTTF_initWithPlaceHolder(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TextFieldTTF_initWithPlaceHolder : Invalid Native Object");
 	do {
 		if (argc == 3) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -56145,8 +56145,8 @@ JSBool js_cocos2dx_TextFieldTTF_initWithPlaceHolder(JSContext *cx, uint32_t argc
 
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Size arg1;
 			ok &= jsval_to_ccsize(cx, argv[1], &arg1);
@@ -56154,8 +56154,8 @@ JSBool js_cocos2dx_TextFieldTTF_initWithPlaceHolder(JSContext *cx, uint32_t argc
 			cocos2d::TextHAlignment arg2;
 			ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg3;
-			std::string arg3_tmp; ok &= jsval_to_std_string(cx, argv[3], &arg3_tmp); arg3 = arg3_tmp.c_str();
+			std::string arg3;
+			ok &= jsval_to_std_string(cx, argv[3], &arg3);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg4;
 			ok &= JS_ValueToNumber(cx, argv[4], &arg4);
@@ -56178,9 +56178,9 @@ JSBool js_cocos2dx_TextFieldTTF_getPlaceHolder(JSContext *cx, uint32_t argc, jsv
 	cocos2d::TextFieldTTF* cobj = (cocos2d::TextFieldTTF *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TextFieldTTF_getPlaceHolder : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getPlaceHolder();
+		std::string ret = cobj->getPlaceHolder();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -56261,8 +56261,8 @@ JSBool js_cocos2dx_TextFieldTTF_setPlaceHolder(JSContext *cx, uint32_t argc, jsv
 	cocos2d::TextFieldTTF* cobj = (cocos2d::TextFieldTTF *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TextFieldTTF_setPlaceHolder : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TextFieldTTF_setPlaceHolder : Error processing arguments");
 		cobj->setPlaceHolder(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -56298,8 +56298,8 @@ JSBool js_cocos2dx_TextFieldTTF_setString(JSContext *cx, uint32_t argc, jsval *v
 	cocos2d::TextFieldTTF* cobj = (cocos2d::TextFieldTTF *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TextFieldTTF_setString : Invalid Native Object");
 	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TextFieldTTF_setString : Error processing arguments");
 		cobj->setString(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -56333,11 +56333,11 @@ JSBool js_cocos2dx_TextFieldTTF_textFieldWithPlaceHolder(JSContext *cx, uint32_t
 	
 	do {
 		if (argc == 3) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg1;
-			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+			std::string arg1;
+			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg2;
 			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
@@ -56359,8 +56359,8 @@ JSBool js_cocos2dx_TextFieldTTF_textFieldWithPlaceHolder(JSContext *cx, uint32_t
 	
 	do {
 		if (argc == 5) {
-			const char* arg0;
-			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::Size arg1;
 			ok &= jsval_to_ccsize(cx, argv[1], &arg1);
@@ -56368,8 +56368,8 @@ JSBool js_cocos2dx_TextFieldTTF_textFieldWithPlaceHolder(JSContext *cx, uint32_t
 			cocos2d::TextHAlignment arg2;
 			ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 			if (!ok) { ok = JS_TRUE; break; }
-			const char* arg3;
-			std::string arg3_tmp; ok &= jsval_to_std_string(cx, argv[3], &arg3_tmp); arg3 = arg3_tmp.c_str();
+			std::string arg3;
+			ok &= jsval_to_std_string(cx, argv[3], &arg3);
 			if (!ok) { ok = JS_TRUE; break; }
 			double arg4;
 			ok &= JS_ValueToNumber(cx, argv[4], &arg4);
