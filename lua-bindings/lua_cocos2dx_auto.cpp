@@ -43065,8 +43065,8 @@ int lua_cocos2dx_LabelAtlas_getString(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getString();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getString();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getString",argc, 0);
@@ -49912,8 +49912,8 @@ int lua_cocos2dx_LabelTTF_getString(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getString();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getString();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getString",argc, 0);
@@ -52527,8 +52527,8 @@ int lua_cocos2dx_LabelBMFont_getString(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getString();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getString();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getString",argc, 0);
@@ -54136,8 +54136,8 @@ int lua_cocos2dx_Label_getString(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getString();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getString();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getString",argc, 0);
