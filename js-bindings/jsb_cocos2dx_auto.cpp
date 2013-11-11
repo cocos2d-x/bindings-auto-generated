@@ -29483,6 +29483,30 @@ JSBool js_cocos2dx_Director_end(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Director_end : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Director_getTextureCache(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Director* cobj = (cocos2d::Director *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Director_getTextureCache : Invalid Native Object");
+	if (argc == 0) {
+		cocos2d::TextureCache* ret = cobj->getTextureCache();
+		jsval jsret;
+		do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::TextureCache>(cx, ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Director_getTextureCache : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Director_isSendCleanupToScene(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -30302,6 +30326,7 @@ void js_register_cocos2dx_Director(JSContext *cx, JSObject *global) {
 		JS_FN("getNotificationNode", js_cocos2dx_Director_getNotificationNode, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getWinSize", js_cocos2dx_Director_getWinSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("end", js_cocos2dx_Director_end, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getTextureCache", js_cocos2dx_Director_getTextureCache, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isSendCleanupToScene", js_cocos2dx_Director_isSendCleanupToScene, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getVisibleOrigin", js_cocos2dx_Director_getVisibleOrigin, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("mainLoop", js_cocos2dx_Director_mainLoop, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -56693,48 +56718,21 @@ JSBool js_cocos2dx_TextureCache_removeTexture(JSContext *cx, uint32_t argc, jsva
 	JS_ReportError(cx, "js_cocos2dx_TextureCache_removeTexture : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_TextureCache_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_TextureCache_waitForQuit(JSContext *cx, uint32_t argc, jsval *vp)
 {
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TextureCache* cobj = (cocos2d::TextureCache *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TextureCache_waitForQuit : Invalid Native Object");
 	if (argc == 0) {
-		cocos2d::TextureCache::destroyInstance();
+		cobj->waitForQuit();
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-	JS_ReportError(cx, "js_cocos2dx_TextureCache_destroyInstance : wrong number of arguments");
+
+	JS_ReportError(cx, "js_cocos2dx_TextureCache_waitForQuit : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-
-JSBool js_cocos2dx_TextureCache_reloadAllTextures(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	if (argc == 0) {
-		cocos2d::TextureCache::reloadAllTextures();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-	JS_ReportError(cx, "js_cocos2dx_TextureCache_reloadAllTextures : wrong number of arguments");
-	return JS_FALSE;
-}
-
-JSBool js_cocos2dx_TextureCache_getInstance(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	if (argc == 0) {
-		cocos2d::TextureCache* ret = cocos2d::TextureCache::getInstance();
-		jsval jsret;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::TextureCache>(cx, ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	JS_ReportError(cx, "js_cocos2dx_TextureCache_getInstance : wrong number of arguments");
-	return JS_FALSE;
-}
-
 JSBool js_cocos2dx_TextureCache_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
@@ -56803,16 +56801,12 @@ void js_register_cocos2dx_TextureCache(JSContext *cx, JSObject *global) {
 		JS_FN("getTextureForKey", js_cocos2dx_TextureCache_getTextureForKey, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeUnusedTextures", js_cocos2dx_TextureCache_removeUnusedTextures, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeTexture", js_cocos2dx_TextureCache_removeTexture, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("waitForQuit", js_cocos2dx_TextureCache_waitForQuit, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_cocos2dx_TextureCache_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
-	static JSFunctionSpec st_funcs[] = {
-		JS_FN("destroyInstance", js_cocos2dx_TextureCache_destroyInstance, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("reloadAllTextures", js_cocos2dx_TextureCache_reloadAllTextures, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getInstance", js_cocos2dx_TextureCache_getInstance, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FS_END
-	};
+	JSFunctionSpec *st_funcs = NULL;
 
 	jsb_TextureCache_prototype = JS_InitClass(
 		cx, global,
