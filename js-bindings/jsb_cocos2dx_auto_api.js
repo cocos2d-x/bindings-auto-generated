@@ -6019,6 +6019,12 @@ getWinSize : function () {},
 end : function () {},
 
 /**
+ * @method getTextureCache
+ * @return A value converted from C/C++ "cocos2d::TextureCache*"
+ */
+getTextureCache : function () {},
+
+/**
  * @method isSendCleanupToScene
  * @return A value converted from C/C++ "bool"
  */
@@ -11444,20 +11450,9 @@ removeUnusedTextures : function () {},
 removeTexture : function () {},
 
 /**
- * @method destroyInstance
+ * @method waitForQuit
  */
-destroyInstance : function () {},
-
-/**
- * @method reloadAllTextures
- */
-reloadAllTextures : function () {},
-
-/**
- * @method getInstance
- * @return A value converted from C/C++ "cocos2d::TextureCache*"
- */
-getInstance : function () {},
+waitForQuit : function () {},
 
 /**
  * @method TextureCache
