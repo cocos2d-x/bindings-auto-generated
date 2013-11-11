@@ -4511,8 +4511,8 @@ int lua_cocos2dx_Texture2D_initWithMipmaps(lua_State* tolua_S)
         #pragma warning NO CONVERSION TO NATIVE FOR MipmapInfo*;
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
-        ok &= luaval_to_long(tolua_S, 6, &arg4);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithMipmaps(arg0, arg1, arg2, arg3, arg4);
@@ -41250,9 +41250,9 @@ int lua_cocos2dx_AtlasNode_initWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
-        ok &= luaval_to_long(tolua_S, 4, &arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithTexture(arg0, arg1, arg2, arg3);
@@ -41715,9 +41715,9 @@ int lua_cocos2dx_AtlasNode_initWithTileFile(lua_State* tolua_S)
         long arg2;
         long arg3;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
-        ok &= luaval_to_long(tolua_S, 4, &arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithTileFile(arg0, arg1, arg2, arg3);
@@ -41837,9 +41837,9 @@ int lua_cocos2dx_AtlasNode_create(lua_State* tolua_S)
         long arg2;
         long arg3;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
-        ok &= luaval_to_long(tolua_S, 4, &arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cocos2d::AtlasNode* ret = cocos2d::AtlasNode::create(arg0, arg1, arg2, arg3);
@@ -42936,15 +42936,15 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
 
             if (!ok) { ok = true; break; }
             long arg2;
-            ok &= luaval_to_long(tolua_S, 4, &arg2);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             long arg3;
-            ok &= luaval_to_long(tolua_S, 5, &arg3);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             long arg4;
-            ok &= luaval_to_long(tolua_S, 6, &arg4);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
@@ -42972,15 +42972,15 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
 
             if (!ok) { ok = true; break; }
             long arg2;
-            ok &= luaval_to_long(tolua_S, 4, &arg2);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             long arg3;
-            ok &= luaval_to_long(tolua_S, 5, &arg3);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             long arg4;
-            ok &= luaval_to_long(tolua_S, 6, &arg4);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
@@ -43129,13 +43129,13 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             long arg2;
-            ok &= luaval_to_long(tolua_S, 4, &arg2);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
             if (!ok) { ok = true; break; }
             long arg3;
-            ok &= luaval_to_long(tolua_S, 5, &arg3);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
             if (!ok) { ok = true; break; }
             long arg4;
-            ok &= luaval_to_long(tolua_S, 6, &arg4);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
             if (!ok) { ok = true; break; }
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1, arg2, arg3, arg4);
             do {
@@ -51626,7 +51626,7 @@ int lua_cocos2dx_SpriteBatchNode_init(lua_State* tolua_S)
 
             if (!ok) { ok = true; break; }
             long arg1;
-            ok &= luaval_to_long(tolua_S, 3, &arg1);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithFile(arg0, arg1);
@@ -51773,7 +51773,7 @@ int lua_cocos2dx_SpriteBatchNode_initWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithTexture(arg0, arg1);
@@ -52228,7 +52228,7 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
         const char* arg0;
         long arg1;
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0, arg1);
@@ -66259,8 +66259,8 @@ int lua_cocos2dx_MenuItemAtlasFont_initWithString(lua_State* tolua_S)
         cocos2d::ccMenuCallback arg5;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-        ok &= luaval_to_long(tolua_S, 4, &arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         ok &= luaval_to_int32(tolua_S, 6,&arg4);
         do {
 			/*
@@ -66589,7 +66589,7 @@ int lua_cocos2dx_MenuItemFont_setFontSizeObj(lua_State* tolua_S)
     if (argc == 1) 
     {
         long arg0;
-        ok &= luaval_to_long(tolua_S, 2, &arg0);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cobj->setFontSizeObj(arg0);
@@ -66715,7 +66715,7 @@ int lua_cocos2dx_MenuItemFont_setFontSize(lua_State* tolua_S)
     if (argc == 1)
     {
         long arg0;
-        ok &= luaval_to_long(tolua_S, 2, &arg0);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cocos2d::MenuItemFont::setFontSize(arg0);
