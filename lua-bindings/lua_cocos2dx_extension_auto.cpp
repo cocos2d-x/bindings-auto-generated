@@ -16754,16 +16754,14 @@ int lua_cocos2dx_extension_AssetsManager_update(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 0) 
     {
-        double arg0;
-        ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        cobj->update(arg0);
+        cobj->update();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "update",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "update",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:

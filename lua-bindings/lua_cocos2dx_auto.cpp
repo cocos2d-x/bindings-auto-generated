@@ -23145,8 +23145,8 @@ int lua_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget(lua_State* tolu
 			}}} while (0);
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getNumberOfRunningActionsInTarget(arg0);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        long ret = cobj->getNumberOfRunningActionsInTarget(arg0);
+        #pragma warning NO CONVERSION FROM NATIVE FOR long;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNumberOfRunningActionsInTarget",argc, 1);
@@ -41579,8 +41579,8 @@ int lua_cocos2dx_AtlasNode_getQuadsToDraw(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getQuadsToDraw();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        long ret = cobj->getQuadsToDraw();
+        #pragma warning NO CONVERSION FROM NATIVE FOR long;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getQuadsToDraw",argc, 0);
@@ -41800,8 +41800,8 @@ int lua_cocos2dx_AtlasNode_setQuadsToDraw(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        long arg0;
+        ok &= luaval_to_long(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setQuadsToDraw(arg0);

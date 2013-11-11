@@ -2546,7 +2546,7 @@ JSBool js_cocos2dx_Texture2D_getPixelsHigh(JSContext *cx, uint32_t argc, jsval *
 	if (argc == 0) {
 		long ret = cobj->getPixelsHigh();
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR long;
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -2571,8 +2571,8 @@ JSBool js_cocos2dx_Texture2D_initWithMipmaps(JSContext *cx, uint32_t argc, jsval
 		#pragma warning NO CONVERSION TO NATIVE FOR MipmapInfo*;
 		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		ok &= jsval_to_long(cx, argv[3], &arg3);
+		ok &= jsval_to_long(cx, argv[4], &arg4);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Texture2D_initWithMipmaps : Error processing arguments");
 		bool ret = cobj->initWithMipmaps(arg0, arg1, arg2, arg3, arg4);
 		jsval jsret;
@@ -2907,7 +2907,7 @@ JSBool js_cocos2dx_Texture2D_getPixelsWide(JSContext *cx, uint32_t argc, jsval *
 	if (argc == 0) {
 		long ret = cobj->getPixelsWide();
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR long;
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -4083,7 +4083,7 @@ JSBool js_cocos2dx_Node_getChildrenCount(JSContext *cx, uint32_t argc, jsval *vp
 	if (argc == 0) {
 		long ret = cobj->getChildrenCount();
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR long;
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -14410,9 +14410,9 @@ JSBool js_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget(JSContext *cx
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget : Error processing arguments");
-		unsigned int ret = cobj->getNumberOfRunningActionsInTarget(arg0);
+		long ret = cobj->getNumberOfRunningActionsInTarget(arg0);
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -27876,9 +27876,9 @@ JSBool js_cocos2dx_AtlasNode_initWithTexture(JSContext *cx, uint32_t argc, jsval
 			arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		ok &= jsval_to_long(cx, argv[1], &arg1);
+		ok &= jsval_to_long(cx, argv[2], &arg2);
+		ok &= jsval_to_long(cx, argv[3], &arg3);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AtlasNode_initWithTexture : Error processing arguments");
 		bool ret = cobj->initWithTexture(arg0, arg1, arg2, arg3);
 		jsval jsret;
@@ -28032,9 +28032,9 @@ JSBool js_cocos2dx_AtlasNode_getQuadsToDraw(JSContext *cx, uint32_t argc, jsval 
 	cocos2d::AtlasNode* cobj = (cocos2d::AtlasNode *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AtlasNode_getQuadsToDraw : Invalid Native Object");
 	if (argc == 0) {
-		unsigned int ret = cobj->getQuadsToDraw();
+		long ret = cobj->getQuadsToDraw();
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -28100,9 +28100,9 @@ JSBool js_cocos2dx_AtlasNode_initWithTileFile(JSContext *cx, uint32_t argc, jsva
 		long arg2;
 		long arg3;
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		ok &= jsval_to_long(cx, argv[1], &arg1);
+		ok &= jsval_to_long(cx, argv[2], &arg2);
+		ok &= jsval_to_long(cx, argv[3], &arg3);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AtlasNode_initWithTileFile : Error processing arguments");
 		bool ret = cobj->initWithTileFile(arg0, arg1, arg2, arg3);
 		jsval jsret;
@@ -28140,8 +28140,8 @@ JSBool js_cocos2dx_AtlasNode_setQuadsToDraw(JSContext *cx, uint32_t argc, jsval 
 	cocos2d::AtlasNode* cobj = (cocos2d::AtlasNode *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AtlasNode_setQuadsToDraw : Invalid Native Object");
 	if (argc == 1) {
-		unsigned int arg0;
-		ok &= jsval_to_uint32(cx, argv[0], &arg0);
+		long arg0;
+		ok &= jsval_to_long(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AtlasNode_setQuadsToDraw : Error processing arguments");
 		cobj->setQuadsToDraw(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -28161,9 +28161,9 @@ JSBool js_cocos2dx_AtlasNode_create(JSContext *cx, uint32_t argc, jsval *vp)
 		long arg2;
 		long arg3;
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		ok &= jsval_to_long(cx, argv[1], &arg1);
+		ok &= jsval_to_long(cx, argv[2], &arg2);
+		ok &= jsval_to_long(cx, argv[3], &arg3);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AtlasNode_create : Error processing arguments");
 		cocos2d::AtlasNode* ret = cocos2d::AtlasNode::create(arg0, arg1, arg2, arg3);
 		jsval jsret;
@@ -28936,13 +28936,13 @@ JSBool js_cocos2dx_LabelAtlas_initWithString(JSContext *cx, uint32_t argc, jsval
 			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg2;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[2], &arg2);
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg3;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[3], &arg3);
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg4;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[4], &arg4);
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
 			jsval jsret;
@@ -28968,13 +28968,13 @@ JSBool js_cocos2dx_LabelAtlas_initWithString(JSContext *cx, uint32_t argc, jsval
 			} while (0);
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg2;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[2], &arg2);
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg3;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[3], &arg3);
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg4;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[4], &arg4);
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
 			jsval jsret;
@@ -29056,13 +29056,13 @@ JSBool js_cocos2dx_LabelAtlas_create(JSContext *cx, uint32_t argc, jsval *vp)
 			ok &= jsval_to_std_string(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg2;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[2], &arg2);
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg3;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[3], &arg3);
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg4;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[4], &arg4);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1, arg2, arg3, arg4);
 			jsval jsret;
@@ -34041,7 +34041,7 @@ JSBool js_cocos2dx_SpriteBatchNode_init(JSContext *cx, uint32_t argc, jsval *vp)
 			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 			if (!ok) { ok = JS_TRUE; break; }
 			long arg1;
-			#pragma warning NO CONVERSION TO NATIVE FOR long;
+			ok &= jsval_to_long(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithFile(arg0, arg1);
 			jsval jsret;
@@ -34117,7 +34117,7 @@ JSBool js_cocos2dx_SpriteBatchNode_initWithTexture(JSContext *cx, uint32_t argc,
 			arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		ok &= jsval_to_long(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_initWithTexture : Error processing arguments");
 		bool ret = cobj->initWithTexture(arg0, arg1);
 		jsval jsret;
@@ -34338,7 +34338,7 @@ JSBool js_cocos2dx_SpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *v
 		const char* arg0;
 		long arg1;
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		ok &= jsval_to_long(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_create : Error processing arguments");
 		cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0, arg1);
 		jsval jsret;
@@ -45171,8 +45171,8 @@ JSBool js_cocos2dx_MenuItemAtlasFont_initWithString(JSContext *cx, uint32_t argc
 		cocos2d::ccMenuCallback arg5;
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		ok &= jsval_to_std_string(cx, argv[1], &arg1);
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		ok &= jsval_to_long(cx, argv[2], &arg2);
+		ok &= jsval_to_long(cx, argv[3], &arg3);
 		ok &= jsval_to_int32(cx, argv[4], &arg4);
 		do {
 			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[5]));
@@ -45335,7 +45335,7 @@ JSBool js_cocos2dx_MenuItemFont_getFontSizeObj(JSContext *cx, uint32_t argc, jsv
 	if (argc == 0) {
 		long ret = cobj->getFontSizeObj();
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR long;
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -45397,7 +45397,7 @@ JSBool js_cocos2dx_MenuItemFont_setFontSizeObj(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_setFontSizeObj : Invalid Native Object");
 	if (argc == 1) {
 		long arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		ok &= jsval_to_long(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_setFontSizeObj : Error processing arguments");
 		cobj->setFontSizeObj(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -45445,7 +45445,7 @@ JSBool js_cocos2dx_MenuItemFont_getFontSize(JSContext *cx, uint32_t argc, jsval 
 	if (argc == 0) {
 		long ret = cocos2d::MenuItemFont::getFontSize();
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR long;
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -45472,7 +45472,7 @@ JSBool js_cocos2dx_MenuItemFont_setFontSize(JSContext *cx, uint32_t argc, jsval 
 	JSBool ok = JS_TRUE;
 	if (argc == 1) {
 		long arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR long;
+		ok &= jsval_to_long(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_MenuItemFont_setFontSize : Error processing arguments");
 		cocos2d::MenuItemFont::setFontSize(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
