@@ -225,10 +225,10 @@ int lua_cocos2dx_studio_BaseData_create(lua_State* tolua_S)
         cocostudio::BaseData* ret = cocostudio::BaseData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BaseData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"BaseData");
@@ -306,7 +306,7 @@ int lua_register_cocos2dx_studio_BaseData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_BaseData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_BaseData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::BaseData).hash_code();
+    long typeId = typeid(cocostudio::BaseData).hash_code();
     g_luaType[typeId] = "BaseData";
     return 1;
 }
@@ -366,10 +366,10 @@ int lua_cocos2dx_studio_DisplayData_create(lua_State* tolua_S)
         cocostudio::DisplayData* ret = cocostudio::DisplayData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"DisplayData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"DisplayData");
@@ -443,7 +443,7 @@ int lua_register_cocos2dx_studio_DisplayData(lua_State* tolua_S)
         tolua_function(tolua_S,"changeDisplayToTexture", lua_cocos2dx_studio_DisplayData_changeDisplayToTexture);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_DisplayData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::DisplayData).hash_code();
+    long typeId = typeid(cocostudio::DisplayData).hash_code();
     g_luaType[typeId] = "DisplayData";
     return 1;
 }
@@ -563,10 +563,10 @@ int lua_cocos2dx_studio_SpriteDisplayData_create(lua_State* tolua_S)
         cocostudio::SpriteDisplayData* ret = cocostudio::SpriteDisplayData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"SpriteDisplayData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"SpriteDisplayData");
@@ -642,7 +642,7 @@ int lua_register_cocos2dx_studio_SpriteDisplayData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_SpriteDisplayData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_SpriteDisplayData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::SpriteDisplayData).hash_code();
+    long typeId = typeid(cocostudio::SpriteDisplayData).hash_code();
     g_luaType[typeId] = "SpriteDisplayData";
     return 1;
 }
@@ -762,10 +762,10 @@ int lua_cocos2dx_studio_ArmatureDisplayData_create(lua_State* tolua_S)
         cocostudio::ArmatureDisplayData* ret = cocostudio::ArmatureDisplayData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureDisplayData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureDisplayData");
@@ -841,7 +841,7 @@ int lua_register_cocos2dx_studio_ArmatureDisplayData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_ArmatureDisplayData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ArmatureDisplayData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::ArmatureDisplayData).hash_code();
+    long typeId = typeid(cocostudio::ArmatureDisplayData).hash_code();
     g_luaType[typeId] = "ArmatureDisplayData";
     return 1;
 }
@@ -961,10 +961,10 @@ int lua_cocos2dx_studio_ParticleDisplayData_create(lua_State* tolua_S)
         cocostudio::ParticleDisplayData* ret = cocostudio::ParticleDisplayData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ParticleDisplayData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ParticleDisplayData");
@@ -1040,7 +1040,7 @@ int lua_register_cocos2dx_studio_ParticleDisplayData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_ParticleDisplayData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ParticleDisplayData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::ParticleDisplayData).hash_code();
+    long typeId = typeid(cocostudio::ParticleDisplayData).hash_code();
     g_luaType[typeId] = "ParticleDisplayData";
     return 1;
 }
@@ -1079,10 +1079,10 @@ int lua_cocos2dx_studio_BoneData_getDisplayData(lua_State* tolua_S)
         cocostudio::DisplayData* ret = cobj->getDisplayData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"DisplayData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"DisplayData");
@@ -1214,10 +1214,10 @@ int lua_cocos2dx_studio_BoneData_create(lua_State* tolua_S)
         cocostudio::BoneData* ret = cocostudio::BoneData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BoneData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"BoneData");
@@ -1294,7 +1294,7 @@ int lua_register_cocos2dx_studio_BoneData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_BoneData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_BoneData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::BoneData).hash_code();
+    long typeId = typeid(cocostudio::BoneData).hash_code();
     g_luaType[typeId] = "BoneData";
     return 1;
 }
@@ -1425,10 +1425,10 @@ int lua_cocos2dx_studio_ArmatureData_getBoneData(lua_State* tolua_S)
         cocostudio::BoneData* ret = cobj->getBoneData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BoneData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"BoneData");
@@ -1468,10 +1468,10 @@ int lua_cocos2dx_studio_ArmatureData_create(lua_State* tolua_S)
         cocostudio::ArmatureData* ret = cocostudio::ArmatureData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureData");
@@ -1548,7 +1548,7 @@ int lua_register_cocos2dx_studio_ArmatureData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_ArmatureData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ArmatureData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::ArmatureData).hash_code();
+    long typeId = typeid(cocostudio::ArmatureData).hash_code();
     g_luaType[typeId] = "ArmatureData";
     return 1;
 }
@@ -1626,10 +1626,10 @@ int lua_cocos2dx_studio_FrameData_create(lua_State* tolua_S)
         cocostudio::FrameData* ret = cocostudio::FrameData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"FrameData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"FrameData");
@@ -1704,7 +1704,7 @@ int lua_register_cocos2dx_studio_FrameData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_FrameData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_FrameData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::FrameData).hash_code();
+    long typeId = typeid(cocostudio::FrameData).hash_code();
     g_luaType[typeId] = "FrameData";
     return 1;
 }
@@ -1784,10 +1784,10 @@ int lua_cocos2dx_studio_MovementBoneData_getFrameData(lua_State* tolua_S)
         cocostudio::FrameData* ret = cobj->getFrameData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"FrameData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"FrameData");
@@ -1878,10 +1878,10 @@ int lua_cocos2dx_studio_MovementBoneData_create(lua_State* tolua_S)
         cocostudio::MovementBoneData* ret = cocostudio::MovementBoneData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"MovementBoneData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"MovementBoneData");
@@ -1958,7 +1958,7 @@ int lua_register_cocos2dx_studio_MovementBoneData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_MovementBoneData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_MovementBoneData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::MovementBoneData).hash_code();
+    long typeId = typeid(cocostudio::MovementBoneData).hash_code();
     g_luaType[typeId] = "MovementBoneData";
     return 1;
 }
@@ -1997,10 +1997,10 @@ int lua_cocos2dx_studio_MovementData_getMovementBoneData(lua_State* tolua_S)
         cocostudio::MovementBoneData* ret = cobj->getMovementBoneData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"MovementBoneData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"MovementBoneData");
@@ -2091,10 +2091,10 @@ int lua_cocos2dx_studio_MovementData_create(lua_State* tolua_S)
         cocostudio::MovementData* ret = cocostudio::MovementData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"MovementData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"MovementData");
@@ -2170,7 +2170,7 @@ int lua_register_cocos2dx_studio_MovementData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_MovementData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_MovementData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::MovementData).hash_code();
+    long typeId = typeid(cocostudio::MovementData).hash_code();
     g_luaType[typeId] = "MovementData";
     return 1;
 }
@@ -2209,10 +2209,10 @@ int lua_cocos2dx_studio_AnimationData_getMovement(lua_State* tolua_S)
         cocostudio::MovementData* ret = cobj->getMovement(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"MovementData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"MovementData");
@@ -2344,10 +2344,10 @@ int lua_cocos2dx_studio_AnimationData_create(lua_State* tolua_S)
         cocostudio::AnimationData* ret = cocostudio::AnimationData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"AnimationData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"AnimationData");
@@ -2424,7 +2424,7 @@ int lua_register_cocos2dx_studio_AnimationData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_AnimationData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_AnimationData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::AnimationData).hash_code();
+    long typeId = typeid(cocostudio::AnimationData).hash_code();
     g_luaType[typeId] = "AnimationData";
     return 1;
 }
@@ -2543,10 +2543,10 @@ int lua_cocos2dx_studio_ContourData_create(lua_State* tolua_S)
         cocostudio::ContourData* ret = cocostudio::ContourData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ContourData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ContourData");
@@ -2622,7 +2622,7 @@ int lua_register_cocos2dx_studio_ContourData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_ContourData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ContourData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::ContourData).hash_code();
+    long typeId = typeid(cocostudio::ContourData).hash_code();
     g_luaType[typeId] = "ContourData";
     return 1;
 }
@@ -2661,10 +2661,10 @@ int lua_cocos2dx_studio_TextureData_getContourData(lua_State* tolua_S)
         cocostudio::ContourData* ret = cobj->getContourData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ContourData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ContourData");
@@ -2796,10 +2796,10 @@ int lua_cocos2dx_studio_TextureData_create(lua_State* tolua_S)
         cocostudio::TextureData* ret = cocostudio::TextureData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"TextureData");
@@ -2876,7 +2876,7 @@ int lua_register_cocos2dx_studio_TextureData(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_TextureData_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_TextureData_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::TextureData).hash_code();
+    long typeId = typeid(cocostudio::TextureData).hash_code();
     g_luaType[typeId] = "TextureData";
     return 1;
 }
@@ -3077,10 +3077,10 @@ int lua_cocos2dx_studio_Bone_getDisplayRenderNode(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getDisplayRenderNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
@@ -3181,10 +3181,10 @@ int lua_cocos2dx_studio_Bone_getWorldInfo(lua_State* tolua_S)
         cocostudio::BaseData* ret = cobj->getWorldInfo();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BaseData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"BaseData");
@@ -3234,10 +3234,10 @@ int lua_cocos2dx_studio_Bone_getTween(lua_State* tolua_S)
         cocostudio::Tween* ret = cobj->getTween();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Tween");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Tween");
@@ -3287,10 +3287,10 @@ int lua_cocos2dx_studio_Bone_getParentBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getParentBone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
@@ -3768,10 +3768,10 @@ int lua_cocos2dx_studio_Bone_getColliderFilter(lua_State* tolua_S)
         cocostudio::ColliderFilter* ret = cobj->getColliderFilter();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ColliderFilter");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ColliderFilter");
@@ -3905,10 +3905,10 @@ int lua_cocos2dx_studio_Bone_getChildArmature(lua_State* tolua_S)
         cocostudio::Armature* ret = cobj->getChildArmature();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
@@ -4000,10 +4000,10 @@ int lua_cocos2dx_studio_Bone_getTweenData(lua_State* tolua_S)
         cocostudio::FrameData* ret = cobj->getTweenData();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"FrameData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"FrameData");
@@ -4549,10 +4549,10 @@ int lua_cocos2dx_studio_Bone_getDisplayManager(lua_State* tolua_S)
         cocostudio::DisplayManager* ret = cobj->getDisplayManager();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"DisplayManager");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"DisplayManager");
@@ -4602,10 +4602,10 @@ int lua_cocos2dx_studio_Bone_getArmature(lua_State* tolua_S)
         cocostudio::Armature* ret = cobj->getArmature();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
@@ -4783,10 +4783,10 @@ int lua_cocos2dx_studio_Bone_getBoneData(lua_State* tolua_S)
         cocostudio::BoneData* ret = cobj->getBoneData();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BoneData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"BoneData");
@@ -4828,10 +4828,10 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
             cocostudio::Bone* ret = cocostudio::Bone::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
@@ -4849,10 +4849,10 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
             cocostudio::Bone* ret = cocostudio::Bone::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
@@ -4968,7 +4968,7 @@ int lua_register_cocos2dx_studio_Bone(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_Bone_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_Bone_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::Bone).hash_code();
+    long typeId = typeid(cocostudio::Bone).hash_code();
     g_luaType[typeId] = "Bone";
     return 1;
 }
@@ -5149,6 +5149,72 @@ int lua_cocos2dx_studio_ArmatureAnimation_pause(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_pause'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_studio_ArmatureAnimation_getUserObject(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocostudio::ArmatureAnimation* cobj = NULL;
+    bool ok  = true;
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+#endif
+    cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
+#if COCOS2D_DEBUG >= 1
+    if (!cobj)
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ArmatureAnimation_getUserObject'", NULL);
+        return 0;
+    }
+#endif
+    argc = lua_gettop(tolua_S)-1;
+    do{
+        if (argc == 0) {
+            cocos2d::Object* ret = cobj->getUserObject();
+            do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+            return 1;
+        }
+    }while(0);
+    do{
+        if (argc == 0) {
+            cocos2d::Object* ret = cobj->getUserObject();
+            do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+            return 1;
+        }
+    }while(0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getUserObject",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_getUserObject'.",&tolua_err);
 #endif
     return 0;
 }
@@ -5483,10 +5549,10 @@ int lua_cocos2dx_studio_ArmatureAnimation_getAnimationData(lua_State* tolua_S)
         cocostudio::AnimationData* ret = cobj->getAnimationData();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"AnimationData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"AnimationData");
@@ -5737,6 +5803,57 @@ int lua_cocos2dx_studio_ArmatureAnimation_getMovementCount(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_studio_ArmatureAnimation_setUserObject(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocostudio::ArmatureAnimation* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ArmatureAnimation_setUserObject'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::Object* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cobj->setUserObject(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setUserObject",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_setUserObject'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID(lua_State* tolua_S)
 {
     int argc = 0;
@@ -5811,10 +5928,10 @@ int lua_cocos2dx_studio_ArmatureAnimation_create(lua_State* tolua_S)
         cocostudio::ArmatureAnimation* ret = cocostudio::ArmatureAnimation::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureAnimation");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureAnimation");
@@ -5888,6 +6005,7 @@ int lua_register_cocos2dx_studio_ArmatureAnimation(lua_State* tolua_S)
         tolua_function(tolua_S,"getSpeedScale",lua_cocos2dx_studio_ArmatureAnimation_getSpeedScale);
         tolua_function(tolua_S,"play",lua_cocos2dx_studio_ArmatureAnimation_play);
         tolua_function(tolua_S,"pause",lua_cocos2dx_studio_ArmatureAnimation_pause);
+        tolua_function(tolua_S,"getUserObject",lua_cocos2dx_studio_ArmatureAnimation_getUserObject);
         tolua_function(tolua_S,"setAnimationInternal",lua_cocos2dx_studio_ArmatureAnimation_setAnimationInternal);
         tolua_function(tolua_S,"gotoAndPause",lua_cocos2dx_studio_ArmatureAnimation_gotoAndPause);
         tolua_function(tolua_S,"resume",lua_cocos2dx_studio_ArmatureAnimation_resume);
@@ -5900,11 +6018,12 @@ int lua_register_cocos2dx_studio_ArmatureAnimation(lua_State* tolua_S)
         tolua_function(tolua_S,"gotoAndPlay",lua_cocos2dx_studio_ArmatureAnimation_gotoAndPlay);
         tolua_function(tolua_S,"init",lua_cocos2dx_studio_ArmatureAnimation_init);
         tolua_function(tolua_S,"getMovementCount",lua_cocos2dx_studio_ArmatureAnimation_getMovementCount);
+        tolua_function(tolua_S,"setUserObject",lua_cocos2dx_studio_ArmatureAnimation_setUserObject);
         tolua_function(tolua_S,"getCurrentMovementID",lua_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID);
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_ArmatureAnimation_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ArmatureAnimation_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::ArmatureAnimation).hash_code();
+    long typeId = typeid(cocostudio::ArmatureAnimation).hash_code();
     g_luaType[typeId] = "ArmatureAnimation";
     return 1;
 }
@@ -6240,10 +6359,10 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureData(lua_State* tolua_S)
         cocostudio::TextureData* ret = cobj->getTextureData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"TextureData");
@@ -6295,10 +6414,10 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureData(lua_State* tolua_S)
         cocostudio::ArmatureData* ret = cobj->getArmatureData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureData");
@@ -6350,10 +6469,10 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationData(lua_State* tolua_S)
         cocostudio::AnimationData* ret = cobj->getAnimationData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"AnimationData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"AnimationData");
@@ -6837,10 +6956,10 @@ int lua_cocos2dx_studio_ArmatureDataManager_getInstance(lua_State* tolua_S)
         cocostudio::ArmatureDataManager* ret = cocostudio::ArmatureDataManager::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureDataManager");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureDataManager");
@@ -6890,7 +7009,7 @@ int lua_register_cocos2dx_studio_ArmatureDataManager(lua_State* tolua_S)
         tolua_function(tolua_S,"destoryInstance", lua_cocos2dx_studio_ArmatureDataManager_destoryInstance);
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_studio_ArmatureDataManager_getInstance);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::ArmatureDataManager).hash_code();
+    long typeId = typeid(cocostudio::ArmatureDataManager).hash_code();
     g_luaType[typeId] = "ArmatureDataManager";
     return 1;
 }
@@ -6929,10 +7048,10 @@ int lua_cocos2dx_studio_Armature_getBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getBone(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
@@ -7046,10 +7165,10 @@ int lua_cocos2dx_studio_Armature_getTexureAtlasWithTexture(lua_State* tolua_S)
         cocos2d::TextureAtlas* ret = cobj->getTexureAtlasWithTexture(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureAtlas");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"TextureAtlas");
@@ -7196,10 +7315,10 @@ int lua_cocos2dx_studio_Armature_getBoneAtPoint(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getBoneAtPoint(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
@@ -7518,10 +7637,10 @@ int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
         cocostudio::BatchNode* ret = cobj->getBatchNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BatchNode");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"BatchNode");
@@ -8103,10 +8222,10 @@ int lua_cocos2dx_studio_Armature_getArmatureData(lua_State* tolua_S)
         cocostudio::ArmatureData* ret = cobj->getArmatureData();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureData");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureData");
@@ -8156,10 +8275,10 @@ int lua_cocos2dx_studio_Armature_getParentBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getParentBone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
@@ -8250,10 +8369,10 @@ int lua_cocos2dx_studio_Armature_getAnimation(lua_State* tolua_S)
         cocostudio::ArmatureAnimation* ret = cobj->getAnimation();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureAnimation");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureAnimation");
@@ -8344,10 +8463,10 @@ int lua_cocos2dx_studio_Armature_getTextureAtlas(lua_State* tolua_S)
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureAtlas");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"TextureAtlas");
@@ -8389,10 +8508,10 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             cocostudio::Armature* ret = cocostudio::Armature::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
@@ -8410,10 +8529,10 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             cocostudio::Armature* ret = cocostudio::Armature::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
@@ -8446,10 +8565,10 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             cocostudio::Armature* ret = cocostudio::Armature::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
@@ -8554,7 +8673,7 @@ int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_Armature_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_Armature_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::Armature).hash_code();
+    long typeId = typeid(cocostudio::Armature).hash_code();
     g_luaType[typeId] = "Armature";
     return 1;
 }
@@ -8591,10 +8710,10 @@ int lua_cocos2dx_studio_Skin_getBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getBone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
@@ -8976,10 +9095,10 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
             cocostudio::Skin* ret = cocostudio::Skin::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Skin");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Skin");
@@ -8997,10 +9116,10 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
             cocostudio::Skin* ret = cocostudio::Skin::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Skin");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Skin");
@@ -9043,10 +9162,10 @@ int lua_cocos2dx_studio_Skin_createWithSpriteFrameName(lua_State* tolua_S)
         cocostudio::Skin* ret = cocostudio::Skin::createWithSpriteFrameName(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Skin");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Skin");
@@ -9130,7 +9249,7 @@ int lua_register_cocos2dx_studio_Skin(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_Skin_create);
         tolua_function(tolua_S,"createWithSpriteFrameName", lua_cocos2dx_studio_Skin_createWithSpriteFrameName);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocostudio::Skin).hash_code();
+    long typeId = typeid(cocostudio::Skin).hash_code();
     g_luaType[typeId] = "Skin";
     return 1;
 }
