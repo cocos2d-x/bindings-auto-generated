@@ -10,11 +10,14 @@ static JSBool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	if (_ccobj) {
 		_ccobj->autorelease();
 	}
-	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	assert(p);
-	JSObject *_tmp = JS_NewObject(cx, p->jsclass, p->proto, p->parentProto);
+	js_type_class_t *typeClass = nullptr;
+	long typeId = t.s_id();
+	auto typeMapIter = _js_global_type_map.find(typeId);
+	CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+	typeClass = typeMapIter->second;
+	CCASSERT(typeClass, "The value is null.");
+
+	JSObject *_tmp = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 	js_proxy_t *pp = jsb_new_proxy(cobj, _tmp);
 	JS_AddObjectRoot(cx, &pp->obj);
 	JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(_tmp));
@@ -912,10 +915,12 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_constructor(JSContext *cx, uint32
 			_ccobj->autorelease();
 		}
 		TypeTest<cocosbuilder::CCBAnimationManager> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -1025,15 +1030,14 @@ void js_register_cocos2dx_builder_CCBAnimationManager(JSContext *cx, JSObject *g
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocosbuilder::CCBAnimationManager> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_CCBAnimationManager_class;
 		p->proto = jsb_CCBAnimationManager_prototype;
 		p->parentProto = NULL;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -1451,10 +1455,12 @@ JSBool js_cocos2dx_builder_CCBReader_constructor(JSContext *cx, uint32_t argc, j
 				_ccobj->autorelease();
 			}
 			TypeTest<cocosbuilder::CCBReader> t;
-			js_type_class_t *typeClass;
-			uint32_t typeId = t.s_id();
-			HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-			assert(typeClass);
+			js_type_class_t *typeClass = nullptr;
+			long typeId = t.s_id();
+			auto typeMapIter = _js_global_type_map.find(typeId);
+			CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+			typeClass = typeMapIter->second;
+			CCASSERT(typeClass, "The value is null.");
 			obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 			js_proxy_t* proxy = jsb_new_proxy(cobj, obj);
 			JS_AddNamedObjectRoot(cx, &proxy->obj, "cocosbuilder::CCBReader");
@@ -1479,10 +1485,12 @@ JSBool js_cocos2dx_builder_CCBReader_constructor(JSContext *cx, uint32_t argc, j
 				_ccobj->autorelease();
 			}
 			TypeTest<cocosbuilder::CCBReader> t;
-			js_type_class_t *typeClass;
-			uint32_t typeId = t.s_id();
-			HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-			assert(typeClass);
+			js_type_class_t *typeClass = nullptr;
+			long typeId = t.s_id();
+			auto typeMapIter = _js_global_type_map.find(typeId);
+			CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+			typeClass = typeMapIter->second;
+			CCASSERT(typeClass, "The value is null.");
 			obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 			js_proxy_t* proxy = jsb_new_proxy(cobj, obj);
 			JS_AddNamedObjectRoot(cx, &proxy->obj, "cocosbuilder::CCBReader");
@@ -1517,10 +1525,12 @@ JSBool js_cocos2dx_builder_CCBReader_constructor(JSContext *cx, uint32_t argc, j
 				_ccobj->autorelease();
 			}
 			TypeTest<cocosbuilder::CCBReader> t;
-			js_type_class_t *typeClass;
-			uint32_t typeId = t.s_id();
-			HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-			assert(typeClass);
+			js_type_class_t *typeClass = nullptr;
+			long typeId = t.s_id();
+			auto typeMapIter = _js_global_type_map.find(typeId);
+			CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+			typeClass = typeMapIter->second;
+			CCASSERT(typeClass, "The value is null.");
 			obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 			js_proxy_t* proxy = jsb_new_proxy(cobj, obj);
 			JS_AddNamedObjectRoot(cx, &proxy->obj, "cocosbuilder::CCBReader");
@@ -1565,10 +1575,12 @@ JSBool js_cocos2dx_builder_CCBReader_constructor(JSContext *cx, uint32_t argc, j
 				_ccobj->autorelease();
 			}
 			TypeTest<cocosbuilder::CCBReader> t;
-			js_type_class_t *typeClass;
-			uint32_t typeId = t.s_id();
-			HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-			assert(typeClass);
+			js_type_class_t *typeClass = nullptr;
+			long typeId = t.s_id();
+			auto typeMapIter = _js_global_type_map.find(typeId);
+			CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+			typeClass = typeMapIter->second;
+			CCASSERT(typeClass, "The value is null.");
 			obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 			js_proxy_t* proxy = jsb_new_proxy(cobj, obj);
 			JS_AddNamedObjectRoot(cx, &proxy->obj, "cocosbuilder::CCBReader");
@@ -1623,10 +1635,12 @@ JSBool js_cocos2dx_builder_CCBReader_constructor(JSContext *cx, uint32_t argc, j
 				_ccobj->autorelease();
 			}
 			TypeTest<cocosbuilder::CCBReader> t;
-			js_type_class_t *typeClass;
-			uint32_t typeId = t.s_id();
-			HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-			assert(typeClass);
+			js_type_class_t *typeClass = nullptr;
+			long typeId = t.s_id();
+			auto typeMapIter = _js_global_type_map.find(typeId);
+			CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+			typeClass = typeMapIter->second;
+			CCASSERT(typeClass, "The value is null.");
 			obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 			js_proxy_t* proxy = jsb_new_proxy(cobj, obj);
 			JS_AddNamedObjectRoot(cx, &proxy->obj, "cocosbuilder::CCBReader");
@@ -1641,10 +1655,12 @@ JSBool js_cocos2dx_builder_CCBReader_constructor(JSContext *cx, uint32_t argc, j
 				_ccobj->autorelease();
 			}
 			TypeTest<cocosbuilder::CCBReader> t;
-			js_type_class_t *typeClass;
-			uint32_t typeId = t.s_id();
-			HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-			assert(typeClass);
+			js_type_class_t *typeClass = nullptr;
+			long typeId = t.s_id();
+			auto typeMapIter = _js_global_type_map.find(typeId);
+			CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+			typeClass = typeMapIter->second;
+			CCASSERT(typeClass, "The value is null.");
 			obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 			js_proxy_t* proxy = jsb_new_proxy(cobj, obj);
 			JS_AddNamedObjectRoot(cx, &proxy->obj, "cocosbuilder::CCBReader");
@@ -1738,15 +1754,14 @@ void js_register_cocos2dx_builder_CCBReader(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocosbuilder::CCBReader> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_CCBReader_class;
 		p->proto = jsb_CCBReader_prototype;
 		p->parentProto = NULL;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 

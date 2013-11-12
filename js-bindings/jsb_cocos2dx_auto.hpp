@@ -1745,6 +1745,7 @@ JSBool js_cocos2dx_Director_popToRootScene(JSContext *cx, uint32_t argc, jsval *
 JSBool js_cocos2dx_Director_getNotificationNode(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_getWinSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_end(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Director_getTextureCache(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_isSendCleanupToScene(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_getVisibleOrigin(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_mainLoop(JSContext *cx, uint32_t argc, jsval *vp);
@@ -3258,9 +3259,7 @@ JSBool js_cocos2dx_TextureCache_addImage(JSContext *cx, uint32_t argc, jsval *vp
 JSBool js_cocos2dx_TextureCache_getTextureForKey(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TextureCache_removeUnusedTextures(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TextureCache_removeTexture(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_TextureCache_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_TextureCache_reloadAllTextures(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_TextureCache_getInstance(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_TextureCache_waitForQuit(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TextureCache_TextureCache(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_ParallaxNode_class;

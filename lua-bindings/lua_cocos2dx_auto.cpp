@@ -4511,8 +4511,8 @@ int lua_cocos2dx_Texture2D_initWithMipmaps(lua_State* tolua_S)
         #pragma warning NO CONVERSION TO NATIVE FOR MipmapInfo*;
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
-        ok &= luaval_to_long(tolua_S, 6, &arg4);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithMipmaps(arg0, arg1, arg2, arg3, arg4);
@@ -41250,9 +41250,9 @@ int lua_cocos2dx_AtlasNode_initWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
-        ok &= luaval_to_long(tolua_S, 4, &arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithTexture(arg0, arg1, arg2, arg3);
@@ -41715,9 +41715,9 @@ int lua_cocos2dx_AtlasNode_initWithTileFile(lua_State* tolua_S)
         long arg2;
         long arg3;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
-        ok &= luaval_to_long(tolua_S, 4, &arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithTileFile(arg0, arg1, arg2, arg3);
@@ -41837,9 +41837,9 @@ int lua_cocos2dx_AtlasNode_create(lua_State* tolua_S)
         long arg2;
         long arg3;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
-        ok &= luaval_to_long(tolua_S, 4, &arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cocos2d::AtlasNode* ret = cocos2d::AtlasNode::create(arg0, arg1, arg2, arg3);
@@ -42936,15 +42936,15 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
 
             if (!ok) { ok = true; break; }
             long arg2;
-            ok &= luaval_to_long(tolua_S, 4, &arg2);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             long arg3;
-            ok &= luaval_to_long(tolua_S, 5, &arg3);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             long arg4;
-            ok &= luaval_to_long(tolua_S, 6, &arg4);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
@@ -42972,15 +42972,15 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
 
             if (!ok) { ok = true; break; }
             long arg2;
-            ok &= luaval_to_long(tolua_S, 4, &arg2);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             long arg3;
-            ok &= luaval_to_long(tolua_S, 5, &arg3);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             long arg4;
-            ok &= luaval_to_long(tolua_S, 6, &arg4);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
@@ -43129,13 +43129,13 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { ok = true; break; }
             long arg2;
-            ok &= luaval_to_long(tolua_S, 4, &arg2);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
             if (!ok) { ok = true; break; }
             long arg3;
-            ok &= luaval_to_long(tolua_S, 5, &arg3);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
             if (!ok) { ok = true; break; }
             long arg4;
-            ok &= luaval_to_long(tolua_S, 6, &arg4);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
             if (!ok) { ok = true; break; }
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1, arg2, arg3, arg4);
             do {
@@ -43747,6 +43747,59 @@ int lua_cocos2dx_Director_getWinSize(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Director_getWinSize'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_Director_getTextureCache(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Director* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Director",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getTextureCache'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cocos2d::TextureCache* ret = cobj->getTextureCache();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != cobj) {
+					int ID = ret ? (int)(cobj->_ID) : -1;
+					int* luaID = ret ? &(cobj->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureCache");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"TextureCache");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureCache",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Director_getTextureCache'.",&tolua_err);
 #endif
     return 0;
 }
@@ -45461,6 +45514,7 @@ int lua_register_cocos2dx_Director(lua_State* tolua_S)
         tolua_function(tolua_S,"popToRootScene",lua_cocos2dx_Director_popToRootScene);
         tolua_function(tolua_S,"getNotificationNode",lua_cocos2dx_Director_getNotificationNode);
         tolua_function(tolua_S,"getWinSize",lua_cocos2dx_Director_getWinSize);
+        tolua_function(tolua_S,"getTextureCache",lua_cocos2dx_Director_getTextureCache);
         tolua_function(tolua_S,"isSendCleanupToScene",lua_cocos2dx_Director_isSendCleanupToScene);
         tolua_function(tolua_S,"getVisibleOrigin",lua_cocos2dx_Director_getVisibleOrigin);
         tolua_function(tolua_S,"mainLoop",lua_cocos2dx_Director_mainLoop);
@@ -51626,7 +51680,7 @@ int lua_cocos2dx_SpriteBatchNode_init(lua_State* tolua_S)
 
             if (!ok) { ok = true; break; }
             long arg1;
-            ok &= luaval_to_long(tolua_S, 3, &arg1);
+            #pragma warning NO CONVERSION TO NATIVE FOR long;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithFile(arg0, arg1);
@@ -51773,7 +51827,7 @@ int lua_cocos2dx_SpriteBatchNode_initWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         bool ret = cobj->initWithTexture(arg0, arg1);
@@ -52228,7 +52282,7 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
         const char* arg0;
         long arg1;
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        ok &= luaval_to_long(tolua_S, 3, &arg1);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0, arg1);
@@ -66259,8 +66313,8 @@ int lua_cocos2dx_MenuItemAtlasFont_initWithString(lua_State* tolua_S)
         cocos2d::ccMenuCallback arg5;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-        ok &= luaval_to_long(tolua_S, 4, &arg2);
-        ok &= luaval_to_long(tolua_S, 5, &arg3);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         ok &= luaval_to_int32(tolua_S, 6,&arg4);
         do {
 			/*
@@ -66589,7 +66643,7 @@ int lua_cocos2dx_MenuItemFont_setFontSizeObj(lua_State* tolua_S)
     if (argc == 1) 
     {
         long arg0;
-        ok &= luaval_to_long(tolua_S, 2, &arg0);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cobj->setFontSizeObj(arg0);
@@ -66715,7 +66769,7 @@ int lua_cocos2dx_MenuItemFont_setFontSize(lua_State* tolua_S)
     if (argc == 1)
     {
         long arg0;
-        ok &= luaval_to_long(tolua_S, 2, &arg0);
+        #pragma warning NO CONVERSION TO NATIVE FOR long;
         if(!ok)
             return 0;
         cocos2d::MenuItemFont::setFontSize(arg0);
@@ -85383,9 +85437,10 @@ int lua_cocos2dx_TextureCache_removeTexture(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_TextureCache_destroyInstance(lua_State* tolua_S)
+int lua_cocos2dx_TextureCache_waitForQuit(lua_State* tolua_S)
 {
     int argc = 0;
+    cocos2d::TextureCache* cobj = nullptr;
     bool ok  = true;
 
 #if COCOS2D_DEBUG >= 1
@@ -85393,96 +85448,32 @@ int lua_cocos2dx_TextureCache_destroyInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"TextureCache",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"TextureCache",0,&tolua_err)) goto tolua_lerror;
 #endif
 
-    argc = lua_gettop(tolua_S) - 1;
+    cobj = (cocos2d::TextureCache*)tolua_tousertype(tolua_S,1,0);
 
-    if (argc == 0)
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
     {
-        if(!ok)
-            return 0;
-        cocos2d::TextureCache::destroyInstance();
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TextureCache_waitForQuit'", NULL);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "destroyInstance",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TextureCache_destroyInstance'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_TextureCache_reloadAllTextures(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
 #endif
 
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"TextureCache",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 0)
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
     {
         if(!ok)
             return 0;
-        cocos2d::TextureCache::reloadAllTextures();
+        cobj->waitForQuit();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "reloadAllTextures",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "waitForQuit",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TextureCache_reloadAllTextures'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_TextureCache_getInstance(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"TextureCache",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 0)
-    {
-        if(!ok)
-            return 0;
-        cocos2d::TextureCache* ret = cocos2d::TextureCache::getInstance();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureCache");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"TextureCache");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TextureCache_getInstance'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TextureCache_waitForQuit'.",&tolua_err);
 #endif
     return 0;
 }
@@ -85546,10 +85537,8 @@ int lua_register_cocos2dx_TextureCache(lua_State* tolua_S)
         tolua_function(tolua_S,"getTextureForKey",lua_cocos2dx_TextureCache_getTextureForKey);
         tolua_function(tolua_S,"removeUnusedTextures",lua_cocos2dx_TextureCache_removeUnusedTextures);
         tolua_function(tolua_S,"removeTexture",lua_cocos2dx_TextureCache_removeTexture);
+        tolua_function(tolua_S,"waitForQuit",lua_cocos2dx_TextureCache_waitForQuit);
         tolua_function(tolua_S,"new",lua_cocos2dx_TextureCache_constructor);
-        tolua_function(tolua_S,"destroyInstance", lua_cocos2dx_TextureCache_destroyInstance);
-        tolua_function(tolua_S,"reloadAllTextures", lua_cocos2dx_TextureCache_reloadAllTextures);
-        tolua_function(tolua_S,"getInstance", lua_cocos2dx_TextureCache_getInstance);
     tolua_endmodule(tolua_S);
     uint32_t typeId = typeid(cocos2d::TextureCache).hash_code();
     g_luaType[typeId] = "TextureCache";
