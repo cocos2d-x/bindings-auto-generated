@@ -40,10 +40,10 @@ int lua_cocos2dx_extension_Scale9Sprite_resizableSpriteWithCapInsets(lua_State* 
         cocos2d::extension::Scale9Sprite* ret = cobj->resizableSpriteWithCapInsets(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1457,10 +1457,10 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1478,10 +1478,10 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1505,10 +1505,10 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1532,10 +1532,10 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1556,10 +1556,10 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1605,10 +1605,10 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrameName(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1629,10 +1629,10 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrameName(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1687,10 +1687,10 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame(lua_State* tolua_S
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrame(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1720,10 +1720,10 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame(lua_State* tolua_S
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrame(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -1830,7 +1830,7 @@ int lua_register_cocos2dx_extension_Scale9Sprite(lua_State* tolua_S)
         tolua_function(tolua_S,"createWithSpriteFrameName", lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName);
         tolua_function(tolua_S,"createWithSpriteFrame", lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::Scale9Sprite).hash_code();
+    long typeId = typeid(cocos2d::extension::Scale9Sprite).hash_code();
     g_luaType[typeId] = "Scale9Sprite";
     return 1;
 }
@@ -2747,10 +2747,10 @@ int lua_cocos2dx_extension_Control_create(lua_State* tolua_S)
         cocos2d::extension::Control* ret = cocos2d::extension::Control::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Control");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Control");
@@ -2843,7 +2843,7 @@ int lua_register_cocos2dx_extension_Control(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_Control_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_Control_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::Control).hash_code();
+    long typeId = typeid(cocos2d::extension::Control).hash_code();
     g_luaType[typeId] = "Control";
     return 1;
 }
@@ -4104,10 +4104,10 @@ int lua_cocos2dx_extension_ControlButton_getBackgroundSpriteForState(lua_State* 
         cocos2d::extension::Scale9Sprite* ret = cobj->getBackgroundSpriteForState(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -4391,10 +4391,10 @@ int lua_cocos2dx_extension_ControlButton_getCurrentTitle(lua_State* tolua_S)
         cocos2d::String* ret = cobj->getCurrentTitle();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"String");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"String");
@@ -4528,10 +4528,10 @@ int lua_cocos2dx_extension_ControlButton_getBackgroundSprite(lua_State* tolua_S)
         cocos2d::extension::Scale9Sprite* ret = cobj->getBackgroundSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scale9Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Scale9Sprite");
@@ -5108,10 +5108,10 @@ int lua_cocos2dx_extension_ControlButton_getTitleLabel(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getTitleLabel();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
@@ -5286,10 +5286,10 @@ int lua_cocos2dx_extension_ControlButton_getTitleLabelForState(lua_State* tolua_
         cocos2d::Node* ret = cobj->getTitleLabelForState(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
@@ -5469,10 +5469,10 @@ int lua_cocos2dx_extension_ControlButton_getTitleForState(lua_State* tolua_S)
         cocos2d::String* ret = cobj->getTitleForState(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"String");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"String");
@@ -5523,10 +5523,10 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlButton");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlButton");
@@ -5544,10 +5544,10 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlButton");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlButton");
@@ -5589,10 +5589,10 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlButton");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlButton");
@@ -5619,10 +5619,10 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlButton");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlButton");
@@ -5754,7 +5754,7 @@ int lua_register_cocos2dx_extension_ControlButton(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_ControlButton_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_ControlButton_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::ControlButton).hash_code();
+    long typeId = typeid(cocos2d::extension::ControlButton).hash_code();
     g_luaType[typeId] = "ControlButton";
     return 1;
 }
@@ -6073,10 +6073,10 @@ int lua_cocos2dx_extension_ControlHuePicker_getSlider(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getSlider();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -6282,10 +6282,10 @@ int lua_cocos2dx_extension_ControlHuePicker_getBackground(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getBackground();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -6430,10 +6430,10 @@ int lua_cocos2dx_extension_ControlHuePicker_create(lua_State* tolua_S)
         cocos2d::extension::ControlHuePicker* ret = cocos2d::extension::ControlHuePicker::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlHuePicker");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlHuePicker");
@@ -6520,7 +6520,7 @@ int lua_register_cocos2dx_extension_ControlHuePicker(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_ControlHuePicker_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_ControlHuePicker_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::ControlHuePicker).hash_code();
+    long typeId = typeid(cocos2d::extension::ControlHuePicker).hash_code();
     g_luaType[typeId] = "ControlHuePicker";
     return 1;
 }
@@ -6557,10 +6557,10 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getShadow(lua_State
         cocos2d::Sprite* ret = cobj->getShadow();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -6705,10 +6705,10 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getOverlay(lua_Stat
         cocos2d::Sprite* ret = cobj->getOverlay();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -6800,10 +6800,10 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getSlider(lua_State
         cocos2d::Sprite* ret = cobj->getSlider();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -6853,10 +6853,10 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getBackground(lua_S
         cocos2d::Sprite* ret = cobj->getBackground();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -6991,10 +6991,10 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_create(lua_State* t
         cocos2d::extension::ControlSaturationBrightnessPicker* ret = cocos2d::extension::ControlSaturationBrightnessPicker::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlSaturationBrightnessPicker");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlSaturationBrightnessPicker");
@@ -7077,7 +7077,7 @@ int lua_register_cocos2dx_extension_ControlSaturationBrightnessPicker(lua_State*
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_ControlSaturationBrightnessPicker_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_ControlSaturationBrightnessPicker_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::ControlSaturationBrightnessPicker).hash_code();
+    long typeId = typeid(cocos2d::extension::ControlSaturationBrightnessPicker).hash_code();
     g_luaType[typeId] = "ControlSaturationBrightnessPicker";
     return 1;
 }
@@ -7156,10 +7156,10 @@ int lua_cocos2dx_extension_ControlColourPicker_getHuePicker(lua_State* tolua_S)
         cocos2d::extension::ControlHuePicker* ret = cobj->getHuePicker();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlHuePicker");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlHuePicker");
@@ -7304,10 +7304,10 @@ int lua_cocos2dx_extension_ControlColourPicker_getcolourPicker(lua_State* tolua_
         cocos2d::extension::ControlSaturationBrightnessPicker* ret = cobj->getcolourPicker();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlSaturationBrightnessPicker");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlSaturationBrightnessPicker");
@@ -7604,10 +7604,10 @@ int lua_cocos2dx_extension_ControlColourPicker_getBackground(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getBackground();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -7647,10 +7647,10 @@ int lua_cocos2dx_extension_ControlColourPicker_create(lua_State* tolua_S)
         cocos2d::extension::ControlColourPicker* ret = cocos2d::extension::ControlColourPicker::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlColourPicker");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlColourPicker");
@@ -7735,7 +7735,7 @@ int lua_register_cocos2dx_extension_ControlColourPicker(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_ControlColourPicker_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_ControlColourPicker_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::ControlColourPicker).hash_code();
+    long typeId = typeid(cocos2d::extension::ControlColourPicker).hash_code();
     g_luaType[typeId] = "ControlColourPicker";
     return 1;
 }
@@ -8531,10 +8531,10 @@ int lua_cocos2dx_extension_ControlPotentiometer_getProgressTimer(lua_State* tolu
         cocos2d::ProgressTimer* ret = cobj->getProgressTimer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ProgressTimer");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ProgressTimer");
@@ -8760,10 +8760,10 @@ int lua_cocos2dx_extension_ControlPotentiometer_getThumbSprite(lua_State* tolua_
         cocos2d::Sprite* ret = cobj->getThumbSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -8883,10 +8883,10 @@ int lua_cocos2dx_extension_ControlPotentiometer_create(lua_State* tolua_S)
         cocos2d::extension::ControlPotentiometer* ret = cocos2d::extension::ControlPotentiometer::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlPotentiometer");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlPotentiometer");
@@ -8983,7 +8983,7 @@ int lua_register_cocos2dx_extension_ControlPotentiometer(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_ControlPotentiometer_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_ControlPotentiometer_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::ControlPotentiometer).hash_code();
+    long typeId = typeid(cocos2d::extension::ControlPotentiometer).hash_code();
     g_luaType[typeId] = "ControlPotentiometer";
     return 1;
 }
@@ -9547,10 +9547,10 @@ int lua_cocos2dx_extension_ControlSlider_getBackgroundSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getBackgroundSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -9808,10 +9808,10 @@ int lua_cocos2dx_extension_ControlSlider_getThumbSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getThumbSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -9861,10 +9861,10 @@ int lua_cocos2dx_extension_ControlSlider_getProgressSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getProgressSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -10032,10 +10032,10 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
             cocos2d::extension::ControlSlider* ret = cocos2d::extension::ControlSlider::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlSlider");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlSlider");
@@ -10062,10 +10062,10 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
             cocos2d::extension::ControlSlider* ret = cocos2d::extension::ControlSlider::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlSlider");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlSlider");
@@ -10161,7 +10161,7 @@ int lua_register_cocos2dx_extension_ControlSlider(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_ControlSlider_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_ControlSlider_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::ControlSlider).hash_code();
+    long typeId = typeid(cocos2d::extension::ControlSlider).hash_code();
     g_luaType[typeId] = "ControlSlider";
     return 1;
 }
@@ -10311,10 +10311,10 @@ int lua_cocos2dx_extension_ControlStepper_getMinusLabel(lua_State* tolua_S)
         cocos2d::LabelTTF* ret = cobj->getMinusLabel();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"LabelTTF");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"LabelTTF");
@@ -10447,10 +10447,10 @@ int lua_cocos2dx_extension_ControlStepper_getMinusSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getMinusSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -10586,10 +10586,10 @@ int lua_cocos2dx_extension_ControlStepper_getPlusLabel(lua_State* tolua_S)
         cocos2d::LabelTTF* ret = cobj->getPlusLabel();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"LabelTTF");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"LabelTTF");
@@ -10721,10 +10721,10 @@ int lua_cocos2dx_extension_ControlStepper_getPlusSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getPlusSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Sprite");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Sprite");
@@ -11376,10 +11376,10 @@ int lua_cocos2dx_extension_ControlStepper_create(lua_State* tolua_S)
         cocos2d::extension::ControlStepper* ret = cocos2d::extension::ControlStepper::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlStepper");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlStepper");
@@ -11477,7 +11477,7 @@ int lua_register_cocos2dx_extension_ControlStepper(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_ControlStepper_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_ControlStepper_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::ControlStepper).hash_code();
+    long typeId = typeid(cocos2d::extension::ControlStepper).hash_code();
     g_luaType[typeId] = "ControlStepper";
     return 1;
 }
@@ -12200,10 +12200,10 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
             cocos2d::extension::ControlSwitch* ret = cocos2d::extension::ControlSwitch::create(arg0, arg1, arg2, arg3);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlSwitch");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlSwitch");
@@ -12293,10 +12293,10 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
             cocos2d::extension::ControlSwitch* ret = cocos2d::extension::ControlSwitch::create(arg0, arg1, arg2, arg3, arg4, arg5);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ControlSwitch");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ControlSwitch");
@@ -12381,7 +12381,7 @@ int lua_register_cocos2dx_extension_ControlSwitch(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_ControlSwitch_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_ControlSwitch_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::ControlSwitch).hash_code();
+    long typeId = typeid(cocos2d::extension::ControlSwitch).hash_code();
     g_luaType[typeId] = "ControlSwitch";
     return 1;
 }
@@ -12757,10 +12757,10 @@ int lua_cocos2dx_extension_ScrollView_getContainer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getContainer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
@@ -14052,10 +14052,10 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
             cocos2d::extension::ScrollView* ret = cocos2d::extension::ScrollView::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ScrollView");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ScrollView");
@@ -14076,10 +14076,10 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
             cocos2d::extension::ScrollView* ret = cocos2d::extension::ScrollView::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ScrollView");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ScrollView");
@@ -14112,10 +14112,10 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
             cocos2d::extension::ScrollView* ret = cocos2d::extension::ScrollView::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ScrollView");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"ScrollView");
@@ -14224,7 +14224,7 @@ int lua_register_cocos2dx_extension_ScrollView(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_ScrollView_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_ScrollView_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::ScrollView).hash_code();
+    long typeId = typeid(cocos2d::extension::ScrollView).hash_code();
     g_luaType[typeId] = "ScrollView";
     return 1;
 }
@@ -14495,7 +14495,7 @@ int lua_register_cocos2dx_extension_TableViewCell(lua_State* tolua_S)
         tolua_function(tolua_S,"getIdx",lua_cocos2dx_extension_TableViewCell_getIdx);
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_TableViewCell_constructor);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::TableViewCell).hash_code();
+    long typeId = typeid(cocos2d::extension::TableViewCell).hash_code();
     g_luaType[typeId] = "TableViewCell";
     return 1;
 }
@@ -15238,10 +15238,10 @@ int lua_cocos2dx_extension_TableView_cellAtIndex(lua_State* tolua_S)
         cocos2d::extension::TableViewCell* ret = cobj->cellAtIndex(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TableViewCell");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"TableViewCell");
@@ -15291,10 +15291,10 @@ int lua_cocos2dx_extension_TableView_dequeueCell(lua_State* tolua_S)
         cocos2d::extension::TableViewCell* ret = cobj->dequeueCell();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TableViewCell");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"TableViewCell");
@@ -15383,7 +15383,7 @@ int lua_register_cocos2dx_extension_TableView(lua_State* tolua_S)
         tolua_function(tolua_S,"dequeueCell",lua_cocos2dx_extension_TableView_dequeueCell);
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_TableView_constructor);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::TableView).hash_code();
+    long typeId = typeid(cocos2d::extension::TableView).hash_code();
     g_luaType[typeId] = "TableView";
     return 1;
 }
@@ -16360,10 +16360,10 @@ int lua_cocos2dx_extension_EditBox_create(lua_State* tolua_S)
         cocos2d::extension::EditBox* ret = cocos2d::extension::EditBox::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"EditBox");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"EditBox");
@@ -16404,10 +16404,10 @@ int lua_cocos2dx_extension_EditBox_create(lua_State* tolua_S)
         cocos2d::extension::EditBox* ret = cocos2d::extension::EditBox::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"EditBox");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"EditBox");
@@ -16459,10 +16459,10 @@ int lua_cocos2dx_extension_EditBox_create(lua_State* tolua_S)
         cocos2d::extension::EditBox* ret = cocos2d::extension::EditBox::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"EditBox");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"EditBox");
@@ -16558,7 +16558,7 @@ int lua_register_cocos2dx_extension_EditBox(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_EditBox_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_EditBox_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::EditBox).hash_code();
+    long typeId = typeid(cocos2d::extension::EditBox).hash_code();
     g_luaType[typeId] = "EditBox";
     return 1;
 }
@@ -17135,10 +17135,10 @@ int lua_cocos2dx_extension_AssetsManager_create(lua_State* tolua_S)
         cocos2d::extension::AssetsManager* ret = cocos2d::extension::AssetsManager::create(arg0, arg1, arg2, arg3, arg4, arg5);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"AssetsManager");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"AssetsManager");
@@ -17296,7 +17296,7 @@ int lua_register_cocos2dx_extension_AssetsManager(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_AssetsManager_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_extension_AssetsManager_create);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocos2d::extension::AssetsManager).hash_code();
+    long typeId = typeid(cocos2d::extension::AssetsManager).hash_code();
     g_luaType[typeId] = "AssetsManager";
     return 1;
 }
@@ -17489,10 +17489,10 @@ int lua_cocos2dx_extension_CCBAnimationManager_actionForSoundChannel(lua_State* 
         cocos2d::Object* ret = cobj->actionForSoundChannel(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
@@ -18065,10 +18065,10 @@ int lua_cocos2dx_extension_CCBAnimationManager_actionForCallbackChannel(lua_Stat
         cocos2d::Object* ret = cobj->actionForCallbackChannel(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
@@ -18534,10 +18534,10 @@ int lua_cocos2dx_extension_CCBAnimationManager_getRootNode(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getRootNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
@@ -19040,7 +19040,7 @@ int lua_register_cocos2dx_extension_CCBAnimationManager(lua_State* tolua_S)
         tolua_function(tolua_S,"getDocumentControllerName",lua_cocos2dx_extension_CCBAnimationManager_getDocumentControllerName);
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_CCBAnimationManager_constructor);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocosbuilder::CCBAnimationManager).hash_code();
+    long typeId = typeid(cocosbuilder::CCBAnimationManager).hash_code();
     g_luaType[typeId] = "CCBAnimationManager";
     return 1;
 }
@@ -19820,10 +19820,10 @@ int lua_cocos2dx_extension_CCBReader_getAnimationManager(lua_State* tolua_S)
         cocosbuilder::CCBAnimationManager* ret = cobj->getAnimationManager();
         do {
 			if (NULL != ret){
-				cocos2d::Object *cobj = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != cobj) {
-					int ID = ret ? (int)(cobj->_ID) : -1;
-					int* luaID = ret ? &(cobj->_luaID) : NULL;
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
 					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"CCBAnimationManager");
 				} else {
 					 tolua_pushusertype(tolua_S,(void*)ret,"CCBAnimationManager");
@@ -20181,7 +20181,7 @@ int lua_register_cocos2dx_extension_CCBReader(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_extension_CCBReader_constructor);
         tolua_function(tolua_S,"setResolutionScale", lua_cocos2dx_extension_CCBReader_setResolutionScale);
     tolua_endmodule(tolua_S);
-    uint32_t typeId = typeid(cocosbuilder::CCBReader).hash_code();
+    long typeId = typeid(cocosbuilder::CCBReader).hash_code();
     g_luaType[typeId] = "CCBReader";
     return 1;
 }
