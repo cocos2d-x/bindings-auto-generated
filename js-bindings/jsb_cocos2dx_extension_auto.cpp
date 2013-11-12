@@ -8826,22 +8826,17 @@ JSBool js_cocos2dx_extension_AssetsManager_getStoragePath(JSContext *cx, uint32_
 }
 JSBool js_cocos2dx_extension_AssetsManager_update(JSContext *cx, uint32_t argc, jsval *vp)
 {
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::extension::AssetsManager* cobj = (cocos2d::extension::AssetsManager *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_AssetsManager_update : Invalid Native Object");
-	if (argc == 1) {
-		double arg0;
-		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_AssetsManager_update : Error processing arguments");
-		cobj->update(arg0);
+	if (argc == 0) {
+		cobj->update();
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_extension_AssetsManager_update : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_extension_AssetsManager_update : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_extension_AssetsManager_setConnectionTimeout(JSContext *cx, uint32_t argc, jsval *vp)
@@ -9184,7 +9179,7 @@ void js_register_cocos2dx_extension_AssetsManager(JSContext *cx, JSObject *globa
 		JS_FN("setPackageUrl", js_cocos2dx_extension_AssetsManager_setPackageUrl, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("checkUpdate", js_cocos2dx_extension_AssetsManager_checkUpdate, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getStoragePath", js_cocos2dx_extension_AssetsManager_getStoragePath, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("update", js_cocos2dx_extension_AssetsManager_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("update", js_cocos2dx_extension_AssetsManager_update, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setConnectionTimeout", js_cocos2dx_extension_AssetsManager_setConnectionTimeout, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setVersionFileUrl", js_cocos2dx_extension_AssetsManager_setVersionFileUrl, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPackageUrl", js_cocos2dx_extension_AssetsManager_getPackageUrl, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

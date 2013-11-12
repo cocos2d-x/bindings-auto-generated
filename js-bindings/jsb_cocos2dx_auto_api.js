@@ -2970,7 +2970,7 @@ resumeTarget : function () {},
 
 /**
  * @method getNumberOfRunningActionsInTarget
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "long"
  * @param {cocos2d::Object*}
  */
 getNumberOfRunningActionsInTarget : function () {},
@@ -5707,7 +5707,7 @@ setOpacityModifyRGB : function () {},
 
 /**
  * @method getQuadsToDraw
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "long"
  */
 getQuadsToDraw : function () {},
 
@@ -5741,7 +5741,7 @@ isOpacityModifyRGB : function () {},
 
 /**
  * @method setQuadsToDraw
- * @param {unsigned int}
+ * @param {long}
  */
 setQuadsToDraw : function () {},
 
