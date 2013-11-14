@@ -29987,7 +29987,7 @@ int lua_register_cocos2dx_studio_Skin(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_studio_ComAttribute_getDouble(lua_State* tolua_S)
+int lua_cocos2dx_studio_ComAttribute_getFloat(lua_State* tolua_S)
 {
     int argc = 0;
     cocostudio::ComAttribute* cobj = nullptr;
@@ -30006,7 +30006,7 @@ int lua_cocos2dx_studio_ComAttribute_getDouble(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAttribute_getDouble'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAttribute_getFloat'", NULL);
         return 0;
     }
 #endif
@@ -30018,15 +30018,15 @@ int lua_cocos2dx_studio_ComAttribute_getDouble(lua_State* tolua_S)
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
-        double ret = cobj->getDouble(arg0);
+        float ret = cobj->getFloat(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDouble",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFloat",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_getDouble'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_getFloat'.",&tolua_err);
 #endif
     return 0;
 }
@@ -30083,7 +30083,7 @@ int lua_cocos2dx_studio_ComAttribute_getDict(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_ComAttribute_setObject(lua_State* tolua_S)
+int lua_cocos2dx_studio_ComAttribute_setFloat(lua_State* tolua_S)
 {
     int argc = 0;
     cocostudio::ComAttribute* cobj = nullptr;
@@ -30102,7 +30102,7 @@ int lua_cocos2dx_studio_ComAttribute_setObject(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAttribute_setObject'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAttribute_setFloat'", NULL);
         return 0;
     }
 #endif
@@ -30111,28 +30111,19 @@ int lua_cocos2dx_studio_ComAttribute_setObject(lua_State* tolua_S)
     if (argc == 2) 
     {
         const char* arg0;
-        cocos2d::Object* arg1;
+        double arg1;
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"Object",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Object*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
-        cobj->setObject(arg0, arg1);
+        cobj->setFloat(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setObject",argc, 2);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFloat",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setObject'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setFloat'.",&tolua_err);
 #endif
     return 0;
 }
@@ -30177,50 +30168,6 @@ int lua_cocos2dx_studio_ComAttribute_setCString(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setCString'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_studio_ComAttribute_setFloat(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComAttribute* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAttribute_setFloat'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        const char* arg0;
-        double arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        ok &= luaval_to_number(tolua_S, 3,&arg1);
-        if(!ok)
-            return 0;
-        cobj->setFloat(arg0, arg1);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFloat",argc, 2);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setFloat'.",&tolua_err);
 #endif
     return 0;
 }
@@ -30310,50 +30257,6 @@ int lua_cocos2dx_studio_ComAttribute_getBool(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_ComAttribute_setDouble(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComAttribute* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAttribute_setDouble'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        const char* arg0;
-        double arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        ok &= luaval_to_number(tolua_S, 3,&arg1);
-        if(!ok)
-            return 0;
-        cobj->setDouble(arg0, arg1);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDouble",argc, 2);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setDouble'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_studio_ComAttribute_setInt(lua_State* tolua_S)
 {
     int argc = 0;
@@ -30395,61 +30298,6 @@ int lua_cocos2dx_studio_ComAttribute_setInt(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setInt'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_studio_ComAttribute_getObject(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComAttribute* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAttribute_getObject'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        if(!ok)
-            return 0;
-        cocos2d::Object* ret = cobj->getObject(arg0);
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getObject",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_getObject'.",&tolua_err);
 #endif
     return 0;
 }
@@ -30581,49 +30429,6 @@ int lua_cocos2dx_studio_ComAttribute_setBool(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_ComAttribute_getFloat(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComAttribute* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAttribute_getFloat'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        if(!ok)
-            return 0;
-        float ret = cobj->getFloat(arg0);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFloat",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_getFloat'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_studio_ComAttribute_create(lua_State* tolua_S)
 {
     int argc = 0;
@@ -30679,20 +30484,16 @@ int lua_register_cocos2dx_studio_ComAttribute(lua_State* tolua_S)
     tolua_cclass(tolua_S,"ComAttribute","ComAttribute","Component",NULL);
 
     tolua_beginmodule(tolua_S,"ComAttribute");
-        tolua_function(tolua_S,"getDouble",lua_cocos2dx_studio_ComAttribute_getDouble);
+        tolua_function(tolua_S,"getFloat",lua_cocos2dx_studio_ComAttribute_getFloat);
         tolua_function(tolua_S,"getDict",lua_cocos2dx_studio_ComAttribute_getDict);
-        tolua_function(tolua_S,"setObject",lua_cocos2dx_studio_ComAttribute_setObject);
-        tolua_function(tolua_S,"setCString",lua_cocos2dx_studio_ComAttribute_setCString);
         tolua_function(tolua_S,"setFloat",lua_cocos2dx_studio_ComAttribute_setFloat);
+        tolua_function(tolua_S,"setCString",lua_cocos2dx_studio_ComAttribute_setCString);
         tolua_function(tolua_S,"getCString",lua_cocos2dx_studio_ComAttribute_getCString);
         tolua_function(tolua_S,"getBool",lua_cocos2dx_studio_ComAttribute_getBool);
-        tolua_function(tolua_S,"setDouble",lua_cocos2dx_studio_ComAttribute_setDouble);
         tolua_function(tolua_S,"setInt",lua_cocos2dx_studio_ComAttribute_setInt);
-        tolua_function(tolua_S,"getObject",lua_cocos2dx_studio_ComAttribute_getObject);
         tolua_function(tolua_S,"getInt",lua_cocos2dx_studio_ComAttribute_getInt);
         tolua_function(tolua_S,"init",lua_cocos2dx_studio_ComAttribute_init);
         tolua_function(tolua_S,"setBool",lua_cocos2dx_studio_ComAttribute_setBool);
-        tolua_function(tolua_S,"getFloat",lua_cocos2dx_studio_ComAttribute_getFloat);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ComAttribute_create);
     tolua_endmodule(tolua_S);
     long typeId = typeid(cocostudio::ComAttribute).hash_code();
@@ -32220,6 +32021,47 @@ int lua_cocos2dx_studio_ComController_create(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_studio_ComController_constructor(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocostudio::ComController* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cobj = new cocostudio::ComController();
+        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
+        if (nullptr != dynObject) 
+        {
+            dynObject->autorelease();
+            int ID =  (int)dynObject->_ID ;
+            int* luaID =  &dynObject->_luaID ;
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ComController");
+        }
+        else
+        {
+            tolua_pushusertype(tolua_S,(void*)cobj,"ComController");
+            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
+        }
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ComController",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComController_constructor'.",&tolua_err);
+#endif
+    return 0;
+}
+
 static int lua_cocos2dx_studio_ComController_finalize(lua_State* tolua_S)
 {
     printf("luabindings: finalizing LUA object (ComController)");
@@ -32236,6 +32078,7 @@ int lua_register_cocos2dx_studio_ComController(lua_State* tolua_S)
         tolua_function(tolua_S,"isEnabled",lua_cocos2dx_studio_ComController_isEnabled);
         tolua_function(tolua_S,"update",lua_cocos2dx_studio_ComController_update);
         tolua_function(tolua_S,"init",lua_cocos2dx_studio_ComController_init);
+        tolua_function(tolua_S,"new",lua_cocos2dx_studio_ComController_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ComController_create);
     tolua_endmodule(tolua_S);
     long typeId = typeid(cocostudio::ComController).hash_code();

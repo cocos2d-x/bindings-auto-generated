@@ -4139,11 +4139,11 @@ Skin : function () {},
 ccs.ComAttribute = {
 
 /**
- * @method getDouble
- * @return A value converted from C/C++ "double"
+ * @method getFloat
+ * @return A value converted from C/C++ "float"
  * @param {const char*}
  */
-getDouble : function () {},
+getFloat : function () {},
 
 /**
  * @method getDict
@@ -4152,11 +4152,11 @@ getDouble : function () {},
 getDict : function () {},
 
 /**
- * @method setObject
+ * @method setFloat
  * @param {const char*}
- * @param {cocos2d::Object*}
+ * @param {float}
  */
-setObject : function () {},
+setFloat : function () {},
 
 /**
  * @method setCString
@@ -4164,13 +4164,6 @@ setObject : function () {},
  * @param {const char*}
  */
 setCString : function () {},
-
-/**
- * @method setFloat
- * @param {const char*}
- * @param {float}
- */
-setFloat : function () {},
 
 /**
  * @method getCString
@@ -4187,25 +4180,11 @@ getCString : function () {},
 getBool : function () {},
 
 /**
- * @method setDouble
- * @param {const char*}
- * @param {double}
- */
-setDouble : function () {},
-
-/**
  * @method setInt
  * @param {const char*}
  * @param {int}
  */
 setInt : function () {},
-
-/**
- * @method getObject
- * @return A value converted from C/C++ "cocos2d::Object*"
- * @param {const char*}
- */
-getObject : function () {},
 
 /**
  * @method getInt
@@ -4226,13 +4205,6 @@ init : function () {},
  * @param {bool}
  */
 setBool : function () {},
-
-/**
- * @method getFloat
- * @return A value converted from C/C++ "float"
- * @param {const char*}
- */
-getFloat : function () {},
 
 /**
  * @method create
@@ -4438,6 +4410,12 @@ init : function () {},
  * @return A value converted from C/C++ "cocostudio::ComController*"
  */
 create : function () {},
+
+/**
+ * @method ComController
+ * @constructor
+ */
+ComController : function () {},
 
 };
 
