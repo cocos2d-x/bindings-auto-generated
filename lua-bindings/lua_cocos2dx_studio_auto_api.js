@@ -1347,34 +1347,16 @@ UIImageView : function () {},
 ccs.UILabel = {
 
 /**
- * @method getStringLength
- * @return A value converted from C/C++ "int"
- */
-getStringLength : function () {},
-
-/**
- * @method setFontName
- * @param {std::string}
- */
-setFontName : function () {},
-
-/**
- * @method setTouchScaleChangeEnabled
- * @param {bool}
- */
-setTouchScaleChangeEnabled : function () {},
-
-/**
- * @method setFlipX
- * @param {bool}
- */
-setFlipX : function () {},
-
-/**
  * @method setAnchorPoint
  * @param {cocos2d::Point}
  */
 setAnchorPoint : function () {},
+
+/**
+ * @method getVirtualRenderer
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ */
+getVirtualRenderer : function () {},
 
 /**
  * @method getStringValue
@@ -1389,10 +1371,28 @@ getStringValue : function () {},
 getDescription : function () {},
 
 /**
- * @method setText
+ * @method setScale
+ * @param {float}
+ */
+setScale : function () {},
+
+/**
+ * @method setTextVerticalAlignment
+ * @param {cocos2d::TextVAlignment}
+ */
+setTextVerticalAlignment : function () {},
+
+/**
+ * @method setFontName
  * @param {std::string}
  */
-setText : function () {},
+setFontName : function () {},
+
+/**
+ * @method setTouchScaleChangeEnabled
+ * @param {bool}
+ */
+setTouchScaleChangeEnabled : function () {},
 
 /**
  * @method isFlipX
@@ -1407,28 +1407,10 @@ isFlipX : function () {},
 isFlipY : function () {},
 
 /**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
-
-/**
- * @method setTextVerticalAlignment
- * @param {cocos2d::TextVAlignment}
- */
-setTextVerticalAlignment : function () {},
-
-/**
  * @method getContentSize
  * @return A value converted from C/C++ "cocos2d::Size"
  */
 getContentSize : function () {},
-
-/**
- * @method setFontSize
- * @param {int}
- */
-setFontSize : function () {},
 
 /**
  * @method isTouchScaleChangeEnabled
@@ -1437,10 +1419,28 @@ setFontSize : function () {},
 isTouchScaleChangeEnabled : function () {},
 
 /**
- * @method setTextHorizontalAlignment
- * @param {cocos2d::TextHAlignment}
+ * @method setTextAreaSize
+ * @param {cocos2d::Size}
  */
-setTextHorizontalAlignment : function () {},
+setTextAreaSize : function () {},
+
+/**
+ * @method getStringLength
+ * @return A value converted from C/C++ "int"
+ */
+getStringLength : function () {},
+
+/**
+ * @method setScaleY
+ * @param {float}
+ */
+setScaleY : function () {},
+
+/**
+ * @method setScaleX
+ * @param {float}
+ */
+setScaleX : function () {},
 
 /**
  * @method setFlipY
@@ -1449,10 +1449,28 @@ setTextHorizontalAlignment : function () {},
 setFlipY : function () {},
 
 /**
- * @method setTextAreaSize
- * @param {cocos2d::Size}
+ * @method setFlipX
+ * @param {bool}
  */
-setTextAreaSize : function () {},
+setFlipX : function () {},
+
+/**
+ * @method setFontSize
+ * @param {int}
+ */
+setFontSize : function () {},
+
+/**
+ * @method setText
+ * @param {std::string}
+ */
+setText : function () {},
+
+/**
+ * @method setTextHorizontalAlignment
+ * @param {cocos2d::TextHAlignment}
+ */
+setTextHorizontalAlignment : function () {},
 
 /**
  * @method create
@@ -2605,17 +2623,16 @@ UILabelBMFont : function () {},
 ccs.UIPageView = {
 
 /**
+ * @method getLayoutType
+ * @return A value converted from C/C++ "gui::LayoutType"
+ */
+getLayoutType : function () {},
+
+/**
  * @method getCurPageIndex
  * @return A value converted from C/C++ "int"
  */
 getCurPageIndex : function () {},
-
-/**
- * @method removeChild
- * @return A value converted from C/C++ "bool"
- * @param {gui::UIWidget*}
- */
-removeChild : function () {},
 
 /**
  * @method addWidgetToPage
@@ -2626,10 +2643,11 @@ removeChild : function () {},
 addWidgetToPage : function () {},
 
 /**
- * @method update
- * @param {float}
+ * @method getPage
+ * @return A value converted from C/C++ "gui::UILayout*"
+ * @param {int}
  */
-update : function () {},
+getPage : function () {},
 
 /**
  * @method removePage
@@ -2644,11 +2662,6 @@ removePage : function () {},
 getDescription : function () {},
 
 /**
- * @method removeAllChildren
- */
-removeAllChildren : function () {},
-
-/**
  * @method insertPage
  * @param {gui::UILayout*}
  * @param {int}
@@ -2656,10 +2669,22 @@ removeAllChildren : function () {},
 insertPage : function () {},
 
 /**
+ * @method setLayoutType
+ * @param {gui::LayoutType}
+ */
+setLayoutType : function () {},
+
+/**
  * @method scrollToPage
  * @param {int}
  */
 scrollToPage : function () {},
+
+/**
+ * @method update
+ * @param {float}
+ */
+update : function () {},
 
 /**
  * @method doLayout
@@ -2677,6 +2702,11 @@ removePageAtIndex : function () {},
  * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getPages : function () {},
+
+/**
+ * @method removeAllPages
+ */
+removeAllPages : function () {},
 
 /**
  * @method addPage

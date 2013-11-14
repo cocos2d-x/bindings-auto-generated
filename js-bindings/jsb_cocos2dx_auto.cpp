@@ -1564,6 +1564,30 @@ JSBool js_cocos2dx_GLProgram_setUniformLocationWith4iv(JSContext *cx, uint32_t a
 	JS_ReportError(cx, "js_cocos2dx_GLProgram_setUniformLocationWith4iv : wrong number of arguments: %d, was expecting %d", argc, 3);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::GLProgram* cobj = (cocos2d::GLProgram *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv : Invalid Native Object");
+	if (argc == 3) {
+		int arg0;
+		float* arg1;
+		unsigned int arg2;
+		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		#pragma warning NO CONVERSION TO NATIVE FOR float*;
+		ok &= jsval_to_uint32(cx, argv[2], &arg2);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv : Error processing arguments");
+		cobj->setUniformLocationWithMatrix2fv(arg0, arg1, arg2);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv : wrong number of arguments: %d, was expecting %d", argc, 3);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_GLProgram_link(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -1603,6 +1627,30 @@ JSBool js_cocos2dx_GLProgram_setUniformLocationWith2iv(JSContext *cx, uint32_t a
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_GLProgram_setUniformLocationWith2iv : wrong number of arguments: %d, was expecting %d", argc, 3);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::GLProgram* cobj = (cocos2d::GLProgram *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv : Invalid Native Object");
+	if (argc == 3) {
+		int arg0;
+		float* arg1;
+		unsigned int arg2;
+		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		#pragma warning NO CONVERSION TO NATIVE FOR float*;
+		ok &= jsval_to_uint32(cx, argv[2], &arg2);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv : Error processing arguments");
+		cobj->setUniformLocationWithMatrix3fv(arg0, arg1, arg2);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv : wrong number of arguments: %d, was expecting %d", argc, 3);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_GLProgram_reset(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1770,8 +1818,10 @@ void js_register_cocos2dx_GLProgram(JSContext *cx, JSObject *global) {
 		JS_FN("setUniformLocationWith3iv", js_cocos2dx_GLProgram_setUniformLocationWith3iv, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("updateUniforms", js_cocos2dx_GLProgram_updateUniforms, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setUniformLocationWith4iv", js_cocos2dx_GLProgram_setUniformLocationWith4iv, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setUniformLocationWithMatrix2fv", js_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("link", js_cocos2dx_GLProgram_link, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setUniformLocationWith2iv", js_cocos2dx_GLProgram_setUniformLocationWith2iv, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setUniformLocationWithMatrix3fv", js_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("reset", js_cocos2dx_GLProgram_reset, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setUniformLocationWith4i", js_cocos2dx_GLProgram_setUniformLocationWith4i, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setUniformLocationI32", js_cocos2dx_GLProgram_setUniformLocationWith1i, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -43620,6 +43670,21 @@ void js_register_cocos2dx_TransitionFadeDown(JSContext *cx, JSObject *global) {
 JSClass  *jsb_TransitionPageTurn_class;
 JSObject *jsb_TransitionPageTurn_prototype;
 
+JSBool js_cocos2dx_TransitionPageTurn_draw(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TransitionPageTurn* cobj = (cocos2d::TransitionPageTurn *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TransitionPageTurn_draw : Invalid Native Object");
+	if (argc == 0) {
+		cobj->draw();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_TransitionPageTurn_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_TransitionPageTurn_actionWithSize(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -43782,6 +43847,7 @@ void js_register_cocos2dx_TransitionPageTurn(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
+		JS_FN("draw", js_cocos2dx_TransitionPageTurn_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("actionWithSize", js_cocos2dx_TransitionPageTurn_actionWithSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("initWithDuration", js_cocos2dx_TransitionPageTurn_initWithDuration, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_cocos2dx_TransitionPageTurn_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

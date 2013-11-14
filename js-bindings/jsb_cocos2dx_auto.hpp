@@ -97,8 +97,10 @@ JSBool js_cocos2dx_GLProgram_setUniformLocationWith3i(JSContext *cx, uint32_t ar
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith3iv(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_updateUniforms(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith4iv(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_link(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith2iv(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_reset(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith4i(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith1i(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2501,6 +2503,7 @@ JSBool js_cocos2dx_TransitionPageTurn_constructor(JSContext *cx, uint32_t argc, 
 void js_cocos2dx_TransitionPageTurn_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_TransitionPageTurn(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_TransitionPageTurn_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionPageTurn_actionWithSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionPageTurn_initWithDuration(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionPageTurn_create(JSContext *cx, uint32_t argc, jsval *vp);

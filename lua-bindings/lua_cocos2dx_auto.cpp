@@ -2842,6 +2842,52 @@ int lua_cocos2dx_GLProgram_setUniformLocationWith4iv(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::GLProgram* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"GLProgram",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 3) 
+    {
+        int arg0;
+        float* arg1;
+        unsigned int arg2;
+        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        #pragma warning NO CONVERSION TO NATIVE FOR float*;
+        ok &= luaval_to_uint32(tolua_S, 4,&arg2);
+        if(!ok)
+            return 0;
+        cobj->setUniformLocationWithMatrix2fv(arg0, arg1, arg2);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setUniformLocationWithMatrix2fv",argc, 3);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_GLProgram_link(lua_State* tolua_S)
 {
     int argc = 0;
@@ -2926,6 +2972,52 @@ int lua_cocos2dx_GLProgram_setUniformLocationWith2iv(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_GLProgram_setUniformLocationWith2iv'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::GLProgram* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"GLProgram",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 3) 
+    {
+        int arg0;
+        float* arg1;
+        unsigned int arg2;
+        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        #pragma warning NO CONVERSION TO NATIVE FOR float*;
+        ok &= luaval_to_uint32(tolua_S, 4,&arg2);
+        if(!ok)
+            return 0;
+        cobj->setUniformLocationWithMatrix3fv(arg0, arg1, arg2);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setUniformLocationWithMatrix3fv",argc, 3);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv'.",&tolua_err);
 #endif
     return 0;
 }
@@ -3175,8 +3267,10 @@ int lua_register_cocos2dx_GLProgram(lua_State* tolua_S)
         tolua_function(tolua_S,"setUniformLocationWith3iv",lua_cocos2dx_GLProgram_setUniformLocationWith3iv);
         tolua_function(tolua_S,"updateUniforms",lua_cocos2dx_GLProgram_updateUniforms);
         tolua_function(tolua_S,"setUniformLocationWith4iv",lua_cocos2dx_GLProgram_setUniformLocationWith4iv);
+        tolua_function(tolua_S,"setUniformLocationWithMatrix2fv",lua_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv);
         tolua_function(tolua_S,"link",lua_cocos2dx_GLProgram_link);
         tolua_function(tolua_S,"setUniformLocationWith2iv",lua_cocos2dx_GLProgram_setUniformLocationWith2iv);
+        tolua_function(tolua_S,"setUniformLocationWithMatrix3fv",lua_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv);
         tolua_function(tolua_S,"reset",lua_cocos2dx_GLProgram_reset);
         tolua_function(tolua_S,"setUniformLocationWith4i",lua_cocos2dx_GLProgram_setUniformLocationWith4i);
         tolua_function(tolua_S,"setUniformLocationI32",lua_cocos2dx_GLProgram_setUniformLocationWith1i);
@@ -64586,6 +64680,46 @@ int lua_register_cocos2dx_TransitionFadeDown(lua_State* tolua_S)
     return 1;
 }
 
+int lua_cocos2dx_TransitionPageTurn_draw(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::TransitionPageTurn* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"TransitionPageTurn",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::TransitionPageTurn*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TransitionPageTurn_draw'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cobj->draw();
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "draw",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TransitionPageTurn_draw'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_TransitionPageTurn_actionWithSize(lua_State* tolua_S)
 {
     int argc = 0;
@@ -64808,6 +64942,7 @@ int lua_register_cocos2dx_TransitionPageTurn(lua_State* tolua_S)
     tolua_cclass(tolua_S,"TransitionPageTurn","TransitionPageTurn","TransitionScene",NULL);
 
     tolua_beginmodule(tolua_S,"TransitionPageTurn");
+        tolua_function(tolua_S,"draw",lua_cocos2dx_TransitionPageTurn_draw);
         tolua_function(tolua_S,"actionWithSize",lua_cocos2dx_TransitionPageTurn_actionWithSize);
         tolua_function(tolua_S,"initWithDuration",lua_cocos2dx_TransitionPageTurn_initWithDuration);
         tolua_function(tolua_S,"new",lua_cocos2dx_TransitionPageTurn_constructor);
