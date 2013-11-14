@@ -2501,6 +2501,7 @@ JSBool js_cocos2dx_TransitionPageTurn_constructor(JSContext *cx, uint32_t argc, 
 void js_cocos2dx_TransitionPageTurn_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_TransitionPageTurn(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_TransitionPageTurn_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionPageTurn_actionWithSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionPageTurn_initWithDuration(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionPageTurn_create(JSContext *cx, uint32_t argc, jsval *vp);

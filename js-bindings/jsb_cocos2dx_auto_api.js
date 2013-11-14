@@ -8658,6 +8658,11 @@ TransitionFadeDown : function () {},
 cc.TransitionPageTurn = {
 
 /**
+ * @method draw
+ */
+draw : function () {},
+
+/**
  * @method actionWithSize
  * @return A value converted from C/C++ "cocos2d::ActionInterval*"
  * @param {cocos2d::Size}

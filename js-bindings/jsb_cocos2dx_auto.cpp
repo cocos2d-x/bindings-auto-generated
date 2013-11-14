@@ -43620,6 +43620,21 @@ void js_register_cocos2dx_TransitionFadeDown(JSContext *cx, JSObject *global) {
 JSClass  *jsb_TransitionPageTurn_class;
 JSObject *jsb_TransitionPageTurn_prototype;
 
+JSBool js_cocos2dx_TransitionPageTurn_draw(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TransitionPageTurn* cobj = (cocos2d::TransitionPageTurn *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TransitionPageTurn_draw : Invalid Native Object");
+	if (argc == 0) {
+		cobj->draw();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_TransitionPageTurn_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_TransitionPageTurn_actionWithSize(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -43782,6 +43797,7 @@ void js_register_cocos2dx_TransitionPageTurn(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
+		JS_FN("draw", js_cocos2dx_TransitionPageTurn_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("actionWithSize", js_cocos2dx_TransitionPageTurn_actionWithSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("initWithDuration", js_cocos2dx_TransitionPageTurn_initWithDuration, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_cocos2dx_TransitionPageTurn_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
