@@ -6460,12 +6460,6 @@ setFlippedX : function () {},
 setRotationX : function () {},
 
 /**
- * @method setScale
- * @param {float}
- */
-setScale : function () {},
-
-/**
  * @method setOpacity
  * @param {unsigned char}
  */
