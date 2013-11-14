@@ -10,11 +10,14 @@ static JSBool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	if (_ccobj) {
 		_ccobj->autorelease();
 	}
-	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	assert(p);
-	JSObject *_tmp = JS_NewObject(cx, p->jsclass, p->proto, p->parentProto);
+	js_type_class_t *typeClass = nullptr;
+	long typeId = t.s_id();
+	auto typeMapIter = _js_global_type_map.find(typeId);
+	CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+	typeClass = typeMapIter->second;
+	CCASSERT(typeClass, "The value is null.");
+
+	JSObject *_tmp = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 	js_proxy_t *pp = jsb_new_proxy(cobj, _tmp);
 	JS_AddObjectRoot(cx, &pp->obj);
 	JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(_tmp));
@@ -1034,10 +1037,12 @@ JSBool js_cocos2dx_extension_Scale9Sprite_constructor(JSContext *cx, uint32_t ar
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::Scale9Sprite> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -1144,15 +1149,14 @@ void js_register_cocos2dx_extension_Scale9Sprite(JSContext *cx, JSObject *global
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::Scale9Sprite> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_Scale9Sprite_class;
 		p->proto = jsb_Scale9Sprite_prototype;
 		p->parentProto = jsb_NodeRGBA_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -1481,10 +1485,12 @@ JSBool js_cocos2dx_extension_Control_constructor(JSContext *cx, uint32_t argc, j
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::Control> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -1574,15 +1580,14 @@ void js_register_cocos2dx_extension_Control(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::Control> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_Control_class;
 		p->proto = jsb_Control_prototype;
 		p->parentProto = jsb_LayerRGBA_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -2842,10 +2847,12 @@ JSBool js_cocos2dx_extension_ControlButton_constructor(JSContext *cx, uint32_t a
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::ControlButton> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -2973,15 +2980,14 @@ void js_register_cocos2dx_extension_ControlButton(JSContext *cx, JSObject *globa
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::ControlButton> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ControlButton_class;
 		p->proto = jsb_ControlButton_prototype;
 		p->parentProto = jsb_Control_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -3276,10 +3282,12 @@ JSBool js_cocos2dx_extension_ControlHuePicker_constructor(JSContext *cx, uint32_
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::ControlHuePicker> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -3365,15 +3373,14 @@ void js_register_cocos2dx_extension_ControlHuePicker(JSContext *cx, JSObject *gl
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::ControlHuePicker> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ControlHuePicker_class;
 		p->proto = jsb_ControlHuePicker_prototype;
 		p->parentProto = jsb_Control_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -3622,10 +3629,12 @@ JSBool js_cocos2dx_extension_ControlSaturationBrightnessPicker_constructor(JSCon
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::ControlSaturationBrightnessPicker> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -3709,15 +3718,14 @@ void js_register_cocos2dx_extension_ControlSaturationBrightnessPicker(JSContext 
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::ControlSaturationBrightnessPicker> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ControlSaturationBrightnessPicker_class;
 		p->proto = jsb_ControlSaturationBrightnessPicker_prototype;
 		p->parentProto = jsb_Control_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -4022,10 +4030,12 @@ JSBool js_cocos2dx_extension_ControlColourPicker_constructor(JSContext *cx, uint
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::ControlColourPicker> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -4111,15 +4121,14 @@ void js_register_cocos2dx_extension_ControlColourPicker(JSContext *cx, JSObject 
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::ControlColourPicker> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ControlColourPicker_class;
 		p->proto = jsb_ControlColourPicker_prototype;
 		p->parentProto = jsb_Control_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -4623,10 +4632,12 @@ JSBool js_cocos2dx_extension_ControlPotentiometer_constructor(JSContext *cx, uin
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::ControlPotentiometer> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -4721,15 +4732,14 @@ void js_register_cocos2dx_extension_ControlPotentiometer(JSContext *cx, JSObject
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::ControlPotentiometer> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ControlPotentiometer_class;
 		p->proto = jsb_ControlPotentiometer_prototype;
 		p->parentProto = jsb_Control_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -5304,10 +5314,12 @@ JSBool js_cocos2dx_extension_ControlSlider_constructor(JSContext *cx, uint32_t a
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::ControlSlider> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -5403,15 +5415,14 @@ void js_register_cocos2dx_extension_ControlSlider(JSContext *cx, JSObject *globa
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::ControlSlider> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ControlSlider_class;
 		p->proto = jsb_ControlSlider_prototype;
 		p->parentProto = jsb_Control_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -5937,10 +5948,12 @@ JSBool js_cocos2dx_extension_ControlStepper_constructor(JSContext *cx, uint32_t 
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::ControlStepper> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -6036,15 +6049,14 @@ void js_register_cocos2dx_extension_ControlStepper(JSContext *cx, JSObject *glob
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::ControlStepper> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ControlStepper_class;
 		p->proto = jsb_ControlStepper_prototype;
 		p->parentProto = jsb_Control_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -6458,10 +6470,12 @@ JSBool js_cocos2dx_extension_ControlSwitch_constructor(JSContext *cx, uint32_t a
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::ControlSwitch> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -6542,15 +6556,14 @@ void js_register_cocos2dx_extension_ControlSwitch(JSContext *cx, JSObject *globa
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::ControlSwitch> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ControlSwitch_class;
 		p->proto = jsb_ControlSwitch_prototype;
 		p->parentProto = jsb_Control_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -7344,10 +7357,12 @@ JSBool js_cocos2dx_extension_ScrollView_constructor(JSContext *cx, uint32_t argc
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::ScrollView> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -7452,15 +7467,14 @@ void js_register_cocos2dx_extension_ScrollView(JSContext *cx, JSObject *global) 
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::ScrollView> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ScrollView_class;
 		p->proto = jsb_ScrollView_prototype;
 		p->parentProto = jsb_Layer_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -7566,10 +7580,12 @@ JSBool js_cocos2dx_extension_TableViewCell_constructor(JSContext *cx, uint32_t a
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::TableViewCell> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -7646,15 +7662,14 @@ void js_register_cocos2dx_extension_TableViewCell(JSContext *cx, JSObject *globa
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::TableViewCell> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_TableViewCell_class;
 		p->proto = jsb_TableViewCell_prototype;
 		p->parentProto = jsb_Node_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -7946,10 +7961,12 @@ JSBool js_cocos2dx_extension_TableView_constructor(JSContext *cx, uint32_t argc,
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::TableView> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -8033,15 +8050,14 @@ void js_register_cocos2dx_extension_TableView(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::TableView> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_TableView_class;
 		p->proto = jsb_TableView_prototype;
 		p->parentProto = jsb_ScrollView_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -8617,10 +8633,12 @@ JSBool js_cocos2dx_extension_EditBox_constructor(JSContext *cx, uint32_t argc, j
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::EditBox> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -8717,15 +8735,14 @@ void js_register_cocos2dx_extension_EditBox(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::EditBox> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_EditBox_class;
 		p->proto = jsb_EditBox_prototype;
 		p->parentProto = jsb_ControlButton_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -8809,17 +8826,22 @@ JSBool js_cocos2dx_extension_AssetsManager_getStoragePath(JSContext *cx, uint32_
 }
 JSBool js_cocos2dx_extension_AssetsManager_update(JSContext *cx, uint32_t argc, jsval *vp)
 {
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::extension::AssetsManager* cobj = (cocos2d::extension::AssetsManager *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_AssetsManager_update : Invalid Native Object");
-	if (argc == 0) {
-		cobj->update();
+	if (argc == 1) {
+		double arg0;
+		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_AssetsManager_update : Error processing arguments");
+		cobj->update(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_extension_AssetsManager_update : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_extension_AssetsManager_update : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_extension_AssetsManager_setConnectionTimeout(JSContext *cx, uint32_t argc, jsval *vp)
@@ -9028,10 +9050,12 @@ JSBool js_cocos2dx_extension_AssetsManager_constructor(JSContext *cx, uint32_t a
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::AssetsManager> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -9049,10 +9073,12 @@ JSBool js_cocos2dx_extension_AssetsManager_constructor(JSContext *cx, uint32_t a
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::AssetsManager> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -9072,10 +9098,12 @@ JSBool js_cocos2dx_extension_AssetsManager_constructor(JSContext *cx, uint32_t a
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::AssetsManager> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -9097,10 +9125,12 @@ JSBool js_cocos2dx_extension_AssetsManager_constructor(JSContext *cx, uint32_t a
 			_ccobj->autorelease();
 		}
 		TypeTest<cocos2d::extension::AssetsManager> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -9154,7 +9184,7 @@ void js_register_cocos2dx_extension_AssetsManager(JSContext *cx, JSObject *globa
 		JS_FN("setPackageUrl", js_cocos2dx_extension_AssetsManager_setPackageUrl, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("checkUpdate", js_cocos2dx_extension_AssetsManager_checkUpdate, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getStoragePath", js_cocos2dx_extension_AssetsManager_getStoragePath, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("update", js_cocos2dx_extension_AssetsManager_update, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("update", js_cocos2dx_extension_AssetsManager_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setConnectionTimeout", js_cocos2dx_extension_AssetsManager_setConnectionTimeout, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setVersionFileUrl", js_cocos2dx_extension_AssetsManager_setVersionFileUrl, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPackageUrl", js_cocos2dx_extension_AssetsManager_getPackageUrl, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -9187,15 +9217,14 @@ void js_register_cocos2dx_extension_AssetsManager(JSContext *cx, JSObject *globa
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocos2d::extension::AssetsManager> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_AssetsManager_class;
 		p->proto = jsb_AssetsManager_prototype;
 		p->parentProto = jsb_Node_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 

@@ -2081,6 +2081,7 @@ getStoragePath : function () {},
 
 /**
  * @method update
+ * @param {float}
  */
 update : function () {},
 
