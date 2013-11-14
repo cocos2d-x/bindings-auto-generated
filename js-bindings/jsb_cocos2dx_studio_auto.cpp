@@ -10,11 +10,14 @@ static JSBool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	if (_ccobj) {
 		_ccobj->autorelease();
 	}
-	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	assert(p);
-	JSObject *_tmp = JS_NewObject(cx, p->jsclass, p->proto, p->parentProto);
+	js_type_class_t *typeClass = nullptr;
+	long typeId = t.s_id();
+	auto typeMapIter = _js_global_type_map.find(typeId);
+	CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+	typeClass = typeMapIter->second;
+	CCASSERT(typeClass, "The value is null.");
+
+	JSObject *_tmp = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 	js_proxy_t *pp = jsb_new_proxy(cobj, _tmp);
 	JS_AddObjectRoot(cx, &pp->obj);
 	JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(_tmp));
@@ -1035,10 +1038,12 @@ JSBool js_cocos2dx_studio_Bone_constructor(JSContext *cx, uint32_t argc, jsval *
 			_ccobj->autorelease();
 		}
 		TypeTest<cocostudio::Bone> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -1155,15 +1160,14 @@ void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocostudio::Bone> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_Bone_class;
 		p->proto = jsb_Bone_prototype;
 		p->parentProto = jsb_NodeRGBA_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -1632,10 +1636,12 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_constructor(JSContext *cx, uint32_t 
 			_ccobj->autorelease();
 		}
 		TypeTest<cocostudio::ArmatureAnimation> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -1725,15 +1731,14 @@ void js_register_cocos2dx_studio_ArmatureAnimation(JSContext *cx, JSObject *glob
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocostudio::ArmatureAnimation> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ArmatureAnimation_class;
 		p->proto = jsb_ArmatureAnimation_prototype;
 		p->parentProto = NULL;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -2311,15 +2316,14 @@ void js_register_cocos2dx_studio_ArmatureDataManager(JSContext *cx, JSObject *gl
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocostudio::ArmatureDataManager> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_ArmatureDataManager_class;
 		p->proto = jsb_ArmatureDataManager_prototype;
 		p->parentProto = NULL;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -3127,10 +3131,12 @@ JSBool js_cocos2dx_studio_Armature_constructor(JSContext *cx, uint32_t argc, jsv
 			_ccobj->autorelease();
 		}
 		TypeTest<cocostudio::Armature> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -3234,15 +3240,14 @@ void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocostudio::Armature> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_Armature_class;
 		p->proto = jsb_Armature_prototype;
 		p->parentProto = jsb_NodeRGBA_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
@@ -3504,10 +3509,12 @@ JSBool js_cocos2dx_studio_Skin_constructor(JSContext *cx, uint32_t argc, jsval *
 			_ccobj->autorelease();
 		}
 		TypeTest<cocostudio::Skin> t;
-		js_type_class_t *typeClass;
-		uint32_t typeId = t.s_id();
-		HASH_FIND_INT(_js_global_type_ht, &typeId, typeClass);
-		assert(typeClass);
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
 		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
@@ -3592,15 +3599,14 @@ void js_register_cocos2dx_studio_Skin(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<cocostudio::Skin> t;
 	js_type_class_t *p;
-	uint32_t typeId = t.s_id();
-	HASH_FIND_INT(_js_global_type_ht, &typeId, p);
-	if (!p) {
+	long typeId = t.s_id();
+	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->type = typeId;
 		p->jsclass = jsb_Skin_class;
 		p->proto = jsb_Skin_prototype;
 		p->parentProto = jsb_Sprite_prototype;
-		HASH_ADD_INT(_js_global_type_ht, type, p);
+		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
 
