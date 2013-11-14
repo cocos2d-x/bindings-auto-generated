@@ -97,8 +97,10 @@ JSBool js_cocos2dx_GLProgram_setUniformLocationWith3i(JSContext *cx, uint32_t ar
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith3iv(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_updateUniforms(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith4iv(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_GLProgram_setUniformLocationWithMatrix2fv(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_link(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith2iv(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_GLProgram_setUniformLocationWithMatrix3fv(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_reset(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith4i(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_GLProgram_setUniformLocationWith1i(JSContext *cx, uint32_t argc, jsval *vp);

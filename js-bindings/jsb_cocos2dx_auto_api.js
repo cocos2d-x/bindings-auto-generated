@@ -372,6 +372,14 @@ updateUniforms : function () {},
 setUniformLocationWith4iv : function () {},
 
 /**
+ * @method setUniformLocationWithMatrix2fv
+ * @param {int}
+ * @param {float*}
+ * @param {unsigned int}
+ */
+setUniformLocationWithMatrix2fv : function () {},
+
+/**
  * @method link
  * @return A value converted from C/C++ "bool"
  */
@@ -384,6 +392,14 @@ link : function () {},
  * @param {unsigned int}
  */
 setUniformLocationWith2iv : function () {},
+
+/**
+ * @method setUniformLocationWithMatrix3fv
+ * @param {int}
+ * @param {float*}
+ * @param {unsigned int}
+ */
+setUniformLocationWithMatrix3fv : function () {},
 
 /**
  * @method reset
