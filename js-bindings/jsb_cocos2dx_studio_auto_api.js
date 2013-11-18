@@ -1,12 +1,50 @@
 /**
  * @module cocos2dx_studio
  */
-var cc = cc || {};
+var ccs = ccs || {};
+
+/**
+ * @class ActionManagerEx
+ */
+ccs.ActionManager = {
+
+/**
+ * @method playActionByName
+ * @param {const char*}
+ * @param {const char*}
+ */
+playActionByName : function () {},
+
+/**
+ * @method getActionByName
+ * @return A value converted from C/C++ "cocostudio::ActionObject*"
+ * @param {const char*}
+ * @param {const char*}
+ */
+getActionByName : function () {},
+
+/**
+ * @method releaseActions
+ */
+releaseActions : function () {},
+
+/**
+ * @method purgeActionManager
+ */
+purgeActionManager : function () {},
+
+/**
+ * @method shareManager
+ * @return A value converted from C/C++ "cocostudio::ActionManagerEx*"
+ */
+shareManager : function () {},
+
+};
 
 /**
  * @class Bone
  */
-cc.Bone = {
+ccs.Bone = {
 
 /**
  * @method isTransformDirty
@@ -257,9 +295,36 @@ Bone : function () {},
 };
 
 /**
+ * @class BatchNode
+ */
+ccs.BatchNode = {
+
+/**
+ * @method getTexureAtlasWithTexture
+ * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
+ * @param {cocos2d::Texture2D*}
+ */
+getTexureAtlasWithTexture : function () {},
+
+/**
+ * @method removeChild
+ * @param {cocos2d::Node*}
+ * @param {bool}
+ */
+removeChild : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocostudio::BatchNode*"
+ */
+create : function () {},
+
+};
+
+/**
  * @class ArmatureAnimation
  */
-cc.ArmatureAnimation = {
+ccs.ArmatureAnimation = {
 
 /**
  * @method getSpeedScale
@@ -387,7 +452,7 @@ ArmatureAnimation : function () {},
 /**
  * @class ArmatureDataManager
  */
-cc.ArmatureDataManager = {
+ccs.ArmatureDataManager = {
 
 /**
  * @method getAnimationDatas
@@ -512,7 +577,7 @@ getInstance : function () {},
 /**
  * @class Armature
  */
-cc.Armature = {
+ccs.Armature = {
 
 /**
  * @method getBone
@@ -698,7 +763,7 @@ Armature : function () {},
 /**
  * @class Skin
  */
-cc.Skin = {
+ccs.Skin = {
 
 /**
  * @method getBone
@@ -766,5 +831,436 @@ createWithSpriteFrameName : function () {},
  * @constructor
  */
 Skin : function () {},
+
+};
+
+/**
+ * @class ComAttribute
+ */
+ccs.ComAttribute = {
+
+/**
+ * @method getFloat
+ * @return A value converted from C/C++ "float"
+ * @param {const char*}
+ */
+getFloat : function () {},
+
+/**
+ * @method setFloat
+ * @param {const char*}
+ * @param {float}
+ */
+setFloat : function () {},
+
+/**
+ * @method setCString
+ * @param {const char*}
+ * @param {const char*}
+ */
+setCString : function () {},
+
+/**
+ * @method getCString
+ * @return A value converted from C/C++ "const char*"
+ * @param {const char*}
+ */
+getCString : function () {},
+
+/**
+ * @method getBool
+ * @return A value converted from C/C++ "bool"
+ * @param {const char*}
+ */
+getBool : function () {},
+
+/**
+ * @method setInt
+ * @param {const char*}
+ * @param {int}
+ */
+setInt : function () {},
+
+/**
+ * @method getInt
+ * @return A value converted from C/C++ "int"
+ * @param {const char*}
+ */
+getInt : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ */
+init : function () {},
+
+/**
+ * @method setBool
+ * @param {const char*}
+ * @param {bool}
+ */
+setBool : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocostudio::ComAttribute*"
+ */
+create : function () {},
+
+};
+
+/**
+ * @class ComAudio
+ */
+ccs.ComAudio = {
+
+/**
+ * @method stopAllEffects
+ */
+stopAllEffects : function () {},
+
+/**
+ * @method getEffectsVolume
+ * @return A value converted from C/C++ "float"
+ */
+getEffectsVolume : function () {},
+
+/**
+ * @method stopEffect
+ * @param {unsigned int}
+ */
+stopEffect : function () {},
+
+/**
+ * @method getBackgroundMusicVolume
+ * @return A value converted from C/C++ "float"
+ */
+getBackgroundMusicVolume : function () {},
+
+/**
+ * @method willPlayBackgroundMusic
+ * @return A value converted from C/C++ "bool"
+ */
+willPlayBackgroundMusic : function () {},
+
+/**
+ * @method setBackgroundMusicVolume
+ * @param {float}
+ */
+setBackgroundMusicVolume : function () {},
+
+/**
+ * @method end
+ */
+end : function () {},
+
+/**
+ * @method isEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isEnabled : function () {},
+
+/**
+ * @method pauseBackgroundMusic
+ */
+pauseBackgroundMusic : function () {},
+
+/**
+ * @method isBackgroundMusicPlaying
+ * @return A value converted from C/C++ "bool"
+ */
+isBackgroundMusicPlaying : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ */
+init : function () {},
+
+/**
+ * @method isLoop
+ * @return A value converted from C/C++ "bool"
+ */
+isLoop : function () {},
+
+/**
+ * @method pauseAllEffects
+ */
+pauseAllEffects : function () {},
+
+/**
+ * @method setEnabled
+ * @param {bool}
+ */
+setEnabled : function () {},
+
+/**
+ * @method preloadBackgroundMusic
+ * @param {const char*}
+ */
+preloadBackgroundMusic : function () {},
+
+/**
+ * @method resumeAllEffects
+ */
+resumeAllEffects : function () {},
+
+/**
+ * @method setLoop
+ * @param {bool}
+ */
+setLoop : function () {},
+
+/**
+ * @method unloadEffect
+ * @param {const char*}
+ */
+unloadEffect : function () {},
+
+/**
+ * @method rewindBackgroundMusic
+ */
+rewindBackgroundMusic : function () {},
+
+/**
+ * @method preloadEffect
+ * @param {const char*}
+ */
+preloadEffect : function () {},
+
+/**
+ * @method pauseEffect
+ * @param {unsigned int}
+ */
+pauseEffect : function () {},
+
+/**
+ * @method resumeBackgroundMusic
+ */
+resumeBackgroundMusic : function () {},
+
+/**
+ * @method setFile
+ * @param {const char*}
+ */
+setFile : function () {},
+
+/**
+ * @method setEffectsVolume
+ * @param {float}
+ */
+setEffectsVolume : function () {},
+
+/**
+ * @method getFile
+ * @return A value converted from C/C++ "const char*"
+ */
+getFile : function () {},
+
+/**
+ * @method resumeEffect
+ * @param {unsigned int}
+ */
+resumeEffect : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocostudio::ComAudio*"
+ */
+create : function () {},
+
+};
+
+/**
+ * @class InputDelegate
+ */
+ccs.InputDelegate = {
+
+/**
+ * @method isAccelerometerEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isAccelerometerEnabled : function () {},
+
+/**
+ * @method setKeypadEnabled
+ * @param {bool}
+ */
+setKeypadEnabled : function () {},
+
+/**
+ * @method getTouchMode
+ * @return A value converted from C/C++ "cocos2d::Touch::DispatchMode"
+ */
+getTouchMode : function () {},
+
+/**
+ * @method setAccelerometerEnabled
+ * @param {bool}
+ */
+setAccelerometerEnabled : function () {},
+
+/**
+ * @method isKeypadEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isKeypadEnabled : function () {},
+
+/**
+ * @method isTouchEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isTouchEnabled : function () {},
+
+/**
+ * @method setTouchPriority
+ * @param {int}
+ */
+setTouchPriority : function () {},
+
+/**
+ * @method getTouchPriority
+ * @return A value converted from C/C++ "int"
+ */
+getTouchPriority : function () {},
+
+/**
+ * @method setTouchEnabled
+ * @param {bool}
+ */
+setTouchEnabled : function () {},
+
+/**
+ * @method setTouchMode
+ * @param {cocos2d::Touch::DispatchMode}
+ */
+setTouchMode : function () {},
+
+};
+
+/**
+ * @class ComController
+ */
+ccs.ComController = {
+
+/**
+ * @method setEnabled
+ * @param {bool}
+ */
+setEnabled : function () {},
+
+/**
+ * @method isEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isEnabled : function () {},
+
+/**
+ * @method update
+ * @param {float}
+ */
+update : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ */
+init : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocostudio::ComController*"
+ */
+create : function () {},
+
+/**
+ * @method ComController
+ * @constructor
+ */
+ComController : function () {},
+
+};
+
+/**
+ * @class ComRender
+ */
+ccs.ComRender = {
+
+/**
+ * @method getNode
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ */
+getNode : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocostudio::ComRender*"
+ * @param {cocos2d::Node*}
+ * @param {const char*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class GUIReader
+ */
+ccs.GUIReader = {
+
+/**
+ * @method widgetFromJsonFile
+ * @return A value converted from C/C++ "gui::UIWidget*"
+ * @param {const char*}
+ */
+widgetFromJsonFile : function () {},
+
+/**
+ * @method getVersionInteger
+ * @return A value converted from C/C++ "int"
+ * @param {const char*}
+ */
+getVersionInteger : function () {},
+
+/**
+ * @method purgeGUIReader
+ */
+purgeGUIReader : function () {},
+
+/**
+ * @method shareReader
+ * @return A value converted from C/C++ "cocostudio::GUIReader*"
+ */
+shareReader : function () {},
+
+};
+
+/**
+ * @class SceneReader
+ */
+ccs.SceneReader = {
+
+/**
+ * @method purgeSceneReader
+ */
+purgeSceneReader : function () {},
+
+/**
+ * @method createNodeWithSceneFile
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ * @param {const char*}
+ */
+createNodeWithSceneFile : function () {},
+
+/**
+ * @method sceneReaderVersion
+ * @return A value converted from C/C++ "const char*"
+ */
+sceneReaderVersion : function () {},
+
+/**
+ * @method getInstance
+ * @return A value converted from C/C++ "cocostudio::SceneReader*"
+ */
+getInstance : function () {},
 
 };

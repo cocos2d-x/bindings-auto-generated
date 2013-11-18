@@ -3466,6 +3466,24 @@ JSBool js_cocos2dx_Scheduler_setTimeScale(JSContext *cx, uint32_t argc, jsval *v
 JSBool js_cocos2dx_Scheduler_getTimeScale(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Scheduler_Scheduler(JSContext *cx, uint32_t argc, jsval *vp);
 
+extern JSClass  *jsb_Component_class;
+extern JSObject *jsb_Component_prototype;
+
+JSBool js_cocos2dx_Component_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_Component_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_Component(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_Component_setEnabled(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Component_setName(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Component_isEnabled(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Component_serialize(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Component_update(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Component_getOwner(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Component_init(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Component_setOwner(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Component_getName(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Component_create(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_SimpleAudioEngine_class;
 extern JSObject *jsb_SimpleAudioEngine_prototype;
 
