@@ -12306,6 +12306,73 @@ Scheduler : function () {},
 };
 
 /**
+ * @class Component
+ */
+cc.Component = {
+
+/**
+ * @method setEnabled
+ * @param {bool}
+ */
+setEnabled : function () {},
+
+/**
+ * @method setName
+ * @param {const char*}
+ */
+setName : function () {},
+
+/**
+ * @method isEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isEnabled : function () {},
+
+/**
+ * @method serialize
+ * @param {void*}
+ */
+serialize : function () {},
+
+/**
+ * @method update
+ * @param {float}
+ */
+update : function () {},
+
+/**
+ * @method getOwner
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ */
+getOwner : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ */
+init : function () {},
+
+/**
+ * @method setOwner
+ * @param {cocos2d::Node*}
+ */
+setOwner : function () {},
+
+/**
+ * @method getName
+ * @return A value converted from C/C++ "const char*"
+ */
+getName : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::Component*"
+ */
+create : function () {},
+
+};
+
+/**
  * @class SimpleAudioEngine
  */
 cc.AudioEngine = {
