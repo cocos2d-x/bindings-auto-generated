@@ -1571,25 +1571,25 @@ reset : function () {},
 
 /**
  * @method setIdx
- * @param {unsigned int}
+ * @param {long}
  */
 setIdx : function () {},
 
 /**
  * @method setObjectID
- * @param {unsigned int}
+ * @param {long}
  */
 setObjectID : function () {},
 
 /**
  * @method getObjectID
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "long"
  */
 getObjectID : function () {},
 
 /**
  * @method getIdx
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "long"
  */
 getIdx : function () {},
 
@@ -1608,7 +1608,7 @@ cc.TableView = {
 
 /**
  * @method updateCellAtIndex
- * @param {unsigned int}
+ * @param {long}
  */
 updateCellAtIndex : function () {},
 
@@ -1637,7 +1637,7 @@ getVerticalFillOrder : function () {},
 
 /**
  * @method removeCellAtIndex
- * @param {unsigned int}
+ * @param {long}
  */
 removeCellAtIndex : function () {},
 
@@ -1662,14 +1662,14 @@ reloadData : function () {},
 
 /**
  * @method insertCellAtIndex
- * @param {unsigned int}
+ * @param {long}
  */
 insertCellAtIndex : function () {},
 
 /**
  * @method cellAtIndex
  * @return A value converted from C/C++ "cocos2d::extension::TableViewCell*"
- * @param {unsigned int}
+ * @param {long}
  */
 cellAtIndex : function () {},
 

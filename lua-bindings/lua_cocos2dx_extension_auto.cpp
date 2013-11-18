@@ -14296,8 +14296,8 @@ int lua_cocos2dx_extension_TableViewCell_setIdx(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        long arg0;
+        ok &= luaval_to_long(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setIdx(arg0);
@@ -14338,8 +14338,8 @@ int lua_cocos2dx_extension_TableViewCell_setObjectID(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        long arg0;
+        ok &= luaval_to_long(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setObjectID(arg0);
@@ -14382,7 +14382,7 @@ int lua_cocos2dx_extension_TableViewCell_getObjectID(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getObjectID();
+        long ret = cobj->getObjectID();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -14423,7 +14423,7 @@ int lua_cocos2dx_extension_TableViewCell_getIdx(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getIdx();
+        long ret = cobj->getIdx();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -14527,8 +14527,8 @@ int lua_cocos2dx_extension_TableView_updateCellAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        long arg0;
+        ok &= luaval_to_long(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->updateCellAtIndex(arg0);
@@ -14805,8 +14805,8 @@ int lua_cocos2dx_extension_TableView_removeCellAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        long arg0;
+        ok &= luaval_to_long(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->removeCellAtIndex(arg0);
@@ -15189,8 +15189,8 @@ int lua_cocos2dx_extension_TableView_insertCellAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        long arg0;
+        ok &= luaval_to_long(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->insertCellAtIndex(arg0);
@@ -15231,8 +15231,8 @@ int lua_cocos2dx_extension_TableView_cellAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        long arg0;
+        ok &= luaval_to_long(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cocos2d::extension::TableViewCell* ret = cobj->cellAtIndex(arg0);
