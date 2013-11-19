@@ -10,6 +10,7 @@ ccs.ActionManager = {
 
 /**
  * @method playActionByName
+ * @return A value converted from C/C++ "cocostudio::ActionObject*"
  * @param {const char*}
  * @param {const char*}
  */

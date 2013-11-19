@@ -20066,8 +20066,21 @@ int lua_cocos2dx_studio_ActionManagerEx_playActionByName(lua_State* tolua_S)
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
-        cobj->playActionByName(arg0, arg1);
-        return 0;
+        cocostudio::ActionObject* ret = cobj->playActionByName(arg0, arg1);
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ActionObject");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"ActionObject");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "playActionByName",argc, 2);
     return 0;

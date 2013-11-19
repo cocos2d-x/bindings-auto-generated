@@ -47,8 +47,17 @@ JSBool js_cocos2dx_studio_ActionManagerEx_playActionByName(JSContext *cx, uint32
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ActionManagerEx_playActionByName : Error processing arguments");
-		cobj->playActionByName(arg0, arg1);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		cocostudio::ActionObject* ret = cobj->playActionByName(arg0, arg1);
+		jsval jsret;
+		do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ActionObject>(cx, ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
 
