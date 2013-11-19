@@ -36901,7 +36901,9 @@ void js_register_cocos2dx_Layer(JSContext *cx, JSObject *global) {
 	jsb_Layer_class->finalize = js_cocos2dx_Layer_finalize;
 	jsb_Layer_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-	JSPropertySpec *properties = NULL;
+	static JSPropertySpec properties[] = {
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("init", js_cocos2dx_Layer_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
