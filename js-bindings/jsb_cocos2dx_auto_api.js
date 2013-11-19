@@ -1184,12 +1184,6 @@ getComponent : function () {},
 getContentSize : function () {},
 
 /**
- * @method setGrid
- * @param {cocos2d::GridBase*}
- */
-setGrid : function () {},
-
-/**
  * @method getBoundingBox
  * @return A value converted from C/C++ "cocos2d::Rect"
  */
