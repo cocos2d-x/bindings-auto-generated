@@ -7603,35 +7603,6 @@ createWithTTF : function () {},
 cc.Layer = {
 
 /**
- * @method onTouchMoved
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchMoved : function () {},
-
-/**
- * @method onTouchEnded
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchEnded : function () {},
-
-/**
- * @method onTouchCancelled
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchCancelled : function () {},
-
-/**
- * @method onTouchBegan
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchBegan : function () {},
-
-/**
  * @method init
  * @return A value converted from C/C++ "bool"
  */
@@ -9311,20 +9282,6 @@ initWithArray : function () {},
 alignItemsVertically : function () {},
 
 /**
- * @method onTouchEnded
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchEnded : function () {},
-
-/**
- * @method onTouchMoved
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchMoved : function () {},
-
-/**
  * @method isOpacityModifyRGB
  * @return A value converted from C/C++ "bool"
  */
@@ -9364,21 +9321,6 @@ alignItemsHorizontally : function () {},
  * @param {bool}
  */
 setEnabled : function () {},
-
-/**
- * @method onTouchCancelled
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchCancelled : function () {},
-
-/**
- * @method onTouchBegan
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchBegan : function () {},
 
 /**
  * @method removeChild

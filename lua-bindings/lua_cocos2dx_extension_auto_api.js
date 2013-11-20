@@ -1558,16 +1558,22 @@ setContentOffsetInDuration : function () {},
 setZoomScaleInDuration : function () {},
 
 /**
- * @method getContainer
- * @return A value converted from C/C++ "cocos2d::Node*"
+ * @method setBounceable
+ * @param {bool}
  */
-getContainer : function () {},
+setBounceable : function () {},
 
 /**
  * @method getDirection
  * @return A value converted from C/C++ "cocos2d::extension::ScrollView::Direction"
  */
 getDirection : function () {},
+
+/**
+ * @method getContainer
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ */
+getContainer : function () {},
 
 /**
  * @method getZoomScale
@@ -1601,10 +1607,10 @@ pause : function () {},
 setDirection : function () {},
 
 /**
- * @method setBounceable
- * @param {bool}
+ * @method init
+ * @return A value converted from C/C++ "bool"
  */
-setBounceable : function () {},
+init : function () {},
 
 /**
  * @method setContentOffset
@@ -1620,10 +1626,10 @@ setContentOffset : function () {},
 isDragging : function () {},
 
 /**
- * @method init
+ * @method isTouchEnabled
  * @return A value converted from C/C++ "bool"
  */
-init : function () {},
+isTouchEnabled : function () {},
 
 /**
  * @method isBounceable
