@@ -4,6 +4,119 @@
 var ccs = ccs || {};
 
 /**
+ * @class ActionObject
+ */
+ccs.ActionObject = {
+
+/**
+ * @method setCurrentTime
+ * @param {float}
+ */
+setCurrentTime : function () {},
+
+/**
+ * @method pause
+ */
+pause : function () {},
+
+/**
+ * @method setName
+ * @param {const char*}
+ */
+setName : function () {},
+
+/**
+ * @method setUnitTime
+ * @param {float}
+ */
+setUnitTime : function () {},
+
+/**
+ * @method getName
+ * @return A value converted from C/C++ "const char*"
+ */
+getName : function () {},
+
+/**
+ * @method stop
+ */
+stop : function () {},
+
+/**
+ * @method play
+ */
+play : function () {},
+
+/**
+ * @method getCurrentTime
+ * @return A value converted from C/C++ "float"
+ */
+getCurrentTime : function () {},
+
+/**
+ * @method removeActionNode
+ * @param {cocostudio::ActionNode*}
+ */
+removeActionNode : function () {},
+
+/**
+ * @method getLoop
+ * @return A value converted from C/C++ "bool"
+ */
+getLoop : function () {},
+
+/**
+ * @method initWithDictionary
+ * @param {cocostudio::JsonDictionary*}
+ * @param {cocos2d::Object*}
+ */
+initWithDictionary : function () {},
+
+/**
+ * @method addActionNode
+ * @param {cocostudio::ActionNode*}
+ */
+addActionNode : function () {},
+
+/**
+ * @method getUnitTime
+ * @return A value converted from C/C++ "float"
+ */
+getUnitTime : function () {},
+
+/**
+ * @method isPlaying
+ * @return A value converted from C/C++ "bool"
+ */
+isPlaying : function () {},
+
+/**
+ * @method updateToFrameByTime
+ * @param {float}
+ */
+updateToFrameByTime : function () {},
+
+/**
+ * @method setLoop
+ * @param {bool}
+ */
+setLoop : function () {},
+
+/**
+ * @method simulationActionUpdate
+ * @param {float}
+ */
+simulationActionUpdate : function () {},
+
+/**
+ * @method ActionObject
+ * @constructor
+ */
+ActionObject : function () {},
+
+};
+
+/**
  * @class ActionManagerEx
  */
 ccs.ActionManager = {
@@ -39,6 +152,241 @@ purgeActionManager : function () {},
  * @return A value converted from C/C++ "cocostudio::ActionManagerEx*"
  */
 shareManager : function () {},
+
+};
+
+/**
+ * @class BaseData
+ */
+ccs.BaseData = {
+
+/**
+ * @method getColor
+ * @return A value converted from C/C++ "cocos2d::Color4B"
+ */
+getColor : function () {},
+
+/**
+ * @method setColor
+ * @param {cocos2d::Color4B}
+ */
+setColor : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocostudio::BaseData*"
+ */
+create : function () {},
+
+/**
+ * @method BaseData
+ * @constructor
+ */
+BaseData : function () {},
+
+};
+
+/**
+ * @class Tween
+ */
+ccs.Tween = {
+
+/**
+ * @method getAnimation
+ * @return A value converted from C/C++ "cocostudio::ArmatureAnimation*"
+ */
+getAnimation : function () {},
+
+/**
+ * @method gotoAndPause
+ * @param {int}
+ */
+gotoAndPause : function () {},
+
+/**
+ * @method play
+ * @param {cocostudio::MovementBoneData*}
+ * @param {int}
+ * @param {int}
+ * @param {int}
+ * @param {int}
+ */
+play : function () {},
+
+/**
+ * @method gotoAndPlay
+ * @param {int}
+ */
+gotoAndPlay : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ * @param {cocostudio::Bone*}
+ */
+init : function () {},
+
+/**
+ * @method setAnimation
+ * @param {cocostudio::ArmatureAnimation*}
+ */
+setAnimation : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocostudio::Tween*"
+ * @param {cocostudio::Bone*}
+ */
+create : function () {},
+
+/**
+ * @method Tween
+ * @constructor
+ */
+Tween : function () {},
+
+};
+
+/**
+ * @class ColliderFilter
+ */
+ccs.ColliderFilter = {
+
+/**
+ * @method setCollisionType
+ * @param {unsigned int}
+ */
+setCollisionType : function () {},
+
+/**
+ * @method setGroup
+ * @param {unsigned int}
+ */
+setGroup : function () {},
+
+/**
+ * @method getCollisionType
+ * @return A value converted from C/C++ "unsigned int"
+ */
+getCollisionType : function () {},
+
+/**
+ * @method getGroup
+ * @return A value converted from C/C++ "unsigned int"
+ */
+getGroup : function () {},
+
+};
+
+/**
+ * @class DisplayManager
+ */
+ccs.DisplayManager = {
+
+/**
+ * @method getDisplayRenderNode
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ */
+getDisplayRenderNode : function () {},
+
+/**
+ * @method getAnchorPointInPoints
+ * @return A value converted from C/C++ "cocos2d::Point"
+ */
+getAnchorPointInPoints : function () {},
+
+/**
+ * @method getDisplayRenderNodeType
+ * @return A value converted from C/C++ "cocostudio::DisplayType"
+ */
+getDisplayRenderNodeType : function () {},
+
+/**
+ * @method removeDisplay
+ * @param {int}
+ */
+removeDisplay : function () {},
+
+/**
+ * @method setForceChangeDisplay
+ * @param {bool}
+ */
+setForceChangeDisplay : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ * @param {cocostudio::Bone*}
+ */
+init : function () {},
+
+/**
+ * @method getContentSize
+ * @return A value converted from C/C++ "cocos2d::Size"
+ */
+getContentSize : function () {},
+
+/**
+ * @method getBoundingBox
+ * @return A value converted from C/C++ "cocos2d::Rect"
+ */
+getBoundingBox : function () {},
+
+/**
+ * @method isForceChangeDisplay
+ * @return A value converted from C/C++ "bool"
+ */
+isForceChangeDisplay : function () {},
+
+/**
+ * @method getCurrentDisplayIndex
+ * @return A value converted from C/C++ "int"
+ */
+getCurrentDisplayIndex : function () {},
+
+/**
+ * @method getAnchorPoint
+ * @return A value converted from C/C++ "cocos2d::Point"
+ */
+getAnchorPoint : function () {},
+
+/**
+ * @method getDecorativeDisplayList
+ * @return A value converted from C/C++ "cocos2d::Array*"
+ */
+getDecorativeDisplayList : function () {},
+
+/**
+ * @method changeDisplayByIndex
+ * @param {int}
+ * @param {bool}
+ */
+changeDisplayByIndex : function () {},
+
+/**
+ * @method isVisible
+ * @return A value converted from C/C++ "bool"
+ */
+isVisible : function () {},
+
+/**
+ * @method setVisible
+ * @param {bool}
+ */
+setVisible : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocostudio::DisplayManager*"
+ * @param {cocostudio::Bone*}
+ */
+create : function () {},
+
+/**
+ * @method DisplayManager
+ * @constructor
+ */
+DisplayManager : function () {},
 
 };
 
@@ -190,12 +538,6 @@ getChildArmature : function () {},
 update : function () {},
 
 /**
- * @method getTweenData
- * @return A value converted from C/C++ "cocostudio::FrameData*"
- */
-getTweenData : function () {},
-
-/**
  * @method setColliderFilter
  * @param {cocostudio::ColliderFilter*}
  */
@@ -282,12 +624,6 @@ changeDisplayByIndex : function () {},
 updateDisplayedColor : function () {},
 
 /**
- * @method getBoneData
- * @return A value converted from C/C++ "cocostudio::BoneData*"
- */
-getBoneData : function () {},
-
-/**
  * @method Bone
  * @constructor
  */
@@ -371,12 +707,6 @@ resume : function () {},
 stop : function () {},
 
 /**
- * @method setAnimationData
- * @param {cocostudio::AnimationData*}
- */
-setAnimationData : function () {},
-
-/**
  * @method setSpeedScale
  * @param {float}
  */
@@ -387,12 +717,6 @@ setSpeedScale : function () {},
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method getAnimationData
- * @return A value converted from C/C++ "cocostudio::AnimationData*"
- */
-getAnimationData : function () {},
 
 /**
  * @method playByIndex
@@ -422,12 +746,6 @@ init : function () {},
  * @return A value converted from C/C++ "int"
  */
 getMovementCount : function () {},
-
-/**
- * @method setUserObject
- * @param {cocos2d::Object*}
- */
-setUserObject : function () {},
 
 /**
  * @method getCurrentMovementID
@@ -480,12 +798,6 @@ addArmatureData : function () {},
  * @param {const char*}
  */
 removeArmatureFileInfo : function () {},
-
-/**
- * @method getTextureDatas
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
- */
-getTextureDatas : function () {},
 
 /**
  * @method getTextureData
