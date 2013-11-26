@@ -4,25 +4,27 @@
 
 template<class T>
 static JSBool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
-	TypeTest<T> t;
-	T* cobj = new T();
-	cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
-	if (_ccobj) {
-		_ccobj->autorelease();
+    JS::RootedValue initializing(cx);
+    JSBool isNewValid = JS_TRUE;
+    JSObject* global = ScriptingCore::getInstance()->getGlobalObject();
+	isNewValid = JS_GetProperty(cx, global, "initializing", &initializing) && JSVAL_TO_BOOLEAN(initializing);
+	if (isNewValid)
+	{
+		TypeTest<T> t;
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
+
+		JSObject *_tmp = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
+		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(_tmp));
+		return JS_TRUE;
 	}
-	js_type_class_t *typeClass = nullptr;
-	long typeId = t.s_id();
-	auto typeMapIter = _js_global_type_map.find(typeId);
-	CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
-	typeClass = typeMapIter->second;
-	CCASSERT(typeClass, "The value is null.");
 
-	JSObject *_tmp = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
-	js_proxy_t *pp = jsb_new_proxy(cobj, _tmp);
-	JS_AddObjectRoot(cx, &pp->obj);
-	JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(_tmp));
-
-	return JS_TRUE;
+    JS_ReportError(cx, "Don't use `new cc.XXX`, please use `cc.XXX.create` instead! ");
+    return JS_FALSE;
 }
 
 static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
@@ -935,20 +937,8 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_constructor(JSContext *cx, uint32
 
 
 
-
 void js_cocos2dx_builder_CCBAnimationManager_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (CCBAnimationManager)", obj);
-}
-
-static JSBool js_cocos2dx_builder_CCBAnimationManager_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocosbuilder::CCBAnimationManager *nobj = new cocosbuilder::CCBAnimationManager();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocosbuilder::CCBAnimationManager");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_builder_CCBAnimationManager(JSContext *cx, JSObject *global) {
@@ -1008,7 +998,6 @@ void js_register_cocos2dx_builder_CCBAnimationManager(JSContext *cx, JSObject *g
 		JS_FN("setSequences", js_cocos2dx_builder_CCBAnimationManager_setSequences, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("debug", js_cocos2dx_builder_CCBAnimationManager_debug, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getDocumentControllerName", js_cocos2dx_builder_CCBAnimationManager_getDocumentControllerName, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_builder_CCBAnimationManager_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -1677,20 +1666,8 @@ JSBool js_cocos2dx_builder_CCBReader_constructor(JSContext *cx, uint32_t argc, j
 
 
 
-
 void js_cocos2dx_builder_CCBReader_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (CCBReader)", obj);
-}
-
-static JSBool js_cocos2dx_builder_CCBReader_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocosbuilder::CCBReader *nobj = new cocosbuilder::CCBReader();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocosbuilder::CCBReader");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_builder_CCBReader(JSContext *cx, JSObject *global) {
@@ -1729,7 +1706,6 @@ void js_register_cocos2dx_builder_CCBReader(JSContext *cx, JSObject *global) {
 		JS_FN("readCallbackKeyframesForSeq", js_cocos2dx_builder_CCBReader_readCallbackKeyframesForSeq, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getAnimationManagersForNodes", js_cocos2dx_builder_CCBReader_getAnimationManagersForNodes, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getNodesWithAnimationManagers", js_cocos2dx_builder_CCBReader_getNodesWithAnimationManagers, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_builder_CCBReader_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 

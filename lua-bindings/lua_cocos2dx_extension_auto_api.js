@@ -227,13 +227,6 @@ setSelected : function () {},
 isEnabled : function () {},
 
 /**
- * @method isTouchInside
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Touch*}
- */
-isTouchInside : function () {},
-
-/**
  * @method onTouchCancelled
  * @param {cocos2d::Touch*}
  * @param {cocos2d::Event*}
@@ -266,10 +259,11 @@ hasVisibleParents : function () {},
 isSelected : function () {},
 
 /**
- * @method init
+ * @method isTouchInside
  * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::Touch*}
  */
-init : function () {},
+isTouchInside : function () {},
 
 /**
  * @method setHighlighted
@@ -307,12 +301,6 @@ isHighlighted : function () {},
  * @return A value converted from C/C++ "cocos2d::extension::Control*"
  */
 create : function () {},
-
-/**
- * @method Control
- * @constructor
- */
-Control : function () {},
 
 };
 
@@ -410,13 +398,6 @@ setLabelAnchorPoint : function () {},
 onTouchMoved : function () {},
 
 /**
- * @method initWithBackgroundSprite
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::extension::Scale9Sprite*}
- */
-initWithBackgroundSprite : function () {},
-
-/**
  * @method getTitleTTFSizeForState
  * @return A value converted from C/C++ "float"
  * @param {cocos2d::extension::Control::State}
@@ -436,14 +417,8 @@ setTitleDispatchTable : function () {},
 setOpacity : function () {},
 
 /**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
-
-/**
  * @method setTitleTTFForState
- * @param {const char*}
+ * @param {std::string}
  * @param {cocos2d::extension::Control::State}
  */
 setTitleTTFForState : function () {},
@@ -486,12 +461,6 @@ getTitleColorDispatchTable : function () {},
 setEnabled : function () {},
 
 /**
- * @method setBackgroundSprite
- * @param {cocos2d::extension::Scale9Sprite*}
- */
-setBackgroundSprite : function () {},
-
-/**
  * @method getBackgroundSpriteForState
  * @return A value converted from C/C++ "cocos2d::extension::Scale9Sprite*"
  * @param {cocos2d::extension::Control::State}
@@ -503,13 +472,6 @@ getBackgroundSpriteForState : function () {},
  * @return A value converted from C/C++ "cocos2d::Color3B"
  */
 getColor : function () {},
-
-/**
- * @method setMargins
- * @param {int}
- * @param {int}
- */
-setMargins : function () {},
 
 /**
  * @method onTouchCancelled
@@ -524,13 +486,12 @@ onTouchCancelled : function () {},
 needsLayout : function () {},
 
 /**
- * @method initWithTitleAndFontNameAndFontSize
+ * @method onTouchBegan
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
- * @param {const char*}
- * @param {float}
+ * @param {cocos2d::Touch*}
+ * @param {cocos2d::Event*}
  */
-initWithTitleAndFontNameAndFontSize : function () {},
+onTouchBegan : function () {},
 
 /**
  * @method getCurrentTitle
@@ -546,7 +507,7 @@ getHorizontalOrigin : function () {},
 
 /**
  * @method getTitleTTFForState
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  * @param {cocos2d::extension::Control::State}
  */
 getTitleTTFForState : function () {},
@@ -563,14 +524,6 @@ getBackgroundSprite : function () {},
  * @param {cocos2d::extension::Control::State}
  */
 getTitleColorForState : function () {},
-
-/**
- * @method onTouchBegan
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Touch*}
- * @param {cocos2d::Event*}
- */
-onTouchBegan : function () {},
 
 /**
  * @method setTitleColorForState
@@ -612,12 +565,10 @@ setColor : function () {},
 getTitleLabelDispatchTable : function () {},
 
 /**
- * @method initWithLabelAndBackgroundSprite
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Node*}
+ * @method setBackgroundSprite
  * @param {cocos2d::extension::Scale9Sprite*}
  */
-initWithLabelAndBackgroundSprite : function () {},
+setBackgroundSprite : function () {},
 
 /**
  * @method setPreferredSize
@@ -663,15 +614,22 @@ getBackgroundSpriteDispatchTable : function () {},
 getTitleLabelForState : function () {},
 
 /**
+ * @method setMargins
+ * @param {int}
+ * @param {int}
+ */
+setMargins : function () {},
+
+/**
  * @method setTitleBMFontForState
- * @param {const char*}
+ * @param {std::string}
  * @param {cocos2d::extension::Control::State}
  */
 setTitleBMFontForState : function () {},
 
 /**
  * @method getTitleBMFontForState
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  * @param {cocos2d::extension::Control::State}
  */
 getTitleBMFontForState : function () {},
@@ -688,12 +646,6 @@ getZoomOnTouchDown : function () {},
  * @param {cocos2d::extension::Control::State}
  */
 getTitleForState : function () {},
-
-/**
- * @method ControlButton
- * @constructor
- */
-ControlButton : function () {},
 
 };
 

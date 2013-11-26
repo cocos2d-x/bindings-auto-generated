@@ -4,25 +4,27 @@
 
 template<class T>
 static JSBool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
-	TypeTest<T> t;
-	T* cobj = new T();
-	cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
-	if (_ccobj) {
-		_ccobj->autorelease();
+    JS::RootedValue initializing(cx);
+    JSBool isNewValid = JS_TRUE;
+    JSObject* global = ScriptingCore::getInstance()->getGlobalObject();
+	isNewValid = JS_GetProperty(cx, global, "initializing", &initializing) && JSVAL_TO_BOOLEAN(initializing);
+	if (isNewValid)
+	{
+		TypeTest<T> t;
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
+
+		JSObject *_tmp = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
+		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(_tmp));
+		return JS_TRUE;
 	}
-	js_type_class_t *typeClass = nullptr;
-	long typeId = t.s_id();
-	auto typeMapIter = _js_global_type_map.find(typeId);
-	CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
-	typeClass = typeMapIter->second;
-	CCASSERT(typeClass, "The value is null.");
 
-	JSObject *_tmp = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
-	js_proxy_t *pp = jsb_new_proxy(cobj, _tmp);
-	JS_AddObjectRoot(cx, &pp->obj);
-	JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(_tmp));
-
-	return JS_TRUE;
+    JS_ReportError(cx, "Don't use `new cc.XXX`, please use `cc.XXX.create` instead! ");
+    return JS_FALSE;
 }
 
 static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
@@ -99,20 +101,8 @@ JSBool js_cocos2dx_gui_UILayoutParameter_constructor(JSContext *cx, uint32_t arg
 
 
 
-
 void js_cocos2dx_gui_UILayoutParameter_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UILayoutParameter)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UILayoutParameter_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UILayoutParameter *nobj = new gui::UILayoutParameter();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UILayoutParameter");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UILayoutParameter(JSContext *cx, JSObject *global) {
@@ -134,7 +124,6 @@ void js_register_cocos2dx_gui_UILayoutParameter(JSContext *cx, JSObject *global)
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("getLayoutType", js_cocos2dx_gui_UILayoutParameter_getLayoutType, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UILayoutParameter_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -259,22 +248,10 @@ JSBool js_cocos2dx_gui_UILinearLayoutParameter_constructor(JSContext *cx, uint32
 }
 
 
-
 extern JSObject *jsb_UILayoutParameter_prototype;
 
 void js_cocos2dx_gui_UILinearLayoutParameter_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UILinearLayoutParameter)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UILinearLayoutParameter_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UILinearLayoutParameter *nobj = new gui::UILinearLayoutParameter();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UILinearLayoutParameter");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UILinearLayoutParameter(JSContext *cx, JSObject *global) {
@@ -297,7 +274,6 @@ void js_register_cocos2dx_gui_UILinearLayoutParameter(JSContext *cx, JSObject *g
 	static JSFunctionSpec funcs[] = {
 		JS_FN("setGravity", js_cocos2dx_gui_UILinearLayoutParameter_setGravity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getGravity", js_cocos2dx_gui_UILinearLayoutParameter_getGravity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UILinearLayoutParameter_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -496,22 +472,10 @@ JSBool js_cocos2dx_gui_UIRelativeLayoutParameter_constructor(JSContext *cx, uint
 }
 
 
-
 extern JSObject *jsb_UILayoutParameter_prototype;
 
 void js_cocos2dx_gui_UIRelativeLayoutParameter_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UIRelativeLayoutParameter)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UIRelativeLayoutParameter_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UIRelativeLayoutParameter *nobj = new gui::UIRelativeLayoutParameter();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UIRelativeLayoutParameter");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UIRelativeLayoutParameter(JSContext *cx, JSObject *global) {
@@ -538,7 +502,6 @@ void js_register_cocos2dx_gui_UIRelativeLayoutParameter(JSContext *cx, JSObject 
 		JS_FN("getRelativeToWidgetName", js_cocos2dx_gui_UIRelativeLayoutParameter_getRelativeToWidgetName, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setRelativeName", js_cocos2dx_gui_UIRelativeLayoutParameter_setRelativeName, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getAlign", js_cocos2dx_gui_UIRelativeLayoutParameter_getAlign, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UIRelativeLayoutParameter_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -2676,20 +2639,8 @@ JSBool js_cocos2dx_gui_UIWidget_constructor(JSContext *cx, uint32_t argc, jsval 
 
 
 
-
 void js_cocos2dx_gui_UIWidget_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UIWidget)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UIWidget_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UIWidget *nobj = new gui::UIWidget();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UIWidget");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UIWidget(JSContext *cx, JSObject *global) {
@@ -2812,7 +2763,6 @@ void js_register_cocos2dx_gui_UIWidget(JSContext *cx, JSObject *global) {
 		JS_FN("stopAction", js_cocos2dx_gui_UIWidget_stopAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBright", js_cocos2dx_gui_UIWidget_setBright, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getActionManager", js_cocos2dx_gui_UIWidget_getActionManager, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UIWidget_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -3315,22 +3265,10 @@ JSBool js_cocos2dx_gui_UILayout_constructor(JSContext *cx, uint32_t argc, jsval 
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UILayout_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UILayout)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UILayout_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UILayout *nobj = new gui::UILayout();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UILayout");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UILayout(JSContext *cx, JSObject *global) {
@@ -3371,7 +3309,6 @@ void js_register_cocos2dx_gui_UILayout(JSContext *cx, JSObject *global) {
 		JS_FN("setClippingEnabled", js_cocos2dx_gui_UILayout_setClippingEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getContentSize", js_cocos2dx_gui_UILayout_getContentSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setLayoutType", js_cocos2dx_gui_UILayout_setLayoutType, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UILayout_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -4047,22 +3984,10 @@ JSBool js_cocos2dx_gui_UIButton_constructor(JSContext *cx, uint32_t argc, jsval 
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UIButton_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UIButton)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UIButton_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UIButton *nobj = new gui::UIButton();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UIButton");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UIButton(JSContext *cx, JSObject *global) {
@@ -4111,7 +4036,6 @@ void js_register_cocos2dx_gui_UIButton(JSContext *cx, JSObject *global) {
 		JS_FN("getTitleFontName", js_cocos2dx_gui_UIButton_getTitleFontName, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setCapInsets", js_cocos2dx_gui_UIButton_setCapInsets, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setPressedActionEnabled", js_cocos2dx_gui_UIButton_setPressedActionEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UIButton_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -4584,22 +4508,10 @@ JSBool js_cocos2dx_gui_UICheckBox_constructor(JSContext *cx, uint32_t argc, jsva
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UICheckBox_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UICheckBox)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UICheckBox_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UICheckBox *nobj = new gui::UICheckBox();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UICheckBox");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UICheckBox(JSContext *cx, JSObject *global) {
@@ -4636,7 +4548,6 @@ void js_register_cocos2dx_gui_UICheckBox(JSContext *cx, JSObject *global) {
 		JS_FN("loadTextureBackGround", js_cocos2dx_gui_UICheckBox_loadTextureBackGround, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSelectedState", js_cocos2dx_gui_UICheckBox_setSelectedState, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("loadTextureFrontCrossDisabled", js_cocos2dx_gui_UICheckBox_loadTextureFrontCrossDisabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UICheckBox_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -5006,22 +4917,10 @@ JSBool js_cocos2dx_gui_UIImageView_constructor(JSContext *cx, uint32_t argc, jsv
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UIImageView_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UIImageView)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UIImageView_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UIImageView *nobj = new gui::UIImageView();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UIImageView");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UIImageView(JSContext *cx, JSObject *global) {
@@ -5056,7 +4955,6 @@ void js_register_cocos2dx_gui_UIImageView(JSContext *cx, JSObject *global) {
 		JS_FN("setTextureRect", js_cocos2dx_gui_UIImageView_setTextureRect, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setCapInsets", js_cocos2dx_gui_UIImageView_setCapInsets, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getContentSize", js_cocos2dx_gui_UIImageView_getContentSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UIImageView_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -5547,22 +5445,10 @@ JSBool js_cocos2dx_gui_UILabel_constructor(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UILabel_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UILabel)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UILabel_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UILabel *nobj = new gui::UILabel();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UILabel");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UILabel(JSContext *cx, JSObject *global) {
@@ -5604,7 +5490,6 @@ void js_register_cocos2dx_gui_UILabel(JSContext *cx, JSObject *global) {
 		JS_FN("setFontSize", js_cocos2dx_gui_UILabel_setFontSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setText", js_cocos2dx_gui_UILabel_setText, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTextHorizontalAlignment", js_cocos2dx_gui_UILabel_setTextHorizontalAlignment, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UILabel_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -5835,22 +5720,10 @@ JSBool js_cocos2dx_gui_UILabelAtlas_constructor(JSContext *cx, uint32_t argc, js
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UILabelAtlas_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UILabelAtlas)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UILabelAtlas_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UILabelAtlas *nobj = new gui::UILabelAtlas();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UILabelAtlas");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UILabelAtlas(JSContext *cx, JSObject *global) {
@@ -5878,7 +5751,6 @@ void js_register_cocos2dx_gui_UILabelAtlas(JSContext *cx, JSObject *global) {
 		JS_FN("getContentSize", js_cocos2dx_gui_UILabelAtlas_getContentSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setProperty", js_cocos2dx_gui_UILabelAtlas_setProperty, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setStringValue", js_cocos2dx_gui_UILabelAtlas_setStringValue, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UILabelAtlas_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -6188,22 +6060,10 @@ JSBool js_cocos2dx_gui_UILoadingBar_constructor(JSContext *cx, uint32_t argc, js
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UILoadingBar_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UILoadingBar)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UILoadingBar_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UILoadingBar *nobj = new gui::UILoadingBar();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UILoadingBar");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UILoadingBar(JSContext *cx, JSObject *global) {
@@ -6235,7 +6095,6 @@ void js_register_cocos2dx_gui_UILoadingBar(JSContext *cx, JSObject *global) {
 		JS_FN("getDirection", js_cocos2dx_gui_UILoadingBar_getDirection, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getContentSize", js_cocos2dx_gui_UILoadingBar_getContentSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPercent", js_cocos2dx_gui_UILoadingBar_getPercent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UILoadingBar_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -7102,22 +6961,10 @@ JSBool js_cocos2dx_gui_UIScrollView_constructor(JSContext *cx, uint32_t argc, js
 }
 
 
-
 extern JSObject *jsb_UILayout_prototype;
 
 void js_cocos2dx_gui_UIScrollView_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UIScrollView)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UIScrollView_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UIScrollView *nobj = new gui::UIScrollView();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UIScrollView");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UIScrollView(JSContext *cx, JSObject *global) {
@@ -7178,7 +7025,6 @@ void js_register_cocos2dx_gui_UIScrollView(JSContext *cx, JSObject *global) {
 		JS_FN("setLayoutType", js_cocos2dx_gui_UIScrollView_setLayoutType, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("jumpToRight", js_cocos2dx_gui_UIScrollView_jumpToRight, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("scrollToTopRight", js_cocos2dx_gui_UIScrollView_scrollToTopRight, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UIScrollView_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -7603,22 +7449,10 @@ JSBool js_cocos2dx_gui_UIListView_constructor(JSContext *cx, uint32_t argc, jsva
 }
 
 
-
 extern JSObject *jsb_UIScrollView_prototype;
 
 void js_cocos2dx_gui_UIListView_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UIListView)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UIListView_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UIListView *nobj = new gui::UIListView();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UIListView");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UIListView(JSContext *cx, JSObject *global) {
@@ -7655,7 +7489,6 @@ void js_register_cocos2dx_gui_UIListView(JSContext *cx, JSObject *global) {
 		JS_FN("setItemModel", js_cocos2dx_gui_UIListView_setItemModel, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("pushBackDefaultItem", js_cocos2dx_gui_UIListView_pushBackDefaultItem, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("insertCustomItem", js_cocos2dx_gui_UIListView_insertCustomItem, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UIListView_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -8126,22 +7959,10 @@ JSBool js_cocos2dx_gui_UISlider_constructor(JSContext *cx, uint32_t argc, jsval 
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UISlider_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UISlider)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UISlider_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UISlider *nobj = new gui::UISlider();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UISlider");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UISlider(JSContext *cx, JSObject *global) {
@@ -8178,7 +7999,6 @@ void js_register_cocos2dx_gui_UISlider(JSContext *cx, JSObject *global) {
 		JS_FN("loadSlidBallTextureDisabled", js_cocos2dx_gui_UISlider_loadSlidBallTextureDisabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getContentSize", js_cocos2dx_gui_UISlider_getContentSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPercent", js_cocos2dx_gui_UISlider_getPercent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UISlider_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -8862,22 +8682,10 @@ JSBool js_cocos2dx_gui_UITextField_constructor(JSContext *cx, uint32_t argc, jsv
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UITextField_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UITextField)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UITextField_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UITextField *nobj = new gui::UITextField();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UITextField");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UITextField(JSContext *cx, JSObject *global) {
@@ -8930,7 +8738,6 @@ void js_register_cocos2dx_gui_UITextField(JSContext *cx, JSObject *global) {
 		JS_FN("setMaxLength", js_cocos2dx_gui_UITextField_setMaxLength, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTouchSize", js_cocos2dx_gui_UITextField_setTouchSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setDeleteBackward", js_cocos2dx_gui_UITextField_setDeleteBackward, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UITextField_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -9153,22 +8960,10 @@ JSBool js_cocos2dx_gui_UILabelBMFont_constructor(JSContext *cx, uint32_t argc, j
 }
 
 
-
 extern JSObject *jsb_UIWidget_prototype;
 
 void js_cocos2dx_gui_UILabelBMFont_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UILabelBMFont)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UILabelBMFont_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UILabelBMFont *nobj = new gui::UILabelBMFont();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UILabelBMFont");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UILabelBMFont(JSContext *cx, JSObject *global) {
@@ -9196,7 +8991,6 @@ void js_register_cocos2dx_gui_UILabelBMFont(JSContext *cx, JSObject *global) {
 		JS_FN("getDescription", js_cocos2dx_gui_UILabelBMFont_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getContentSize", js_cocos2dx_gui_UILabelBMFont_getContentSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setFntFile", js_cocos2dx_gui_UILabelBMFont_setFntFile, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UILabelBMFont_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -9605,22 +9399,10 @@ JSBool js_cocos2dx_gui_UIPageView_constructor(JSContext *cx, uint32_t argc, jsva
 }
 
 
-
 extern JSObject *jsb_UILayout_prototype;
 
 void js_cocos2dx_gui_UIPageView_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UIPageView)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UIPageView_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UIPageView *nobj = new gui::UIPageView();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UIPageView");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UIPageView(JSContext *cx, JSObject *global) {
@@ -9656,7 +9438,6 @@ void js_register_cocos2dx_gui_UIPageView(JSContext *cx, JSObject *global) {
 		JS_FN("getPages", js_cocos2dx_gui_UIPageView_getPages, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeAllPages", js_cocos2dx_gui_UIPageView_removeAllPages, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addPage", js_cocos2dx_gui_UIPageView_addPage, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UIPageView_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -9831,7 +9612,6 @@ JSBool js_cocos2dx_gui_UIHelper_seekWidgetByName(JSContext *cx, uint32_t argc, j
 	JS_ReportError(cx, "js_cocos2dx_gui_UIHelper_seekWidgetByName : wrong number of arguments");
 	return JS_FALSE;
 }
-
 
 
 
@@ -10131,22 +9911,10 @@ JSBool js_cocos2dx_gui_UILayer_constructor(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-
 extern JSObject *jsb_Layer_prototype;
 
 void js_cocos2dx_gui_UILayer_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (UILayer)", obj);
-}
-
-static JSBool js_cocos2dx_gui_UILayer_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    gui::UILayer *nobj = new gui::UILayer();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "gui::UILayer");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_gui_UILayer(JSContext *cx, JSObject *global) {
@@ -10175,7 +9943,6 @@ void js_register_cocos2dx_gui_UILayer(JSContext *cx, JSObject *global) {
 		JS_FN("addWidget", js_cocos2dx_gui_UILayer_addWidget, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setVisible", js_cocos2dx_gui_UILayer_setVisible, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("clear", js_cocos2dx_gui_UILayer_clear, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_gui_UILayer_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 

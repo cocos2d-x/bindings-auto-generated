@@ -4,25 +4,27 @@
 
 template<class T>
 static JSBool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
-	TypeTest<T> t;
-	T* cobj = new T();
-	cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
-	if (_ccobj) {
-		_ccobj->autorelease();
+    JS::RootedValue initializing(cx);
+    JSBool isNewValid = JS_TRUE;
+    JSObject* global = ScriptingCore::getInstance()->getGlobalObject();
+	isNewValid = JS_GetProperty(cx, global, "initializing", &initializing) && JSVAL_TO_BOOLEAN(initializing);
+	if (isNewValid)
+	{
+		TypeTest<T> t;
+		js_type_class_t *typeClass = nullptr;
+		long typeId = t.s_id();
+		auto typeMapIter = _js_global_type_map.find(typeId);
+		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
+		typeClass = typeMapIter->second;
+		CCASSERT(typeClass, "The value is null.");
+
+		JSObject *_tmp = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
+		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(_tmp));
+		return JS_TRUE;
 	}
-	js_type_class_t *typeClass = nullptr;
-	long typeId = t.s_id();
-	auto typeMapIter = _js_global_type_map.find(typeId);
-	CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
-	typeClass = typeMapIter->second;
-	CCASSERT(typeClass, "The value is null.");
 
-	JSObject *_tmp = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
-	js_proxy_t *pp = jsb_new_proxy(cobj, _tmp);
-	JS_AddObjectRoot(cx, &pp->obj);
-	JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(_tmp));
-
-	return JS_TRUE;
+    JS_ReportError(cx, "Don't use `new cc.XXX`, please use `cc.XXX.create` instead! ");
+    return JS_FALSE;
 }
 
 static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
@@ -402,20 +404,8 @@ JSBool js_cocos2dx_studio_ActionObject_constructor(JSContext *cx, uint32_t argc,
 
 
 
-
 void js_cocos2dx_studio_ActionObject_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ActionObject)", obj);
-}
-
-static JSBool js_cocos2dx_studio_ActionObject_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocostudio::ActionObject *nobj = new cocostudio::ActionObject();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::ActionObject");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_studio_ActionObject(JSContext *cx, JSObject *global) {
@@ -453,7 +443,6 @@ void js_register_cocos2dx_studio_ActionObject(JSContext *cx, JSObject *global) {
 		JS_FN("updateToFrameByTime", js_cocos2dx_studio_ActionObject_updateToFrameByTime, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setLoop", js_cocos2dx_studio_ActionObject_setLoop, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("simulationActionUpdate", js_cocos2dx_studio_ActionObject_simulationActionUpdate, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_studio_ActionObject_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -597,7 +586,6 @@ JSBool js_cocos2dx_studio_ActionManagerEx_shareManager(JSContext *cx, uint32_t a
 	JS_ReportError(cx, "js_cocos2dx_studio_ActionManagerEx_shareManager : wrong number of arguments");
 	return JS_FALSE;
 }
-
 
 
 
@@ -752,20 +740,8 @@ JSBool js_cocos2dx_studio_BaseData_constructor(JSContext *cx, uint32_t argc, jsv
 
 
 
-
 void js_cocos2dx_studio_BaseData_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (BaseData)", obj);
-}
-
-static JSBool js_cocos2dx_studio_BaseData_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocostudio::BaseData *nobj = new cocostudio::BaseData();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::BaseData");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_studio_BaseData(JSContext *cx, JSObject *global) {
@@ -788,7 +764,6 @@ void js_register_cocos2dx_studio_BaseData(JSContext *cx, JSObject *global) {
 	static JSFunctionSpec funcs[] = {
 		JS_FN("getColor", js_cocos2dx_studio_BaseData_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setColor", js_cocos2dx_studio_BaseData_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_studio_BaseData_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -1044,20 +1019,8 @@ JSBool js_cocos2dx_studio_Tween_constructor(JSContext *cx, uint32_t argc, jsval 
 
 
 
-
 void js_cocos2dx_studio_Tween_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Tween)", obj);
-}
-
-static JSBool js_cocos2dx_studio_Tween_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocostudio::Tween *nobj = new cocostudio::Tween();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::Tween");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_studio_Tween(JSContext *cx, JSObject *global) {
@@ -1084,7 +1047,6 @@ void js_register_cocos2dx_studio_Tween(JSContext *cx, JSObject *global) {
 		JS_FN("gotoAndPlay", js_cocos2dx_studio_Tween_gotoAndPlay, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("init", js_cocos2dx_studio_Tween_init, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAnimation", js_cocos2dx_studio_Tween_setAnimation, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_studio_Tween_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -1198,7 +1160,6 @@ JSBool js_cocos2dx_studio_ColliderFilter_getGroup(JSContext *cx, uint32_t argc, 
 	JS_ReportError(cx, "js_cocos2dx_studio_ColliderFilter_getGroup : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-
 
 
 void js_cocos2dx_studio_ColliderFilter_finalize(JSFreeOp *fop, JSObject *obj) {
@@ -1711,20 +1672,8 @@ JSBool js_cocos2dx_studio_DisplayManager_constructor(JSContext *cx, uint32_t arg
 
 
 
-
 void js_cocos2dx_studio_DisplayManager_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (DisplayManager)", obj);
-}
-
-static JSBool js_cocos2dx_studio_DisplayManager_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocostudio::DisplayManager *nobj = new cocostudio::DisplayManager();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::DisplayManager");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_studio_DisplayManager(JSContext *cx, JSObject *global) {
@@ -1762,7 +1711,6 @@ void js_register_cocos2dx_studio_DisplayManager(JSContext *cx, JSObject *global)
 		JS_FN("changeDisplayByIndex", js_cocos2dx_studio_DisplayManager_changeDisplayByIndex, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isVisible", js_cocos2dx_studio_DisplayManager_isVisible, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setVisible", js_cocos2dx_studio_DisplayManager_setVisible, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_studio_DisplayManager_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -2778,22 +2726,10 @@ JSBool js_cocos2dx_studio_Bone_constructor(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-
 extern JSObject *jsb_NodeRGBA_prototype;
 
 void js_cocos2dx_studio_Bone_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Bone)", obj);
-}
-
-static JSBool js_cocos2dx_studio_Bone_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocostudio::Bone *nobj = new cocostudio::Bone();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::Bone");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
@@ -2854,7 +2790,6 @@ void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
 		JS_FN("setBlendType", js_cocos2dx_studio_Bone_setBlendType, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("changeDisplayByIndex", js_cocos2dx_studio_Bone_changeDisplayByIndex, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("updateDisplayedColor", js_cocos2dx_studio_Bone_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_studio_Bone_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -3055,7 +2990,6 @@ JSBool js_cocos2dx_studio_BatchNode_create(JSContext *cx, uint32_t argc, jsval *
 	JS_ReportError(cx, "js_cocos2dx_studio_BatchNode_create : wrong number of arguments");
 	return JS_FALSE;
 }
-
 
 
 extern JSObject *jsb_Node_prototype;
@@ -3554,20 +3488,8 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_constructor(JSContext *cx, uint32_t 
 
 
 
-
 void js_cocos2dx_studio_ArmatureAnimation_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ArmatureAnimation)", obj);
-}
-
-static JSBool js_cocos2dx_studio_ArmatureAnimation_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocostudio::ArmatureAnimation *nobj = new cocostudio::ArmatureAnimation();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::ArmatureAnimation");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_studio_ArmatureAnimation(JSContext *cx, JSObject *global) {
@@ -3602,7 +3524,6 @@ void js_register_cocos2dx_studio_ArmatureAnimation(JSContext *cx, JSObject *glob
 		JS_FN("init", js_cocos2dx_studio_ArmatureAnimation_init, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getMovementCount", js_cocos2dx_studio_ArmatureAnimation_getMovementCount, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCurrentMovementID", js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_studio_ArmatureAnimation_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -4127,7 +4048,6 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getInstance(JSContext *cx, uint32_
 	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureDataManager_getInstance : wrong number of arguments");
 	return JS_FALSE;
 }
-
 
 
 
@@ -5028,22 +4948,10 @@ JSBool js_cocos2dx_studio_Armature_constructor(JSContext *cx, uint32_t argc, jsv
 }
 
 
-
 extern JSObject *jsb_NodeRGBA_prototype;
 
 void js_cocos2dx_studio_Armature_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Armature)", obj);
-}
-
-static JSBool js_cocos2dx_studio_Armature_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocostudio::Armature *nobj = new cocostudio::Armature();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::Armature");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
@@ -5093,7 +5001,6 @@ void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
 		JS_FN("getAnimation", js_cocos2dx_studio_Armature_getAnimation, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getBoneDic", js_cocos2dx_studio_Armature_getBoneDic, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTextureAtlas", js_cocos2dx_studio_Armature_getTextureAtlas, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_studio_Armature_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -5406,22 +5313,10 @@ JSBool js_cocos2dx_studio_Skin_constructor(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-
 extern JSObject *jsb_Sprite_prototype;
 
 void js_cocos2dx_studio_Skin_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Skin)", obj);
-}
-
-static JSBool js_cocos2dx_studio_Skin_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocostudio::Skin *nobj = new cocostudio::Skin();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::Skin");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_studio_Skin(JSContext *cx, JSObject *global) {
@@ -5451,7 +5346,6 @@ void js_register_cocos2dx_studio_Skin(JSContext *cx, JSObject *global) {
 		JS_FN("initWithSpriteFrameName", js_cocos2dx_studio_Skin_initWithSpriteFrameName, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("initWithFile", js_cocos2dx_studio_Skin_initWithFile, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBone", js_cocos2dx_studio_Skin_setBone, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_studio_Skin_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -5704,7 +5598,6 @@ JSBool js_cocos2dx_studio_ComAttribute_create(JSContext *cx, uint32_t argc, jsva
 	JS_ReportError(cx, "js_cocos2dx_studio_ComAttribute_create : wrong number of arguments");
 	return JS_FALSE;
 }
-
 
 
 extern JSObject *jsb_Component_prototype;
@@ -6376,7 +6269,6 @@ JSBool js_cocos2dx_studio_ComAudio_create(JSContext *cx, uint32_t argc, jsval *v
 }
 
 
-
 extern JSObject *jsb_Component_prototype;
 
 void js_cocos2dx_studio_ComAudio_finalize(JSFreeOp *fop, JSObject *obj) {
@@ -6656,7 +6548,6 @@ JSBool js_cocos2dx_studio_InputDelegate_setTouchMode(JSContext *cx, uint32_t arg
 }
 
 
-
 void js_cocos2dx_studio_InputDelegate_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (InputDelegate)", obj);
 }
@@ -6847,22 +6738,10 @@ JSBool js_cocos2dx_studio_ComController_constructor(JSContext *cx, uint32_t argc
 }
 
 
-
 extern JSObject *jsb_Component_prototype;
 
 void js_cocos2dx_studio_ComController_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ComController)", obj);
-}
-
-static JSBool js_cocos2dx_studio_ComController_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocostudio::ComController *nobj = new cocostudio::ComController();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    nobj->autorelease();
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::ComController");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
 }
 
 void js_register_cocos2dx_studio_ComController(JSContext *cx, JSObject *global) {
@@ -6885,7 +6764,6 @@ void js_register_cocos2dx_studio_ComController(JSContext *cx, JSObject *global) 
 		JS_FN("isEnabled", js_cocos2dx_studio_ComController_isEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("update", js_cocos2dx_studio_ComController_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("init", js_cocos2dx_studio_ComController_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_studio_ComController_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -6982,7 +6860,6 @@ JSBool js_cocos2dx_studio_ComRender_create(JSContext *cx, uint32_t argc, jsval *
 	JS_ReportError(cx, "js_cocos2dx_studio_ComRender_create : wrong number of arguments");
 	return JS_FALSE;
 }
-
 
 
 extern JSObject *jsb_Component_prototype;
@@ -7133,7 +7010,6 @@ JSBool js_cocos2dx_studio_GUIReader_shareReader(JSContext *cx, uint32_t argc, js
 
 
 
-
 void js_cocos2dx_studio_GUIReader_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (GUIReader)", obj);
 }
@@ -7274,7 +7150,6 @@ JSBool js_cocos2dx_studio_SceneReader_getInstance(JSContext *cx, uint32_t argc, 
 	JS_ReportError(cx, "js_cocos2dx_studio_SceneReader_getInstance : wrong number of arguments");
 	return JS_FALSE;
 }
-
 
 
 
