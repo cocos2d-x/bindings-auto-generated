@@ -5948,6 +5948,14 @@ setOpacity : function () {},
 setScaleX : function () {},
 
 /**
+ * @method addChild
+ * @param {cocos2d::Node*}
+ * @param {int}
+ * @param {int}
+ */
+addChild : function () {},
+
+/**
  * @method setAnchorPoint
  * @param {cocos2d::Point}
  */
