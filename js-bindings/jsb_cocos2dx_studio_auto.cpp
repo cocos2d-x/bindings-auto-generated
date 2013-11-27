@@ -1096,7 +1096,7 @@ JSBool js_cocos2dx_studio_ColliderFilter_setCollisionType(JSContext *cx, uint32_
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_setCollisionType : Invalid Native Object");
 	if (argc == 1) {
 		unsigned long arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned long;
+		ok &= jsval_to_ulong(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_setCollisionType : Error processing arguments");
 		cobj->setCollisionType(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -1116,7 +1116,7 @@ JSBool js_cocos2dx_studio_ColliderFilter_setGroup(JSContext *cx, uint32_t argc, 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_setGroup : Invalid Native Object");
 	if (argc == 1) {
 		unsigned long arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned long;
+		ok &= jsval_to_ulong(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_setGroup : Error processing arguments");
 		cobj->setGroup(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -1135,7 +1135,7 @@ JSBool js_cocos2dx_studio_ColliderFilter_getCollisionType(JSContext *cx, uint32_
 	if (argc == 0) {
 		unsigned long ret = cobj->getCollisionType();
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR unsigned long;
+		jsret = ulong_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -1152,7 +1152,7 @@ JSBool js_cocos2dx_studio_ColliderFilter_getGroup(JSContext *cx, uint32_t argc, 
 	if (argc == 0) {
 		unsigned long ret = cobj->getGroup();
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR unsigned long;
+		jsret = ulong_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
