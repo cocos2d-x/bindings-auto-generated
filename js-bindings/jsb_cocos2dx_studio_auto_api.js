@@ -254,25 +254,25 @@ ccs.ColliderFilter = {
 
 /**
  * @method setCollisionType
- * @param {unsigned int}
+ * @param {unsigned long}
  */
 setCollisionType : function () {},
 
 /**
  * @method setGroup
- * @param {unsigned int}
+ * @param {unsigned long}
  */
 setGroup : function () {},
 
 /**
  * @method getCollisionType
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "unsigned long"
  */
 getCollisionType : function () {},
 
 /**
  * @method getGroup
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "unsigned long"
  */
 getGroup : function () {},
 
