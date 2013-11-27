@@ -1095,8 +1095,8 @@ JSBool js_cocos2dx_studio_ColliderFilter_setCollisionType(JSContext *cx, uint32_
 	cocostudio::ColliderFilter* cobj = (cocostudio::ColliderFilter *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_setCollisionType : Invalid Native Object");
 	if (argc == 1) {
-		unsigned int arg0;
-		ok &= jsval_to_uint32(cx, argv[0], &arg0);
+		unsigned long arg0;
+		#pragma warning NO CONVERSION TO NATIVE FOR unsigned long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_setCollisionType : Error processing arguments");
 		cobj->setCollisionType(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -1115,8 +1115,8 @@ JSBool js_cocos2dx_studio_ColliderFilter_setGroup(JSContext *cx, uint32_t argc, 
 	cocostudio::ColliderFilter* cobj = (cocostudio::ColliderFilter *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_setGroup : Invalid Native Object");
 	if (argc == 1) {
-		unsigned int arg0;
-		ok &= jsval_to_uint32(cx, argv[0], &arg0);
+		unsigned long arg0;
+		#pragma warning NO CONVERSION TO NATIVE FOR unsigned long;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_setGroup : Error processing arguments");
 		cobj->setGroup(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -1133,9 +1133,9 @@ JSBool js_cocos2dx_studio_ColliderFilter_getCollisionType(JSContext *cx, uint32_
 	cocostudio::ColliderFilter* cobj = (cocostudio::ColliderFilter *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_getCollisionType : Invalid Native Object");
 	if (argc == 0) {
-		unsigned int ret = cobj->getCollisionType();
+		unsigned long ret = cobj->getCollisionType();
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR unsigned long;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -1150,9 +1150,9 @@ JSBool js_cocos2dx_studio_ColliderFilter_getGroup(JSContext *cx, uint32_t argc, 
 	cocostudio::ColliderFilter* cobj = (cocostudio::ColliderFilter *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderFilter_getGroup : Invalid Native Object");
 	if (argc == 0) {
-		unsigned int ret = cobj->getGroup();
+		unsigned long ret = cobj->getGroup();
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR unsigned long;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
