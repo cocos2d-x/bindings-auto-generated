@@ -754,12 +754,6 @@ cc.Node = {
 removeComponent : function () {},
 
 /**
- * @method setPhysicsBody
- * @param {cocos2d::PhysicsBody*}
- */
-setPhysicsBody : function () {},
-
-/**
  * @method pause
  */
 pause : function () {},
@@ -892,12 +886,6 @@ convertToNodeSpace : function () {},
  * @method resume
  */
 resume : function () {},
-
-/**
- * @method getPhysicsBody
- * @return A value converted from C/C++ "cocos2d::PhysicsBody*"
- */
-getPhysicsBody : function () {},
 
 /**
  * @method stopActionByTag
@@ -1195,11 +1183,6 @@ setGrid : function () {},
  * @return A value converted from C/C++ "cocos2d::Rect"
  */
 getBoundingBox : function () {},
-
-/**
- * @method updatePhysicsTransform
- */
-updatePhysicsTransform : function () {},
 
 /**
  * @method setEventDispatcher
@@ -7325,28 +7308,10 @@ LayerMultiplex : function () {},
 cc.Scene = {
 
 /**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
- * @method getPhysicsWorld
- * @return A value converted from C/C++ "cocos2d::PhysicsWorld*"
- */
-getPhysicsWorld : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::Scene*"
  */
 create : function () {},
-
-/**
- * @method createWithPhysics
- * @return A value converted from C/C++ "cocos2d::Scene*"
- */
-createWithPhysics : function () {},
 
 };
 
