@@ -9989,6 +9989,200 @@ getInstance : function () {},
 };
 
 /**
+ * @class EGLViewProtocol
+ */
+cc.EGLViewProtocol = {
+
+/**
+ * @method setFrameSize
+ * @param {float}
+ * @param {float}
+ */
+setFrameSize : function () {},
+
+/**
+ * @method getViewPortRect
+ * @return A value converted from C/C++ "cocos2d::Rect"
+ */
+getViewPortRect : function () {},
+
+/**
+ * @method handleTouchesMove
+ * @param {int}
+ * @param {long*}
+ * @param {float*}
+ * @param {float*}
+ */
+handleTouchesMove : function () {},
+
+/**
+ * @method setIMEKeyboardState
+ * @param {bool}
+ */
+setIMEKeyboardState : function () {},
+
+/**
+ * @method setScissorInPoints
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ */
+setScissorInPoints : function () {},
+
+/**
+ * @method getViewName
+ * @return A value converted from C/C++ "std::string"
+ */
+getViewName : function () {},
+
+/**
+ * @method isOpenGLReady
+ * @return A value converted from C/C++ "bool"
+ */
+isOpenGLReady : function () {},
+
+/**
+ * @method getScissorRect
+ * @return A value converted from C/C++ "cocos2d::Rect"
+ */
+getScissorRect : function () {},
+
+/**
+ * @method end
+ */
+end : function () {},
+
+/**
+ * @method getScaleY
+ * @return A value converted from C/C++ "float"
+ */
+getScaleY : function () {},
+
+/**
+ * @method getScaleX
+ * @return A value converted from C/C++ "float"
+ */
+getScaleX : function () {},
+
+/**
+ * @method getVisibleOrigin
+ * @return A value converted from C/C++ "cocos2d::Point"
+ */
+getVisibleOrigin : function () {},
+
+/**
+ * @method getFrameSize
+ * @return A value converted from C/C++ "cocos2d::Size"
+ */
+getFrameSize : function () {},
+
+/**
+ * @method getDesignResolutionSize
+ * @return A value converted from C/C++ "cocos2d::Size"
+ */
+getDesignResolutionSize : function () {},
+
+/**
+ * @method pollInputEvents
+ */
+pollInputEvents : function () {},
+
+/**
+ * @method swapBuffers
+ */
+swapBuffers : function () {},
+
+/**
+ * @method setDesignResolutionSize
+ * @param {float}
+ * @param {float}
+ * @param {ResolutionPolicy}
+ */
+setDesignResolutionSize : function () {},
+
+/**
+ * @method handleTouchesBegin
+ * @param {int}
+ * @param {long*}
+ * @param {float*}
+ * @param {float*}
+ */
+handleTouchesBegin : function () {},
+
+/**
+ * @method setViewPortInPoints
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ */
+setViewPortInPoints : function () {},
+
+/**
+ * @method handleTouchesCancel
+ * @param {int}
+ * @param {long*}
+ * @param {float*}
+ * @param {float*}
+ */
+handleTouchesCancel : function () {},
+
+/**
+ * @method setViewName
+ * @param {std::string}
+ */
+setViewName : function () {},
+
+/**
+ * @method getVisibleSize
+ * @return A value converted from C/C++ "cocos2d::Size"
+ */
+getVisibleSize : function () {},
+
+/**
+ * @method isScissorEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isScissorEnabled : function () {},
+
+/**
+ * @method handleTouchesEnd
+ * @param {int}
+ * @param {long*}
+ * @param {float*}
+ * @param {float*}
+ */
+handleTouchesEnd : function () {},
+
+};
+
+/**
+ * @class EGLView
+ */
+cc.EGLView = {
+
+/**
+ * @method setIMEKeyboardState
+ * @param {bool}
+ */
+setIMEKeyboardState : function () {},
+
+/**
+ * @method isOpenGLReady
+ * @return A value converted from C/C++ "bool"
+ */
+isOpenGLReady : function () {},
+
+/**
+ * @method getInstance
+ * @return A value converted from C/C++ "cocos2d::EGLView*"
+ */
+getInstance : function () {},
+
+};
+
+/**
  * @class ShaderCache
  */
 cc.ShaderCache = {

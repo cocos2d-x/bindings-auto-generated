@@ -4499,16 +4499,16 @@ GUIReader : function () {},
 ccs.SceneReader = {
 
 /**
+ * @method purgeSceneReader
+ */
+purgeSceneReader : function () {},
+
+/**
  * @method createNodeWithSceneFile
  * @return A value converted from C/C++ "cocos2d::Node*"
  * @param {const char*}
  */
 createNodeWithSceneFile : function () {},
-
-/**
- * @method purgeSceneReader
- */
-purgeSceneReader : function () {},
 
 /**
  * @method sceneReaderVersion
