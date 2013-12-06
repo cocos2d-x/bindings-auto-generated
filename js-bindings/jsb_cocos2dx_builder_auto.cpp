@@ -131,7 +131,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_actionForSoundChannel(JSContext *
 		jsval jsret;
 		do {
 			if (ret) {
-				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, ret);
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, (cocos2d::Object*)ret);
 				jsret = OBJECT_TO_JSVAL(proxy->obj);
 			} else {
 				jsret = JSVAL_NULL;
@@ -338,7 +338,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getRootContainerSize(JSContext *c
 	cocosbuilder::CCBAnimationManager* cobj = (cocosbuilder::CCBAnimationManager *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getRootContainerSize : Invalid Native Object");
 	if (argc == 0) {
-		cocos2d::Size ret = cobj->getRootContainerSize();
+		const cocos2d::Size& ret = cobj->getRootContainerSize();
 		jsval jsret;
 		jsret = ccsize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -387,7 +387,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getContainerSize(JSContext *cx, u
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getContainerSize : Error processing arguments");
-		cocos2d::Size ret = cobj->getContainerSize(arg0);
+		const cocos2d::Size& ret = cobj->getContainerSize(arg0);
 		jsval jsret;
 		jsret = ccsize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -420,7 +420,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_actionForCallbackChannel(JSContex
 		jsval jsret;
 		do {
 			if (ret) {
-				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, ret);
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, (cocos2d::Object*)ret);
 				jsret = OBJECT_TO_JSVAL(proxy->obj);
 			} else {
 				jsret = JSVAL_NULL;
@@ -628,7 +628,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getRootNode(JSContext *cx, uint32
 		jsval jsret;
 		do {
 			if (ret) {
-				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, ret);
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, (cocos2d::Node*)ret);
 				jsret = OBJECT_TO_JSVAL(proxy->obj);
 			} else {
 				jsret = JSVAL_NULL;
@@ -755,7 +755,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getDelegate(JSContext *cx, uint32
 		jsval jsret;
 		do {
 			if (ret) {
-				js_proxy_t *proxy = js_get_or_create_proxy<cocosbuilder::CCBAnimationManagerDelegate>(cx, ret);
+				js_proxy_t *proxy = js_get_or_create_proxy<cocosbuilder::CCBAnimationManagerDelegate>(cx, (cocosbuilder::CCBAnimationManagerDelegate*)ret);
 				jsret = OBJECT_TO_JSVAL(proxy->obj);
 			} else {
 				jsret = JSVAL_NULL;
@@ -1045,7 +1045,7 @@ JSBool js_cocos2dx_builder_CCBReader_getAnimationManager(JSContext *cx, uint32_t
 		jsval jsret;
 		do {
 			if (ret) {
-				js_proxy_t *proxy = js_get_or_create_proxy<cocosbuilder::CCBAnimationManager>(cx, ret);
+				js_proxy_t *proxy = js_get_or_create_proxy<cocosbuilder::CCBAnimationManager>(cx, (cocosbuilder::CCBAnimationManager*)ret);
 				jsret = OBJECT_TO_JSVAL(proxy->obj);
 			} else {
 				jsret = JSVAL_NULL;
@@ -1242,7 +1242,7 @@ JSBool js_cocos2dx_builder_CCBReader_getCCBRootPath(JSContext *cx, uint32_t argc
 	cocosbuilder::CCBReader* cobj = (cocosbuilder::CCBReader *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getCCBRootPath : Invalid Native Object");
 	if (argc == 0) {
-		std::string ret = cobj->getCCBRootPath();
+		const std::string& ret = cobj->getCCBRootPath();
 		jsval jsret;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);

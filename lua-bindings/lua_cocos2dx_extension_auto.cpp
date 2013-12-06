@@ -84,7 +84,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithSpriteFrameName(lua_State* tolua
     do{
         if (argc == 1) {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithSpriteFrameName(arg0);
@@ -95,7 +95,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithSpriteFrameName(lua_State* tolua
     do{
         if (argc == 2) {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
 
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
@@ -612,7 +612,7 @@ int lua_cocos2dx_extension_Scale9Sprite_getColor(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Color3B ret = cobj->getColor();
+        const cocos2d::Color3B& ret = cobj->getColor();
         color3b_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -957,7 +957,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithFile(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
 
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
@@ -972,7 +972,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithFile(lua_State* tolua_S)
     do{
         if (argc == 3) {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
 
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
@@ -995,7 +995,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithFile(lua_State* tolua_S)
 
             if (!ok) { ok = true; break; }
             const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithFile(arg0, arg1);
@@ -1006,7 +1006,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithFile(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithFile(arg0);
@@ -1446,7 +1446,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
         if (argc == 3)
         {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -1500,7 +1500,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             ok &= luaval_to_rect(tolua_S, 2, &arg0);
             if (!ok) { ok = true; break; }
             const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
             if (!ok) { ok = true; break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1);
             do {
@@ -1524,7 +1524,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
         if (argc == 2)
         {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -1551,7 +1551,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
         if (argc == 1)
         {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
             if (!ok) { ok = true; break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0);
             do {
@@ -1597,7 +1597,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
         if (argc == 2)
         {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -1624,7 +1624,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
         if (argc == 1)
         {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
             if (!ok) { ok = true; break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrameName(arg0);
             do {
@@ -3075,7 +3075,7 @@ int lua_cocos2dx_extension_ControlButton_getLabelAnchorPoint(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Point ret = cobj->getLabelAnchorPoint();
+        const cocos2d::Point& ret = cobj->getLabelAnchorPoint();
         point_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -3747,7 +3747,7 @@ int lua_cocos2dx_extension_ControlButton_getCurrentTitleColor(lua_State* tolua_S
     {
         if(!ok)
             return 0;
-        cocos2d::Color3B ret = cobj->getCurrentTitleColor();
+        const cocos2d::Color3B& ret = cobj->getCurrentTitleColor();
         color3b_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -3926,7 +3926,7 @@ int lua_cocos2dx_extension_ControlButton_getColor(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Color3B ret = cobj->getColor();
+        const cocos2d::Color3B& ret = cobj->getColor();
         color3b_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -4228,7 +4228,7 @@ int lua_cocos2dx_extension_ControlButton_getTitleTTFForState(lua_State* tolua_S)
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
-        std::string ret = cobj->getTitleTTFForState(arg0);
+        const std::string& ret = cobj->getTitleTTFForState(arg0);
         tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
@@ -4827,7 +4827,7 @@ int lua_cocos2dx_extension_ControlButton_getPreferredSize(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Size ret = cobj->getPreferredSize();
+        const cocos2d::Size& ret = cobj->getPreferredSize();
         size_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -5095,7 +5095,7 @@ int lua_cocos2dx_extension_ControlButton_getTitleBMFontForState(lua_State* tolua
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
-        std::string ret = cobj->getTitleBMFontForState(arg0);
+        const std::string& ret = cobj->getTitleBMFontForState(arg0);
         tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
@@ -8542,9 +8542,9 @@ int lua_cocos2dx_extension_ControlPotentiometer_create(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         const char* arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cocos2d::extension::ControlPotentiometer* ret = cocos2d::extension::ControlPotentiometer::create(arg0, arg1, arg2);
@@ -9718,13 +9718,13 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
         if (argc == 3)
         {
             const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
             if (!ok) { ok = true; break; }
             const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
             if (!ok) { ok = true; break; }
             const char* arg2;
-            std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+            #pragma warning NO CONVERSION TO NATIVE FOR char*;
             if (!ok) { ok = true; break; }
             cocos2d::extension::ControlSlider* ret = cocos2d::extension::ControlSlider::create(arg0, arg1, arg2);
             do {
@@ -13012,7 +13012,7 @@ int lua_cocos2dx_extension_ScrollView_getContentSize(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Size ret = cobj->getContentSize();
+        const cocos2d::Size& ret = cobj->getContentSize();
         size_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -15169,7 +15169,7 @@ int lua_cocos2dx_extension_EditBox_getText(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getText();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getText",argc, 0);
@@ -15208,7 +15208,7 @@ int lua_cocos2dx_extension_EditBox_setPlaceholderFontName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->setPlaceholderFontName(arg0);
@@ -15252,7 +15252,7 @@ int lua_cocos2dx_extension_EditBox_getPlaceHolder(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getPlaceHolder();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPlaceHolder",argc, 0);
@@ -15291,7 +15291,7 @@ int lua_cocos2dx_extension_EditBox_setFontName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->setFontName(arg0);
@@ -15502,7 +15502,7 @@ int lua_cocos2dx_extension_EditBox_setPlaceholderFont(lua_State* tolua_S)
     {
         const char* arg0;
         int arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -15641,7 +15641,7 @@ int lua_cocos2dx_extension_EditBox_setPlaceHolder(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->setPlaceHolder(arg0);
@@ -15850,7 +15850,7 @@ int lua_cocos2dx_extension_EditBox_setText(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->setText(arg0);
@@ -15977,7 +15977,7 @@ int lua_cocos2dx_extension_EditBox_setFont(lua_State* tolua_S)
     {
         const char* arg0;
         int arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -16300,7 +16300,7 @@ int lua_cocos2dx_extension_AssetsManager_setStoragePath(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->setStoragePath(arg0);
@@ -16342,7 +16342,7 @@ int lua_cocos2dx_extension_AssetsManager_setPackageUrl(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->setPackageUrl(arg0);
@@ -16427,7 +16427,7 @@ int lua_cocos2dx_extension_AssetsManager_getStoragePath(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getStoragePath();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStoragePath",argc, 0);
@@ -16548,7 +16548,7 @@ int lua_cocos2dx_extension_AssetsManager_setVersionFileUrl(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->setVersionFileUrl(arg0);
@@ -16592,7 +16592,7 @@ int lua_cocos2dx_extension_AssetsManager_getPackageUrl(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getPackageUrl();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPackageUrl",argc, 0);
@@ -16715,7 +16715,7 @@ int lua_cocos2dx_extension_AssetsManager_getVersionFileUrl(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getVersionFileUrl();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getVersionFileUrl",argc, 0);
@@ -16789,9 +16789,9 @@ int lua_cocos2dx_extension_AssetsManager_create(lua_State* tolua_S)
         std::function<void (int)> arg3;
         std::function<void (int)> arg4;
         std::function<void ()> arg5;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         do {
 			/*
 			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[3]));
@@ -16900,7 +16900,7 @@ int lua_cocos2dx_extension_AssetsManager_constructor(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj = new cocos2d::extension::AssetsManager(arg0);
@@ -16923,8 +16923,8 @@ int lua_cocos2dx_extension_AssetsManager_constructor(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj = new cocos2d::extension::AssetsManager(arg0, arg1);
@@ -16948,9 +16948,9 @@ int lua_cocos2dx_extension_AssetsManager_constructor(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         const char* arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj = new cocos2d::extension::AssetsManager(arg0, arg1, arg2);
@@ -17269,7 +17269,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_setBaseValue(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->setBaseValue(arg0, arg1, arg2);
@@ -17498,7 +17498,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_runAnimationsForSequenceNamedTwee
     {
         const char* arg0;
         double arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -17625,7 +17625,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getRootContainerSize(lua_State* t
     {
         if(!ok)
             return 0;
-        cocos2d::Size ret = cobj->getRootContainerSize();
+        const cocos2d::Size& ret = cobj->getRootContainerSize();
         size_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -17719,7 +17719,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getContainerSize(lua_State* tolua
 			}}} while (0);
         if(!ok)
             return 0;
-        cocos2d::Size ret = cobj->getContainerSize(arg0);
+        const cocos2d::Size& ret = cobj->getContainerSize(arg0);
         size_to_luaval(tolua_S, ret);
         return 1;
     }
@@ -18117,7 +18117,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getRunningSequenceName(lua_State*
         if(!ok)
             return 0;
         const char* ret = cobj->getRunningSequenceName();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRunningSequenceName",argc, 0);
@@ -18343,7 +18343,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getSequenceDuration(lua_State* to
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         float ret = cobj->getSequenceDuration(arg0);
@@ -18437,7 +18437,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_runAnimationsForSequenceNamed(lua
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->runAnimationsForSequenceNamed(arg0);
@@ -18479,7 +18479,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getSequenceId(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         int ret = cobj->getSequenceId(arg0);
@@ -18907,7 +18907,7 @@ int lua_cocos2dx_extension_CCBReader_setCCBRootPath(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        #pragma warning NO CONVERSION TO NATIVE FOR char*;
         if(!ok)
             return 0;
         cobj->setCCBRootPath(arg0);
@@ -19094,7 +19094,7 @@ int lua_cocos2dx_extension_CCBReader_getCCBRootPath(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        std::string ret = cobj->getCCBRootPath();
+        const std::string& ret = cobj->getCCBRootPath();
         tolua_pushcppstring(tolua_S,ret);
         return 1;
     }

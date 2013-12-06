@@ -168,7 +168,7 @@ getColor : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color4B}
+ * @param {const cocos2d::Color4B&}
  */
 setColor : function () {},
 
@@ -461,7 +461,7 @@ updateColor : function () {},
 
 /**
  * @method getName
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string"
  */
 getName : function () {},
 
@@ -515,7 +515,7 @@ setIgnoreMovementBoneData : function () {},
 
 /**
  * @method setName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setName : function () {},
 
@@ -569,7 +569,7 @@ getNodeToWorldTransform : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -619,7 +619,7 @@ changeDisplayByIndex : function () {},
 
 /**
  * @method updateDisplayedColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 updateDisplayedColor : function () {},
 
@@ -952,7 +952,7 @@ setColliderFilter : function () {},
 
 /**
  * @method setName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setName : function () {},
 
@@ -971,13 +971,13 @@ getBatchNode : function () {},
 
 /**
  * @method getName
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getName : function () {},
 
 /**
  * @method getNodeToParentTransform
- * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ * @return A value converted from C/C++ "const cocos2d::AffineTransform&"
  */
 getNodeToParentTransform : function () {},
 
@@ -1103,7 +1103,7 @@ updateTransform : function () {},
 
 /**
  * @method getDisplayName
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getDisplayName : function () {},
 
@@ -1115,14 +1115,14 @@ updateArmatureTransform : function () {},
 /**
  * @method initWithSpriteFrameName
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  */
 initWithSpriteFrameName : function () {},
 
 /**
  * @method initWithFile
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  */
 initWithFile : function () {},
 

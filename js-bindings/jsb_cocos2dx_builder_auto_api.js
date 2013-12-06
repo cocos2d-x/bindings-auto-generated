@@ -88,19 +88,19 @@ getSequences : function () {},
 
 /**
  * @method getRootContainerSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getRootContainerSize : function () {},
 
 /**
  * @method setDocumentControllerName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setDocumentControllerName : function () {},
 
 /**
  * @method getContainerSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  * @param {cocos2d::Node*}
  */
 getContainerSize : function () {},
@@ -144,7 +144,7 @@ getDocumentCallbackControlEvents : function () {},
 
 /**
  * @method setRootContainerSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setRootContainerSize : function () {},
 
@@ -226,7 +226,7 @@ getSequenceId : function () {},
 /**
  * @method setCallFunc
  * @param {cocos2d::CallFunc*}
- * @param {std::string}
+ * @param {const std::string&}
  */
 setCallFunc : function () {},
 
@@ -323,7 +323,7 @@ readSoundKeyframesForSeq : function () {},
 
 /**
  * @method getCCBRootPath
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getCCBRootPath : function () {},
 

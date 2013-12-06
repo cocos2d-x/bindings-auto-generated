@@ -225,7 +225,7 @@ getLayoutParameter : function () {},
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColor : function () {},
 
@@ -250,7 +250,7 @@ addRenderer : function () {},
 
 /**
  * @method getSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getSize : function () {},
 
@@ -262,7 +262,7 @@ getSizeType : function () {},
 
 /**
  * @method getPositionPercent
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getPositionPercent : function () {},
 
@@ -276,13 +276,13 @@ removeChild : function () {},
 /**
  * @method convertToWorldSpace
  * @return A value converted from C/C++ "cocos2d::Point"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 convertToWorldSpace : function () {},
 
 /**
  * @method setSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setSize : function () {},
 
@@ -305,7 +305,7 @@ getRotationY : function () {},
 
 /**
  * @method getSizePercent
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getSizePercent : function () {},
 
@@ -354,13 +354,13 @@ setLayoutParameter : function () {},
 /**
  * @method clippingParentAreaContainPoint
  * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 clippingParentAreaContainPoint : function () {},
 
 /**
  * @method setPosition
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setPosition : function () {},
 
@@ -391,13 +391,13 @@ getScale : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
 /**
  * @method getAnchorPoint
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getAnchorPoint : function () {},
 
@@ -415,7 +415,7 @@ isVisible : function () {},
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -427,7 +427,7 @@ getLeftInParent : function () {},
 
 /**
  * @method setPositionPercent
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setPositionPercent : function () {},
 
@@ -536,7 +536,7 @@ setActionManager : function () {},
 
 /**
  * @method getPosition
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getPosition : function () {},
 
@@ -549,7 +549,7 @@ getParent : function () {},
 /**
  * @method hitTest
  * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 hitTest : function () {},
 
@@ -561,7 +561,7 @@ setVisible : function () {},
 
 /**
  * @method setSizePercent
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setSizePercent : function () {},
 
@@ -579,7 +579,7 @@ setScale : function () {},
 
 /**
  * @method getTouchEndPos
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getTouchEndPos : function () {},
 
@@ -645,7 +645,7 @@ setOpacity : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -657,7 +657,7 @@ getOpacity : function () {},
 
 /**
  * @method getTouchMovePos
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getTouchMovePos : function () {},
 
@@ -688,7 +688,7 @@ isCascadeColorEnabled : function () {},
  * @method checkChildInfo
  * @param {int}
  * @param {gui::UIWidget*}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 checkChildInfo : function () {},
 
@@ -712,7 +712,7 @@ setTag : function () {},
 
 /**
  * @method getTouchStartPos
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getTouchStartPos : function () {},
 
@@ -761,7 +761,7 @@ ccs.UILayout = {
 
 /**
  * @method setBackGroundColorVector
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setBackGroundColorVector : function () {},
 
@@ -773,7 +773,7 @@ isClippingEnabled : function () {},
 
 /**
  * @method getBackGroundImageTextureSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getBackGroundImageTextureSize : function () {},
 
@@ -785,7 +785,7 @@ getLayoutType : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -817,7 +817,7 @@ setOpacity : function () {},
 /**
  * @method hitTest
  * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 hitTest : function () {},
 
@@ -829,7 +829,7 @@ setBackGroundColorOpacity : function () {},
 
 /**
  * @method setBackGroundImageCapInsets
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setBackGroundImageCapInsets : function () {},
 
@@ -864,7 +864,7 @@ setClippingEnabled : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -920,7 +920,7 @@ ccs.UIButton = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -932,7 +932,7 @@ getVirtualRenderer : function () {},
 
 /**
  * @method getTitleText
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getTitleText : function () {},
 
@@ -956,7 +956,7 @@ setScale9Enabled : function () {},
 
 /**
  * @method setTitleColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setTitleColor : function () {},
 
@@ -968,7 +968,7 @@ ignoreContentAdaptWithSize : function () {},
 
 /**
  * @method setCapInsetsDisabledRenderer
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setCapInsetsDisabledRenderer : function () {},
 
@@ -993,19 +993,19 @@ loadTextureDisabled : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
 /**
  * @method setTitleText
- * @param {std::string}
+ * @param {const std::string&}
  */
 setTitleText : function () {},
 
 /**
  * @method setCapInsetsNormalRenderer
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setCapInsetsNormalRenderer : function () {},
 
@@ -1045,7 +1045,7 @@ loadTextures : function () {},
 
 /**
  * @method getTitleColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getTitleColor : function () {},
 
@@ -1058,13 +1058,13 @@ loadTextureNormal : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
 /**
  * @method setCapInsetsPressedRenderer
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setCapInsetsPressedRenderer : function () {},
 
@@ -1082,7 +1082,7 @@ getTitleFontName : function () {},
 
 /**
  * @method setCapInsets
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setCapInsets : function () {},
 
@@ -1113,7 +1113,7 @@ ccs.UICheckBox = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -1182,7 +1182,7 @@ getVirtualRenderer : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -1238,7 +1238,7 @@ ccs.UIImageView = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -1305,19 +1305,19 @@ setScale9Enabled : function () {},
 
 /**
  * @method setTextureRect
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setTextureRect : function () {},
 
 /**
  * @method setCapInsets
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setCapInsets : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -1348,7 +1348,7 @@ ccs.UILabel = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -1360,7 +1360,7 @@ getVirtualRenderer : function () {},
 
 /**
  * @method getStringValue
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getStringValue : function () {},
 
@@ -1384,7 +1384,7 @@ setTextVerticalAlignment : function () {},
 
 /**
  * @method setFontName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setFontName : function () {},
 
@@ -1408,7 +1408,7 @@ isFlipY : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -1420,7 +1420,7 @@ isTouchScaleChangeEnabled : function () {},
 
 /**
  * @method setTextAreaSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setTextAreaSize : function () {},
 
@@ -1462,7 +1462,7 @@ setFontSize : function () {},
 
 /**
  * @method setText
- * @param {std::string}
+ * @param {const std::string&}
  */
 setText : function () {},
 
@@ -1523,7 +1523,7 @@ ccs.UILabelAtlas = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -1535,7 +1535,7 @@ getVirtualRenderer : function () {},
 
 /**
  * @method getStringValue
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getStringValue : function () {},
 
@@ -1547,23 +1547,23 @@ getDescription : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
 /**
  * @method setProperty
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  * @param {int}
  * @param {int}
- * @param {std::string}
+ * @param {const std::string&}
  */
 setProperty : function () {},
 
 /**
  * @method setStringValue
- * @param {std::string}
+ * @param {const std::string&}
  */
 setStringValue : function () {},
 
@@ -1631,7 +1631,7 @@ setScale9Enabled : function () {},
 
 /**
  * @method setCapInsets
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setCapInsets : function () {},
 
@@ -1643,7 +1643,7 @@ getDirection : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -1707,7 +1707,7 @@ removeAllChildren : function () {},
 
 /**
  * @method scrollToPercentBothDirection
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  * @param {float}
  * @param {bool}
  */
@@ -1768,7 +1768,7 @@ jumpToBottomLeft : function () {},
 
 /**
  * @method setInnerContainerSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setInnerContainerSize : function () {},
 
@@ -1780,7 +1780,7 @@ isInertiaScrollEnabled : function () {},
 
 /**
  * @method getInnerContainerSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getInnerContainerSize : function () {},
 
@@ -1855,7 +1855,7 @@ scrollToLeft : function () {},
 
 /**
  * @method jumpToPercentBothDirection
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 jumpToPercentBothDirection : function () {},
 
@@ -2090,13 +2090,13 @@ loadSlidBallTextures : function () {},
 
 /**
  * @method setCapInsetProgressBarRebderer
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setCapInsetProgressBarRebderer : function () {},
 
 /**
  * @method setCapInsetsBarRenderer
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setCapInsetsBarRenderer : function () {},
 
@@ -2120,7 +2120,7 @@ getVirtualRenderer : function () {},
 
 /**
  * @method setCapInsets
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setCapInsets : function () {},
 
@@ -2146,7 +2146,7 @@ loadSlidBallTextureDisabled : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -2355,7 +2355,7 @@ ccs.UITextField = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -2367,7 +2367,7 @@ setAttachWithIME : function () {},
 
 /**
  * @method getStringValue
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getStringValue : function () {},
 
@@ -2397,7 +2397,7 @@ getAttachWithIME : function () {},
 
 /**
  * @method setFontName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setFontName : function () {},
 
@@ -2432,7 +2432,7 @@ init : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -2484,13 +2484,13 @@ setFontSize : function () {},
 
 /**
  * @method setPlaceHolder
- * @param {std::string}
+ * @param {const std::string&}
  */
 setPlaceHolder : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -2514,7 +2514,7 @@ setDetachWithIME : function () {},
 
 /**
  * @method setText
- * @param {std::string}
+ * @param {const std::string&}
  */
 setText : function () {},
 
@@ -2532,7 +2532,7 @@ setMaxLength : function () {},
 
 /**
  * @method setTouchSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setTouchSize : function () {},
 
@@ -2563,7 +2563,7 @@ ccs.UILabelBMFont = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -2593,7 +2593,7 @@ getDescription : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -2901,7 +2901,7 @@ getColor : function () {},
 
 /**
  * @method copy
- * @param {cocostudio::BaseData*}
+ * @param {const cocostudio::BaseData*}
  */
 copy : function () {},
 
@@ -2915,7 +2915,7 @@ subtract : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color4B}
+ * @param {const cocos2d::Color4B&}
  */
 setColor : function () {},
 
@@ -3135,7 +3135,7 @@ ccs.FrameData = {
 
 /**
  * @method copy
- * @param {cocostudio::BaseData*}
+ * @param {const cocostudio::BaseData*}
  */
 copy : function () {},
 
@@ -3401,7 +3401,7 @@ updateColor : function () {},
 
 /**
  * @method getName
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string"
  */
 getName : function () {},
 
@@ -3449,7 +3449,7 @@ getColliderFilter : function () {},
 
 /**
  * @method setName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setName : function () {},
 
@@ -3509,7 +3509,7 @@ getNodeToWorldTransform : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -3559,7 +3559,7 @@ changeDisplayByIndex : function () {},
 
 /**
  * @method updateDisplayedColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 updateDisplayedColor : function () {},
 
@@ -3939,7 +3939,7 @@ setColliderFilter : function () {},
 
 /**
  * @method setName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setName : function () {},
 
@@ -3958,13 +3958,13 @@ getBatchNode : function () {},
 
 /**
  * @method getName
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getName : function () {},
 
 /**
  * @method getNodeToParentTransform
- * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ * @return A value converted from C/C++ "const cocos2d::AffineTransform&"
  */
 getNodeToParentTransform : function () {},
 
@@ -4090,7 +4090,7 @@ updateTransform : function () {},
 
 /**
  * @method getDisplayName
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getDisplayName : function () {},
 
@@ -4102,14 +4102,14 @@ updateArmatureTransform : function () {},
 /**
  * @method initWithSpriteFrameName
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  */
 initWithSpriteFrameName : function () {},
 
 /**
  * @method initWithFile
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  */
 initWithFile : function () {},
 
@@ -4470,7 +4470,7 @@ getFileDesignSize : function () {},
 /**
  * @method storeFileDesignSize
  * @param {const char*}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 storeFileDesignSize : function () {},
 

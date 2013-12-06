@@ -11,7 +11,7 @@ cc.Scale9Sprite = {
 /**
  * @method resizableSpriteWithCapInsets
  * @return A value converted from C/C++ "cocos2d::extension::Scale9Sprite*"
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 resizableSpriteWithCapInsets : function () {},
 
@@ -23,7 +23,7 @@ setOpacityModifyRGB : function () {},
 
 /**
  * @method setContentSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setContentSize : function () {},
 
@@ -83,7 +83,7 @@ setSpriteFrame : function () {},
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColor : function () {},
 
@@ -103,9 +103,9 @@ getCapInsets : function () {},
  * @method updateWithBatchNode
  * @return A value converted from C/C++ "bool"
  * @param {cocos2d::SpriteBatchNode*}
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  * @param {bool}
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 updateWithBatchNode : function () {},
 
@@ -123,7 +123,7 @@ getOriginalSize : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -159,7 +159,7 @@ getInsetLeft : function () {},
 
 /**
  * @method updateDisplayedColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 updateDisplayedColor : function () {},
 
@@ -349,7 +349,7 @@ setAdjustBackgroundImage : function () {},
 
 /**
  * @method getLabelAnchorPoint
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getLabelAnchorPoint : function () {},
 
@@ -386,7 +386,7 @@ getTitleDispatchTable : function () {},
 
 /**
  * @method setLabelAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setLabelAnchorPoint : function () {},
 
@@ -418,7 +418,7 @@ setOpacity : function () {},
 
 /**
  * @method setTitleTTFForState
- * @param {std::string}
+ * @param {const std::string&}
  * @param {cocos2d::extension::Control::State}
  */
 setTitleTTFForState : function () {},
@@ -444,7 +444,7 @@ getOpacity : function () {},
 
 /**
  * @method getCurrentTitleColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getCurrentTitleColor : function () {},
 
@@ -469,7 +469,7 @@ getBackgroundSpriteForState : function () {},
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColor : function () {},
 
@@ -507,7 +507,7 @@ getHorizontalOrigin : function () {},
 
 /**
  * @method getTitleTTFForState
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  * @param {cocos2d::extension::Control::State}
  */
 getTitleTTFForState : function () {},
@@ -527,7 +527,7 @@ getTitleColorForState : function () {},
 
 /**
  * @method setTitleColorForState
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  * @param {cocos2d::extension::Control::State}
  */
 setTitleColorForState : function () {},
@@ -554,7 +554,7 @@ setBackgroundSpriteForState : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -572,7 +572,7 @@ setBackgroundSprite : function () {},
 
 /**
  * @method setPreferredSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setPreferredSize : function () {},
 
@@ -590,7 +590,7 @@ getTitleLabel : function () {},
 
 /**
  * @method getPreferredSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getPreferredSize : function () {},
 
@@ -622,14 +622,14 @@ setMargins : function () {},
 
 /**
  * @method setTitleBMFontForState
- * @param {std::string}
+ * @param {const std::string&}
  * @param {cocos2d::extension::Control::State}
  */
 setTitleBMFontForState : function () {},
 
 /**
  * @method getTitleBMFontForState
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  * @param {cocos2d::extension::Control::State}
  */
 getTitleBMFontForState : function () {},
@@ -849,7 +849,7 @@ getHuePicker : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -1591,7 +1591,7 @@ isBounceable : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -1653,7 +1653,7 @@ maxContainerOffset : function () {},
 
 /**
  * @method setContentSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setContentSize : function () {},
 
@@ -1856,7 +1856,7 @@ cc.EditBox = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -1898,13 +1898,13 @@ setInputMode : function () {},
 
 /**
  * @method setPlaceholderFontColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setPlaceholderFontColor : function () {},
 
 /**
  * @method setFontColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setFontColor : function () {},
 
@@ -1924,7 +1924,7 @@ setFontSize : function () {},
 /**
  * @method initWithSizeAndBackgroundSprite
  * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {cocos2d::extension::Scale9Sprite*}
  */
 initWithSizeAndBackgroundSprite : function () {},
@@ -1937,7 +1937,7 @@ setPlaceHolder : function () {},
 
 /**
  * @method setPosition
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setPosition : function () {},
 
@@ -1973,7 +1973,7 @@ setMaxLength : function () {},
 
 /**
  * @method setContentSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setContentSize : function () {},
 
@@ -1993,7 +1993,7 @@ setVisible : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::extension::EditBox*"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {cocos2d::extension::Scale9Sprite*}
  * @param {cocos2d::extension::Scale9Sprite*}
  * @param {cocos2d::extension::Scale9Sprite*}
@@ -2089,9 +2089,9 @@ deleteVersion : function () {},
  * @param {const char*}
  * @param {const char*}
  * @param {const char*}
- * @param {std::function<void (int)>}
- * @param {std::function<void (int)>}
- * @param {std::function<void ()>}
+ * @param {std::function}
+ * @param {std::function}
+ * @param {std::function}
  */
 create : function () {},
 
@@ -2188,19 +2188,19 @@ getSequences : function () {},
 
 /**
  * @method getRootContainerSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getRootContainerSize : function () {},
 
 /**
  * @method setDocumentControllerName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setDocumentControllerName : function () {},
 
 /**
  * @method getContainerSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  * @param {cocos2d::Node*}
  */
 getContainerSize : function () {},
@@ -2244,7 +2244,7 @@ getDocumentCallbackControlEvents : function () {},
 
 /**
  * @method setRootContainerSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setRootContainerSize : function () {},
 
@@ -2392,7 +2392,7 @@ readSoundKeyframesForSeq : function () {},
 
 /**
  * @method getCCBRootPath
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getCCBRootPath : function () {},
 

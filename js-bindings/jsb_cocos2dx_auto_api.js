@@ -242,7 +242,7 @@ isBoundarySet : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::Follow*"
  * @param {cocos2d::Node*}
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 create : function () {},
 
@@ -584,7 +584,7 @@ hasPremultipliedAlpha : function () {},
 
 /**
  * @method getPixelsHigh
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "int"
  */
 getPixelsHigh : function () {},
 
@@ -594,8 +594,8 @@ getPixelsHigh : function () {},
  * @param {MipmapInfo*}
  * @param {int}
  * @param {cocos2d::Texture2D::PixelFormat}
- * @param {long}
- * @param {long}
+ * @param {int}
+ * @param {int}
  */
 initWithMipmaps : function () {},
 
@@ -613,7 +613,7 @@ setMaxT : function () {},
 
 /**
  * @method drawInRect
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 drawInRect : function () {},
 
@@ -646,19 +646,19 @@ getPixelFormat : function () {},
 
 /**
  * @method getContentSizeInPixels
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSizeInPixels : function () {},
 
 /**
  * @method getPixelsWide
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "int"
  */
 getPixelsWide : function () {},
 
 /**
  * @method drawAtPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 drawAtPoint : function () {},
 
@@ -682,7 +682,7 @@ setDefaultAlphaPixelFormat : function () {},
 
 /**
  * @method getPixelFormatInfoMap
- * @return A value converted from C/C++ "cocos2d::Texture2D::PixelFormatInfoMap"
+ * @return A value converted from C/C++ "const cocos2d::Texture2D::PixelFormatInfoMap&"
  */
 getPixelFormatInfoMap : function () {},
 
@@ -732,7 +732,7 @@ pause : function () {},
 /**
  * @method convertToWorldSpaceAR
  * @return A value converted from C/C++ "cocos2d::Point"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 convertToWorldSpaceAR : function () {},
 
@@ -793,7 +793,7 @@ removeChild : function () {},
 /**
  * @method convertToWorldSpace
  * @return A value converted from C/C++ "cocos2d::Point"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 convertToWorldSpace : function () {},
 
@@ -842,14 +842,14 @@ setParent : function () {},
 
 /**
  * @method getNodeToParentTransform
- * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ * @return A value converted from C/C++ "const cocos2d::AffineTransform&"
  */
 getNodeToParentTransform : function () {},
 
 /**
  * @method convertToNodeSpace
  * @return A value converted from C/C++ "cocos2d::Point"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 convertToNodeSpace : function () {},
 
@@ -897,13 +897,13 @@ setPositionX : function () {},
 
 /**
  * @method getAnchorPoint
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getAnchorPoint : function () {},
 
 /**
  * @method getNumberOfRunningActions
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "int"
  */
 getNumberOfRunningActions : function () {},
 
@@ -920,20 +920,20 @@ isVisible : function () {},
 
 /**
  * @method getChildrenCount
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "int"
  */
 getChildrenCount : function () {},
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
 /**
  * @method convertToNodeSpaceAR
  * @return A value converted from C/C++ "cocos2d::Point"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 convertToNodeSpaceAR : function () {},
 
@@ -969,7 +969,7 @@ getZOrder : function () {},
 
 /**
  * @method getAnchorPointInPoints
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getAnchorPointInPoints : function () {},
 
@@ -1035,7 +1035,7 @@ setRotationY : function () {},
 
 /**
  * @method setAdditionalTransform
- * @param {cocos2d::AffineTransform}
+ * @param {const cocos2d::AffineTransform&}
  */
 setAdditionalTransform : function () {},
 
@@ -1047,7 +1047,7 @@ getOrderOfArrival : function () {},
 
 /**
  * @method setContentSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setContentSize : function () {},
 
@@ -1090,7 +1090,7 @@ setVisible : function () {},
 
 /**
  * @method getParentToNodeTransform
- * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ * @return A value converted from C/C++ "const cocos2d::AffineTransform&"
  */
 getParentToNodeTransform : function () {},
 
@@ -1145,7 +1145,7 @@ getComponent : function () {},
 
 /**
  * @method getContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getContentSize : function () {},
 
@@ -1252,7 +1252,7 @@ isOpacityModifyRGB : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -1264,7 +1264,7 @@ isCascadeOpacityEnabled : function () {},
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColor : function () {},
 
@@ -1312,7 +1312,7 @@ isCascadeColorEnabled : function () {},
 
 /**
  * @method updateDisplayedColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 updateDisplayedColor : function () {},
 
@@ -1324,7 +1324,7 @@ getOpacity : function () {},
 
 /**
  * @method getDisplayedColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getDisplayedColor : function () {},
 
@@ -1355,7 +1355,7 @@ setTexture : function () {},
 
 /**
  * @method setRectInPixels
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setRectInPixels : function () {},
 
@@ -1367,49 +1367,49 @@ getTexture : function () {},
 
 /**
  * @method getRect
- * @return A value converted from C/C++ "cocos2d::Rect"
+ * @return A value converted from C/C++ "const cocos2d::Rect&"
  */
 getRect : function () {},
 
 /**
  * @method setOffsetInPixels
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setOffsetInPixels : function () {},
 
 /**
  * @method getRectInPixels
- * @return A value converted from C/C++ "cocos2d::Rect"
+ * @return A value converted from C/C++ "const cocos2d::Rect&"
  */
 getRectInPixels : function () {},
 
 /**
  * @method setOriginalSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setOriginalSize : function () {},
 
 /**
  * @method getOriginalSizeInPixels
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getOriginalSizeInPixels : function () {},
 
 /**
  * @method setOriginalSizeInPixels
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setOriginalSizeInPixels : function () {},
 
 /**
  * @method setOffset
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setOffset : function () {},
 
 /**
  * @method getOffset
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getOffset : function () {},
 
@@ -1421,19 +1421,19 @@ isRotated : function () {},
 
 /**
  * @method setRect
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setRect : function () {},
 
 /**
  * @method getOffsetInPixels
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getOffsetInPixels : function () {},
 
 /**
  * @method getOriginalSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getOriginalSize : function () {},
 
@@ -1449,12 +1449,6 @@ cc.AnimationFrame = {
  * @param {cocos2d::SpriteFrame*}
  */
 setSpriteFrame : function () {},
-
-/**
- * @method getUserInfo
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
- */
-getUserInfo : function () {},
 
 /**
  * @method setDelayUnits
@@ -1482,24 +1476,18 @@ getDelayUnits : function () {},
 
 /**
  * @method setUserInfo
- * @param {cocos2d::Dictionary*}
+ * @param {const cocos2d::ValueMap&}
  */
 setUserInfo : function () {},
 
 /**
- * @method initWithSpriteFrame
- * @return A value converted from C/C++ "bool"
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::AnimationFrame*"
  * @param {cocos2d::SpriteFrame*}
  * @param {float}
- * @param {cocos2d::Dictionary*}
+ * @param {const cocos2d::ValueMap&}
  */
-initWithSpriteFrame : function () {},
-
-/**
- * @method AnimationFrame
- * @constructor
- */
-AnimationFrame : function () {},
+create : function () {},
 
 };
 
@@ -1513,18 +1501,6 @@ cc.Animation = {
  * @return A value converted from C/C++ "unsigned int"
  */
 getLoops : function () {},
-
-/**
- * @method setFrames
- * @param {cocos2d::Array*}
- */
-setFrames : function () {},
-
-/**
- * @method getFrames
- * @return A value converted from C/C++ "cocos2d::Array*"
- */
-getFrames : function () {},
 
 /**
  * @method addSpriteFrame
@@ -1545,33 +1521,22 @@ setRestoreOriginalFrame : function () {},
 clone : function () {},
 
 /**
- * @method setDelayPerUnit
- * @param {float}
+ * @method getDuration
+ * @return A value converted from C/C++ "float"
  */
-setDelayPerUnit : function () {},
+getDuration : function () {},
 
 /**
- * @method initWithAnimationFrames
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Array*}
- * @param {float}
- * @param {unsigned int}
+ * @method setFrames
+ * @param {const cocos2d::Vector<cocos2d::AnimationFrame *>&}
  */
-initWithAnimationFrames : function () {},
+setFrames : function () {},
 
 /**
- * @method init
- * @return A value converted from C/C++ "bool"
+ * @method getFrames
+ * @return A value converted from C/C++ "const cocos2d::Vector<cocos2d::AnimationFrame *>&"
  */
-init : function () {},
-
-/**
- * @method initWithSpriteFrames
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Array*}
- * @param {float}
- */
-initWithSpriteFrames : function () {},
+getFrames : function () {},
 
 /**
  * @method setLoops
@@ -1580,8 +1545,14 @@ initWithSpriteFrames : function () {},
 setLoops : function () {},
 
 /**
+ * @method setDelayPerUnit
+ * @param {float}
+ */
+setDelayPerUnit : function () {},
+
+/**
  * @method addSpriteFrameWithFile
- * @param {std::string}
+ * @param {const std::string&}
  */
 addSpriteFrameWithFile : function () {},
 
@@ -1604,23 +1575,11 @@ getDelayPerUnit : function () {},
 getRestoreOriginalFrame : function () {},
 
 /**
- * @method getDuration
- * @return A value converted from C/C++ "float"
- */
-getDuration : function () {},
-
-/**
  * @method addSpriteFrameWithTexture
  * @param {cocos2d::Texture2D*}
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 addSpriteFrameWithTexture : function () {},
-
-/**
- * @method Animation
- * @constructor
- */
-Animation : function () {},
 
 };
 
@@ -1964,7 +1923,7 @@ update : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::MoveBy*"
  * @param {float}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 create : function () {},
 
@@ -1991,7 +1950,7 @@ clone : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::MoveTo*"
  * @param {float}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 create : function () {},
 
@@ -2104,7 +2063,7 @@ update : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::JumpBy*"
  * @param {float}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  * @param {float}
  * @param {int}
  */
@@ -2139,7 +2098,7 @@ reverse : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::JumpTo*"
  * @param {float}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  * @param {float}
  * @param {int}
  */
@@ -2724,7 +2683,7 @@ cc.ActionManager = {
  * @method getActionByTag
  * @return A value converted from C/C++ "cocos2d::Action*"
  * @param {int}
- * @param {cocos2d::Object*}
+ * @param {const cocos2d::Object*}
  */
 getActionByTag : function () {},
 
@@ -2756,8 +2715,8 @@ resumeTarget : function () {},
 
 /**
  * @method getNumberOfRunningActionsInTarget
- * @return A value converted from C/C++ "long"
- * @param {cocos2d::Object*}
+ * @return A value converted from C/C++ "int"
+ * @param {const cocos2d::Object*}
  */
 getNumberOfRunningActionsInTarget : function () {},
 
@@ -3738,7 +3697,7 @@ reverse : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::Place*"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 create : function () {},
 
@@ -3963,7 +3922,7 @@ getAmplitude : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::Waves3D*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {unsigned int}
  * @param {float}
  */
@@ -4060,7 +4019,7 @@ getLensEffect : function () {},
 
 /**
  * @method setPosition
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setPosition : function () {},
 
@@ -4072,7 +4031,7 @@ clone : function () {},
 
 /**
  * @method getPosition
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getPosition : function () {},
 
@@ -4080,8 +4039,8 @@ getPosition : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::Lens3D*"
  * @param {float}
- * @param {cocos2d::Size}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Size&}
+ * @param {const cocos2d::Point&}
  * @param {float}
  */
 create : function () {},
@@ -4131,13 +4090,13 @@ getAmplitude : function () {},
 
 /**
  * @method setPosition
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setPosition : function () {},
 
 /**
  * @method getPosition
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getPosition : function () {},
 
@@ -4145,8 +4104,8 @@ getPosition : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::Ripple3D*"
  * @param {float}
- * @param {cocos2d::Size}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Size&}
+ * @param {const cocos2d::Point&}
  * @param {float}
  * @param {unsigned int}
  * @param {float}
@@ -4176,7 +4135,7 @@ update : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::Shaky3D*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {int}
  * @param {bool}
  */
@@ -4235,7 +4194,7 @@ getAmplitude : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::Liquid*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {unsigned int}
  * @param {float}
  */
@@ -4294,7 +4253,7 @@ getAmplitude : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::Waves*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {unsigned int}
  * @param {float}
  * @param {bool}
@@ -4353,13 +4312,13 @@ getAmplitude : function () {},
 
 /**
  * @method setPosition
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setPosition : function () {},
 
 /**
  * @method getPosition
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getPosition : function () {},
 
@@ -4367,7 +4326,7 @@ getPosition : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::Twirl*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {cocos2d::Point}
  * @param {unsigned int}
  * @param {float}
@@ -4403,7 +4362,7 @@ update : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::PageTurn3D*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 create : function () {},
 
@@ -4509,7 +4468,7 @@ update : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::ShakyTiles3D*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {int}
  * @param {bool}
  */
@@ -4538,7 +4497,7 @@ update : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::ShatteredTiles3D*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {int}
  * @param {bool}
  */
@@ -4559,7 +4518,7 @@ startWithTarget : function () {},
 
 /**
  * @method placeTile
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  * @param {cocos2d::Tile*}
  */
 placeTile : function () {},
@@ -4567,7 +4526,7 @@ placeTile : function () {},
 /**
  * @method getDelta
  * @return A value converted from C/C++ "cocos2d::Size"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 getDelta : function () {},
 
@@ -4594,7 +4553,7 @@ shuffle : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::ShuffleTiles*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {unsigned int}
  */
 create : function () {},
@@ -4608,19 +4567,19 @@ cc.FadeOutTRTiles = {
 
 /**
  * @method turnOnTile
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 turnOnTile : function () {},
 
 /**
  * @method turnOffTile
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 turnOffTile : function () {},
 
 /**
  * @method transformTile
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  * @param {float}
  */
 transformTile : function () {},
@@ -4640,7 +4599,7 @@ update : function () {},
 /**
  * @method testFunc
  * @return A value converted from C/C++ "float"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {float}
  */
 testFunc : function () {},
@@ -4649,7 +4608,7 @@ testFunc : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::FadeOutTRTiles*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 create : function () {},
 
@@ -4669,7 +4628,7 @@ clone : function () {},
 /**
  * @method testFunc
  * @return A value converted from C/C++ "float"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {float}
  */
 testFunc : function () {},
@@ -4678,7 +4637,7 @@ testFunc : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::FadeOutBLTiles*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 create : function () {},
 
@@ -4697,7 +4656,7 @@ clone : function () {},
 
 /**
  * @method transformTile
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  * @param {float}
  */
 transformTile : function () {},
@@ -4705,7 +4664,7 @@ transformTile : function () {},
 /**
  * @method testFunc
  * @return A value converted from C/C++ "float"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {float}
  */
 testFunc : function () {},
@@ -4714,7 +4673,7 @@ testFunc : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::FadeOutUpTiles*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 create : function () {},
 
@@ -4734,7 +4693,7 @@ clone : function () {},
 /**
  * @method testFunc
  * @return A value converted from C/C++ "float"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {float}
  */
 testFunc : function () {},
@@ -4743,7 +4702,7 @@ testFunc : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::FadeOutDownTiles*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 create : function () {},
 
@@ -4756,7 +4715,7 @@ cc.TurnOffTiles = {
 
 /**
  * @method turnOnTile
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 turnOnTile : function () {},
 
@@ -4768,7 +4727,7 @@ startWithTarget : function () {},
 
 /**
  * @method turnOffTile
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 turnOffTile : function () {},
 
@@ -4838,7 +4797,7 @@ getAmplitude : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::WavesTiles3D*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {unsigned int}
  * @param {float}
  */
@@ -4891,7 +4850,7 @@ getAmplitude : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::JumpTiles3D*"
  * @param {float}
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {unsigned int}
  * @param {float}
  */
@@ -4992,7 +4951,7 @@ update : function () {},
  * @method initWithDuration
  * @return A value converted from C/C++ "bool"
  * @param {float}
- * @param {std::string}
+ * @param {const std::string&}
  * @param {float}
  * @param {float}
  */
@@ -5008,7 +4967,7 @@ reverse : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::ActionTween*"
  * @param {float}
- * @param {std::string}
+ * @param {const std::string&}
  * @param {float}
  * @param {float}
  */
@@ -5050,7 +5009,7 @@ getPoints : function () {},
 
 /**
  * @method updatePosition
- * @param {cocos2d::Point}
+ * @param {cocos2d::Point&}
  */
 updatePosition : function () {},
 
@@ -5093,7 +5052,7 @@ clone : function () {},
 
 /**
  * @method updatePosition
- * @param {cocos2d::Point}
+ * @param {cocos2d::Point&}
  */
 updatePosition : function () {},
 
@@ -5188,7 +5147,7 @@ isOpacityModifyRGB : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -5218,7 +5177,7 @@ setOpacityModifyRGB : function () {},
 
 /**
  * @method getQuadsToDraw
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "int"
  */
 getQuadsToDraw : function () {},
 
@@ -5230,7 +5189,7 @@ setTexture : function () {},
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColor : function () {},
 
@@ -5242,17 +5201,17 @@ setOpacity : function () {},
 
 /**
  * @method setQuadsToDraw
- * @param {long}
+ * @param {int}
  */
 setQuadsToDraw : function () {},
 
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::AtlasNode*"
- * @param {std::string}
- * @param {long}
- * @param {long}
- * @param {long}
+ * @param {const std::string&}
+ * @param {int}
+ * @param {int}
+ * @param {int}
  */
 create : function () {},
 
@@ -5275,18 +5234,18 @@ clear : function () {},
 
 /**
  * @method drawDot
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  * @param {float}
- * @param {cocos2d::Color4F}
+ * @param {const cocos2d::Color4F&}
  */
 drawDot : function () {},
 
 /**
  * @method drawSegment
- * @param {cocos2d::Point}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Point&}
  * @param {float}
- * @param {cocos2d::Color4F}
+ * @param {const cocos2d::Color4F&}
  */
 drawSegment : function () {},
 
@@ -5399,7 +5358,7 @@ cc.LabelAtlas = {
 
 /**
  * @method setString
- * @param {std::string}
+ * @param {const std::string&}
  */
 setString : function () {},
 
@@ -5410,7 +5369,7 @@ updateAtlasValues : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getString : function () {},
 
@@ -5492,7 +5451,7 @@ getNotificationNode : function () {},
 
 /**
  * @method getWinSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getWinSize : function () {},
 
@@ -5545,7 +5504,7 @@ getSecondsPerFrame : function () {},
 /**
  * @method convertToUI
  * @return A value converted from C/C++ "cocos2d::Point"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 convertToUI : function () {},
 
@@ -5619,7 +5578,7 @@ setOpenGLView : function () {},
 /**
  * @method convertToGL
  * @return A value converted from C/C++ "cocos2d::Point"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 convertToGL : function () {},
 
@@ -5749,7 +5708,7 @@ cc.GridBase = {
 
 /**
  * @method setGridSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setGridSize : function () {},
 
@@ -5777,13 +5736,13 @@ isTextureFlipped : function () {},
 
 /**
  * @method getGridSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getGridSize : function () {},
 
 /**
  * @method getStep
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getStep : function () {},
 
@@ -5794,7 +5753,7 @@ set2DProjection : function () {},
 
 /**
  * @method setStep
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setStep : function () {},
 
@@ -5950,7 +5909,7 @@ setScaleX : function () {},
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -5968,7 +5927,7 @@ getBatchNode : function () {},
 
 /**
  * @method getOffsetPosition
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getOffsetPosition : function () {},
 
@@ -6035,7 +5994,7 @@ setScaleY : function () {},
 
 /**
  * @method setDisplayFrameWithAnimationName
- * @param {std::string}
+ * @param {const std::string&}
  * @param {int}
  */
 setDisplayFrameWithAnimationName : function () {},
@@ -6066,7 +6025,7 @@ setAtlasIndex : function () {},
 
 /**
  * @method updateDisplayedColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 updateDisplayedColor : function () {},
 
@@ -6095,7 +6054,7 @@ sortAllChildren : function () {},
 
 /**
  * @method getTextureRect
- * @return A value converted from C/C++ "cocos2d::Rect"
+ * @return A value converted from C/C++ "const cocos2d::Rect&"
  */
 getTextureRect : function () {},
 
@@ -6107,7 +6066,7 @@ ignoreAnchorPointForPosition : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -6138,7 +6097,7 @@ isFlippedY : function () {},
 
 /**
  * @method setVertexRect
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setVertexRect : function () {},
 
@@ -6163,7 +6122,7 @@ setVisible : function () {},
 /**
  * @method createWithSpriteFrameName
  * @return A value converted from C/C++ "cocos2d::Sprite*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 createWithSpriteFrameName : function () {},
 
@@ -6183,7 +6142,7 @@ cc.LabelTTF = {
 
 /**
  * @method enableShadow
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  * @param {float}
  * @param {float}
  * @param {bool}
@@ -6192,7 +6151,7 @@ enableShadow : function () {},
 
 /**
  * @method setDimensions
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setDimensions : function () {},
 
@@ -6204,19 +6163,19 @@ getFontSize : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getString : function () {},
 
 /**
  * @method setTextDefinition
- * @param {cocos2d::FontDefinition}
+ * @param {const cocos2d::FontDefinition&}
  */
 setTextDefinition : function () {},
 
 /**
  * @method setFontName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setFontName : function () {},
 
@@ -6229,14 +6188,14 @@ getHorizontalAlignment : function () {},
 /**
  * @method initWithStringAndTextDefinition
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
- * @param {cocos2d::FontDefinition}
+ * @param {const std::string&}
+ * @param {cocos2d::FontDefinition&}
  */
 initWithStringAndTextDefinition : function () {},
 
 /**
  * @method setString
- * @param {std::string}
+ * @param {const std::string&}
  */
 setString : function () {},
 
@@ -6248,14 +6207,14 @@ init : function () {},
 
 /**
  * @method setFontFillColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  * @param {bool}
  */
 setFontFillColor : function () {},
 
 /**
  * @method enableStroke
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  * @param {float}
  * @param {bool}
  */
@@ -6263,7 +6222,7 @@ enableStroke : function () {},
 
 /**
  * @method getDimensions
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getDimensions : function () {},
 
@@ -6293,7 +6252,7 @@ getTextDefinition : function () {},
 
 /**
  * @method getFontName
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getFontName : function () {},
 
@@ -6316,8 +6275,8 @@ disableStroke : function () {},
 /**
  * @method createWithFontDefinition
  * @return A value converted from C/C++ "cocos2d::LabelTTF*"
- * @param {std::string}
- * @param {cocos2d::FontDefinition}
+ * @param {const std::string&}
+ * @param {cocos2d::FontDefinition&}
  */
 createWithFontDefinition : function () {},
 
@@ -6411,7 +6370,7 @@ draw : function () {},
  * @method initWithTexture
  * @return A value converted from C/C++ "bool"
  * @param {cocos2d::Texture2D*}
- * @param {long}
+ * @param {int}
  */
 initWithTexture : function () {},
 
@@ -6465,7 +6424,7 @@ highestAtlasIndexInChild : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::SpriteBatchNode*"
  * @param {const char*}
- * @param {long}
+ * @param {int}
  */
 create : function () {},
 
@@ -6492,7 +6451,7 @@ cc.LabelBMFont = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -6503,7 +6462,7 @@ createFontChars : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getString : function () {},
 
@@ -6527,7 +6486,7 @@ setCascadeOpacityEnabled : function () {},
 
 /**
  * @method getFntFile
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getFntFile : function () {},
 
@@ -6557,8 +6516,8 @@ isCascadeOpacityEnabled : function () {},
 /**
  * @method initWithString
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  * @param {float}
  * @param {cocos2d::TextHAlignment}
  * @param {cocos2d::Point}
@@ -6591,7 +6550,7 @@ init : function () {},
 
 /**
  * @method setFntFile
- * @param {std::string}
+ * @param {const std::string&}
  */
 setFntFile : function () {},
 
@@ -6621,7 +6580,7 @@ setScaleX : function () {},
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColor : function () {},
 
@@ -6639,7 +6598,7 @@ isCascadeColorEnabled : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -6651,13 +6610,13 @@ setCString : function () {},
 
 /**
  * @method getDisplayedColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getDisplayedColor : function () {},
 
 /**
  * @method updateDisplayedColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 updateDisplayedColor : function () {},
 
@@ -6695,7 +6654,7 @@ addChild : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getString : function () {},
 
@@ -6790,7 +6749,7 @@ isCascadeOpacityEnabled : function () {},
 
 /**
  * @method setString
- * @param {std::string}
+ * @param {const std::string&}
  */
 setString : function () {},
 
@@ -6878,7 +6837,7 @@ getStringLenght : function () {},
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColor : function () {},
 
@@ -6905,7 +6864,7 @@ getLetter : function () {},
 
 /**
  * @method setLabelContentSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setLabelContentSize : function () {},
 
@@ -6917,20 +6876,20 @@ assignNewUTF8String : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
 /**
  * @method getDisplayedColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getDisplayedColor : function () {},
 
 /**
  * @method setText
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  * @param {float}
  * @param {cocos2d::TextHAlignment}
  * @param {bool}
@@ -6957,7 +6916,7 @@ isCascadeColorEnabled : function () {},
 
 /**
  * @method updateDisplayedColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 updateDisplayedColor : function () {},
 
@@ -6970,7 +6929,7 @@ setAlignment : function () {},
 /**
  * @method recordLetterInfo
  * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  * @param {unsigned short}
  * @param {int}
  */
@@ -6979,8 +6938,8 @@ recordLetterInfo : function () {},
 /**
  * @method createWithBMFont
  * @return A value converted from C/C++ "cocos2d::Label*"
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  * @param {cocos2d::TextHAlignment}
  * @param {int}
  */
@@ -6989,8 +6948,8 @@ createWithBMFont : function () {},
 /**
  * @method createWithTTF
  * @return A value converted from C/C++ "cocos2d::Label*"
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  * @param {int}
  * @param {int}
  * @param {cocos2d::TextHAlignment}
@@ -7027,7 +6986,7 @@ isOpacityModifyRGB : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -7039,7 +6998,7 @@ isCascadeOpacityEnabled : function () {},
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColor : function () {},
 
@@ -7087,7 +7046,7 @@ isCascadeColorEnabled : function () {},
 
 /**
  * @method updateDisplayedColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 updateDisplayedColor : function () {},
 
@@ -7099,7 +7058,7 @@ getOpacity : function () {},
 
 /**
  * @method getDisplayedColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getDisplayedColor : function () {},
 
@@ -7123,7 +7082,7 @@ draw : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -7148,7 +7107,7 @@ changeWidth : function () {},
 
 /**
  * @method setContentSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setContentSize : function () {},
 
@@ -7167,7 +7126,7 @@ cc.LayerGradient = {
 
 /**
  * @method getStartColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getStartColor : function () {},
 
@@ -7185,7 +7144,7 @@ getStartOpacity : function () {},
 
 /**
  * @method setVector
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setVector : function () {},
 
@@ -7209,19 +7168,19 @@ setEndOpacity : function () {},
 
 /**
  * @method getVector
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getVector : function () {},
 
 /**
  * @method setEndColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setEndColor : function () {},
 
 /**
  * @method getEndColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getEndColor : function () {},
 
@@ -7233,7 +7192,7 @@ getEndOpacity : function () {},
 
 /**
  * @method setStartColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setStartColor : function () {},
 
@@ -7245,23 +7204,10 @@ setStartColor : function () {},
 cc.LayerMultiplex = {
 
 /**
- * @method initWithArray
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Array*}
- */
-initWithArray : function () {},
-
-/**
  * @method switchToAndReleaseMe
  * @param {int}
  */
 switchToAndReleaseMe : function () {},
-
-/**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
 
 /**
  * @method addLayer
@@ -7274,12 +7220,6 @@ addLayer : function () {},
  * @param {int}
  */
 switchTo : function () {},
-
-/**
- * @method LayerMultiplex
- * @constructor
- */
-LayerMultiplex : function () {},
 
 };
 
@@ -7750,7 +7690,7 @@ easeActionWithAction : function () {},
 /**
  * @method actionWithSize
  * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 actionWithSize : function () {},
 
@@ -7772,7 +7712,7 @@ cc.TransitionFadeBL = {
 /**
  * @method actionWithSize
  * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 actionWithSize : function () {},
 
@@ -7794,7 +7734,7 @@ cc.TransitionFadeUp = {
 /**
  * @method actionWithSize
  * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 actionWithSize : function () {},
 
@@ -7816,7 +7756,7 @@ cc.TransitionFadeDown = {
 /**
  * @method actionWithSize
  * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 actionWithSize : function () {},
 
@@ -7843,7 +7783,7 @@ draw : function () {},
 /**
  * @method actionWithSize
  * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 actionWithSize : function () {},
 
@@ -8054,13 +7994,13 @@ activate : function () {},
 
 /**
  * @method getDisabledColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getDisabledColor : function () {},
 
 /**
  * @method setString
- * @param {std::string}
+ * @param {const std::string&}
  */
 setString : function () {},
 
@@ -8071,7 +8011,7 @@ selected : function () {},
 
 /**
  * @method setDisabledColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setDisabledColor : function () {},
 
@@ -8102,49 +8042,49 @@ cc.MenuItemFont = {
 
 /**
  * @method setFontNameObj
- * @param {std::string}
+ * @param {const std::string&}
  */
 setFontNameObj : function () {},
 
 /**
  * @method getFontSizeObj
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "int"
  */
 getFontSizeObj : function () {},
 
 /**
  * @method getFontNameObj
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getFontNameObj : function () {},
 
 /**
  * @method setFontSizeObj
- * @param {long}
+ * @param {int}
  */
 setFontSizeObj : function () {},
 
 /**
  * @method setFontName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setFontName : function () {},
 
 /**
  * @method getFontSize
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "int"
  */
 getFontSize : function () {},
 
 /**
  * @method getFontName
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getFontName : function () {},
 
 /**
  * @method setFontSize
- * @param {long}
+ * @param {int}
  */
 setFontSize : function () {},
 
@@ -8241,7 +8181,7 @@ cc.MenuItemToggle = {
 
 /**
  * @method setSubItems
- * @param {cocos2d::Array*}
+ * @param {const cocos2d::Vector<cocos2d::MenuItem *>&}
  */
 setSubItems : function () {},
 
@@ -8436,7 +8376,7 @@ getTexture : function () {},
 
 /**
  * @method tintWithColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 tintWithColor : function () {},
 
@@ -8472,7 +8412,7 @@ getOpacity : function () {},
 
 /**
  * @method setPosition
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setPosition : function () {},
 
@@ -8491,7 +8431,7 @@ cc.ProgressTimer = {
 
 /**
  * @method setAnchorPoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
 
@@ -8508,7 +8448,7 @@ isReverseDirection : function () {},
 
 /**
  * @method setBarChangeRate
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setBarChangeRate : function () {},
 
@@ -8550,13 +8490,13 @@ getSprite : function () {},
 
 /**
  * @method setMidpoint
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setMidpoint : function () {},
 
 /**
  * @method getColor
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColor : function () {},
 
@@ -8574,7 +8514,7 @@ getMidpoint : function () {},
 
 /**
  * @method setColor
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColor : function () {},
 
@@ -8686,7 +8626,7 @@ setAutoDraw : function () {},
 
 /**
  * @method setClearColor
- * @param {cocos2d::Color4F}
+ * @param {const cocos2d::Color4F&}
  */
 setClearColor : function () {},
 
@@ -8703,7 +8643,7 @@ clearDepth : function () {},
 
 /**
  * @method getClearColor
- * @return A value converted from C/C++ "cocos2d::Color4F"
+ * @return A value converted from C/C++ "const cocos2d::Color4F&"
  */
 getClearColor : function () {},
 
@@ -8767,14 +8707,14 @@ setTexture : function () {},
 /**
  * @method initWithFile
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  * @param {int}
  */
 initWithFile : function () {},
 
 /**
  * @method disableParticle
- * @param {unsigned int}
+ * @param {int}
  */
 disableParticle : function () {},
 
@@ -8831,7 +8771,7 @@ initWithTexture : function () {},
 
 /**
  * @method removeChildAtIndex
- * @param {unsigned int}
+ * @param {int}
  * @param {bool}
  */
 removeChildAtIndex : function () {},
@@ -8846,7 +8786,7 @@ reorderChild : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::ParticleBatchNode*"
- * @param {std::string}
+ * @param {const std::string&}
  * @param {int}
  */
 create : function () {},
@@ -8898,7 +8838,7 @@ getBatchNode : function () {},
 
 /**
  * @method getStartColor
- * @return A value converted from C/C++ "cocos2d::Color4F"
+ * @return A value converted from C/C++ "const cocos2d::Color4F&"
  */
 getStartColor : function () {},
 
@@ -8910,7 +8850,7 @@ getPositionType : function () {},
 
 /**
  * @method setPosVar
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setPosVar : function () {},
 
@@ -8994,7 +8934,7 @@ setEndSize : function () {},
 
 /**
  * @method getGravity
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getGravity : function () {},
 
@@ -9024,7 +8964,7 @@ getAngle : function () {},
 
 /**
  * @method setEndColor
- * @param {cocos2d::Color4F}
+ * @param {const cocos2d::Color4F&}
  */
 setEndColor : function () {},
 
@@ -9048,7 +8988,7 @@ setTexture : function () {},
 
 /**
  * @method getPosVar
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getPosVar : function () {},
 
@@ -9082,7 +9022,7 @@ stopSystem : function () {},
 
 /**
  * @method getSourcePosition
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getSourcePosition : function () {},
 
@@ -9100,14 +9040,14 @@ setTotalParticles : function () {},
 
 /**
  * @method setEndColorVar
- * @param {cocos2d::Color4F}
+ * @param {const cocos2d::Color4F&}
  */
 setEndColorVar : function () {},
 
 /**
  * @method updateQuadWithParticle
  * @param {tParticle*}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 updateQuadWithParticle : function () {},
 
@@ -9220,7 +9160,7 @@ getDuration : function () {},
 
 /**
  * @method setSourcePosition
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setSourcePosition : function () {},
 
@@ -9298,7 +9238,7 @@ getAngleVar : function () {},
 
 /**
  * @method setStartColor
- * @param {cocos2d::Color4F}
+ * @param {const cocos2d::Color4F&}
  */
 setStartColor : function () {},
 
@@ -9334,7 +9274,7 @@ setAutoRemoveOnFinish : function () {},
 
 /**
  * @method setGravity
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setGravity : function () {},
 
@@ -9351,7 +9291,7 @@ setEmissionRate : function () {},
 
 /**
  * @method getEndColorVar
- * @return A value converted from C/C++ "cocos2d::Color4F"
+ * @return A value converted from C/C++ "const cocos2d::Color4F&"
  */
 getEndColorVar : function () {},
 
@@ -9375,7 +9315,7 @@ getEmissionRate : function () {},
 
 /**
  * @method getEndColor
- * @return A value converted from C/C++ "cocos2d::Color4F"
+ * @return A value converted from C/C++ "const cocos2d::Color4F&"
  */
 getEndColor : function () {},
 
@@ -9423,7 +9363,7 @@ getStartRadiusVar : function () {},
 
 /**
  * @method setStartColorVar
- * @param {cocos2d::Color4F}
+ * @param {const cocos2d::Color4F&}
  */
 setStartColorVar : function () {},
 
@@ -9471,14 +9411,14 @@ getEndRadiusVar : function () {},
 
 /**
  * @method getStartColorVar
- * @return A value converted from C/C++ "cocos2d::Color4F"
+ * @return A value converted from C/C++ "const cocos2d::Color4F&"
  */
 getStartColorVar : function () {},
 
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::ParticleSystem*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 create : function () {},
 
@@ -9499,7 +9439,7 @@ cc.ParticleSystem = {
 /**
  * @method setTextureWithRect
  * @param {cocos2d::Texture2D*}
- * @param {cocos2d::Rect}
+ * @param {const cocos2d::Rect&}
  */
 setTextureWithRect : function () {},
 
@@ -9746,7 +9686,7 @@ cc.FileUtils = {
 /**
  * @method isFileExist
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  */
 isFileExist : function () {},
 
@@ -9759,15 +9699,15 @@ isPopupNotify : function () {},
 /**
  * @method fullPathForFilename
  * @return A value converted from C/C++ "std::string"
- * @param {std::string}
+ * @param {const std::string&}
  */
 fullPathForFilename : function () {},
 
 /**
  * @method fullPathFromRelativeFile
  * @return A value converted from C/C++ "std::string"
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  */
 fullPathFromRelativeFile : function () {},
 
@@ -9782,13 +9722,13 @@ getFileData : function () {},
 
 /**
  * @method setFilenameLookupDictionary
- * @param {cocos2d::Dictionary*}
+ * @param {const cocos2d::ValueMap&}
  */
 setFilenameLookupDictionary : function () {},
 
 /**
  * @method addSearchResolutionsOrder
- * @param {std::string}
+ * @param {const std::string&}
  */
 addSearchResolutionsOrder : function () {},
 
@@ -9802,6 +9742,14 @@ addSearchResolutionsOrder : function () {},
 getFileDataFromZip : function () {},
 
 /**
+ * @method writeToFile
+ * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::ValueMap&}
+ * @param {const std::string&}
+ */
+writeToFile : function () {},
+
+/**
  * @method purgeCachedEntries
  */
 purgeCachedEntries : function () {},
@@ -9809,7 +9757,7 @@ purgeCachedEntries : function () {},
 /**
  * @method isAbsolutePath
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  */
 isAbsolutePath : function () {},
 
@@ -9820,10 +9768,24 @@ isAbsolutePath : function () {},
 getWritablePath : function () {},
 
 /**
+ * @method getValueMapFromFile
+ * @return A value converted from C/C++ "ValueMap"
+ * @param {const std::string&}
+ */
+getValueMapFromFile : function () {},
+
+/**
  * @method addSearchPath
- * @param {std::string}
+ * @param {const std::string&}
  */
 addSearchPath : function () {},
+
+/**
+ * @method getValueVectorFromFile
+ * @return A value converted from C/C++ "ValueVector"
+ * @param {const std::string&}
+ */
+getValueVectorFromFile : function () {},
 
 /**
  * @method setPopupNotify
@@ -9833,7 +9795,7 @@ setPopupNotify : function () {},
 
 /**
  * @method loadFilenameLookupDictionaryFromFile
- * @param {std::string}
+ * @param {const std::string&}
  */
 loadFilenameLookupDictionaryFromFile : function () {},
 
@@ -9946,14 +9908,14 @@ reloadDefaultShaders : function () {},
 /**
  * @method addProgram
  * @param {cocos2d::GLProgram*}
- * @param {std::string}
+ * @param {const std::string&}
  */
 addProgram : function () {},
 
 /**
  * @method getProgram
  * @return A value converted from C/C++ "cocos2d::GLProgram*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 getProgram : function () {},
 
@@ -9989,14 +9951,14 @@ cc.AnimationCache = {
 /**
  * @method getAnimation
  * @return A value converted from C/C++ "cocos2d::Animation*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 getAnimation : function () {},
 
 /**
  * @method addAnimation
  * @param {cocos2d::Animation*}
- * @param {std::string}
+ * @param {const std::string&}
  */
 addAnimation : function () {},
 
@@ -10008,19 +9970,19 @@ init : function () {},
 
 /**
  * @method addAnimationsWithDictionary
- * @param {cocos2d::Dictionary*}
+ * @param {const cocos2d::ValueMap&}
  */
 addAnimationsWithDictionary : function () {},
 
 /**
  * @method removeAnimation
- * @param {std::string}
+ * @param {const std::string&}
  */
 removeAnimation : function () {},
 
 /**
  * @method addAnimationsWithFile
- * @param {std::string}
+ * @param {const std::string&}
  */
 addAnimationsWithFile : function () {},
 
@@ -10051,7 +10013,7 @@ cc.SpriteFrameCache = {
 /**
  * @method addSpriteFrame
  * @param {cocos2d::SpriteFrame*}
- * @param {std::string}
+ * @param {const std::string&}
  */
 addSpriteFrame : function () {},
 
@@ -10063,13 +10025,13 @@ removeUnusedSpriteFrames : function () {},
 /**
  * @method getSpriteFrameByName
  * @return A value converted from C/C++ "cocos2d::SpriteFrame*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 getSpriteFrameByName : function () {},
 
 /**
  * @method removeSpriteFramesFromFile
- * @param {std::string}
+ * @param {const std::string&}
  */
 removeSpriteFramesFromFile : function () {},
 
@@ -10092,7 +10054,7 @@ removeSpriteFramesFromTexture : function () {},
 
 /**
  * @method removeSpriteFrameByName
- * @param {std::string}
+ * @param {const std::string&}
  */
 removeSpriteFrameByName : function () {},
 
@@ -10134,25 +10096,25 @@ setSecureTextEntry : function () {},
 
 /**
  * @method getString
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getString : function () {},
 
 /**
  * @method getColorSpaceHolder
- * @return A value converted from C/C++ "cocos2d::Color3B"
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColorSpaceHolder : function () {},
 
 /**
  * @method getPlaceHolder
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getPlaceHolder : function () {},
 
 /**
  * @method setColorSpaceHolder
- * @param {cocos2d::Color3B}
+ * @param {const cocos2d::Color3B&}
  */
 setColorSpaceHolder : function () {},
 
@@ -10170,7 +10132,7 @@ setDelegate : function () {},
 
 /**
  * @method setPlaceHolder
- * @param {std::string}
+ * @param {const std::string&}
  */
 setPlaceHolder : function () {},
 
@@ -10182,7 +10144,7 @@ isSecureTextEntry : function () {},
 
 /**
  * @method setString
- * @param {std::string}
+ * @param {const std::string&}
  */
 setString : function () {},
 
@@ -10217,14 +10179,14 @@ removeAllTextures : function () {},
 
 /**
  * @method removeTextureForKey
- * @param {std::string}
+ * @param {const std::string&}
  */
 removeTextureForKey : function () {},
 
 /**
  * @method getTextureForKey
  * @return A value converted from C/C++ "cocos2d::Texture2D*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 getTextureForKey : function () {},
 
@@ -10296,63 +10258,51 @@ cc.TMXObjectGroup = {
 
 /**
  * @method setPositionOffset
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 setPositionOffset : function () {},
 
 /**
  * @method getProperty
- * @return A value converted from C/C++ "cocos2d::String*"
- * @param {const char*}
+ * @return A value converted from C/C++ "cocos2d::Value"
+ * @param {const std::string&}
  */
 getProperty : function () {},
 
 /**
  * @method getPositionOffset
- * @return A value converted from C/C++ "cocos2d::Point"
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
 getPositionOffset : function () {},
 
 /**
  * @method getObject
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
- * @param {const char*}
+ * @return A value converted from C/C++ "ValueMap"
+ * @param {const std::string&}
  */
 getObject : function () {},
 
 /**
- * @method getObjects
- * @return A value converted from C/C++ "cocos2d::Array*"
- */
-getObjects : function () {},
-
-/**
  * @method setGroupName
- * @param {const char*}
+ * @param {const std::string&}
  */
 setGroupName : function () {},
 
 /**
- * @method getProperties
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
- */
-getProperties : function () {},
-
-/**
  * @method getGroupName
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getGroupName : function () {},
 
 /**
  * @method setProperties
- * @param {cocos2d::Dictionary*}
+ * @param {const cocos2d::ValueMap&}
  */
 setProperties : function () {},
 
 /**
  * @method setObjects
- * @param {cocos2d::Array*}
+ * @param {const cocos2d::ValueVector&}
  */
 setObjects : function () {},
 
@@ -10371,13 +10321,13 @@ cc.TMXLayerInfo = {
 
 /**
  * @method setProperties
- * @param {cocos2d::Dictionary*}
+ * @param {ValueMap}
  */
 setProperties : function () {},
 
 /**
  * @method getProperties
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
+ * @return A value converted from C/C++ "ValueMap"
  */
 getProperties : function () {},
 
@@ -10416,20 +10366,20 @@ cc.TMXMapInfo = {
 
 /**
  * @method setObjectGroups
- * @param {cocos2d::Array*}
+ * @param {const cocos2d::Vector<cocos2d::TMXObjectGroup *>&}
  */
 setObjectGroups : function () {},
 
 /**
  * @method setTileSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setTileSize : function () {},
 
 /**
  * @method initWithTMXFile
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  */
 initWithTMXFile : function () {},
 
@@ -10447,14 +10397,14 @@ isStoringCharacters : function () {},
 
 /**
  * @method setLayers
- * @param {cocos2d::Array*}
+ * @param {const cocos2d::Vector<cocos2d::TMXLayerInfo *>&}
  */
 setLayers : function () {},
 
 /**
  * @method parseXMLFile
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  */
 parseXMLFile : function () {},
 
@@ -10466,28 +10416,16 @@ getParentElement : function () {},
 
 /**
  * @method setTMXFileName
- * @param {std::string}
+ * @param {const std::string&}
  */
 setTMXFileName : function () {},
 
 /**
  * @method parseXMLString
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
+ * @param {const std::string&}
  */
 parseXMLString : function () {},
-
-/**
- * @method getLayers
- * @return A value converted from C/C++ "cocos2d::Array*"
- */
-getLayers : function () {},
-
-/**
- * @method getTilesets
- * @return A value converted from C/C++ "cocos2d::Array*"
- */
-getTilesets : function () {},
 
 /**
  * @method getParentGID
@@ -10504,8 +10442,8 @@ setParentElement : function () {},
 /**
  * @method initWithXML
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  */
 initWithXML : function () {},
 
@@ -10523,37 +10461,31 @@ getLayerAttribs : function () {},
 
 /**
  * @method getTileSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getTileSize : function () {},
 
 /**
  * @method getTileProperties
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::IntValueMap&"
  */
 getTileProperties : function () {},
 
 /**
- * @method getObjectGroups
- * @return A value converted from C/C++ "cocos2d::Array*"
- */
-getObjectGroups : function () {},
-
-/**
  * @method getTMXFileName
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getTMXFileName : function () {},
 
 /**
  * @method setCurrentString
- * @param {std::string}
+ * @param {const std::string&}
  */
 setCurrentString : function () {},
 
 /**
  * @method setProperties
- * @param {cocos2d::Dictionary*}
+ * @param {ValueMap}
  */
 setProperties : function () {},
 
@@ -10565,13 +10497,13 @@ setOrientation : function () {},
 
 /**
  * @method setTileProperties
- * @param {cocos2d::Dictionary*}
+ * @param {const cocos2d::IntValueMap&}
  */
 setTileProperties : function () {},
 
 /**
  * @method setMapSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setMapSize : function () {},
 
@@ -10583,25 +10515,25 @@ setStoringCharacters : function () {},
 
 /**
  * @method getMapSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getMapSize : function () {},
 
 /**
  * @method setTilesets
- * @param {cocos2d::Array*}
+ * @param {const cocos2d::Vector<cocos2d::TMXTilesetInfo *>&}
  */
 setTilesets : function () {},
 
 /**
  * @method getProperties
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
+ * @return A value converted from C/C++ "ValueMap"
  */
 getProperties : function () {},
 
 /**
  * @method getCurrentString
- * @return A value converted from C/C++ "std::string"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getCurrentString : function () {},
 
@@ -10614,15 +10546,15 @@ setLayerAttribs : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TMXMapInfo*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 create : function () {},
 
 /**
  * @method createWithXML
  * @return A value converted from C/C++ "cocos2d::TMXMapInfo*"
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  */
 createWithXML : function () {},
 
@@ -10650,7 +10582,7 @@ addChild : function () {},
 /**
  * @method getTileGIDAt
  * @return A value converted from C/C++ "unsigned int"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  * @param {cocos2d::ccTMXTileFlags*}
  */
 getTileGIDAt : function () {},
@@ -10658,7 +10590,7 @@ getTileGIDAt : function () {},
 /**
  * @method getPositionAt
  * @return A value converted from C/C++ "cocos2d::Point"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 getPositionAt : function () {},
 
@@ -10681,13 +10613,13 @@ setTiles : function () {},
 
 /**
  * @method getLayerSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getLayerSize : function () {},
 
 /**
  * @method setMapTileSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setMapTileSize : function () {},
 
@@ -10699,7 +10631,7 @@ getLayerOrientation : function () {},
 
 /**
  * @method setProperties
- * @param {cocos2d::Dictionary*}
+ * @param {const cocos2d::ValueMap&}
  */
 setProperties : function () {},
 
@@ -10711,7 +10643,7 @@ setLayerName : function () {},
 
 /**
  * @method removeTileAt
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 removeTileAt : function () {},
 
@@ -10731,20 +10663,20 @@ setupTiles : function () {},
 
 /**
  * @method getMapTileSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getMapTileSize : function () {},
 
 /**
  * @method getProperty
- * @return A value converted from C/C++ "cocos2d::String*"
- * @param {const char*}
+ * @return A value converted from C/C++ "cocos2d::Value"
+ * @param {const std::string&}
  */
 getProperty : function () {},
 
 /**
  * @method setLayerSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setLayerSize : function () {},
 
@@ -10774,15 +10706,9 @@ removeChild : function () {},
 getTileSet : function () {},
 
 /**
- * @method getProperties
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
- */
-getProperties : function () {},
-
-/**
  * @method getTileAt
  * @return A value converted from C/C++ "cocos2d::Sprite*"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 getTileAt : function () {},
 
@@ -10810,77 +10736,71 @@ cc.TMXTiledMap = {
 
 /**
  * @method setObjectGroups
- * @param {cocos2d::Array*}
+ * @param {const cocos2d::Vector<cocos2d::TMXObjectGroup *>&}
  */
 setObjectGroups : function () {},
 
 /**
  * @method getProperty
- * @return A value converted from C/C++ "cocos2d::String*"
- * @param {std::string}
+ * @return A value converted from C/C++ "cocos2d::Value"
+ * @param {const std::string&}
  */
 getProperty : function () {},
 
 /**
  * @method setMapSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setMapSize : function () {},
 
 /**
  * @method getObjectGroup
  * @return A value converted from C/C++ "cocos2d::TMXObjectGroup*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 getObjectGroup : function () {},
 
 /**
- * @method getObjectGroups
- * @return A value converted from C/C++ "cocos2d::Array*"
- */
-getObjectGroups : function () {},
-
-/**
  * @method getTileSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getTileSize : function () {},
 
 /**
  * @method getMapSize
- * @return A value converted from C/C++ "cocos2d::Size"
+ * @return A value converted from C/C++ "const cocos2d::Size&"
  */
 getMapSize : function () {},
 
 /**
  * @method getProperties
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::ValueMap&"
  */
 getProperties : function () {},
 
 /**
  * @method getPropertiesForGID
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
+ * @return A value converted from C/C++ "cocos2d::Value"
  * @param {int}
  */
 getPropertiesForGID : function () {},
 
 /**
  * @method setTileSize
- * @param {cocos2d::Size}
+ * @param {const cocos2d::Size&}
  */
 setTileSize : function () {},
 
 /**
  * @method setProperties
- * @param {cocos2d::Dictionary*}
+ * @param {const cocos2d::ValueMap&}
  */
 setProperties : function () {},
 
 /**
  * @method getLayer
  * @return A value converted from C/C++ "cocos2d::TMXLayer*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 getLayer : function () {},
 
@@ -10899,15 +10819,15 @@ setMapOrientation : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TMXTiledMap*"
- * @param {std::string}
+ * @param {const std::string&}
  */
 create : function () {},
 
 /**
  * @method createWithXML
  * @return A value converted from C/C++ "cocos2d::TMXTiledMap*"
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  */
 createWithXML : function () {},
 
@@ -10921,8 +10841,8 @@ cc.TileMapAtlas = {
 /**
  * @method initWithTileFile
  * @return A value converted from C/C++ "bool"
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  * @param {int}
  * @param {int}
  */
@@ -10942,14 +10862,14 @@ getTGAInfo : function () {},
 /**
  * @method getTileAt
  * @return A value converted from C/C++ "cocos2d::Color3B"
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Point&}
  */
 getTileAt : function () {},
 
 /**
  * @method setTile
- * @param {cocos2d::Color3B}
- * @param {cocos2d::Point}
+ * @param {const cocos2d::Color3B&}
+ * @param {const cocos2d::Point&}
  */
 setTile : function () {},
 
@@ -10962,8 +10882,8 @@ setTGAInfo : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TileMapAtlas*"
- * @param {std::string}
- * @param {std::string}
+ * @param {const std::string&}
+ * @param {const std::string&}
  * @param {int}
  * @param {int}
  */
@@ -11032,6 +10952,12 @@ cc.Scheduler = {
  * @param {float}
  */
 setTimeScale : function () {},
+
+/**
+ * @method performFunctionInCocosThread
+ * @param {const std::function<void ()>&}
+ */
+performFunctionInCocosThread : function () {},
 
 /**
  * @method getTimeScale

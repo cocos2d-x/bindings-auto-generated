@@ -346,8 +346,7 @@ JSBool js_cocos2dx_AnimationFrame_clone(JSContext *cx, uint32_t argc, jsval *vp)
 JSBool js_cocos2dx_AnimationFrame_getSpriteFrame(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_AnimationFrame_getDelayUnits(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_AnimationFrame_setUserInfo(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_AnimationFrame_initWithSpriteFrame(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_AnimationFrame_AnimationFrame(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_AnimationFrame_create(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Animation_class;
 extern JSObject *jsb_Animation_prototype;
@@ -357,23 +356,19 @@ void js_cocos2dx_Animation_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_Animation(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_Animation_getLoops(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Animation_setFrames(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Animation_getFrames(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Animation_addSpriteFrame(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Animation_setRestoreOriginalFrame(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Animation_clone(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Animation_setDelayPerUnit(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Animation_initWithAnimationFrames(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Animation_init(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Animation_initWithSpriteFrames(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Animation_getDuration(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Animation_setFrames(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Animation_getFrames(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Animation_setLoops(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Animation_setDelayPerUnit(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Animation_addSpriteFrameWithFile(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Animation_getTotalDelayUnits(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Animation_getDelayPerUnit(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Animation_getRestoreOriginalFrame(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Animation_getDuration(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Animation_addSpriteFrameWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Animation_Animation(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_ActionInterval_class;
 extern JSObject *jsb_ActionInterval_prototype;
@@ -2071,12 +2066,9 @@ JSBool js_cocos2dx_LayerMultiplex_constructor(JSContext *cx, uint32_t argc, jsva
 void js_cocos2dx_LayerMultiplex_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_LayerMultiplex(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_LayerMultiplex_initWithArray(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LayerMultiplex_switchToAndReleaseMe(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_LayerMultiplex_init(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LayerMultiplex_addLayer(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LayerMultiplex_switchTo(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_LayerMultiplex_LayerMultiplex(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_Scene_class;
 extern JSObject *jsb_Scene_prototype;
@@ -2945,10 +2937,13 @@ JSBool js_cocos2dx_FileUtils_getFileData(JSContext *cx, uint32_t argc, jsval *vp
 JSBool js_cocos2dx_FileUtils_setFilenameLookupDictionary(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_addSearchResolutionsOrder(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_getFileDataFromZip(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_FileUtils_writeToFile(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_purgeCachedEntries(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_isAbsolutePath(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_getWritablePath(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_FileUtils_getValueMapFromFile(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_addSearchPath(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_FileUtils_getValueVectorFromFile(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_setPopupNotify(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_loadFilenameLookupDictionaryFromFile(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp);
@@ -3274,6 +3269,7 @@ void js_cocos2dx_Scheduler_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_Scheduler(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_Scheduler_setTimeScale(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Scheduler_performFunctionInCocosThread(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Scheduler_getTimeScale(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Scheduler_Scheduler(JSContext *cx, uint32_t argc, jsval *vp);
 
