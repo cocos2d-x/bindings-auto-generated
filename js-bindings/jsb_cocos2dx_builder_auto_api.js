@@ -286,7 +286,7 @@ addOwnerOutletName : function () {},
 
 /**
  * @method getOwnerCallbackNames
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::ValueVector"
  */
 getOwnerCallbackNames : function () {},
 
@@ -310,7 +310,7 @@ addOwnerOutletNode : function () {},
 
 /**
  * @method getOwnerCallbackNodes
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::Vector<cocos2d::Node *>&"
  */
 getOwnerCallbackNodes : function () {},
 
@@ -329,13 +329,13 @@ getCCBRootPath : function () {},
 
 /**
  * @method getOwnerCallbackControlEvents
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::ValueVector&"
  */
 getOwnerCallbackControlEvents : function () {},
 
 /**
  * @method getOwnerOutletNodes
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::Vector<cocos2d::Node *>&"
  */
 getOwnerOutletNodes : function () {},
 
@@ -353,7 +353,7 @@ addOwnerCallbackControlEvents : function () {},
 
 /**
  * @method getOwnerOutletNames
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::ValueVector"
  */
 getOwnerOutletNames : function () {},
 
@@ -366,13 +366,13 @@ readCallbackKeyframesForSeq : function () {},
 
 /**
  * @method getAnimationManagersForNodes
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::Vector<cocosbuilder::CCBAnimationManager *>&"
  */
 getAnimationManagersForNodes : function () {},
 
 /**
  * @method getNodesWithAnimationManagers
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::Vector<cocos2d::Node *>&"
  */
 getNodesWithAnimationManagers : function () {},
 

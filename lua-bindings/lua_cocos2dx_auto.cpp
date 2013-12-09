@@ -3512,470 +3512,6 @@ int lua_register_cocos2dx_Touch(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_Set_count(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Set* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Set",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Set*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Set_count'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        int ret = cobj->count();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "count",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Set_count'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Set_addObject(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Set* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Set",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Set*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Set_addObject'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Object* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        if(!ok)
-            return 0;
-        cobj->addObject(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addObject",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Set_addObject'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Set_mutableCopy(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Set* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Set",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Set*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Set_mutableCopy'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::Set* ret = cobj->mutableCopy();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Set");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Set");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "mutableCopy",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Set_mutableCopy'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Set_anyObject(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Set* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Set",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Set*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Set_anyObject'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::Object* ret = cobj->anyObject();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "anyObject",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Set_anyObject'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Set_removeAllObjects(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Set* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Set",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Set*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Set_removeAllObjects'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cobj->removeAllObjects();
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeAllObjects",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Set_removeAllObjects'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Set_removeObject(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Set* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Set",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Set*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Set_removeObject'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Object* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        if(!ok)
-            return 0;
-        cobj->removeObject(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeObject",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Set_removeObject'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Set_copy(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Set* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Set",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Set*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Set_copy'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::Set* ret = cobj->copy();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Set");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Set");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "copy",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Set_copy'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Set_containsObject(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Set* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Set",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Set*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Set_containsObject'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Object* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        if(!ok)
-            return 0;
-        bool ret = cobj->containsObject(arg0);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "containsObject",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Set_containsObject'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Set_create(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Set",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 0)
-    {
-        if(!ok)
-            return 0;
-        cocos2d::Set* ret = cocos2d::Set::create();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Set");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Set");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Set_create'.",&tolua_err);
-#endif
-    return 0;
-}
-static int lua_cocos2dx_Set_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (Set)");
-    return 0;
-}
-
-int lua_register_cocos2dx_Set(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"Set");
-    tolua_cclass(tolua_S,"Set","Set","Object",NULL);
-
-    tolua_beginmodule(tolua_S,"Set");
-        tolua_function(tolua_S,"count",lua_cocos2dx_Set_count);
-        tolua_function(tolua_S,"addObject",lua_cocos2dx_Set_addObject);
-        tolua_function(tolua_S,"mutableCopy",lua_cocos2dx_Set_mutableCopy);
-        tolua_function(tolua_S,"anyObject",lua_cocos2dx_Set_anyObject);
-        tolua_function(tolua_S,"removeAllObjects",lua_cocos2dx_Set_removeAllObjects);
-        tolua_function(tolua_S,"removeObject",lua_cocos2dx_Set_removeObject);
-        tolua_function(tolua_S,"copy",lua_cocos2dx_Set_copy);
-        tolua_function(tolua_S,"containsObject",lua_cocos2dx_Set_containsObject);
-        tolua_function(tolua_S,"create", lua_cocos2dx_Set_create);
-    tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Set).hash_code();
-    g_luaType[typeId] = "Set";
-    return 1;
-}
-
 int lua_cocos2dx_Texture2D_getShaderProgram(lua_State* tolua_S)
 {
     int argc = 0;
@@ -4384,7 +3920,7 @@ int lua_cocos2dx_Texture2D_initWithMipmaps(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 5) 
     {
-        MipmapInfo* arg0;
+        cocos2d::MipmapInfo* arg0;
         int arg1;
         cocos2d::Texture2D::PixelFormat arg2;
         int arg3;
@@ -21151,15 +20687,15 @@ int lua_cocos2dx_ActionManager_getActionByTag(lua_State* tolua_S)
     if (argc == 2) 
     {
         int arg0;
-        const cocos2d::Object* arg1;
+        const cocos2d::Node* arg1;
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         do {
-				if (!luaval_is_usertype(tolua_S,3,"Object",0)){
+				if (!luaval_is_usertype(tolua_S,3,"Node",0)){
 					ok = false;
 					break;
 				}
 				if (ok){
-					arg1 = (const cocos2d::Object*)tolua_tousertype(tolua_S,3,0);
+					arg1 = (const cocos2d::Node*)tolua_tousertype(tolua_S,3,0);
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
@@ -21217,15 +20753,15 @@ int lua_cocos2dx_ActionManager_removeActionByTag(lua_State* tolua_S)
     if (argc == 2) 
     {
         int arg0;
-        cocos2d::Object* arg1;
+        cocos2d::Node* arg1;
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         do {
-				if (!luaval_is_usertype(tolua_S,3,"Object",0)){
+				if (!luaval_is_usertype(tolua_S,3,"Node",0)){
 					ok = false;
 					break;
 				}
 				if (ok){
-					arg1 = (cocos2d::Object*)tolua_tousertype(tolua_S,3,0);
+					arg1 = (cocos2d::Node*)tolua_tousertype(tolua_S,3,0);
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
@@ -21373,14 +20909,14 @@ int lua_cocos2dx_ActionManager_resumeTarget(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        cocos2d::Object* arg0;
+        cocos2d::Node* arg0;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
 					ok = false;
 					break;
 				}
 				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
@@ -21424,14 +20960,14 @@ int lua_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget(lua_State* tolu
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const cocos2d::Object* arg0;
+        const cocos2d::Node* arg0;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
 					ok = false;
 					break;
 				}
 				if (ok){
-					arg0 = (const cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
+					arg0 = (const cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
@@ -21476,14 +21012,14 @@ int lua_cocos2dx_ActionManager_removeAllActionsFromTarget(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        cocos2d::Object* arg0;
+        cocos2d::Node* arg0;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
 					ok = false;
 					break;
 				}
 				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
@@ -21527,14 +21063,14 @@ int lua_cocos2dx_ActionManager_resumeTargets(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        cocos2d::Set* arg0;
+        cocos2d::Vector<cocos2d::Node *> arg0;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Set",0)){
+				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::Node >",0)){
 					ok = false;
 					break;
 				}
 				if (ok){
-					arg0 = (cocos2d::Set*)tolua_tousertype(tolua_S,2,0);
+					arg0 = (const cocos2d::Vector<cocos2d::Node *>&)tolua_tousertype(tolua_S,2,0);
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
@@ -21629,14 +21165,14 @@ int lua_cocos2dx_ActionManager_pauseTarget(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        cocos2d::Object* arg0;
+        cocos2d::Node* arg0;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
 					ok = false;
 					break;
 				}
 				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
@@ -21682,16 +21218,16 @@ int lua_cocos2dx_ActionManager_pauseAllRunningActions(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Set* ret = cobj->pauseAllRunningActions();
+        cocos2d::Vector<cocos2d::Node *> ret = cobj->pauseAllRunningActions();
         do {
 			if (NULL != ret){
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Set");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Set");
+					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -64730,7 +64266,7 @@ int lua_cocos2dx_Image_getMipmaps(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        MipmapInfo* ret = cobj->getMipmaps();
+        cocos2d::MipmapInfo* ret = cobj->getMipmaps();
         #pragma warning NO CONVERSION FROM NATIVE FOR MipmapInfo*;
         return 1;
     }
@@ -68953,7 +68489,7 @@ int lua_cocos2dx_ParticleSystem_updateQuadWithParticle(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        tParticle* arg0;
+        cocos2d::tParticle* arg0;
         cocos2d::Point arg1;
         #pragma warning NO CONVERSION TO NATIVE FOR tParticle*;
         ok &= luaval_to_point(tolua_S, 3, &arg1);
@@ -69618,7 +69154,7 @@ int lua_cocos2dx_ParticleSystem_initParticle(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        tParticle* arg0;
+        cocos2d::tParticle* arg0;
         #pragma warning NO CONVERSION TO NATIVE FOR tParticle*;
         if(!ok)
             return 0;
@@ -73696,7 +73232,7 @@ int lua_cocos2dx_FileUtils_getValueMapFromFile(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        ValueMap ret = cobj->getValueMapFromFile(arg0);
+        cocos2d::ValueMap ret = cobj->getValueMapFromFile(arg0);
         #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
         return 1;
     }
@@ -73781,7 +73317,7 @@ int lua_cocos2dx_FileUtils_getValueVectorFromFile(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        ValueVector ret = cobj->getValueVectorFromFile(arg0);
+        cocos2d::ValueVector ret = cobj->getValueVectorFromFile(arg0);
         #pragma warning NO CONVERSION FROM NATIVE FOR ValueVector;
         return 1;
     }
@@ -78341,7 +77877,7 @@ int lua_cocos2dx_TMXObjectGroup_getObject(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        ValueMap ret = cobj->getObject(arg0);
+        cocos2d::ValueMap ret = cobj->getObject(arg0);
         #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
         return 1;
     }
@@ -78701,7 +78237,7 @@ int lua_cocos2dx_TMXLayerInfo_setProperties(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        ValueMap arg0;
+        cocos2d::ValueMap arg0;
         #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
         if(!ok)
             return 0;
@@ -78745,7 +78281,7 @@ int lua_cocos2dx_TMXLayerInfo_getProperties(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        ValueMap ret = cobj->getProperties();
+        cocos2d::ValueMap ret = cobj->getProperties();
         #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
         return 1;
     }
@@ -79962,7 +79498,7 @@ int lua_cocos2dx_TMXMapInfo_setProperties(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        ValueMap arg0;
+        cocos2d::ValueMap arg0;
         #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
         if(!ok)
             return 0;
@@ -80266,7 +79802,7 @@ int lua_cocos2dx_TMXMapInfo_getProperties(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        ValueMap ret = cobj->getProperties();
+        cocos2d::ValueMap ret = cobj->getProperties();
         #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
         return 1;
     }
@@ -84715,7 +84251,6 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_TransitionSlideInL(tolua_S);
 	lua_register_cocos2dx_TransitionSlideInT(tolua_S);
 	lua_register_cocos2dx_StopGrid(tolua_S);
-	lua_register_cocos2dx_Set(tolua_S);
 	lua_register_cocos2dx_ShakyTiles3D(tolua_S);
 	lua_register_cocos2dx_PageTurn3D(tolua_S);
 	lua_register_cocos2dx_Grid3D(tolua_S);
