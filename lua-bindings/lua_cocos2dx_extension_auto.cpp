@@ -18825,8 +18825,20 @@ int lua_cocos2dx_extension_CCBReader_getOwnerCallbackNames(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Array* ret = cobj->getOwnerCallbackNames();
-        array_to_luaval(tolua_S,ret);
+        cocos2d::ValueVector ret = cobj->getOwnerCallbackNames();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerCallbackNames",argc, 0);
@@ -19001,8 +19013,20 @@ int lua_cocos2dx_extension_CCBReader_getOwnerCallbackNodes(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Array* ret = cobj->getOwnerCallbackNodes();
-        array_to_luaval(tolua_S,ret);
+        cocos2d::Vector<cocos2d::Node *>& ret = cobj->getOwnerCallbackNodes();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerCallbackNodes",argc, 0);
@@ -19135,8 +19159,20 @@ int lua_cocos2dx_extension_CCBReader_getOwnerCallbackControlEvents(lua_State* to
     {
         if(!ok)
             return 0;
-        cocos2d::Array* ret = cobj->getOwnerCallbackControlEvents();
-        array_to_luaval(tolua_S,ret);
+        cocos2d::ValueVector& ret = cobj->getOwnerCallbackControlEvents();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerCallbackControlEvents",argc, 0);
@@ -19176,8 +19212,20 @@ int lua_cocos2dx_extension_CCBReader_getOwnerOutletNodes(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Array* ret = cobj->getOwnerOutletNodes();
-        array_to_luaval(tolua_S,ret);
+        cocos2d::Vector<cocos2d::Node *>& ret = cobj->getOwnerOutletNodes();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerOutletNodes",argc, 0);
@@ -19300,8 +19348,20 @@ int lua_cocos2dx_extension_CCBReader_getOwnerOutletNames(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Array* ret = cobj->getOwnerOutletNames();
-        array_to_luaval(tolua_S,ret);
+        cocos2d::ValueVector ret = cobj->getOwnerOutletNames();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerOutletNames",argc, 0);
@@ -19444,8 +19504,20 @@ int lua_cocos2dx_extension_CCBReader_getAnimationManagersForNodes(lua_State* tol
     {
         if(!ok)
             return 0;
-        cocos2d::Array* ret = cobj->getAnimationManagersForNodes();
-        array_to_luaval(tolua_S,ret);
+        cocos2d::Vector<cocosbuilder::CCBAnimationManager *>& ret = cobj->getAnimationManagersForNodes();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocosbuilder::CCBAnimationManager >");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocosbuilder::CCBAnimationManager >");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimationManagersForNodes",argc, 0);
@@ -19485,8 +19557,20 @@ int lua_cocos2dx_extension_CCBReader_getNodesWithAnimationManagers(lua_State* to
     {
         if(!ok)
             return 0;
-        cocos2d::Array* ret = cobj->getNodesWithAnimationManagers();
-        array_to_luaval(tolua_S,ret);
+        cocos2d::Vector<cocos2d::Node *>& ret = cobj->getNodesWithAnimationManagers();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodesWithAnimationManagers",argc, 0);

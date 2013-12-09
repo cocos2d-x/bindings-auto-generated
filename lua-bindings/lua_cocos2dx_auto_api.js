@@ -516,67 +516,6 @@ Touch : function () {},
 };
 
 /**
- * @class Set
- */
-cc.Set = {
-
-/**
- * @method count
- * @return A value converted from C/C++ "int"
- */
-count : function () {},
-
-/**
- * @method addObject
- * @param {cocos2d::Object*}
- */
-addObject : function () {},
-
-/**
- * @method mutableCopy
- * @return A value converted from C/C++ "cocos2d::Set*"
- */
-mutableCopy : function () {},
-
-/**
- * @method anyObject
- * @return A value converted from C/C++ "cocos2d::Object*"
- */
-anyObject : function () {},
-
-/**
- * @method removeAllObjects
- */
-removeAllObjects : function () {},
-
-/**
- * @method removeObject
- * @param {cocos2d::Object*}
- */
-removeObject : function () {},
-
-/**
- * @method copy
- * @return A value converted from C/C++ "cocos2d::Set*"
- */
-copy : function () {},
-
-/**
- * @method containsObject
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Object*}
- */
-containsObject : function () {},
-
-/**
- * @method create
- * @return A value converted from C/C++ "cocos2d::Set*"
- */
-create : function () {},
-
-};
-
-/**
  * @class Texture2D
  */
 cc.Texture2D = {
@@ -626,7 +565,7 @@ getPixelsHigh : function () {},
 /**
  * @method initWithMipmaps
  * @return A value converted from C/C++ "bool"
- * @param {MipmapInfo*}
+ * @param {cocos2d::MipmapInfo*}
  * @param {int}
  * @param {cocos2d::Texture2D::PixelFormat}
  * @param {int}
@@ -2732,14 +2671,14 @@ cc.ActionManager = {
  * @method getActionByTag
  * @return A value converted from C/C++ "cocos2d::Action*"
  * @param {int}
- * @param {const cocos2d::Object*}
+ * @param {const cocos2d::Node*}
  */
 getActionByTag : function () {},
 
 /**
  * @method removeActionByTag
  * @param {int}
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Node*}
  */
 removeActionByTag : function () {},
 
@@ -2758,26 +2697,26 @@ addAction : function () {},
 
 /**
  * @method resumeTarget
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Node*}
  */
 resumeTarget : function () {},
 
 /**
  * @method getNumberOfRunningActionsInTarget
  * @return A value converted from C/C++ "int"
- * @param {const cocos2d::Object*}
+ * @param {const cocos2d::Node*}
  */
 getNumberOfRunningActionsInTarget : function () {},
 
 /**
  * @method removeAllActionsFromTarget
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Node*}
  */
 removeAllActionsFromTarget : function () {},
 
 /**
  * @method resumeTargets
- * @param {cocos2d::Set*}
+ * @param {const cocos2d::Vector<cocos2d::Node *>&}
  */
 resumeTargets : function () {},
 
@@ -2789,13 +2728,13 @@ removeAction : function () {},
 
 /**
  * @method pauseTarget
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Node*}
  */
 pauseTarget : function () {},
 
 /**
  * @method pauseAllRunningActions
- * @return A value converted from C/C++ "cocos2d::Set*"
+ * @return A value converted from C/C++ "cocos2d::Vector<cocos2d::Node *>"
  */
 pauseAllRunningActions : function () {},
 
@@ -8670,7 +8609,7 @@ getData : function () {},
 
 /**
  * @method getMipmaps
- * @return A value converted from C/C++ "MipmapInfo*"
+ * @return A value converted from C/C++ "cocos2d::MipmapInfo*"
  */
 getMipmaps : function () {},
 
@@ -9189,7 +9128,7 @@ setEndColorVar : function () {},
 
 /**
  * @method updateQuadWithParticle
- * @param {tParticle*}
+ * @param {cocos2d::tParticle*}
  * @param {const cocos2d::Point&}
  */
 updateQuadWithParticle : function () {},
@@ -9285,7 +9224,7 @@ getRotatePerSecond : function () {},
 
 /**
  * @method initParticle
- * @param {tParticle*}
+ * @param {cocos2d::tParticle*}
  */
 initParticle : function () {},
 
@@ -9912,7 +9851,7 @@ getWritablePath : function () {},
 
 /**
  * @method getValueMapFromFile
- * @return A value converted from C/C++ "ValueMap"
+ * @return A value converted from C/C++ "cocos2d::ValueMap"
  * @param {const std::string&}
  */
 getValueMapFromFile : function () {},
@@ -9925,7 +9864,7 @@ addSearchPath : function () {},
 
 /**
  * @method getValueVectorFromFile
- * @return A value converted from C/C++ "ValueVector"
+ * @return A value converted from C/C++ "cocos2d::ValueVector"
  * @param {const std::string&}
  */
 getValueVectorFromFile : function () {},
@@ -10535,7 +10474,7 @@ getPositionOffset : function () {},
 
 /**
  * @method getObject
- * @return A value converted from C/C++ "ValueMap"
+ * @return A value converted from C/C++ "cocos2d::ValueMap"
  * @param {const std::string&}
  */
 getObject : function () {},
@@ -10579,13 +10518,13 @@ cc.TMXLayerInfo = {
 
 /**
  * @method setProperties
- * @param {ValueMap}
+ * @param {cocos2d::ValueMap}
  */
 setProperties : function () {},
 
 /**
  * @method getProperties
- * @return A value converted from C/C++ "ValueMap"
+ * @return A value converted from C/C++ "cocos2d::ValueMap"
  */
 getProperties : function () {},
 
@@ -10743,7 +10682,7 @@ setCurrentString : function () {},
 
 /**
  * @method setProperties
- * @param {ValueMap}
+ * @param {cocos2d::ValueMap}
  */
 setProperties : function () {},
 
@@ -10785,7 +10724,7 @@ setTilesets : function () {},
 
 /**
  * @method getProperties
- * @return A value converted from C/C++ "ValueMap"
+ * @return A value converted from C/C++ "cocos2d::ValueMap"
  */
 getProperties : function () {},
 

@@ -1885,9 +1885,9 @@ deleteVersion : function () {},
  * @param {const char*}
  * @param {const char*}
  * @param {const char*}
- * @param {std::function}
- * @param {std::function}
- * @param {std::function}
+ * @param {cocos2d::extension::AssetsManager::ErrorCallback}
+ * @param {cocos2d::extension::AssetsManager::ProgressCallback}
+ * @param {cocos2d::extension::AssetsManager::SuccessCallback}
  */
 create : function () {},
 

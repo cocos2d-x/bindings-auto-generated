@@ -121,23 +121,6 @@ JSBool js_cocos2dx_Touch_getLocationInView(JSContext *cx, uint32_t argc, jsval *
 JSBool js_cocos2dx_Touch_getPreviousLocation(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Touch_Touch(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Set_class;
-extern JSObject *jsb_Set_prototype;
-
-JSBool js_cocos2dx_Set_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_Set_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_Set(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_Set_count(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Set_addObject(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Set_mutableCopy(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Set_anyObject(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Set_removeAllObjects(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Set_removeObject(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Set_copy(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Set_containsObject(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Set_create(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_Texture2D_class;
 extern JSObject *jsb_Texture2D_prototype;
 
