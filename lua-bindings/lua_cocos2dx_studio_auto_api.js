@@ -3723,12 +3723,6 @@ init : function () {},
 getMovementCount : function () {},
 
 /**
- * @method setUserObject
- * @param {cocos2d::Object*}
- */
-setUserObject : function () {},
-
-/**
  * @method getCurrentMovementID
  * @return A value converted from C/C++ "std::string"
  */

@@ -366,7 +366,7 @@ int lua_cocos2dx_Action_clone(lua_State* tolua_S)
         cocos2d::Action* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -419,7 +419,7 @@ int lua_cocos2dx_Action_getOriginalTarget(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getOriginalTarget();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -554,7 +554,7 @@ int lua_cocos2dx_Action_getTarget(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getTarget();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -824,7 +824,7 @@ int lua_cocos2dx_Action_reverse(lua_State* tolua_S)
         cocos2d::Action* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -908,7 +908,7 @@ int lua_cocos2dx_FiniteTimeAction_clone(lua_State* tolua_S)
         cocos2d::FiniteTimeAction* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FiniteTimeAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1003,7 +1003,7 @@ int lua_cocos2dx_FiniteTimeAction_reverse(lua_State* tolua_S)
         cocos2d::FiniteTimeAction* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FiniteTimeAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1262,7 +1262,7 @@ int lua_cocos2dx_Speed_clone(lua_State* tolua_S)
         cocos2d::Speed* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Speed*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1439,7 +1439,7 @@ int lua_cocos2dx_Speed_getInnerAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->getInnerAction();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1533,7 +1533,7 @@ int lua_cocos2dx_Speed_reverse(lua_State* tolua_S)
         cocos2d::Speed* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Speed*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1589,7 +1589,7 @@ int lua_cocos2dx_Speed_create(lua_State* tolua_S)
         cocos2d::Speed* ret = cocos2d::Speed::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Speed*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1671,7 +1671,7 @@ int lua_cocos2dx_Follow_reverse(lua_State* tolua_S)
         cocos2d::Follow* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Follow*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1724,7 +1724,7 @@ int lua_cocos2dx_Follow_clone(lua_State* tolua_S)
         cocos2d::Follow* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Follow*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1984,7 +1984,7 @@ int lua_cocos2dx_Follow_create(lua_State* tolua_S)
         cocos2d::Follow* ret = cocos2d::Follow::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Follow*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -2017,7 +2017,7 @@ int lua_cocos2dx_Follow_create(lua_State* tolua_S)
         cocos2d::Follow* ret = cocos2d::Follow::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Follow*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -2134,7 +2134,7 @@ int lua_cocos2dx_GLProgram_addAttribute(lua_State* tolua_S)
     {
         const char* arg0;
         unsigned int arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_uint32(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -2223,7 +2223,7 @@ int lua_cocos2dx_GLProgram_getUniformLocationForName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         int ret = cobj->getUniformLocationForName(arg0);
@@ -2348,8 +2348,8 @@ int lua_cocos2dx_GLProgram_initWithVertexShaderByteArray(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         bool ret = cobj->initWithVertexShaderByteArray(arg0, arg1);
@@ -2393,8 +2393,8 @@ int lua_cocos2dx_GLProgram_initWithVertexShaderFilename(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         bool ret = cobj->initWithVertexShaderFilename(arg0, arg1);
@@ -3544,7 +3544,7 @@ int lua_cocos2dx_Texture2D_getShaderProgram(lua_State* tolua_S)
         cocos2d::GLProgram* ret = cobj->getShaderProgram();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GLProgram*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -4054,7 +4054,7 @@ int lua_cocos2dx_Texture2D_initWithString(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             cocos2d::FontDefinition arg1;
@@ -4069,11 +4069,11 @@ int lua_cocos2dx_Texture2D_initWithString(lua_State* tolua_S)
     do{
         if (argc == 3) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             const char* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             double arg2;
@@ -4088,11 +4088,11 @@ int lua_cocos2dx_Texture2D_initWithString(lua_State* tolua_S)
     do{
         if (argc == 4) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             const char* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             double arg2;
@@ -4111,11 +4111,11 @@ int lua_cocos2dx_Texture2D_initWithString(lua_State* tolua_S)
     do{
         if (argc == 5) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             const char* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             double arg2;
@@ -4138,11 +4138,11 @@ int lua_cocos2dx_Texture2D_initWithString(lua_State* tolua_S)
     do{
         if (argc == 6) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             const char* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             double arg2;
@@ -5006,7 +5006,7 @@ int lua_cocos2dx_Node_removeComponent(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         bool ret = cobj->removeComponent(arg0);
@@ -5097,7 +5097,7 @@ int lua_cocos2dx_Node_getShaderProgram(lua_State* tolua_S)
             const cocos2d::GLProgram* ret = cobj->getShaderProgram();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GLProgram*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5116,7 +5116,7 @@ int lua_cocos2dx_Node_getShaderProgram(lua_State* tolua_S)
             cocos2d::GLProgram* ret = cobj->getShaderProgram();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GLProgram*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5161,38 +5161,14 @@ int lua_cocos2dx_Node_getChildren(lua_State* tolua_S)
     do{
         if (argc == 0) {
             const cocos2d::Vector<cocos2d::Node *>& ret = cobj->getChildren();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
             cocos2d::Vector<cocos2d::Node *>& ret = cobj->getChildren();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
@@ -5764,7 +5740,7 @@ int lua_cocos2dx_Node_getEventDispatcher(lua_State* tolua_S)
         cocos2d::EventDispatcher* ret = cobj->getEventDispatcher();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EventDispatcher*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6247,7 +6223,7 @@ int lua_cocos2dx_Node_getGrid(lua_State* tolua_S)
             const cocos2d::GridBase* ret = cobj->getGrid();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6266,7 +6242,7 @@ int lua_cocos2dx_Node_getGrid(lua_State* tolua_S)
             cocos2d::GridBase* ret = cobj->getGrid();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6320,7 +6296,7 @@ int lua_cocos2dx_Node_getPhysicsBody(lua_State* tolua_S)
         cocos2d::PhysicsBody* ret = cobj->getPhysicsBody();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::PhysicsBody*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7212,7 +7188,7 @@ int lua_cocos2dx_Node_runAction(lua_State* tolua_S)
         cocos2d::Action* ret = cobj->runAction(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7522,7 +7498,7 @@ int lua_cocos2dx_Node_getActionByTag(lua_State* tolua_S)
         cocos2d::Action* ret = cobj->getActionByTag(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7694,7 +7670,7 @@ int lua_cocos2dx_Node_getScheduler(lua_State* tolua_S)
             const cocos2d::Scheduler* ret = cobj->getScheduler();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scheduler*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7713,7 +7689,7 @@ int lua_cocos2dx_Node_getScheduler(lua_State* tolua_S)
             cocos2d::Scheduler* ret = cobj->getScheduler();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scheduler*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7935,7 +7911,7 @@ int lua_cocos2dx_Node_getParent(lua_State* tolua_S)
             const cocos2d::Node* ret = cobj->getParent();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7954,7 +7930,7 @@ int lua_cocos2dx_Node_getParent(lua_State* tolua_S)
             cocos2d::Node* ret = cobj->getParent();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -8363,7 +8339,7 @@ int lua_cocos2dx_Node_getChildByTag(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getChildByTag(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -8576,13 +8552,13 @@ int lua_cocos2dx_Node_getComponent(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocos2d::Component* ret = cobj->getComponent(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Component*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9251,7 +9227,7 @@ int lua_cocos2dx_Node_getCamera(lua_State* tolua_S)
         cocos2d::Camera* ret = cobj->getCamera();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Camera*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9390,7 +9366,7 @@ int lua_cocos2dx_Node_getActionManager(lua_State* tolua_S)
             const cocos2d::ActionManager* ret = cobj->getActionManager();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9409,7 +9385,7 @@ int lua_cocos2dx_Node_getActionManager(lua_State* tolua_S)
             cocos2d::ActionManager* ret = cobj->getActionManager();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9453,7 +9429,7 @@ int lua_cocos2dx_Node_create(lua_State* tolua_S)
         cocos2d::Node* ret = cocos2d::Node::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -10236,7 +10212,7 @@ int lua_cocos2dx_SpriteFrame_clone(lua_State* tolua_S)
         cocos2d::SpriteFrame* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -10512,7 +10488,7 @@ int lua_cocos2dx_SpriteFrame_getTexture(lua_State* tolua_S)
         cocos2d::Texture2D* ret = cobj->getTexture();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11136,7 +11112,7 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11163,7 +11139,7 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11230,7 +11206,7 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::createWithTexture(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11266,7 +11242,7 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::createWithTexture(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11401,14 +11377,14 @@ int lua_cocos2dx_AnimationFrame_getUserInfo(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::ValueMap& ret = cobj->getUserInfo();
-            #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+            ccvaluemap_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
             const cocos2d::ValueMap& ret = cobj->getUserInfo();
-            #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+            ccvaluemap_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
@@ -11494,7 +11470,7 @@ int lua_cocos2dx_AnimationFrame_clone(lua_State* tolua_S)
         cocos2d::AnimationFrame* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::AnimationFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11547,7 +11523,7 @@ int lua_cocos2dx_AnimationFrame_getSpriteFrame(lua_State* tolua_S)
         cocos2d::SpriteFrame* ret = cobj->getSpriteFrame();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11637,7 +11613,7 @@ int lua_cocos2dx_AnimationFrame_setUserInfo(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::ValueMap arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setUserInfo(arg0);
@@ -11682,13 +11658,13 @@ int lua_cocos2dx_AnimationFrame_create(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
         cocos2d::AnimationFrame* ret = cocos2d::AnimationFrame::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::AnimationFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11901,7 +11877,7 @@ int lua_cocos2dx_Animation_clone(lua_State* tolua_S)
         cocos2d::Animation* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11991,16 +11967,7 @@ int lua_cocos2dx_Animation_setFrames(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Vector<cocos2d::AnimationFrame *> arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::AnimationFrame >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::AnimationFrame *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setFrames(arg0);
@@ -12044,19 +12011,7 @@ int lua_cocos2dx_Animation_getFrames(lua_State* tolua_S)
         if(!ok)
             return 0;
         const cocos2d::Vector<cocos2d::AnimationFrame *>& ret = cobj->getFrames();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::AnimationFrame >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::AnimationFrame >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFrames",argc, 0);
@@ -12388,16 +12343,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
         if (argc == 2)
         {
             cocos2d::Vector<cocos2d::AnimationFrame *> arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::AnimationFrame >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::AnimationFrame *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
             if (!ok) { ok = true; break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
@@ -12405,7 +12351,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
             cocos2d::Animation* ret = cocos2d::Animation::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -12424,16 +12370,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
         if (argc == 3)
         {
             cocos2d::Vector<cocos2d::AnimationFrame *> arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::AnimationFrame >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::AnimationFrame *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
             if (!ok) { ok = true; break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
@@ -12444,7 +12381,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
             cocos2d::Animation* ret = cocos2d::Animation::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -12465,7 +12402,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
             cocos2d::Animation* ret = cocos2d::Animation::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -12505,22 +12442,13 @@ int lua_cocos2dx_Animation_createWithSpriteFrames(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::Vector<cocos2d::SpriteFrame *> arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::SpriteFrame >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::SpriteFrame *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cocos2d::Animation* ret = cocos2d::Animation::createWithSpriteFrames(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -12537,23 +12465,14 @@ int lua_cocos2dx_Animation_createWithSpriteFrames(lua_State* tolua_S)
     {
         cocos2d::Vector<cocos2d::SpriteFrame *> arg0;
         double arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::SpriteFrame >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::SpriteFrame *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cocos2d::Animation* ret = cocos2d::Animation::createWithSpriteFrames(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -12733,7 +12652,7 @@ int lua_cocos2dx_ActionInterval_clone(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -12951,7 +12870,7 @@ int lua_cocos2dx_ActionInterval_reverse(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13081,7 +13000,7 @@ int lua_cocos2dx_Sequence_clone(lua_State* tolua_S)
         cocos2d::Sequence* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sequence*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13174,7 +13093,7 @@ int lua_cocos2dx_Sequence_reverse(lua_State* tolua_S)
         cocos2d::Sequence* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sequence*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13394,7 +13313,7 @@ int lua_cocos2dx_Repeat_reverse(lua_State* tolua_S)
         cocos2d::Repeat* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Repeat*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13447,7 +13366,7 @@ int lua_cocos2dx_Repeat_clone(lua_State* tolua_S)
         cocos2d::Repeat* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Repeat*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13582,7 +13501,7 @@ int lua_cocos2dx_Repeat_getInnerAction(lua_State* tolua_S)
         cocos2d::FiniteTimeAction* ret = cobj->getInnerAction();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FiniteTimeAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13679,7 +13598,7 @@ int lua_cocos2dx_Repeat_create(lua_State* tolua_S)
         cocos2d::Repeat* ret = cocos2d::Repeat::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Repeat*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13861,7 +13780,7 @@ int lua_cocos2dx_RepeatForever_reverse(lua_State* tolua_S)
         cocos2d::RepeatForever* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RepeatForever*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13914,7 +13833,7 @@ int lua_cocos2dx_RepeatForever_clone(lua_State* tolua_S)
         cocos2d::RepeatForever* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RepeatForever*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14009,7 +13928,7 @@ int lua_cocos2dx_RepeatForever_getInnerAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->getInnerAction();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14104,7 +14023,7 @@ int lua_cocos2dx_RepeatForever_create(lua_State* tolua_S)
         cocos2d::RepeatForever* ret = cocos2d::RepeatForever::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RepeatForever*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14234,7 +14153,7 @@ int lua_cocos2dx_Spawn_clone(lua_State* tolua_S)
         cocos2d::Spawn* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Spawn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14327,7 +14246,7 @@ int lua_cocos2dx_Spawn_reverse(lua_State* tolua_S)
         cocos2d::Spawn* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Spawn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14496,7 +14415,7 @@ int lua_cocos2dx_RotateTo_clone(lua_State* tolua_S)
         cocos2d::RotateTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14549,7 +14468,7 @@ int lua_cocos2dx_RotateTo_reverse(lua_State* tolua_S)
         cocos2d::RotateTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14639,7 +14558,7 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
             cocos2d::RotateTo* ret = cocos2d::RotateTo::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14669,7 +14588,7 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
             cocos2d::RotateTo* ret = cocos2d::RotateTo::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14797,7 +14716,7 @@ int lua_cocos2dx_RotateBy_clone(lua_State* tolua_S)
         cocos2d::RotateBy* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14850,7 +14769,7 @@ int lua_cocos2dx_RotateBy_reverse(lua_State* tolua_S)
         cocos2d::RotateBy* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14943,7 +14862,7 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
             cocos2d::RotateBy* ret = cocos2d::RotateBy::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14970,7 +14889,7 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
             cocos2d::RotateBy* ret = cocos2d::RotateBy::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15098,7 +15017,7 @@ int lua_cocos2dx_MoveBy_clone(lua_State* tolua_S)
         cocos2d::MoveBy* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MoveBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15151,7 +15070,7 @@ int lua_cocos2dx_MoveBy_reverse(lua_State* tolua_S)
         cocos2d::MoveBy* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MoveBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15240,7 +15159,7 @@ int lua_cocos2dx_MoveBy_create(lua_State* tolua_S)
         cocos2d::MoveBy* ret = cocos2d::MoveBy::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MoveBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15367,7 +15286,7 @@ int lua_cocos2dx_MoveTo_clone(lua_State* tolua_S)
         cocos2d::MoveTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MoveTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15414,7 +15333,7 @@ int lua_cocos2dx_MoveTo_create(lua_State* tolua_S)
         cocos2d::MoveTo* ret = cocos2d::MoveTo::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MoveTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15539,7 +15458,7 @@ int lua_cocos2dx_SkewTo_clone(lua_State* tolua_S)
         cocos2d::SkewTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SkewTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15592,7 +15511,7 @@ int lua_cocos2dx_SkewTo_reverse(lua_State* tolua_S)
         cocos2d::SkewTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SkewTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15683,7 +15602,7 @@ int lua_cocos2dx_SkewTo_create(lua_State* tolua_S)
         cocos2d::SkewTo* ret = cocos2d::SkewTo::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SkewTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15810,7 +15729,7 @@ int lua_cocos2dx_SkewBy_clone(lua_State* tolua_S)
         cocos2d::SkewBy* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SkewBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15863,7 +15782,7 @@ int lua_cocos2dx_SkewBy_reverse(lua_State* tolua_S)
         cocos2d::SkewBy* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SkewBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15912,7 +15831,7 @@ int lua_cocos2dx_SkewBy_create(lua_State* tolua_S)
         cocos2d::SkewBy* ret = cocos2d::SkewBy::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SkewBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16038,7 +15957,7 @@ int lua_cocos2dx_JumpBy_clone(lua_State* tolua_S)
         cocos2d::JumpBy* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16091,7 +16010,7 @@ int lua_cocos2dx_JumpBy_reverse(lua_State* tolua_S)
         cocos2d::JumpBy* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16184,7 +16103,7 @@ int lua_cocos2dx_JumpBy_create(lua_State* tolua_S)
         cocos2d::JumpBy* ret = cocos2d::JumpBy::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16311,7 +16230,7 @@ int lua_cocos2dx_JumpTo_clone(lua_State* tolua_S)
         cocos2d::JumpTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16364,7 +16283,7 @@ int lua_cocos2dx_JumpTo_reverse(lua_State* tolua_S)
         cocos2d::JumpTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16415,7 +16334,7 @@ int lua_cocos2dx_JumpTo_create(lua_State* tolua_S)
         cocos2d::JumpTo* ret = cocos2d::JumpTo::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16541,7 +16460,7 @@ int lua_cocos2dx_BezierBy_clone(lua_State* tolua_S)
         cocos2d::BezierBy* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::BezierBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16594,7 +16513,7 @@ int lua_cocos2dx_BezierBy_reverse(lua_State* tolua_S)
         cocos2d::BezierBy* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::BezierBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16762,7 +16681,7 @@ int lua_cocos2dx_BezierTo_clone(lua_State* tolua_S)
         cocos2d::BezierTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::BezierTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16815,7 +16734,7 @@ int lua_cocos2dx_BezierTo_reverse(lua_State* tolua_S)
         cocos2d::BezierTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::BezierTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16940,7 +16859,7 @@ int lua_cocos2dx_ScaleTo_clone(lua_State* tolua_S)
         cocos2d::ScaleTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16993,7 +16912,7 @@ int lua_cocos2dx_ScaleTo_reverse(lua_State* tolua_S)
         cocos2d::ScaleTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17086,7 +17005,7 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
             cocos2d::ScaleTo* ret = cocos2d::ScaleTo::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17113,7 +17032,7 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
             cocos2d::ScaleTo* ret = cocos2d::ScaleTo::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17241,7 +17160,7 @@ int lua_cocos2dx_ScaleBy_clone(lua_State* tolua_S)
         cocos2d::ScaleBy* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17294,7 +17213,7 @@ int lua_cocos2dx_ScaleBy_reverse(lua_State* tolua_S)
         cocos2d::ScaleBy* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17345,7 +17264,7 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
             cocos2d::ScaleBy* ret = cocos2d::ScaleBy::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17372,7 +17291,7 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
             cocos2d::ScaleBy* ret = cocos2d::ScaleBy::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17499,7 +17418,7 @@ int lua_cocos2dx_Blink_clone(lua_State* tolua_S)
         cocos2d::Blink* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Blink*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17592,7 +17511,7 @@ int lua_cocos2dx_Blink_reverse(lua_State* tolua_S)
         cocos2d::Blink* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Blink*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17681,7 +17600,7 @@ int lua_cocos2dx_Blink_create(lua_State* tolua_S)
         cocos2d::Blink* ret = cocos2d::Blink::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Blink*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17758,7 +17677,7 @@ int lua_cocos2dx_FadeIn_clone(lua_State* tolua_S)
         cocos2d::FadeIn* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17853,7 +17772,7 @@ int lua_cocos2dx_FadeIn_reverse(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17898,7 +17817,7 @@ int lua_cocos2dx_FadeIn_create(lua_State* tolua_S)
         cocos2d::FadeIn* ret = cocos2d::FadeIn::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17973,7 +17892,7 @@ int lua_cocos2dx_FadeOut_clone(lua_State* tolua_S)
         cocos2d::FadeOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18068,7 +17987,7 @@ int lua_cocos2dx_FadeOut_reverse(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18113,7 +18032,7 @@ int lua_cocos2dx_FadeOut_create(lua_State* tolua_S)
         cocos2d::FadeOut* ret = cocos2d::FadeOut::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18239,7 +18158,7 @@ int lua_cocos2dx_FadeTo_clone(lua_State* tolua_S)
         cocos2d::FadeTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18292,7 +18211,7 @@ int lua_cocos2dx_FadeTo_reverse(lua_State* tolua_S)
         cocos2d::FadeTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18381,7 +18300,7 @@ int lua_cocos2dx_FadeTo_create(lua_State* tolua_S)
         cocos2d::FadeTo* ret = cocos2d::FadeTo::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18508,7 +18427,7 @@ int lua_cocos2dx_TintTo_clone(lua_State* tolua_S)
         cocos2d::TintTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TintTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18561,7 +18480,7 @@ int lua_cocos2dx_TintTo_reverse(lua_State* tolua_S)
         cocos2d::TintTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TintTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18654,7 +18573,7 @@ int lua_cocos2dx_TintTo_create(lua_State* tolua_S)
         cocos2d::TintTo* ret = cocos2d::TintTo::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TintTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18781,7 +18700,7 @@ int lua_cocos2dx_TintBy_clone(lua_State* tolua_S)
         cocos2d::TintBy* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TintBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18834,7 +18753,7 @@ int lua_cocos2dx_TintBy_reverse(lua_State* tolua_S)
         cocos2d::TintBy* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TintBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18927,7 +18846,7 @@ int lua_cocos2dx_TintBy_create(lua_State* tolua_S)
         cocos2d::TintBy* ret = cocos2d::TintBy::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TintBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19003,7 +18922,7 @@ int lua_cocos2dx_DelayTime_clone(lua_State* tolua_S)
         cocos2d::DelayTime* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::DelayTime*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19098,7 +19017,7 @@ int lua_cocos2dx_DelayTime_reverse(lua_State* tolua_S)
         cocos2d::DelayTime* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::DelayTime*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19143,7 +19062,7 @@ int lua_cocos2dx_DelayTime_create(lua_State* tolua_S)
         cocos2d::DelayTime* ret = cocos2d::DelayTime::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::DelayTime*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19262,7 +19181,7 @@ int lua_cocos2dx_Animate_getAnimation(lua_State* tolua_S)
             const cocos2d::Animation* ret = cobj->getAnimation();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19281,7 +19200,7 @@ int lua_cocos2dx_Animate_getAnimation(lua_State* tolua_S)
             cocos2d::Animation* ret = cobj->getAnimation();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19335,7 +19254,7 @@ int lua_cocos2dx_Animate_reverse(lua_State* tolua_S)
         cocos2d::Animate* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animate*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19388,7 +19307,7 @@ int lua_cocos2dx_Animate_clone(lua_State* tolua_S)
         cocos2d::Animate* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animate*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19575,7 +19494,7 @@ int lua_cocos2dx_Animate_create(lua_State* tolua_S)
         cocos2d::Animate* ret = cocos2d::Animate::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animate*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19705,7 +19624,7 @@ int lua_cocos2dx_TargetedAction_reverse(lua_State* tolua_S)
         cocos2d::TargetedAction* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TargetedAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19809,7 +19728,7 @@ int lua_cocos2dx_TargetedAction_clone(lua_State* tolua_S)
         cocos2d::TargetedAction* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TargetedAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19937,7 +19856,7 @@ int lua_cocos2dx_TargetedAction_getForcedTarget(lua_State* tolua_S)
             const cocos2d::Node* ret = cobj->getForcedTarget();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19956,7 +19875,7 @@ int lua_cocos2dx_TargetedAction_getForcedTarget(lua_State* tolua_S)
             cocos2d::Node* ret = cobj->getForcedTarget();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20022,7 +19941,7 @@ int lua_cocos2dx_TargetedAction_create(lua_State* tolua_S)
         cocos2d::TargetedAction* ret = cocos2d::TargetedAction::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TargetedAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20152,7 +20071,7 @@ int lua_cocos2dx_ActionCamera_clone(lua_State* tolua_S)
         cocos2d::ActionCamera* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionCamera*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20205,7 +20124,7 @@ int lua_cocos2dx_ActionCamera_reverse(lua_State* tolua_S)
         cocos2d::ActionCamera* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionCamera*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20427,7 +20346,7 @@ int lua_cocos2dx_OrbitCamera_clone(lua_State* tolua_S)
         cocos2d::OrbitCamera* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::OrbitCamera*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20572,7 +20491,7 @@ int lua_cocos2dx_OrbitCamera_create(lua_State* tolua_S)
         cocos2d::OrbitCamera* ret = cocos2d::OrbitCamera::create(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::OrbitCamera*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20704,7 +20623,7 @@ int lua_cocos2dx_ActionManager_getActionByTag(lua_State* tolua_S)
         cocos2d::Action* ret = cobj->getActionByTag(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21064,16 +20983,7 @@ int lua_cocos2dx_ActionManager_resumeTargets(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Vector<cocos2d::Node *> arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::Node >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::Node *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->resumeTargets(arg0);
@@ -21219,19 +21129,7 @@ int lua_cocos2dx_ActionManager_pauseAllRunningActions(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Vector<cocos2d::Node *> ret = cobj->pauseAllRunningActions();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "pauseAllRunningActions",argc, 0);
@@ -21396,7 +21294,7 @@ int lua_cocos2dx_ActionEase_reverse(lua_State* tolua_S)
         cocos2d::ActionEase* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionEase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21449,7 +21347,7 @@ int lua_cocos2dx_ActionEase_clone(lua_State* tolua_S)
         cocos2d::ActionEase* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionEase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21584,7 +21482,7 @@ int lua_cocos2dx_ActionEase_getInnerAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->getInnerAction();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21703,7 +21601,7 @@ int lua_cocos2dx_EaseRateAction_clone(lua_State* tolua_S)
         cocos2d::EaseRateAction* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseRateAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21797,7 +21695,7 @@ int lua_cocos2dx_EaseRateAction_reverse(lua_State* tolua_S)
         cocos2d::EaseRateAction* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseRateAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21872,7 +21770,7 @@ int lua_cocos2dx_EaseIn_clone(lua_State* tolua_S)
         cocos2d::EaseIn* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21967,7 +21865,7 @@ int lua_cocos2dx_EaseIn_reverse(lua_State* tolua_S)
         cocos2d::EaseIn* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22023,7 +21921,7 @@ int lua_cocos2dx_EaseIn_create(lua_State* tolua_S)
         cocos2d::EaseIn* ret = cocos2d::EaseIn::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22098,7 +21996,7 @@ int lua_cocos2dx_EaseOut_clone(lua_State* tolua_S)
         cocos2d::EaseOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22193,7 +22091,7 @@ int lua_cocos2dx_EaseOut_reverse(lua_State* tolua_S)
         cocos2d::EaseOut* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22249,7 +22147,7 @@ int lua_cocos2dx_EaseOut_create(lua_State* tolua_S)
         cocos2d::EaseOut* ret = cocos2d::EaseOut::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22324,7 +22222,7 @@ int lua_cocos2dx_EaseInOut_clone(lua_State* tolua_S)
         cocos2d::EaseInOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22419,7 +22317,7 @@ int lua_cocos2dx_EaseInOut_reverse(lua_State* tolua_S)
         cocos2d::EaseInOut* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22475,7 +22373,7 @@ int lua_cocos2dx_EaseInOut_create(lua_State* tolua_S)
         cocos2d::EaseInOut* ret = cocos2d::EaseInOut::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22550,7 +22448,7 @@ int lua_cocos2dx_EaseExponentialIn_clone(lua_State* tolua_S)
         cocos2d::EaseExponentialIn* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22645,7 +22543,7 @@ int lua_cocos2dx_EaseExponentialIn_reverse(lua_State* tolua_S)
         cocos2d::ActionEase* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionEase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22699,7 +22597,7 @@ int lua_cocos2dx_EaseExponentialIn_create(lua_State* tolua_S)
         cocos2d::EaseExponentialIn* ret = cocos2d::EaseExponentialIn::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22774,7 +22672,7 @@ int lua_cocos2dx_EaseExponentialOut_clone(lua_State* tolua_S)
         cocos2d::EaseExponentialOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22869,7 +22767,7 @@ int lua_cocos2dx_EaseExponentialOut_reverse(lua_State* tolua_S)
         cocos2d::ActionEase* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionEase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22923,7 +22821,7 @@ int lua_cocos2dx_EaseExponentialOut_create(lua_State* tolua_S)
         cocos2d::EaseExponentialOut* ret = cocos2d::EaseExponentialOut::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22998,7 +22896,7 @@ int lua_cocos2dx_EaseExponentialInOut_clone(lua_State* tolua_S)
         cocos2d::EaseExponentialInOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23093,7 +22991,7 @@ int lua_cocos2dx_EaseExponentialInOut_reverse(lua_State* tolua_S)
         cocos2d::EaseExponentialInOut* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23147,7 +23045,7 @@ int lua_cocos2dx_EaseExponentialInOut_create(lua_State* tolua_S)
         cocos2d::EaseExponentialInOut* ret = cocos2d::EaseExponentialInOut::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23222,7 +23120,7 @@ int lua_cocos2dx_EaseSineIn_clone(lua_State* tolua_S)
         cocos2d::EaseSineIn* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23317,7 +23215,7 @@ int lua_cocos2dx_EaseSineIn_reverse(lua_State* tolua_S)
         cocos2d::ActionEase* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionEase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23371,7 +23269,7 @@ int lua_cocos2dx_EaseSineIn_create(lua_State* tolua_S)
         cocos2d::EaseSineIn* ret = cocos2d::EaseSineIn::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23446,7 +23344,7 @@ int lua_cocos2dx_EaseSineOut_clone(lua_State* tolua_S)
         cocos2d::EaseSineOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23541,7 +23439,7 @@ int lua_cocos2dx_EaseSineOut_reverse(lua_State* tolua_S)
         cocos2d::ActionEase* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionEase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23595,7 +23493,7 @@ int lua_cocos2dx_EaseSineOut_create(lua_State* tolua_S)
         cocos2d::EaseSineOut* ret = cocos2d::EaseSineOut::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23670,7 +23568,7 @@ int lua_cocos2dx_EaseSineInOut_clone(lua_State* tolua_S)
         cocos2d::EaseSineInOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23765,7 +23663,7 @@ int lua_cocos2dx_EaseSineInOut_reverse(lua_State* tolua_S)
         cocos2d::EaseSineInOut* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23819,7 +23717,7 @@ int lua_cocos2dx_EaseSineInOut_create(lua_State* tolua_S)
         cocos2d::EaseSineInOut* ret = cocos2d::EaseSineInOut::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23936,7 +23834,7 @@ int lua_cocos2dx_EaseElastic_clone(lua_State* tolua_S)
         cocos2d::EaseElastic* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElastic*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24030,7 +23928,7 @@ int lua_cocos2dx_EaseElastic_reverse(lua_State* tolua_S)
         cocos2d::EaseElastic* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElastic*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24105,7 +24003,7 @@ int lua_cocos2dx_EaseElasticIn_clone(lua_State* tolua_S)
         cocos2d::EaseElasticIn* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24200,7 +24098,7 @@ int lua_cocos2dx_EaseElasticIn_reverse(lua_State* tolua_S)
         cocos2d::EaseElastic* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElastic*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24254,7 +24152,7 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
             cocos2d::EaseElasticIn* ret = cocos2d::EaseElasticIn::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24290,7 +24188,7 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
             cocos2d::EaseElasticIn* ret = cocos2d::EaseElasticIn::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24366,7 +24264,7 @@ int lua_cocos2dx_EaseElasticOut_clone(lua_State* tolua_S)
         cocos2d::EaseElasticOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24461,7 +24359,7 @@ int lua_cocos2dx_EaseElasticOut_reverse(lua_State* tolua_S)
         cocos2d::EaseElastic* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElastic*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24515,7 +24413,7 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
             cocos2d::EaseElasticOut* ret = cocos2d::EaseElasticOut::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24551,7 +24449,7 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
             cocos2d::EaseElasticOut* ret = cocos2d::EaseElasticOut::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24627,7 +24525,7 @@ int lua_cocos2dx_EaseElasticInOut_clone(lua_State* tolua_S)
         cocos2d::EaseElasticInOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24722,7 +24620,7 @@ int lua_cocos2dx_EaseElasticInOut_reverse(lua_State* tolua_S)
         cocos2d::EaseElasticInOut* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24776,7 +24674,7 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
             cocos2d::EaseElasticInOut* ret = cocos2d::EaseElasticInOut::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24812,7 +24710,7 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
             cocos2d::EaseElasticInOut* ret = cocos2d::EaseElasticInOut::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24931,7 +24829,7 @@ int lua_cocos2dx_EaseBounce_clone(lua_State* tolua_S)
         cocos2d::EaseBounce* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounce*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24984,7 +24882,7 @@ int lua_cocos2dx_EaseBounce_reverse(lua_State* tolua_S)
         cocos2d::EaseBounce* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounce*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25058,7 +24956,7 @@ int lua_cocos2dx_EaseBounceIn_clone(lua_State* tolua_S)
         cocos2d::EaseBounceIn* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25153,7 +25051,7 @@ int lua_cocos2dx_EaseBounceIn_reverse(lua_State* tolua_S)
         cocos2d::EaseBounce* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounce*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25207,7 +25105,7 @@ int lua_cocos2dx_EaseBounceIn_create(lua_State* tolua_S)
         cocos2d::EaseBounceIn* ret = cocos2d::EaseBounceIn::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25282,7 +25180,7 @@ int lua_cocos2dx_EaseBounceOut_clone(lua_State* tolua_S)
         cocos2d::EaseBounceOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25377,7 +25275,7 @@ int lua_cocos2dx_EaseBounceOut_reverse(lua_State* tolua_S)
         cocos2d::EaseBounce* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounce*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25431,7 +25329,7 @@ int lua_cocos2dx_EaseBounceOut_create(lua_State* tolua_S)
         cocos2d::EaseBounceOut* ret = cocos2d::EaseBounceOut::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25506,7 +25404,7 @@ int lua_cocos2dx_EaseBounceInOut_clone(lua_State* tolua_S)
         cocos2d::EaseBounceInOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25601,7 +25499,7 @@ int lua_cocos2dx_EaseBounceInOut_reverse(lua_State* tolua_S)
         cocos2d::EaseBounceInOut* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25655,7 +25553,7 @@ int lua_cocos2dx_EaseBounceInOut_create(lua_State* tolua_S)
         cocos2d::EaseBounceInOut* ret = cocos2d::EaseBounceInOut::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25730,7 +25628,7 @@ int lua_cocos2dx_EaseBackIn_clone(lua_State* tolua_S)
         cocos2d::EaseBackIn* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25825,7 +25723,7 @@ int lua_cocos2dx_EaseBackIn_reverse(lua_State* tolua_S)
         cocos2d::ActionEase* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionEase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25879,7 +25777,7 @@ int lua_cocos2dx_EaseBackIn_create(lua_State* tolua_S)
         cocos2d::EaseBackIn* ret = cocos2d::EaseBackIn::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25954,7 +25852,7 @@ int lua_cocos2dx_EaseBackOut_clone(lua_State* tolua_S)
         cocos2d::EaseBackOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26049,7 +25947,7 @@ int lua_cocos2dx_EaseBackOut_reverse(lua_State* tolua_S)
         cocos2d::ActionEase* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionEase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26103,7 +26001,7 @@ int lua_cocos2dx_EaseBackOut_create(lua_State* tolua_S)
         cocos2d::EaseBackOut* ret = cocos2d::EaseBackOut::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26178,7 +26076,7 @@ int lua_cocos2dx_EaseBackInOut_clone(lua_State* tolua_S)
         cocos2d::EaseBackInOut* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26273,7 +26171,7 @@ int lua_cocos2dx_EaseBackInOut_reverse(lua_State* tolua_S)
         cocos2d::EaseBackInOut* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26327,7 +26225,7 @@ int lua_cocos2dx_EaseBackInOut_create(lua_State* tolua_S)
         cocos2d::EaseBackInOut* ret = cocos2d::EaseBackInOut::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26444,7 +26342,7 @@ int lua_cocos2dx_ActionInstant_clone(lua_State* tolua_S)
         cocos2d::ActionInstant* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInstant*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26497,7 +26395,7 @@ int lua_cocos2dx_ActionInstant_reverse(lua_State* tolua_S)
         cocos2d::ActionInstant* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInstant*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26656,7 +26554,7 @@ int lua_cocos2dx_Show_clone(lua_State* tolua_S)
         cocos2d::Show* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Show*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26751,7 +26649,7 @@ int lua_cocos2dx_Show_reverse(lua_State* tolua_S)
         cocos2d::ActionInstant* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInstant*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26794,7 +26692,7 @@ int lua_cocos2dx_Show_create(lua_State* tolua_S)
         cocos2d::Show* ret = cocos2d::Show::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Show*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26869,7 +26767,7 @@ int lua_cocos2dx_Hide_clone(lua_State* tolua_S)
         cocos2d::Hide* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Hide*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26964,7 +26862,7 @@ int lua_cocos2dx_Hide_reverse(lua_State* tolua_S)
         cocos2d::ActionInstant* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInstant*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27007,7 +26905,7 @@ int lua_cocos2dx_Hide_create(lua_State* tolua_S)
         cocos2d::Hide* ret = cocos2d::Hide::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Hide*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27082,7 +26980,7 @@ int lua_cocos2dx_ToggleVisibility_clone(lua_State* tolua_S)
         cocos2d::ToggleVisibility* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ToggleVisibility*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27177,7 +27075,7 @@ int lua_cocos2dx_ToggleVisibility_reverse(lua_State* tolua_S)
         cocos2d::ToggleVisibility* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ToggleVisibility*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27220,7 +27118,7 @@ int lua_cocos2dx_ToggleVisibility_create(lua_State* tolua_S)
         cocos2d::ToggleVisibility* ret = cocos2d::ToggleVisibility::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ToggleVisibility*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27295,7 +27193,7 @@ int lua_cocos2dx_RemoveSelf_clone(lua_State* tolua_S)
         cocos2d::RemoveSelf* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RemoveSelf*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27390,7 +27288,7 @@ int lua_cocos2dx_RemoveSelf_reverse(lua_State* tolua_S)
         cocos2d::RemoveSelf* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RemoveSelf*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27433,7 +27331,7 @@ int lua_cocos2dx_RemoveSelf_create(lua_State* tolua_S)
         cocos2d::RemoveSelf* ret = cocos2d::RemoveSelf::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RemoveSelf*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27455,7 +27353,7 @@ int lua_cocos2dx_RemoveSelf_create(lua_State* tolua_S)
         cocos2d::RemoveSelf* ret = cocos2d::RemoveSelf::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RemoveSelf*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27530,7 +27428,7 @@ int lua_cocos2dx_FlipX_clone(lua_State* tolua_S)
         cocos2d::FlipX* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipX*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27625,7 +27523,7 @@ int lua_cocos2dx_FlipX_reverse(lua_State* tolua_S)
         cocos2d::FlipX* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipX*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27670,7 +27568,7 @@ int lua_cocos2dx_FlipX_create(lua_State* tolua_S)
         cocos2d::FlipX* ret = cocos2d::FlipX::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipX*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27745,7 +27643,7 @@ int lua_cocos2dx_FlipY_clone(lua_State* tolua_S)
         cocos2d::FlipY* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipY*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27840,7 +27738,7 @@ int lua_cocos2dx_FlipY_reverse(lua_State* tolua_S)
         cocos2d::FlipY* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipY*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27885,7 +27783,7 @@ int lua_cocos2dx_FlipY_create(lua_State* tolua_S)
         cocos2d::FlipY* ret = cocos2d::FlipY::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipY*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27960,7 +27858,7 @@ int lua_cocos2dx_Place_clone(lua_State* tolua_S)
         cocos2d::Place* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Place*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28055,7 +27953,7 @@ int lua_cocos2dx_Place_reverse(lua_State* tolua_S)
         cocos2d::Place* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Place*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28100,7 +27998,7 @@ int lua_cocos2dx_Place_create(lua_State* tolua_S)
         cocos2d::Place* ret = cocos2d::Place::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Place*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28215,7 +28113,7 @@ int lua_cocos2dx_CallFunc_reverse(lua_State* tolua_S)
         cocos2d::CallFunc* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CallFunc*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28268,7 +28166,7 @@ int lua_cocos2dx_CallFunc_clone(lua_State* tolua_S)
         cocos2d::CallFunc* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CallFunc*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28363,7 +28261,7 @@ int lua_cocos2dx_CallFunc_getTargetCallback(lua_State* tolua_S)
         cocos2d::Object* ret = cobj->getTargetCallback();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28542,7 +28440,7 @@ int lua_cocos2dx_GridAction_clone(lua_State* tolua_S)
         cocos2d::GridAction* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28595,7 +28493,7 @@ int lua_cocos2dx_GridAction_getGrid(lua_State* tolua_S)
         cocos2d::GridBase* ret = cobj->getGrid();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28648,7 +28546,7 @@ int lua_cocos2dx_GridAction_reverse(lua_State* tolua_S)
         cocos2d::GridAction* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28723,7 +28621,7 @@ int lua_cocos2dx_Grid3DAction_clone(lua_State* tolua_S)
         cocos2d::Grid3DAction* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Grid3DAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28776,7 +28674,7 @@ int lua_cocos2dx_Grid3DAction_getGrid(lua_State* tolua_S)
         cocos2d::GridBase* ret = cobj->getGrid();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28849,7 +28747,7 @@ int lua_cocos2dx_TiledGrid3DAction_clone(lua_State* tolua_S)
         cocos2d::TiledGrid3DAction* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TiledGrid3DAction*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28902,7 +28800,7 @@ int lua_cocos2dx_TiledGrid3DAction_getGrid(lua_State* tolua_S)
         cocos2d::GridBase* ret = cobj->getGrid();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29026,7 +28924,7 @@ int lua_cocos2dx_StopGrid_clone(lua_State* tolua_S)
         cocos2d::StopGrid* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::StopGrid*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29079,7 +28977,7 @@ int lua_cocos2dx_StopGrid_reverse(lua_State* tolua_S)
         cocos2d::StopGrid* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::StopGrid*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29122,7 +29020,7 @@ int lua_cocos2dx_StopGrid_create(lua_State* tolua_S)
         cocos2d::StopGrid* ret = cocos2d::StopGrid::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::StopGrid*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29248,7 +29146,7 @@ int lua_cocos2dx_ReuseGrid_clone(lua_State* tolua_S)
         cocos2d::ReuseGrid* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ReuseGrid*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29301,7 +29199,7 @@ int lua_cocos2dx_ReuseGrid_reverse(lua_State* tolua_S)
         cocos2d::ReuseGrid* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ReuseGrid*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29346,7 +29244,7 @@ int lua_cocos2dx_ReuseGrid_create(lua_State* tolua_S)
         cocos2d::ReuseGrid* ret = cocos2d::ReuseGrid::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ReuseGrid*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29463,7 +29361,7 @@ int lua_cocos2dx_Waves3D_clone(lua_State* tolua_S)
         cocos2d::Waves3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Waves3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29680,7 +29578,7 @@ int lua_cocos2dx_Waves3D_create(lua_State* tolua_S)
         cocos2d::Waves3D* ret = cocos2d::Waves3D::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Waves3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29758,7 +29656,7 @@ int lua_cocos2dx_FlipX3D_clone(lua_State* tolua_S)
         cocos2d::FlipX3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipX3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29845,7 +29743,7 @@ int lua_cocos2dx_FlipX3D_create(lua_State* tolua_S)
         cocos2d::FlipX3D* ret = cocos2d::FlipX3D::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipX3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29919,7 +29817,7 @@ int lua_cocos2dx_FlipY3D_clone(lua_State* tolua_S)
         cocos2d::FlipY3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipY3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -30006,7 +29904,7 @@ int lua_cocos2dx_FlipY3D_create(lua_State* tolua_S)
         cocos2d::FlipY3D* ret = cocos2d::FlipY3D::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipY3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -30331,7 +30229,7 @@ int lua_cocos2dx_Lens3D_clone(lua_State* tolua_S)
         cocos2d::Lens3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Lens3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -30423,7 +30321,7 @@ int lua_cocos2dx_Lens3D_create(lua_State* tolua_S)
         cocos2d::Lens3D* ret = cocos2d::Lens3D::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Lens3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -30544,7 +30442,7 @@ int lua_cocos2dx_Ripple3D_clone(lua_State* tolua_S)
         cocos2d::Ripple3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Ripple3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -30848,7 +30746,7 @@ int lua_cocos2dx_Ripple3D_create(lua_State* tolua_S)
         cocos2d::Ripple3D* ret = cocos2d::Ripple3D::create(arg0, arg1, arg2, arg3, arg4, arg5);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Ripple3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -30928,7 +30826,7 @@ int lua_cocos2dx_Shaky3D_clone(lua_State* tolua_S)
         cocos2d::Shaky3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Shaky3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -31021,7 +30919,7 @@ int lua_cocos2dx_Shaky3D_create(lua_State* tolua_S)
         cocos2d::Shaky3D* ret = cocos2d::Shaky3D::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Shaky3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -31179,7 +31077,7 @@ int lua_cocos2dx_Liquid_clone(lua_State* tolua_S)
         cocos2d::Liquid* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Liquid*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -31396,7 +31294,7 @@ int lua_cocos2dx_Liquid_create(lua_State* tolua_S)
         cocos2d::Liquid* ret = cocos2d::Liquid::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Liquid*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -31558,7 +31456,7 @@ int lua_cocos2dx_Waves_clone(lua_State* tolua_S)
         cocos2d::Waves* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Waves*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -31779,7 +31677,7 @@ int lua_cocos2dx_Waves_create(lua_State* tolua_S)
         cocos2d::Waves* ret = cocos2d::Waves::create(arg0, arg1, arg2, arg3, arg4, arg5);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Waves*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -31941,7 +31839,7 @@ int lua_cocos2dx_Twirl_clone(lua_State* tolua_S)
         cocos2d::Twirl* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Twirl*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32243,7 +32141,7 @@ int lua_cocos2dx_Twirl_create(lua_State* tolua_S)
         cocos2d::Twirl* ret = cocos2d::Twirl::create(arg0, arg1, arg2, arg3, arg4);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Twirl*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32365,7 +32263,7 @@ int lua_cocos2dx_PageTurn3D_clone(lua_State* tolua_S)
         cocos2d::PageTurn3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::PageTurn3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32454,7 +32352,7 @@ int lua_cocos2dx_PageTurn3D_create(lua_State* tolua_S)
         cocos2d::PageTurn3D* ret = cocos2d::PageTurn3D::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::PageTurn3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32579,7 +32477,7 @@ int lua_cocos2dx_ProgressTo_clone(lua_State* tolua_S)
         cocos2d::ProgressTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32632,7 +32530,7 @@ int lua_cocos2dx_ProgressTo_reverse(lua_State* tolua_S)
         cocos2d::ProgressTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32721,7 +32619,7 @@ int lua_cocos2dx_ProgressTo_create(lua_State* tolua_S)
         cocos2d::ProgressTo* ret = cocos2d::ProgressTo::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32848,7 +32746,7 @@ int lua_cocos2dx_ProgressFromTo_clone(lua_State* tolua_S)
         cocos2d::ProgressFromTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressFromTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32901,7 +32799,7 @@ int lua_cocos2dx_ProgressFromTo_reverse(lua_State* tolua_S)
         cocos2d::ProgressFromTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressFromTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32992,7 +32890,7 @@ int lua_cocos2dx_ProgressFromTo_create(lua_State* tolua_S)
         cocos2d::ProgressFromTo* ret = cocos2d::ProgressFromTo::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressFromTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -33068,7 +32966,7 @@ int lua_cocos2dx_ShakyTiles3D_clone(lua_State* tolua_S)
         cocos2d::ShakyTiles3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShakyTiles3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -33161,7 +33059,7 @@ int lua_cocos2dx_ShakyTiles3D_create(lua_State* tolua_S)
         cocos2d::ShakyTiles3D* ret = cocos2d::ShakyTiles3D::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShakyTiles3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -33235,7 +33133,7 @@ int lua_cocos2dx_ShatteredTiles3D_clone(lua_State* tolua_S)
         cocos2d::ShatteredTiles3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShatteredTiles3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -33328,7 +33226,7 @@ int lua_cocos2dx_ShatteredTiles3D_create(lua_State* tolua_S)
         cocos2d::ShatteredTiles3D* ret = cocos2d::ShatteredTiles3D::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShatteredTiles3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -33540,7 +33438,7 @@ int lua_cocos2dx_ShuffleTiles_clone(lua_State* tolua_S)
         cocos2d::ShuffleTiles* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShuffleTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -33675,7 +33573,7 @@ int lua_cocos2dx_ShuffleTiles_create(lua_State* tolua_S)
         cocos2d::ShuffleTiles* ret = cocos2d::ShuffleTiles::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShuffleTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -33881,7 +33779,7 @@ int lua_cocos2dx_FadeOutTRTiles_clone(lua_State* tolua_S)
         cocos2d::FadeOutTRTiles* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutTRTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34015,7 +33913,7 @@ int lua_cocos2dx_FadeOutTRTiles_create(lua_State* tolua_S)
         cocos2d::FadeOutTRTiles* ret = cocos2d::FadeOutTRTiles::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutTRTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34093,7 +33991,7 @@ int lua_cocos2dx_FadeOutBLTiles_clone(lua_State* tolua_S)
         cocos2d::FadeOutBLTiles* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutBLTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34185,7 +34083,7 @@ int lua_cocos2dx_FadeOutBLTiles_create(lua_State* tolua_S)
         cocos2d::FadeOutBLTiles* ret = cocos2d::FadeOutBLTiles::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutBLTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34259,7 +34157,7 @@ int lua_cocos2dx_FadeOutUpTiles_clone(lua_State* tolua_S)
         cocos2d::FadeOutUpTiles* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutUpTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34395,7 +34293,7 @@ int lua_cocos2dx_FadeOutUpTiles_create(lua_State* tolua_S)
         cocos2d::FadeOutUpTiles* ret = cocos2d::FadeOutUpTiles::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutUpTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34470,7 +34368,7 @@ int lua_cocos2dx_FadeOutDownTiles_clone(lua_State* tolua_S)
         cocos2d::FadeOutDownTiles* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutDownTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34562,7 +34460,7 @@ int lua_cocos2dx_FadeOutDownTiles_create(lua_State* tolua_S)
         cocos2d::FadeOutDownTiles* ret = cocos2d::FadeOutDownTiles::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutDownTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34815,7 +34713,7 @@ int lua_cocos2dx_TurnOffTiles_clone(lua_State* tolua_S)
         cocos2d::TurnOffTiles* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TurnOffTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34908,7 +34806,7 @@ int lua_cocos2dx_TurnOffTiles_create(lua_State* tolua_S)
             cocos2d::TurnOffTiles* ret = cocos2d::TurnOffTiles::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TurnOffTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -34935,7 +34833,7 @@ int lua_cocos2dx_TurnOffTiles_create(lua_State* tolua_S)
             cocos2d::TurnOffTiles* ret = cocos2d::TurnOffTiles::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TurnOffTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -35056,7 +34954,7 @@ int lua_cocos2dx_WavesTiles3D_clone(lua_State* tolua_S)
         cocos2d::WavesTiles3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::WavesTiles3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -35273,7 +35171,7 @@ int lua_cocos2dx_WavesTiles3D_create(lua_State* tolua_S)
         cocos2d::WavesTiles3D* ret = cocos2d::WavesTiles3D::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::WavesTiles3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -35393,7 +35291,7 @@ int lua_cocos2dx_JumpTiles3D_clone(lua_State* tolua_S)
         cocos2d::JumpTiles3D* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpTiles3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -35610,7 +35508,7 @@ int lua_cocos2dx_JumpTiles3D_create(lua_State* tolua_S)
         cocos2d::JumpTiles3D* ret = cocos2d::JumpTiles3D::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpTiles3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -35739,7 +35637,7 @@ int lua_cocos2dx_SplitRows_clone(lua_State* tolua_S)
         cocos2d::SplitRows* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SplitRows*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -35828,7 +35726,7 @@ int lua_cocos2dx_SplitRows_create(lua_State* tolua_S)
         cocos2d::SplitRows* ret = cocos2d::SplitRows::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SplitRows*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -35954,7 +35852,7 @@ int lua_cocos2dx_SplitCols_clone(lua_State* tolua_S)
         cocos2d::SplitCols* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SplitCols*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -36043,7 +35941,7 @@ int lua_cocos2dx_SplitCols_create(lua_State* tolua_S)
         cocos2d::SplitCols* ret = cocos2d::SplitCols::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SplitCols*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -36169,7 +36067,7 @@ int lua_cocos2dx_ActionTween_clone(lua_State* tolua_S)
         cocos2d::ActionTween* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionTween*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -36313,7 +36211,7 @@ int lua_cocos2dx_ActionTween_reverse(lua_State* tolua_S)
         cocos2d::ActionTween* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionTween*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -36364,7 +36262,7 @@ int lua_cocos2dx_ActionTween_create(lua_State* tolua_S)
         cocos2d::ActionTween* ret = cocos2d::ActionTween::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionTween*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -36492,7 +36390,7 @@ int lua_cocos2dx_CardinalSplineTo_reverse(lua_State* tolua_S)
         cocos2d::CardinalSplineTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CardinalSplineTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -36601,7 +36499,7 @@ int lua_cocos2dx_CardinalSplineTo_getPoints(lua_State* tolua_S)
         cocos2d::PointArray* ret = cobj->getPoints();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::PointArray*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -36696,7 +36594,7 @@ int lua_cocos2dx_CardinalSplineTo_clone(lua_State* tolua_S)
         cocos2d::CardinalSplineTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CardinalSplineTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -36909,7 +36807,7 @@ int lua_cocos2dx_CardinalSplineBy_clone(lua_State* tolua_S)
         cocos2d::CardinalSplineBy* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CardinalSplineBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -37004,7 +36902,7 @@ int lua_cocos2dx_CardinalSplineBy_reverse(lua_State* tolua_S)
         cocos2d::CardinalSplineBy* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CardinalSplineBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -37121,7 +37019,7 @@ int lua_cocos2dx_CatmullRomTo_clone(lua_State* tolua_S)
         cocos2d::CatmullRomTo* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CatmullRomTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -37174,7 +37072,7 @@ int lua_cocos2dx_CatmullRomTo_reverse(lua_State* tolua_S)
         cocos2d::CatmullRomTo* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CatmullRomTo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -37302,7 +37200,7 @@ int lua_cocos2dx_CatmullRomBy_clone(lua_State* tolua_S)
         cocos2d::CatmullRomBy* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CatmullRomBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -37355,7 +37253,7 @@ int lua_cocos2dx_CatmullRomBy_reverse(lua_State* tolua_S)
         cocos2d::CatmullRomBy* ret = cobj->reverse();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::CatmullRomBy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -37646,7 +37544,7 @@ int lua_cocos2dx_AtlasNode_getTexture(lua_State* tolua_S)
         cocos2d::Texture2D* ret = cobj->getTexture();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -37750,7 +37648,7 @@ int lua_cocos2dx_AtlasNode_getTextureAtlas(lua_State* tolua_S)
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -38060,7 +37958,7 @@ int lua_cocos2dx_AtlasNode_create(lua_State* tolua_S)
         cocos2d::AtlasNode* ret = cocos2d::AtlasNode::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::AtlasNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -38309,7 +38207,7 @@ int lua_cocos2dx_DrawNode_create(lua_State* tolua_S)
         cocos2d::DrawNode* ret = cocos2d::DrawNode::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::DrawNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -39191,7 +39089,7 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -39227,7 +39125,7 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -39775,7 +39673,7 @@ int lua_cocos2dx_Director_getNotificationNode(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getNotificationNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -39869,7 +39767,7 @@ int lua_cocos2dx_Director_getTextureCache(lua_State* tolua_S)
         cocos2d::TextureCache* ret = cobj->getTextureCache();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureCache*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -40383,7 +40281,7 @@ int lua_cocos2dx_Director_getRunningScene(lua_State* tolua_S)
         cocos2d::Scene* ret = cobj->getRunningScene();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scene*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -41192,7 +41090,7 @@ int lua_cocos2dx_Director_getScheduler(lua_State* tolua_S)
         cocos2d::Scheduler* ret = cobj->getScheduler();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scheduler*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -41513,7 +41411,7 @@ int lua_cocos2dx_Director_getActionManager(lua_State* tolua_S)
         cocos2d::ActionManager* ret = cobj->getActionManager();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -41556,7 +41454,7 @@ int lua_cocos2dx_Director_getInstance(lua_State* tolua_S)
         cocos2d::Director* ret = cocos2d::Director::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Director*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -42404,7 +42302,7 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
             cocos2d::GridBase* ret = cocos2d::GridBase::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -42443,7 +42341,7 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
             cocos2d::GridBase* ret = cocos2d::GridBase::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -42645,7 +42543,7 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
             cocos2d::Grid3D* ret = cocos2d::Grid3D::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Grid3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -42684,7 +42582,7 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
             cocos2d::Grid3D* ret = cocos2d::Grid3D::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Grid3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -42914,7 +42812,7 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
             cocos2d::TiledGrid3D* ret = cocos2d::TiledGrid3D::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TiledGrid3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -42953,7 +42851,7 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
             cocos2d::TiledGrid3D* ret = cocos2d::TiledGrid3D::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TiledGrid3D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -43225,7 +43123,7 @@ int lua_cocos2dx_Sprite_getTexture(lua_State* tolua_S)
         cocos2d::Texture2D* ret = cobj->getTexture();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -43763,7 +43661,7 @@ int lua_cocos2dx_Sprite_getBatchNode(lua_State* tolua_S)
         cocos2d::SpriteBatchNode* ret = cobj->getBatchNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -44455,7 +44353,7 @@ int lua_cocos2dx_Sprite_getSpriteFrame(lua_State* tolua_S)
         cocos2d::SpriteFrame* ret = cobj->getSpriteFrame();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -44922,7 +44820,7 @@ int lua_cocos2dx_Sprite_getTextureAtlas(lua_State* tolua_S)
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -45270,7 +45168,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
             cocos2d::Sprite* ret = cocos2d::Sprite::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -45291,7 +45189,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
             cocos2d::Sprite* ret = cocos2d::Sprite::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -45318,7 +45216,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
             cocos2d::Sprite* ret = cocos2d::Sprite::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -45376,7 +45274,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
             cocos2d::Sprite* ret = cocos2d::Sprite::createWithTexture(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -45415,7 +45313,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
             cocos2d::Sprite* ret = cocos2d::Sprite::createWithTexture(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -45448,7 +45346,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
             cocos2d::Sprite* ret = cocos2d::Sprite::createWithTexture(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -45494,7 +45392,7 @@ int lua_cocos2dx_Sprite_createWithSpriteFrameName(lua_State* tolua_S)
         cocos2d::Sprite* ret = cocos2d::Sprite::createWithSpriteFrameName(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -45548,7 +45446,7 @@ int lua_cocos2dx_Sprite_createWithSpriteFrame(lua_State* tolua_S)
         cocos2d::Sprite* ret = cocos2d::Sprite::createWithSpriteFrame(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -46716,7 +46614,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -46746,7 +46644,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -46785,7 +46683,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create(arg0, arg1, arg2, arg3, arg4, arg5);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -46806,7 +46704,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -46854,7 +46752,7 @@ int lua_cocos2dx_LabelTTF_createWithFontDefinition(lua_State* tolua_S)
         cocos2d::LabelTTF* ret = cocos2d::LabelTTF::createWithFontDefinition(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -47421,7 +47319,7 @@ int lua_cocos2dx_SpriteBatchNode_getTexture(lua_State* tolua_S)
         cocos2d::Texture2D* ret = cobj->getTexture();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -47512,7 +47410,7 @@ int lua_cocos2dx_SpriteBatchNode_init(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             int arg1;
@@ -47950,7 +47848,7 @@ int lua_cocos2dx_SpriteBatchNode_getTextureAtlas(lua_State* tolua_S)
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -48094,13 +47992,13 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
     if (argc == 1)
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -48117,14 +48015,14 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
     {
         const char* arg0;
         int arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -48178,7 +48076,7 @@ int lua_cocos2dx_SpriteBatchNode_createWithTexture(lua_State* tolua_S)
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::createWithTexture(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -48211,7 +48109,7 @@ int lua_cocos2dx_SpriteBatchNode_createWithTexture(lua_State* tolua_S)
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::createWithTexture(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -49484,7 +49382,7 @@ int lua_cocos2dx_LabelBMFont_setCString(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setCString(arg0);
@@ -49686,7 +49584,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1, arg2, arg3);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -49722,7 +49620,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -49752,7 +49650,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -49779,7 +49677,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -49800,7 +49698,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -51386,7 +51284,7 @@ int lua_cocos2dx_Label_getLetter(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getLetter(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -51929,7 +51827,7 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
         cocos2d::Label* ret = cocos2d::Label::createWithBMFont(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -51955,7 +51853,7 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
         cocos2d::Label* ret = cocos2d::Label::createWithBMFont(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -51983,7 +51881,7 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
         cocos2d::Label* ret = cocos2d::Label::createWithBMFont(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -52032,7 +51930,7 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
         cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -52060,7 +51958,7 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
         cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -52090,7 +51988,7 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
         cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -52122,7 +52020,7 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
         cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4, arg5);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -52150,13 +52048,13 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
         ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg6_tmp; ok &= luaval_to_std_string(tolua_S, 8, &arg6_tmp); arg6 = arg6_tmp.c_str();
         if(!ok)
             return 0;
         cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -52264,7 +52162,7 @@ int lua_cocos2dx_Layer_create(lua_State* tolua_S)
         cocos2d::Layer* ret = cocos2d::Layer::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Layer*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -52907,7 +52805,7 @@ int lua_cocos2dx_LayerRGBA_create(lua_State* tolua_S)
         cocos2d::LayerRGBA* ret = cocos2d::LayerRGBA::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerRGBA*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -53285,7 +53183,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
             cocos2d::LayerColor* ret = cocos2d::LayerColor::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerColor*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -53306,7 +53204,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
             cocos2d::LayerColor* ret = cocos2d::LayerColor::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerColor*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -53330,7 +53228,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
             cocos2d::LayerColor* ret = cocos2d::LayerColor::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerColor*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -53972,7 +53870,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
             cocos2d::LayerGradient* ret = cocos2d::LayerGradient::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerGradient*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -53993,7 +53891,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
             cocos2d::LayerGradient* ret = cocos2d::LayerGradient::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerGradient*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -54023,7 +53921,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
             cocos2d::LayerGradient* ret = cocos2d::LayerGradient::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerGradient*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -54404,7 +54302,7 @@ int lua_cocos2dx_Scene_getPhysicsWorld(lua_State* tolua_S)
         cocos2d::PhysicsWorld* ret = cobj->getPhysicsWorld();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::PhysicsWorld*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -54447,7 +54345,7 @@ int lua_cocos2dx_Scene_create(lua_State* tolua_S)
         cocos2d::Scene* ret = cocos2d::Scene::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scene*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -54490,7 +54388,7 @@ int lua_cocos2dx_Scene_createWithPhysics(lua_State* tolua_S)
         cocos2d::Scene* ret = cocos2d::Scene::createWithPhysics();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scene*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -54577,7 +54475,7 @@ int lua_cocos2dx_TransitionEaseScene_easeActionWithAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -54812,7 +54710,7 @@ int lua_cocos2dx_TransitionScene_create(lua_State* tolua_S)
         cocos2d::TransitionScene* ret = cocos2d::TransitionScene::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionScene*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -54893,7 +54791,7 @@ int lua_cocos2dx_TransitionSceneOriented_create(lua_State* tolua_S)
         cocos2d::TransitionSceneOriented* ret = cocos2d::TransitionSceneOriented::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSceneOriented*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -54968,7 +54866,7 @@ int lua_cocos2dx_TransitionRotoZoom_create(lua_State* tolua_S)
         cocos2d::TransitionRotoZoom* ret = cocos2d::TransitionRotoZoom::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionRotoZoom*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55043,7 +54941,7 @@ int lua_cocos2dx_TransitionJumpZoom_create(lua_State* tolua_S)
         cocos2d::TransitionJumpZoom* ret = cocos2d::TransitionJumpZoom::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionJumpZoom*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55115,7 +55013,7 @@ int lua_cocos2dx_TransitionMoveInL_action(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->action();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55179,7 +55077,7 @@ int lua_cocos2dx_TransitionMoveInL_easeActionWithAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55235,7 +55133,7 @@ int lua_cocos2dx_TransitionMoveInL_create(lua_State* tolua_S)
         cocos2d::TransitionMoveInL* ret = cocos2d::TransitionMoveInL::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionMoveInL*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55312,7 +55210,7 @@ int lua_cocos2dx_TransitionMoveInR_create(lua_State* tolua_S)
         cocos2d::TransitionMoveInR* ret = cocos2d::TransitionMoveInR::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionMoveInR*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55387,7 +55285,7 @@ int lua_cocos2dx_TransitionMoveInT_create(lua_State* tolua_S)
         cocos2d::TransitionMoveInT* ret = cocos2d::TransitionMoveInT::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionMoveInT*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55462,7 +55360,7 @@ int lua_cocos2dx_TransitionMoveInB_create(lua_State* tolua_S)
         cocos2d::TransitionMoveInB* ret = cocos2d::TransitionMoveInB::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionMoveInB*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55534,7 +55432,7 @@ int lua_cocos2dx_TransitionSlideInL_action(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->action();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55598,7 +55496,7 @@ int lua_cocos2dx_TransitionSlideInL_easeActionWithAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55654,7 +55552,7 @@ int lua_cocos2dx_TransitionSlideInL_create(lua_State* tolua_S)
         cocos2d::TransitionSlideInL* ret = cocos2d::TransitionSlideInL::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSlideInL*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55728,7 +55626,7 @@ int lua_cocos2dx_TransitionSlideInR_action(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->action();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55784,7 +55682,7 @@ int lua_cocos2dx_TransitionSlideInR_create(lua_State* tolua_S)
         cocos2d::TransitionSlideInR* ret = cocos2d::TransitionSlideInR::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSlideInR*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55857,7 +55755,7 @@ int lua_cocos2dx_TransitionSlideInB_action(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->action();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55913,7 +55811,7 @@ int lua_cocos2dx_TransitionSlideInB_create(lua_State* tolua_S)
         cocos2d::TransitionSlideInB* ret = cocos2d::TransitionSlideInB::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSlideInB*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -55986,7 +55884,7 @@ int lua_cocos2dx_TransitionSlideInT_action(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->action();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56042,7 +55940,7 @@ int lua_cocos2dx_TransitionSlideInT_create(lua_State* tolua_S)
         cocos2d::TransitionSlideInT* ret = cocos2d::TransitionSlideInT::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSlideInT*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56126,7 +56024,7 @@ int lua_cocos2dx_TransitionShrinkGrow_easeActionWithAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56182,7 +56080,7 @@ int lua_cocos2dx_TransitionShrinkGrow_create(lua_State* tolua_S)
         cocos2d::TransitionShrinkGrow* ret = cocos2d::TransitionShrinkGrow::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionShrinkGrow*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56259,7 +56157,7 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
             cocos2d::TransitionFlipX* ret = cocos2d::TransitionFlipX::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipX*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56298,7 +56196,7 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
             cocos2d::TransitionFlipX* ret = cocos2d::TransitionFlipX::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipX*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56375,7 +56273,7 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
             cocos2d::TransitionFlipY* ret = cocos2d::TransitionFlipY::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipY*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56414,7 +56312,7 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
             cocos2d::TransitionFlipY* ret = cocos2d::TransitionFlipY::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipY*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56491,7 +56389,7 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
             cocos2d::TransitionFlipAngular* ret = cocos2d::TransitionFlipAngular::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipAngular*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56530,7 +56428,7 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
             cocos2d::TransitionFlipAngular* ret = cocos2d::TransitionFlipAngular::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipAngular*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56607,7 +56505,7 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
             cocos2d::TransitionZoomFlipX* ret = cocos2d::TransitionZoomFlipX::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipX*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56646,7 +56544,7 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
             cocos2d::TransitionZoomFlipX* ret = cocos2d::TransitionZoomFlipX::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipX*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56723,7 +56621,7 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
             cocos2d::TransitionZoomFlipY* ret = cocos2d::TransitionZoomFlipY::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipY*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56762,7 +56660,7 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
             cocos2d::TransitionZoomFlipY* ret = cocos2d::TransitionZoomFlipY::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipY*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56839,7 +56737,7 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
             cocos2d::TransitionZoomFlipAngular* ret = cocos2d::TransitionZoomFlipAngular::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipAngular*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56878,7 +56776,7 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
             cocos2d::TransitionZoomFlipAngular* ret = cocos2d::TransitionZoomFlipAngular::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipAngular*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56955,7 +56853,7 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
             cocos2d::TransitionFade* ret = cocos2d::TransitionFade::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFade*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -56994,7 +56892,7 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
             cocos2d::TransitionFade* ret = cocos2d::TransitionFade::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFade*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57110,7 +57008,7 @@ int lua_cocos2dx_TransitionCrossFade_create(lua_State* tolua_S)
         cocos2d::TransitionCrossFade* ret = cocos2d::TransitionCrossFade::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionCrossFade*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57194,7 +57092,7 @@ int lua_cocos2dx_TransitionTurnOffTiles_easeActionWithAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57250,7 +57148,7 @@ int lua_cocos2dx_TransitionTurnOffTiles_create(lua_State* tolua_S)
         cocos2d::TransitionTurnOffTiles* ret = cocos2d::TransitionTurnOffTiles::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionTurnOffTiles*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57323,7 +57221,7 @@ int lua_cocos2dx_TransitionSplitCols_action(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->action();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57387,7 +57285,7 @@ int lua_cocos2dx_TransitionSplitCols_easeActionWithAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57443,7 +57341,7 @@ int lua_cocos2dx_TransitionSplitCols_create(lua_State* tolua_S)
         cocos2d::TransitionSplitCols* ret = cocos2d::TransitionSplitCols::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSplitCols*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57517,7 +57415,7 @@ int lua_cocos2dx_TransitionSplitRows_action(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->action();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57573,7 +57471,7 @@ int lua_cocos2dx_TransitionSplitRows_create(lua_State* tolua_S)
         cocos2d::TransitionSplitRows* ret = cocos2d::TransitionSplitRows::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSplitRows*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57657,7 +57555,7 @@ int lua_cocos2dx_TransitionFadeTR_easeActionWithAction(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57712,7 +57610,7 @@ int lua_cocos2dx_TransitionFadeTR_actionWithSize(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->actionWithSize(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57768,7 +57666,7 @@ int lua_cocos2dx_TransitionFadeTR_create(lua_State* tolua_S)
         cocos2d::TransitionFadeTR* ret = cocos2d::TransitionFadeTR::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFadeTR*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57844,7 +57742,7 @@ int lua_cocos2dx_TransitionFadeBL_actionWithSize(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->actionWithSize(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57900,7 +57798,7 @@ int lua_cocos2dx_TransitionFadeBL_create(lua_State* tolua_S)
         cocos2d::TransitionFadeBL* ret = cocos2d::TransitionFadeBL::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFadeBL*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -57975,7 +57873,7 @@ int lua_cocos2dx_TransitionFadeUp_actionWithSize(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->actionWithSize(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58031,7 +57929,7 @@ int lua_cocos2dx_TransitionFadeUp_create(lua_State* tolua_S)
         cocos2d::TransitionFadeUp* ret = cocos2d::TransitionFadeUp::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFadeUp*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58106,7 +58004,7 @@ int lua_cocos2dx_TransitionFadeDown_actionWithSize(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->actionWithSize(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58162,7 +58060,7 @@ int lua_cocos2dx_TransitionFadeDown_create(lua_State* tolua_S)
         cocos2d::TransitionFadeDown* ret = cocos2d::TransitionFadeDown::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFadeDown*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58277,7 +58175,7 @@ int lua_cocos2dx_TransitionPageTurn_actionWithSize(lua_State* tolua_S)
         cocos2d::ActionInterval* ret = cobj->actionWithSize(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58391,7 +58289,7 @@ int lua_cocos2dx_TransitionPageTurn_create(lua_State* tolua_S)
         cocos2d::TransitionPageTurn* ret = cocos2d::TransitionPageTurn::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionPageTurn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58511,7 +58409,7 @@ int lua_cocos2dx_TransitionProgress_create(lua_State* tolua_S)
         cocos2d::TransitionProgress* ret = cocos2d::TransitionProgress::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgress*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58627,7 +58525,7 @@ int lua_cocos2dx_TransitionProgressRadialCCW_create(lua_State* tolua_S)
         cocos2d::TransitionProgressRadialCCW* ret = cocos2d::TransitionProgressRadialCCW::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressRadialCCW*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58702,7 +58600,7 @@ int lua_cocos2dx_TransitionProgressRadialCW_create(lua_State* tolua_S)
         cocos2d::TransitionProgressRadialCW* ret = cocos2d::TransitionProgressRadialCW::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressRadialCW*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58777,7 +58675,7 @@ int lua_cocos2dx_TransitionProgressHorizontal_create(lua_State* tolua_S)
         cocos2d::TransitionProgressHorizontal* ret = cocos2d::TransitionProgressHorizontal::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressHorizontal*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58852,7 +58750,7 @@ int lua_cocos2dx_TransitionProgressVertical_create(lua_State* tolua_S)
         cocos2d::TransitionProgressVertical* ret = cocos2d::TransitionProgressVertical::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressVertical*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -58927,7 +58825,7 @@ int lua_cocos2dx_TransitionProgressInOut_create(lua_State* tolua_S)
         cocos2d::TransitionProgressInOut* ret = cocos2d::TransitionProgressInOut::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressInOut*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -59002,7 +58900,7 @@ int lua_cocos2dx_TransitionProgressOutIn_create(lua_State* tolua_S)
         cocos2d::TransitionProgressOutIn* ret = cocos2d::TransitionProgressOutIn::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressOutIn*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -59682,7 +59580,7 @@ int lua_cocos2dx_MenuItemLabel_getLabel(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getLabel();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -60373,7 +60271,7 @@ int lua_cocos2dx_MenuItemSprite_getDisabledImage(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getDisabledImage();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -60426,7 +60324,7 @@ int lua_cocos2dx_MenuItemSprite_getSelectedImage(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getSelectedImage();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -60479,7 +60377,7 @@ int lua_cocos2dx_MenuItemSprite_getNormalImage(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getNormalImage();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -60769,16 +60667,7 @@ int lua_cocos2dx_MenuItemToggle_setSubItems(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Vector<cocos2d::MenuItem *> arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::MenuItem >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::MenuItem *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setSubItems(arg0);
@@ -61078,7 +60967,7 @@ int lua_cocos2dx_MenuItemToggle_getSelectedItem(lua_State* tolua_S)
         cocos2d::MenuItem* ret = cobj->getSelectedItem();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MenuItem*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -61923,7 +61812,7 @@ int lua_cocos2dx_ClippingNode_getStencil(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getStencil();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -62019,7 +61908,7 @@ int lua_cocos2dx_ClippingNode_create(lua_State* tolua_S)
             cocos2d::ClippingNode* ret = cocos2d::ClippingNode::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ClippingNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -62040,7 +61929,7 @@ int lua_cocos2dx_ClippingNode_create(lua_State* tolua_S)
             cocos2d::ClippingNode* ret = cocos2d::ClippingNode::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ClippingNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -62294,7 +62183,7 @@ int lua_cocos2dx_MotionStreak_getTexture(lua_State* tolua_S)
         cocos2d::Texture2D* ret = cobj->getTexture();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -62693,7 +62582,7 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
             cocos2d::MotionStreak* ret = cocos2d::MotionStreak::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MotionStreak*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -62724,12 +62613,12 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
             ok &= luaval_to_color3b(tolua_S, 5, &arg3);
             if (!ok) { ok = true; break; }
             const char* arg4;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg4_tmp; ok &= luaval_to_std_string(tolua_S, 6, &arg4_tmp); arg4 = arg4_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocos2d::MotionStreak* ret = cocos2d::MotionStreak::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MotionStreak*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -63196,7 +63085,7 @@ int lua_cocos2dx_ProgressTimer_getSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -63589,7 +63478,7 @@ int lua_cocos2dx_ProgressTimer_create(lua_State* tolua_S)
         cocos2d::ProgressTimer* ret = cocos2d::ProgressTimer::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressTimer*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -63921,7 +63810,7 @@ int lua_cocos2dx_Image_initWithImageFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         bool ret = cobj->initWithImageFile(arg0);
@@ -64773,7 +64662,7 @@ int lua_cocos2dx_RenderTexture_getSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -65456,7 +65345,7 @@ int lua_cocos2dx_RenderTexture_newImage(lua_State* tolua_S)
         cocos2d::Image* ret = cobj->newImage();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Image*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -65478,7 +65367,7 @@ int lua_cocos2dx_RenderTexture_newImage(lua_State* tolua_S)
         cocos2d::Image* ret = cobj->newImage(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Image*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -65641,7 +65530,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RenderTexture*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -65674,7 +65563,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1, arg2, arg3);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RenderTexture*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -65701,7 +65590,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RenderTexture*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -66157,7 +66046,7 @@ int lua_cocos2dx_ParticleBatchNode_getTexture(lua_State* tolua_S)
         cocos2d::Texture2D* ret = cobj->getTexture();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -66303,7 +66192,7 @@ int lua_cocos2dx_ParticleBatchNode_getTextureAtlas(lua_State* tolua_S)
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -66605,7 +66494,7 @@ int lua_cocos2dx_ParticleBatchNode_create(lua_State* tolua_S)
         cocos2d::ParticleBatchNode* ret = cocos2d::ParticleBatchNode::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -66629,7 +66518,7 @@ int lua_cocos2dx_ParticleBatchNode_create(lua_State* tolua_S)
         cocos2d::ParticleBatchNode* ret = cocos2d::ParticleBatchNode::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -66683,7 +66572,7 @@ int lua_cocos2dx_ParticleBatchNode_createWithTexture(lua_State* tolua_S)
         cocos2d::ParticleBatchNode* ret = cocos2d::ParticleBatchNode::createWithTexture(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -66716,7 +66605,7 @@ int lua_cocos2dx_ParticleBatchNode_createWithTexture(lua_State* tolua_S)
         cocos2d::ParticleBatchNode* ret = cocos2d::ParticleBatchNode::createWithTexture(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -66887,7 +66776,7 @@ int lua_cocos2dx_ParticleSystem_getTexture(lua_State* tolua_S)
         cocos2d::Texture2D* ret = cobj->getTexture();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -66981,7 +66870,7 @@ int lua_cocos2dx_ParticleSystem_getBatchNode(lua_State* tolua_S)
         cocos2d::ParticleBatchNode* ret = cobj->getBatchNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71069,7 +70958,7 @@ int lua_cocos2dx_ParticleSystem_create(lua_State* tolua_S)
         cocos2d::ParticleSystem* ret = cocos2d::ParticleSystem::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystem*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71114,7 +71003,7 @@ int lua_cocos2dx_ParticleSystem_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleSystem* ret = cocos2d::ParticleSystem::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystem*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71384,7 +71273,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
             cocos2d::ParticleSystemQuad* ret = cocos2d::ParticleSystemQuad::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystemQuad*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71405,7 +71294,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
             cocos2d::ParticleSystemQuad* ret = cocos2d::ParticleSystemQuad::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystemQuad*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71451,7 +71340,7 @@ int lua_cocos2dx_ParticleSystemQuad_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleSystemQuad* ret = cocos2d::ParticleSystemQuad::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystemQuad*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71516,7 +71405,7 @@ int lua_cocos2dx_ParticleFire_create(lua_State* tolua_S)
         cocos2d::ParticleFire* ret = cocos2d::ParticleFire::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFire*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71561,7 +71450,7 @@ int lua_cocos2dx_ParticleFire_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleFire* ret = cocos2d::ParticleFire::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFire*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71624,7 +71513,7 @@ int lua_cocos2dx_ParticleFireworks_create(lua_State* tolua_S)
         cocos2d::ParticleFireworks* ret = cocos2d::ParticleFireworks::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFireworks*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71669,7 +71558,7 @@ int lua_cocos2dx_ParticleFireworks_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleFireworks* ret = cocos2d::ParticleFireworks::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFireworks*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71732,7 +71621,7 @@ int lua_cocos2dx_ParticleSun_create(lua_State* tolua_S)
         cocos2d::ParticleSun* ret = cocos2d::ParticleSun::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSun*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71777,7 +71666,7 @@ int lua_cocos2dx_ParticleSun_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleSun* ret = cocos2d::ParticleSun::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSun*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71840,7 +71729,7 @@ int lua_cocos2dx_ParticleGalaxy_create(lua_State* tolua_S)
         cocos2d::ParticleGalaxy* ret = cocos2d::ParticleGalaxy::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleGalaxy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71885,7 +71774,7 @@ int lua_cocos2dx_ParticleGalaxy_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleGalaxy* ret = cocos2d::ParticleGalaxy::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleGalaxy*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71948,7 +71837,7 @@ int lua_cocos2dx_ParticleFlower_create(lua_State* tolua_S)
         cocos2d::ParticleFlower* ret = cocos2d::ParticleFlower::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFlower*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -71993,7 +71882,7 @@ int lua_cocos2dx_ParticleFlower_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleFlower* ret = cocos2d::ParticleFlower::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFlower*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72056,7 +71945,7 @@ int lua_cocos2dx_ParticleMeteor_create(lua_State* tolua_S)
         cocos2d::ParticleMeteor* ret = cocos2d::ParticleMeteor::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleMeteor*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72101,7 +71990,7 @@ int lua_cocos2dx_ParticleMeteor_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleMeteor* ret = cocos2d::ParticleMeteor::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleMeteor*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72164,7 +72053,7 @@ int lua_cocos2dx_ParticleSpiral_create(lua_State* tolua_S)
         cocos2d::ParticleSpiral* ret = cocos2d::ParticleSpiral::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSpiral*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72209,7 +72098,7 @@ int lua_cocos2dx_ParticleSpiral_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleSpiral* ret = cocos2d::ParticleSpiral::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSpiral*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72272,7 +72161,7 @@ int lua_cocos2dx_ParticleExplosion_create(lua_State* tolua_S)
         cocos2d::ParticleExplosion* ret = cocos2d::ParticleExplosion::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleExplosion*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72317,7 +72206,7 @@ int lua_cocos2dx_ParticleExplosion_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleExplosion* ret = cocos2d::ParticleExplosion::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleExplosion*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72380,7 +72269,7 @@ int lua_cocos2dx_ParticleSmoke_create(lua_State* tolua_S)
         cocos2d::ParticleSmoke* ret = cocos2d::ParticleSmoke::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSmoke*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72425,7 +72314,7 @@ int lua_cocos2dx_ParticleSmoke_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleSmoke* ret = cocos2d::ParticleSmoke::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSmoke*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72488,7 +72377,7 @@ int lua_cocos2dx_ParticleSnow_create(lua_State* tolua_S)
         cocos2d::ParticleSnow* ret = cocos2d::ParticleSnow::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSnow*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72533,7 +72422,7 @@ int lua_cocos2dx_ParticleSnow_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleSnow* ret = cocos2d::ParticleSnow::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSnow*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72596,7 +72485,7 @@ int lua_cocos2dx_ParticleRain_create(lua_State* tolua_S)
         cocos2d::ParticleRain* ret = cocos2d::ParticleRain::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleRain*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72641,7 +72530,7 @@ int lua_cocos2dx_ParticleRain_createWithTotalParticles(lua_State* tolua_S)
         cocos2d::ParticleRain* ret = cocos2d::ParticleRain::createWithTotalParticles(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleRain*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -72884,8 +72773,8 @@ int lua_cocos2dx_FileUtils_getFileData(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         long* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         #pragma warning NO CONVERSION TO NATIVE FOR long*;
         if(!ok)
             return 0;
@@ -72929,7 +72818,7 @@ int lua_cocos2dx_FileUtils_setFilenameLookupDictionary(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::ValueMap arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setFilenameLookupDictionary(arg0);
@@ -73015,8 +72904,8 @@ int lua_cocos2dx_FileUtils_getFileDataFromZip(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         long* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         #pragma warning NO CONVERSION TO NATIVE FOR long*;
         if(!ok)
             return 0;
@@ -73061,7 +72950,7 @@ int lua_cocos2dx_FileUtils_writeToFile(lua_State* tolua_S)
     {
         cocos2d::ValueMap arg0;
         std::string arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -73233,7 +73122,7 @@ int lua_cocos2dx_FileUtils_getValueMapFromFile(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ValueMap ret = cobj->getValueMapFromFile(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+        ccvaluemap_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getValueMapFromFile",argc, 1);
@@ -73318,7 +73207,7 @@ int lua_cocos2dx_FileUtils_getValueVectorFromFile(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ValueVector ret = cobj->getValueVectorFromFile(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR ValueVector;
+        ccvaluevector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getValueVectorFromFile",argc, 1);
@@ -73465,7 +73354,7 @@ int lua_cocos2dx_FileUtils_getInstance(lua_State* tolua_S)
         cocos2d::FileUtils* ret = cocos2d::FileUtils::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FileUtils*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -73669,7 +73558,7 @@ int lua_cocos2dx_Application_getInstance(lua_State* tolua_S)
         cocos2d::Application* ret = cocos2d::Application::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Application*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -74892,7 +74781,7 @@ int lua_cocos2dx_EGLView_getInstance(lua_State* tolua_S)
         cocos2d::EGLView* ret = cocos2d::EGLView::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EGLView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -75061,7 +74950,7 @@ int lua_cocos2dx_ShaderCache_getProgram(lua_State* tolua_S)
         cocos2d::GLProgram* ret = cobj->getProgram(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GLProgram*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -75174,7 +75063,7 @@ int lua_cocos2dx_ShaderCache_getInstance(lua_State* tolua_S)
         cocos2d::ShaderCache* ret = cocos2d::ShaderCache::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShaderCache*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -75295,7 +75184,7 @@ int lua_cocos2dx_AnimationCache_getAnimation(lua_State* tolua_S)
         cocos2d::Animation* ret = cobj->getAnimation(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -75438,7 +75327,7 @@ int lua_cocos2dx_AnimationCache_addAnimationsWithDictionary(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::ValueMap arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->addAnimationsWithDictionary(arg0);
@@ -75588,7 +75477,7 @@ int lua_cocos2dx_AnimationCache_getInstance(lua_State* tolua_S)
         cocos2d::AnimationCache* ret = cocos2d::AnimationCache::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::AnimationCache*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -75879,7 +75768,7 @@ int lua_cocos2dx_SpriteFrameCache_getSpriteFrameByName(lua_State* tolua_S)
         cocos2d::SpriteFrame* ret = cobj->getSpriteFrameByName(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -76168,7 +76057,7 @@ int lua_cocos2dx_SpriteFrameCache_getInstance(lua_State* tolua_S)
         cocos2d::SpriteFrameCache* ret = cocos2d::SpriteFrameCache::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrameCache*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -76247,7 +76136,7 @@ int lua_cocos2dx_UserDefault_setIntegerForKey(lua_State* tolua_S)
     {
         const char* arg0;
         int arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -76285,7 +76174,7 @@ int lua_cocos2dx_UserDefault_getFloatForKey(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             double arg1;
@@ -76300,7 +76189,7 @@ int lua_cocos2dx_UserDefault_getFloatForKey(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             float ret = cobj->getFloatForKey(arg0);
@@ -76339,7 +76228,7 @@ int lua_cocos2dx_UserDefault_getBoolForKey(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             bool arg1;
@@ -76354,7 +76243,7 @@ int lua_cocos2dx_UserDefault_getBoolForKey(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->getBoolForKey(arg0);
@@ -76399,7 +76288,7 @@ int lua_cocos2dx_UserDefault_setDoubleForKey(lua_State* tolua_S)
     {
         const char* arg0;
         double arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -76443,7 +76332,7 @@ int lua_cocos2dx_UserDefault_setFloatForKey(lua_State* tolua_S)
     {
         const char* arg0;
         double arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -76481,7 +76370,7 @@ int lua_cocos2dx_UserDefault_getStringForKey(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             std::string arg1;
@@ -76496,7 +76385,7 @@ int lua_cocos2dx_UserDefault_getStringForKey(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             std::string ret = cobj->getStringForKey(arg0);
@@ -76541,7 +76430,7 @@ int lua_cocos2dx_UserDefault_setStringForKey(lua_State* tolua_S)
     {
         const char* arg0;
         std::string arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -76619,7 +76508,7 @@ int lua_cocos2dx_UserDefault_getIntegerForKey(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             int arg1;
@@ -76634,7 +76523,7 @@ int lua_cocos2dx_UserDefault_getIntegerForKey(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             int ret = cobj->getIntegerForKey(arg0);
@@ -76673,7 +76562,7 @@ int lua_cocos2dx_UserDefault_getDoubleForKey(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             double arg1;
@@ -76688,7 +76577,7 @@ int lua_cocos2dx_UserDefault_getDoubleForKey(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             double ret = cobj->getDoubleForKey(arg0);
@@ -76733,7 +76622,7 @@ int lua_cocos2dx_UserDefault_setBoolForKey(lua_State* tolua_S)
     {
         const char* arg0;
         bool arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -77036,7 +76925,7 @@ int lua_cocos2dx_TextureCache_addImage(lua_State* tolua_S)
             cocos2d::Texture2D* ret = cobj->addImage(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -77059,7 +76948,7 @@ int lua_cocos2dx_TextureCache_addImage(lua_State* tolua_S)
             cocos2d::Texture2D* ret = cobj->addImage(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -77115,7 +77004,7 @@ int lua_cocos2dx_TextureCache_getTextureForKey(lua_State* tolua_S)
         cocos2d::Texture2D* ret = cobj->getTextureForKey(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -77662,7 +77551,7 @@ int lua_cocos2dx_ParallaxNode_create(lua_State* tolua_S)
         cocos2d::ParallaxNode* ret = cocos2d::ParallaxNode::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParallaxNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -77782,19 +77671,7 @@ int lua_cocos2dx_TMXObjectGroup_getProperty(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Value ret = cobj->getProperty(arg0);
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Value");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Value");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvalue_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getProperty",argc, 1);
@@ -77878,7 +77755,7 @@ int lua_cocos2dx_TMXObjectGroup_getObject(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ValueMap ret = cobj->getObject(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+        ccvaluemap_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getObject",argc, 1);
@@ -77912,14 +77789,14 @@ int lua_cocos2dx_TMXObjectGroup_getObjects(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::ValueVector& ret = cobj->getObjects();
-            #pragma warning NO CONVERSION FROM NATIVE FOR ValueVector;
+            ccvaluevector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
             const cocos2d::ValueVector& ret = cobj->getObjects();
-            #pragma warning NO CONVERSION FROM NATIVE FOR ValueVector;
+            ccvaluevector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
@@ -77996,14 +77873,14 @@ int lua_cocos2dx_TMXObjectGroup_getProperties(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::ValueMap& ret = cobj->getProperties();
-            #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+            ccvaluemap_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
             const cocos2d::ValueMap& ret = cobj->getProperties();
-            #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+            ccvaluemap_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
@@ -78084,7 +77961,7 @@ int lua_cocos2dx_TMXObjectGroup_setProperties(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::ValueMap arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setProperties(arg0);
@@ -78126,7 +78003,7 @@ int lua_cocos2dx_TMXObjectGroup_setObjects(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::ValueVector arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueVector;
+        ok &= luaval_to_ccvaluevector(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setObjects(arg0);
@@ -78238,7 +78115,7 @@ int lua_cocos2dx_TMXLayerInfo_setProperties(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::ValueMap arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setProperties(arg0);
@@ -78282,7 +78159,7 @@ int lua_cocos2dx_TMXLayerInfo_getProperties(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ValueMap ret = cobj->getProperties();
-        #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+        ccvaluemap_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getProperties",argc, 0);
@@ -78487,16 +78364,7 @@ int lua_cocos2dx_TMXMapInfo_setObjectGroups(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Vector<cocos2d::TMXObjectGroup *> arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::TMXObjectGroup >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::TMXObjectGroup *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setObjectGroups(arg0);
@@ -78705,16 +78573,7 @@ int lua_cocos2dx_TMXMapInfo_setLayers(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Vector<cocos2d::TMXLayerInfo *> arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::TMXLayerInfo >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::TMXLayerInfo *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setLayers(arg0);
@@ -78920,38 +78779,14 @@ int lua_cocos2dx_TMXMapInfo_getLayers(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::Vector<cocos2d::TMXLayerInfo *>& ret = cobj->getLayers();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::TMXLayerInfo >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::TMXLayerInfo >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
             const cocos2d::Vector<cocos2d::TMXLayerInfo *>& ret = cobj->getLayers();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::TMXLayerInfo >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::TMXLayerInfo >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
@@ -78986,38 +78821,14 @@ int lua_cocos2dx_TMXMapInfo_getTilesets(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::Vector<cocos2d::TMXTilesetInfo *>& ret = cobj->getTilesets();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::TMXTilesetInfo >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::TMXTilesetInfo >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
             const cocos2d::Vector<cocos2d::TMXTilesetInfo *>& ret = cobj->getTilesets();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::TMXTilesetInfo >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::TMXTilesetInfo >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
@@ -79311,7 +79122,7 @@ int lua_cocos2dx_TMXMapInfo_getTileProperties(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::IntValueMap& ret = cobj->getTileProperties();
-        #pragma warning NO CONVERSION FROM NATIVE FOR IntValueMap;
+        ccintvaluemap_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTileProperties",argc, 0);
@@ -79345,38 +79156,14 @@ int lua_cocos2dx_TMXMapInfo_getObjectGroups(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::Vector<cocos2d::TMXObjectGroup *>& ret = cobj->getObjectGroups();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::TMXObjectGroup >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::TMXObjectGroup >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
             const cocos2d::Vector<cocos2d::TMXObjectGroup *>& ret = cobj->getObjectGroups();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::TMXObjectGroup >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::TMXObjectGroup >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
@@ -79499,7 +79286,7 @@ int lua_cocos2dx_TMXMapInfo_setProperties(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::ValueMap arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setProperties(arg0);
@@ -79583,7 +79370,7 @@ int lua_cocos2dx_TMXMapInfo_setTileProperties(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::IntValueMap arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR IntValueMap;
+        ok &= luaval_to_ccintvaluemap(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setTileProperties(arg0);
@@ -79750,16 +79537,7 @@ int lua_cocos2dx_TMXMapInfo_setTilesets(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Vector<cocos2d::TMXTilesetInfo *> arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::TMXTilesetInfo >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::TMXTilesetInfo *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setTilesets(arg0);
@@ -79803,7 +79581,7 @@ int lua_cocos2dx_TMXMapInfo_getProperties(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ValueMap ret = cobj->getProperties();
-        #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+        ccvaluemap_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getProperties",argc, 0);
@@ -79921,7 +79699,7 @@ int lua_cocos2dx_TMXMapInfo_create(lua_State* tolua_S)
         cocos2d::TMXMapInfo* ret = cocos2d::TMXMapInfo::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXMapInfo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -79968,7 +79746,7 @@ int lua_cocos2dx_TMXMapInfo_createWithXML(lua_State* tolua_S)
         cocos2d::TMXMapInfo* ret = cocos2d::TMXMapInfo::createWithXML(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXMapInfo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -80512,7 +80290,7 @@ int lua_cocos2dx_TMXLayer_setProperties(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::ValueMap arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setProperties(arg0);
@@ -80554,7 +80332,7 @@ int lua_cocos2dx_TMXLayer_setLayerName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setLayerName(arg0);
@@ -80857,19 +80635,7 @@ int lua_cocos2dx_TMXLayer_getProperty(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Value ret = cobj->getProperty(arg0);
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Value");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Value");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvalue_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getProperty",argc, 1);
@@ -81099,7 +80865,7 @@ int lua_cocos2dx_TMXLayer_getTileSet(lua_State* tolua_S)
         cocos2d::TMXTilesetInfo* ret = cobj->getTileSet();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXTilesetInfo*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -81143,14 +80909,14 @@ int lua_cocos2dx_TMXLayer_getProperties(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::ValueMap& ret = cobj->getProperties();
-            #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+            ccvaluemap_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
             const cocos2d::ValueMap& ret = cobj->getProperties();
-            #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+            ccvaluemap_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
@@ -81196,7 +80962,7 @@ int lua_cocos2dx_TMXLayer_getTileAt(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getTileAt(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -81272,7 +81038,7 @@ int lua_cocos2dx_TMXLayer_create(lua_State* tolua_S)
         cocos2d::TMXLayer* ret = cocos2d::TMXLayer::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXLayer*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -81406,16 +81172,7 @@ int lua_cocos2dx_TMXTiledMap_setObjectGroups(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Vector<cocos2d::TMXObjectGroup *> arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Vector<cocos2d::TMXObjectGroup >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Vector<cocos2d::TMXObjectGroup *>&)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setObjectGroups(arg0);
@@ -81461,19 +81218,7 @@ int lua_cocos2dx_TMXTiledMap_getProperty(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Value ret = cobj->getProperty(arg0);
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Value");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Value");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvalue_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getProperty",argc, 1);
@@ -81560,7 +81305,7 @@ int lua_cocos2dx_TMXTiledMap_getObjectGroup(lua_State* tolua_S)
         cocos2d::TMXObjectGroup* ret = cobj->getObjectGroup(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXObjectGroup*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -81604,38 +81349,14 @@ int lua_cocos2dx_TMXTiledMap_getObjectGroups(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::Vector<cocos2d::TMXObjectGroup *>& ret = cobj->getObjectGroups();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::TMXObjectGroup >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::TMXObjectGroup >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
     do{
         if (argc == 0) {
             const cocos2d::Vector<cocos2d::TMXObjectGroup *>& ret = cobj->getObjectGroups();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::TMXObjectGroup >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::TMXObjectGroup >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            ccvector_to_luaval(tolua_S, ret);
             return 1;
         }
     }while(0);
@@ -81759,7 +81480,7 @@ int lua_cocos2dx_TMXTiledMap_getProperties(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ValueMap& ret = cobj->getProperties();
-        #pragma warning NO CONVERSION FROM NATIVE FOR ValueMap;
+        ccvaluemap_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getProperties",argc, 0);
@@ -81802,19 +81523,7 @@ int lua_cocos2dx_TMXTiledMap_getPropertiesForGID(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Value ret = cobj->getPropertiesForGID(arg0);
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Value");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Value");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvalue_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPropertiesForGID",argc, 1);
@@ -81895,7 +81604,7 @@ int lua_cocos2dx_TMXTiledMap_setProperties(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::ValueMap arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR ValueMap;
+        ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setProperties(arg0);
@@ -81943,7 +81652,7 @@ int lua_cocos2dx_TMXTiledMap_getLayer(lua_State* tolua_S)
         cocos2d::TMXLayer* ret = cobj->getLayer(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXLayer*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -82071,7 +81780,7 @@ int lua_cocos2dx_TMXTiledMap_create(lua_State* tolua_S)
         cocos2d::TMXTiledMap* ret = cocos2d::TMXTiledMap::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXTiledMap*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -82118,7 +81827,7 @@ int lua_cocos2dx_TMXTiledMap_createWithXML(lua_State* tolua_S)
         cocos2d::TMXTiledMap* ret = cocos2d::TMXTiledMap::createWithXML(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXTiledMap*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -82462,7 +82171,7 @@ int lua_cocos2dx_TileMapAtlas_create(lua_State* tolua_S)
         cocos2d::TileMapAtlas* ret = cocos2d::TileMapAtlas::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TileMapAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -83056,7 +82765,7 @@ int lua_cocos2dx_SimpleAudioEngine_preloadBackgroundMusic(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->preloadBackgroundMusic(arg0);
@@ -83310,7 +83019,7 @@ int lua_cocos2dx_SimpleAudioEngine_preloadEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->preloadEffect(arg0);
@@ -83517,7 +83226,7 @@ int lua_cocos2dx_SimpleAudioEngine_playEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         unsigned int ret = cobj->playEffect(arg0);
@@ -83528,7 +83237,7 @@ int lua_cocos2dx_SimpleAudioEngine_playEffect(lua_State* tolua_S)
     {
         const char* arg0;
         bool arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -83541,7 +83250,7 @@ int lua_cocos2dx_SimpleAudioEngine_playEffect(lua_State* tolua_S)
         const char* arg0;
         bool arg1;
         double arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         if(!ok)
@@ -83556,7 +83265,7 @@ int lua_cocos2dx_SimpleAudioEngine_playEffect(lua_State* tolua_S)
         bool arg1;
         double arg2;
         double arg3;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         ok &= luaval_to_number(tolua_S, 5,&arg3);
@@ -83573,7 +83282,7 @@ int lua_cocos2dx_SimpleAudioEngine_playEffect(lua_State* tolua_S)
         double arg2;
         double arg3;
         double arg4;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         ok &= luaval_to_number(tolua_S, 5,&arg3);
@@ -83660,7 +83369,7 @@ int lua_cocos2dx_SimpleAudioEngine_playBackgroundMusic(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->playBackgroundMusic(arg0);
@@ -83670,7 +83379,7 @@ int lua_cocos2dx_SimpleAudioEngine_playBackgroundMusic(lua_State* tolua_S)
     {
         const char* arg0;
         bool arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -83917,7 +83626,7 @@ int lua_cocos2dx_SimpleAudioEngine_unloadEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->unloadEffect(arg0);
@@ -84025,7 +83734,7 @@ int lua_cocos2dx_SimpleAudioEngine_getInstance(lua_State* tolua_S)
         CocosDenshion::SimpleAudioEngine* ret = CocosDenshion::SimpleAudioEngine::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((CocosDenshion::SimpleAudioEngine*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;

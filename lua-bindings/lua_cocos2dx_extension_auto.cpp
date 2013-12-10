@@ -40,7 +40,7 @@ int lua_cocos2dx_extension_Scale9Sprite_resizableSpriteWithCapInsets(lua_State* 
         cocos2d::extension::Scale9Sprite* ret = cobj->resizableSpriteWithCapInsets(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -84,7 +84,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithSpriteFrameName(lua_State* tolua
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithSpriteFrameName(arg0);
@@ -95,7 +95,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithSpriteFrameName(lua_State* tolua
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
@@ -957,7 +957,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithFile(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
@@ -972,7 +972,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithFile(lua_State* tolua_S)
     do{
         if (argc == 3) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
@@ -995,7 +995,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithFile(lua_State* tolua_S)
 
             if (!ok) { ok = true; break; }
             const char* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithFile(arg0, arg1);
@@ -1006,7 +1006,7 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithFile(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->initWithFile(arg0);
@@ -1446,7 +1446,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
         if (argc == 3)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -1457,7 +1457,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1478,7 +1478,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1500,12 +1500,12 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             ok &= luaval_to_rect(tolua_S, 2, &arg0);
             if (!ok) { ok = true; break; }
             const char* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1524,7 +1524,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
         if (argc == 2)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -1532,7 +1532,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1551,12 +1551,12 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
         if (argc == 1)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1597,7 +1597,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
         if (argc == 2)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -1605,7 +1605,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrameName(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1624,12 +1624,12 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
         if (argc == 1)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrameName(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1687,7 +1687,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame(lua_State* tolua_S
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrame(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1720,7 +1720,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame(lua_State* tolua_S
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrame(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -2706,7 +2706,7 @@ int lua_cocos2dx_extension_Control_create(lua_State* tolua_S)
         cocos2d::extension::Control* ret = cocos2d::extension::Control::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Control*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -3876,7 +3876,7 @@ int lua_cocos2dx_extension_ControlButton_getBackgroundSpriteForState(lua_State* 
         cocos2d::extension::Scale9Sprite* ret = cobj->getBackgroundSpriteForState(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -4135,7 +4135,7 @@ int lua_cocos2dx_extension_ControlButton_getCurrentTitle(lua_State* tolua_S)
         cocos2d::String* ret = cobj->getCurrentTitle();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::String*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -4272,7 +4272,7 @@ int lua_cocos2dx_extension_ControlButton_getBackgroundSprite(lua_State* tolua_S)
         cocos2d::extension::Scale9Sprite* ret = cobj->getBackgroundSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::Scale9Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -4777,7 +4777,7 @@ int lua_cocos2dx_extension_ControlButton_getTitleLabel(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getTitleLabel();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -4955,7 +4955,7 @@ int lua_cocos2dx_extension_ControlButton_getTitleLabelForState(lua_State* tolua_
         cocos2d::Node* ret = cobj->getTitleLabelForState(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5182,7 +5182,7 @@ int lua_cocos2dx_extension_ControlButton_getTitleForState(lua_State* tolua_S)
         cocos2d::String* ret = cobj->getTitleForState(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::String*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5236,7 +5236,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlButton*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5257,7 +5257,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlButton*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5302,7 +5302,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlButton*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5332,7 +5332,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlButton*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5740,7 +5740,7 @@ int lua_cocos2dx_extension_ControlHuePicker_getSlider(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getSlider();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5949,7 +5949,7 @@ int lua_cocos2dx_extension_ControlHuePicker_getBackground(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getBackground();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6097,7 +6097,7 @@ int lua_cocos2dx_extension_ControlHuePicker_create(lua_State* tolua_S)
         cocos2d::extension::ControlHuePicker* ret = cocos2d::extension::ControlHuePicker::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlHuePicker*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6224,7 +6224,7 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getShadow(lua_State
         cocos2d::Sprite* ret = cobj->getShadow();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6372,7 +6372,7 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getOverlay(lua_Stat
         cocos2d::Sprite* ret = cobj->getOverlay();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6467,7 +6467,7 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getSlider(lua_State
         cocos2d::Sprite* ret = cobj->getSlider();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6520,7 +6520,7 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getBackground(lua_S
         cocos2d::Sprite* ret = cobj->getBackground();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6658,7 +6658,7 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_create(lua_State* t
         cocos2d::extension::ControlSaturationBrightnessPicker* ret = cocos2d::extension::ControlSaturationBrightnessPicker::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlSaturationBrightnessPicker*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6823,7 +6823,7 @@ int lua_cocos2dx_extension_ControlColourPicker_getHuePicker(lua_State* tolua_S)
         cocos2d::extension::ControlHuePicker* ret = cobj->getHuePicker();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlHuePicker*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6971,7 +6971,7 @@ int lua_cocos2dx_extension_ControlColourPicker_getcolourPicker(lua_State* tolua_
         cocos2d::extension::ControlSaturationBrightnessPicker* ret = cobj->getcolourPicker();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlSaturationBrightnessPicker*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7271,7 +7271,7 @@ int lua_cocos2dx_extension_ControlColourPicker_getBackground(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getBackground();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7314,7 +7314,7 @@ int lua_cocos2dx_extension_ControlColourPicker_create(lua_State* tolua_S)
         cocos2d::extension::ControlColourPicker* ret = cocos2d::extension::ControlColourPicker::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlColourPicker*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -8198,7 +8198,7 @@ int lua_cocos2dx_extension_ControlPotentiometer_getProgressTimer(lua_State* tolu
         cocos2d::ProgressTimer* ret = cobj->getProgressTimer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressTimer*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -8427,7 +8427,7 @@ int lua_cocos2dx_extension_ControlPotentiometer_getThumbSprite(lua_State* tolua_
         cocos2d::Sprite* ret = cobj->getThumbSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -8542,15 +8542,15 @@ int lua_cocos2dx_extension_ControlPotentiometer_create(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         const char* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
         cocos2d::extension::ControlPotentiometer* ret = cocos2d::extension::ControlPotentiometer::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlPotentiometer*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9214,7 +9214,7 @@ int lua_cocos2dx_extension_ControlSlider_getBackgroundSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getBackgroundSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9475,7 +9475,7 @@ int lua_cocos2dx_extension_ControlSlider_getThumbSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getThumbSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9528,7 +9528,7 @@ int lua_cocos2dx_extension_ControlSlider_getProgressSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getProgressSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9699,7 +9699,7 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
             cocos2d::extension::ControlSlider* ret = cocos2d::extension::ControlSlider::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlSlider*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9718,18 +9718,18 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
         if (argc == 3)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             const char* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
             if (!ok) { ok = true; break; }
             const char* arg2;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocos2d::extension::ControlSlider* ret = cocos2d::extension::ControlSlider::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlSlider*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9978,7 +9978,7 @@ int lua_cocos2dx_extension_ControlStepper_getMinusLabel(lua_State* tolua_S)
         cocos2d::LabelTTF* ret = cobj->getMinusLabel();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -10114,7 +10114,7 @@ int lua_cocos2dx_extension_ControlStepper_getMinusSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getMinusSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -10253,7 +10253,7 @@ int lua_cocos2dx_extension_ControlStepper_getPlusLabel(lua_State* tolua_S)
         cocos2d::LabelTTF* ret = cobj->getPlusLabel();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -10388,7 +10388,7 @@ int lua_cocos2dx_extension_ControlStepper_getPlusSprite(lua_State* tolua_S)
         cocos2d::Sprite* ret = cobj->getPlusSprite();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11043,7 +11043,7 @@ int lua_cocos2dx_extension_ControlStepper_create(lua_State* tolua_S)
         cocos2d::extension::ControlStepper* ret = cocos2d::extension::ControlStepper::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlStepper*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11867,7 +11867,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
             cocos2d::extension::ControlSwitch* ret = cocos2d::extension::ControlSwitch::create(arg0, arg1, arg2, arg3);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlSwitch*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11960,7 +11960,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
             cocos2d::extension::ControlSwitch* ret = cocos2d::extension::ControlSwitch::create(arg0, arg1, arg2, arg3, arg4, arg5);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ControlSwitch*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -12507,7 +12507,7 @@ int lua_cocos2dx_extension_ScrollView_getContainer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getContainer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13760,7 +13760,7 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
             cocos2d::extension::ScrollView* ret = cocos2d::extension::ScrollView::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ScrollView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13784,7 +13784,7 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
             cocos2d::extension::ScrollView* ret = cocos2d::extension::ScrollView::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ScrollView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13820,7 +13820,7 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
             cocos2d::extension::ScrollView* ret = cocos2d::extension::ScrollView::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::ScrollView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14947,7 +14947,7 @@ int lua_cocos2dx_extension_TableView_cellAtIndex(lua_State* tolua_S)
         cocos2d::extension::TableViewCell* ret = cobj->cellAtIndex(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::TableViewCell*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15000,7 +15000,7 @@ int lua_cocos2dx_extension_TableView_dequeueCell(lua_State* tolua_S)
         cocos2d::extension::TableViewCell* ret = cobj->dequeueCell();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::TableViewCell*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15208,7 +15208,7 @@ int lua_cocos2dx_extension_EditBox_setPlaceholderFontName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setPlaceholderFontName(arg0);
@@ -15291,7 +15291,7 @@ int lua_cocos2dx_extension_EditBox_setFontName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setFontName(arg0);
@@ -15502,7 +15502,7 @@ int lua_cocos2dx_extension_EditBox_setPlaceholderFont(lua_State* tolua_S)
     {
         const char* arg0;
         int arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -15641,7 +15641,7 @@ int lua_cocos2dx_extension_EditBox_setPlaceHolder(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setPlaceHolder(arg0);
@@ -15850,7 +15850,7 @@ int lua_cocos2dx_extension_EditBox_setText(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setText(arg0);
@@ -15977,7 +15977,7 @@ int lua_cocos2dx_extension_EditBox_setFont(lua_State* tolua_S)
     {
         const char* arg0;
         int arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -16069,7 +16069,7 @@ int lua_cocos2dx_extension_EditBox_create(lua_State* tolua_S)
         cocos2d::extension::EditBox* ret = cocos2d::extension::EditBox::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::EditBox*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16113,7 +16113,7 @@ int lua_cocos2dx_extension_EditBox_create(lua_State* tolua_S)
         cocos2d::extension::EditBox* ret = cocos2d::extension::EditBox::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::EditBox*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16168,7 +16168,7 @@ int lua_cocos2dx_extension_EditBox_create(lua_State* tolua_S)
         cocos2d::extension::EditBox* ret = cocos2d::extension::EditBox::create(arg0, arg1, arg2, arg3);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::EditBox*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16300,7 +16300,7 @@ int lua_cocos2dx_extension_AssetsManager_setStoragePath(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setStoragePath(arg0);
@@ -16342,7 +16342,7 @@ int lua_cocos2dx_extension_AssetsManager_setPackageUrl(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setPackageUrl(arg0);
@@ -16548,7 +16548,7 @@ int lua_cocos2dx_extension_AssetsManager_setVersionFileUrl(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setVersionFileUrl(arg0);
@@ -16789,9 +16789,9 @@ int lua_cocos2dx_extension_AssetsManager_create(lua_State* tolua_S)
         std::function<void (int)> arg3;
         std::function<void (int)> arg4;
         std::function<void ()> arg5;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         do {
 			/*
 			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[3]));
@@ -16844,7 +16844,7 @@ int lua_cocos2dx_extension_AssetsManager_create(lua_State* tolua_S)
         cocos2d::extension::AssetsManager* ret = cocos2d::extension::AssetsManager::create(arg0, arg1, arg2, arg3, arg4, arg5);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::extension::AssetsManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16900,7 +16900,7 @@ int lua_cocos2dx_extension_AssetsManager_constructor(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj = new cocos2d::extension::AssetsManager(arg0);
@@ -16923,8 +16923,8 @@ int lua_cocos2dx_extension_AssetsManager_constructor(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cobj = new cocos2d::extension::AssetsManager(arg0, arg1);
@@ -16948,9 +16948,9 @@ int lua_cocos2dx_extension_AssetsManager_constructor(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         const char* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
         cobj = new cocos2d::extension::AssetsManager(arg0, arg1, arg2);
@@ -17198,7 +17198,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_actionForSoundChannel(lua_State* 
         cocos2d::Object* ret = cobj->actionForSoundChannel(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17269,7 +17269,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_setBaseValue(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setBaseValue(arg0, arg1, arg2);
@@ -17498,7 +17498,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_runAnimationsForSequenceNamedTwee
     {
         const char* arg0;
         double arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -17774,7 +17774,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_actionForCallbackChannel(lua_Stat
         cocos2d::Object* ret = cobj->actionForCallbackChannel(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18243,7 +18243,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getRootNode(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getRootNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18343,7 +18343,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getSequenceDuration(lua_State* to
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         float ret = cobj->getSequenceDuration(arg0);
@@ -18437,7 +18437,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_runAnimationsForSequenceNamed(lua
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->runAnimationsForSequenceNamed(arg0);
@@ -18479,7 +18479,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getSequenceId(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         int ret = cobj->getSequenceId(arg0);
@@ -18826,19 +18826,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerCallbackNames(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ValueVector ret = cobj->getOwnerCallbackNames();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvaluevector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerCallbackNames",argc, 0);
@@ -18919,7 +18907,7 @@ int lua_cocos2dx_extension_CCBReader_setCCBRootPath(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setCCBRootPath(arg0);
@@ -19014,19 +19002,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerCallbackNodes(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Vector<cocos2d::Node *>& ret = cobj->getOwnerCallbackNodes();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerCallbackNodes",argc, 0);
@@ -19160,19 +19136,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerCallbackControlEvents(lua_State* to
         if(!ok)
             return 0;
         cocos2d::ValueVector& ret = cobj->getOwnerCallbackControlEvents();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvaluevector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerCallbackControlEvents",argc, 0);
@@ -19213,19 +19177,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerOutletNodes(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Vector<cocos2d::Node *>& ret = cobj->getOwnerOutletNodes();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerOutletNodes",argc, 0);
@@ -19349,19 +19301,7 @@ int lua_cocos2dx_extension_CCBReader_getOwnerOutletNames(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ValueVector ret = cobj->getOwnerOutletNames();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"vector<cocos2d::Value, std::allocator<cocos2d::Value> >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvaluevector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwnerOutletNames",argc, 0);
@@ -19505,19 +19445,7 @@ int lua_cocos2dx_extension_CCBReader_getAnimationManagersForNodes(lua_State* tol
         if(!ok)
             return 0;
         cocos2d::Vector<cocosbuilder::CCBAnimationManager *>& ret = cobj->getAnimationManagersForNodes();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocosbuilder::CCBAnimationManager >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocosbuilder::CCBAnimationManager >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimationManagersForNodes",argc, 0);
@@ -19558,19 +19486,7 @@ int lua_cocos2dx_extension_CCBReader_getNodesWithAnimationManagers(lua_State* to
         if(!ok)
             return 0;
         cocos2d::Vector<cocos2d::Node *>& ret = cobj->getNodesWithAnimationManagers();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Vector<cocos2d::Node >");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Vector<cocos2d::Node >");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        ccvector_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodesWithAnimationManagers",argc, 0);
@@ -19613,7 +19529,7 @@ int lua_cocos2dx_extension_CCBReader_getAnimationManager(lua_State* tolua_S)
         cocosbuilder::CCBAnimationManager* ret = cobj->getAnimationManager();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocosbuilder::CCBAnimationManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;

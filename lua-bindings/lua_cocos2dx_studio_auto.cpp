@@ -69,7 +69,7 @@ int lua_cocos2dx_studio_UILayoutParameter_create(lua_State* tolua_S)
         gui::UILayoutParameter* ret = gui::UILayoutParameter::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayoutParameter*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -257,7 +257,7 @@ int lua_cocos2dx_studio_UILinearLayoutParameter_create(lua_State* tolua_S)
         gui::UILinearLayoutParameter* ret = gui::UILinearLayoutParameter::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILinearLayoutParameter*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -411,7 +411,7 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_setRelativeToWidgetName(lua_St
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setRelativeToWidgetName(arg0);
@@ -535,7 +535,7 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_setRelativeName(lua_State* tol
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setRelativeName(arg0);
@@ -612,7 +612,7 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_create(lua_State* tolua_S)
         gui::UIRelativeLayoutParameter* ret = gui::UIRelativeLayoutParameter::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIRelativeLayoutParameter*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -784,7 +784,7 @@ int lua_cocos2dx_studio_UIWidget_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1040,13 +1040,13 @@ int lua_cocos2dx_studio_UIWidget_getChildByName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         gui::UIWidget* ret = cobj->getChildByName(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -1432,7 +1432,7 @@ int lua_cocos2dx_studio_UIWidget_getLayoutParameter(lua_State* tolua_S)
         gui::UILayoutParameter* ret = cobj->getLayoutParameter(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayoutParameter*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -3131,7 +3131,7 @@ int lua_cocos2dx_studio_UIWidget_runAction(lua_State* tolua_S)
         cocos2d::Action* ret = cobj->runAction(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -3267,7 +3267,7 @@ int lua_cocos2dx_studio_UIWidget_getActionByTag(lua_State* tolua_S)
         cocos2d::Action* ret = cobj->getActionByTag(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -3442,7 +3442,7 @@ int lua_cocos2dx_studio_UIWidget_setName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setName(arg0);
@@ -3748,7 +3748,7 @@ int lua_cocos2dx_studio_UIWidget_getParent(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getParent();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -4055,7 +4055,7 @@ int lua_cocos2dx_studio_UIWidget_getChildByTag(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getChildByTag(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -4230,7 +4230,7 @@ int lua_cocos2dx_studio_UIWidget_getRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -4694,7 +4694,7 @@ int lua_cocos2dx_studio_UIWidget_clone(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->clone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5143,7 +5143,7 @@ int lua_cocos2dx_studio_UIWidget_getActionManager(lua_State* tolua_S)
         cocos2d::ActionManager* ret = cobj->getActionManager();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5186,7 +5186,7 @@ int lua_cocos2dx_studio_UIWidget_create(lua_State* tolua_S)
         gui::UIWidget* ret = gui::UIWidget::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -5647,7 +5647,7 @@ int lua_cocos2dx_studio_UILayout_setBackGroundImage(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setBackGroundImage(arg0);
@@ -5657,7 +5657,7 @@ int lua_cocos2dx_studio_UILayout_setBackGroundImage(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -6255,7 +6255,7 @@ int lua_cocos2dx_studio_UILayout_create(lua_State* tolua_S)
         gui::UILayout* ret = gui::UILayout::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayout*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6420,7 +6420,7 @@ int lua_cocos2dx_studio_UIRootWidget_create(lua_State* tolua_S)
         gui::UIRootWidget* ret = gui::UIRootWidget::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIRootWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -6577,7 +6577,7 @@ int lua_cocos2dx_studio_UIButton_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7000,7 +7000,7 @@ int lua_cocos2dx_studio_UIButton_loadTextureDisabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTextureDisabled(arg0);
@@ -7010,7 +7010,7 @@ int lua_cocos2dx_studio_UIButton_loadTextureDisabled(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -7178,7 +7178,7 @@ int lua_cocos2dx_studio_UIButton_loadTexturePressed(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTexturePressed(arg0);
@@ -7188,7 +7188,7 @@ int lua_cocos2dx_studio_UIButton_loadTexturePressed(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -7315,7 +7315,7 @@ int lua_cocos2dx_studio_UIButton_setTitleFontName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setTitleFontName(arg0);
@@ -7359,9 +7359,9 @@ int lua_cocos2dx_studio_UIButton_loadTextures(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         const char* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTextures(arg0, arg1, arg2);
@@ -7373,9 +7373,9 @@ int lua_cocos2dx_studio_UIButton_loadTextures(lua_State* tolua_S)
         const char* arg1;
         const char* arg2;
         gui::TextureResType arg3;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         if(!ok)
             return 0;
@@ -7459,7 +7459,7 @@ int lua_cocos2dx_studio_UIButton_loadTextureNormal(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTextureNormal(arg0);
@@ -7469,7 +7469,7 @@ int lua_cocos2dx_studio_UIButton_loadTextureNormal(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -7756,7 +7756,7 @@ int lua_cocos2dx_studio_UIButton_create(lua_State* tolua_S)
         gui::UIButton* ret = gui::UIButton::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIButton*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -7977,7 +7977,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundSelected(lua_State* tolu
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTextureBackGroundSelected(arg0);
@@ -7987,7 +7987,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundSelected(lua_State* tolu
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -8030,7 +8030,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundDisabled(lua_State* tolu
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTextureBackGroundDisabled(arg0);
@@ -8040,7 +8040,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundDisabled(lua_State* tolu
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -8290,7 +8290,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureFrontCross(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTextureFrontCross(arg0);
@@ -8300,7 +8300,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureFrontCross(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -8347,7 +8347,7 @@ int lua_cocos2dx_studio_UICheckBox_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -8441,11 +8441,11 @@ int lua_cocos2dx_studio_UICheckBox_loadTextures(lua_State* tolua_S)
         const char* arg2;
         const char* arg3;
         const char* arg4;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        std::string arg3_tmp; ok &= luaval_to_std_string(tolua_S, 5, &arg3_tmp); arg3 = arg3_tmp.c_str();
+        std::string arg4_tmp; ok &= luaval_to_std_string(tolua_S, 6, &arg4_tmp); arg4 = arg4_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTextures(arg0, arg1, arg2, arg3, arg4);
@@ -8459,11 +8459,11 @@ int lua_cocos2dx_studio_UICheckBox_loadTextures(lua_State* tolua_S)
         const char* arg3;
         const char* arg4;
         gui::TextureResType arg5;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        std::string arg3_tmp; ok &= luaval_to_std_string(tolua_S, 5, &arg3_tmp); arg3 = arg3_tmp.c_str();
+        std::string arg4_tmp; ok &= luaval_to_std_string(tolua_S, 6, &arg4_tmp); arg4 = arg4_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
         if(!ok)
             return 0;
@@ -8506,7 +8506,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureBackGround(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTextureBackGround(arg0);
@@ -8516,7 +8516,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureBackGround(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -8601,7 +8601,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureFrontCrossDisabled(lua_State* tolu
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTextureFrontCrossDisabled(arg0);
@@ -8611,7 +8611,7 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureFrontCrossDisabled(lua_State* tolu
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -8648,7 +8648,7 @@ int lua_cocos2dx_studio_UICheckBox_create(lua_State* tolua_S)
         gui::UICheckBox* ret = gui::UICheckBox::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UICheckBox*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -8820,7 +8820,7 @@ int lua_cocos2dx_studio_UIImageView_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -8911,7 +8911,7 @@ int lua_cocos2dx_studio_UIImageView_loadTexture(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTexture(arg0);
@@ -8921,7 +8921,7 @@ int lua_cocos2dx_studio_UIImageView_loadTexture(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -9416,7 +9416,7 @@ int lua_cocos2dx_studio_UIImageView_create(lua_State* tolua_S)
         gui::UIImageView* ret = gui::UIImageView::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIImageView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -9587,7 +9587,7 @@ int lua_cocos2dx_studio_UILabel_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -10421,7 +10421,7 @@ int lua_cocos2dx_studio_UILabel_create(lua_State* tolua_S)
         gui::UILabel* ret = gui::UILabel::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILabel*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -10717,7 +10717,7 @@ int lua_cocos2dx_studio_UICCLabelAtlas_create(lua_State* tolua_S)
         gui::UICCLabelAtlas* ret = gui::UICCLabelAtlas::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UICCLabelAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -10876,7 +10876,7 @@ int lua_cocos2dx_studio_UILabelAtlas_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11134,7 +11134,7 @@ int lua_cocos2dx_studio_UILabelAtlas_create(lua_State* tolua_S)
         gui::UILabelAtlas* ret = gui::UILabelAtlas::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILabelAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11297,7 +11297,7 @@ int lua_cocos2dx_studio_UILoadingBar_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -11388,7 +11388,7 @@ int lua_cocos2dx_studio_UILoadingBar_loadTexture(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadTexture(arg0);
@@ -11398,7 +11398,7 @@ int lua_cocos2dx_studio_UILoadingBar_loadTexture(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -11725,7 +11725,7 @@ int lua_cocos2dx_studio_UILoadingBar_create(lua_State* tolua_S)
         gui::UILoadingBar* ret = gui::UILoadingBar::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILoadingBar*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -12245,7 +12245,7 @@ int lua_cocos2dx_studio_UIScrollView_getInnerContainer(lua_State* tolua_S)
         gui::UILayout* ret = cobj->getInnerContainer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayout*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -13552,7 +13552,7 @@ int lua_cocos2dx_studio_UIScrollView_create(lua_State* tolua_S)
         gui::UIScrollView* ret = gui::UIScrollView::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIScrollView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14224,7 +14224,7 @@ int lua_cocos2dx_studio_UIListView_getItem(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getItem(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14411,7 +14411,7 @@ int lua_cocos2dx_studio_UIListView_create(lua_State* tolua_S)
         gui::UIListView* ret = gui::UIListView::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIListView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -14579,7 +14579,7 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTextureNormal(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadSlidBallTextureNormal(arg0);
@@ -14589,7 +14589,7 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTextureNormal(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -14632,7 +14632,7 @@ int lua_cocos2dx_studio_UISlider_loadBarTexture(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadBarTexture(arg0);
@@ -14642,7 +14642,7 @@ int lua_cocos2dx_studio_UISlider_loadBarTexture(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -14685,7 +14685,7 @@ int lua_cocos2dx_studio_UISlider_loadProgressBarTexture(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadProgressBarTexture(arg0);
@@ -14695,7 +14695,7 @@ int lua_cocos2dx_studio_UISlider_loadProgressBarTexture(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -14740,9 +14740,9 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTextures(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         const char* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadSlidBallTextures(arg0, arg1, arg2);
@@ -14754,9 +14754,9 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTextures(lua_State* tolua_S)
         const char* arg1;
         const char* arg2;
         gui::TextureResType arg3;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         if(!ok)
             return 0;
@@ -14970,7 +14970,7 @@ int lua_cocos2dx_studio_UISlider_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15103,7 +15103,7 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTexturePressed(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadSlidBallTexturePressed(arg0);
@@ -15113,7 +15113,7 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTexturePressed(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -15156,7 +15156,7 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTextureDisabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->loadSlidBallTextureDisabled(arg0);
@@ -15166,7 +15166,7 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTextureDisabled(lua_State* tolua_S)
     {
         const char* arg0;
         gui::TextureResType arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -15285,7 +15285,7 @@ int lua_cocos2dx_studio_UISlider_create(lua_State* tolua_S)
         gui::UISlider* ret = gui::UISlider::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UISlider*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -15463,7 +15463,7 @@ int lua_cocos2dx_studio_UICCTextField_setPasswordText(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setPasswordText(arg0);
@@ -15641,7 +15641,7 @@ int lua_cocos2dx_studio_UICCTextField_onTextFieldDeleteBackward(lua_State* tolua
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
             return 0;
@@ -16056,7 +16056,7 @@ int lua_cocos2dx_studio_UICCTextField_insertText(lua_State* tolua_S)
     {
         const char* arg0;
         int arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -16099,7 +16099,7 @@ int lua_cocos2dx_studio_UICCTextField_setPasswordStyleText(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setPasswordStyleText(arg0);
@@ -16153,7 +16153,7 @@ int lua_cocos2dx_studio_UICCTextField_onTextFieldInsertText(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
             return 0;
@@ -16489,15 +16489,15 @@ int lua_cocos2dx_studio_UICCTextField_create(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         double arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
         gui::UICCTextField* ret = gui::UICCTextField::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UICCTextField*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -16802,7 +16802,7 @@ int lua_cocos2dx_studio_UITextField_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -17468,7 +17468,7 @@ int lua_cocos2dx_studio_UITextField_setPasswordStyleText(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setPasswordStyleText(arg0);
@@ -17964,7 +17964,7 @@ int lua_cocos2dx_studio_UITextField_create(lua_State* tolua_S)
         gui::UITextField* ret = gui::UITextField::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UITextField*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18152,7 +18152,7 @@ int lua_cocos2dx_studio_UILabelBMFont_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18242,7 +18242,7 @@ int lua_cocos2dx_studio_UILabelBMFont_setText(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setText(arg0);
@@ -18366,7 +18366,7 @@ int lua_cocos2dx_studio_UILabelBMFont_setFntFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setFntFile(arg0);
@@ -18402,7 +18402,7 @@ int lua_cocos2dx_studio_UILabelBMFont_create(lua_State* tolua_S)
         gui::UILabelBMFont* ret = gui::UILabelBMFont::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILabelBMFont*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -18662,7 +18662,7 @@ int lua_cocos2dx_studio_UIPageView_getPage(lua_State* tolua_S)
         gui::UILayout* ret = cobj->getPage(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayout*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19190,7 +19190,7 @@ int lua_cocos2dx_studio_UIPageView_create(lua_State* tolua_S)
         gui::UIPageView* ret = gui::UIPageView::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIPageView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19322,7 +19322,7 @@ int lua_cocos2dx_studio_UIHelper_seekActionWidgetByActionTag(lua_State* tolua_S)
         gui::UIWidget* ret = gui::UIHelper::seekActionWidgetByActionTag(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19378,7 +19378,7 @@ int lua_cocos2dx_studio_UIHelper_seekWidgetByTag(lua_State* tolua_S)
         gui::UIWidget* ret = gui::UIHelper::seekWidgetByTag(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19428,13 +19428,13 @@ int lua_cocos2dx_studio_UIHelper_seekWidgetByRelativeName(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         gui::UIWidget* ret = gui::UIHelper::seekWidgetByRelativeName(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19484,13 +19484,13 @@ int lua_cocos2dx_studio_UIHelper_seekWidgetByName(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         gui::UIWidget* ret = gui::UIHelper::seekWidgetByName(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19565,7 +19565,7 @@ int lua_cocos2dx_studio_UILayer_getRootWidget(lua_State* tolua_S)
         gui::UIRootWidget* ret = cobj->getRootWidget();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIRootWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19620,7 +19620,7 @@ int lua_cocos2dx_studio_UILayer_getWidgetByTag(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getWidgetByTag(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19761,13 +19761,13 @@ int lua_cocos2dx_studio_UILayer_getWidgetByName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         gui::UIWidget* ret = cobj->getWidgetByName(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -19943,7 +19943,7 @@ int lua_cocos2dx_studio_UILayer_create(lua_State* tolua_S)
         gui::UILayer* ret = gui::UILayer::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayer*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20062,14 +20062,14 @@ int lua_cocos2dx_studio_ActionManagerEx_playActionByName(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::ActionObject* ret = cobj->playActionByName(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionObject*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20119,14 +20119,14 @@ int lua_cocos2dx_studio_ActionManagerEx_getActionByName(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::ActionObject* ret = cobj->getActionByName(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionObject*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20177,7 +20177,7 @@ int lua_cocos2dx_studio_ActionManagerEx_initWithDictionary(lua_State* tolua_S)
         const char* arg0;
         cocostudio::JsonDictionary* arg1;
         cocos2d::Object* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         do {
 				if (!luaval_is_usertype(tolua_S,3,"JsonDictionary",0)){
 					ok = false;
@@ -20303,7 +20303,7 @@ int lua_cocos2dx_studio_ActionManagerEx_shareManager(lua_State* tolua_S)
         cocostudio::ActionManagerEx* ret = cocostudio::ActionManagerEx::shareManager();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionManagerEx*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20610,7 +20610,7 @@ int lua_cocos2dx_studio_BaseData_create(lua_State* tolua_S)
         cocostudio::BaseData* ret = cocostudio::BaseData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BaseData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20714,7 +20714,7 @@ int lua_cocos2dx_studio_DisplayData_changeDisplayToTexture(lua_State* tolua_S)
     if (argc == 1)
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         const char* ret = cocostudio::DisplayData::changeDisplayToTexture(arg0);
@@ -20751,7 +20751,7 @@ int lua_cocos2dx_studio_DisplayData_create(lua_State* tolua_S)
         cocostudio::DisplayData* ret = cocostudio::DisplayData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -20912,7 +20912,7 @@ int lua_cocos2dx_studio_SpriteDisplayData_setParam(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setParam(arg0);
@@ -20948,7 +20948,7 @@ int lua_cocos2dx_studio_SpriteDisplayData_create(lua_State* tolua_S)
         cocostudio::SpriteDisplayData* ret = cocostudio::SpriteDisplayData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::SpriteDisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21111,7 +21111,7 @@ int lua_cocos2dx_studio_ArmatureDisplayData_setParam(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setParam(arg0);
@@ -21147,7 +21147,7 @@ int lua_cocos2dx_studio_ArmatureDisplayData_create(lua_State* tolua_S)
         cocostudio::ArmatureDisplayData* ret = cocostudio::ArmatureDisplayData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureDisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21310,7 +21310,7 @@ int lua_cocos2dx_studio_ParticleDisplayData_setParam(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setParam(arg0);
@@ -21346,7 +21346,7 @@ int lua_cocos2dx_studio_ParticleDisplayData_create(lua_State* tolua_S)
         cocostudio::ParticleDisplayData* ret = cocostudio::ParticleDisplayData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ParticleDisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21464,7 +21464,7 @@ int lua_cocos2dx_studio_BoneData_getDisplayData(lua_State* tolua_S)
         cocostudio::DisplayData* ret = cobj->getDisplayData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21599,7 +21599,7 @@ int lua_cocos2dx_studio_BoneData_create(lua_State* tolua_S)
         cocostudio::BoneData* ret = cocostudio::BoneData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21804,13 +21804,13 @@ int lua_cocos2dx_studio_ArmatureData_getBoneData(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::BoneData* ret = cobj->getBoneData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -21853,7 +21853,7 @@ int lua_cocos2dx_studio_ArmatureData_create(lua_State* tolua_S)
         cocostudio::ArmatureData* ret = cocostudio::ArmatureData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22011,7 +22011,7 @@ int lua_cocos2dx_studio_FrameData_create(lua_State* tolua_S)
         cocostudio::FrameData* ret = cocostudio::FrameData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::FrameData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22169,7 +22169,7 @@ int lua_cocos2dx_studio_MovementBoneData_getFrameData(lua_State* tolua_S)
         cocostudio::FrameData* ret = cobj->getFrameData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::FrameData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22263,7 +22263,7 @@ int lua_cocos2dx_studio_MovementBoneData_create(lua_State* tolua_S)
         cocostudio::MovementBoneData* ret = cocostudio::MovementBoneData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementBoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22376,13 +22376,13 @@ int lua_cocos2dx_studio_MovementData_getMovementBoneData(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::MovementBoneData* ret = cobj->getMovementBoneData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementBoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22476,7 +22476,7 @@ int lua_cocos2dx_studio_MovementData_create(lua_State* tolua_S)
         cocostudio::MovementData* ret = cocostudio::MovementData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22588,13 +22588,13 @@ int lua_cocos2dx_studio_AnimationData_getMovement(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::MovementData* ret = cobj->getMovement(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22729,7 +22729,7 @@ int lua_cocos2dx_studio_AnimationData_create(lua_State* tolua_S)
         cocostudio::AnimationData* ret = cocostudio::AnimationData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::AnimationData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -22928,7 +22928,7 @@ int lua_cocos2dx_studio_ContourData_create(lua_State* tolua_S)
         cocostudio::ContourData* ret = cocostudio::ContourData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ContourData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23046,7 +23046,7 @@ int lua_cocos2dx_studio_TextureData_getContourData(lua_State* tolua_S)
         cocostudio::ContourData* ret = cobj->getContourData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ContourData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23181,7 +23181,7 @@ int lua_cocos2dx_studio_TextureData_create(lua_State* tolua_S)
         cocostudio::TextureData* ret = cocostudio::TextureData::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::TextureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23462,7 +23462,7 @@ int lua_cocos2dx_studio_Bone_getDisplayRenderNode(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getDisplayRenderNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23566,7 +23566,7 @@ int lua_cocos2dx_studio_Bone_getWorldInfo(lua_State* tolua_S)
         cocostudio::BaseData* ret = cobj->getWorldInfo();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BaseData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23619,7 +23619,7 @@ int lua_cocos2dx_studio_Bone_getTween(lua_State* tolua_S)
         cocostudio::Tween* ret = cobj->getTween();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Tween*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -23672,7 +23672,7 @@ int lua_cocos2dx_studio_Bone_getParentBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getParentBone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24005,7 +24005,7 @@ int lua_cocos2dx_studio_Bone_init(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->init(arg0);
@@ -24153,7 +24153,7 @@ int lua_cocos2dx_studio_Bone_getColliderFilter(lua_State* tolua_S)
         cocostudio::ColliderFilter* ret = cobj->getColliderFilter();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ColliderFilter*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24290,7 +24290,7 @@ int lua_cocos2dx_studio_Bone_getChildArmature(lua_State* tolua_S)
         cocostudio::Armature* ret = cobj->getChildArmature();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24385,7 +24385,7 @@ int lua_cocos2dx_studio_Bone_getTweenData(lua_State* tolua_S)
         cocostudio::FrameData* ret = cobj->getTweenData();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::FrameData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24934,7 +24934,7 @@ int lua_cocos2dx_studio_Bone_getDisplayManager(lua_State* tolua_S)
         cocostudio::DisplayManager* ret = cobj->getDisplayManager();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -24987,7 +24987,7 @@ int lua_cocos2dx_studio_Bone_getArmature(lua_State* tolua_S)
         cocostudio::Armature* ret = cobj->getArmature();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25168,7 +25168,7 @@ int lua_cocos2dx_studio_Bone_getBoneData(lua_State* tolua_S)
         cocostudio::BoneData* ret = cobj->getBoneData();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25208,12 +25208,12 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
         if (argc == 1)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocostudio::Bone* ret = cocostudio::Bone::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25234,7 +25234,7 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
             cocostudio::Bone* ret = cocostudio::Bone::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25538,7 +25538,7 @@ int lua_cocos2dx_studio_BatchNode_getTexureAtlasWithTexture(lua_State* tolua_S)
         cocos2d::TextureAtlas* ret = cobj->getTexureAtlasWithTexture(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25675,7 +25675,7 @@ int lua_cocos2dx_studio_BatchNode_create(lua_State* tolua_S)
         cocostudio::BatchNode* ret = cocostudio::BatchNode::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -25831,7 +25831,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->play(arg0);
@@ -25841,7 +25841,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
     {
         const char* arg0;
         int arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -25853,7 +25853,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
         const char* arg0;
         int arg1;
         int arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
@@ -25867,7 +25867,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
         int arg1;
         int arg2;
         int arg3;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
@@ -25883,7 +25883,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
         int arg2;
         int arg3;
         int arg4;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
@@ -25938,72 +25938,6 @@ int lua_cocos2dx_studio_ArmatureAnimation_pause(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_pause'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_studio_ArmatureAnimation_getUserObject(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ArmatureAnimation* cobj = NULL;
-    bool ok  = true;
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
-#endif
-    cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
-#if COCOS2D_DEBUG >= 1
-    if (!cobj)
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ArmatureAnimation_getUserObject'", NULL);
-        return 0;
-    }
-#endif
-    argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 0) {
-            const cocos2d::Object* ret = cobj->getUserObject();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-            return 1;
-        }
-    }while(0);
-    do{
-        if (argc == 0) {
-            cocos2d::Object* ret = cobj->getUserObject();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Object");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Object");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-            return 1;
-        }
-    }while(0);
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getUserObject",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_getUserObject'.",&tolua_err);
 #endif
     return 0;
 }
@@ -26338,7 +26272,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_getAnimationData(lua_State* tolua_S)
         cocostudio::AnimationData* ret = cobj->getAnimationData();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::AnimationData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26592,57 +26526,6 @@ int lua_cocos2dx_studio_ArmatureAnimation_getMovementCount(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_ArmatureAnimation_setUserObject(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ArmatureAnimation* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ArmatureAnimation_setUserObject'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Object* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        if(!ok)
-            return 0;
-        cobj->setUserObject(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setUserObject",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_setUserObject'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID(lua_State* tolua_S)
 {
     int argc = 0;
@@ -26717,7 +26600,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_create(lua_State* tolua_S)
         cocostudio::ArmatureAnimation* ret = cocostudio::ArmatureAnimation::create(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureAnimation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -26794,7 +26677,6 @@ int lua_register_cocos2dx_studio_ArmatureAnimation(lua_State* tolua_S)
         tolua_function(tolua_S,"getSpeedScale",lua_cocos2dx_studio_ArmatureAnimation_getSpeedScale);
         tolua_function(tolua_S,"play",lua_cocos2dx_studio_ArmatureAnimation_play);
         tolua_function(tolua_S,"pause",lua_cocos2dx_studio_ArmatureAnimation_pause);
-        tolua_function(tolua_S,"getUserObject",lua_cocos2dx_studio_ArmatureAnimation_getUserObject);
         tolua_function(tolua_S,"setAnimationInternal",lua_cocos2dx_studio_ArmatureAnimation_setAnimationInternal);
         tolua_function(tolua_S,"gotoAndPause",lua_cocos2dx_studio_ArmatureAnimation_gotoAndPause);
         tolua_function(tolua_S,"resume",lua_cocos2dx_studio_ArmatureAnimation_resume);
@@ -26807,7 +26689,6 @@ int lua_register_cocos2dx_studio_ArmatureAnimation(lua_State* tolua_S)
         tolua_function(tolua_S,"gotoAndPlay",lua_cocos2dx_studio_ArmatureAnimation_gotoAndPlay);
         tolua_function(tolua_S,"init",lua_cocos2dx_studio_ArmatureAnimation_init);
         tolua_function(tolua_S,"getMovementCount",lua_cocos2dx_studio_ArmatureAnimation_getMovementCount);
-        tolua_function(tolua_S,"setUserObject",lua_cocos2dx_studio_ArmatureAnimation_setUserObject);
         tolua_function(tolua_S,"getCurrentMovementID",lua_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID);
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_ArmatureAnimation_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ArmatureAnimation_create);
@@ -26886,7 +26767,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeAnimationData(lua_State* tolua
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->removeAnimationData(arg0);
@@ -26929,7 +26810,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
     {
         const char* arg0;
         cocostudio::ArmatureData* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         do {
 				if (!luaval_is_usertype(tolua_S,3,"ArmatureData",0)){
 					ok = false;
@@ -26950,7 +26831,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
         const char* arg0;
         cocostudio::ArmatureData* arg1;
         const char* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         do {
 				if (!luaval_is_usertype(tolua_S,3,"ArmatureData",0)){
 					ok = false;
@@ -26961,7 +26842,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
         cobj->addArmatureData(arg0, arg1, arg2);
@@ -26998,15 +26879,15 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureFileInfo(lua_State* tolua
     do{
         if (argc == 3) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             const char* arg1;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             const char* arg2;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             cobj->addArmatureFileInfo(arg0, arg1, arg2);
@@ -27016,7 +26897,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureFileInfo(lua_State* tolua
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             cobj->addArmatureFileInfo(arg0);
@@ -27059,7 +26940,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureFileInfo(lua_State* to
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->removeArmatureFileInfo(arg0);
@@ -27142,13 +27023,13 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureData(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::TextureData* ret = cobj->getTextureData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::TextureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27197,13 +27078,13 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureData(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::ArmatureData* ret = cobj->getArmatureData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27252,13 +27133,13 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationData(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::AnimationData* ret = cobj->getAnimationData(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::AnimationData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27308,7 +27189,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
     {
         const char* arg0;
         cocostudio::AnimationData* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         do {
 				if (!luaval_is_usertype(tolua_S,3,"AnimationData",0)){
 					ok = false;
@@ -27329,7 +27210,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
         const char* arg0;
         cocostudio::AnimationData* arg1;
         const char* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         do {
 				if (!luaval_is_usertype(tolua_S,3,"AnimationData",0)){
 					ok = false;
@@ -27340,7 +27221,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
         cobj->addAnimationData(arg0, arg1, arg2);
@@ -27423,7 +27304,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureData(lua_State* tolua_
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->removeArmatureData(arg0);
@@ -27506,7 +27387,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeTextureData(lua_State* tolua_S
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->removeTextureData(arg0);
@@ -27549,7 +27430,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
     {
         const char* arg0;
         cocostudio::TextureData* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         do {
 				if (!luaval_is_usertype(tolua_S,3,"TextureData",0)){
 					ok = false;
@@ -27570,7 +27451,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
         const char* arg0;
         cocostudio::TextureData* arg1;
         const char* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         do {
 				if (!luaval_is_usertype(tolua_S,3,"TextureData",0)){
 					ok = false;
@@ -27581,7 +27462,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
         cobj->addTextureData(arg0, arg1, arg2);
@@ -27665,8 +27546,8 @@ int lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(lua_State* to
     {
         const char* arg0;
         const char* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cobj->addSpriteFrameFromFile(arg0, arg1);
@@ -27677,9 +27558,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(lua_State* to
         const char* arg0;
         const char* arg1;
         const char* arg2;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
         cobj->addSpriteFrameFromFile(arg0, arg1, arg2);
@@ -27745,7 +27626,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_getInstance(lua_State* tolua_S)
         cocostudio::ArmatureDataManager* ret = cocostudio::ArmatureDataManager::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureDataManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27831,13 +27712,13 @@ int lua_cocos2dx_studio_Armature_getBone(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::Bone* ret = cobj->getBone(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -27897,7 +27778,7 @@ int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cobj->changeBoneParent(arg0, arg1);
@@ -27954,7 +27835,7 @@ int lua_cocos2dx_studio_Armature_getTexureAtlasWithTexture(lua_State* tolua_S)
         cocos2d::TextureAtlas* ret = cobj->getTexureAtlasWithTexture(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28062,7 +27943,7 @@ int lua_cocos2dx_studio_Armature_getBoneAtPoint(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getBoneAtPoint(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28384,7 +28265,7 @@ int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
         cocostudio::BatchNode* ret = cobj->getBatchNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -28469,7 +28350,7 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             bool ret = cobj->init(arg0);
@@ -28487,7 +28368,7 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             cocostudio::Bone* arg1;
@@ -28881,7 +28762,7 @@ int lua_cocos2dx_studio_Armature_addBone(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cobj->addBone(arg0, arg1);
@@ -28969,7 +28850,7 @@ int lua_cocos2dx_studio_Armature_getArmatureData(lua_State* tolua_S)
         cocostudio::ArmatureData* ret = cobj->getArmatureData();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29022,7 +28903,7 @@ int lua_cocos2dx_studio_Armature_getParentBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getParentBone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29116,7 +28997,7 @@ int lua_cocos2dx_studio_Armature_getAnimation(lua_State* tolua_S)
         cocostudio::ArmatureAnimation* ret = cobj->getAnimation();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureAnimation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29210,7 +29091,7 @@ int lua_cocos2dx_studio_Armature_getTextureAtlas(lua_State* tolua_S)
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29250,12 +29131,12 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
         if (argc == 1)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocostudio::Armature* ret = cocostudio::Armature::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29276,7 +29157,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             cocostudio::Armature* ret = cocostudio::Armature::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29295,7 +29176,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
         if (argc == 2)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocostudio::Bone* arg1;
             do {
@@ -29312,7 +29193,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             cocostudio::Armature* ret = cocostudio::Armature::create(arg0, arg1);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29456,7 +29337,7 @@ int lua_cocos2dx_studio_Skin_getBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getBone();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29836,12 +29717,12 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
         if (argc == 1)
         {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
             if (!ok) { ok = true; break; }
             cocostudio::Skin* ret = cocostudio::Skin::create(arg0);
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Skin*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29862,7 +29743,7 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
             cocostudio::Skin* ret = cocostudio::Skin::create();
             do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Skin*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -29902,13 +29783,13 @@ int lua_cocos2dx_studio_Skin_createWithSpriteFrameName(lua_State* tolua_S)
     if (argc == 1)
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::Skin* ret = cocostudio::Skin::createWithSpriteFrameName(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Skin*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -30028,7 +29909,7 @@ int lua_cocos2dx_studio_ComAttribute_getFloat(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         float ret = cobj->getFloat(arg0);
@@ -30075,7 +29956,7 @@ int lua_cocos2dx_studio_ComAttribute_getDict(lua_State* tolua_S)
         cocostudio::JsonDictionary* ret = cobj->getDict();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::JsonDictionary*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -30125,7 +30006,7 @@ int lua_cocos2dx_studio_ComAttribute_setFloat(lua_State* tolua_S)
     {
         const char* arg0;
         double arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -30169,8 +30050,8 @@ int lua_cocos2dx_studio_ComAttribute_setCString(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setCString(arg0, arg1);
@@ -30212,7 +30093,7 @@ int lua_cocos2dx_studio_ComAttribute_getCString(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         const char* ret = cobj->getCString(arg0);
@@ -30255,7 +30136,7 @@ int lua_cocos2dx_studio_ComAttribute_getBool(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         bool ret = cobj->getBool(arg0);
@@ -30299,7 +30180,7 @@ int lua_cocos2dx_studio_ComAttribute_setInt(lua_State* tolua_S)
     {
         const char* arg0;
         int arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -30342,7 +30223,7 @@ int lua_cocos2dx_studio_ComAttribute_getInt(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         int ret = cobj->getInt(arg0);
@@ -30427,7 +30308,7 @@ int lua_cocos2dx_studio_ComAttribute_setBool(lua_State* tolua_S)
     {
         const char* arg0;
         bool arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -30464,7 +30345,7 @@ int lua_cocos2dx_studio_ComAttribute_create(lua_State* tolua_S)
         cocostudio::ComAttribute* ret = cocostudio::ComAttribute::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComAttribute*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -31159,7 +31040,7 @@ int lua_cocos2dx_studio_ComAudio_preloadBackgroundMusic(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->preloadBackgroundMusic(arg0);
@@ -31196,7 +31077,7 @@ int lua_cocos2dx_studio_ComAudio_playBackgroundMusic(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             cobj->playBackgroundMusic(arg0);
@@ -31206,7 +31087,7 @@ int lua_cocos2dx_studio_ComAudio_playBackgroundMusic(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             bool arg1;
@@ -31248,7 +31129,7 @@ int lua_cocos2dx_studio_ComAudio_playEffect(lua_State* tolua_S)
     do{
         if (argc == 1) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             unsigned int ret = cobj->playEffect(arg0);
@@ -31259,7 +31140,7 @@ int lua_cocos2dx_studio_ComAudio_playEffect(lua_State* tolua_S)
     do{
         if (argc == 2) {
             const char* arg0;
-            #pragma warning NO CONVERSION TO NATIVE FOR char*;
+            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { ok = true; break; }
             bool arg1;
@@ -31389,7 +31270,7 @@ int lua_cocos2dx_studio_ComAudio_unloadEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->unloadEffect(arg0);
@@ -31471,7 +31352,7 @@ int lua_cocos2dx_studio_ComAudio_preloadEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->preloadEffect(arg0);
@@ -31595,7 +31476,7 @@ int lua_cocos2dx_studio_ComAudio_setFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cobj->setFile(arg0);
@@ -31756,7 +31637,7 @@ int lua_cocos2dx_studio_ComAudio_create(lua_State* tolua_S)
         cocostudio::ComAudio* ret = cocostudio::ComAudio::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComAudio*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32013,7 +31894,7 @@ int lua_cocos2dx_studio_ComController_create(lua_State* tolua_S)
         cocostudio::ComController* ret = cocostudio::ComController::create();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComController*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32131,7 +32012,7 @@ int lua_cocos2dx_studio_ComRender_getNode(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getNode();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32181,13 +32062,13 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cocostudio::ComRender* ret = cocostudio::ComRender::create(arg0, arg1);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComRender*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32256,13 +32137,13 @@ int lua_cocos2dx_studio_GUIReader_widgetFromJsonFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         gui::UIWidget* ret = cobj->widgetFromJsonFile(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32311,7 +32192,7 @@ int lua_cocos2dx_studio_GUIReader_getVersionInteger(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         int ret = cobj->getVersionInteger(arg0);
@@ -32354,7 +32235,7 @@ int lua_cocos2dx_studio_GUIReader_getFileDesignSize(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocos2d::Size ret = cobj->getFileDesignSize(arg0);
@@ -32398,7 +32279,7 @@ int lua_cocos2dx_studio_GUIReader_storeFileDesignSize(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::Size arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         ok &= luaval_to_size(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
@@ -32465,7 +32346,7 @@ int lua_cocos2dx_studio_GUIReader_shareReader(lua_State* tolua_S)
         cocostudio::GUIReader* ret = cocostudio::GUIReader::shareReader();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::GUIReader*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32620,13 +32501,13 @@ int lua_cocos2dx_studio_SceneReader_createNodeWithSceneFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR char*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->createNodeWithSceneFile(arg0);
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
@@ -32700,7 +32581,7 @@ int lua_cocos2dx_studio_SceneReader_getInstance(lua_State* tolua_S)
         cocostudio::SceneReader* ret = cocostudio::SceneReader::getInstance();
         do {
 			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>(ret);
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::SceneReader*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
