@@ -86,27 +86,29 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithSpriteFrameName(lua_State* tolua
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithSpriteFrameName(arg0);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithSpriteFrameName(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithSpriteFrameName",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -658,20 +660,21 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithBatchNode(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg2;
             ok &= luaval_to_rect(tolua_S, 4, &arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithBatchNode(arg0, arg1, arg2);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 4) {
             cocos2d::SpriteBatchNode* arg0;
@@ -686,24 +689,25 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithBatchNode(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg3;
             ok &= luaval_to_rect(tolua_S, 5, &arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithBatchNode(arg0, arg1, arg2, arg3);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithBatchNode",argc, 4);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -959,61 +963,65 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithFile(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithFile(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg2;
             ok &= luaval_to_rect(tolua_S, 4, &arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithFile(arg0, arg1, arg2);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             cocos2d::Rect arg0;
             ok &= luaval_to_rect(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg1;
             std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithFile(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithFile(arg0);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithFile",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -1181,12 +1189,13 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithSpriteFrame(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithSpriteFrame(arg0);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             cocos2d::SpriteFrame* arg0;
@@ -1201,16 +1210,17 @@ int lua_cocos2dx_extension_Scale9Sprite_initWithSpriteFrame(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithSpriteFrame(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithSpriteFrame",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -1447,13 +1457,13 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg2;
             ok &= luaval_to_rect(tolua_S, 4, &arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -1471,6 +1481,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -1492,16 +1503,17 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             cocos2d::Rect arg0;
             ok &= luaval_to_rect(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg1;
             std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -1519,16 +1531,17 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -1546,13 +1559,14 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 1)
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::create(arg0);
             do {
 			if (NULL != ret){
@@ -1570,6 +1584,7 @@ int lua_cocos2dx_extension_Scale9Sprite_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -1598,10 +1613,10 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrameName(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -1619,13 +1634,14 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 1)
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrameName(arg0);
             do {
 			if (NULL != ret){
@@ -1643,6 +1659,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(lua_State* tol
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "createWithSpriteFrameName",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -1680,10 +1697,10 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame(lua_State* tolua_S
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrame(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -1701,6 +1718,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame(lua_State* tolua_S
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 1)
@@ -1716,7 +1734,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame(lua_State* tolua_S
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::Scale9Sprite* ret = cocos2d::extension::Scale9Sprite::createWithSpriteFrame(arg0);
             do {
 			if (NULL != ret){
@@ -1734,6 +1752,7 @@ int lua_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame(lua_State* tolua_S
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "createWithSpriteFrame",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -5232,7 +5251,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create(arg0);
             do {
 			if (NULL != ret){
@@ -5250,6 +5269,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -5271,6 +5291,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
@@ -5286,7 +5307,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::Scale9Sprite* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scale9Sprite",0)){
@@ -5298,7 +5319,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -5316,19 +5337,20 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::ControlButton* ret = cocos2d::extension::ControlButton::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -5346,6 +5368,7 @@ int lua_cocos2dx_extension_ControlButton_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -9671,7 +9694,7 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Sprite",0)){
@@ -9683,7 +9706,7 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg2;
             do {
 				if (!luaval_is_usertype(tolua_S,4,"Sprite",0)){
@@ -9695,7 +9718,7 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
 					if (nullptr == arg2){
 						LUA_PRECONDITION( arg2, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::ControlSlider* ret = cocos2d::extension::ControlSlider::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -9713,19 +9736,20 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg1;
             std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg2;
             std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::ControlSlider* ret = cocos2d::extension::ControlSlider::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -9743,6 +9767,7 @@ int lua_cocos2dx_extension_ControlSlider_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -11278,25 +11303,27 @@ int lua_cocos2dx_extension_ControlSwitch_setOn(lua_State* tolua_S)
             bool arg0;
             ok &= luaval_to_boolean(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setOn(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             bool arg0;
             ok &= luaval_to_boolean(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg1;
             ok &= luaval_to_boolean(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setOn(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOn",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -11504,7 +11531,7 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Sprite",0)){
@@ -11517,7 +11544,7 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg2;
             do {
 				if (!luaval_is_usertype(tolua_S,4,"Sprite",0)){
@@ -11530,7 +11557,7 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg2, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg3;
             do {
 				if (!luaval_is_usertype(tolua_S,5,"Sprite",0)){
@@ -11543,7 +11570,7 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg3, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelTTF* arg4;
             do {
 				if (!luaval_is_usertype(tolua_S,6,"LabelTTF",0)){
@@ -11556,7 +11583,7 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg4, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelTTF* arg5;
             do {
 				if (!luaval_is_usertype(tolua_S,7,"LabelTTF",0)){
@@ -11569,12 +11596,13 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg5, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithMaskSprite(arg0, arg1, arg2, arg3, arg4, arg5);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 4) {
             cocos2d::Sprite* arg0;
@@ -11589,7 +11617,7 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Sprite",0)){
@@ -11602,7 +11630,7 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg2;
             do {
 				if (!luaval_is_usertype(tolua_S,4,"Sprite",0)){
@@ -11615,7 +11643,7 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg2, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg3;
             do {
 				if (!luaval_is_usertype(tolua_S,5,"Sprite",0)){
@@ -11628,12 +11656,13 @@ int lua_cocos2dx_extension_ControlSwitch_initWithMaskSprite(lua_State* tolua_S)
 						LUA_PRECONDITION( arg3, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithMaskSprite(arg0, arg1, arg2, arg3);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithMaskSprite",argc, 4);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -11827,7 +11856,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Sprite",0)){
@@ -11839,7 +11868,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg2;
             do {
 				if (!luaval_is_usertype(tolua_S,4,"Sprite",0)){
@@ -11851,7 +11880,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg2){
 						LUA_PRECONDITION( arg2, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg3;
             do {
 				if (!luaval_is_usertype(tolua_S,5,"Sprite",0)){
@@ -11863,7 +11892,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg3){
 						LUA_PRECONDITION( arg3, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::ControlSwitch* ret = cocos2d::extension::ControlSwitch::create(arg0, arg1, arg2, arg3);
             do {
 			if (NULL != ret){
@@ -11881,6 +11910,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 6)
@@ -11896,7 +11926,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Sprite",0)){
@@ -11908,7 +11938,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg2;
             do {
 				if (!luaval_is_usertype(tolua_S,4,"Sprite",0)){
@@ -11920,7 +11950,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg2){
 						LUA_PRECONDITION( arg2, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* arg3;
             do {
 				if (!luaval_is_usertype(tolua_S,5,"Sprite",0)){
@@ -11932,7 +11962,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg3){
 						LUA_PRECONDITION( arg3, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelTTF* arg4;
             do {
 				if (!luaval_is_usertype(tolua_S,6,"LabelTTF",0)){
@@ -11944,7 +11974,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg4){
 						LUA_PRECONDITION( arg4, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelTTF* arg5;
             do {
 				if (!luaval_is_usertype(tolua_S,7,"LabelTTF",0)){
@@ -11956,7 +11986,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
 					if (nullptr == arg5){
 						LUA_PRECONDITION( arg5, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::ControlSwitch* ret = cocos2d::extension::ControlSwitch::create(arg0, arg1, arg2, arg3, arg4, arg5);
             do {
 			if (NULL != ret){
@@ -11974,6 +12004,7 @@ int lua_cocos2dx_extension_ControlSwitch_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 6);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -12329,15 +12360,16 @@ int lua_cocos2dx_extension_ScrollView_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
@@ -12352,19 +12384,20 @@ int lua_cocos2dx_extension_ScrollView_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
@@ -12379,11 +12412,12 @@ int lua_cocos2dx_extension_ScrollView_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -13712,25 +13746,27 @@ int lua_cocos2dx_extension_ScrollView_setZoomScale(lua_State* tolua_S)
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg1;
             ok &= luaval_to_boolean(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setZoomScale(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setZoomScale(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setZoomScale",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -13774,13 +13810,14 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 1)
         {
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::ScrollView* ret = cocos2d::extension::ScrollView::create(arg0);
             do {
 			if (NULL != ret){
@@ -13798,13 +13835,14 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Node* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Node",0)){
@@ -13816,7 +13854,7 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::extension::ScrollView* ret = cocos2d::extension::ScrollView::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -13834,6 +13872,7 @@ int lua_cocos2dx_extension_ScrollView_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -15169,7 +15208,7 @@ int lua_cocos2dx_extension_EditBox_getText(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getText();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getText",argc, 0);
@@ -15252,7 +15291,7 @@ int lua_cocos2dx_extension_EditBox_getPlaceHolder(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getPlaceHolder();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPlaceHolder",argc, 0);
@@ -16427,7 +16466,7 @@ int lua_cocos2dx_extension_AssetsManager_getStoragePath(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getStoragePath();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStoragePath",argc, 0);
@@ -16592,7 +16631,7 @@ int lua_cocos2dx_extension_AssetsManager_getPackageUrl(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getPackageUrl();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPackageUrl",argc, 0);
@@ -16715,7 +16754,7 @@ int lua_cocos2dx_extension_AssetsManager_getVersionFileUrl(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getVersionFileUrl();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getVersionFileUrl",argc, 0);
@@ -18181,7 +18220,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getRunningSequenceName(lua_State*
         if(!ok)
             return 0;
         const char* ret = cobj->getRunningSequenceName();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRunningSequenceName",argc, 0);
@@ -19670,7 +19709,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj = new cocosbuilder::CCBReader(arg0);
             cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
             if (NULL != dynObject) 
@@ -19688,6 +19727,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocosbuilder::NodeLoaderLibrary* arg0;
@@ -19702,7 +19742,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj = new cocosbuilder::CCBReader(arg0);
             cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
             if (NULL != dynObject) 
@@ -19720,6 +19760,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             cocosbuilder::NodeLoaderLibrary* arg0;
@@ -19734,7 +19775,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocosbuilder::CCBMemberVariableAssigner* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"CCBMemberVariableAssigner",0)){
@@ -19747,7 +19788,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj = new cocosbuilder::CCBReader(arg0, arg1);
             cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
             if (NULL != dynObject) 
@@ -19765,6 +19806,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocosbuilder::NodeLoaderLibrary* arg0;
@@ -19779,7 +19821,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocosbuilder::CCBMemberVariableAssigner* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"CCBMemberVariableAssigner",0)){
@@ -19792,7 +19834,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocosbuilder::CCBSelectorResolver* arg2;
             do {
 				if (!luaval_is_usertype(tolua_S,4,"CCBSelectorResolver",0)){
@@ -19805,7 +19847,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg2, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj = new cocosbuilder::CCBReader(arg0, arg1, arg2);
             cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
             if (NULL != dynObject) 
@@ -19823,6 +19865,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 4) {
             cocosbuilder::NodeLoaderLibrary* arg0;
@@ -19837,7 +19880,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocosbuilder::CCBMemberVariableAssigner* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"CCBMemberVariableAssigner",0)){
@@ -19850,7 +19893,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocosbuilder::CCBSelectorResolver* arg2;
             do {
 				if (!luaval_is_usertype(tolua_S,4,"CCBSelectorResolver",0)){
@@ -19863,7 +19906,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg2, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocosbuilder::NodeLoaderListener* arg3;
             do {
 				if (!luaval_is_usertype(tolua_S,5,"NodeLoaderListener",0)){
@@ -19876,7 +19919,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
 						LUA_PRECONDITION( arg3, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj = new cocosbuilder::CCBReader(arg0, arg1, arg2, arg3);
             cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
             if (NULL != dynObject) 
@@ -19894,6 +19937,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cobj = new cocosbuilder::CCBReader();
@@ -19913,6 +19957,7 @@ int lua_cocos2dx_extension_CCBReader_constructor(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "CCBReader",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1

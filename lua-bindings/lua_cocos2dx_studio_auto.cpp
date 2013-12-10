@@ -455,7 +455,7 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_getRelativeName(lua_State* tol
         if(!ok)
             return 0;
         const char* ret = cobj->getRelativeName();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRelativeName",argc, 0);
@@ -496,7 +496,7 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_getRelativeToWidgetName(lua_St
         if(!ok)
             return 0;
         const char* ret = cobj->getRelativeToWidgetName();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRelativeToWidgetName",argc, 0);
@@ -877,7 +877,7 @@ int lua_cocos2dx_studio_UIWidget_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -2216,7 +2216,7 @@ int lua_cocos2dx_studio_UIWidget_getName(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getName();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getName",argc, 0);
@@ -5697,25 +5697,27 @@ int lua_cocos2dx_studio_UILayout_setBackGroundColor(lua_State* tolua_S)
             cocos2d::Color3B arg0;
             ok &= luaval_to_color3b(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Color3B arg1;
             ok &= luaval_to_color3b(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setBackGroundColor(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Color3B arg0;
             ok &= luaval_to_color3b(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setBackGroundColor(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackGroundColor",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -5754,7 +5756,7 @@ int lua_cocos2dx_studio_UILayout_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -6387,7 +6389,7 @@ int lua_cocos2dx_studio_UIRootWidget_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -6711,7 +6713,7 @@ int lua_cocos2dx_studio_UIButton_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -7639,7 +7641,7 @@ int lua_cocos2dx_studio_UIButton_getTitleFontName(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getTitleFontName();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleFontName",argc, 0);
@@ -8085,7 +8087,7 @@ int lua_cocos2dx_studio_UICheckBox_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -9008,7 +9010,7 @@ int lua_cocos2dx_studio_UIImageView_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -9679,7 +9681,7 @@ int lua_cocos2dx_studio_UILabel_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -10549,7 +10551,7 @@ int lua_cocos2dx_studio_UICCLabelAtlas_setProperty(lua_State* tolua_S)
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Texture2D",0)){
@@ -10562,49 +10564,51 @@ int lua_cocos2dx_studio_UICCLabelAtlas_setProperty(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg2;
             ok &= luaval_to_uint32(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg3;
             ok &= luaval_to_uint32(tolua_S, 5,&arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg4;
             ok &= luaval_to_uint32(tolua_S, 6,&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setProperty(arg0, arg1, arg2, arg3, arg4);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 5) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg2;
             ok &= luaval_to_uint32(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg3;
             ok &= luaval_to_uint32(tolua_S, 5,&arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg4;
             ok &= luaval_to_uint32(tolua_S, 6,&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setProperty(arg0, arg1, arg2, arg3, arg4);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setProperty",argc, 5);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -10968,7 +10972,7 @@ int lua_cocos2dx_studio_UILabelAtlas_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -11485,7 +11489,7 @@ int lua_cocos2dx_studio_UILoadingBar_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -11990,7 +11994,7 @@ int lua_cocos2dx_studio_UIScrollView_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -13932,7 +13936,7 @@ int lua_cocos2dx_studio_UIListView_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -14885,7 +14889,7 @@ int lua_cocos2dx_studio_UISlider_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -16759,7 +16763,7 @@ int lua_cocos2dx_studio_UITextField_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -18203,7 +18207,7 @@ int lua_cocos2dx_studio_UILabelBMFont_getStringValue(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getStringValue();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringValue",argc, 0);
@@ -18286,7 +18290,7 @@ int lua_cocos2dx_studio_UILabelBMFont_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -18764,7 +18768,7 @@ int lua_cocos2dx_studio_UIPageView_getDescription(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getDescription();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
@@ -20718,7 +20722,7 @@ int lua_cocos2dx_studio_DisplayData_changeDisplayToTexture(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cocostudio::DisplayData::changeDisplayToTexture(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "changeDisplayToTexture",argc, 1);
@@ -24007,12 +24011,13 @@ int lua_cocos2dx_studio_Bone_init(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->init(arg0);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             bool ret = cobj->init();
@@ -24020,6 +24025,7 @@ int lua_cocos2dx_studio_Bone_init(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -24634,15 +24640,16 @@ int lua_cocos2dx_studio_Bone_addDisplay(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addDisplay(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             cocostudio::DisplayData* arg0;
@@ -24657,15 +24664,16 @@ int lua_cocos2dx_studio_Bone_addDisplay(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addDisplay(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addDisplay",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -25209,7 +25217,7 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocostudio::Bone* ret = cocostudio::Bone::create(arg0);
             do {
 			if (NULL != ret){
@@ -25227,6 +25235,7 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -25248,6 +25257,7 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -25392,15 +25402,16 @@ int lua_cocos2dx_studio_BatchNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
@@ -25415,11 +25426,12 @@ int lua_cocos2dx_studio_BatchNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
@@ -25434,19 +25446,20 @@ int lua_cocos2dx_studio_BatchNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -26881,29 +26894,31 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureFileInfo(lua_State* tolua
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg1;
             std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg2;
             std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addArmatureFileInfo(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addArmatureFileInfo(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addArmatureFileInfo",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -28352,12 +28367,13 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->init(arg0);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             bool ret = cobj->init();
@@ -28365,12 +28381,13 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocostudio::Bone* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Bone",0)){
@@ -28383,12 +28400,13 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->init(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -29132,7 +29150,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocostudio::Armature* ret = cocostudio::Armature::create(arg0);
             do {
 			if (NULL != ret){
@@ -29150,6 +29168,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -29171,13 +29190,14 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocostudio::Bone* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Bone",0)){
@@ -29189,7 +29209,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocostudio::Armature* ret = cocostudio::Armature::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -29207,6 +29227,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -29718,7 +29739,7 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
         {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocostudio::Skin* ret = cocostudio::Skin::create(arg0);
             do {
 			if (NULL != ret){
@@ -29736,6 +29757,7 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -29757,6 +29779,7 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -30097,7 +30120,7 @@ int lua_cocos2dx_studio_ComAttribute_getCString(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getCString(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCString",argc, 1);
@@ -30749,16 +30772,18 @@ int lua_cocos2dx_studio_ComAudio_stopBackgroundMusic(lua_State* tolua_S)
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             bool arg0;
             ok &= luaval_to_boolean(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->stopBackgroundMusic(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stopBackgroundMusic",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -31079,25 +31104,27 @@ int lua_cocos2dx_studio_ComAudio_playBackgroundMusic(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->playBackgroundMusic(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg1;
             ok &= luaval_to_boolean(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->playBackgroundMusic(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "playBackgroundMusic",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -31131,27 +31158,29 @@ int lua_cocos2dx_studio_ComAudio_playEffect(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int ret = cobj->playEffect(arg0);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg1;
             ok &= luaval_to_boolean(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int ret = cobj->playEffect(arg0, arg1);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "playEffect",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -31562,7 +31591,7 @@ int lua_cocos2dx_studio_ComAudio_getFile(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getFile();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFile",argc, 0);
@@ -32548,7 +32577,7 @@ int lua_cocos2dx_studio_SceneReader_sceneReaderVersion(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cocostudio::SceneReader::sceneReaderVersion();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "sceneReaderVersion",argc, 0);

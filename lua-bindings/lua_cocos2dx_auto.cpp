@@ -2094,7 +2094,7 @@ int lua_cocos2dx_GLProgram_getFragmentShaderLog(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getFragmentShaderLog();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFragmentShaderLog",argc, 0);
@@ -2308,7 +2308,7 @@ int lua_cocos2dx_GLProgram_getVertexShaderLog(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getVertexShaderLog();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getVertexShaderLog",argc, 0);
@@ -3636,7 +3636,7 @@ int lua_cocos2dx_Texture2D_getStringForFormat(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getStringForFormat();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringForFormat",argc, 0);
@@ -3681,16 +3681,17 @@ int lua_cocos2dx_Texture2D_initWithImage(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D::PixelFormat arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithImage(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Image* arg0;
@@ -3705,12 +3706,13 @@ int lua_cocos2dx_Texture2D_initWithImage(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithImage(arg0);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithImage",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -3969,12 +3971,13 @@ int lua_cocos2dx_Texture2D_getBitsPerPixelForFormat(lua_State* tolua_S)
             cocos2d::Texture2D::PixelFormat arg0;
             ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int ret = cobj->getBitsPerPixelForFormat(arg0);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             unsigned int ret = cobj->getBitsPerPixelForFormat();
@@ -3982,6 +3985,7 @@ int lua_cocos2dx_Texture2D_getBitsPerPixelForFormat(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBitsPerPixelForFormat",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -4056,116 +4060,121 @@ int lua_cocos2dx_Texture2D_initWithString(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::FontDefinition arg1;
             ok &= luaval_to_fontdefinition(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg1;
             std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 4) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg1;
             std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg3;
             ok &= luaval_to_size(tolua_S, 5, &arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 5) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg1;
             std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg3;
             ok &= luaval_to_size(tolua_S, 5, &arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextHAlignment arg4;
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 6) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg1;
             std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg3;
             ok &= luaval_to_size(tolua_S, 5, &arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextHAlignment arg4;
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextVAlignment arg5;
             ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4, arg5);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithString",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -4915,15 +4924,16 @@ int lua_cocos2dx_Node_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
@@ -4938,11 +4948,12 @@ int lua_cocos2dx_Node_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
@@ -4957,19 +4968,20 @@ int lua_cocos2dx_Node_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -5111,6 +5123,7 @@ int lua_cocos2dx_Node_getShaderProgram(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cocos2d::GLProgram* ret = cobj->getShaderProgram();
@@ -5130,6 +5143,7 @@ int lua_cocos2dx_Node_getShaderProgram(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getShaderProgram",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -5165,6 +5179,7 @@ int lua_cocos2dx_Node_getChildren(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cocos2d::Vector<cocos2d::Node *>& ret = cobj->getChildren();
@@ -5172,6 +5187,7 @@ int lua_cocos2dx_Node_getChildren(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getChildren",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -5922,17 +5938,19 @@ int lua_cocos2dx_Node_removeAllChildrenWithCleanup(lua_State* tolua_S)
             bool arg0;
             ok &= luaval_to_boolean(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->removeAllChildrenWithCleanup(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cobj->removeAllChildren();
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeAllChildren",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -6237,6 +6255,7 @@ int lua_cocos2dx_Node_getGrid(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cocos2d::GridBase* ret = cobj->getGrid();
@@ -6256,6 +6275,7 @@ int lua_cocos2dx_Node_getGrid(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getGrid",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -6342,25 +6362,27 @@ int lua_cocos2dx_Node_setPosition(lua_State* tolua_S)
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setPosition(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Point arg0;
             ok &= luaval_to_point(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setPosition(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPosition",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -7684,6 +7706,7 @@ int lua_cocos2dx_Node_getScheduler(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cocos2d::Scheduler* ret = cobj->getScheduler();
@@ -7703,6 +7726,7 @@ int lua_cocos2dx_Node_getScheduler(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getScheduler",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -7925,6 +7949,7 @@ int lua_cocos2dx_Node_getParent(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cocos2d::Node* ret = cobj->getParent();
@@ -7944,6 +7969,7 @@ int lua_cocos2dx_Node_getParent(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getParent",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -8278,25 +8304,27 @@ int lua_cocos2dx_Node_setScale(lua_State* tolua_S)
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setScale(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setScale(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScale",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -8960,17 +8988,19 @@ int lua_cocos2dx_Node_removeFromParentAndCleanup(lua_State* tolua_S)
             bool arg0;
             ok &= luaval_to_boolean(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->removeFromParentAndCleanup(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cobj->removeFromParent();
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeFromParent",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -9380,6 +9410,7 @@ int lua_cocos2dx_Node_getActionManager(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cocos2d::ActionManager* ret = cobj->getActionManager();
@@ -9399,6 +9430,7 @@ int lua_cocos2dx_Node_getActionManager(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getActionManager",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -10360,28 +10392,29 @@ int lua_cocos2dx_SpriteFrame_initWithTexture(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg3;
             ok &= luaval_to_point(tolua_S, 5, &arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg4;
             ok &= luaval_to_size(tolua_S, 6, &arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithTexture(arg0, arg1, arg2, arg3, arg4);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             cocos2d::Texture2D* arg0;
@@ -10396,16 +10429,17 @@ int lua_cocos2dx_SpriteFrame_initWithTexture(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithTexture(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithTexture",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -10907,43 +10941,45 @@ int lua_cocos2dx_SpriteFrame_initWithTextureFilename(lua_State* tolua_S)
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg3;
             ok &= luaval_to_point(tolua_S, 5, &arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg4;
             ok &= luaval_to_size(tolua_S, 6, &arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithTextureFilename(arg0, arg1, arg2, arg3, arg4);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithTextureFilename(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithTextureFilename",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -11096,19 +11132,19 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg3;
             ok &= luaval_to_point(tolua_S, 5, &arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg4;
             ok &= luaval_to_size(tolua_S, 6, &arg4);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
@@ -11126,16 +11162,17 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -11153,6 +11190,7 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -11190,19 +11228,19 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg3;
             ok &= luaval_to_point(tolua_S, 5, &arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg4;
             ok &= luaval_to_size(tolua_S, 6, &arg4);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::createWithTexture(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
@@ -11220,6 +11258,7 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
@@ -11235,10 +11274,10 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::createWithTexture(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -11256,6 +11295,7 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "createWithTexture",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -11381,6 +11421,7 @@ int lua_cocos2dx_AnimationFrame_getUserInfo(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             const cocos2d::ValueMap& ret = cobj->getUserInfo();
@@ -11388,6 +11429,7 @@ int lua_cocos2dx_AnimationFrame_getUserInfo(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getUserInfo",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -12344,10 +12386,10 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
         {
             cocos2d::Vector<cocos2d::AnimationFrame *> arg0;
             ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Animation* ret = cocos2d::Animation::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -12365,19 +12407,20 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             cocos2d::Vector<cocos2d::AnimationFrame *> arg0;
             ok &= luaval_to_ccvector(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg2;
             ok &= luaval_to_uint32(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Animation* ret = cocos2d::Animation::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -12395,6 +12438,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -12416,6 +12460,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -14551,10 +14596,10 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::RotateTo* ret = cocos2d::RotateTo::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -14572,19 +14617,20 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::RotateTo* ret = cocos2d::RotateTo::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -14602,6 +14648,7 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -14852,13 +14899,13 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::RotateBy* ret = cocos2d::RotateBy::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -14876,16 +14923,17 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::RotateBy* ret = cocos2d::RotateBy::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -14903,6 +14951,7 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -16995,13 +17044,13 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::ScaleTo* ret = cocos2d::ScaleTo::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -17019,16 +17068,17 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::ScaleTo* ret = cocos2d::ScaleTo::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -17046,6 +17096,7 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -17254,13 +17305,13 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::ScaleBy* ret = cocos2d::ScaleBy::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -17278,16 +17329,17 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::ScaleBy* ret = cocos2d::ScaleBy::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -17305,6 +17357,7 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -19195,6 +19248,7 @@ int lua_cocos2dx_Animate_getAnimation(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cocos2d::Animation* ret = cobj->getAnimation();
@@ -19214,6 +19268,7 @@ int lua_cocos2dx_Animate_getAnimation(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimation",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -19870,6 +19925,7 @@ int lua_cocos2dx_TargetedAction_getForcedTarget(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cocos2d::Node* ret = cobj->getForcedTarget();
@@ -19889,6 +19945,7 @@ int lua_cocos2dx_TargetedAction_getForcedTarget(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getForcedTarget",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -24148,7 +24205,7 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::EaseElasticIn* ret = cocos2d::EaseElasticIn::create(arg0);
             do {
 			if (NULL != ret){
@@ -24166,6 +24223,7 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
@@ -24181,10 +24239,10 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::EaseElasticIn* ret = cocos2d::EaseElasticIn::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -24202,6 +24260,7 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -24409,7 +24468,7 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::EaseElasticOut* ret = cocos2d::EaseElasticOut::create(arg0);
             do {
 			if (NULL != ret){
@@ -24427,6 +24486,7 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
@@ -24442,10 +24502,10 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::EaseElasticOut* ret = cocos2d::EaseElasticOut::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -24463,6 +24523,7 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -24670,7 +24731,7 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::EaseElasticInOut* ret = cocos2d::EaseElasticInOut::create(arg0);
             do {
 			if (NULL != ret){
@@ -24688,6 +24749,7 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
@@ -24703,10 +24765,10 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::EaseElasticInOut* ret = cocos2d::EaseElasticInOut::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -24724,6 +24786,7 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -34796,13 +34859,13 @@ int lua_cocos2dx_TurnOffTiles_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg1;
             ok &= luaval_to_size(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg2;
             ok &= luaval_to_uint32(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TurnOffTiles* ret = cocos2d::TurnOffTiles::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -34820,16 +34883,17 @@ int lua_cocos2dx_TurnOffTiles_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg1;
             ok &= luaval_to_size(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TurnOffTiles* ret = cocos2d::TurnOffTiles::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -34847,6 +34911,7 @@ int lua_cocos2dx_TurnOffTiles_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -38900,49 +38965,51 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 5) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg3;
             ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg4;
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 5) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Texture2D",0)){
@@ -38955,24 +39022,25 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg3;
             ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg4;
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithString",argc, 5);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -39082,10 +39150,10 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -39103,25 +39171,26 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 5)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg3;
             ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg4;
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
@@ -39139,6 +39208,7 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 5);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -42113,18 +42183,19 @@ int lua_cocos2dx_GridBase_initWithSize(lua_State* tolua_S)
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithSize(arg0);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Texture2D",0)){
@@ -42137,16 +42208,17 @@ int lua_cocos2dx_GridBase_initWithSize(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithSize(arg0, arg1, arg2);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithSize",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -42298,7 +42370,7 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
         {
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::GridBase* ret = cocos2d::GridBase::create(arg0);
             do {
 			if (NULL != ret){
@@ -42316,13 +42388,14 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Texture2D",0)){
@@ -42334,10 +42407,10 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::GridBase* ret = cocos2d::GridBase::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -42355,6 +42428,7 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -42539,7 +42613,7 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
         {
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Grid3D* ret = cocos2d::Grid3D::create(arg0);
             do {
 			if (NULL != ret){
@@ -42557,13 +42631,14 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Texture2D",0)){
@@ -42575,10 +42650,10 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Grid3D* ret = cocos2d::Grid3D::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -42596,6 +42671,7 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -42808,7 +42884,7 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
         {
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TiledGrid3D* ret = cocos2d::TiledGrid3D::create(arg0);
             do {
 			if (NULL != ret){
@@ -42826,13 +42902,14 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             cocos2d::Size arg0;
             ok &= luaval_to_size(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Texture2D",0)){
@@ -42844,10 +42921,10 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TiledGrid3D* ret = cocos2d::TiledGrid3D::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -42865,6 +42942,7 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -43002,11 +43080,12 @@ int lua_cocos2dx_Sprite_setSpriteFrame(lua_State* tolua_S)
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setSpriteFrame(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::SpriteFrame* arg0;
@@ -43021,11 +43100,12 @@ int lua_cocos2dx_Sprite_setSpriteFrame(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setSpriteFrame(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setSpriteFrame",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -43068,21 +43148,23 @@ int lua_cocos2dx_Sprite_setTexture(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setTexture(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setTexture(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTexture",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -43337,25 +43419,27 @@ int lua_cocos2dx_Sprite_setScale(lua_State* tolua_S)
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setScale(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setScale(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScale",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -43482,15 +43566,16 @@ int lua_cocos2dx_Sprite_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
@@ -43505,11 +43590,12 @@ int lua_cocos2dx_Sprite_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
@@ -43524,19 +43610,20 @@ int lua_cocos2dx_Sprite_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -43967,29 +44054,31 @@ int lua_cocos2dx_Sprite_setTextureRect(lua_State* tolua_S)
             cocos2d::Rect arg0;
             ok &= luaval_to_rect(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg1;
             ok &= luaval_to_boolean(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg2;
             ok &= luaval_to_size(tolua_S, 4, &arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setTextureRect(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Rect arg0;
             ok &= luaval_to_rect(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setTextureRect(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTextureRect",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -45164,7 +45253,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::create(arg0);
             do {
 			if (NULL != ret){
@@ -45182,6 +45271,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -45203,16 +45293,17 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -45230,6 +45321,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -45267,10 +45359,10 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::createWithTexture(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -45288,6 +45380,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
@@ -45303,13 +45396,13 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::createWithTexture(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -45327,6 +45420,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 1)
@@ -45342,7 +45436,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::createWithTexture(arg0);
             do {
 			if (NULL != ret){
@@ -45360,6 +45454,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "createWithTexture",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -45959,78 +46054,81 @@ int lua_cocos2dx_LabelTTF_initWithString(lua_State* tolua_S)
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg3;
             ok &= luaval_to_size(tolua_S, 5, &arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextHAlignment arg4;
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 6) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg3;
             ok &= luaval_to_size(tolua_S, 5, &arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextHAlignment arg4;
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextVAlignment arg5;
             ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithString(arg0, arg1, arg2, arg3, arg4, arg5);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithString",argc, 6);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -46598,19 +46696,19 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg3;
             ok &= luaval_to_size(tolua_S, 5, &arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextHAlignment arg4;
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
@@ -46628,19 +46726,20 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -46658,28 +46757,29 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 6)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Size arg3;
             ok &= luaval_to_size(tolua_S, 5, &arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextHAlignment arg4;
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextVAlignment arg5;
             ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create(arg0, arg1, arg2, arg3, arg4, arg5);
             do {
 			if (NULL != ret){
@@ -46697,6 +46797,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -46718,6 +46819,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -46984,15 +47086,16 @@ int lua_cocos2dx_SpriteBatchNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
@@ -47007,11 +47110,12 @@ int lua_cocos2dx_SpriteBatchNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
@@ -47026,19 +47130,20 @@ int lua_cocos2dx_SpriteBatchNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -47407,21 +47512,23 @@ int lua_cocos2dx_SpriteBatchNode_init(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithFile(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithFile",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -48693,25 +48800,27 @@ int lua_cocos2dx_LabelBMFont_setString(lua_State* tolua_S)
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg1;
             ok &= luaval_to_boolean(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setString(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setString(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setString",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -49571,16 +49680,16 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextHAlignment arg3;
             ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1, arg2, arg3);
             do {
 			if (NULL != ret){
@@ -49598,25 +49707,26 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 5)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TextHAlignment arg3;
             ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg4;
             ok &= luaval_to_point(tolua_S, 6, &arg4);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
@@ -49634,19 +49744,20 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -49664,16 +49775,17 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -49691,6 +49803,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -49712,6 +49825,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -53173,13 +53287,13 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
         {
             cocos2d::Color4B arg0;
             ok &=luaval_to_color4b(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LayerColor* ret = cocos2d::LayerColor::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -53197,6 +53311,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -53218,13 +53333,14 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 1)
         {
             cocos2d::Color4B arg0;
             ok &=luaval_to_color4b(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LayerColor* ret = cocos2d::LayerColor::create(arg0);
             do {
 			if (NULL != ret){
@@ -53242,6 +53358,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -53633,16 +53750,17 @@ int lua_cocos2dx_LayerGradient_initWithColor(lua_State* tolua_S)
             cocos2d::Color4B arg0;
             ok &=luaval_to_color4b(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Color4B arg1;
             ok &=luaval_to_color4b(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithColor(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             bool ret = cobj->init();
@@ -53650,25 +53768,27 @@ int lua_cocos2dx_LayerGradient_initWithColor(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Color4B arg0;
             ok &=luaval_to_color4b(tolua_S, 2, &arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Color4B arg1;
             ok &=luaval_to_color4b(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg2;
             ok &= luaval_to_point(tolua_S, 4, &arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithColor(arg0, arg1, arg2);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithColor",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -53863,10 +53983,10 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
         {
             cocos2d::Color4B arg0;
             ok &=luaval_to_color4b(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Color4B arg1;
             ok &=luaval_to_color4b(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LayerGradient* ret = cocos2d::LayerGradient::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -53884,6 +54004,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -53905,19 +54026,20 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             cocos2d::Color4B arg0;
             ok &=luaval_to_color4b(tolua_S, 2, &arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Color4B arg1;
             ok &=luaval_to_color4b(tolua_S, 3, &arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg2;
             ok &= luaval_to_point(tolua_S, 4, &arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::LayerGradient* ret = cocos2d::LayerGradient::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -53935,6 +54057,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -54165,15 +54288,16 @@ int lua_cocos2dx_Scene_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
@@ -54188,11 +54312,12 @@ int lua_cocos2dx_Scene_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
@@ -54207,19 +54332,20 @@ int lua_cocos2dx_Scene_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -56141,7 +56267,7 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56153,7 +56279,7 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionFlipX* ret = cocos2d::TransitionFlipX::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -56171,13 +56297,14 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56189,10 +56316,10 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionFlipX* ret = cocos2d::TransitionFlipX::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -56210,6 +56337,7 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -56257,7 +56385,7 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56269,7 +56397,7 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionFlipY* ret = cocos2d::TransitionFlipY::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -56287,13 +56415,14 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56305,10 +56434,10 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionFlipY* ret = cocos2d::TransitionFlipY::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -56326,6 +56455,7 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -56373,7 +56503,7 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56385,7 +56515,7 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionFlipAngular* ret = cocos2d::TransitionFlipAngular::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -56403,13 +56533,14 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56421,10 +56552,10 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionFlipAngular* ret = cocos2d::TransitionFlipAngular::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -56442,6 +56573,7 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -56489,7 +56621,7 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56501,7 +56633,7 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionZoomFlipX* ret = cocos2d::TransitionZoomFlipX::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -56519,13 +56651,14 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56537,10 +56670,10 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionZoomFlipX* ret = cocos2d::TransitionZoomFlipX::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -56558,6 +56691,7 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -56605,7 +56739,7 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56617,7 +56751,7 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionZoomFlipY* ret = cocos2d::TransitionZoomFlipY::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -56635,13 +56769,14 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56653,10 +56788,10 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionZoomFlipY* ret = cocos2d::TransitionZoomFlipY::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -56674,6 +56809,7 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -56721,7 +56857,7 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56733,7 +56869,7 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionZoomFlipAngular* ret = cocos2d::TransitionZoomFlipAngular::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -56751,13 +56887,14 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56769,10 +56906,10 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionZoomFlipAngular* ret = cocos2d::TransitionZoomFlipAngular::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -56790,6 +56927,7 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -56837,7 +56975,7 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56849,7 +56987,7 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionFade* ret = cocos2d::TransitionFade::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -56867,13 +57005,14 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 3)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Scene* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Scene",0)){
@@ -56885,10 +57024,10 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Color3B arg2;
             ok &= luaval_to_color3b(tolua_S, 4, &arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::TransitionFade* ret = cocos2d::TransitionFade::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -56906,6 +57045,7 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -61309,15 +61449,16 @@ int lua_cocos2dx_Menu_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
@@ -61332,11 +61473,12 @@ int lua_cocos2dx_Menu_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
@@ -61351,19 +61493,20 @@ int lua_cocos2dx_Menu_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -61904,7 +62047,7 @@ int lua_cocos2dx_ClippingNode_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::ClippingNode* ret = cocos2d::ClippingNode::create(arg0);
             do {
 			if (NULL != ret){
@@ -61922,6 +62065,7 @@ int lua_cocos2dx_ClippingNode_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -61943,6 +62087,7 @@ int lua_cocos2dx_ClippingNode_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -62557,16 +62702,16 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Color3B arg3;
             ok &= luaval_to_color3b(tolua_S, 5, &arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* arg4;
             do {
 				if (!luaval_is_usertype(tolua_S,6,"Texture2D",0)){
@@ -62578,7 +62723,7 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
 					if (nullptr == arg4){
 						LUA_PRECONDITION( arg4, "Invalid Native Object");
 			}}} while (0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::MotionStreak* ret = cocos2d::MotionStreak::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
@@ -62596,25 +62741,26 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 5)
         {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Color3B arg3;
             ok &= luaval_to_color3b(tolua_S, 5, &arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             const char* arg4;
             std::string arg4_tmp; ok &= luaval_to_std_string(tolua_S, 6, &arg4_tmp); arg4 = arg4_tmp.c_str();
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::MotionStreak* ret = cocos2d::MotionStreak::create(arg0, arg1, arg2, arg3, arg4);
             do {
 			if (NULL != ret){
@@ -62632,6 +62778,7 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 5);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -63255,21 +63402,23 @@ int lua_cocos2dx_ProgressTimer_setReverseDirection(lua_State* tolua_S)
             bool arg0;
             ok &= luaval_to_boolean(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setReverseDirection(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             bool arg0;
             ok &= luaval_to_boolean(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setReverseProgress(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setReverseProgress",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -64831,27 +64980,29 @@ int lua_cocos2dx_RenderTexture_saveToFile(lua_State* tolua_S)
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Image::Format arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->saveToFile(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->saveToFile(arg0);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "saveToFile",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -65009,79 +65160,82 @@ int lua_cocos2dx_RenderTexture_beginWithClear(lua_State* tolua_S)
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg3;
             ok &= luaval_to_number(tolua_S, 5,&arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg4;
             ok &= luaval_to_number(tolua_S, 6,&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->beginWithClear(arg0, arg1, arg2, arg3, arg4);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 4) {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg3;
             ok &= luaval_to_number(tolua_S, 5,&arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->beginWithClear(arg0, arg1, arg2, arg3);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 6) {
             double arg0;
             ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg2;
             ok &= luaval_to_number(tolua_S, 4,&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg3;
             ok &= luaval_to_number(tolua_S, 5,&arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg4;
             ok &= luaval_to_number(tolua_S, 6,&arg4);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg5;
             ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->beginWithClear(arg0, arg1, arg2, arg3, arg4, arg5);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "beginWithClear",argc, 6);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -65455,43 +65609,45 @@ int lua_cocos2dx_RenderTexture_initWithWidthAndHeight(lua_State* tolua_S)
             int arg0;
             ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D::PixelFormat arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg3;
             ok &= luaval_to_uint32(tolua_S, 5,&arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithWidthAndHeight(arg0, arg1, arg2, arg3);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             int arg0;
             ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D::PixelFormat arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->initWithWidthAndHeight(arg0, arg1, arg2);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithWidthAndHeight",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -65520,13 +65676,13 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
         {
             int arg0;
             ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D::PixelFormat arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1, arg2);
             do {
 			if (NULL != ret){
@@ -65544,22 +65700,23 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 4)
         {
             int arg0;
             ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D::PixelFormat arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             unsigned int arg3;
             ok &= luaval_to_uint32(tolua_S, 5,&arg3);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1, arg2, arg3);
             do {
 			if (NULL != ret){
@@ -65577,16 +65734,17 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 2)
         {
             int arg0;
             ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -65604,6 +65762,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -65733,15 +65892,16 @@ int lua_cocos2dx_ParticleBatchNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
@@ -65756,11 +65916,12 @@ int lua_cocos2dx_ParticleBatchNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
@@ -65775,19 +65936,20 @@ int lua_cocos2dx_ParticleBatchNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 3);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -71269,7 +71431,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
         {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::ParticleSystemQuad* ret = cocos2d::ParticleSystemQuad::create(arg0);
             do {
 			if (NULL != ret){
@@ -71287,6 +71449,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     do 
     {
         if (argc == 0)
@@ -71308,6 +71471,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
             return 1;
         }
     } while (0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -75591,31 +75755,33 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile(lua_State* tolua_S)
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addSpriteFramesWithFile(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addSpriteFramesWithFile(arg0);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* arg1;
             do {
 				if (!luaval_is_usertype(tolua_S,3,"Texture2D",0)){
@@ -75628,11 +75794,12 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile(lua_State* tolua_S)
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addSpriteFramesWithFile(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addSpriteFramesWithFile",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -76176,27 +76343,29 @@ int lua_cocos2dx_UserDefault_getFloatForKey(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             float ret = cobj->getFloatForKey(arg0, arg1);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             float ret = cobj->getFloatForKey(arg0);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFloatForKey",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -76230,27 +76399,29 @@ int lua_cocos2dx_UserDefault_getBoolForKey(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool arg1;
             ok &= luaval_to_boolean(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->getBoolForKey(arg0, arg1);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             bool ret = cobj->getBoolForKey(arg0);
             tolua_pushboolean(tolua_S,(bool)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBoolForKey",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -76372,27 +76543,29 @@ int lua_cocos2dx_UserDefault_getStringForKey(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string ret = cobj->getStringForKey(arg0, arg1);
             tolua_pushcppstring(tolua_S,ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string ret = cobj->getStringForKey(arg0);
             tolua_pushcppstring(tolua_S,ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringForKey",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -76510,27 +76683,29 @@ int lua_cocos2dx_UserDefault_getIntegerForKey(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int ret = cobj->getIntegerForKey(arg0, arg1);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int ret = cobj->getIntegerForKey(arg0);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getIntegerForKey",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -76564,27 +76739,29 @@ int lua_cocos2dx_UserDefault_getDoubleForKey(lua_State* tolua_S)
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double ret = cobj->getDoubleForKey(arg0, arg1);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             const char* arg0;
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             double ret = cobj->getDoubleForKey(arg0);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDoubleForKey",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -76917,11 +77094,11 @@ int lua_cocos2dx_TextureCache_addImage(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             std::string arg1;
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* ret = cobj->addImage(arg0, arg1);
             do {
 			if (NULL != ret){
@@ -76939,12 +77116,13 @@ int lua_cocos2dx_TextureCache_addImage(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 1) {
             std::string arg0;
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Texture2D* ret = cobj->addImage(arg0);
             do {
 			if (NULL != ret){
@@ -76962,6 +77140,7 @@ int lua_cocos2dx_TextureCache_addImage(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addImage",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -77258,19 +77437,20 @@ int lua_cocos2dx_ParallaxNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 4) {
             cocos2d::Node* arg0;
@@ -77285,23 +77465,24 @@ int lua_cocos2dx_ParallaxNode_addChild(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg2;
             ok &= luaval_to_point(tolua_S, 4, &arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg3;
             ok &= luaval_to_point(tolua_S, 5, &arg3);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->addChild(arg0, arg1, arg2, arg3);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 4);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -77472,6 +77653,7 @@ int lua_cocos2dx_ParallaxNode_getParallaxArray(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             cocos2d::_ccArray* ret = cobj->getParallaxArray();
@@ -77479,6 +77661,7 @@ int lua_cocos2dx_ParallaxNode_getParallaxArray(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getParallaxArray",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -77793,6 +77976,7 @@ int lua_cocos2dx_TMXObjectGroup_getObjects(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             const cocos2d::ValueVector& ret = cobj->getObjects();
@@ -77800,6 +77984,7 @@ int lua_cocos2dx_TMXObjectGroup_getObjects(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getObjects",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -77877,6 +78062,7 @@ int lua_cocos2dx_TMXObjectGroup_getProperties(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             const cocos2d::ValueMap& ret = cobj->getProperties();
@@ -77884,6 +78070,7 @@ int lua_cocos2dx_TMXObjectGroup_getProperties(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getProperties",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -78783,6 +78970,7 @@ int lua_cocos2dx_TMXMapInfo_getLayers(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             const cocos2d::Vector<cocos2d::TMXLayerInfo *>& ret = cobj->getLayers();
@@ -78790,6 +78978,7 @@ int lua_cocos2dx_TMXMapInfo_getLayers(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLayers",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -78825,6 +79014,7 @@ int lua_cocos2dx_TMXMapInfo_getTilesets(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             const cocos2d::Vector<cocos2d::TMXTilesetInfo *>& ret = cobj->getTilesets();
@@ -78832,6 +79022,7 @@ int lua_cocos2dx_TMXMapInfo_getTilesets(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTilesets",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -79160,6 +79351,7 @@ int lua_cocos2dx_TMXMapInfo_getObjectGroups(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             const cocos2d::Vector<cocos2d::TMXObjectGroup *>& ret = cobj->getObjectGroups();
@@ -79167,6 +79359,7 @@ int lua_cocos2dx_TMXMapInfo_getObjectGroups(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getObjectGroups",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -80527,33 +80720,35 @@ int lua_cocos2dx_TMXLayer_setTileGID(lua_State* tolua_S)
             unsigned int arg0;
             ok &= luaval_to_uint32(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg1;
             ok &= luaval_to_point(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::ccTMXTileFlags arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setTileGID(arg0, arg1, arg2);
             return 0;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 2) {
             unsigned int arg0;
             ok &= luaval_to_uint32(tolua_S, 2,&arg0);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cocos2d::Point arg1;
             ok &= luaval_to_point(tolua_S, 3, &arg1);
 
-            if (!ok) { ok = true; break; }
+            if (!ok) { break; }
             cobj->setTileGID(arg0, arg1);
             return 0;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTileGID",argc, 2);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -80718,7 +80913,7 @@ int lua_cocos2dx_TMXLayer_getLayerName(lua_State* tolua_S)
         if(!ok)
             return 0;
         const char* ret = cobj->getLayerName();
-        #pragma warning NO CONVERSION FROM NATIVE FOR char*;
+        tolua_pushstring(tolua_S,(const char*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLayerName",argc, 0);
@@ -80913,6 +81108,7 @@ int lua_cocos2dx_TMXLayer_getProperties(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             const cocos2d::ValueMap& ret = cobj->getProperties();
@@ -80920,6 +81116,7 @@ int lua_cocos2dx_TMXLayer_getProperties(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getProperties",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -81353,6 +81550,7 @@ int lua_cocos2dx_TMXTiledMap_getObjectGroups(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     do{
         if (argc == 0) {
             const cocos2d::Vector<cocos2d::TMXObjectGroup *>& ret = cobj->getObjectGroups();
@@ -81360,6 +81558,7 @@ int lua_cocos2dx_TMXTiledMap_getObjectGroups(lua_State* tolua_S)
             return 1;
         }
     }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getObjectGroups",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
