@@ -23,7 +23,7 @@ setAutoPlaySequenceId : function () {},
 
 /**
  * @method getDocumentCallbackNames
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::ValueVector&"
  */
 getDocumentCallbackNames : function () {},
 
@@ -36,24 +36,17 @@ actionForSoundChannel : function () {},
 
 /**
  * @method setBaseValue
- * @param {cocos2d::Object*}
+ * @param {const cocos2d::Value&}
  * @param {cocos2d::Node*}
- * @param {const char*}
+ * @param {const std::string&}
  */
 setBaseValue : function () {},
 
 /**
  * @method getDocumentOutletNodes
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::Vector<cocos2d::Node *>&"
  */
 getDocumentOutletNodes : function () {},
-
-/**
- * @method addNode
- * @param {cocos2d::Node*}
- * @param {cocos2d::Dictionary*}
- */
-addNode : function () {},
 
 /**
  * @method getLastCompletedSequenceName
@@ -82,7 +75,7 @@ addDocumentOutletName : function () {},
 
 /**
  * @method getSequences
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::Vector<cocosbuilder::CCBSequence *>&"
  */
 getSequences : function () {},
 
@@ -97,6 +90,14 @@ getRootContainerSize : function () {},
  * @param {const std::string&}
  */
 setDocumentControllerName : function () {},
+
+/**
+ * @method setObject
+ * @param {cocos2d::Object*}
+ * @param {cocos2d::Node*}
+ * @param {const std::string&}
+ */
+setObject : function () {},
 
 /**
  * @method getContainerSize
@@ -114,7 +115,7 @@ actionForCallbackChannel : function () {},
 
 /**
  * @method getDocumentOutletNames
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::ValueVector&"
  */
 getDocumentOutletNames : function () {},
 
@@ -132,13 +133,13 @@ init : function () {},
 
 /**
  * @method getKeyframeCallbacks
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::ValueVector&"
  */
 getKeyframeCallbacks : function () {},
 
 /**
  * @method getDocumentCallbackControlEvents
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::ValueVector&"
  */
 getDocumentCallbackControlEvents : function () {},
 
@@ -232,13 +233,13 @@ setCallFunc : function () {},
 
 /**
  * @method getDocumentCallbackNodes
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "cocos2d::Vector<cocos2d::Node *>&"
  */
 getDocumentCallbackNodes : function () {},
 
 /**
  * @method setSequences
- * @param {cocos2d::Array*}
+ * @param {const cocos2d::Vector<cocosbuilder::CCBSequence *>&}
  */
 setSequences : function () {},
 
