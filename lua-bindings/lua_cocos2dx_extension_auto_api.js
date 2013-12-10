@@ -2149,13 +2149,6 @@ setBaseValue : function () {},
 getDocumentOutletNodes : function () {},
 
 /**
- * @method addNode
- * @param {cocos2d::Node*}
- * @param {const std::unordered_map<int, cocos2d::Map<std::basic_string<char>, cocosbuilder::CCBSequenceProperty *>, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, cocos2d::Map<std::basic_string<char>, cocosbuilder::CCBSequenceProperty *> > > >&}
- */
-addNode : function () {},
-
-/**
  * @method getLastCompletedSequenceName
  * @return A value converted from C/C++ "std::string"
  */

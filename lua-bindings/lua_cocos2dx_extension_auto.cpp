@@ -17354,68 +17354,6 @@ int lua_cocos2dx_extension_CCBAnimationManager_getDocumentOutletNodes(lua_State*
 #endif
     return 0;
 }
-int lua_cocos2dx_extension_CCBAnimationManager_addNode(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocosbuilder::CCBAnimationManager* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"CCBAnimationManager",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocosbuilder::CCBAnimationManager*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_CCBAnimationManager_addNode'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        cocos2d::Node* arg0;
-        std::unordered_map<int, cocos2d::Map<std::basic_string<char>, cocosbuilder::CCBSequenceProperty *>, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, cocos2d::Map<std::basic_string<char>, cocosbuilder::CCBSequenceProperty *> > > > arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"unordered_map<int, cocos2d::Map<std::basic_string<char>, cocosbuilder::CCBSequenceProperty >, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, cocos2d::Map<std::basic_string<char>, cocosbuilder::CCBSequenceProperty > > > >",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (const std::unordered_map<int, cocos2d::Map<std::basic_string<char>, cocosbuilder::CCBSequenceProperty *>, std::hash<int>, std::equal_to<int>, std::allocator<std::pair<const int, cocos2d::Map<std::basic_string<char>, cocosbuilder::CCBSequenceProperty *> > > >&)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
-        if(!ok)
-            return 0;
-        cobj->addNode(arg0, arg1);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addNode",argc, 2);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_CCBAnimationManager_addNode'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_extension_CCBAnimationManager_getLastCompletedSequenceName(lua_State* tolua_S)
 {
     int argc = 0;
@@ -18820,7 +18758,6 @@ int lua_register_cocos2dx_extension_CCBAnimationManager(lua_State* tolua_S)
         tolua_function(tolua_S,"actionForSoundChannel",lua_cocos2dx_extension_CCBAnimationManager_actionForSoundChannel);
         tolua_function(tolua_S,"setBaseValue",lua_cocos2dx_extension_CCBAnimationManager_setBaseValue);
         tolua_function(tolua_S,"getDocumentOutletNodes",lua_cocos2dx_extension_CCBAnimationManager_getDocumentOutletNodes);
-        tolua_function(tolua_S,"addNode",lua_cocos2dx_extension_CCBAnimationManager_addNode);
         tolua_function(tolua_S,"getLastCompletedSequenceName",lua_cocos2dx_extension_CCBAnimationManager_getLastCompletedSequenceName);
         tolua_function(tolua_S,"setRootNode",lua_cocos2dx_extension_CCBAnimationManager_setRootNode);
         tolua_function(tolua_S,"runAnimationsForSequenceNamedTweenDuration",lua_cocos2dx_extension_CCBAnimationManager_runAnimationsForSequenceNamedTweenDuration);
