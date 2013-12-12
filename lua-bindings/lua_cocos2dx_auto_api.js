@@ -557,12 +557,6 @@ getMaxS : function () {},
 hasPremultipliedAlpha : function () {},
 
 /**
- * @method getPixelsHigh
- * @return A value converted from C/C++ "int"
- */
-getPixelsHigh : function () {},
-
-/**
  * @method initWithMipmaps
  * @return A value converted from C/C++ "bool"
  * @param {cocos2d::MipmapInfo*}
@@ -572,6 +566,12 @@ getPixelsHigh : function () {},
  * @param {int}
  */
 initWithMipmaps : function () {},
+
+/**
+ * @method getPixelsHigh
+ * @return A value converted from C/C++ "int"
+ */
+getPixelsHigh : function () {},
 
 /**
  * @method getName
@@ -611,6 +611,12 @@ setAntiAliasTexParameters : function () {},
  * @method generateMipmap
  */
 generateMipmap : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method getPixelFormat
@@ -697,6 +703,12 @@ removeComponent : function () {},
  * @param {cocos2d::PhysicsBody*}
  */
 setPhysicsBody : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method pause
@@ -5261,6 +5273,14 @@ locate : function () {},
 restore : function () {},
 
 /**
+ * @method getEye
+ * @param {float*}
+ * @param {float*}
+ * @param {float*}
+ */
+getEye : function () {},
+
+/**
  * @method setEye
  * @param {float}
  * @param {float}
@@ -5275,6 +5295,12 @@ setEye : function () {},
  * @param {float}
  */
 setCenter : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method getCenter
@@ -5318,14 +5344,6 @@ setUp : function () {},
 getUp : function () {},
 
 /**
- * @method getEye
- * @param {float*}
- * @param {float*}
- * @param {float*}
- */
-getEye : function () {},
-
-/**
  * @method getZEye
  * @return A value converted from C/C++ "float"
  */
@@ -5345,12 +5363,6 @@ Camera : function () {},
 cc.LabelAtlas = {
 
 /**
- * @method setString
- * @param {const std::string&}
- */
-setString : function () {},
-
-/**
  * @method updateAtlasValues
  */
 updateAtlasValues : function () {},
@@ -5360,6 +5372,18 @@ updateAtlasValues : function () {},
  * @return A value converted from C/C++ "const std::string&"
  */
 getString : function () {},
+
+/**
+ * @method setString
+ * @param {const std::string&}
+ */
+setString : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method LabelAtlas
@@ -5866,6 +5890,12 @@ setFlippedY : function () {},
 setFlippedX : function () {},
 
 /**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
+
+/**
  * @method setRotationX
  * @param {float}
  */
@@ -6144,6 +6174,12 @@ getFontSize : function () {},
 getString : function () {},
 
 /**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
+
+/**
  * @method setTextDefinition
  * @param {const cocos2d::FontDefinition&}
  */
@@ -6285,6 +6321,12 @@ reorderBatch : function () {},
  * @method visit
  */
 visit : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method setTexture
@@ -6441,6 +6483,12 @@ createFontChars : function () {},
  * @return A value converted from C/C++ "const std::string&"
  */
 getString : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method setScale
@@ -6633,6 +6681,12 @@ addChild : function () {},
  * @return A value converted from C/C++ "const std::string&"
  */
 getString : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method getXOffsetForChar
@@ -6942,6 +6996,12 @@ createWithTTF : function () {},
 cc.Layer = {
 
 /**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
+
+/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::Layer*"
  */
@@ -7033,6 +7093,12 @@ updateDisplayedColor : function () {},
 getOpacity : function () {},
 
 /**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
+
+/**
  * @method getDisplayedColor
  * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
@@ -7068,6 +7134,12 @@ setColor : function () {},
  * @param {float}
  */
 changeWidthAndHeight : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method setOpacity
@@ -7172,12 +7244,24 @@ getEndOpacity : function () {},
  */
 setStartColor : function () {},
 
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
+
 };
 
 /**
  * @class LayerMultiplex
  */
 cc.LayerMultiplex = {
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method switchToAndReleaseMe
@@ -7203,6 +7287,12 @@ switchTo : function () {},
  * @class Scene
  */
 cc.Scene = {
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method update
@@ -7928,6 +8018,12 @@ isEnabled : function () {},
 selected : function () {},
 
 /**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
+
+/**
  * @method isSelected
  * @return A value converted from C/C++ "bool"
  */
@@ -8235,6 +8331,12 @@ setOpacityModifyRGB : function () {},
  * @return A value converted from C/C++ "bool"
  */
 isEnabled : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method removeChild
@@ -9519,6 +9621,12 @@ createWithTotalParticles : function () {},
 cc.ParticleSystem = {
 
 /**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
+
+/**
  * @method setTextureWithRect
  * @param {cocos2d::Texture2D*}
  * @param {const cocos2d::Rect&}
@@ -10381,6 +10489,12 @@ removeAllTextures : function () {},
 removeTextureForKey : function () {},
 
 /**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
+
+/**
  * @method getTextureForKey
  * @return A value converted from C/C++ "cocos2d::Texture2D*"
  * @param {const std::string&}
@@ -10785,6 +10899,12 @@ addChild : function () {},
 getTileGIDAt : function () {},
 
 /**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
+
+/**
  * @method getPositionAt
  * @return A value converted from C/C++ "cocos2d::Point"
  * @param {const cocos2d::Point&}
@@ -10956,6 +11076,12 @@ setMapSize : function () {},
  * @param {const std::string&}
  */
 getObjectGroup : function () {},
+
+/**
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
+ */
+getDescription : function () {},
 
 /**
  * @method getTileSize

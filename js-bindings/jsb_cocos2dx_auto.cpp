@@ -2121,23 +2121,6 @@ JSBool js_cocos2dx_Texture2D_hasPremultipliedAlpha(JSContext *cx, uint32_t argc,
 	JS_ReportError(cx, "js_cocos2dx_Texture2D_hasPremultipliedAlpha : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Texture2D_getPixelsHigh(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Texture2D* cobj = (cocos2d::Texture2D *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Texture2D_getPixelsHigh : Invalid Native Object");
-	if (argc == 0) {
-		int ret = cobj->getPixelsHigh();
-		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Texture2D_getPixelsHigh : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Texture2D_initWithMipmaps(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -2166,6 +2149,23 @@ JSBool js_cocos2dx_Texture2D_initWithMipmaps(JSContext *cx, uint32_t argc, jsval
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Texture2D_initWithMipmaps : wrong number of arguments: %d, was expecting %d", argc, 5);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Texture2D_getPixelsHigh(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Texture2D* cobj = (cocos2d::Texture2D *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Texture2D_getPixelsHigh : Invalid Native Object");
+	if (argc == 0) {
+		int ret = cobj->getPixelsHigh();
+		jsval jsret;
+		jsret = int32_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Texture2D_getPixelsHigh : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Texture2D_getBitsPerPixelForFormat(JSContext *cx, uint32_t argc, jsval *vp)
@@ -2448,6 +2448,23 @@ JSBool js_cocos2dx_Texture2D_generateMipmap(JSContext *cx, uint32_t argc, jsval 
 	JS_ReportError(cx, "js_cocos2dx_Texture2D_generateMipmap : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Texture2D_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Texture2D* cobj = (cocos2d::Texture2D *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Texture2D_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Texture2D_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Texture2D_getPixelFormat(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -2672,8 +2689,8 @@ void js_register_cocos2dx_Texture2D(JSContext *cx, JSObject *global) {
 		JS_FN("setShaderProgram", js_cocos2dx_Texture2D_setShaderProgram, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getMaxS", js_cocos2dx_Texture2D_getMaxS, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("hasPremultipliedAlpha", js_cocos2dx_Texture2D_hasPremultipliedAlpha, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getPixelsHigh", js_cocos2dx_Texture2D_getPixelsHigh, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("initWithMipmaps", js_cocos2dx_Texture2D_initWithMipmaps, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getPixelsHigh", js_cocos2dx_Texture2D_getPixelsHigh, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getBitsPerPixelForFormat", js_cocos2dx_Texture2D_getBitsPerPixelForFormat, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getName", js_cocos2dx_Texture2D_getName, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("initWithString", js_cocos2dx_Texture2D_initWithString, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2683,6 +2700,7 @@ void js_register_cocos2dx_Texture2D(JSContext *cx, JSObject *global) {
 		JS_FN("setAliasTexParameters", js_cocos2dx_Texture2D_setAliasTexParameters, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAntiAliasTexParameters", js_cocos2dx_Texture2D_setAntiAliasTexParameters, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("generateMipmap", js_cocos2dx_Texture2D_generateMipmap, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_Texture2D_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPixelFormat", js_cocos2dx_Texture2D_getPixelFormat, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getContentSizeInPixels", js_cocos2dx_Texture2D_getContentSizeInPixels, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPixelsWide", js_cocos2dx_Texture2D_getPixelsWide, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2903,6 +2921,23 @@ JSBool js_cocos2dx_Node_getShaderProgram(JSContext *cx, uint32_t argc, jsval *vp
 	} while(0);
 
 	JS_ReportError(cx, "js_cocos2dx_Node_getShaderProgram : wrong number of arguments");
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Node_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Node_getChildren(JSContext *cx, uint32_t argc, jsval *vp)
@@ -5054,6 +5089,7 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("removeComponent", js_cocos2dx_Node_removeComponent, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setPhysicsBody", js_cocos2dx_Node_setPhysicsBody, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getShaderProgram", js_cocos2dx_Node_getShaderProgram, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_Node_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getChildren", js_cocos2dx_Node_getChildren, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("pause", js_cocos2dx_Node_pause, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("convertToWorldSpaceAR", js_cocos2dx_Node_convertToWorldSpaceAR, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -24967,6 +25003,30 @@ JSBool js_cocos2dx_Camera_restore(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Camera_restore : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Camera_getEye(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Camera* cobj = (cocos2d::Camera *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Camera_getEye : Invalid Native Object");
+	if (argc == 3) {
+		float* arg0;
+		float* arg1;
+		float* arg2;
+		#pragma warning NO CONVERSION TO NATIVE FOR float*;
+		#pragma warning NO CONVERSION TO NATIVE FOR float*;
+		#pragma warning NO CONVERSION TO NATIVE FOR float*;
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Camera_getEye : Error processing arguments");
+		cobj->getEye(arg0, arg1, arg2);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Camera_getEye : wrong number of arguments: %d, was expecting %d", argc, 3);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Camera_setEye(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -25013,6 +25073,23 @@ JSBool js_cocos2dx_Camera_setCenter(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Camera_setCenter : wrong number of arguments: %d, was expecting %d", argc, 3);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Camera_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Camera* cobj = (cocos2d::Camera *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Camera_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Camera_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Camera_getCenter(JSContext *cx, uint32_t argc, jsval *vp)
@@ -25139,30 +25216,6 @@ JSBool js_cocos2dx_Camera_getUp(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Camera_getUp : wrong number of arguments: %d, was expecting %d", argc, 3);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Camera_getEye(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Camera* cobj = (cocos2d::Camera *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Camera_getEye : Invalid Native Object");
-	if (argc == 3) {
-		float* arg0;
-		float* arg1;
-		float* arg2;
-		#pragma warning NO CONVERSION TO NATIVE FOR float*;
-		#pragma warning NO CONVERSION TO NATIVE FOR float*;
-		#pragma warning NO CONVERSION TO NATIVE FOR float*;
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Camera_getEye : Error processing arguments");
-		cobj->getEye(arg0, arg1, arg2);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Camera_getEye : wrong number of arguments: %d, was expecting %d", argc, 3);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Camera_getZEye(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
@@ -25229,15 +25282,16 @@ void js_register_cocos2dx_Camera(JSContext *cx, JSObject *global) {
 	static JSFunctionSpec funcs[] = {
 		JS_FN("locate", js_cocos2dx_Camera_locate, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("restore", js_cocos2dx_Camera_restore, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getEye", js_cocos2dx_Camera_getEye, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setEye", js_cocos2dx_Camera_setEye, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setCenter", js_cocos2dx_Camera_setCenter, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_Camera_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCenter", js_cocos2dx_Camera_getCenter, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isDirty", js_cocos2dx_Camera_isDirty, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("init", js_cocos2dx_Camera_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setDirty", js_cocos2dx_Camera_setDirty, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setUp", js_cocos2dx_Camera_setUp, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getUp", js_cocos2dx_Camera_getUp, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getEye", js_cocos2dx_Camera_getEye, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -25277,6 +25331,38 @@ void js_register_cocos2dx_Camera(JSContext *cx, JSObject *global) {
 JSClass  *jsb_LabelAtlas_class;
 JSObject *jsb_LabelAtlas_prototype;
 
+JSBool js_cocos2dx_LabelAtlas_updateAtlasValues(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelAtlas* cobj = (cocos2d::LabelAtlas *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelAtlas_updateAtlasValues : Invalid Native Object");
+	if (argc == 0) {
+		cobj->updateAtlasValues();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelAtlas_updateAtlasValues : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelAtlas_getString(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelAtlas* cobj = (cocos2d::LabelAtlas *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelAtlas_getString : Invalid Native Object");
+	if (argc == 0) {
+		const std::string& ret = cobj->getString();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelAtlas_getString : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_LabelAtlas_setString(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -25384,36 +25470,21 @@ JSBool js_cocos2dx_LabelAtlas_initWithString(JSContext *cx, uint32_t argc, jsval
 	JS_ReportError(cx, "js_cocos2dx_LabelAtlas_initWithString : wrong number of arguments");
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LabelAtlas_updateAtlasValues(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_LabelAtlas_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::LabelAtlas* cobj = (cocos2d::LabelAtlas *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelAtlas_updateAtlasValues : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelAtlas_getDescription : Invalid Native Object");
 	if (argc == 0) {
-		cobj->updateAtlasValues();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelAtlas_updateAtlasValues : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelAtlas_getString(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelAtlas* cobj = (cocos2d::LabelAtlas *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelAtlas_getString : Invalid Native Object");
-	if (argc == 0) {
-		const std::string& ret = cobj->getString();
+		std::string ret = cobj->getDescription();
 		jsval jsret;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LabelAtlas_getString : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_LabelAtlas_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LabelAtlas_create(JSContext *cx, uint32_t argc, jsval *vp)
@@ -25530,10 +25601,11 @@ void js_register_cocos2dx_LabelAtlas(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("setString", js_cocos2dx_LabelAtlas_setString, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("initWithString", js_cocos2dx_LabelAtlas_initWithString, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("updateAtlasValues", js_cocos2dx_LabelAtlas_updateAtlasValues, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getString", js_cocos2dx_LabelAtlas_getString, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setString", js_cocos2dx_LabelAtlas_setString, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("initWithString", js_cocos2dx_LabelAtlas_initWithString, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_LabelAtlas_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -27803,6 +27875,23 @@ JSBool js_cocos2dx_Sprite_setFlippedX(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Sprite_setFlippedX : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Sprite_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Sprite_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Sprite_setRotationX(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -29003,6 +29092,7 @@ void js_register_cocos2dx_Sprite(JSContext *cx, JSObject *global) {
 		JS_FN("setRotationY", js_cocos2dx_Sprite_setRotationY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setFlippedY", js_cocos2dx_Sprite_setFlippedY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setFlippedX", js_cocos2dx_Sprite_setFlippedX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_Sprite_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setRotationX", js_cocos2dx_Sprite_setRotationX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScale", js_cocos2dx_Sprite_setScale, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setOpacity", js_cocos2dx_Sprite_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -29177,6 +29267,23 @@ JSBool js_cocos2dx_LabelTTF_getString(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_LabelTTF_getString : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelTTF_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelTTF* cobj = (cocos2d::LabelTTF *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelTTF_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelTTF_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LabelTTF_setTextDefinition(JSContext *cx, uint32_t argc, jsval *vp)
@@ -29825,6 +29932,7 @@ void js_register_cocos2dx_LabelTTF(JSContext *cx, JSObject *global) {
 		JS_FN("setDimensions", js_cocos2dx_LabelTTF_setDimensions, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getFontSize", js_cocos2dx_LabelTTF_getFontSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getString", js_cocos2dx_LabelTTF_getString, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_LabelTTF_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTextDefinition", js_cocos2dx_LabelTTF_setTextDefinition, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setFontName", js_cocos2dx_LabelTTF_setFontName, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getHorizontalAlignment", js_cocos2dx_LabelTTF_getHorizontalAlignment, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -30020,6 +30128,23 @@ JSBool js_cocos2dx_SpriteBatchNode_visit(JSContext *cx, uint32_t argc, jsval *vp
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_SpriteBatchNode_visit : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_SpriteBatchNode_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::SpriteBatchNode* cobj = (cocos2d::SpriteBatchNode *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_SpriteBatchNode_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_SpriteBatchNode_removeAllChildrenWithCleanup(JSContext *cx, uint32_t argc, jsval *vp)
@@ -30645,6 +30770,7 @@ void js_register_cocos2dx_SpriteBatchNode(JSContext *cx, JSObject *global) {
 		JS_FN("reorderBatch", js_cocos2dx_SpriteBatchNode_reorderBatch, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addChild", js_cocos2dx_SpriteBatchNode_addChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("visit", js_cocos2dx_SpriteBatchNode_visit, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_SpriteBatchNode_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeAllChildren", js_cocos2dx_SpriteBatchNode_removeAllChildrenWithCleanup, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTexture", js_cocos2dx_SpriteBatchNode_setTexture, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeChildAtIndex", js_cocos2dx_SpriteBatchNode_removeChildAtIndex, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -30753,6 +30879,23 @@ JSBool js_cocos2dx_LabelBMFont_getString(JSContext *cx, uint32_t argc, jsval *vp
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getString : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelBMFont_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LabelBMFont_setScale(JSContext *cx, uint32_t argc, jsval *vp)
@@ -31534,6 +31677,7 @@ void js_register_cocos2dx_LabelBMFont(JSContext *cx, JSObject *global) {
 		JS_FN("setAnchorPoint", js_cocos2dx_LabelBMFont_setAnchorPoint, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("createFontChars", js_cocos2dx_LabelBMFont_createFontChars, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getString", js_cocos2dx_LabelBMFont_getString, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_LabelBMFont_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScale", js_cocos2dx_LabelBMFont_setScale, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setOpacity", js_cocos2dx_LabelBMFont_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setCascadeOpacityEnabled", js_cocos2dx_LabelBMFont_setCascadeOpacityEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -31679,6 +31823,23 @@ JSBool js_cocos2dx_Label_getString(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Label_getString : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Label_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Label_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Label_getXOffsetForChar(JSContext *cx, uint32_t argc, jsval *vp)
@@ -32798,6 +32959,7 @@ void js_register_cocos2dx_Label(JSContext *cx, JSObject *global) {
 	static JSFunctionSpec funcs[] = {
 		JS_FN("addChild", js_cocos2dx_Label_addChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getString", js_cocos2dx_Label_getString, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_Label_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getXOffsetForChar", js_cocos2dx_Label_getXOffsetForChar, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScale", js_cocos2dx_Label_setScale, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setOpacity", js_cocos2dx_Label_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -32881,6 +33043,23 @@ void js_register_cocos2dx_Label(JSContext *cx, JSObject *global) {
 JSClass  *jsb_Layer_class;
 JSObject *jsb_Layer_prototype;
 
+JSBool js_cocos2dx_Layer_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Layer* cobj = (cocos2d::Layer *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Layer_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Layer_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Layer_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
@@ -32934,7 +33113,11 @@ void js_register_cocos2dx_Layer(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+		JS_FN("getDescription", js_cocos2dx_Layer_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("ctor", js_cocos2dx_Layer_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_Layer_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -33214,6 +33397,23 @@ JSBool js_cocos2dx_LayerRGBA_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_LayerRGBA_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_LayerRGBA_getDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -33298,6 +33498,7 @@ void js_register_cocos2dx_LayerRGBA(JSContext *cx, JSObject *global) {
 		JS_FN("isCascadeColorEnabled", js_cocos2dx_LayerRGBA_isCascadeColorEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("updateDisplayedColor", js_cocos2dx_LayerRGBA_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getOpacity", js_cocos2dx_LayerRGBA_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_LayerRGBA_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getDisplayedColor", js_cocos2dx_LayerRGBA_getDisplayedColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_cocos2dx_LayerRGBA_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
@@ -33394,6 +33595,23 @@ JSBool js_cocos2dx_LayerColor_changeWidthAndHeight(JSContext *cx, uint32_t argc,
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_LayerColor_changeWidthAndHeight : wrong number of arguments: %d, was expecting %d", argc, 2);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LayerColor_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LayerColor* cobj = (cocos2d::LayerColor *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerColor_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LayerColor_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LayerColor_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
@@ -33583,6 +33801,7 @@ void js_register_cocos2dx_LayerColor(JSContext *cx, JSObject *global) {
 		JS_FN("draw", js_cocos2dx_LayerColor_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setColor", js_cocos2dx_LayerColor_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("changeWidthAndHeight", js_cocos2dx_LayerColor_changeWidthAndHeight, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_LayerColor_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setOpacity", js_cocos2dx_LayerColor_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("changeWidth", js_cocos2dx_LayerColor_changeWidth, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setContentSize", js_cocos2dx_LayerColor_setContentSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -33908,6 +34127,23 @@ JSBool js_cocos2dx_LayerGradient_setStartColor(JSContext *cx, uint32_t argc, jsv
 	JS_ReportError(cx, "js_cocos2dx_LayerGradient_setStartColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_LayerGradient_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LayerGradient* cobj = (cocos2d::LayerGradient *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerGradient_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LayerGradient_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_LayerGradient_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -34028,6 +34264,7 @@ void js_register_cocos2dx_LayerGradient(JSContext *cx, JSObject *global) {
 		JS_FN("getEndColor", js_cocos2dx_LayerGradient_getEndColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getEndOpacity", js_cocos2dx_LayerGradient_getEndOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setStartColor", js_cocos2dx_LayerGradient_setStartColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_LayerGradient_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_cocos2dx_LayerGradient_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
@@ -34068,6 +34305,23 @@ void js_register_cocos2dx_LayerGradient(JSContext *cx, JSObject *global) {
 JSClass  *jsb_LayerMultiplex_class;
 JSObject *jsb_LayerMultiplex_prototype;
 
+JSBool js_cocos2dx_LayerMultiplex_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LayerMultiplex* cobj = (cocos2d::LayerMultiplex *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerMultiplex_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LayerMultiplex_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_LayerMultiplex_switchToAndReleaseMe(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -34169,6 +34423,7 @@ void js_register_cocos2dx_LayerMultiplex(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
+		JS_FN("getDescription", js_cocos2dx_LayerMultiplex_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("switchToAndReleaseMe", js_cocos2dx_LayerMultiplex_switchToAndReleaseMe, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addLayer", js_cocos2dx_LayerMultiplex_addLayer, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("switchTo", js_cocos2dx_LayerMultiplex_switchTo, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -34284,6 +34539,23 @@ JSBool js_cocos2dx_Scene_addChild(JSContext *cx, uint32_t argc, jsval *vp)
 	} while(0);
 
 	JS_ReportError(cx, "js_cocos2dx_Scene_addChild : wrong number of arguments");
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Scene_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Scene_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Scene_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Scene_update(JSContext *cx, uint32_t argc, jsval *vp)
@@ -34405,6 +34677,7 @@ void js_register_cocos2dx_Scene(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("addChild", js_cocos2dx_Scene_addChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_Scene_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("update", js_cocos2dx_Scene_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPhysicsWorld", js_cocos2dx_Scene_getPhysicsWorld, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_cocos2dx_Scene_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -39023,6 +39296,23 @@ JSBool js_cocos2dx_MenuItem_selected(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_MenuItem_selected : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_MenuItem_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::MenuItem* cobj = (cocos2d::MenuItem *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_MenuItem_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_MenuItem_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_MenuItem_isSelected(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -39101,6 +39391,7 @@ void js_register_cocos2dx_MenuItem(JSContext *cx, JSObject *global) {
 		JS_FN("activate", js_cocos2dx_MenuItem_activate, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isEnabled", js_cocos2dx_MenuItem_isEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("selected", js_cocos2dx_MenuItem_selected, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_MenuItem_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isSelected", js_cocos2dx_MenuItem_isSelected, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("unselected", js_cocos2dx_MenuItem_unselected, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("rect", js_cocos2dx_MenuItem_rect, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -40384,6 +40675,23 @@ JSBool js_cocos2dx_Menu_isEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Menu_isEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Menu_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Menu* cobj = (cocos2d::Menu *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Menu_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Menu_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Menu_removeChild(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -40591,6 +40899,7 @@ void js_register_cocos2dx_Menu(JSContext *cx, JSObject *global) {
 		JS_FN("alignItemsVertically", js_cocos2dx_Menu_alignItemsVertically, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setOpacityModifyRGB", js_cocos2dx_Menu_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isEnabled", js_cocos2dx_Menu_isEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_Menu_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeChild", js_cocos2dx_Menu_removeChild, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addChild", js_cocos2dx_Menu_addChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("alignItemsHorizontally", js_cocos2dx_Menu_alignItemsHorizontally, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -45363,6 +45672,23 @@ void js_register_cocos2dx_ParticleSystem(JSContext *cx, JSObject *global) {
 JSClass  *jsb_ParticleSystemQuad_class;
 JSObject *jsb_ParticleSystemQuad_prototype;
 
+JSBool js_cocos2dx_ParticleSystemQuad_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::ParticleSystemQuad* cobj = (cocos2d::ParticleSystemQuad *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ParticleSystemQuad_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_ParticleSystemQuad_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_ParticleSystemQuad_setTextureWithRect(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -45513,6 +45839,7 @@ void js_register_cocos2dx_ParticleSystemQuad(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
+		JS_FN("getDescription", js_cocos2dx_ParticleSystemQuad_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTextureWithRect", js_cocos2dx_ParticleSystemQuad_setTextureWithRect, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setDisplayFrame", js_cocos2dx_ParticleSystemQuad_setDisplayFrame, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
@@ -48913,6 +49240,23 @@ JSBool js_cocos2dx_TextureCache_removeTextureForKey(JSContext *cx, uint32_t argc
 	JS_ReportError(cx, "js_cocos2dx_TextureCache_removeTextureForKey : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_TextureCache_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TextureCache* cobj = (cocos2d::TextureCache *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TextureCache_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_TextureCache_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_TextureCache_addImage(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -49117,6 +49461,7 @@ void js_register_cocos2dx_TextureCache(JSContext *cx, JSObject *global) {
 		JS_FN("dumpCachedTextureInfo", js_cocos2dx_TextureCache_dumpCachedTextureInfo, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeAllTextures", js_cocos2dx_TextureCache_removeAllTextures, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeTextureForKey", js_cocos2dx_TextureCache_removeTextureForKey, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_TextureCache_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addImage", js_cocos2dx_TextureCache_addImage, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTextureForKey", js_cocos2dx_TextureCache_getTextureForKey, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeUnusedTextures", js_cocos2dx_TextureCache_removeUnusedTextures, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -50889,6 +51234,23 @@ JSBool js_cocos2dx_TMXLayer_getTileGIDAt(JSContext *cx, uint32_t argc, jsval *vp
 	JS_ReportError(cx, "js_cocos2dx_TMXLayer_getTileGIDAt : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_TMXLayer_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TMXLayer* cobj = (cocos2d::TMXLayer *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXLayer_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_TMXLayer_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_TMXLayer_getPositionAt(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -51510,6 +51872,7 @@ void js_register_cocos2dx_TMXLayer(JSContext *cx, JSObject *global) {
 	static JSFunctionSpec funcs[] = {
 		JS_FN("addChild", js_cocos2dx_TMXLayer_addChild, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTileGIDAt", js_cocos2dx_TMXLayer_getTileGIDAt, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_TMXLayer_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPositionAt", js_cocos2dx_TMXLayer_getPositionAt, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setLayerOrientation", js_cocos2dx_TMXLayer_setLayerOrientation, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("releaseMap", js_cocos2dx_TMXLayer_releaseMap, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -51660,6 +52023,23 @@ JSBool js_cocos2dx_TMXTiledMap_getObjectGroup(JSContext *cx, uint32_t argc, jsva
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_TMXTiledMap_getObjectGroup : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_TMXTiledMap_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TMXTiledMap* cobj = (cocos2d::TMXTiledMap *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXTiledMap_getDescription : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getDescription();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_TMXTiledMap_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_TMXTiledMap_getObjectGroups(JSContext *cx, uint32_t argc, jsval *vp)
@@ -51956,6 +52336,7 @@ void js_register_cocos2dx_TMXTiledMap(JSContext *cx, JSObject *global) {
 		JS_FN("getProperty", js_cocos2dx_TMXTiledMap_getProperty, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setMapSize", js_cocos2dx_TMXTiledMap_setMapSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getObjectGroup", js_cocos2dx_TMXTiledMap_getObjectGroup, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_TMXTiledMap_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getObjectGroups", js_cocos2dx_TMXTiledMap_getObjectGroups, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTileSize", js_cocos2dx_TMXTiledMap_getTileSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getMapSize", js_cocos2dx_TMXTiledMap_getMapSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
