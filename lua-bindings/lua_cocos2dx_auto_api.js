@@ -290,7 +290,7 @@ cc.GLProgram = {
 
 /**
  * @method getFragmentShaderLog
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getFragmentShaderLog : function () {},
 
@@ -323,7 +323,7 @@ use : function () {},
 
 /**
  * @method getVertexShaderLog
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "std::string"
  */
 getVertexShaderLog : function () {},
 

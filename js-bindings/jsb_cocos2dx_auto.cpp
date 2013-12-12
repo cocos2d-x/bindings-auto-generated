@@ -1141,9 +1141,9 @@ JSBool js_cocos2dx_GLProgram_getFragmentShaderLog(JSContext *cx, uint32_t argc, 
 	cocos2d::GLProgram* cobj = (cocos2d::GLProgram *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_GLProgram_getFragmentShaderLog : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getFragmentShaderLog();
+		std::string ret = cobj->getFragmentShaderLog();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -1241,9 +1241,9 @@ JSBool js_cocos2dx_GLProgram_getVertexShaderLog(JSContext *cx, uint32_t argc, js
 	cocos2d::GLProgram* cobj = (cocos2d::GLProgram *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_GLProgram_getVertexShaderLog : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getVertexShaderLog();
+		std::string ret = cobj->getVertexShaderLog();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}

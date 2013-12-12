@@ -3261,16 +3261,7 @@ int lua_cocos2dx_extension_ControlButton_setTitleForState(lua_State* tolua_S)
     {
         cocos2d::String* arg0;
         cocos2d::extension::Control::State arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"String",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::String*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        #pragma warning NO CONVERSION TO NATIVE FOR String*;
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -4152,19 +4143,7 @@ int lua_cocos2dx_extension_ControlButton_getCurrentTitle(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::String* ret = cobj->getCurrentTitle();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::String*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"String");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"String");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        #pragma warning NO CONVERSION FROM NATIVE FOR String*;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurrentTitle",argc, 0);
@@ -5199,19 +5178,7 @@ int lua_cocos2dx_extension_ControlButton_getTitleForState(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::String* ret = cobj->getTitleForState(arg0);
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::String*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"String");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"String");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        #pragma warning NO CONVERSION FROM NATIVE FOR String*;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleForState",argc, 1);

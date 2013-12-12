@@ -2093,8 +2093,8 @@ int lua_cocos2dx_GLProgram_getFragmentShaderLog(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getFragmentShaderLog();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getFragmentShaderLog();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFragmentShaderLog",argc, 0);
@@ -2307,8 +2307,8 @@ int lua_cocos2dx_GLProgram_getVertexShaderLog(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getVertexShaderLog();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        std::string ret = cobj->getVertexShaderLog();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getVertexShaderLog",argc, 0);
