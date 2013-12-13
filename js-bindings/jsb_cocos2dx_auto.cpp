@@ -3669,9 +3669,9 @@ JSBool js_cocos2dx_Node_getNumberOfRunningActions(JSContext *cx, uint32_t argc, 
 	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getNumberOfRunningActions : Invalid Native Object");
 	if (argc == 0) {
-		int ret = cobj->getNumberOfRunningActions();
+		long ret = cobj->getNumberOfRunningActions();
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -3718,9 +3718,9 @@ JSBool js_cocos2dx_Node_getChildrenCount(JSContext *cx, uint32_t argc, jsval *vp
 	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getChildrenCount : Invalid Native Object");
 	if (argc == 0) {
-		int ret = cobj->getChildrenCount();
+		long ret = cobj->getChildrenCount();
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -12650,9 +12650,9 @@ JSBool js_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget(JSContext *cx
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget : Error processing arguments");
-		int ret = cobj->getNumberOfRunningActionsInTarget(arg0);
+		long ret = cobj->getNumberOfRunningActionsInTarget(arg0);
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -28331,9 +28331,9 @@ JSBool js_cocos2dx_Sprite_getAtlasIndex(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_getAtlasIndex : Invalid Native Object");
 	if (argc == 0) {
-		int ret = cobj->getAtlasIndex();
+		long ret = cobj->getAtlasIndex();
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -28418,9 +28418,9 @@ JSBool js_cocos2dx_Sprite_setDisplayFrameWithAnimationName(JSContext *cx, uint32
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_setDisplayFrameWithAnimationName : Invalid Native Object");
 	if (argc == 2) {
 		std::string arg0;
-		int arg1;
+		long arg1;
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_long(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_setDisplayFrameWithAnimationName : Error processing arguments");
 		cobj->setDisplayFrameWithAnimationName(arg0, arg1);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -28507,8 +28507,8 @@ JSBool js_cocos2dx_Sprite_setAtlasIndex(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_setAtlasIndex : Invalid Native Object");
 	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		long arg0;
+		ok &= jsval_to_long(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_setAtlasIndex : Error processing arguments");
 		cobj->setAtlasIndex(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -30203,9 +30203,9 @@ JSBool js_cocos2dx_SpriteBatchNode_removeChildAtIndex(JSContext *cx, uint32_t ar
 	cocos2d::SpriteBatchNode* cobj = (cocos2d::SpriteBatchNode *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_removeChildAtIndex : Invalid Native Object");
 	if (argc == 2) {
-		int arg0;
+		long arg0;
 		JSBool arg1;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		ok &= jsval_to_long(cx, argv[0], &arg0);
 		ok &= JS_ValueToBoolean(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_removeChildAtIndex : Error processing arguments");
 		cobj->removeChildAtIndex(arg0, arg1);
@@ -30264,9 +30264,9 @@ JSBool js_cocos2dx_SpriteBatchNode_atlasIndexForChild(JSContext *cx, uint32_t ar
 		} while (0);
 		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_atlasIndexForChild : Error processing arguments");
-		int ret = cobj->atlasIndexForChild(arg0, arg1);
+		long ret = cobj->atlasIndexForChild(arg0, arg1);
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -30339,8 +30339,8 @@ JSBool js_cocos2dx_SpriteBatchNode_init(JSContext *cx, uint32_t argc, jsval *vp)
 			const char* arg0;
 			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+			long arg1;
+			ok &= jsval_to_long(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			bool ret = cobj->initWithFile(arg0, arg1);
 			jsval jsret;
@@ -30372,9 +30372,9 @@ JSBool js_cocos2dx_SpriteBatchNode_lowestAtlasIndexInChild(JSContext *cx, uint32
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_lowestAtlasIndexInChild : Error processing arguments");
-		int ret = cobj->lowestAtlasIndexInChild(arg0);
+		long ret = cobj->lowestAtlasIndexInChild(arg0);
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -30407,7 +30407,7 @@ JSBool js_cocos2dx_SpriteBatchNode_initWithTexture(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_initWithTexture : Invalid Native Object");
 	if (argc == 2) {
 		cocos2d::Texture2D* arg0;
-		int arg1;
+		long arg1;
 		do {
 			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
 			js_proxy_t *proxy;
@@ -30416,7 +30416,7 @@ JSBool js_cocos2dx_SpriteBatchNode_initWithTexture(JSContext *cx, uint32_t argc,
 			arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_long(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_initWithTexture : Error processing arguments");
 		bool ret = cobj->initWithTexture(arg0, arg1);
 		jsval jsret;
@@ -30509,7 +30509,7 @@ JSBool js_cocos2dx_SpriteBatchNode_rebuildIndexInOrder(JSContext *cx, uint32_t a
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_rebuildIndexInOrder : Invalid Native Object");
 	if (argc == 2) {
 		cocos2d::Sprite* arg0;
-		int arg1;
+		long arg1;
 		do {
 			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
 			js_proxy_t *proxy;
@@ -30518,11 +30518,11 @@ JSBool js_cocos2dx_SpriteBatchNode_rebuildIndexInOrder(JSContext *cx, uint32_t a
 			arg0 = (cocos2d::Sprite*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_long(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_rebuildIndexInOrder : Error processing arguments");
-		int ret = cobj->rebuildIndexInOrder(arg0, arg1);
+		long ret = cobj->rebuildIndexInOrder(arg0, arg1);
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -30602,9 +30602,9 @@ JSBool js_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild(JSContext *cx, uint3
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild : Error processing arguments");
-		int ret = cobj->highestAtlasIndexInChild(arg0);
+		long ret = cobj->highestAtlasIndexInChild(arg0);
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -30635,9 +30635,9 @@ JSBool js_cocos2dx_SpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *v
 	}
 	if (argc == 2) {
 		const char* arg0;
-		int arg1;
+		long arg1;
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_long(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_create : Error processing arguments");
 		cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0, arg1);
 		jsval jsret;
@@ -30686,7 +30686,7 @@ JSBool js_cocos2dx_SpriteBatchNode_createWithTexture(JSContext *cx, uint32_t arg
 	}
 	if (argc == 2) {
 		cocos2d::Texture2D* arg0;
-		int arg1;
+		long arg1;
 		do {
 			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
 			js_proxy_t *proxy;
@@ -30695,7 +30695,7 @@ JSBool js_cocos2dx_SpriteBatchNode_createWithTexture(JSContext *cx, uint32_t arg
 			arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_long(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_SpriteBatchNode_createWithTexture : Error processing arguments");
 		cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::createWithTexture(arg0, arg1);
 		jsval jsret;

@@ -854,7 +854,7 @@ getAnchorPoint : function () {},
 
 /**
  * @method getNumberOfRunningActions
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "long"
  */
 getNumberOfRunningActions : function () {},
 
@@ -871,7 +871,7 @@ isVisible : function () {},
 
 /**
  * @method getChildrenCount
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "long"
  */
 getChildrenCount : function () {},
 
@@ -2666,7 +2666,7 @@ resumeTarget : function () {},
 
 /**
  * @method getNumberOfRunningActionsInTarget
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "long"
  * @param {const cocos2d::Node*}
  */
 getNumberOfRunningActionsInTarget : function () {},
@@ -5939,7 +5939,7 @@ isFrameDisplayed : function () {},
 
 /**
  * @method getAtlasIndex
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "long"
  */
 getAtlasIndex : function () {},
 
@@ -5964,7 +5964,7 @@ setScaleY : function () {},
 /**
  * @method setDisplayFrameWithAnimationName
  * @param {const std::string&}
- * @param {int}
+ * @param {long}
  */
 setDisplayFrameWithAnimationName : function () {},
 
@@ -5988,7 +5988,7 @@ isDirty : function () {},
 
 /**
  * @method setAtlasIndex
- * @param {int}
+ * @param {long}
  */
 setAtlasIndex : function () {},
 
@@ -6305,7 +6305,7 @@ setTexture : function () {},
 
 /**
  * @method removeChildAtIndex
- * @param {int}
+ * @param {long}
  * @param {bool}
  */
 removeChildAtIndex : function () {},
@@ -6318,7 +6318,7 @@ removeSpriteFromAtlas : function () {},
 
 /**
  * @method atlasIndexForChild
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "long"
  * @param {cocos2d::Sprite*}
  * @param {int}
  */
@@ -6337,7 +6337,7 @@ increaseAtlasCapacity : function () {},
 
 /**
  * @method lowestAtlasIndexInChild
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "long"
  * @param {cocos2d::Sprite*}
  */
 lowestAtlasIndexInChild : function () {},
@@ -6351,7 +6351,7 @@ draw : function () {},
  * @method initWithTexture
  * @return A value converted from C/C++ "bool"
  * @param {cocos2d::Texture2D*}
- * @param {int}
+ * @param {long}
  */
 initWithTexture : function () {},
 
@@ -6375,9 +6375,9 @@ reorderChild : function () {},
 
 /**
  * @method rebuildIndexInOrder
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "long"
  * @param {cocos2d::Sprite*}
- * @param {int}
+ * @param {long}
  */
 rebuildIndexInOrder : function () {},
 
@@ -6396,7 +6396,7 @@ removeChild : function () {},
 
 /**
  * @method highestAtlasIndexInChild
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "long"
  * @param {cocos2d::Sprite*}
  */
 highestAtlasIndexInChild : function () {},
@@ -6405,7 +6405,7 @@ highestAtlasIndexInChild : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::SpriteBatchNode*"
  * @param {const char*}
- * @param {int}
+ * @param {long}
  */
 create : function () {},
 
@@ -6413,7 +6413,7 @@ create : function () {},
  * @method createWithTexture
  * @return A value converted from C/C++ "cocos2d::SpriteBatchNode*"
  * @param {cocos2d::Texture2D*}
- * @param {int}
+ * @param {long}
  */
 createWithTexture : function () {},
 

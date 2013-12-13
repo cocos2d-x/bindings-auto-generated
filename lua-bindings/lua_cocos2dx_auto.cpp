@@ -6765,7 +6765,7 @@ int lua_cocos2dx_Node_getNumberOfRunningActions(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        int ret = cobj->getNumberOfRunningActions();
+        long ret = cobj->getNumberOfRunningActions();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -6887,7 +6887,7 @@ int lua_cocos2dx_Node_getChildrenCount(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        int ret = cobj->getChildrenCount();
+        long ret = cobj->getChildrenCount();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -21033,7 +21033,7 @@ int lua_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget(lua_State* tolu
 			}}} while (0);
         if(!ok)
             return 0;
-        int ret = cobj->getNumberOfRunningActionsInTarget(arg0);
+        long ret = cobj->getNumberOfRunningActionsInTarget(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -44377,7 +44377,7 @@ int lua_cocos2dx_Sprite_getAtlasIndex(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        int ret = cobj->getAtlasIndex();
+        long ret = cobj->getAtlasIndex();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -44552,9 +44552,9 @@ int lua_cocos2dx_Sprite_setDisplayFrameWithAnimationName(lua_State* tolua_S)
     if (argc == 2) 
     {
         std::string arg0;
-        int arg1;
+        long arg1;
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        ok &= luaval_to_long(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cobj->setDisplayFrameWithAnimationName(arg0, arg1);
@@ -44740,8 +44740,8 @@ int lua_cocos2dx_Sprite_setAtlasIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        long arg0;
+        ok &= luaval_to_long(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setAtlasIndex(arg0);
@@ -47563,9 +47563,9 @@ int lua_cocos2dx_SpriteBatchNode_removeChildAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        int arg0;
+        long arg0;
         bool arg1;
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        ok &= luaval_to_long(tolua_S, 2, &arg0);
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -47673,7 +47673,7 @@ int lua_cocos2dx_SpriteBatchNode_atlasIndexForChild(lua_State* tolua_S)
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
-        int ret = cobj->atlasIndexForChild(arg0, arg1);
+        long ret = cobj->atlasIndexForChild(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -47812,8 +47812,8 @@ int lua_cocos2dx_SpriteBatchNode_init(lua_State* tolua_S)
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { break; }
-            int arg1;
-            ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+            long arg1;
+            ok &= luaval_to_long(tolua_S, 3, &arg1);
 
             if (!ok) { break; }
             bool ret = cobj->initWithFile(arg0, arg1);
@@ -47870,7 +47870,7 @@ int lua_cocos2dx_SpriteBatchNode_lowestAtlasIndexInChild(lua_State* tolua_S)
 			}}} while (0);
         if(!ok)
             return 0;
-        int ret = cobj->lowestAtlasIndexInChild(arg0);
+        long ret = cobj->lowestAtlasIndexInChild(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -47950,7 +47950,7 @@ int lua_cocos2dx_SpriteBatchNode_initWithTexture(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::Texture2D* arg0;
-        int arg1;
+        long arg1;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Texture2D",0)){
 					ok = false;
@@ -47961,7 +47961,7 @@ int lua_cocos2dx_SpriteBatchNode_initWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        ok &= luaval_to_long(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         bool ret = cobj->initWithTexture(arg0, arg1);
@@ -48190,7 +48190,7 @@ int lua_cocos2dx_SpriteBatchNode_rebuildIndexInOrder(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::Sprite* arg0;
-        int arg1;
+        long arg1;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Sprite",0)){
 					ok = false;
@@ -48201,10 +48201,10 @@ int lua_cocos2dx_SpriteBatchNode_rebuildIndexInOrder(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        ok &= luaval_to_long(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
-        int ret = cobj->rebuildIndexInOrder(arg0, arg1);
+        long ret = cobj->rebuildIndexInOrder(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -48362,7 +48362,7 @@ int lua_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild(lua_State* tolua_S)
 			}}} while (0);
         if(!ok)
             return 0;
-        int ret = cobj->highestAtlasIndexInChild(arg0);
+        long ret = cobj->highestAtlasIndexInChild(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -48414,9 +48414,9 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
     if (argc == 2)
     {
         const char* arg0;
-        int arg1;
+        long arg1;
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        ok &= luaval_to_long(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0, arg1);
@@ -48492,7 +48492,7 @@ int lua_cocos2dx_SpriteBatchNode_createWithTexture(lua_State* tolua_S)
     if (argc == 2)
     {
         cocos2d::Texture2D* arg0;
-        int arg1;
+        long arg1;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Texture2D",0)){
 					ok = false;
@@ -48503,7 +48503,7 @@ int lua_cocos2dx_SpriteBatchNode_createWithTexture(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        ok &= luaval_to_long(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::createWithTexture(arg0, arg1);
