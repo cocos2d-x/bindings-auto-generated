@@ -3261,7 +3261,7 @@ int lua_cocos2dx_extension_ControlButton_setTitleForState(lua_State* tolua_S)
     {
         cocos2d::String* arg0;
         cocos2d::extension::Control::State arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR String*;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = cocos2d::String::create(arg0_tmp);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -4143,7 +4143,7 @@ int lua_cocos2dx_extension_ControlButton_getCurrentTitle(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::String* ret = cobj->getCurrentTitle();
-        #pragma warning NO CONVERSION FROM NATIVE FOR String*;
+        tolua_pushstring(tolua_S, ret->getCString());
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurrentTitle",argc, 0);
@@ -5178,7 +5178,7 @@ int lua_cocos2dx_extension_ControlButton_getTitleForState(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::String* ret = cobj->getTitleForState(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR String*;
+        tolua_pushstring(tolua_S, ret->getCString());
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleForState",argc, 1);
@@ -14242,8 +14242,8 @@ int lua_cocos2dx_extension_TableView_updateCellAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        long arg0;
-        ok &= luaval_to_long(tolua_S, 2, &arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->updateCellAtIndex(arg0);
@@ -14520,8 +14520,8 @@ int lua_cocos2dx_extension_TableView_removeCellAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        long arg0;
-        ok &= luaval_to_long(tolua_S, 2, &arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->removeCellAtIndex(arg0);
@@ -14904,8 +14904,8 @@ int lua_cocos2dx_extension_TableView_insertCellAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        long arg0;
-        ok &= luaval_to_long(tolua_S, 2, &arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->insertCellAtIndex(arg0);
@@ -14946,8 +14946,8 @@ int lua_cocos2dx_extension_TableView_cellAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        long arg0;
-        ok &= luaval_to_long(tolua_S, 2, &arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cocos2d::extension::TableViewCell* ret = cobj->cellAtIndex(arg0);
