@@ -1493,7 +1493,7 @@ ccs.UICCLabelAtlas = {
 
 /**
  * @method updateDisplayedOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 updateDisplayedOpacity : function () {},
 
@@ -3407,7 +3407,7 @@ getName : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -3425,7 +3425,7 @@ removeDisplay : function () {},
 
 /**
  * @method updateDisplayedOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 updateDisplayedOpacity : function () {},
 

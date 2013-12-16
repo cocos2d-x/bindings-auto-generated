@@ -254,25 +254,25 @@ ccs.ColliderFilter = {
 
 /**
  * @method setCollisionType
- * @param {unsigned long}
+ * @param {uintptr_t}
  */
 setCollisionType : function () {},
 
 /**
  * @method setGroup
- * @param {unsigned long}
+ * @param {uintptr_t}
  */
 setGroup : function () {},
 
 /**
  * @method getCollisionType
- * @return A value converted from C/C++ "unsigned long"
+ * @return A value converted from C/C++ "uintptr_t"
  */
 getCollisionType : function () {},
 
 /**
  * @method getGroup
- * @return A value converted from C/C++ "unsigned long"
+ * @return A value converted from C/C++ "uintptr_t"
  */
 getGroup : function () {},
 
@@ -467,7 +467,7 @@ getName : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -485,7 +485,7 @@ removeDisplay : function () {},
 
 /**
  * @method updateDisplayedOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 updateDisplayedOpacity : function () {},
 

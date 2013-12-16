@@ -7364,8 +7364,8 @@ JSBool js_cocos2dx_extension_TableView_updateCellAtIndex(JSContext *cx, uint32_t
 	cocos2d::extension::TableView* cobj = (cocos2d::extension::TableView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_TableView_updateCellAtIndex : Invalid Native Object");
 	if (argc == 1) {
-		long arg0;
-		ok &= jsval_to_long(cx, argv[0], &arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_TableView_updateCellAtIndex : Error processing arguments");
 		cobj->updateCellAtIndex(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -7463,8 +7463,8 @@ JSBool js_cocos2dx_extension_TableView_removeCellAtIndex(JSContext *cx, uint32_t
 	cocos2d::extension::TableView* cobj = (cocos2d::extension::TableView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_TableView_removeCellAtIndex : Invalid Native Object");
 	if (argc == 1) {
-		long arg0;
-		ok &= jsval_to_long(cx, argv[0], &arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_TableView_removeCellAtIndex : Error processing arguments");
 		cobj->removeCellAtIndex(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -7566,8 +7566,8 @@ JSBool js_cocos2dx_extension_TableView_insertCellAtIndex(JSContext *cx, uint32_t
 	cocos2d::extension::TableView* cobj = (cocos2d::extension::TableView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_TableView_insertCellAtIndex : Invalid Native Object");
 	if (argc == 1) {
-		long arg0;
-		ok &= jsval_to_long(cx, argv[0], &arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_TableView_insertCellAtIndex : Error processing arguments");
 		cobj->insertCellAtIndex(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -7586,8 +7586,8 @@ JSBool js_cocos2dx_extension_TableView_cellAtIndex(JSContext *cx, uint32_t argc,
 	cocos2d::extension::TableView* cobj = (cocos2d::extension::TableView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_TableView_cellAtIndex : Invalid Native Object");
 	if (argc == 1) {
-		long arg0;
-		ok &= jsval_to_long(cx, argv[0], &arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_TableView_cellAtIndex : Error processing arguments");
 		cocos2d::extension::TableViewCell* ret = cobj->cellAtIndex(arg0);
 		jsval jsret;

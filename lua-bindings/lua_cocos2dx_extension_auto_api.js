@@ -41,7 +41,7 @@ isOpacityModifyRGB : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -53,7 +53,7 @@ setInsetTop : function () {},
 
 /**
  * @method updateDisplayedOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 updateDisplayedOpacity : function () {},
 
@@ -71,7 +71,7 @@ setPreferredSize : function () {},
 
 /**
  * @method getOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getOpacity : function () {},
 
@@ -412,7 +412,7 @@ setTitleDispatchTable : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -438,7 +438,7 @@ setTitleLabel : function () {},
 
 /**
  * @method getOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getOpacity : function () {},
 
@@ -1741,7 +1741,7 @@ cc.TableView = {
 
 /**
  * @method updateCellAtIndex
- * @param {long}
+ * @param {ssize_t}
  */
 updateCellAtIndex : function () {},
 
@@ -1777,7 +1777,7 @@ getVerticalFillOrder : function () {},
 
 /**
  * @method removeCellAtIndex
- * @param {long}
+ * @param {ssize_t}
  */
 removeCellAtIndex : function () {},
 
@@ -1824,14 +1824,14 @@ onTouchBegan : function () {},
 
 /**
  * @method insertCellAtIndex
- * @param {long}
+ * @param {ssize_t}
  */
 insertCellAtIndex : function () {},
 
 /**
  * @method cellAtIndex
  * @return A value converted from C/C++ "cocos2d::extension::TableViewCell*"
- * @param {long}
+ * @param {ssize_t}
  */
 cellAtIndex : function () {},
 

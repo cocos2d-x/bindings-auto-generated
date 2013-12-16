@@ -262,21 +262,21 @@ getFragmentShaderLog : function () {},
 /**
  * @method addAttribute
  * @param {const char*}
- * @param {unsigned int}
+ * @param {GLuint}
  */
 addAttribute : function () {},
 
 /**
  * @method setUniformLocationWithMatrix4fv
- * @param {int}
- * @param {float*}
+ * @param {GLint}
+ * @param {GLfloat*}
  * @param {unsigned int}
  */
 setUniformLocationWithMatrix4fv : function () {},
 
 /**
  * @method getUniformLocationForName
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "GLint"
  * @param {const char*}
  */
 getUniformLocationForName : function () {},
@@ -295,8 +295,8 @@ getVertexShaderLog : function () {},
 /**
  * @method initWithVertexShaderByteArray
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
- * @param {const char*}
+ * @param {const GLchar*}
+ * @param {const GLchar*}
  */
 initWithVertexShaderByteArray : function () {},
 
@@ -315,17 +315,17 @@ setUniformsForBuiltins : function () {},
 
 /**
  * @method setUniformLocationWith3i
- * @param {int}
- * @param {int}
- * @param {int}
- * @param {int}
+ * @param {GLint}
+ * @param {GLint}
+ * @param {GLint}
+ * @param {GLint}
  */
 setUniformLocationWith3i : function () {},
 
 /**
  * @method setUniformLocationWith3iv
- * @param {int}
- * @param {int*}
+ * @param {GLint}
+ * @param {GLint*}
  * @param {unsigned int}
  */
 setUniformLocationWith3iv : function () {},
@@ -337,16 +337,16 @@ updateUniforms : function () {},
 
 /**
  * @method setUniformLocationWith4iv
- * @param {int}
- * @param {int*}
+ * @param {GLint}
+ * @param {GLint*}
  * @param {unsigned int}
  */
 setUniformLocationWith4iv : function () {},
 
 /**
  * @method setUniformLocationWithMatrix2fv
- * @param {int}
- * @param {float*}
+ * @param {GLint}
+ * @param {GLfloat*}
  * @param {unsigned int}
  */
 setUniformLocationWithMatrix2fv : function () {},
@@ -359,16 +359,16 @@ link : function () {},
 
 /**
  * @method setUniformLocationWith2iv
- * @param {int}
- * @param {int*}
+ * @param {GLint}
+ * @param {GLint*}
  * @param {unsigned int}
  */
 setUniformLocationWith2iv : function () {},
 
 /**
  * @method setUniformLocationWithMatrix3fv
- * @param {int}
- * @param {float*}
+ * @param {GLint}
+ * @param {GLfloat*}
  * @param {unsigned int}
  */
 setUniformLocationWithMatrix3fv : function () {},
@@ -380,26 +380,26 @@ reset : function () {},
 
 /**
  * @method setUniformLocationWith4i
- * @param {int}
- * @param {int}
- * @param {int}
- * @param {int}
- * @param {int}
+ * @param {GLint}
+ * @param {GLint}
+ * @param {GLint}
+ * @param {GLint}
+ * @param {GLint}
  */
 setUniformLocationWith4i : function () {},
 
 /**
  * @method setUniformLocationWith1i
- * @param {int}
- * @param {int}
+ * @param {GLint}
+ * @param {GLint}
  */
 setUniformLocationWith1i : function () {},
 
 /**
  * @method setUniformLocationWith2i
- * @param {int}
- * @param {int}
- * @param {int}
+ * @param {GLint}
+ * @param {GLint}
+ * @param {GLint}
  */
 setUniformLocationWith2i : function () {},
 
@@ -493,7 +493,7 @@ getShaderProgram : function () {},
 
 /**
  * @method getMaxT
- * @return A value converted from C/C++ "float"
+ * @return A value converted from C/C++ "GLfloat"
  */
 getMaxT : function () {},
 
@@ -511,7 +511,7 @@ setShaderProgram : function () {},
 
 /**
  * @method getMaxS
- * @return A value converted from C/C++ "float"
+ * @return A value converted from C/C++ "GLfloat"
  */
 getMaxS : function () {},
 
@@ -540,13 +540,13 @@ getPixelsHigh : function () {},
 
 /**
  * @method getName
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "GLuint"
  */
 getName : function () {},
 
 /**
  * @method setMaxT
- * @param {float}
+ * @param {GLfloat}
  */
 setMaxT : function () {},
 
@@ -615,7 +615,7 @@ hasMipmaps : function () {},
 
 /**
  * @method setMaxS
- * @param {float}
+ * @param {GLfloat}
  */
 setMaxS : function () {},
 
@@ -624,12 +624,6 @@ setMaxS : function () {},
  * @param {cocos2d::Texture2D::PixelFormat}
  */
 setDefaultAlphaPixelFormat : function () {},
-
-/**
- * @method getPixelFormatInfoMap
- * @return A value converted from C/C++ "const cocos2d::Texture2D::PixelFormatInfoMap&"
- */
-getPixelFormatInfoMap : function () {},
 
 /**
  * @method getDefaultAlphaPixelFormat
@@ -854,7 +848,7 @@ getAnchorPoint : function () {},
 
 /**
  * @method getNumberOfRunningActions
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  */
 getNumberOfRunningActions : function () {},
 
@@ -871,7 +865,7 @@ isVisible : function () {},
 
 /**
  * @method getChildrenCount
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  */
 getChildrenCount : function () {},
 
@@ -1221,7 +1215,7 @@ getColor : function () {},
 
 /**
  * @method getDisplayedOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getDisplayedOpacity : function () {},
 
@@ -1233,7 +1227,7 @@ setCascadeColorEnabled : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -1251,7 +1245,7 @@ setCascadeOpacityEnabled : function () {},
 
 /**
  * @method updateDisplayedOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 updateDisplayedOpacity : function () {},
 
@@ -1269,7 +1263,7 @@ updateDisplayedColor : function () {},
 
 /**
  * @method getOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getOpacity : function () {},
 
@@ -2310,7 +2304,7 @@ update : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::FadeTo*"
  * @param {float}
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 create : function () {},
 
@@ -2349,9 +2343,9 @@ update : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::TintTo*"
  * @param {float}
- * @param {unsigned char}
- * @param {unsigned char}
- * @param {unsigned char}
+ * @param {GLubyte}
+ * @param {GLubyte}
+ * @param {GLubyte}
  */
 create : function () {},
 
@@ -2390,9 +2384,9 @@ update : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::TintBy*"
  * @param {float}
- * @param {short}
- * @param {short}
- * @param {short}
+ * @param {GLshort}
+ * @param {GLshort}
+ * @param {GLshort}
  */
 create : function () {},
 
@@ -2666,7 +2660,7 @@ resumeTarget : function () {},
 
 /**
  * @method getNumberOfRunningActionsInTarget
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  * @param {const cocos2d::Node*}
  */
 getNumberOfRunningActionsInTarget : function () {},
@@ -5146,7 +5140,7 @@ getColor : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -5866,7 +5860,7 @@ setRotationX : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -5908,7 +5902,7 @@ removeAllChildrenWithCleanup : function () {},
 
 /**
  * @method updateDisplayedOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 updateDisplayedOpacity : function () {},
 
@@ -5939,7 +5933,7 @@ isFrameDisplayed : function () {},
 
 /**
  * @method getAtlasIndex
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  */
 getAtlasIndex : function () {},
 
@@ -5964,7 +5958,7 @@ setScaleY : function () {},
 /**
  * @method setDisplayFrameWithAnimationName
  * @param {const std::string&}
- * @param {long}
+ * @param {ssize_t}
  */
 setDisplayFrameWithAnimationName : function () {},
 
@@ -5988,7 +5982,7 @@ isDirty : function () {},
 
 /**
  * @method setAtlasIndex
- * @param {long}
+ * @param {ssize_t}
  */
 setAtlasIndex : function () {},
 
@@ -6305,7 +6299,7 @@ setTexture : function () {},
 
 /**
  * @method removeChildAtIndex
- * @param {long}
+ * @param {ssize_t}
  * @param {bool}
  */
 removeChildAtIndex : function () {},
@@ -6318,7 +6312,7 @@ removeSpriteFromAtlas : function () {},
 
 /**
  * @method atlasIndexForChild
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  * @param {cocos2d::Sprite*}
  * @param {int}
  */
@@ -6337,7 +6331,7 @@ increaseAtlasCapacity : function () {},
 
 /**
  * @method lowestAtlasIndexInChild
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  * @param {cocos2d::Sprite*}
  */
 lowestAtlasIndexInChild : function () {},
@@ -6351,7 +6345,7 @@ draw : function () {},
  * @method initWithTexture
  * @return A value converted from C/C++ "bool"
  * @param {cocos2d::Texture2D*}
- * @param {long}
+ * @param {ssize_t}
  */
 initWithTexture : function () {},
 
@@ -6375,9 +6369,9 @@ reorderChild : function () {},
 
 /**
  * @method rebuildIndexInOrder
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  * @param {cocos2d::Sprite*}
- * @param {long}
+ * @param {ssize_t}
  */
 rebuildIndexInOrder : function () {},
 
@@ -6396,7 +6390,7 @@ removeChild : function () {},
 
 /**
  * @method highestAtlasIndexInChild
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  * @param {cocos2d::Sprite*}
  */
 highestAtlasIndexInChild : function () {},
@@ -6405,7 +6399,7 @@ highestAtlasIndexInChild : function () {},
  * @method create
  * @return A value converted from C/C++ "cocos2d::SpriteBatchNode*"
  * @param {const char*}
- * @param {long}
+ * @param {ssize_t}
  */
 create : function () {},
 
@@ -6413,7 +6407,7 @@ create : function () {},
  * @method createWithTexture
  * @return A value converted from C/C++ "cocos2d::SpriteBatchNode*"
  * @param {cocos2d::Texture2D*}
- * @param {long}
+ * @param {ssize_t}
  */
 createWithTexture : function () {},
 
@@ -6461,7 +6455,7 @@ setScale : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -6525,7 +6519,7 @@ setOpacityModifyRGB : function () {},
 
 /**
  * @method updateDisplayedOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 updateDisplayedOpacity : function () {},
 
@@ -6543,7 +6537,7 @@ setFntFile : function () {},
 
 /**
  * @method getOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getOpacity : function () {},
 
@@ -6573,7 +6567,7 @@ getColor : function () {},
 
 /**
  * @method getDisplayedOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getDisplayedOpacity : function () {},
 
@@ -6666,7 +6660,7 @@ setScale : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -6767,7 +6761,7 @@ getYOffsetForChar : function () {},
 
 /**
  * @method updateDisplayedOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 updateDisplayedOpacity : function () {},
 
@@ -7003,7 +6997,7 @@ getColor : function () {},
 
 /**
  * @method getDisplayedOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getDisplayedOpacity : function () {},
 
@@ -7015,7 +7009,7 @@ setCascadeColorEnabled : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -7033,7 +7027,7 @@ setCascadeOpacityEnabled : function () {},
 
 /**
  * @method updateDisplayedOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 updateDisplayedOpacity : function () {},
 
@@ -7051,7 +7045,7 @@ updateDisplayedColor : function () {},
 
 /**
  * @method getOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getOpacity : function () {},
 
@@ -7093,8 +7087,8 @@ setColor : function () {},
 
 /**
  * @method changeWidthAndHeight
- * @param {float}
- * @param {float}
+ * @param {GLfloat}
+ * @param {GLfloat}
  */
 changeWidthAndHeight : function () {},
 
@@ -7106,13 +7100,13 @@ getDescription : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
 /**
  * @method changeWidth
- * @param {float}
+ * @param {GLfloat}
  */
 changeWidth : function () {},
 
@@ -7124,7 +7118,7 @@ setContentSize : function () {},
 
 /**
  * @method changeHeight
- * @param {float}
+ * @param {GLfloat}
  */
 changeHeight : function () {},
 
@@ -7149,7 +7143,7 @@ isCompressedInterpolation : function () {},
 
 /**
  * @method getStartOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getStartOpacity : function () {},
 
@@ -7161,7 +7155,7 @@ setVector : function () {},
 
 /**
  * @method setStartOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setStartOpacity : function () {},
 
@@ -7173,7 +7167,7 @@ setCompressedInterpolation : function () {},
 
 /**
  * @method setEndOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setEndOpacity : function () {},
 
@@ -7197,7 +7191,7 @@ getEndColor : function () {},
 
 /**
  * @method getEndOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getEndOpacity : function () {},
 
@@ -8363,7 +8357,7 @@ setStencil : function () {},
 
 /**
  * @method getAlphaThreshold
- * @return A value converted from C/C++ "float"
+ * @return A value converted from C/C++ "GLfloat"
  */
 getAlphaThreshold : function () {},
 
@@ -8375,7 +8369,7 @@ getStencil : function () {},
 
 /**
  * @method setAlphaThreshold
- * @param {float}
+ * @param {GLfloat}
  */
 setAlphaThreshold : function () {},
 
@@ -8405,7 +8399,7 @@ isOpacityModifyRGB : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -8447,7 +8441,7 @@ setOpacityModifyRGB : function () {},
 
 /**
  * @method getOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getOpacity : function () {},
 
@@ -8513,13 +8507,13 @@ getType : function () {},
 
 /**
  * @method getOpacity
- * @return A value converted from C/C++ "unsigned char"
+ * @return A value converted from C/C++ "GLubyte"
  */
 getOpacity : function () {},
 
 /**
  * @method setOpacity
- * @param {unsigned char}
+ * @param {GLubyte}
  */
 setOpacity : function () {},
 
@@ -9759,15 +9753,6 @@ fullPathForFilename : function () {},
 fullPathFromRelativeFile : function () {},
 
 /**
- * @method getFileData
- * @return A value converted from C/C++ "unsigned char*"
- * @param {const char*}
- * @param {const char*}
- * @param {long*}
- */
-getFileData : function () {},
-
-/**
  * @method setFilenameLookupDictionary
  * @param {const cocos2d::ValueMap&}
  */
@@ -9778,15 +9763,6 @@ setFilenameLookupDictionary : function () {},
  * @param {const std::string&}
  */
 addSearchResolutionsOrder : function () {},
-
-/**
- * @method getFileDataFromZip
- * @return A value converted from C/C++ "unsigned char*"
- * @param {const char*}
- * @param {const char*}
- * @param {long*}
- */
-getFileDataFromZip : function () {},
 
 /**
  * @method writeToFile
