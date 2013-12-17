@@ -32418,7 +32418,7 @@ JSBool js_cocos2dx_Label_getXOffsetForChar(JSContext *cx, uint32_t argc, jsval *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getXOffsetForChar : Invalid Native Object");
 	if (argc == 1) {
 		unsigned short arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+		ok &= jsval_to_ushort(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_getXOffsetForChar : Error processing arguments");
 		int ret = cobj->getXOffsetForChar(arg0);
 		jsval jsret;
@@ -32646,7 +32646,7 @@ JSBool js_cocos2dx_Label_getRectForChar(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getRectForChar : Invalid Native Object");
 	if (argc == 1) {
 		unsigned short arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+		ok &= jsval_to_ushort(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_getRectForChar : Error processing arguments");
 		cocos2d::Rect ret = cobj->getRectForChar(arg0);
 		jsval jsret;
@@ -32781,7 +32781,7 @@ JSBool js_cocos2dx_Label_getYOffsetForChar(JSContext *cx, uint32_t argc, jsval *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getYOffsetForChar : Invalid Native Object");
 	if (argc == 1) {
 		unsigned short arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+		ok &= jsval_to_ushort(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_getYOffsetForChar : Error processing arguments");
 		int ret = cobj->getYOffsetForChar(arg0);
 		jsval jsret;
@@ -32965,7 +32965,7 @@ JSBool js_cocos2dx_Label_getCharAtStringPosition(JSContext *cx, uint32_t argc, j
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_getCharAtStringPosition : Error processing arguments");
 		unsigned short ret = cobj->getCharAtStringPosition(arg0);
 		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR unsigned short;
+		jsret = ushort_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -32984,7 +32984,7 @@ JSBool js_cocos2dx_Label_getAdvanceForChar(JSContext *cx, uint32_t argc, jsval *
 	if (argc == 2) {
 		unsigned short arg0;
 		int arg1;
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+		ok &= jsval_to_ushort(cx, argv[0], &arg0);
 		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_getAdvanceForChar : Error processing arguments");
 		int ret = cobj->getAdvanceForChar(arg0, arg1);
@@ -33059,8 +33059,8 @@ JSBool js_cocos2dx_Label_getKerningForCharsPair(JSContext *cx, uint32_t argc, js
 	if (argc == 2) {
 		unsigned short arg0;
 		unsigned short arg1;
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+		ok &= jsval_to_ushort(cx, argv[0], &arg0);
+		ok &= jsval_to_ushort(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_getKerningForCharsPair : Error processing arguments");
 		int ret = cobj->getKerningForCharsPair(arg0, arg1);
 		jsval jsret;
@@ -33356,7 +33356,7 @@ JSBool js_cocos2dx_Label_recordLetterInfo(JSContext *cx, uint32_t argc, jsval *v
 		unsigned short arg1;
 		int arg2;
 		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
-		#pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+		ok &= jsval_to_ushort(cx, argv[1], &arg1);
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_recordLetterInfo : Error processing arguments");
 		bool ret = cobj->recordLetterInfo(arg0, arg1, arg2);
