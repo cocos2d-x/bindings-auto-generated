@@ -6663,6 +6663,11 @@ LabelBMFont : function () {},
 cc.Label = {
 
 /**
+ * @method draw
+ */
+draw : function () {},
+
+/**
  * @method addChild
  * @param {cocos2d::Node*}
  * @param {int}
@@ -6696,10 +6701,11 @@ getXOffsetForChar : function () {},
 setScale : function () {},
 
 /**
- * @method setOpacity
- * @param {GLubyte}
+ * @method setLabelEffect
+ * @param {cocos2d::LabelEffect}
+ * @param {const cocos2d::Color3B&}
  */
-setOpacity : function () {},
+setLabelEffect : function () {},
 
 /**
  * @method setCascadeOpacityEnabled
@@ -6739,6 +6745,12 @@ breakLineWithoutSpace : function () {},
 setWidth : function () {},
 
 /**
+ * @method getStringLenght
+ * @return A value converted from C/C++ "int"
+ */
+getStringLenght : function () {},
+
+/**
  * @method getMaxLineWidth
  * @return A value converted from C/C++ "float"
  */
@@ -6758,24 +6770,16 @@ isOpacityModifyRGB : function () {},
 getRectForChar : function () {},
 
 /**
- * @method getAdvanceForChar
- * @return A value converted from C/C++ "int"
- * @param {unsigned short}
- * @param {int}
+ * @method getScaleY
+ * @return A value converted from C/C++ "float"
  */
-getAdvanceForChar : function () {},
+getScaleY : function () {},
 
 /**
- * @method isCascadeOpacityEnabled
- * @return A value converted from C/C++ "bool"
+ * @method getScaleX
+ * @return A value converted from C/C++ "float"
  */
-isCascadeOpacityEnabled : function () {},
-
-/**
- * @method setString
- * @param {const std::string&}
- */
-setString : function () {},
+getScaleX : function () {},
 
 /**
  * @method setCascadeColorEnabled
@@ -6854,10 +6858,12 @@ setScaleX : function () {},
 getCharAtStringPosition : function () {},
 
 /**
- * @method getStringLenght
+ * @method getAdvanceForChar
  * @return A value converted from C/C++ "int"
+ * @param {unsigned short}
+ * @param {int}
  */
-getStringLenght : function () {},
+getAdvanceForChar : function () {},
 
 /**
  * @method getColor
@@ -6872,12 +6878,24 @@ getColor : function () {},
 getDisplayedOpacity : function () {},
 
 /**
+ * @method getUTF8String
+ * @return A value converted from C/C++ "unsigned short*"
+ */
+getUTF8String : function () {},
+
+/**
  * @method getKerningForCharsPair
  * @return A value converted from C/C++ "int"
  * @param {unsigned short}
  * @param {unsigned short}
  */
 getKerningForCharsPair : function () {},
+
+/**
+ * @method setOpacity
+ * @param {GLubyte}
+ */
+setOpacity : function () {},
 
 /**
  * @method getLetter
@@ -6921,10 +6939,10 @@ getDisplayedColor : function () {},
 setText : function () {},
 
 /**
- * @method getUTF8String
- * @return A value converted from C/C++ "unsigned short*"
+ * @method isCascadeOpacityEnabled
+ * @return A value converted from C/C++ "bool"
  */
-getUTF8String : function () {},
+isCascadeOpacityEnabled : function () {},
 
 /**
  * @method getTextAlignment
@@ -6979,6 +6997,7 @@ createWithBMFont : function () {},
  * @param {cocos2d::TextHAlignment}
  * @param {cocos2d::GlyphCollection}
  * @param {const char*}
+ * @param {bool}
  */
 createWithTTF : function () {},
 
