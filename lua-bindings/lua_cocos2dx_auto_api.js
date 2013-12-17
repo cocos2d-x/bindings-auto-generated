@@ -304,7 +304,7 @@ addAttribute : function () {},
 /**
  * @method setUniformLocationWithMatrix4fv
  * @param {GLint}
- * @param {GLfloat*}
+ * @param {const GLfloat*}
  * @param {unsigned int}
  */
 setUniformLocationWithMatrix4fv : function () {},
@@ -344,11 +344,6 @@ initWithVertexShaderByteArray : function () {},
 initWithVertexShaderFilename : function () {},
 
 /**
- * @method setUniformsForBuiltins
- */
-setUniformsForBuiltins : function () {},
-
-/**
  * @method setUniformLocationWith3i
  * @param {GLint}
  * @param {GLint}
@@ -381,7 +376,7 @@ setUniformLocationWith4iv : function () {},
 /**
  * @method setUniformLocationWithMatrix2fv
  * @param {GLint}
- * @param {GLfloat*}
+ * @param {const GLfloat*}
  * @param {unsigned int}
  */
 setUniformLocationWithMatrix2fv : function () {},
@@ -403,7 +398,7 @@ setUniformLocationWith2iv : function () {},
 /**
  * @method setUniformLocationWithMatrix3fv
  * @param {GLint}
- * @param {GLfloat*}
+ * @param {const GLfloat*}
  * @param {unsigned int}
  */
 setUniformLocationWithMatrix3fv : function () {},
@@ -758,8 +753,14 @@ removeAllComponents : function () {},
 getTag : function () {},
 
 /**
- * @method getNodeToWorldTransform
+ * @method getNodeToWorldAffineTransform
  * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ */
+getNodeToWorldAffineTransform : function () {},
+
+/**
+ * @method getNodeToWorldTransform
+ * @return A value converted from C/C++ "kmMat4"
  */
 getNodeToWorldTransform : function () {},
 
@@ -815,6 +816,12 @@ getRotationX : function () {},
 getRotationY : function () {},
 
 /**
+ * @method getNodeToParentAffineTransform
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ */
+getNodeToParentAffineTransform : function () {},
+
+/**
  * @method setParent
  * @param {cocos2d::Node*}
  */
@@ -822,7 +829,7 @@ setParent : function () {},
 
 /**
  * @method getNodeToParentTransform
- * @return A value converted from C/C++ "const cocos2d::AffineTransform&"
+ * @return A value converted from C/C++ "const kmMat4&"
  */
 getNodeToParentTransform : function () {},
 
@@ -1014,10 +1021,10 @@ setRotationX : function () {},
 setRotationY : function () {},
 
 /**
- * @method setAdditionalTransform
- * @param {const cocos2d::AffineTransform&}
+ * @method getParentToNodeAffineTransform
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
-setAdditionalTransform : function () {},
+getParentToNodeAffineTransform : function () {},
 
 /**
  * @method getOrderOfArrival
@@ -1070,7 +1077,7 @@ setVisible : function () {},
 
 /**
  * @method getParentToNodeTransform
- * @return A value converted from C/C++ "const cocos2d::AffineTransform&"
+ * @return A value converted from C/C++ "const kmMat4&"
  */
 getParentToNodeTransform : function () {},
 
@@ -1110,6 +1117,12 @@ getScaleY : function () {},
  * @return A value converted from C/C++ "float"
  */
 getScaleX : function () {},
+
+/**
+ * @method getWorldToNodeAffineTransform
+ * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ */
+getWorldToNodeAffineTransform : function () {},
 
 /**
  * @method cleanup
@@ -1189,7 +1202,7 @@ sortAllChildren : function () {},
 
 /**
  * @method getWorldToNodeTransform
- * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ * @return A value converted from C/C++ "kmMat4"
  */
 getWorldToNodeTransform : function () {},
 
@@ -5938,10 +5951,9 @@ getOffsetPosition : function () {},
 removeAllChildrenWithCleanup : function () {},
 
 /**
- * @method updateDisplayedOpacity
- * @param {GLubyte}
+ * @method updateQuadVertices
  */
-updateDisplayedOpacity : function () {},
+updateQuadVertices : function () {},
 
 /**
  * @method updateTransform
@@ -5979,6 +5991,12 @@ getAtlasIndex : function () {},
  * @param {float}
  */
 setRotation : function () {},
+
+/**
+ * @method updateDisplayedOpacity
+ * @param {GLubyte}
+ */
+updateDisplayedOpacity : function () {},
 
 /**
  * @method setBatchNode
@@ -6132,6 +6150,44 @@ createWithSpriteFrameName : function () {},
  * @param {cocos2d::SpriteFrame*}
  */
 createWithSpriteFrame : function () {},
+
+};
+
+/**
+ * @class NewSprite
+ */
+cc.NewSprite = {
+
+/**
+ * @method updateQuadVertices
+ */
+updateQuadVertices : function () {},
+
+/**
+ * @method draw
+ */
+draw : function () {},
+
+/**
+ * @method culling
+ * @return A value converted from C/C++ "bool"
+ */
+culling : function () {},
+
+/**
+ * @method initWithTexture
+ * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::Texture2D*}
+ * @param {const cocos2d::Rect&}
+ * @param {bool}
+ */
+initWithTexture : function () {},
+
+/**
+ * @method NewSprite
+ * @constructor
+ */
+NewSprite : function () {},
 
 };
 
@@ -6453,6 +6509,46 @@ createWithTexture : function () {},
  * @constructor
  */
 SpriteBatchNode : function () {},
+
+};
+
+/**
+ * @class NewSpriteBatchNode
+ */
+cc.NewSpriteBatchNode = {
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ */
+init : function () {},
+
+/**
+ * @method draw
+ */
+draw : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::NewSpriteBatchNode*"
+ * @param {const char*}
+ * @param {long}
+ */
+create : function () {},
+
+/**
+ * @method createWithTexture
+ * @return A value converted from C/C++ "cocos2d::NewSpriteBatchNode*"
+ * @param {cocos2d::Texture2D*}
+ * @param {int}
+ */
+createWithTexture : function () {},
+
+/**
+ * @method NewSpriteBatchNode
+ * @constructor
+ */
+NewSpriteBatchNode : function () {},
 
 };
 
@@ -7142,17 +7238,22 @@ draw : function () {},
 setColor : function () {},
 
 /**
- * @method changeWidthAndHeight
- * @param {GLfloat}
- * @param {GLfloat}
+ * @method onDraw
  */
-changeWidthAndHeight : function () {},
+onDraw : function () {},
 
 /**
  * @method getDescription
  * @return A value converted from C/C++ "std::string"
  */
 getDescription : function () {},
+
+/**
+ * @method changeWidthAndHeight
+ * @param {GLfloat}
+ * @param {GLfloat}
+ */
+changeWidthAndHeight : function () {},
 
 /**
  * @method setOpacity
@@ -9878,6 +9979,100 @@ create : function () {},
  * @param {int}
  */
 createWithTotalParticles : function () {},
+
+};
+
+/**
+ * @class NewDrawNode
+ */
+cc.NewDrawNode = {
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ */
+init : function () {},
+
+/**
+ * @method onDraw
+ */
+onDraw : function () {},
+
+/**
+ * @method draw
+ */
+draw : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::NewDrawNode*"
+ */
+create : function () {},
+
+};
+
+/**
+ * @class NewLabelAtlas
+ */
+cc.NewLabelAtlas = {
+
+/**
+ * @method draw
+ */
+draw : function () {},
+
+/**
+ * @method NewLabelAtlas
+ * @constructor
+ */
+NewLabelAtlas : function () {},
+
+};
+
+/**
+ * @class NewParticleSystemQuad
+ */
+cc.NewParticleSystemQuad = {
+
+};
+
+/**
+ * @class NewRenderTexture
+ */
+cc.NewRenderTexture = {
+
+/**
+ * @method clearDepth
+ * @param {float}
+ */
+clearDepth : function () {},
+
+/**
+ * @method end
+ */
+end : function () {},
+
+/**
+ * @method begin
+ */
+begin : function () {},
+
+/**
+ * @method draw
+ */
+draw : function () {},
+
+};
+
+/**
+ * @class NewClippingNode
+ */
+cc.NewClippingNode = {
+
+/**
+ * @method visit
+ */
+visit : function () {},
 
 };
 

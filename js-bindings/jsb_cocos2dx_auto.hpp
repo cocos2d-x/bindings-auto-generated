@@ -180,6 +180,7 @@ JSBool js_cocos2dx_Node_setScaleY(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setScaleX(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_removeAllComponents(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getTag(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_getNodeToWorldAffineTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getNodeToWorldTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_removeChild(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_convertToWorldSpace(JSContext *cx, uint32_t argc, jsval *vp);
@@ -190,6 +191,7 @@ JSBool js_cocos2dx_Node_convertTouchToNodeSpace(JSContext *cx, uint32_t argc, js
 JSBool js_cocos2dx_Node_removeAllChildrenWithCleanup(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getRotationX(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getRotationY(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_getNodeToParentAffineTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setParent(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getNodeToParentTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_convertToNodeSpace(JSContext *cx, uint32_t argc, jsval *vp);
@@ -226,6 +228,7 @@ JSBool js_cocos2dx_Node_setRotationX(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setRotationY(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setAdditionalTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getScheduler(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_getParentToNodeAffineTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getOrderOfArrival(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setContentSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setActionManager(JSContext *cx, uint32_t argc, jsval *vp);
@@ -244,6 +247,7 @@ JSBool js_cocos2dx_Node_getChildByTag(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setOrderOfArrival(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getScaleY(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getScaleX(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_getWorldToNodeAffineTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_cleanup(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getComponent(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getContentSize(JSContext *cx, uint32_t argc, jsval *vp);
@@ -1778,7 +1782,7 @@ JSBool js_cocos2dx_Sprite_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsva
 JSBool js_cocos2dx_Sprite_getBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_getOffsetPosition(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_removeAllChildrenWithCleanup(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Sprite_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Sprite_updateQuadVertices(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_updateTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_setVertexZ(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_reorderChild(JSContext *cx, uint32_t argc, jsval *vp);
@@ -1786,6 +1790,7 @@ JSBool js_cocos2dx_Sprite_setTextureRect(JSContext *cx, uint32_t argc, jsval *vp
 JSBool js_cocos2dx_Sprite_isFrameDisplayed(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_getAtlasIndex(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_setRotation(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Sprite_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_setBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_setScaleY(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_setDisplayFrameWithAnimationName(JSContext *cx, uint32_t argc, jsval *vp);
@@ -1813,6 +1818,20 @@ JSBool js_cocos2dx_Sprite_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_createWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_createWithSpriteFrameName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_createWithSpriteFrame(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_NewSprite_class;
+extern JSObject *jsb_NewSprite_prototype;
+
+JSBool js_cocos2dx_NewSprite_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_NewSprite_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_NewSprite(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_NewSprite_updateQuadVertices(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewSprite_draw(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewSprite_culling(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewSprite_initWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewSprite_create(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewSprite_NewSprite(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_LabelTTF_class;
 extern JSObject *jsb_LabelTTF_prototype;
@@ -1881,6 +1900,19 @@ JSBool js_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild(JSContext *cx, uint3
 JSBool js_cocos2dx_SpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_SpriteBatchNode_createWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_SpriteBatchNode_SpriteBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_NewSpriteBatchNode_class;
+extern JSObject *jsb_NewSpriteBatchNode_prototype;
+
+JSBool js_cocos2dx_NewSpriteBatchNode_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_NewSpriteBatchNode_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_NewSpriteBatchNode(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_NewSpriteBatchNode_init(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewSpriteBatchNode_draw(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewSpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewSpriteBatchNode_createWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewSpriteBatchNode_NewSpriteBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_LabelBMFont_class;
 extern JSObject *jsb_LabelBMFont_prototype;
@@ -2027,8 +2059,9 @@ void js_register_cocos2dx_LayerColor(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_LayerColor_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LayerColor_setColor(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_LayerColor_changeWidthAndHeight(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_LayerColor_onDraw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LayerColor_getDescription(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_LayerColor_changeWidthAndHeight(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LayerColor_setOpacity(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LayerColor_changeWidth(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LayerColor_setContentSize(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2925,6 +2958,60 @@ void js_register_cocos2dx_ParticleRain(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_ParticleRain_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_ParticleRain_createWithTotalParticles(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_NewDrawNode_class;
+extern JSObject *jsb_NewDrawNode_prototype;
+
+JSBool js_cocos2dx_NewDrawNode_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_NewDrawNode_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_NewDrawNode(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_NewDrawNode_init(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewDrawNode_onDraw(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewDrawNode_draw(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewDrawNode_create(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_NewLabelAtlas_class;
+extern JSObject *jsb_NewLabelAtlas_prototype;
+
+JSBool js_cocos2dx_NewLabelAtlas_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_NewLabelAtlas_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_NewLabelAtlas(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_NewLabelAtlas_draw(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewLabelAtlas_NewLabelAtlas(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_NewParticleSystemQuad_class;
+extern JSObject *jsb_NewParticleSystemQuad_prototype;
+
+JSBool js_cocos2dx_NewParticleSystemQuad_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_NewParticleSystemQuad_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_NewParticleSystemQuad(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+
+extern JSClass  *jsb_NewRenderTexture_class;
+extern JSObject *jsb_NewRenderTexture_prototype;
+
+JSBool js_cocos2dx_NewRenderTexture_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_NewRenderTexture_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_NewRenderTexture(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_NewRenderTexture_clearDepth(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewRenderTexture_end(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewRenderTexture_begin(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewRenderTexture_beginWithClear(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewRenderTexture_draw(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewRenderTexture_create(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_NewClippingNode_class;
+extern JSObject *jsb_NewClippingNode_prototype;
+
+JSBool js_cocos2dx_NewClippingNode_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_NewClippingNode_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_NewClippingNode(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_NewClippingNode_visit(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NewClippingNode_create(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_FileUtils_class;
 extern JSObject *jsb_FileUtils_prototype;

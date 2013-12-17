@@ -563,7 +563,7 @@ setArmature : function () {},
 
 /**
  * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ * @return A value converted from C/C++ "kmMat4"
  */
 getNodeToWorldTransform : function () {},
 
@@ -588,7 +588,7 @@ setChildArmature : function () {},
 
 /**
  * @method getNodeToArmatureTransform
- * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ * @return A value converted from C/C++ "kmMat4"
  */
 getNodeToArmatureTransform : function () {},
 
@@ -977,7 +977,7 @@ getName : function () {},
 
 /**
  * @method getNodeToParentTransform
- * @return A value converted from C/C++ "const cocos2d::AffineTransform&"
+ * @return A value converted from C/C++ "const kmMat4&"
  */
 getNodeToParentTransform : function () {},
 
@@ -1086,13 +1086,13 @@ getBone : function () {},
 
 /**
  * @method getNodeToWorldTransformAR
- * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ * @return A value converted from C/C++ "kmMat4"
  */
 getNodeToWorldTransformAR : function () {},
 
 /**
  * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "cocos2d::AffineTransform"
+ * @return A value converted from C/C++ "kmMat4"
  */
 getNodeToWorldTransform : function () {},
 

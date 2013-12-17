@@ -24711,8 +24711,8 @@ int lua_cocos2dx_studio_Bone_getNodeToWorldTransform(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::AffineTransform ret = cobj->getNodeToWorldTransform();
-        affinetransform_to_luaval(tolua_S, ret);
+        kmMat4 ret = cobj->getNodeToWorldTransform();
+        #pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodeToWorldTransform",argc, 0);
@@ -24898,8 +24898,8 @@ int lua_cocos2dx_studio_Bone_getNodeToArmatureTransform(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::AffineTransform ret = cobj->getNodeToArmatureTransform();
-        affinetransform_to_luaval(tolua_S, ret);
+        kmMat4 ret = cobj->getNodeToArmatureTransform();
+        #pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodeToArmatureTransform",argc, 0);
@@ -28444,8 +28444,8 @@ int lua_cocos2dx_studio_Armature_getNodeToParentTransform(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const cocos2d::AffineTransform& ret = cobj->getNodeToParentTransform();
-        affinetransform_to_luaval(tolua_S, ret);
+        const kmMat4& ret = cobj->getNodeToParentTransform();
+        #pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodeToParentTransform",argc, 0);
@@ -29408,8 +29408,8 @@ int lua_cocos2dx_studio_Skin_getNodeToWorldTransformAR(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::AffineTransform ret = cobj->getNodeToWorldTransformAR();
-        affinetransform_to_luaval(tolua_S, ret);
+        kmMat4 ret = cobj->getNodeToWorldTransformAR();
+        #pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodeToWorldTransformAR",argc, 0);
@@ -29449,8 +29449,8 @@ int lua_cocos2dx_studio_Skin_getNodeToWorldTransform(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::AffineTransform ret = cobj->getNodeToWorldTransform();
-        affinetransform_to_luaval(tolua_S, ret);
+        kmMat4 ret = cobj->getNodeToWorldTransform();
+        #pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodeToWorldTransform",argc, 0);

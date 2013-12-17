@@ -2441,9 +2441,9 @@ JSBool js_cocos2dx_studio_Bone_getNodeToWorldTransform(JSContext *cx, uint32_t a
 	cocostudio::Bone* cobj = (cocostudio::Bone *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getNodeToWorldTransform : Invalid Native Object");
 	if (argc == 0) {
-		cocos2d::AffineTransform ret = cobj->getNodeToWorldTransform();
+		kmMat4 ret = cobj->getNodeToWorldTransform();
 		jsval jsret;
-		jsret = ccaffinetransform_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -2534,9 +2534,9 @@ JSBool js_cocos2dx_studio_Bone_getNodeToArmatureTransform(JSContext *cx, uint32_
 	cocostudio::Bone* cobj = (cocostudio::Bone *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getNodeToArmatureTransform : Invalid Native Object");
 	if (argc == 0) {
-		cocos2d::AffineTransform ret = cobj->getNodeToArmatureTransform();
+		kmMat4 ret = cobj->getNodeToArmatureTransform();
 		jsval jsret;
-		jsret = ccaffinetransform_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -4517,9 +4517,9 @@ JSBool js_cocos2dx_studio_Armature_getNodeToParentTransform(JSContext *cx, uint3
 	cocostudio::Armature* cobj = (cocostudio::Armature *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getNodeToParentTransform : Invalid Native Object");
 	if (argc == 0) {
-		const cocos2d::AffineTransform& ret = cobj->getNodeToParentTransform();
+		const kmMat4& ret = cobj->getNodeToParentTransform();
 		jsval jsret;
-		jsret = ccaffinetransform_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -5071,9 +5071,9 @@ JSBool js_cocos2dx_studio_Skin_getNodeToWorldTransformAR(JSContext *cx, uint32_t
 	cocostudio::Skin* cobj = (cocostudio::Skin *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Skin_getNodeToWorldTransformAR : Invalid Native Object");
 	if (argc == 0) {
-		cocos2d::AffineTransform ret = cobj->getNodeToWorldTransformAR();
+		kmMat4 ret = cobj->getNodeToWorldTransformAR();
 		jsval jsret;
-		jsret = ccaffinetransform_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -5088,9 +5088,9 @@ JSBool js_cocos2dx_studio_Skin_getNodeToWorldTransform(JSContext *cx, uint32_t a
 	cocostudio::Skin* cobj = (cocostudio::Skin *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Skin_getNodeToWorldTransform : Invalid Native Object");
 	if (argc == 0) {
-		cocos2d::AffineTransform ret = cobj->getNodeToWorldTransform();
+		kmMat4 ret = cobj->getNodeToWorldTransform();
 		jsval jsret;
-		jsret = ccaffinetransform_to_jsval(cx, ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
