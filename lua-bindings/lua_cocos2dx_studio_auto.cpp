@@ -25508,7 +25508,7 @@ int lua_cocos2dx_studio_BatchNode_draw(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_BatchNode_getTexureAtlasWithTexture(lua_State* tolua_S)
+int lua_cocos2dx_studio_BatchNode_setPopGroupCommand(lua_State* tolua_S)
 {
     int argc = 0;
     cocostudio::BatchNode* cobj = nullptr;
@@ -25527,7 +25527,7 @@ int lua_cocos2dx_studio_BatchNode_getTexureAtlasWithTexture(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_BatchNode_getTexureAtlasWithTexture'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_BatchNode_setPopGroupCommand'", NULL);
         return 0;
     }
 #endif
@@ -25535,40 +25535,18 @@ int lua_cocos2dx_studio_BatchNode_getTexureAtlasWithTexture(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        cocos2d::Texture2D* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        bool arg0;
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        cocos2d::TextureAtlas* ret = cobj->getTexureAtlasWithTexture(arg0);
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureAtlas");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"TextureAtlas");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
+        cobj->setPopGroupCommand(arg0);
+        return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTexureAtlasWithTexture",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPopGroupCommand",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BatchNode_getTexureAtlasWithTexture'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BatchNode_setPopGroupCommand'.",&tolua_err);
 #endif
     return 0;
 }
@@ -25764,7 +25742,7 @@ int lua_register_cocos2dx_studio_BatchNode(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"BatchNode");
         tolua_function(tolua_S,"addChild",lua_cocos2dx_studio_BatchNode_addChild);
         tolua_function(tolua_S,"draw",lua_cocos2dx_studio_BatchNode_draw);
-        tolua_function(tolua_S,"getTexureAtlasWithTexture",lua_cocos2dx_studio_BatchNode_getTexureAtlasWithTexture);
+        tolua_function(tolua_S,"setPopGroupCommand",lua_cocos2dx_studio_BatchNode_setPopGroupCommand);
         tolua_function(tolua_S,"removeChild",lua_cocos2dx_studio_BatchNode_removeChild);
         tolua_function(tolua_S,"init",lua_cocos2dx_studio_BatchNode_init);
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_BatchNode_constructor);
@@ -27807,70 +27785,6 @@ int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_Armature_getTexureAtlasWithTexture(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::Armature* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Armature_getTexureAtlasWithTexture'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Texture2D* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        if(!ok)
-            return 0;
-        cocos2d::TextureAtlas* ret = cobj->getTexureAtlasWithTexture(arg0);
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureAtlas");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"TextureAtlas");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTexureAtlasWithTexture",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getTexureAtlasWithTexture'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_studio_Armature_setAnimation(lua_State* tolua_S)
 {
     int argc = 0;
@@ -28690,57 +28604,6 @@ int lua_cocos2dx_studio_Armature_setArmatureData(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_Armature_setTextureAtlas(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::Armature* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Armature_setTextureAtlas'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::TextureAtlas* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"TextureAtlas",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::TextureAtlas*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        if(!ok)
-            return 0;
-        cobj->setTextureAtlas(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTextureAtlas",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_setTextureAtlas'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_studio_Armature_addBone(lua_State* tolua_S)
 {
     int argc = 0;
@@ -29077,59 +28940,6 @@ int lua_cocos2dx_studio_Armature_getBoneDic(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_Armature_getTextureAtlas(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::Armature* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Armature_getTextureAtlas'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureAtlas");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"TextureAtlas");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureAtlas",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getTextureAtlas'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
 {
     int argc = 0;
@@ -29291,7 +29101,6 @@ int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"Armature");
         tolua_function(tolua_S,"getBone",lua_cocos2dx_studio_Armature_getBone);
         tolua_function(tolua_S,"changeBoneParent",lua_cocos2dx_studio_Armature_changeBoneParent);
-        tolua_function(tolua_S,"getTexureAtlasWithTexture",lua_cocos2dx_studio_Armature_getTexureAtlasWithTexture);
         tolua_function(tolua_S,"setAnimation",lua_cocos2dx_studio_Armature_setAnimation);
         tolua_function(tolua_S,"getBoneAtPoint",lua_cocos2dx_studio_Armature_getBoneAtPoint);
         tolua_function(tolua_S,"getArmatureTransformDirty",lua_cocos2dx_studio_Armature_getArmatureTransformDirty);
@@ -29309,7 +29118,6 @@ int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
         tolua_function(tolua_S,"setBatchNode",lua_cocos2dx_studio_Armature_setBatchNode);
         tolua_function(tolua_S,"draw",lua_cocos2dx_studio_Armature_draw);
         tolua_function(tolua_S,"setArmatureData",lua_cocos2dx_studio_Armature_setArmatureData);
-        tolua_function(tolua_S,"setTextureAtlas",lua_cocos2dx_studio_Armature_setTextureAtlas);
         tolua_function(tolua_S,"addBone",lua_cocos2dx_studio_Armature_addBone);
         tolua_function(tolua_S,"update",lua_cocos2dx_studio_Armature_update);
         tolua_function(tolua_S,"getArmatureData",lua_cocos2dx_studio_Armature_getArmatureData);
@@ -29317,7 +29125,6 @@ int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
         tolua_function(tolua_S,"getVersion",lua_cocos2dx_studio_Armature_getVersion);
         tolua_function(tolua_S,"getAnimation",lua_cocos2dx_studio_Armature_getAnimation);
         tolua_function(tolua_S,"getBoneDic",lua_cocos2dx_studio_Armature_getBoneDic);
-        tolua_function(tolua_S,"getTextureAtlas",lua_cocos2dx_studio_Armature_getTextureAtlas);
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_Armature_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_Armature_create);
     tolua_endmodule(tolua_S);

@@ -3588,11 +3588,10 @@ ccs.BatchNode = {
 draw : function () {},
 
 /**
- * @method getTexureAtlasWithTexture
- * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
- * @param {cocos2d::Texture2D*}
+ * @method setPopGroupCommand
+ * @param {bool}
  */
-getTexureAtlasWithTexture : function () {},
+setPopGroupCommand : function () {},
 
 /**
  * @method removeChild
@@ -3888,13 +3887,6 @@ getBone : function () {},
 changeBoneParent : function () {},
 
 /**
- * @method getTexureAtlasWithTexture
- * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
- * @param {cocos2d::Texture2D*}
- */
-getTexureAtlasWithTexture : function () {},
-
-/**
  * @method setAnimation
  * @param {cocostudio::ArmatureAnimation*}
  */
@@ -3992,12 +3984,6 @@ draw : function () {},
 setArmatureData : function () {},
 
 /**
- * @method setTextureAtlas
- * @param {cocos2d::TextureAtlas*}
- */
-setTextureAtlas : function () {},
-
-/**
  * @method addBone
  * @param {cocostudio::Bone*}
  * @param {const char*}
@@ -4039,12 +4025,6 @@ getAnimation : function () {},
  * @return A value converted from C/C++ "cocos2d::Dictionary*"
  */
 getBoneDic : function () {},
-
-/**
- * @method getTextureAtlas
- * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
- */
-getTextureAtlas : function () {},
 
 /**
  * @method Armature

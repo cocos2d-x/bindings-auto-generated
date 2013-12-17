@@ -169,7 +169,7 @@ void js_cocos2dx_studio_BatchNode_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_studio_BatchNode(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_studio_BatchNode_addChild(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_BatchNode_getTexureAtlasWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_BatchNode_setPopGroupCommand(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_BatchNode_removeChild(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_BatchNode_create(JSContext *cx, uint32_t argc, jsval *vp);
 
@@ -232,7 +232,6 @@ void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_studio_Armature_getBone(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_changeBoneParent(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_Armature_getTexureAtlasWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_setAnimation(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getBoneAtPoint(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getArmatureTransformDirty(JSContext *cx, uint32_t argc, jsval *vp);
@@ -250,7 +249,6 @@ JSBool js_cocos2dx_studio_Armature_getBoundingBox(JSContext *cx, uint32_t argc, 
 JSBool js_cocos2dx_studio_Armature_setBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_setArmatureData(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_Armature_setTextureAtlas(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_addBone(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_update(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getArmatureData(JSContext *cx, uint32_t argc, jsval *vp);
@@ -258,7 +256,6 @@ JSBool js_cocos2dx_studio_Armature_getParentBone(JSContext *cx, uint32_t argc, j
 JSBool js_cocos2dx_studio_Armature_getVersion(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getAnimation(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getBoneDic(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_Armature_getTextureAtlas(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_Armature(JSContext *cx, uint32_t argc, jsval *vp);
 
