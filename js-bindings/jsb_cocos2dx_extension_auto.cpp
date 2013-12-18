@@ -1526,26 +1526,6 @@ void js_register_cocos2dx_extension_Control(JSContext *cx, JSObject *global) {
 JSClass  *jsb_ControlButton_class;
 JSObject *jsb_ControlButton_prototype;
 
-JSBool js_cocos2dx_extension_ControlButton_setTitleColorDispatchTable(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setTitleColorDispatchTable : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Dictionary* arg0;
-		ok &= jsval_to_ccdictionary(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setTitleColorDispatchTable : Error processing arguments");
-		cobj->setTitleColorDispatchTable(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_setTitleColorDispatchTable : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_extension_ControlButton_isPushed(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -1689,26 +1669,6 @@ JSBool js_cocos2dx_extension_ControlButton_setZoomOnTouchDown(JSContext *cx, uin
 	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_setZoomOnTouchDown : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_extension_ControlButton_setBackgroundSpriteDispatchTable(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setBackgroundSpriteDispatchTable : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Dictionary* arg0;
-		ok &= jsval_to_ccdictionary(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setBackgroundSpriteDispatchTable : Error processing arguments");
-		cobj->setBackgroundSpriteDispatchTable(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_setBackgroundSpriteDispatchTable : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_extension_ControlButton_setTitleForState(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -1718,9 +1678,9 @@ JSBool js_cocos2dx_extension_ControlButton_setTitleForState(JSContext *cx, uint3
 	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setTitleForState : Invalid Native Object");
 	if (argc == 2) {
-		cocos2d::String* arg0;
+		std::string arg0;
 		cocos2d::extension::Control::State arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = cocos2d::String::create(arg0_tmp);
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setTitleForState : Error processing arguments");
 		cobj->setTitleForState(arg0, arg1);
@@ -1729,23 +1689,6 @@ JSBool js_cocos2dx_extension_ControlButton_setTitleForState(JSContext *cx, uint3
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_setTitleForState : wrong number of arguments: %d, was expecting %d", argc, 2);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_extension_ControlButton_getTitleDispatchTable(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_getTitleDispatchTable : Invalid Native Object");
-	if (argc == 0) {
-		cocos2d::Dictionary* ret = cobj->getTitleDispatchTable();
-		jsval jsret;
-		jsret = ccdictionary_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_getTitleDispatchTable : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_extension_ControlButton_setLabelAnchorPoint(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1788,26 +1731,6 @@ JSBool js_cocos2dx_extension_ControlButton_getTitleTTFSizeForState(JSContext *cx
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_getTitleTTFSizeForState : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_extension_ControlButton_setTitleDispatchTable(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setTitleDispatchTable : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Dictionary* arg0;
-		ok &= jsval_to_ccdictionary(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setTitleDispatchTable : Error processing arguments");
-		cobj->setTitleDispatchTable(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_setTitleDispatchTable : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_extension_ControlButton_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1935,23 +1858,6 @@ JSBool js_cocos2dx_extension_ControlButton_getCurrentTitleColor(JSContext *cx, u
 	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_getCurrentTitleColor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_extension_ControlButton_getTitleColorDispatchTable(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_getTitleColorDispatchTable : Invalid Native Object");
-	if (argc == 0) {
-		cocos2d::Dictionary* ret = cobj->getTitleColorDispatchTable();
-		jsval jsret;
-		jsret = ccdictionary_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_getTitleColorDispatchTable : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_extension_ControlButton_setEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -2035,19 +1941,36 @@ JSBool js_cocos2dx_extension_ControlButton_needsLayout(JSContext *cx, uint32_t a
 }
 JSBool js_cocos2dx_extension_ControlButton_getCurrentTitle(JSContext *cx, uint32_t argc, jsval *vp)
 {
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_getCurrentTitle : Invalid Native Object");
-	if (argc == 0) {
-		cocos2d::String* ret = cobj->getCurrentTitle();
-		jsval jsret;
-		jsret = std_string_to_jsval(cx, ret->getCString());
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
 
-	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_getCurrentTitle : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JSObject *obj = NULL;
+	cocos2d::extension::ControlButton* cobj = NULL;
+	obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_getCurrentTitle : Invalid Native Object");
+	do {
+		if (argc == 0) {
+			std::string ret = cobj->getCurrentTitle();
+			jsval jsret;
+			jsret = std_string_to_jsval(cx, ret);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	do {
+		if (argc == 0) {
+			const std::string& ret = cobj->getCurrentTitle();
+			jsval jsret;
+			jsret = std_string_to_jsval(cx, ret);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_getCurrentTitle : wrong number of arguments");
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_extension_ControlButton_getHorizontalOrigin(JSContext *cx, uint32_t argc, jsval *vp)
@@ -2252,23 +2175,6 @@ JSBool js_cocos2dx_extension_ControlButton_setColor(JSContext *cx, uint32_t argc
 	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_extension_ControlButton_getTitleLabelDispatchTable(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_getTitleLabelDispatchTable : Invalid Native Object");
-	if (argc == 0) {
-		cocos2d::Dictionary* ret = cobj->getTitleLabelDispatchTable();
-		jsval jsret;
-		jsret = ccdictionary_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_getTitleLabelDispatchTable : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_extension_ControlButton_setBackgroundSprite(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -2314,26 +2220,6 @@ JSBool js_cocos2dx_extension_ControlButton_setPreferredSize(JSContext *cx, uint3
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_setPreferredSize : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_extension_ControlButton_setTitleLabelDispatchTable(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setTitleLabelDispatchTable : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Dictionary* arg0;
-		ok &= jsval_to_ccdictionary(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_setTitleLabelDispatchTable : Error processing arguments");
-		cobj->setTitleLabelDispatchTable(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_setTitleLabelDispatchTable : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_extension_ControlButton_getTitleLabel(JSContext *cx, uint32_t argc, jsval *vp)
@@ -2392,23 +2278,6 @@ JSBool js_cocos2dx_extension_ControlButton_getVerticalMargin(JSContext *cx, uint
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_getVerticalMargin : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_extension_ControlButton_getBackgroundSpriteDispatchTable(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::ControlButton* cobj = (cocos2d::extension::ControlButton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_getBackgroundSpriteDispatchTable : Invalid Native Object");
-	if (argc == 0) {
-		cocos2d::Dictionary* ret = cobj->getBackgroundSpriteDispatchTable();
-		jsval jsret;
-		jsret = ccdictionary_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_ControlButton_getBackgroundSpriteDispatchTable : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_extension_ControlButton_getTitleLabelForState(JSContext *cx, uint32_t argc, jsval *vp)
@@ -2535,9 +2404,9 @@ JSBool js_cocos2dx_extension_ControlButton_getTitleForState(JSContext *cx, uint3
 		cocos2d::extension::Control::State arg0;
 		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_extension_ControlButton_getTitleForState : Error processing arguments");
-		cocos2d::String* ret = cobj->getTitleForState(arg0);
+		std::string ret = cobj->getTitleForState(arg0);
 		jsval jsret;
-		jsret = std_string_to_jsval(cx, ret->getCString());
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -2684,7 +2553,6 @@ void js_register_cocos2dx_extension_ControlButton(JSContext *cx, JSObject *globa
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("setTitleColorDispatchTable", js_cocos2dx_extension_ControlButton_setTitleColorDispatchTable, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isPushed", js_cocos2dx_extension_ControlButton_isPushed, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSelected", js_cocos2dx_extension_ControlButton_setSelected, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTitleLabelForState", js_cocos2dx_extension_ControlButton_setTitleLabelForState, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2692,19 +2560,15 @@ void js_register_cocos2dx_extension_ControlButton(JSContext *cx, JSObject *globa
 		JS_FN("getLabelAnchorPoint", js_cocos2dx_extension_ControlButton_getLabelAnchorPoint, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setHighlighted", js_cocos2dx_extension_ControlButton_setHighlighted, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setZoomOnTouchDown", js_cocos2dx_extension_ControlButton_setZoomOnTouchDown, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setBackgroundSpriteDispatchTable", js_cocos2dx_extension_ControlButton_setBackgroundSpriteDispatchTable, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTitleForState", js_cocos2dx_extension_ControlButton_setTitleForState, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getTitleDispatchTable", js_cocos2dx_extension_ControlButton_getTitleDispatchTable, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setLabelAnchorPoint", js_cocos2dx_extension_ControlButton_setLabelAnchorPoint, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTitleTTFSizeForState", js_cocos2dx_extension_ControlButton_getTitleTTFSizeForState, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setTitleDispatchTable", js_cocos2dx_extension_ControlButton_setTitleDispatchTable, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setOpacity", js_cocos2dx_extension_ControlButton_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTitleTTFForState", js_cocos2dx_extension_ControlButton_setTitleTTFForState, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTitleTTFSizeForState", js_cocos2dx_extension_ControlButton_setTitleTTFSizeForState, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTitleLabel", js_cocos2dx_extension_ControlButton_setTitleLabel, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getOpacity", js_cocos2dx_extension_ControlButton_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCurrentTitleColor", js_cocos2dx_extension_ControlButton_getCurrentTitleColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getTitleColorDispatchTable", js_cocos2dx_extension_ControlButton_getTitleColorDispatchTable, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setEnabled", js_cocos2dx_extension_ControlButton_setEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getBackgroundSpriteForState", js_cocos2dx_extension_ControlButton_getBackgroundSpriteForState, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getColor", js_cocos2dx_extension_ControlButton_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2719,14 +2583,11 @@ void js_register_cocos2dx_extension_ControlButton(JSContext *cx, JSObject *globa
 		JS_FN("setBackgroundSpriteFrameForState", js_cocos2dx_extension_ControlButton_setBackgroundSpriteFrameForState, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBackgroundSpriteForState", js_cocos2dx_extension_ControlButton_setBackgroundSpriteForState, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setColor", js_cocos2dx_extension_ControlButton_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getTitleLabelDispatchTable", js_cocos2dx_extension_ControlButton_getTitleLabelDispatchTable, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBackgroundSprite", js_cocos2dx_extension_ControlButton_setBackgroundSprite, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setPreferredSize", js_cocos2dx_extension_ControlButton_setPreferredSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setTitleLabelDispatchTable", js_cocos2dx_extension_ControlButton_setTitleLabelDispatchTable, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTitleLabel", js_cocos2dx_extension_ControlButton_getTitleLabel, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPreferredSize", js_cocos2dx_extension_ControlButton_getPreferredSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getVerticalMargin", js_cocos2dx_extension_ControlButton_getVerticalMargin, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getBackgroundSpriteDispatchTable", js_cocos2dx_extension_ControlButton_getBackgroundSpriteDispatchTable, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTitleLabelForState", js_cocos2dx_extension_ControlButton_getTitleLabelForState, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setMargins", js_cocos2dx_extension_ControlButton_setMargins, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTitleBMFontForState", js_cocos2dx_extension_ControlButton_setTitleBMFontForState, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),

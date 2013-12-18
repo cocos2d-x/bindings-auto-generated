@@ -2783,48 +2783,6 @@ int lua_register_cocos2dx_extension_Control(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_extension_ControlButton_setTitleColorDispatchTable(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::ControlButton* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ControlButton",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::ControlButton*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ControlButton_setTitleColorDispatchTable'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Dictionary* arg0;
-        ok &= luaval_to_dictionary(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setTitleColorDispatchTable(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTitleColorDispatchTable",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_setTitleColorDispatchTable'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_extension_ControlButton_onTouchEnded(lua_State* tolua_S)
 {
     int argc = 0;
@@ -3190,48 +3148,6 @@ int lua_cocos2dx_extension_ControlButton_setZoomOnTouchDown(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_extension_ControlButton_setBackgroundSpriteDispatchTable(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::ControlButton* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ControlButton",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::ControlButton*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ControlButton_setBackgroundSpriteDispatchTable'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Dictionary* arg0;
-        ok &= luaval_to_dictionary(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setBackgroundSpriteDispatchTable(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackgroundSpriteDispatchTable",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_setBackgroundSpriteDispatchTable'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_extension_ControlButton_setTitleForState(lua_State* tolua_S)
 {
     int argc = 0;
@@ -3259,9 +3175,9 @@ int lua_cocos2dx_extension_ControlButton_setTitleForState(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        cocos2d::String* arg0;
+        std::string arg0;
         cocos2d::extension::Control::State arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = cocos2d::String::create(arg0_tmp);
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -3273,47 +3189,6 @@ int lua_cocos2dx_extension_ControlButton_setTitleForState(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_setTitleForState'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_extension_ControlButton_getTitleDispatchTable(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::ControlButton* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ControlButton",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::ControlButton*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ControlButton_getTitleDispatchTable'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::Dictionary* ret = cobj->getTitleDispatchTable();
-        dictionary_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleDispatchTable",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_getTitleDispatchTable'.",&tolua_err);
 #endif
     return 0;
 }
@@ -3461,48 +3336,6 @@ int lua_cocos2dx_extension_ControlButton_getTitleTTFSizeForState(lua_State* tolu
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_getTitleTTFSizeForState'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_extension_ControlButton_setTitleDispatchTable(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::ControlButton* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ControlButton",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::ControlButton*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ControlButton_setTitleDispatchTable'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Dictionary* arg0;
-        ok &= luaval_to_dictionary(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setTitleDispatchTable(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTitleDispatchTable",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_setTitleDispatchTable'.",&tolua_err);
 #endif
     return 0;
 }
@@ -3766,47 +3599,6 @@ int lua_cocos2dx_extension_ControlButton_getCurrentTitleColor(lua_State* tolua_S
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_getCurrentTitleColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_extension_ControlButton_getTitleColorDispatchTable(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::ControlButton* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ControlButton",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::ControlButton*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ControlButton_getTitleColorDispatchTable'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::Dictionary* ret = cobj->getTitleColorDispatchTable();
-        dictionary_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleColorDispatchTable",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_getTitleColorDispatchTable'.",&tolua_err);
 #endif
     return 0;
 }
@@ -4116,36 +3908,39 @@ int lua_cocos2dx_extension_ControlButton_onTouchBegan(lua_State* tolua_S)
 int lua_cocos2dx_extension_ControlButton_getCurrentTitle(lua_State* tolua_S)
 {
     int argc = 0;
-    cocos2d::extension::ControlButton* cobj = nullptr;
+    cocos2d::extension::ControlButton* cobj = NULL;
     bool ok  = true;
-
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
-
 #if COCOS2D_DEBUG >= 1
     if (!tolua_isusertype(tolua_S,1,"ControlButton",0,&tolua_err)) goto tolua_lerror;
 #endif
-
     cobj = (cocos2d::extension::ControlButton*)tolua_tousertype(tolua_S,1,0);
-
 #if COCOS2D_DEBUG >= 1
-    if (!cobj) 
+    if (!cobj)
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ControlButton_getCurrentTitle'", NULL);
         return 0;
     }
 #endif
-
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::String* ret = cobj->getCurrentTitle();
-        tolua_pushstring(tolua_S, ret->getCString());
-        return 1;
-    }
+    do{
+        if (argc == 0) {
+            std::string ret = cobj->getCurrentTitle();
+            tolua_pushcppstring(tolua_S,ret);
+            return 1;
+        }
+    }while(0);
+    ok  = true;
+    do{
+        if (argc == 0) {
+            const std::string& ret = cobj->getCurrentTitle();
+            tolua_pushcppstring(tolua_S,ret);
+            return 1;
+        }
+    }while(0);
+    ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurrentTitle",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
@@ -4567,47 +4362,6 @@ int lua_cocos2dx_extension_ControlButton_setColor(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_extension_ControlButton_getTitleLabelDispatchTable(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::ControlButton* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ControlButton",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::ControlButton*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ControlButton_getTitleLabelDispatchTable'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::Dictionary* ret = cobj->getTitleLabelDispatchTable();
-        dictionary_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleLabelDispatchTable",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_getTitleLabelDispatchTable'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_extension_ControlButton_setBackgroundSprite(lua_State* tolua_S)
 {
     int argc = 0;
@@ -4698,48 +4452,6 @@ int lua_cocos2dx_extension_ControlButton_setPreferredSize(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_setPreferredSize'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_extension_ControlButton_setTitleLabelDispatchTable(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::ControlButton* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ControlButton",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::ControlButton*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ControlButton_setTitleLabelDispatchTable'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Dictionary* arg0;
-        ok &= luaval_to_dictionary(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setTitleLabelDispatchTable(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTitleLabelDispatchTable",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_setTitleLabelDispatchTable'.",&tolua_err);
 #endif
     return 0;
 }
@@ -4875,47 +4587,6 @@ int lua_cocos2dx_extension_ControlButton_getVerticalMargin(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_getVerticalMargin'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_extension_ControlButton_getBackgroundSpriteDispatchTable(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::ControlButton* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ControlButton",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::ControlButton*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ControlButton_getBackgroundSpriteDispatchTable'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::Dictionary* ret = cobj->getBackgroundSpriteDispatchTable();
-        dictionary_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBackgroundSpriteDispatchTable",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ControlButton_getBackgroundSpriteDispatchTable'.",&tolua_err);
 #endif
     return 0;
 }
@@ -5177,8 +4848,8 @@ int lua_cocos2dx_extension_ControlButton_getTitleForState(lua_State* tolua_S)
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
-        cocos2d::String* ret = cobj->getTitleForState(arg0);
-        tolua_pushstring(tolua_S, ret->getCString());
+        std::string ret = cobj->getTitleForState(arg0);
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleForState",argc, 1);
@@ -5356,7 +5027,6 @@ int lua_register_cocos2dx_extension_ControlButton(lua_State* tolua_S)
     tolua_cclass(tolua_S,"ControlButton","ControlButton","Control",NULL);
 
     tolua_beginmodule(tolua_S,"ControlButton");
-        tolua_function(tolua_S,"setTitleColorDispatchTable",lua_cocos2dx_extension_ControlButton_setTitleColorDispatchTable);
         tolua_function(tolua_S,"onTouchEnded",lua_cocos2dx_extension_ControlButton_onTouchEnded);
         tolua_function(tolua_S,"isPushed",lua_cocos2dx_extension_ControlButton_isPushed);
         tolua_function(tolua_S,"setSelected",lua_cocos2dx_extension_ControlButton_setSelected);
@@ -5365,20 +5035,16 @@ int lua_register_cocos2dx_extension_ControlButton(lua_State* tolua_S)
         tolua_function(tolua_S,"getLabelAnchorPoint",lua_cocos2dx_extension_ControlButton_getLabelAnchorPoint);
         tolua_function(tolua_S,"setHighlighted",lua_cocos2dx_extension_ControlButton_setHighlighted);
         tolua_function(tolua_S,"setZoomOnTouchDown",lua_cocos2dx_extension_ControlButton_setZoomOnTouchDown);
-        tolua_function(tolua_S,"setBackgroundSpriteDispatchTable",lua_cocos2dx_extension_ControlButton_setBackgroundSpriteDispatchTable);
         tolua_function(tolua_S,"setTitleForState",lua_cocos2dx_extension_ControlButton_setTitleForState);
-        tolua_function(tolua_S,"getTitleDispatchTable",lua_cocos2dx_extension_ControlButton_getTitleDispatchTable);
         tolua_function(tolua_S,"setLabelAnchorPoint",lua_cocos2dx_extension_ControlButton_setLabelAnchorPoint);
         tolua_function(tolua_S,"onTouchMoved",lua_cocos2dx_extension_ControlButton_onTouchMoved);
         tolua_function(tolua_S,"getTitleTTFSizeForState",lua_cocos2dx_extension_ControlButton_getTitleTTFSizeForState);
-        tolua_function(tolua_S,"setTitleDispatchTable",lua_cocos2dx_extension_ControlButton_setTitleDispatchTable);
         tolua_function(tolua_S,"setOpacity",lua_cocos2dx_extension_ControlButton_setOpacity);
         tolua_function(tolua_S,"setTitleTTFForState",lua_cocos2dx_extension_ControlButton_setTitleTTFForState);
         tolua_function(tolua_S,"setTitleTTFSizeForState",lua_cocos2dx_extension_ControlButton_setTitleTTFSizeForState);
         tolua_function(tolua_S,"setTitleLabel",lua_cocos2dx_extension_ControlButton_setTitleLabel);
         tolua_function(tolua_S,"getOpacity",lua_cocos2dx_extension_ControlButton_getOpacity);
         tolua_function(tolua_S,"getCurrentTitleColor",lua_cocos2dx_extension_ControlButton_getCurrentTitleColor);
-        tolua_function(tolua_S,"getTitleColorDispatchTable",lua_cocos2dx_extension_ControlButton_getTitleColorDispatchTable);
         tolua_function(tolua_S,"setEnabled",lua_cocos2dx_extension_ControlButton_setEnabled);
         tolua_function(tolua_S,"getBackgroundSpriteForState",lua_cocos2dx_extension_ControlButton_getBackgroundSpriteForState);
         tolua_function(tolua_S,"getColor",lua_cocos2dx_extension_ControlButton_getColor);
@@ -5395,14 +5061,11 @@ int lua_register_cocos2dx_extension_ControlButton(lua_State* tolua_S)
         tolua_function(tolua_S,"setBackgroundSpriteFrameForState",lua_cocos2dx_extension_ControlButton_setBackgroundSpriteFrameForState);
         tolua_function(tolua_S,"setBackgroundSpriteForState",lua_cocos2dx_extension_ControlButton_setBackgroundSpriteForState);
         tolua_function(tolua_S,"setColor",lua_cocos2dx_extension_ControlButton_setColor);
-        tolua_function(tolua_S,"getTitleLabelDispatchTable",lua_cocos2dx_extension_ControlButton_getTitleLabelDispatchTable);
         tolua_function(tolua_S,"setBackgroundSprite",lua_cocos2dx_extension_ControlButton_setBackgroundSprite);
         tolua_function(tolua_S,"setPreferredSize",lua_cocos2dx_extension_ControlButton_setPreferredSize);
-        tolua_function(tolua_S,"setTitleLabelDispatchTable",lua_cocos2dx_extension_ControlButton_setTitleLabelDispatchTable);
         tolua_function(tolua_S,"getTitleLabel",lua_cocos2dx_extension_ControlButton_getTitleLabel);
         tolua_function(tolua_S,"getPreferredSize",lua_cocos2dx_extension_ControlButton_getPreferredSize);
         tolua_function(tolua_S,"getVerticalMargin",lua_cocos2dx_extension_ControlButton_getVerticalMargin);
-        tolua_function(tolua_S,"getBackgroundSpriteDispatchTable",lua_cocos2dx_extension_ControlButton_getBackgroundSpriteDispatchTable);
         tolua_function(tolua_S,"getTitleLabelForState",lua_cocos2dx_extension_ControlButton_getTitleLabelForState);
         tolua_function(tolua_S,"setMargins",lua_cocos2dx_extension_ControlButton_setMargins);
         tolua_function(tolua_S,"setTitleBMFontForState",lua_cocos2dx_extension_ControlButton_setTitleBMFontForState);

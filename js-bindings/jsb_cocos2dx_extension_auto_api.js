@@ -281,12 +281,6 @@ create : function () {},
 cc.ControlButton = {
 
 /**
- * @method setTitleColorDispatchTable
- * @param {cocos2d::Dictionary*}
- */
-setTitleColorDispatchTable : function () {},
-
-/**
  * @method isPushed
  * @return A value converted from C/C++ "bool"
  */
@@ -330,23 +324,11 @@ setHighlighted : function () {},
 setZoomOnTouchDown : function () {},
 
 /**
- * @method setBackgroundSpriteDispatchTable
- * @param {cocos2d::Dictionary*}
- */
-setBackgroundSpriteDispatchTable : function () {},
-
-/**
  * @method setTitleForState
- * @param {cocos2d::String*}
+ * @param {const std::string&}
  * @param {cocos2d::extension::Control::State}
  */
 setTitleForState : function () {},
-
-/**
- * @method getTitleDispatchTable
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
- */
-getTitleDispatchTable : function () {},
 
 /**
  * @method setLabelAnchorPoint
@@ -360,12 +342,6 @@ setLabelAnchorPoint : function () {},
  * @param {cocos2d::extension::Control::State}
  */
 getTitleTTFSizeForState : function () {},
-
-/**
- * @method setTitleDispatchTable
- * @param {cocos2d::Dictionary*}
- */
-setTitleDispatchTable : function () {},
 
 /**
  * @method setOpacity
@@ -406,12 +382,6 @@ getOpacity : function () {},
 getCurrentTitleColor : function () {},
 
 /**
- * @method getTitleColorDispatchTable
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
- */
-getTitleColorDispatchTable : function () {},
-
-/**
  * @method setEnabled
  * @param {bool}
  */
@@ -434,12 +404,6 @@ getColor : function () {},
  * @method needsLayout
  */
 needsLayout : function () {},
-
-/**
- * @method getCurrentTitle
- * @return A value converted from C/C++ "cocos2d::String*"
- */
-getCurrentTitle : function () {},
 
 /**
  * @method getHorizontalOrigin
@@ -501,12 +465,6 @@ setBackgroundSpriteForState : function () {},
 setColor : function () {},
 
 /**
- * @method getTitleLabelDispatchTable
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
- */
-getTitleLabelDispatchTable : function () {},
-
-/**
  * @method setBackgroundSprite
  * @param {cocos2d::extension::Scale9Sprite*}
  */
@@ -517,12 +475,6 @@ setBackgroundSprite : function () {},
  * @param {const cocos2d::Size&}
  */
 setPreferredSize : function () {},
-
-/**
- * @method setTitleLabelDispatchTable
- * @param {cocos2d::Dictionary*}
- */
-setTitleLabelDispatchTable : function () {},
 
 /**
  * @method getTitleLabel
@@ -541,12 +493,6 @@ getPreferredSize : function () {},
  * @return A value converted from C/C++ "int"
  */
 getVerticalMargin : function () {},
-
-/**
- * @method getBackgroundSpriteDispatchTable
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
- */
-getBackgroundSpriteDispatchTable : function () {},
 
 /**
  * @method getTitleLabelForState
@@ -584,7 +530,7 @@ getZoomOnTouchDown : function () {},
 
 /**
  * @method getTitleForState
- * @return A value converted from C/C++ "cocos2d::String*"
+ * @return A value converted from C/C++ "std::string"
  * @param {cocos2d::extension::Control::State}
  */
 getTitleForState : function () {},
