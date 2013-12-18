@@ -5545,6 +5545,12 @@ setScheduler : function () {},
 startAnimation : function () {},
 
 /**
+ * @method getRenderer
+ * @return A value converted from C/C++ "cocos2d::Renderer*"
+ */
+getRenderer : function () {},
+
+/**
  * @method getRunningScene
  * @return A value converted from C/C++ "cocos2d::Scene*"
  */
