@@ -51308,7 +51308,7 @@ int lua_cocos2dx_Label_getXOffsetForChar(lua_State* tolua_S)
     if (argc == 1) 
     {
         unsigned short arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+        ok &= luaval_to_ushort(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         int ret = cobj->getXOffsetForChar(arg0);
@@ -51810,7 +51810,7 @@ int lua_cocos2dx_Label_getRectForChar(lua_State* tolua_S)
     if (argc == 1) 
     {
         unsigned short arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+        ok &= luaval_to_ushort(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cocos2d::Rect ret = cobj->getRectForChar(arg0);
@@ -52073,7 +52073,7 @@ int lua_cocos2dx_Label_getYOffsetForChar(lua_State* tolua_S)
     if (argc == 1) 
     {
         unsigned short arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+        ok &= luaval_to_ushort(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         int ret = cobj->getYOffsetForChar(arg0);
@@ -52456,7 +52456,7 @@ int lua_cocos2dx_Label_getCharAtStringPosition(lua_State* tolua_S)
         if(!ok)
             return 0;
         unsigned short ret = cobj->getCharAtStringPosition(arg0);
-        #pragma warning NO CONVERSION FROM NATIVE FOR unsigned short;
+        tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCharAtStringPosition",argc, 1);
@@ -52496,7 +52496,7 @@ int lua_cocos2dx_Label_getAdvanceForChar(lua_State* tolua_S)
     {
         unsigned short arg0;
         int arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+        ok &= luaval_to_ushort(tolua_S, 2, &arg0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -52664,8 +52664,8 @@ int lua_cocos2dx_Label_getKerningForCharsPair(lua_State* tolua_S)
     {
         unsigned short arg0;
         unsigned short arg1;
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+        ok &= luaval_to_ushort(tolua_S, 2, &arg0);
+        ok &= luaval_to_ushort(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         int ret = cobj->getKerningForCharsPair(arg0, arg1);
@@ -53257,7 +53257,7 @@ int lua_cocos2dx_Label_recordLetterInfo(lua_State* tolua_S)
         unsigned short arg1;
         int arg2;
         ok &= luaval_to_point(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned short;
+        ok &= luaval_to_ushort(tolua_S, 3, &arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
             return 0;
