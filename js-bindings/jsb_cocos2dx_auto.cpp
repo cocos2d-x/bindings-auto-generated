@@ -26206,6 +26206,30 @@ JSBool js_cocos2dx_Director_startAnimation(JSContext *cx, uint32_t argc, jsval *
 	JS_ReportError(cx, "js_cocos2dx_Director_startAnimation : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Director_getRenderer(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Director* cobj = (cocos2d::Director *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Director_getRenderer : Invalid Native Object");
+	if (argc == 0) {
+		cocos2d::Renderer* ret = cobj->getRenderer();
+		jsval jsret;
+		do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Renderer>(cx, (cocos2d::Renderer*)ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Director_getRenderer : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Director_getRunningScene(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -26837,6 +26861,7 @@ void js_register_cocos2dx_Director(JSContext *cx, JSObject *global) {
 		JS_FN("init", js_cocos2dx_Director_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScheduler", js_cocos2dx_Director_setScheduler, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("startAnimation", js_cocos2dx_Director_startAnimation, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getRenderer", js_cocos2dx_Director_getRenderer, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getRunningScene", js_cocos2dx_Director_getRunningScene, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setViewport", js_cocos2dx_Director_setViewport, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("stopAnimation", js_cocos2dx_Director_stopAnimation, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

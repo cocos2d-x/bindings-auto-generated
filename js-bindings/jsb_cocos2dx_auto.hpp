@@ -1675,6 +1675,7 @@ JSBool js_cocos2dx_Director_setDefaultValues(JSContext *cx, uint32_t argc, jsval
 JSBool js_cocos2dx_Director_init(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_setScheduler(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_startAnimation(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Director_getRenderer(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_getRunningScene(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_setViewport(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_stopAnimation(JSContext *cx, uint32_t argc, jsval *vp);
