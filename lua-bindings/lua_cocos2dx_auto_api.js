@@ -6179,21 +6179,6 @@ draw : function () {},
  */
 culling : function () {},
 
-/**
- * @method initWithTexture
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Texture2D*}
- * @param {const cocos2d::Rect&}
- * @param {bool}
- */
-initWithTexture : function () {},
-
-/**
- * @method NewSprite
- * @constructor
- */
-NewSprite : function () {},
-
 };
 
 /**
@@ -6523,12 +6508,6 @@ SpriteBatchNode : function () {},
 cc.NewSpriteBatchNode = {
 
 /**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
-
-/**
  * @method draw
  */
 draw : function () {},
@@ -6548,12 +6527,6 @@ create : function () {},
  * @param {int}
  */
 createWithTexture : function () {},
-
-/**
- * @method NewSpriteBatchNode
- * @constructor
- */
-NewSpriteBatchNode : function () {},
 
 };
 

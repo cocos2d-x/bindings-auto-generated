@@ -1830,9 +1830,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_NewSprite_updateQuadVertices(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_NewSprite_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_NewSprite_culling(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewSprite_initWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_NewSprite_create(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewSprite_NewSprite(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_LabelTTF_class;
 extern JSObject *jsb_LabelTTF_prototype;
@@ -1909,11 +1907,9 @@ JSBool js_cocos2dx_NewSpriteBatchNode_constructor(JSContext *cx, uint32_t argc, 
 void js_cocos2dx_NewSpriteBatchNode_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_NewSpriteBatchNode(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_NewSpriteBatchNode_init(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_NewSpriteBatchNode_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_NewSpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_NewSpriteBatchNode_createWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewSpriteBatchNode_NewSpriteBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_LabelBMFont_class;
 extern JSObject *jsb_LabelBMFont_prototype;
