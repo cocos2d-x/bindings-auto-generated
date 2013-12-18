@@ -1601,6 +1601,7 @@ void js_cocos2dx_DrawNode_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_DrawNode(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_DrawNode_draw(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_DrawNode_onDraw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_DrawNode_clear(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_DrawNode_drawDot(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_DrawNode_drawSegment(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2958,36 +2959,6 @@ void js_register_cocos2dx_ParticleRain(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_ParticleRain_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_ParticleRain_createWithTotalParticles(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_NewDrawNode_class;
-extern JSObject *jsb_NewDrawNode_prototype;
-
-JSBool js_cocos2dx_NewDrawNode_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_NewDrawNode_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_NewDrawNode(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_NewDrawNode_init(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewDrawNode_onDraw(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewDrawNode_draw(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewDrawNode_create(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_NewLabelAtlas_class;
-extern JSObject *jsb_NewLabelAtlas_prototype;
-
-JSBool js_cocos2dx_NewLabelAtlas_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_NewLabelAtlas_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_NewLabelAtlas(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_NewLabelAtlas_draw(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewLabelAtlas_NewLabelAtlas(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_NewParticleSystemQuad_class;
-extern JSObject *jsb_NewParticleSystemQuad_prototype;
-
-JSBool js_cocos2dx_NewParticleSystemQuad_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_NewParticleSystemQuad_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_NewParticleSystemQuad(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 
 extern JSClass  *jsb_NewRenderTexture_class;
 extern JSObject *jsb_NewRenderTexture_prototype;

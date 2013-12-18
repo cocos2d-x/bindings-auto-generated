@@ -24902,6 +24902,21 @@ JSBool js_cocos2dx_DrawNode_draw(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_DrawNode_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_DrawNode_onDraw(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::DrawNode* cobj = (cocos2d::DrawNode *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_DrawNode_onDraw : Invalid Native Object");
+	if (argc == 0) {
+		cobj->onDraw();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_DrawNode_onDraw : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_DrawNode_clear(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -25022,6 +25037,7 @@ void js_register_cocos2dx_DrawNode(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("draw", js_cocos2dx_DrawNode_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("onDraw", js_cocos2dx_DrawNode_onDraw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("clear", js_cocos2dx_DrawNode_clear, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("drawDot", js_cocos2dx_DrawNode_drawDot, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("drawSegment", js_cocos2dx_DrawNode_drawSegment, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -47737,299 +47753,6 @@ void js_register_cocos2dx_ParticleRain(JSContext *cx, JSObject *global) {
 }
 
 
-JSClass  *jsb_NewDrawNode_class;
-JSObject *jsb_NewDrawNode_prototype;
-
-JSBool js_cocos2dx_NewDrawNode_init(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NewDrawNode* cobj = (cocos2d::NewDrawNode *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NewDrawNode_init : Invalid Native Object");
-	if (argc == 0) {
-		bool ret = cobj->init();
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_NewDrawNode_init : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_NewDrawNode_onDraw(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NewDrawNode* cobj = (cocos2d::NewDrawNode *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NewDrawNode_onDraw : Invalid Native Object");
-	if (argc == 0) {
-		cobj->onDraw();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_NewDrawNode_onDraw : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_NewDrawNode_draw(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NewDrawNode* cobj = (cocos2d::NewDrawNode *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NewDrawNode_draw : Invalid Native Object");
-	if (argc == 0) {
-		cobj->draw();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_NewDrawNode_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_NewDrawNode_create(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	if (argc == 0) {
-		cocos2d::NewDrawNode* ret = cocos2d::NewDrawNode::create();
-		jsval jsret;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::NewDrawNode>(cx, (cocos2d::NewDrawNode*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	JS_ReportError(cx, "js_cocos2dx_NewDrawNode_create : wrong number of arguments");
-	return JS_FALSE;
-}
-
-
-extern JSObject *jsb_DrawNode_prototype;
-
-void js_cocos2dx_NewDrawNode_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (NewDrawNode)", obj);
-}
-
-void js_register_cocos2dx_NewDrawNode(JSContext *cx, JSObject *global) {
-	jsb_NewDrawNode_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_NewDrawNode_class->name = "NewDrawNode";
-	jsb_NewDrawNode_class->addProperty = JS_PropertyStub;
-	jsb_NewDrawNode_class->delProperty = JS_DeletePropertyStub;
-	jsb_NewDrawNode_class->getProperty = JS_PropertyStub;
-	jsb_NewDrawNode_class->setProperty = JS_StrictPropertyStub;
-	jsb_NewDrawNode_class->enumerate = JS_EnumerateStub;
-	jsb_NewDrawNode_class->resolve = JS_ResolveStub;
-	jsb_NewDrawNode_class->convert = JS_ConvertStub;
-	jsb_NewDrawNode_class->finalize = js_cocos2dx_NewDrawNode_finalize;
-	jsb_NewDrawNode_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-	JSPropertySpec *properties = NULL;
-
-	static JSFunctionSpec funcs[] = {
-		JS_FN("init", js_cocos2dx_NewDrawNode_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("onDraw", js_cocos2dx_NewDrawNode_onDraw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("draw", js_cocos2dx_NewDrawNode_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-	};
-
-	static JSFunctionSpec st_funcs[] = {
-		JS_FN("create", js_cocos2dx_NewDrawNode_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FS_END
-	};
-
-	jsb_NewDrawNode_prototype = JS_InitClass(
-		cx, global,
-		jsb_DrawNode_prototype,
-		jsb_NewDrawNode_class,
-		dummy_constructor<cocos2d::NewDrawNode>, 0, // no constructor
-		properties,
-		funcs,
-		NULL, // no static properties
-		st_funcs);
-	// make the class enumerable in the registered namespace
-	JSBool found;
-	JS_SetPropertyAttributes(cx, global, "NewDrawNode", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
-
-	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::NewDrawNode> t;
-	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
-	{
-		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_NewDrawNode_class;
-		p->proto = jsb_NewDrawNode_prototype;
-		p->parentProto = jsb_DrawNode_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
-	}
-}
-
-
-JSClass  *jsb_NewLabelAtlas_class;
-JSObject *jsb_NewLabelAtlas_prototype;
-
-JSBool js_cocos2dx_NewLabelAtlas_draw(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NewLabelAtlas* cobj = (cocos2d::NewLabelAtlas *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NewLabelAtlas_draw : Invalid Native Object");
-	if (argc == 0) {
-		cobj->draw();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_NewLabelAtlas_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_NewLabelAtlas_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	if (argc == 0) {
-		cocos2d::NewLabelAtlas* cobj = new cocos2d::NewLabelAtlas();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
-		if (_ccobj) {
-			_ccobj->autorelease();
-		}
-		TypeTest<cocos2d::NewLabelAtlas> t;
-		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
-		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
-		typeClass = typeMapIter->second;
-		CCASSERT(typeClass, "The value is null.");
-		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
-		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
-		// link the native object with the javascript object
-		js_proxy_t* p = jsb_new_proxy(cobj, obj);
-		JS_AddNamedObjectRoot(cx, &p->obj, "cocos2d::NewLabelAtlas");
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_NewLabelAtlas_constructor : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-
-
-extern JSObject *jsb_LabelAtlas_prototype;
-
-void js_cocos2dx_NewLabelAtlas_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (NewLabelAtlas)", obj);
-}
-
-void js_register_cocos2dx_NewLabelAtlas(JSContext *cx, JSObject *global) {
-	jsb_NewLabelAtlas_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_NewLabelAtlas_class->name = "NewLabelAtlas";
-	jsb_NewLabelAtlas_class->addProperty = JS_PropertyStub;
-	jsb_NewLabelAtlas_class->delProperty = JS_DeletePropertyStub;
-	jsb_NewLabelAtlas_class->getProperty = JS_PropertyStub;
-	jsb_NewLabelAtlas_class->setProperty = JS_StrictPropertyStub;
-	jsb_NewLabelAtlas_class->enumerate = JS_EnumerateStub;
-	jsb_NewLabelAtlas_class->resolve = JS_ResolveStub;
-	jsb_NewLabelAtlas_class->convert = JS_ConvertStub;
-	jsb_NewLabelAtlas_class->finalize = js_cocos2dx_NewLabelAtlas_finalize;
-	jsb_NewLabelAtlas_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-	static JSPropertySpec properties[] = {
-		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
-	};
-
-	static JSFunctionSpec funcs[] = {
-		JS_FN("draw", js_cocos2dx_NewLabelAtlas_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-	};
-
-	JSFunctionSpec *st_funcs = NULL;
-
-	jsb_NewLabelAtlas_prototype = JS_InitClass(
-		cx, global,
-		jsb_LabelAtlas_prototype,
-		jsb_NewLabelAtlas_class,
-		js_cocos2dx_NewLabelAtlas_constructor, 0, // constructor
-		properties,
-		funcs,
-		NULL, // no static properties
-		st_funcs);
-	// make the class enumerable in the registered namespace
-	JSBool found;
-	JS_SetPropertyAttributes(cx, global, "NewLabelAtlas", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
-
-	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::NewLabelAtlas> t;
-	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
-	{
-		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_NewLabelAtlas_class;
-		p->proto = jsb_NewLabelAtlas_prototype;
-		p->parentProto = jsb_LabelAtlas_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
-	}
-}
-
-
-JSClass  *jsb_NewParticleSystemQuad_class;
-JSObject *jsb_NewParticleSystemQuad_prototype;
-
-
-extern JSObject *jsb_ParticleSystemQuad_prototype;
-
-void js_cocos2dx_NewParticleSystemQuad_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (NewParticleSystemQuad)", obj);
-}
-
-void js_register_cocos2dx_NewParticleSystemQuad(JSContext *cx, JSObject *global) {
-	jsb_NewParticleSystemQuad_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_NewParticleSystemQuad_class->name = "NewParticleSystemQuad";
-	jsb_NewParticleSystemQuad_class->addProperty = JS_PropertyStub;
-	jsb_NewParticleSystemQuad_class->delProperty = JS_DeletePropertyStub;
-	jsb_NewParticleSystemQuad_class->getProperty = JS_PropertyStub;
-	jsb_NewParticleSystemQuad_class->setProperty = JS_StrictPropertyStub;
-	jsb_NewParticleSystemQuad_class->enumerate = JS_EnumerateStub;
-	jsb_NewParticleSystemQuad_class->resolve = JS_ResolveStub;
-	jsb_NewParticleSystemQuad_class->convert = JS_ConvertStub;
-	jsb_NewParticleSystemQuad_class->finalize = js_cocos2dx_NewParticleSystemQuad_finalize;
-	jsb_NewParticleSystemQuad_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-	JSPropertySpec *properties = NULL;
-
-	JSFunctionSpec *funcs = NULL;
-
-	JSFunctionSpec *st_funcs = NULL;
-
-	jsb_NewParticleSystemQuad_prototype = JS_InitClass(
-		cx, global,
-		jsb_ParticleSystemQuad_prototype,
-		jsb_NewParticleSystemQuad_class,
-		dummy_constructor<cocos2d::NewParticleSystemQuad>, 0, // no constructor
-		properties,
-		funcs,
-		NULL, // no static properties
-		st_funcs);
-	// make the class enumerable in the registered namespace
-	JSBool found;
-	JS_SetPropertyAttributes(cx, global, "NewParticleSystemQuad", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
-
-	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::NewParticleSystemQuad> t;
-	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
-	{
-		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_NewParticleSystemQuad_class;
-		p->proto = jsb_NewParticleSystemQuad_prototype;
-		p->parentProto = jsb_ParticleSystemQuad_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
-	}
-}
-
-
 JSClass  *jsb_NewRenderTexture_class;
 JSObject *jsb_NewRenderTexture_prototype;
 
@@ -55251,8 +54974,6 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_TileMapAtlas(cx, obj);
 	js_register_cocos2dx_TransitionMoveInT(cx, obj);
 	js_register_cocos2dx_TransitionMoveInR(cx, obj);
-	js_register_cocos2dx_DrawNode(cx, obj);
-	js_register_cocos2dx_NewDrawNode(cx, obj);
 	js_register_cocos2dx_ParticleSystem(cx, obj);
 	js_register_cocos2dx_ParticleSystemQuad(cx, obj);
 	js_register_cocos2dx_ParticleSnow(cx, obj);
@@ -55376,6 +55097,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_TintTo(cx, obj);
 	js_register_cocos2dx_CatmullRomTo(cx, obj);
 	js_register_cocos2dx_ToggleVisibility(cx, obj);
+	js_register_cocos2dx_DrawNode(cx, obj);
 	js_register_cocos2dx_TransitionTurnOffTiles(cx, obj);
 	js_register_cocos2dx_RotateTo(cx, obj);
 	js_register_cocos2dx_TransitionSplitRows(cx, obj);
@@ -55406,7 +55128,6 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_ShuffleTiles(cx, obj);
 	js_register_cocos2dx_ProgressTimer(cx, obj);
 	js_register_cocos2dx_ParticleMeteor(cx, obj);
-	js_register_cocos2dx_NewParticleSystemQuad(cx, obj);
 	js_register_cocos2dx_EaseInOut(cx, obj);
 	js_register_cocos2dx_TransitionZoomFlipY(cx, obj);
 	js_register_cocos2dx_ScaleBy(cx, obj);
@@ -55433,7 +55154,6 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_MotionStreak(cx, obj);
 	js_register_cocos2dx_RotateBy(cx, obj);
 	js_register_cocos2dx_FileUtils(cx, obj);
-	js_register_cocos2dx_NewLabelAtlas(cx, obj);
 	js_register_cocos2dx_ProgressTo(cx, obj);
 	js_register_cocos2dx_TransitionProgressOutIn(cx, obj);
 	js_register_cocos2dx_CatmullRomBy(cx, obj);
