@@ -40637,6 +40637,59 @@ int lua_cocos2dx_Director_startAnimation(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_Director_getRenderer(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Director* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Director",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Director*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Director_getRenderer'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cocos2d::Renderer* ret = cobj->getRenderer();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Renderer*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Renderer");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Renderer");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRenderer",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Director_getRenderer'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_Director_getRunningScene(lua_State* tolua_S)
 {
     int argc = 0;
@@ -41899,6 +41952,7 @@ int lua_register_cocos2dx_Director(lua_State* tolua_S)
         tolua_function(tolua_S,"init",lua_cocos2dx_Director_init);
         tolua_function(tolua_S,"setScheduler",lua_cocos2dx_Director_setScheduler);
         tolua_function(tolua_S,"startAnimation",lua_cocos2dx_Director_startAnimation);
+        tolua_function(tolua_S,"getRenderer",lua_cocos2dx_Director_getRenderer);
         tolua_function(tolua_S,"getRunningScene",lua_cocos2dx_Director_getRunningScene);
         tolua_function(tolua_S,"setViewport",lua_cocos2dx_Director_setViewport);
         tolua_function(tolua_S,"stopAnimation",lua_cocos2dx_Director_stopAnimation);
