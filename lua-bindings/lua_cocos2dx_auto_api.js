@@ -5235,6 +5235,11 @@ cc.DrawNode = {
 draw : function () {},
 
 /**
+ * @method onDraw
+ */
+onDraw : function () {},
+
+/**
  * @method clear
  */
 clear : function () {},
@@ -9979,60 +9984,6 @@ create : function () {},
  * @param {int}
  */
 createWithTotalParticles : function () {},
-
-};
-
-/**
- * @class NewDrawNode
- */
-cc.NewDrawNode = {
-
-/**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
-
-/**
- * @method onDraw
- */
-onDraw : function () {},
-
-/**
- * @method draw
- */
-draw : function () {},
-
-/**
- * @method create
- * @return A value converted from C/C++ "cocos2d::NewDrawNode*"
- */
-create : function () {},
-
-};
-
-/**
- * @class NewLabelAtlas
- */
-cc.NewLabelAtlas = {
-
-/**
- * @method draw
- */
-draw : function () {},
-
-/**
- * @method NewLabelAtlas
- * @constructor
- */
-NewLabelAtlas : function () {},
-
-};
-
-/**
- * @class NewParticleSystemQuad
- */
-cc.NewParticleSystemQuad = {
 
 };
 
