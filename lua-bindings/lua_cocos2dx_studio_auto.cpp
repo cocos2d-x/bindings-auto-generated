@@ -23254,48 +23254,6 @@ int lua_cocos2dx_studio_Bone_updateZOrder(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_Bone_setTransformDirty(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::Bone* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Bone_setTransformDirty'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setTransformDirty(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTransformDirty",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setTransformDirty'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_studio_Bone_getDisplayRenderNode(lua_State* tolua_S)
 {
     int argc = 0;
@@ -23681,7 +23639,7 @@ int lua_cocos2dx_studio_Bone_getName(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_Bone_setOpacity(lua_State* tolua_S)
+int lua_cocos2dx_studio_Bone_setTransformDirty(lua_State* tolua_S)
 {
     int argc = 0;
     cocostudio::Bone* cobj = nullptr;
@@ -23700,7 +23658,7 @@ int lua_cocos2dx_studio_Bone_setOpacity(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Bone_setOpacity'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Bone_setTransformDirty'", NULL);
         return 0;
     }
 #endif
@@ -23708,18 +23666,18 @@ int lua_cocos2dx_studio_Bone_setOpacity(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
+        bool arg0;
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        cobj->setOpacity(arg0);
+        cobj->setTransformDirty(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTransformDirty",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setOpacity'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setTransformDirty'.",&tolua_err);
 #endif
     return 0;
 }
@@ -24526,48 +24484,6 @@ int lua_cocos2dx_studio_Bone_getNodeToWorldTransform(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_Bone_setColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::Bone* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Bone_setColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setColor'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_studio_Bone_removeChildBone(lua_State* tolua_S)
 {
     int argc = 0;
@@ -25077,14 +24993,13 @@ static int lua_cocos2dx_studio_Bone_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_studio_Bone(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"Bone");
-    tolua_cclass(tolua_S,"Bone","Bone","NodeRGBA",NULL);
+    tolua_cclass(tolua_S,"Bone","Bone","Node",NULL);
 
     tolua_beginmodule(tolua_S,"Bone");
         tolua_function(tolua_S,"getTweenData",lua_cocos2dx_studio_Bone_getTweenData);
         tolua_function(tolua_S,"isTransformDirty",lua_cocos2dx_studio_Bone_isTransformDirty);
         tolua_function(tolua_S,"isIgnoreMovementBoneData",lua_cocos2dx_studio_Bone_isIgnoreMovementBoneData);
         tolua_function(tolua_S,"updateZOrder",lua_cocos2dx_studio_Bone_updateZOrder);
-        tolua_function(tolua_S,"setTransformDirty",lua_cocos2dx_studio_Bone_setTransformDirty);
         tolua_function(tolua_S,"getDisplayRenderNode",lua_cocos2dx_studio_Bone_getDisplayRenderNode);
         tolua_function(tolua_S,"isBlendDirty",lua_cocos2dx_studio_Bone_isBlendDirty);
         tolua_function(tolua_S,"addChildBone",lua_cocos2dx_studio_Bone_addChildBone);
@@ -25093,7 +25008,7 @@ int lua_register_cocos2dx_studio_Bone(lua_State* tolua_S)
         tolua_function(tolua_S,"getParentBone",lua_cocos2dx_studio_Bone_getParentBone);
         tolua_function(tolua_S,"updateColor",lua_cocos2dx_studio_Bone_updateColor);
         tolua_function(tolua_S,"getName",lua_cocos2dx_studio_Bone_getName);
-        tolua_function(tolua_S,"setOpacity",lua_cocos2dx_studio_Bone_setOpacity);
+        tolua_function(tolua_S,"setTransformDirty",lua_cocos2dx_studio_Bone_setTransformDirty);
         tolua_function(tolua_S,"getDisplayRenderNodeType",lua_cocos2dx_studio_Bone_getDisplayRenderNodeType);
         tolua_function(tolua_S,"removeDisplay",lua_cocos2dx_studio_Bone_removeDisplay);
         tolua_function(tolua_S,"updateDisplayedOpacity",lua_cocos2dx_studio_Bone_updateDisplayedOpacity);
@@ -25111,7 +25026,6 @@ int lua_register_cocos2dx_studio_Bone(lua_State* tolua_S)
         tolua_function(tolua_S,"setBlendDirty",lua_cocos2dx_studio_Bone_setBlendDirty);
         tolua_function(tolua_S,"addDisplay",lua_cocos2dx_studio_Bone_addDisplay);
         tolua_function(tolua_S,"getNodeToWorldTransform",lua_cocos2dx_studio_Bone_getNodeToWorldTransform);
-        tolua_function(tolua_S,"setColor",lua_cocos2dx_studio_Bone_setColor);
         tolua_function(tolua_S,"removeChildBone",lua_cocos2dx_studio_Bone_removeChildBone);
         tolua_function(tolua_S,"setChildArmature",lua_cocos2dx_studio_Bone_setChildArmature);
         tolua_function(tolua_S,"getNodeToArmatureTransform",lua_cocos2dx_studio_Bone_getNodeToArmatureTransform);
@@ -29038,7 +28952,7 @@ static int lua_cocos2dx_studio_Armature_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"Armature");
-    tolua_cclass(tolua_S,"Armature","Armature","NodeRGBA",NULL);
+    tolua_cclass(tolua_S,"Armature","Armature","Node",NULL);
 
     tolua_beginmodule(tolua_S,"Armature");
         tolua_function(tolua_S,"getBone",lua_cocos2dx_studio_Armature_getBone);
@@ -32493,7 +32407,6 @@ TOLUA_API int register_all_cocos2dx_studio(lua_State* tolua_S)
 
 	lua_register_cocos2dx_studio_UILayoutParameter(tolua_S);
 	lua_register_cocos2dx_studio_UIWidget(tolua_S);
-	lua_register_cocos2dx_studio_UIButton(tolua_S);
 	lua_register_cocos2dx_studio_UILabelAtlas(tolua_S);
 	lua_register_cocos2dx_studio_UILayout(tolua_S);
 	lua_register_cocos2dx_studio_UIScrollView(tolua_S);
@@ -32507,9 +32420,10 @@ TOLUA_API int register_all_cocos2dx_studio(lua_State* tolua_S)
 	lua_register_cocos2dx_studio_ArmatureDataManager(tolua_S);
 	lua_register_cocos2dx_studio_BatchNode(tolua_S);
 	lua_register_cocos2dx_studio_ActionManagerEx(tolua_S);
+	lua_register_cocos2dx_studio_BaseData(tolua_S);
+	lua_register_cocos2dx_studio_FrameData(tolua_S);
 	lua_register_cocos2dx_studio_UIHelper(tolua_S);
 	lua_register_cocos2dx_studio_ComController(tolua_S);
-	lua_register_cocos2dx_studio_BaseData(tolua_S);
 	lua_register_cocos2dx_studio_BoneData(tolua_S);
 	lua_register_cocos2dx_studio_Bone(tolua_S);
 	lua_register_cocos2dx_studio_ParticleDisplayData(tolua_S);
@@ -32523,12 +32437,12 @@ TOLUA_API int register_all_cocos2dx_studio(lua_State* tolua_S)
 	lua_register_cocos2dx_studio_UICheckBox(tolua_S);
 	lua_register_cocos2dx_studio_ComAttribute(tolua_S);
 	lua_register_cocos2dx_studio_GUIReader(tolua_S);
+	lua_register_cocos2dx_studio_UIButton(tolua_S);
 	lua_register_cocos2dx_studio_UIRelativeLayoutParameter(tolua_S);
 	lua_register_cocos2dx_studio_Armature(tolua_S);
 	lua_register_cocos2dx_studio_SpriteDisplayData(tolua_S);
 	lua_register_cocos2dx_studio_UILabel(tolua_S);
 	lua_register_cocos2dx_studio_MovementBoneData(tolua_S);
-	lua_register_cocos2dx_studio_FrameData(tolua_S);
 	lua_register_cocos2dx_studio_TextureData(tolua_S);
 	lua_register_cocos2dx_studio_SceneReader(tolua_S);
 	lua_register_cocos2dx_studio_UICCLabelAtlas(tolua_S);

@@ -2944,6 +2944,46 @@ JSBool js_cocos2dx_Node_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Node_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Node_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_setOpacityModifyRGB : Invalid Native Object");
+	if (argc == 1) {
+		JSBool arg0;
+		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Node_setOpacityModifyRGB : Error processing arguments");
+		cobj->setOpacityModifyRGB(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_setOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Node_setCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_setCascadeOpacityEnabled : Invalid Native Object");
+	if (argc == 1) {
+		JSBool arg0;
+		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Node_setCascadeOpacityEnabled : Error processing arguments");
+		cobj->setCascadeOpacityEnabled(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_setCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Node_getChildren(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -3032,6 +3072,26 @@ JSBool js_cocos2dx_Node_isIgnoreAnchorPointForPosition(JSContext *cx, uint32_t a
 	JS_ReportError(cx, "js_cocos2dx_Node_isIgnoreAnchorPointForPosition : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Node_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_updateDisplayedOpacity : Invalid Native Object");
+	if (argc == 1) {
+		uint16_t arg0;
+		ok &= jsval_to_uint16(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Node_updateDisplayedOpacity : Error processing arguments");
+		cobj->updateDisplayedOpacity(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_updateDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Node_setRotation(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -3112,6 +3172,23 @@ JSBool js_cocos2dx_Node_setScaleX(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Node_setScaleX : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Node_getColor(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getColor : Invalid Native Object");
+	if (argc == 0) {
+		const cocos2d::Color3B& ret = cobj->getColor();
+		jsval jsret;
+		jsret = cccolor3b_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_getColor : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Node_removeAllComponents(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -3125,6 +3202,23 @@ JSBool js_cocos2dx_Node_removeAllComponents(JSContext *cx, uint32_t argc, jsval 
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Node_removeAllComponents : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Node_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getOpacity : Invalid Native Object");
+	if (argc == 0) {
+		unsigned char ret = cobj->getOpacity();
+		jsval jsret;
+		jsret = uint32_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Node_getTag(JSContext *cx, uint32_t argc, jsval *vp)
@@ -3421,6 +3515,23 @@ JSBool js_cocos2dx_Node_getNodeToParentAffineTransform(JSContext *cx, uint32_t a
 	JS_ReportError(cx, "js_cocos2dx_Node_getNodeToParentAffineTransform : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Node_isCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_isCascadeOpacityEnabled : Invalid Native Object");
+	if (argc == 0) {
+		bool ret = cobj->isCascadeOpacityEnabled();
+		jsval jsret;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_isCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Node_setParent(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -3641,6 +3752,26 @@ JSBool js_cocos2dx_Node_ignoreAnchorPointForPosition(JSContext *cx, uint32_t arg
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Node_ignoreAnchorPointForPosition : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Node_setColor(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_setColor : Invalid Native Object");
+	if (argc == 1) {
+		cocos2d::Color3B arg0;
+		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Node_setColor : Error processing arguments");
+		cobj->setColor(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Node_setPositionY(JSContext *cx, uint32_t argc, jsval *vp)
@@ -4077,6 +4208,23 @@ JSBool js_cocos2dx_Node_getSkewY(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Node_getSkewY : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Node_getDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getDisplayedColor : Invalid Native Object");
+	if (argc == 0) {
+		const cocos2d::Color3B& ret = cobj->getDisplayedColor();
+		jsval jsret;
+		jsret = cccolor3b_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_getDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Node_getActionByTag(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -4180,6 +4328,23 @@ JSBool js_cocos2dx_Node_setAdditionalTransform(JSContext *cx, uint32_t argc, jsv
 	} while(0);
 
 	JS_ReportError(cx, "js_cocos2dx_Node_setAdditionalTransform : wrong number of arguments");
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Node_getDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getDisplayedOpacity : Invalid Native Object");
+	if (argc == 0) {
+		unsigned char ret = cobj->getDisplayedOpacity();
+		jsval jsret;
+		jsret = uint32_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_getDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Node_getScheduler(JSContext *cx, uint32_t argc, jsval *vp)
@@ -4478,6 +4643,26 @@ JSBool js_cocos2dx_Node_removeChildByTag(JSContext *cx, uint32_t argc, jsval *vp
 	JS_ReportError(cx, "js_cocos2dx_Node_removeChildByTag : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Node_updateDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_updateDisplayedColor : Invalid Native Object");
+	if (argc == 1) {
+		cocos2d::Color3B arg0;
+		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Node_updateDisplayedColor : Error processing arguments");
+		cobj->updateDisplayedColor(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_updateDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Node_setVisible(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -4689,6 +4874,46 @@ JSBool js_cocos2dx_Node_getWorldToNodeAffineTransform(JSContext *cx, uint32_t ar
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Node_getWorldToNodeAffineTransform : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Node_setCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_setCascadeColorEnabled : Invalid Native Object");
+	if (argc == 1) {
+		JSBool arg0;
+		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Node_setCascadeColorEnabled : Error processing arguments");
+		cobj->setCascadeColorEnabled(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_setCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Node_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_setOpacity : Invalid Native Object");
+	if (argc == 1) {
+		uint16_t arg0;
+		ok &= jsval_to_uint16(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Node_setOpacity : Error processing arguments");
+		cobj->setOpacity(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Node_cleanup(JSContext *cx, uint32_t argc, jsval *vp)
@@ -5045,6 +5270,40 @@ JSBool js_cocos2dx_Node_setTag(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Node_setTag : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Node_isCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_isCascadeColorEnabled : Invalid Native Object");
+	if (argc == 0) {
+		bool ret = cobj->isCascadeColorEnabled();
+		jsval jsret;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_isCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Node_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_isOpacityModifyRGB : Invalid Native Object");
+	if (argc == 0) {
+		bool ret = cobj->isOpacityModifyRGB();
+		jsval jsret;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_isOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Node_stopAction(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -5178,15 +5437,20 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("setPhysicsBody", js_cocos2dx_Node_setPhysicsBody, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getShaderProgram", js_cocos2dx_Node_getShaderProgram, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getDescription", js_cocos2dx_Node_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setOpacityModifyRGB", js_cocos2dx_Node_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setCascadeOpacityEnabled", js_cocos2dx_Node_setCascadeOpacityEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getChildren", js_cocos2dx_Node_getChildren, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("pause", js_cocos2dx_Node_pause, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("convertToWorldSpaceAR", js_cocos2dx_Node_convertToWorldSpaceAR, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isIgnoreAnchorPointForPosition", js_cocos2dx_Node_isIgnoreAnchorPointForPosition, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateDisplayedOpacity", js_cocos2dx_Node_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setRotation", js_cocos2dx_Node_setRotation, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setZOrder", js_cocos2dx_Node_setZOrder, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScaleY", js_cocos2dx_Node_setScaleY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScaleX", js_cocos2dx_Node_setScaleX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getColor", js_cocos2dx_Node_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeAllComponents", js_cocos2dx_Node_removeAllComponents, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getOpacity", js_cocos2dx_Node_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTag", js_cocos2dx_Node_getTag, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getNodeToWorldAffineTransform", js_cocos2dx_Node_getNodeToWorldAffineTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getNodeToWorldTransform", js_cocos2dx_Node_getNodeToWorldTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5200,6 +5464,7 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("getRotationX", js_cocos2dx_Node_getRotationX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getRotationY", js_cocos2dx_Node_getRotationY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getNodeToParentAffineTransform", js_cocos2dx_Node_getNodeToParentAffineTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isCascadeOpacityEnabled", js_cocos2dx_Node_isCascadeOpacityEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setParent", js_cocos2dx_Node_setParent, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getNodeToParentTransform", js_cocos2dx_Node_getNodeToParentTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("convertToNodeSpace", js_cocos2dx_Node_convertToNodeSpace, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5209,6 +5474,7 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("stopActionByTag", js_cocos2dx_Node_stopActionByTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("reorderChild", js_cocos2dx_Node_reorderChild, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("ignoreAnchorPointForPosition", js_cocos2dx_Node_ignoreAnchorPointForPosition, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setColor", js_cocos2dx_Node_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setPositionY", js_cocos2dx_Node_setPositionY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setPositionX", js_cocos2dx_Node_setPositionX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getAnchorPoint", js_cocos2dx_Node_getAnchorPoint, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5231,10 +5497,12 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("stopAllActions", js_cocos2dx_Node_stopAllActions, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getSkewX", js_cocos2dx_Node_getSkewX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getSkewY", js_cocos2dx_Node_getSkewY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDisplayedColor", js_cocos2dx_Node_getDisplayedColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getActionByTag", js_cocos2dx_Node_getActionByTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setRotationX", js_cocos2dx_Node_setRotationX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setRotationY", js_cocos2dx_Node_setRotationY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAdditionalTransform", js_cocos2dx_Node_setAdditionalTransform, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDisplayedOpacity", js_cocos2dx_Node_getDisplayedOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getScheduler", js_cocos2dx_Node_getScheduler, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getParentToNodeAffineTransform", js_cocos2dx_Node_getParentToNodeAffineTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getOrderOfArrival", js_cocos2dx_Node_getOrderOfArrival, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5246,6 +5514,7 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("getPositionY", js_cocos2dx_Node_getPositionY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPositionX", js_cocos2dx_Node_getPositionX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeChildByTag", js_cocos2dx_Node_removeChildByTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateDisplayedColor", js_cocos2dx_Node_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setVisible", js_cocos2dx_Node_setVisible, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getParentToNodeTransform", js_cocos2dx_Node_getParentToNodeTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getVertexZ", js_cocos2dx_Node_getVertexZ, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5256,6 +5525,8 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("getScaleY", js_cocos2dx_Node_getScaleY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getScaleX", js_cocos2dx_Node_getScaleX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getWorldToNodeAffineTransform", js_cocos2dx_Node_getWorldToNodeAffineTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setCascadeColorEnabled", js_cocos2dx_Node_setCascadeColorEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setOpacity", js_cocos2dx_Node_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("cleanup", js_cocos2dx_Node_cleanup, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getComponent", js_cocos2dx_Node_getComponent, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getContentSize", js_cocos2dx_Node_getContentSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5273,6 +5544,8 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("getScale", js_cocos2dx_Node_getScale, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCamera", js_cocos2dx_Node_getCamera, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTag", js_cocos2dx_Node_setTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isCascadeColorEnabled", js_cocos2dx_Node_isCascadeColorEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isOpacityModifyRGB", js_cocos2dx_Node_isOpacityModifyRGB, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("stopAction", js_cocos2dx_Node_stopAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getActionManager", js_cocos2dx_Node_getActionManager, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_cocos2dx_Node_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5312,15 +5585,15 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 }
 
 
-JSClass  *jsb_NodeRGBA_class;
-JSObject *jsb_NodeRGBA_prototype;
+JSClass  *jsb___NodeRGBA_class;
+JSObject *jsb___NodeRGBA_prototype;
 
-JSBool js_cocos2dx_NodeRGBA_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_isOpacityModifyRGB : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_isOpacityModifyRGB : Invalid Native Object");
 	if (argc == 0) {
 		bool ret = cobj->isOpacityModifyRGB();
 		jsval jsret;
@@ -5329,35 +5602,35 @@ JSBool js_cocos2dx_NodeRGBA_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsv
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_isOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_isOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_setColor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_setColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setColor : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setColor : Invalid Native Object");
 	if (argc == 1) {
 		cocos2d::Color3B arg0;
 		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setColor : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setColor : Error processing arguments");
 		cobj->setColor(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_isCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_isCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_isCascadeOpacityEnabled : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_isCascadeOpacityEnabled : Invalid Native Object");
 	if (argc == 0) {
 		bool ret = cobj->isCascadeOpacityEnabled();
 		jsval jsret;
@@ -5366,15 +5639,15 @@ JSBool js_cocos2dx_NodeRGBA_isCascadeOpacityEnabled(JSContext *cx, uint32_t argc
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_isCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_isCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_getColor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_getColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_getColor : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_getColor : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Color3B& ret = cobj->getColor();
 		jsval jsret;
@@ -5383,15 +5656,15 @@ JSBool js_cocos2dx_NodeRGBA_getColor(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_getColor : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_getColor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_getDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_getDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_getDisplayedOpacity : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_getDisplayedOpacity : Invalid Native Object");
 	if (argc == 0) {
 		unsigned char ret = cobj->getDisplayedOpacity();
 		jsval jsret;
@@ -5400,115 +5673,115 @@ JSBool js_cocos2dx_NodeRGBA_getDisplayedOpacity(JSContext *cx, uint32_t argc, js
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_getDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_getDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_setCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_setCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setCascadeColorEnabled : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setCascadeColorEnabled : Invalid Native Object");
 	if (argc == 1) {
 		JSBool arg0;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setCascadeColorEnabled : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setCascadeColorEnabled : Error processing arguments");
 		cobj->setCascadeColorEnabled(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_setCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_setCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setOpacity : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setOpacity : Invalid Native Object");
 	if (argc == 1) {
 		uint16_t arg0;
 		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setOpacity : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setOpacity : Error processing arguments");
 		cobj->setOpacity(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setOpacityModifyRGB : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setOpacityModifyRGB : Invalid Native Object");
 	if (argc == 1) {
 		JSBool arg0;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setOpacityModifyRGB : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setOpacityModifyRGB : Error processing arguments");
 		cobj->setOpacityModifyRGB(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_setOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_setOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_setCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_setCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setCascadeOpacityEnabled : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setCascadeOpacityEnabled : Invalid Native Object");
 	if (argc == 1) {
 		JSBool arg0;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_setCascadeOpacityEnabled : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_setCascadeOpacityEnabled : Error processing arguments");
 		cobj->setCascadeOpacityEnabled(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_setCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_setCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_updateDisplayedOpacity : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_updateDisplayedOpacity : Invalid Native Object");
 	if (argc == 1) {
 		uint16_t arg0;
 		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_updateDisplayedOpacity : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_updateDisplayedOpacity : Error processing arguments");
 		cobj->updateDisplayedOpacity(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_updateDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_updateDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_isCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_isCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_isCascadeColorEnabled : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_isCascadeColorEnabled : Invalid Native Object");
 	if (argc == 0) {
 		bool ret = cobj->isCascadeColorEnabled();
 		jsval jsret;
@@ -5517,35 +5790,35 @@ JSBool js_cocos2dx_NodeRGBA_isCascadeColorEnabled(JSContext *cx, uint32_t argc, 
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_isCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_isCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_updateDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_updateDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_updateDisplayedColor : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_updateDisplayedColor : Invalid Native Object");
 	if (argc == 1) {
 		cocos2d::Color3B arg0;
 		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_updateDisplayedColor : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_updateDisplayedColor : Error processing arguments");
 		cobj->updateDisplayedColor(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_updateDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_updateDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_getOpacity : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_getOpacity : Invalid Native Object");
 	if (argc == 0) {
 		unsigned char ret = cobj->getOpacity();
 		jsval jsret;
@@ -5554,15 +5827,15 @@ JSBool js_cocos2dx_NodeRGBA_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeRGBA_getDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___NodeRGBA_getDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeRGBA* cobj = (cocos2d::NodeRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeRGBA_getDisplayedColor : Invalid Native Object");
+	cocos2d::__NodeRGBA* cobj = (cocos2d::__NodeRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___NodeRGBA_getDisplayedColor : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Color3B& ret = cobj->getDisplayedColor();
 		jsval jsret;
@@ -5571,58 +5844,56 @@ JSBool js_cocos2dx_NodeRGBA_getDisplayedColor(JSContext *cx, uint32_t argc, jsva
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_NodeRGBA_getDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___NodeRGBA_getDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 
 extern JSObject *jsb_Node_prototype;
 
-void js_cocos2dx_NodeRGBA_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (NodeRGBA)", obj);
+void js_cocos2dx___NodeRGBA_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (__NodeRGBA)", obj);
 }
 
-void js_register_cocos2dx_NodeRGBA(JSContext *cx, JSObject *global) {
-	jsb_NodeRGBA_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_NodeRGBA_class->name = "NodeRGBA";
-	jsb_NodeRGBA_class->addProperty = JS_PropertyStub;
-	jsb_NodeRGBA_class->delProperty = JS_DeletePropertyStub;
-	jsb_NodeRGBA_class->getProperty = JS_PropertyStub;
-	jsb_NodeRGBA_class->setProperty = JS_StrictPropertyStub;
-	jsb_NodeRGBA_class->enumerate = JS_EnumerateStub;
-	jsb_NodeRGBA_class->resolve = JS_ResolveStub;
-	jsb_NodeRGBA_class->convert = JS_ConvertStub;
-	jsb_NodeRGBA_class->finalize = js_cocos2dx_NodeRGBA_finalize;
-	jsb_NodeRGBA_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+void js_register_cocos2dx___NodeRGBA(JSContext *cx, JSObject *global) {
+	jsb___NodeRGBA_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb___NodeRGBA_class->name = "NodeRGBA";
+	jsb___NodeRGBA_class->addProperty = JS_PropertyStub;
+	jsb___NodeRGBA_class->delProperty = JS_DeletePropertyStub;
+	jsb___NodeRGBA_class->getProperty = JS_PropertyStub;
+	jsb___NodeRGBA_class->setProperty = JS_StrictPropertyStub;
+	jsb___NodeRGBA_class->enumerate = JS_EnumerateStub;
+	jsb___NodeRGBA_class->resolve = JS_ResolveStub;
+	jsb___NodeRGBA_class->convert = JS_ConvertStub;
+	jsb___NodeRGBA_class->finalize = js_cocos2dx___NodeRGBA_finalize;
+	jsb___NodeRGBA_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-	static JSPropertySpec properties[] = {
-		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
-	};
+	JSPropertySpec *properties = NULL;
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("isOpacityModifyRGB", js_cocos2dx_NodeRGBA_isOpacityModifyRGB, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setColor", js_cocos2dx_NodeRGBA_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isCascadeOpacityEnabled", js_cocos2dx_NodeRGBA_isCascadeOpacityEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getColor", js_cocos2dx_NodeRGBA_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDisplayedOpacity", js_cocos2dx_NodeRGBA_getDisplayedOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setCascadeColorEnabled", js_cocos2dx_NodeRGBA_setCascadeColorEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacity", js_cocos2dx_NodeRGBA_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacityModifyRGB", js_cocos2dx_NodeRGBA_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setCascadeOpacityEnabled", js_cocos2dx_NodeRGBA_setCascadeOpacityEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedOpacity", js_cocos2dx_NodeRGBA_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isCascadeColorEnabled", js_cocos2dx_NodeRGBA_isCascadeColorEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedColor", js_cocos2dx_NodeRGBA_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getOpacity", js_cocos2dx_NodeRGBA_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDisplayedColor", js_cocos2dx_NodeRGBA_getDisplayedColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isOpacityModifyRGB", js_cocos2dx___NodeRGBA_isOpacityModifyRGB, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setColor", js_cocos2dx___NodeRGBA_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isCascadeOpacityEnabled", js_cocos2dx___NodeRGBA_isCascadeOpacityEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getColor", js_cocos2dx___NodeRGBA_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDisplayedOpacity", js_cocos2dx___NodeRGBA_getDisplayedOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setCascadeColorEnabled", js_cocos2dx___NodeRGBA_setCascadeColorEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setOpacity", js_cocos2dx___NodeRGBA_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setOpacityModifyRGB", js_cocos2dx___NodeRGBA_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setCascadeOpacityEnabled", js_cocos2dx___NodeRGBA_setCascadeOpacityEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateDisplayedOpacity", js_cocos2dx___NodeRGBA_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isCascadeColorEnabled", js_cocos2dx___NodeRGBA_isCascadeColorEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateDisplayedColor", js_cocos2dx___NodeRGBA_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getOpacity", js_cocos2dx___NodeRGBA_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDisplayedColor", js_cocos2dx___NodeRGBA_getDisplayedColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
-	jsb_NodeRGBA_prototype = JS_InitClass(
+	jsb___NodeRGBA_prototype = JS_InitClass(
 		cx, global,
 		jsb_Node_prototype,
-		jsb_NodeRGBA_class,
-		dummy_constructor<cocos2d::NodeRGBA>, 0, // no constructor
+		jsb___NodeRGBA_class,
+		dummy_constructor<cocos2d::__NodeRGBA>, 0, // no constructor
 		properties,
 		funcs,
 		NULL, // no static properties
@@ -5632,14 +5903,14 @@ void js_register_cocos2dx_NodeRGBA(JSContext *cx, JSObject *global) {
 	JS_SetPropertyAttributes(cx, global, "NodeRGBA", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
 
 	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::NodeRGBA> t;
+	TypeTest<cocos2d::__NodeRGBA> t;
 	js_type_class_t *p;
 	long typeId = t.s_id();
 	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_NodeRGBA_class;
-		p->proto = jsb_NodeRGBA_prototype;
+		p->jsclass = jsb___NodeRGBA_class;
+		p->proto = jsb___NodeRGBA_prototype;
 		p->parentProto = jsb_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
@@ -24811,7 +25082,7 @@ JSBool js_cocos2dx_AtlasNode_create(JSContext *cx, uint32_t argc, jsval *vp)
 }
 
 
-extern JSObject *jsb_NodeRGBA_prototype;
+extern JSObject *jsb_Node_prototype;
 
 void js_cocos2dx_AtlasNode_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (AtlasNode)", obj);
@@ -24858,7 +25129,7 @@ void js_register_cocos2dx_AtlasNode(JSContext *cx, JSObject *global) {
 
 	jsb_AtlasNode_prototype = JS_InitClass(
 		cx, global,
-		jsb_NodeRGBA_prototype,
+		jsb_Node_prototype,
 		jsb_AtlasNode_class,
 		dummy_constructor<cocos2d::AtlasNode>, 0, // no constructor
 		properties,
@@ -24878,7 +25149,7 @@ void js_register_cocos2dx_AtlasNode(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_AtlasNode_class;
 		p->proto = jsb_AtlasNode_prototype;
-		p->parentProto = jsb_NodeRGBA_prototype;
+		p->parentProto = jsb_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -28059,24 +28330,24 @@ JSBool js_cocos2dx_Sprite_setScale(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Sprite_setScale : wrong number of arguments");
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Sprite_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_Sprite_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_setOpacity : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_setOpacityModifyRGB : Invalid Native Object");
 	if (argc == 1) {
-		uint16_t arg0;
-		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_setOpacity : Error processing arguments");
-		cobj->setOpacity(arg0);
+		JSBool arg0;
+		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_setOpacityModifyRGB : Error processing arguments");
+		cobj->setOpacityModifyRGB(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_Sprite_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_Sprite_setOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Sprite_setScaleX(JSContext *cx, uint32_t argc, jsval *vp)
@@ -28194,26 +28465,6 @@ JSBool js_cocos2dx_Sprite_setAnchorPoint(JSContext *cx, uint32_t argc, jsval *vp
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Sprite_setAnchorPoint : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_Sprite_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_setOpacityModifyRGB : Invalid Native Object");
-	if (argc == 1) {
-		JSBool arg0;
-		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_setOpacityModifyRGB : Error processing arguments");
-		cobj->setOpacityModifyRGB(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Sprite_setOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Sprite_getBatchNode(JSContext *cx, uint32_t argc, jsval *vp)
@@ -28464,26 +28715,6 @@ JSBool js_cocos2dx_Sprite_setRotation(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Sprite_setRotation : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Sprite_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_updateDisplayedOpacity : Invalid Native Object");
-	if (argc == 1) {
-		uint16_t arg0;
-		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_updateDisplayedOpacity : Error processing arguments");
-		cobj->updateDisplayedOpacity(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Sprite_updateDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Sprite_setBatchNode(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -28641,26 +28872,6 @@ JSBool js_cocos2dx_Sprite_setAtlasIndex(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Sprite_setAtlasIndex : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Sprite_updateDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_updateDisplayedColor : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Color3B arg0;
-		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_updateDisplayedColor : Error processing arguments");
-		cobj->updateDisplayedColor(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Sprite_updateDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Sprite_setDirty(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -28765,26 +28976,6 @@ JSBool js_cocos2dx_Sprite_ignoreAnchorPointForPosition(JSContext *cx, uint32_t a
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Sprite_ignoreAnchorPointForPosition : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_Sprite_setColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Sprite* cobj = (cocos2d::Sprite *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_setColor : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Color3B arg0;
-		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Sprite_setColor : Error processing arguments");
-		cobj->setColor(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Sprite_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Sprite_getTextureAtlas(JSContext *cx, uint32_t argc, jsval *vp)
@@ -29175,7 +29366,7 @@ JSBool js_cocos2dx_Sprite_createWithSpriteFrame(JSContext *cx, uint32_t argc, js
 }
 
 
-extern JSObject *jsb_NodeRGBA_prototype;
+extern JSObject *jsb_Node_prototype;
 
 void js_cocos2dx_Sprite_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Sprite)", obj);
@@ -29218,11 +29409,10 @@ void js_register_cocos2dx_Sprite(JSContext *cx, JSObject *global) {
 		JS_FN("getDescription", js_cocos2dx_Sprite_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setRotationX", js_cocos2dx_Sprite_setRotationX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScale", js_cocos2dx_Sprite_setScale, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacity", js_cocos2dx_Sprite_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setOpacityModifyRGB", js_cocos2dx_Sprite_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScaleX", js_cocos2dx_Sprite_setScaleX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addChild", js_cocos2dx_Sprite_addChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAnchorPoint", js_cocos2dx_Sprite_setAnchorPoint, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacityModifyRGB", js_cocos2dx_Sprite_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getBatchNode", js_cocos2dx_Sprite_getBatchNode, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getOffsetPosition", js_cocos2dx_Sprite_getOffsetPosition, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeAllChildrenWithCleanup", js_cocos2dx_Sprite_removeAllChildrenWithCleanup, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -29234,7 +29424,6 @@ void js_register_cocos2dx_Sprite(JSContext *cx, JSObject *global) {
 		JS_FN("isFrameDisplayed", js_cocos2dx_Sprite_isFrameDisplayed, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getAtlasIndex", js_cocos2dx_Sprite_getAtlasIndex, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setRotation", js_cocos2dx_Sprite_setRotation, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedOpacity", js_cocos2dx_Sprite_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBatchNode", js_cocos2dx_Sprite_setBatchNode, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScaleY", js_cocos2dx_Sprite_setScaleY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setDisplayFrameWithAnimationName", js_cocos2dx_Sprite_setDisplayFrameWithAnimationName, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -29242,14 +29431,12 @@ void js_register_cocos2dx_Sprite(JSContext *cx, JSObject *global) {
 		JS_FN("getSpriteFrame", js_cocos2dx_Sprite_getSpriteFrame, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isDirty", js_cocos2dx_Sprite_isDirty, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAtlasIndex", js_cocos2dx_Sprite_setAtlasIndex, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedColor", js_cocos2dx_Sprite_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setDirty", js_cocos2dx_Sprite_setDirty, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isOpacityModifyRGB", js_cocos2dx_Sprite_isOpacityModifyRGB, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isTextureRectRotated", js_cocos2dx_Sprite_isTextureRectRotated, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("sortAllChildren", js_cocos2dx_Sprite_sortAllChildren, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTextureRect", js_cocos2dx_Sprite_getTextureRect, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("ignoreAnchorPointForPosition", js_cocos2dx_Sprite_ignoreAnchorPointForPosition, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setColor", js_cocos2dx_Sprite_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTextureAtlas", js_cocos2dx_Sprite_getTextureAtlas, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeChild", js_cocos2dx_Sprite_removeChild, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isFlippedX", js_cocos2dx_Sprite_isFlippedX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -29272,7 +29459,7 @@ void js_register_cocos2dx_Sprite(JSContext *cx, JSObject *global) {
 
 	jsb_Sprite_prototype = JS_InitClass(
 		cx, global,
-		jsb_NodeRGBA_prototype,
+		jsb_Node_prototype,
 		jsb_Sprite_class,
 		dummy_constructor<cocos2d::Sprite>, 0, // no constructor
 		properties,
@@ -29292,7 +29479,7 @@ void js_register_cocos2dx_Sprite(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_Sprite_class;
 		p->proto = jsb_Sprite_prototype;
-		p->parentProto = jsb_NodeRGBA_prototype;
+		p->parentProto = jsb_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -31310,6 +31497,63 @@ JSBool js_cocos2dx_LabelBMFont_setAnchorPoint(JSContext *cx, uint32_t argc, jsva
 	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setAnchorPoint : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_LabelBMFont_setScaleY(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScaleY : Invalid Native Object");
+	if (argc == 1) {
+		double arg0;
+		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScaleY : Error processing arguments");
+		cobj->setScaleY(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setScaleY : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelBMFont_setScaleX(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScaleX : Invalid Native Object");
+	if (argc == 1) {
+		double arg0;
+		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScaleX : Error processing arguments");
+		cobj->setScaleX(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setScaleX : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelBMFont_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_isOpacityModifyRGB : Invalid Native Object");
+	if (argc == 0) {
+		bool ret = cobj->isOpacityModifyRGB();
+		jsval jsret;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_isOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_LabelBMFont_createFontChars(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -31342,167 +31586,24 @@ JSBool js_cocos2dx_LabelBMFont_getString(JSContext *cx, uint32_t argc, jsval *vp
 	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getString : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LabelBMFont_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getDescription : Invalid Native Object");
-	if (argc == 0) {
-		std::string ret = cobj->getDescription();
-		jsval jsret;
-		jsret = std_string_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setScale(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScale : Invalid Native Object");
-	if (argc == 1) {
-		double arg0;
-		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScale : Error processing arguments");
-		cobj->setScale(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setScale : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setOpacity : Invalid Native Object");
-	if (argc == 1) {
-		uint16_t arg0;
-		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setOpacity : Error processing arguments");
-		cobj->setOpacity(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setCascadeOpacityEnabled : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace : Invalid Native Object");
 	if (argc == 1) {
 		JSBool arg0;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setCascadeOpacityEnabled : Error processing arguments");
-		cobj->setCascadeOpacityEnabled(arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace : Error processing arguments");
+		cobj->setLineBreakWithoutSpace(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_getFntFile(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getFntFile : Invalid Native Object");
-	if (argc == 0) {
-		const std::string& ret = cobj->getFntFile();
-		jsval jsret;
-		jsret = std_string_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getFntFile : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_updateLabel(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_updateLabel : Invalid Native Object");
-	if (argc == 0) {
-		cobj->updateLabel();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_updateLabel : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setWidth(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setWidth : Invalid Native Object");
-	if (argc == 1) {
-		double arg0;
-		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setWidth : Error processing arguments");
-		cobj->setWidth(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setWidth : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_isOpacityModifyRGB : Invalid Native Object");
-	if (argc == 0) {
-		bool ret = cobj->isOpacityModifyRGB();
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_isOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_isCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_isCascadeOpacityEnabled : Invalid Native Object");
-	if (argc == 0) {
-		bool ret = cobj->isCascadeOpacityEnabled();
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_isCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LabelBMFont_setString(JSContext *cx, uint32_t argc, jsval *vp)
@@ -31616,249 +31717,21 @@ JSBool js_cocos2dx_LabelBMFont_initWithString(JSContext *cx, uint32_t argc, jsva
 	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_initWithString : wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LabelBMFont_setCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setCascadeColorEnabled : Invalid Native Object");
-	if (argc == 1) {
-		JSBool arg0;
-		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setCascadeColorEnabled : Error processing arguments");
-		cobj->setCascadeColorEnabled(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setOpacityModifyRGB : Invalid Native Object");
-	if (argc == 1) {
-		JSBool arg0;
-		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setOpacityModifyRGB : Error processing arguments");
-		cobj->setOpacityModifyRGB(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_updateDisplayedOpacity : Invalid Native Object");
-	if (argc == 1) {
-		uint16_t arg0;
-		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_updateDisplayedOpacity : Error processing arguments");
-		cobj->updateDisplayedOpacity(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_updateDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_init(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_LabelBMFont_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_init : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getDescription : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->init();
+		std::string ret = cobj->getDescription();
 		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
+		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_init : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setFntFile(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setFntFile : Invalid Native Object");
-	if (argc == 1) {
-		std::string arg0;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setFntFile : Error processing arguments");
-		cobj->setFntFile(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setFntFile : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getOpacity : Invalid Native Object");
-	if (argc == 0) {
-		unsigned char ret = cobj->getOpacity();
-		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace : Invalid Native Object");
-	if (argc == 1) {
-		JSBool arg0;
-		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace : Error processing arguments");
-		cobj->setLineBreakWithoutSpace(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setScaleY(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScaleY : Invalid Native Object");
-	if (argc == 1) {
-		double arg0;
-		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScaleY : Error processing arguments");
-		cobj->setScaleY(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setScaleY : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setScaleX(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScaleX : Invalid Native Object");
-	if (argc == 1) {
-		double arg0;
-		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScaleX : Error processing arguments");
-		cobj->setScaleX(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setScaleX : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_getColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getColor : Invalid Native Object");
-	if (argc == 0) {
-		const cocos2d::Color3B& ret = cobj->getColor();
-		jsval jsret;
-		jsret = cccolor3b_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getColor : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_getDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getDisplayedOpacity : Invalid Native Object");
-	if (argc == 0) {
-		unsigned char ret = cobj->getDisplayedOpacity();
-		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_isCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_isCascadeColorEnabled : Invalid Native Object");
-	if (argc == 0) {
-		bool ret = cobj->isCascadeColorEnabled();
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_isCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_setColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setColor : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Color3B arg0;
-		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setColor : Error processing arguments");
-		cobj->setColor(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LabelBMFont_setCString(JSContext *cx, uint32_t argc, jsval *vp)
@@ -31881,41 +31754,113 @@ JSBool js_cocos2dx_LabelBMFont_setCString(JSContext *cx, uint32_t argc, jsval *v
 	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setCString : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LabelBMFont_getDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getDisplayedColor : Invalid Native Object");
-	if (argc == 0) {
-		const cocos2d::Color3B& ret = cobj->getDisplayedColor();
-		jsval jsret;
-		jsret = cccolor3b_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LabelBMFont_updateDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_LabelBMFont_setScale(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_updateDisplayedColor : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScale : Invalid Native Object");
 	if (argc == 1) {
-		cocos2d::Color3B arg0;
-		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_updateDisplayedColor : Error processing arguments");
-		cobj->updateDisplayedColor(arg0);
+		double arg0;
+		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setScale : Error processing arguments");
+		cobj->setScale(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_updateDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setScale : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelBMFont_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setOpacityModifyRGB : Invalid Native Object");
+	if (argc == 1) {
+		JSBool arg0;
+		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setOpacityModifyRGB : Error processing arguments");
+		cobj->setOpacityModifyRGB(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelBMFont_setFntFile(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setFntFile : Invalid Native Object");
+	if (argc == 1) {
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setFntFile : Error processing arguments");
+		cobj->setFntFile(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setFntFile : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelBMFont_init(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_init : Invalid Native Object");
+	if (argc == 0) {
+		bool ret = cobj->init();
+		jsval jsret;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_init : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelBMFont_getFntFile(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_getFntFile : Invalid Native Object");
+	if (argc == 0) {
+		const std::string& ret = cobj->getFntFile();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_getFntFile : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelBMFont_updateLabel(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_updateLabel : Invalid Native Object");
+	if (argc == 0) {
+		cobj->updateLabel();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_updateLabel : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LabelBMFont_setAlignment(JSContext *cx, uint32_t argc, jsval *vp)
@@ -31936,6 +31881,26 @@ JSBool js_cocos2dx_LabelBMFont_setAlignment(JSContext *cx, uint32_t argc, jsval 
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setAlignment : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_LabelBMFont_setWidth(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::LabelBMFont* cobj = (cocos2d::LabelBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setWidth : Invalid Native Object");
+	if (argc == 1) {
+		double arg0;
+		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LabelBMFont_setWidth : Error processing arguments");
+		cobj->setWidth(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_LabelBMFont_setWidth : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LabelBMFont_purgeCachedData(JSContext *cx, uint32_t argc, jsval *vp)
@@ -32136,36 +32101,24 @@ void js_register_cocos2dx_LabelBMFont(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("setAnchorPoint", js_cocos2dx_LabelBMFont_setAnchorPoint, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("createFontChars", js_cocos2dx_LabelBMFont_createFontChars, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getString", js_cocos2dx_LabelBMFont_getString, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDescription", js_cocos2dx_LabelBMFont_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setScale", js_cocos2dx_LabelBMFont_setScale, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacity", js_cocos2dx_LabelBMFont_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setCascadeOpacityEnabled", js_cocos2dx_LabelBMFont_setCascadeOpacityEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getFntFile", js_cocos2dx_LabelBMFont_getFntFile, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateLabel", js_cocos2dx_LabelBMFont_updateLabel, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setWidth", js_cocos2dx_LabelBMFont_setWidth, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isOpacityModifyRGB", js_cocos2dx_LabelBMFont_isOpacityModifyRGB, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isCascadeOpacityEnabled", js_cocos2dx_LabelBMFont_isCascadeOpacityEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setString", js_cocos2dx_LabelBMFont_setString, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("initWithString", js_cocos2dx_LabelBMFont_initWithString, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setCascadeColorEnabled", js_cocos2dx_LabelBMFont_setCascadeColorEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacityModifyRGB", js_cocos2dx_LabelBMFont_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedOpacity", js_cocos2dx_LabelBMFont_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("init", js_cocos2dx_LabelBMFont_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setFntFile", js_cocos2dx_LabelBMFont_setFntFile, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getOpacity", js_cocos2dx_LabelBMFont_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setLineBreakWithoutSpace", js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScaleY", js_cocos2dx_LabelBMFont_setScaleY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScaleX", js_cocos2dx_LabelBMFont_setScaleX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getColor", js_cocos2dx_LabelBMFont_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDisplayedOpacity", js_cocos2dx_LabelBMFont_getDisplayedOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isCascadeColorEnabled", js_cocos2dx_LabelBMFont_isCascadeColorEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setColor", js_cocos2dx_LabelBMFont_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isOpacityModifyRGB", js_cocos2dx_LabelBMFont_isOpacityModifyRGB, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("createFontChars", js_cocos2dx_LabelBMFont_createFontChars, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getString", js_cocos2dx_LabelBMFont_getString, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setLineBreakWithoutSpace", js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setString", js_cocos2dx_LabelBMFont_setString, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("initWithString", js_cocos2dx_LabelBMFont_initWithString, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDescription", js_cocos2dx_LabelBMFont_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setCString", js_cocos2dx_LabelBMFont_setCString, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDisplayedColor", js_cocos2dx_LabelBMFont_getDisplayedColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedColor", js_cocos2dx_LabelBMFont_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setScale", js_cocos2dx_LabelBMFont_setScale, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setOpacityModifyRGB", js_cocos2dx_LabelBMFont_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setFntFile", js_cocos2dx_LabelBMFont_setFntFile, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("init", js_cocos2dx_LabelBMFont_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getFntFile", js_cocos2dx_LabelBMFont_getFntFile, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateLabel", js_cocos2dx_LabelBMFont_updateLabel, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAlignment", js_cocos2dx_LabelBMFont_setAlignment, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setWidth", js_cocos2dx_LabelBMFont_setWidth, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -32382,26 +32335,6 @@ JSBool js_cocos2dx_Label_setLabelEffect(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Label_setLabelEffect : wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Label_setCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_setCascadeOpacityEnabled : Invalid Native Object");
-	if (argc == 1) {
-		JSBool arg0;
-		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setCascadeOpacityEnabled : Error processing arguments");
-		cobj->setCascadeOpacityEnabled(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_setCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Label_getLetterPosXRight(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -32493,23 +32426,6 @@ JSBool js_cocos2dx_Label_setWidth(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Label_setWidth : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_Label_getStringLenght(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getStringLenght : Invalid Native Object");
-	if (argc == 0) {
-		int ret = cobj->getStringLenght();
-		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_getStringLenght : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Label_getMaxLineWidth(JSContext *cx, uint32_t argc, jsval *vp)
@@ -32641,26 +32557,6 @@ JSBool js_cocos2dx_Label_setString(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Label_setString : wrong number of arguments");
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Label_setCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_setCascadeColorEnabled : Invalid Native Object");
-	if (argc == 1) {
-		JSBool arg0;
-		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setCascadeColorEnabled : Error processing arguments");
-		cobj->setCascadeColorEnabled(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_setCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Label_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -32703,24 +32599,21 @@ JSBool js_cocos2dx_Label_getYOffsetForChar(JSContext *cx, uint32_t argc, jsval *
 	JS_ReportError(cx, "js_cocos2dx_Label_getYOffsetForChar : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Label_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_Label_getStringLenght(JSContext *cx, uint32_t argc, jsval *vp)
 {
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_updateDisplayedOpacity : Invalid Native Object");
-	if (argc == 1) {
-		uint16_t arg0;
-		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_updateDisplayedOpacity : Error processing arguments");
-		cobj->updateDisplayedOpacity(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getStringLenght : Invalid Native Object");
+	if (argc == 0) {
+		int ret = cobj->getStringLenght();
+		jsval jsret;
+		jsret = int32_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_Label_updateDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_Label_getStringLenght : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Label_recordPlaceholderInfo(JSContext *cx, uint32_t argc, jsval *vp)
@@ -32765,23 +32658,6 @@ JSBool js_cocos2dx_Label_getLetterPosXLeft(JSContext *cx, uint32_t argc, jsval *
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Label_getLetterPosXLeft : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_Label_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getOpacity : Invalid Native Object");
-	if (argc == 0) {
-		unsigned char ret = cobj->getOpacity();
-		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Label_getStringNumLines(JSContext *cx, uint32_t argc, jsval *vp)
@@ -32907,57 +32783,6 @@ JSBool js_cocos2dx_Label_getAdvanceForChar(JSContext *cx, uint32_t argc, jsval *
 	JS_ReportError(cx, "js_cocos2dx_Label_getAdvanceForChar : wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Label_getColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getColor : Invalid Native Object");
-	if (argc == 0) {
-		const cocos2d::Color3B& ret = cobj->getColor();
-		jsval jsret;
-		jsret = cccolor3b_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_getColor : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_Label_getDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getDisplayedOpacity : Invalid Native Object");
-	if (argc == 0) {
-		unsigned char ret = cobj->getDisplayedOpacity();
-		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_getDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_Label_getUTF8String(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getUTF8String : Invalid Native Object");
-	if (argc == 0) {
-		unsigned short* ret = cobj->getUTF8String();
-		jsval jsret;
-		#pragma warning NO CONVERSION FROM NATIVE FOR unsigned short*;
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_getUTF8String : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Label_getKerningForCharsPair(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -32980,26 +32805,6 @@ JSBool js_cocos2dx_Label_getKerningForCharsPair(JSContext *cx, uint32_t argc, js
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Label_getKerningForCharsPair : wrong number of arguments: %d, was expecting %d", argc, 2);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_Label_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_setOpacity : Invalid Native Object");
-	if (argc == 1) {
-		uint16_t arg0;
-		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setOpacity : Error processing arguments");
-		cobj->setOpacity(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Label_getLetter(JSContext *cx, uint32_t argc, jsval *vp)
@@ -33091,23 +32896,6 @@ JSBool js_cocos2dx_Label_setColor(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Label_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Label_getDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getDisplayedColor : Invalid Native Object");
-	if (argc == 0) {
-		const cocos2d::Color3B& ret = cobj->getDisplayedColor();
-		jsval jsret;
-		jsret = cccolor3b_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_getDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Label_setText(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -33162,21 +32950,21 @@ JSBool js_cocos2dx_Label_setText(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Label_setText : wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Label_isCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_Label_getUTF8String(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_isCascadeOpacityEnabled : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_getUTF8String : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isCascadeOpacityEnabled();
+		unsigned short* ret = cobj->getUTF8String();
 		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
+		#pragma warning NO CONVERSION FROM NATIVE FOR unsigned short*;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_Label_isCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_Label_getUTF8String : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Label_getTextAlignment(JSContext *cx, uint32_t argc, jsval *vp)
@@ -33194,43 +32982,6 @@ JSBool js_cocos2dx_Label_getTextAlignment(JSContext *cx, uint32_t argc, jsval *v
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Label_getTextAlignment : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_Label_isCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_isCascadeColorEnabled : Invalid Native Object");
-	if (argc == 0) {
-		bool ret = cobj->isCascadeColorEnabled();
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_isCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_Label_updateDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_updateDisplayedColor : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Color3B arg0;
-		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_updateDisplayedColor : Error processing arguments");
-		cobj->updateDisplayedColor(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_updateDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Label_setAlignment(JSContext *cx, uint32_t argc, jsval *vp)
@@ -33546,47 +33297,36 @@ void js_register_cocos2dx_Label(JSContext *cx, JSObject *global) {
 		JS_FN("getXOffsetForChar", js_cocos2dx_Label_getXOffsetForChar, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScale", js_cocos2dx_Label_setScale, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setLabelEffect", js_cocos2dx_Label_setLabelEffect, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setCascadeOpacityEnabled", js_cocos2dx_Label_setCascadeOpacityEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getLetterPosXRight", js_cocos2dx_Label_getLetterPosXRight, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCommonLineHeight", js_cocos2dx_Label_getCommonLineHeight, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getLabelContentSize", js_cocos2dx_Label_getLabelContentSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("breakLineWithoutSpace", js_cocos2dx_Label_breakLineWithoutSpace, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setWidth", js_cocos2dx_Label_setWidth, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getStringLenght", js_cocos2dx_Label_getStringLenght, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getMaxLineWidth", js_cocos2dx_Label_getMaxLineWidth, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isOpacityModifyRGB", js_cocos2dx_Label_isOpacityModifyRGB, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getRectForChar", js_cocos2dx_Label_getRectForChar, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getScaleY", js_cocos2dx_Label_getScaleY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getScaleX", js_cocos2dx_Label_getScaleX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setString", js_cocos2dx_Label_setString, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setCascadeColorEnabled", js_cocos2dx_Label_setCascadeColorEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setOpacityModifyRGB", js_cocos2dx_Label_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getYOffsetForChar", js_cocos2dx_Label_getYOffsetForChar, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedOpacity", js_cocos2dx_Label_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getStringLenght", js_cocos2dx_Label_getStringLenght, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("recordPlaceholderInfo", js_cocos2dx_Label_recordPlaceholderInfo, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getLetterPosXLeft", js_cocos2dx_Label_getLetterPosXLeft, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getOpacity", js_cocos2dx_Label_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getStringNumLines", js_cocos2dx_Label_getStringNumLines, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setLineBreakWithoutSpace", js_cocos2dx_Label_setLineBreakWithoutSpace, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScaleY", js_cocos2dx_Label_setScaleY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setScaleX", js_cocos2dx_Label_setScaleX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCharAtStringPosition", js_cocos2dx_Label_getCharAtStringPosition, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getAdvanceForChar", js_cocos2dx_Label_getAdvanceForChar, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getColor", js_cocos2dx_Label_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDisplayedOpacity", js_cocos2dx_Label_getDisplayedOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getUTF8String", js_cocos2dx_Label_getUTF8String, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getKerningForCharsPair", js_cocos2dx_Label_getKerningForCharsPair, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacity", js_cocos2dx_Label_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getLetter", js_cocos2dx_Label_getLetter, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setLabelContentSize", js_cocos2dx_Label_setLabelContentSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("assignNewUTF8String", js_cocos2dx_Label_assignNewUTF8String, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setColor", js_cocos2dx_Label_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDisplayedColor", js_cocos2dx_Label_getDisplayedColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setText", js_cocos2dx_Label_setText, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isCascadeOpacityEnabled", js_cocos2dx_Label_isCascadeOpacityEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getUTF8String", js_cocos2dx_Label_getUTF8String, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTextAlignment", js_cocos2dx_Label_getTextAlignment, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isCascadeColorEnabled", js_cocos2dx_Label_isCascadeColorEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedColor", js_cocos2dx_Label_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAlignment", js_cocos2dx_Label_setAlignment, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("recordLetterInfo", js_cocos2dx_Label_recordLetterInfo, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
@@ -33738,15 +33478,15 @@ void js_register_cocos2dx_Layer(JSContext *cx, JSObject *global) {
 }
 
 
-JSClass  *jsb_LayerRGBA_class;
-JSObject *jsb_LayerRGBA_prototype;
+JSClass  *jsb___LayerRGBA_class;
+JSObject *jsb___LayerRGBA_prototype;
 
-JSBool js_cocos2dx_LayerRGBA_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_isOpacityModifyRGB : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_isOpacityModifyRGB : Invalid Native Object");
 	if (argc == 0) {
 		bool ret = cobj->isOpacityModifyRGB();
 		jsval jsret;
@@ -33755,35 +33495,35 @@ JSBool js_cocos2dx_LayerRGBA_isOpacityModifyRGB(JSContext *cx, uint32_t argc, js
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_isOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_isOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_setColor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_setColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setColor : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setColor : Invalid Native Object");
 	if (argc == 1) {
 		cocos2d::Color3B arg0;
 		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setColor : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setColor : Error processing arguments");
 		cobj->setColor(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_isCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_isCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_isCascadeOpacityEnabled : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_isCascadeOpacityEnabled : Invalid Native Object");
 	if (argc == 0) {
 		bool ret = cobj->isCascadeOpacityEnabled();
 		jsval jsret;
@@ -33792,15 +33532,15 @@ JSBool js_cocos2dx_LayerRGBA_isCascadeOpacityEnabled(JSContext *cx, uint32_t arg
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_isCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_isCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_getColor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_getColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_getColor : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_getColor : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Color3B& ret = cobj->getColor();
 		jsval jsret;
@@ -33809,15 +33549,15 @@ JSBool js_cocos2dx_LayerRGBA_getColor(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_getColor : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_getColor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_getDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_getDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_getDisplayedOpacity : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_getDisplayedOpacity : Invalid Native Object");
 	if (argc == 0) {
 		unsigned char ret = cobj->getDisplayedOpacity();
 		jsval jsret;
@@ -33826,115 +33566,115 @@ JSBool js_cocos2dx_LayerRGBA_getDisplayedOpacity(JSContext *cx, uint32_t argc, j
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_getDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_getDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_setCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_setCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setCascadeColorEnabled : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setCascadeColorEnabled : Invalid Native Object");
 	if (argc == 1) {
 		JSBool arg0;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setCascadeColorEnabled : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setCascadeColorEnabled : Error processing arguments");
 		cobj->setCascadeColorEnabled(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_setCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_setCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setOpacity : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setOpacity : Invalid Native Object");
 	if (argc == 1) {
 		uint16_t arg0;
 		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setOpacity : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setOpacity : Error processing arguments");
 		cobj->setOpacity(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setOpacityModifyRGB : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setOpacityModifyRGB : Invalid Native Object");
 	if (argc == 1) {
 		JSBool arg0;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setOpacityModifyRGB : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setOpacityModifyRGB : Error processing arguments");
 		cobj->setOpacityModifyRGB(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_setOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_setOpacityModifyRGB : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_setCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_setCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setCascadeOpacityEnabled : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setCascadeOpacityEnabled : Invalid Native Object");
 	if (argc == 1) {
 		JSBool arg0;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_setCascadeOpacityEnabled : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_setCascadeOpacityEnabled : Error processing arguments");
 		cobj->setCascadeOpacityEnabled(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_setCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_setCascadeOpacityEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_updateDisplayedOpacity : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_updateDisplayedOpacity : Invalid Native Object");
 	if (argc == 1) {
 		uint16_t arg0;
 		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_updateDisplayedOpacity : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_updateDisplayedOpacity : Error processing arguments");
 		cobj->updateDisplayedOpacity(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_updateDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_updateDisplayedOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_isCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_isCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_isCascadeColorEnabled : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_isCascadeColorEnabled : Invalid Native Object");
 	if (argc == 0) {
 		bool ret = cobj->isCascadeColorEnabled();
 		jsval jsret;
@@ -33943,35 +33683,35 @@ JSBool js_cocos2dx_LayerRGBA_isCascadeColorEnabled(JSContext *cx, uint32_t argc,
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_isCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_isCascadeColorEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_updateDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_updateDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_updateDisplayedColor : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_updateDisplayedColor : Invalid Native Object");
 	if (argc == 1) {
 		cocos2d::Color3B arg0;
 		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_updateDisplayedColor : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_updateDisplayedColor : Error processing arguments");
 		cobj->updateDisplayedColor(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_updateDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_updateDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_getOpacity : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_getOpacity : Invalid Native Object");
 	if (argc == 0) {
 		unsigned char ret = cobj->getOpacity();
 		jsval jsret;
@@ -33980,32 +33720,15 @@ JSBool js_cocos2dx_LayerRGBA_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_getDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_getDescription : Invalid Native Object");
-	if (argc == 0) {
-		std::string ret = cobj->getDescription();
-		jsval jsret;
-		jsret = std_string_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LayerRGBA_getDisplayedColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerRGBA* cobj = (cocos2d::LayerRGBA *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerRGBA_getDisplayedColor : Invalid Native Object");
+	cocos2d::__LayerRGBA* cobj = (cocos2d::__LayerRGBA *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx___LayerRGBA_getDisplayedColor : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Color3B& ret = cobj->getDisplayedColor();
 		jsval jsret;
@@ -34014,17 +33737,17 @@ JSBool js_cocos2dx_LayerRGBA_getDisplayedColor(JSContext *cx, uint32_t argc, jsv
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_getDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_getDisplayedColor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_LayerRGBA_create(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx___LayerRGBA_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		cocos2d::LayerRGBA* ret = cocos2d::LayerRGBA::create();
+		cocos2d::__LayerRGBA* ret = cocos2d::__LayerRGBA::create();
 		jsval jsret;
 		do {
 		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::LayerRGBA>(cx, (cocos2d::LayerRGBA*)ret);
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::__LayerRGBA>(cx, (cocos2d::__LayerRGBA*)ret);
 			jsret = OBJECT_TO_JSVAL(proxy->obj);
 		} else {
 			jsret = JSVAL_NULL;
@@ -34033,73 +33756,60 @@ JSBool js_cocos2dx_LayerRGBA_create(JSContext *cx, uint32_t argc, jsval *vp)
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-	JS_ReportError(cx, "js_cocos2dx_LayerRGBA_create : wrong number of arguments");
+	JS_ReportError(cx, "js_cocos2dx___LayerRGBA_create : wrong number of arguments");
 	return JS_FALSE;
 }
 
 
 extern JSObject *jsb_Layer_prototype;
 
-void js_cocos2dx_LayerRGBA_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (LayerRGBA)", obj);
+void js_cocos2dx___LayerRGBA_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (__LayerRGBA)", obj);
 }
 
-static JSBool js_cocos2dx_LayerRGBA_ctor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-    cocos2d::LayerRGBA *nobj = cocos2d::LayerRGBA::create();
-    js_proxy_t* p = jsb_new_proxy(nobj, obj);
-    JS_AddNamedObjectRoot(cx, &p->obj, "cocos2d::LayerRGBA");
-    JS_SET_RVAL(cx, vp, JSVAL_VOID);
-    return JS_TRUE;
-}
-void js_register_cocos2dx_LayerRGBA(JSContext *cx, JSObject *global) {
-	jsb_LayerRGBA_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_LayerRGBA_class->name = "LayerRGBA";
-	jsb_LayerRGBA_class->addProperty = JS_PropertyStub;
-	jsb_LayerRGBA_class->delProperty = JS_DeletePropertyStub;
-	jsb_LayerRGBA_class->getProperty = JS_PropertyStub;
-	jsb_LayerRGBA_class->setProperty = JS_StrictPropertyStub;
-	jsb_LayerRGBA_class->enumerate = JS_EnumerateStub;
-	jsb_LayerRGBA_class->resolve = JS_ResolveStub;
-	jsb_LayerRGBA_class->convert = JS_ConvertStub;
-	jsb_LayerRGBA_class->finalize = js_cocos2dx_LayerRGBA_finalize;
-	jsb_LayerRGBA_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+void js_register_cocos2dx___LayerRGBA(JSContext *cx, JSObject *global) {
+	jsb___LayerRGBA_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb___LayerRGBA_class->name = "LayerRGBA";
+	jsb___LayerRGBA_class->addProperty = JS_PropertyStub;
+	jsb___LayerRGBA_class->delProperty = JS_DeletePropertyStub;
+	jsb___LayerRGBA_class->getProperty = JS_PropertyStub;
+	jsb___LayerRGBA_class->setProperty = JS_StrictPropertyStub;
+	jsb___LayerRGBA_class->enumerate = JS_EnumerateStub;
+	jsb___LayerRGBA_class->resolve = JS_ResolveStub;
+	jsb___LayerRGBA_class->convert = JS_ConvertStub;
+	jsb___LayerRGBA_class->finalize = js_cocos2dx___LayerRGBA_finalize;
+	jsb___LayerRGBA_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-	static JSPropertySpec properties[] = {
-		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
-	};
+	JSPropertySpec *properties = NULL;
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("isOpacityModifyRGB", js_cocos2dx_LayerRGBA_isOpacityModifyRGB, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setColor", js_cocos2dx_LayerRGBA_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isCascadeOpacityEnabled", js_cocos2dx_LayerRGBA_isCascadeOpacityEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getColor", js_cocos2dx_LayerRGBA_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDisplayedOpacity", js_cocos2dx_LayerRGBA_getDisplayedOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setCascadeColorEnabled", js_cocos2dx_LayerRGBA_setCascadeColorEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacity", js_cocos2dx_LayerRGBA_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacityModifyRGB", js_cocos2dx_LayerRGBA_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setCascadeOpacityEnabled", js_cocos2dx_LayerRGBA_setCascadeOpacityEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedOpacity", js_cocos2dx_LayerRGBA_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isCascadeColorEnabled", js_cocos2dx_LayerRGBA_isCascadeColorEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateDisplayedColor", js_cocos2dx_LayerRGBA_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getOpacity", js_cocos2dx_LayerRGBA_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDescription", js_cocos2dx_LayerRGBA_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDisplayedColor", js_cocos2dx_LayerRGBA_getDisplayedColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FN("ctor", js_cocos2dx_LayerRGBA_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isOpacityModifyRGB", js_cocos2dx___LayerRGBA_isOpacityModifyRGB, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setColor", js_cocos2dx___LayerRGBA_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isCascadeOpacityEnabled", js_cocos2dx___LayerRGBA_isCascadeOpacityEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getColor", js_cocos2dx___LayerRGBA_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDisplayedOpacity", js_cocos2dx___LayerRGBA_getDisplayedOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setCascadeColorEnabled", js_cocos2dx___LayerRGBA_setCascadeColorEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setOpacity", js_cocos2dx___LayerRGBA_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setOpacityModifyRGB", js_cocos2dx___LayerRGBA_setOpacityModifyRGB, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setCascadeOpacityEnabled", js_cocos2dx___LayerRGBA_setCascadeOpacityEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateDisplayedOpacity", js_cocos2dx___LayerRGBA_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isCascadeColorEnabled", js_cocos2dx___LayerRGBA_isCascadeColorEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateDisplayedColor", js_cocos2dx___LayerRGBA_updateDisplayedColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getOpacity", js_cocos2dx___LayerRGBA_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getDisplayedColor", js_cocos2dx___LayerRGBA_getDisplayedColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
 	static JSFunctionSpec st_funcs[] = {
-		JS_FN("create", js_cocos2dx_LayerRGBA_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("create", js_cocos2dx___LayerRGBA_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
 
-	jsb_LayerRGBA_prototype = JS_InitClass(
+	jsb___LayerRGBA_prototype = JS_InitClass(
 		cx, global,
 		jsb_Layer_prototype,
-		jsb_LayerRGBA_class,
-		dummy_constructor<cocos2d::LayerRGBA>, 0, // no constructor
+		jsb___LayerRGBA_class,
+		dummy_constructor<cocos2d::__LayerRGBA>, 0, // no constructor
 		properties,
 		funcs,
 		NULL, // no static properties
@@ -34109,14 +33819,14 @@ void js_register_cocos2dx_LayerRGBA(JSContext *cx, JSObject *global) {
 	JS_SetPropertyAttributes(cx, global, "LayerRGBA", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
 
 	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::LayerRGBA> t;
+	TypeTest<cocos2d::__LayerRGBA> t;
 	js_type_class_t *p;
 	long typeId = t.s_id();
 	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_LayerRGBA_class;
-		p->proto = jsb_LayerRGBA_prototype;
+		p->jsclass = jsb___LayerRGBA_class;
+		p->proto = jsb___LayerRGBA_prototype;
 		p->parentProto = jsb_Layer_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
@@ -34139,26 +33849,6 @@ JSBool js_cocos2dx_LayerColor_draw(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_LayerColor_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LayerColor_setColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerColor* cobj = (cocos2d::LayerColor *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerColor_setColor : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Color3B arg0;
-		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LayerColor_setColor : Error processing arguments");
-		cobj->setColor(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LayerColor_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LayerColor_onDraw(JSContext *cx, uint32_t argc, jsval *vp)
@@ -34213,26 +33903,6 @@ JSBool js_cocos2dx_LayerColor_changeWidthAndHeight(JSContext *cx, uint32_t argc,
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_LayerColor_changeWidthAndHeight : wrong number of arguments: %d, was expecting %d", argc, 2);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_LayerColor_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::LayerColor* cobj = (cocos2d::LayerColor *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_LayerColor_setOpacity : Invalid Native Object");
-	if (argc == 1) {
-		uint16_t arg0;
-		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_LayerColor_setOpacity : Error processing arguments");
-		cobj->setOpacity(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_LayerColor_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_LayerColor_changeWidth(JSContext *cx, uint32_t argc, jsval *vp)
@@ -34366,7 +34036,7 @@ JSBool js_cocos2dx_LayerColor_create(JSContext *cx, uint32_t argc, jsval *vp)
 	return JS_FALSE;
 }
 
-extern JSObject *jsb_LayerRGBA_prototype;
+extern JSObject *jsb_Layer_prototype;
 
 void js_cocos2dx_LayerColor_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (LayerColor)", obj);
@@ -34400,11 +34070,9 @@ void js_register_cocos2dx_LayerColor(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("draw", js_cocos2dx_LayerColor_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setColor", js_cocos2dx_LayerColor_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("onDraw", js_cocos2dx_LayerColor_onDraw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getDescription", js_cocos2dx_LayerColor_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("changeWidthAndHeight", js_cocos2dx_LayerColor_changeWidthAndHeight, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacity", js_cocos2dx_LayerColor_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("changeWidth", js_cocos2dx_LayerColor_changeWidth, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setContentSize", js_cocos2dx_LayerColor_setContentSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("changeHeight", js_cocos2dx_LayerColor_changeHeight, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -34419,7 +34087,7 @@ void js_register_cocos2dx_LayerColor(JSContext *cx, JSObject *global) {
 
 	jsb_LayerColor_prototype = JS_InitClass(
 		cx, global,
-		jsb_LayerRGBA_prototype,
+		jsb_Layer_prototype,
 		jsb_LayerColor_class,
 		dummy_constructor<cocos2d::LayerColor>, 0, // no constructor
 		properties,
@@ -34439,7 +34107,7 @@ void js_register_cocos2dx_LayerColor(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_LayerColor_class;
 		p->proto = jsb_LayerColor_prototype;
-		p->parentProto = jsb_LayerRGBA_prototype;
+		p->parentProto = jsb_Layer_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -39965,7 +39633,7 @@ JSBool js_cocos2dx_MenuItem_rect(JSContext *cx, uint32_t argc, jsval *vp)
 	return JS_FALSE;
 }
 
-extern JSObject *jsb_NodeRGBA_prototype;
+extern JSObject *jsb_Node_prototype;
 
 void js_cocos2dx_MenuItem_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (MenuItem)", obj);
@@ -40004,7 +39672,7 @@ void js_register_cocos2dx_MenuItem(JSContext *cx, JSObject *global) {
 
 	jsb_MenuItem_prototype = JS_InitClass(
 		cx, global,
-		jsb_NodeRGBA_prototype,
+		jsb_Node_prototype,
 		jsb_MenuItem_class,
 		dummy_constructor<cocos2d::MenuItem>, 0, // no constructor
 		properties,
@@ -40024,7 +39692,7 @@ void js_register_cocos2dx_MenuItem(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_MenuItem_class;
 		p->proto = jsb_MenuItem_prototype;
-		p->parentProto = jsb_NodeRGBA_prototype;
+		p->parentProto = jsb_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -41473,7 +41141,7 @@ JSBool js_cocos2dx_Menu_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *
 	return JS_FALSE;
 }
 
-extern JSObject *jsb_LayerRGBA_prototype;
+extern JSObject *jsb_Layer_prototype;
 
 void js_cocos2dx_Menu_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Menu)", obj);
@@ -41515,7 +41183,7 @@ void js_register_cocos2dx_Menu(JSContext *cx, JSObject *global) {
 
 	jsb_Menu_prototype = JS_InitClass(
 		cx, global,
-		jsb_LayerRGBA_prototype,
+		jsb_Layer_prototype,
 		jsb_Menu_class,
 		dummy_constructor<cocos2d::Menu>, 0, // no constructor
 		properties,
@@ -41535,7 +41203,7 @@ void js_register_cocos2dx_Menu(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_Menu_class;
 		p->proto = jsb_Menu_prototype;
-		p->parentProto = jsb_LayerRGBA_prototype;
+		p->parentProto = jsb_Layer_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -42139,7 +41807,7 @@ JSBool js_cocos2dx_MotionStreak_create(JSContext *cx, uint32_t argc, jsval *vp)
 	return JS_FALSE;
 }
 
-extern JSObject *jsb_NodeRGBA_prototype;
+extern JSObject *jsb_Node_prototype;
 
 void js_cocos2dx_MotionStreak_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (MotionStreak)", obj);
@@ -42186,7 +41854,7 @@ void js_register_cocos2dx_MotionStreak(JSContext *cx, JSObject *global) {
 
 	jsb_MotionStreak_prototype = JS_InitClass(
 		cx, global,
-		jsb_NodeRGBA_prototype,
+		jsb_Node_prototype,
 		jsb_MotionStreak_class,
 		dummy_constructor<cocos2d::MotionStreak>, 0, // no constructor
 		properties,
@@ -42206,7 +41874,7 @@ void js_register_cocos2dx_MotionStreak(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_MotionStreak_class;
 		p->proto = jsb_MotionStreak_prototype;
-		p->parentProto = jsb_NodeRGBA_prototype;
+		p->parentProto = jsb_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -42348,43 +42016,6 @@ JSBool js_cocos2dx_ProgressTimer_getType(JSContext *cx, uint32_t argc, jsval *vp
 	JS_ReportError(cx, "js_cocos2dx_ProgressTimer_getType : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_ProgressTimer_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::ProgressTimer* cobj = (cocos2d::ProgressTimer *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ProgressTimer_getOpacity : Invalid Native Object");
-	if (argc == 0) {
-		unsigned char ret = cobj->getOpacity();
-		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_ProgressTimer_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_ProgressTimer_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::ProgressTimer* cobj = (cocos2d::ProgressTimer *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ProgressTimer_setOpacity : Invalid Native Object");
-	if (argc == 1) {
-		uint16_t arg0;
-		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ProgressTimer_setOpacity : Error processing arguments");
-		cobj->setOpacity(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_ProgressTimer_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_ProgressTimer_getSprite(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -42427,23 +42058,6 @@ JSBool js_cocos2dx_ProgressTimer_setMidpoint(JSContext *cx, uint32_t argc, jsval
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_ProgressTimer_setMidpoint : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_ProgressTimer_getColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::ProgressTimer* cobj = (cocos2d::ProgressTimer *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ProgressTimer_getColor : Invalid Native Object");
-	if (argc == 0) {
-		const cocos2d::Color3B& ret = cobj->getColor();
-		jsval jsret;
-		jsret = cccolor3b_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_ProgressTimer_getColor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_ProgressTimer_getBarChangeRate(JSContext *cx, uint32_t argc, jsval *vp)
@@ -42514,26 +42128,6 @@ JSBool js_cocos2dx_ProgressTimer_getMidpoint(JSContext *cx, uint32_t argc, jsval
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_ProgressTimer_getMidpoint : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_ProgressTimer_setColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::ProgressTimer* cobj = (cocos2d::ProgressTimer *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ProgressTimer_setColor : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Color3B arg0;
-		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ProgressTimer_setColor : Error processing arguments");
-		cobj->setColor(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_ProgressTimer_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_ProgressTimer_setPercentage(JSContext *cx, uint32_t argc, jsval *vp)
@@ -42609,7 +42203,7 @@ JSBool js_cocos2dx_ProgressTimer_create(JSContext *cx, uint32_t argc, jsval *vp)
 }
 
 
-extern JSObject *jsb_NodeRGBA_prototype;
+extern JSObject *jsb_Node_prototype;
 
 void js_cocos2dx_ProgressTimer_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ProgressTimer)", obj);
@@ -42640,15 +42234,11 @@ void js_register_cocos2dx_ProgressTimer(JSContext *cx, JSObject *global) {
 		JS_FN("getPercentage", js_cocos2dx_ProgressTimer_getPercentage, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSprite", js_cocos2dx_ProgressTimer_setSprite, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getType", js_cocos2dx_ProgressTimer_getType, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getOpacity", js_cocos2dx_ProgressTimer_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacity", js_cocos2dx_ProgressTimer_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getSprite", js_cocos2dx_ProgressTimer_getSprite, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setMidpoint", js_cocos2dx_ProgressTimer_setMidpoint, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getColor", js_cocos2dx_ProgressTimer_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getBarChangeRate", js_cocos2dx_ProgressTimer_getBarChangeRate, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setReverseDirection", js_cocos2dx_ProgressTimer_setReverseDirection, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getMidpoint", js_cocos2dx_ProgressTimer_getMidpoint, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setColor", js_cocos2dx_ProgressTimer_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setPercentage", js_cocos2dx_ProgressTimer_setPercentage, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setType", js_cocos2dx_ProgressTimer_setType, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
@@ -42661,7 +42251,7 @@ void js_register_cocos2dx_ProgressTimer(JSContext *cx, JSObject *global) {
 
 	jsb_ProgressTimer_prototype = JS_InitClass(
 		cx, global,
-		jsb_NodeRGBA_prototype,
+		jsb_Node_prototype,
 		jsb_ProgressTimer_class,
 		dummy_constructor<cocos2d::ProgressTimer>, 0, // no constructor
 		properties,
@@ -42681,7 +42271,7 @@ void js_register_cocos2dx_ProgressTimer(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_ProgressTimer_class;
 		p->proto = jsb_ProgressTimer_prototype;
-		p->parentProto = jsb_NodeRGBA_prototype;
+		p->parentProto = jsb_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -54862,8 +54452,9 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_TransitionEaseScene(cx, obj);
 	js_register_cocos2dx_TransitionMoveInL(cx, obj);
 	js_register_cocos2dx_TransitionMoveInB(cx, obj);
+	js_register_cocos2dx_Layer(cx, obj);
+	js_register_cocos2dx___LayerRGBA(cx, obj);
 	js_register_cocos2dx_Component(cx, obj);
-	js_register_cocos2dx_NodeRGBA(cx, obj);
 	js_register_cocos2dx_AtlasNode(cx, obj);
 	js_register_cocos2dx_TileMapAtlas(cx, obj);
 	js_register_cocos2dx_TransitionMoveInT(cx, obj);
@@ -54894,7 +54485,6 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_SkewBy(cx, obj);
 	js_register_cocos2dx_TransitionProgress(cx, obj);
 	js_register_cocos2dx_TransitionProgressVertical(cx, obj);
-	js_register_cocos2dx_Layer(cx, obj);
 	js_register_cocos2dx_TMXTiledMap(cx, obj);
 	js_register_cocos2dx_GridAction(cx, obj);
 	js_register_cocos2dx_Grid3DAction(cx, obj);
@@ -54940,7 +54530,6 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_FadeOutUpTiles(cx, obj);
 	js_register_cocos2dx_FadeOutDownTiles(cx, obj);
 	js_register_cocos2dx_TextureCache(cx, obj);
-	js_register_cocos2dx_LayerRGBA(cx, obj);
 	js_register_cocos2dx_ActionTween(cx, obj);
 	js_register_cocos2dx_TransitionFadeDown(cx, obj);
 	js_register_cocos2dx_ParticleSun(cx, obj);
@@ -55056,6 +54645,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_TransitionProgressRadialCW(cx, obj);
 	js_register_cocos2dx_EaseBounceInOut(cx, obj);
 	js_register_cocos2dx_TransitionSlideInR(cx, obj);
+	js_register_cocos2dx___NodeRGBA(cx, obj);
 	js_register_cocos2dx_ParallaxNode(cx, obj);
 	js_register_cocos2dx_Scheduler(cx, obj);
 	js_register_cocos2dx_EaseSineIn(cx, obj);

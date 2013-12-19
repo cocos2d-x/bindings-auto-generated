@@ -665,6 +665,18 @@ setPhysicsBody : function () {},
 getDescription : function () {},
 
 /**
+ * @method setOpacityModifyRGB
+ * @param {bool}
+ */
+setOpacityModifyRGB : function () {},
+
+/**
+ * @method setCascadeOpacityEnabled
+ * @param {bool}
+ */
+setCascadeOpacityEnabled : function () {},
+
+/**
  * @method pause
  */
 pause : function () {},
@@ -681,6 +693,12 @@ convertToWorldSpaceAR : function () {},
  * @return A value converted from C/C++ "bool"
  */
 isIgnoreAnchorPointForPosition : function () {},
+
+/**
+ * @method updateDisplayedOpacity
+ * @param {GLubyte}
+ */
+updateDisplayedOpacity : function () {},
 
 /**
  * @method setRotation
@@ -707,9 +725,21 @@ setScaleY : function () {},
 setScaleX : function () {},
 
 /**
+ * @method getColor
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
+ */
+getColor : function () {},
+
+/**
  * @method removeAllComponents
  */
 removeAllComponents : function () {},
+
+/**
+ * @method getOpacity
+ * @return A value converted from C/C++ "GLubyte"
+ */
+getOpacity : function () {},
 
 /**
  * @method getTag
@@ -787,6 +817,12 @@ getRotationY : function () {},
 getNodeToParentAffineTransform : function () {},
 
 /**
+ * @method isCascadeOpacityEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isCascadeOpacityEnabled : function () {},
+
+/**
  * @method setParent
  * @param {cocos2d::Node*}
  */
@@ -834,6 +870,12 @@ reorderChild : function () {},
  * @param {bool}
  */
 ignoreAnchorPointForPosition : function () {},
+
+/**
+ * @method setColor
+ * @param {const cocos2d::Color3B&}
+ */
+setColor : function () {},
 
 /**
  * @method setPositionY
@@ -967,6 +1009,12 @@ getSkewX : function () {},
 getSkewY : function () {},
 
 /**
+ * @method getDisplayedColor
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
+ */
+getDisplayedColor : function () {},
+
+/**
  * @method getActionByTag
  * @return A value converted from C/C++ "cocos2d::Action*"
  * @param {int}
@@ -984,6 +1032,12 @@ setRotationX : function () {},
  * @param {float}
  */
 setRotationY : function () {},
+
+/**
+ * @method getDisplayedOpacity
+ * @return A value converted from C/C++ "GLubyte"
+ */
+getDisplayedOpacity : function () {},
 
 /**
  * @method getParentToNodeAffineTransform
@@ -1033,6 +1087,12 @@ getPositionX : function () {},
  * @param {bool}
  */
 removeChildByTag : function () {},
+
+/**
+ * @method updateDisplayedColor
+ * @param {const cocos2d::Color3B&}
+ */
+updateDisplayedColor : function () {},
 
 /**
  * @method setVisible
@@ -1088,6 +1148,18 @@ getScaleX : function () {},
  * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
 getWorldToNodeAffineTransform : function () {},
+
+/**
+ * @method setCascadeColorEnabled
+ * @param {bool}
+ */
+setCascadeColorEnabled : function () {},
+
+/**
+ * @method setOpacity
+ * @param {GLubyte}
+ */
+setOpacity : function () {},
 
 /**
  * @method cleanup
@@ -1184,6 +1256,18 @@ getCamera : function () {},
 setTag : function () {},
 
 /**
+ * @method isCascadeColorEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isCascadeColorEnabled : function () {},
+
+/**
+ * @method isOpacityModifyRGB
+ * @return A value converted from C/C++ "bool"
+ */
+isOpacityModifyRGB : function () {},
+
+/**
  * @method stopAction
  * @param {cocos2d::Action*}
  */
@@ -1198,7 +1282,7 @@ create : function () {},
 };
 
 /**
- * @class NodeRGBA
+ * @class __NodeRGBA
  */
 cc.NodeRGBA = {
 
@@ -5877,10 +5961,10 @@ getDescription : function () {},
 setRotationX : function () {},
 
 /**
- * @method setOpacity
- * @param {GLubyte}
+ * @method setOpacityModifyRGB
+ * @param {bool}
  */
-setOpacity : function () {},
+setOpacityModifyRGB : function () {},
 
 /**
  * @method setScaleX
@@ -5893,12 +5977,6 @@ setScaleX : function () {},
  * @param {const cocos2d::Point&}
  */
 setAnchorPoint : function () {},
-
-/**
- * @method setOpacityModifyRGB
- * @param {bool}
- */
-setOpacityModifyRGB : function () {},
 
 /**
  * @method getBatchNode
@@ -5961,12 +6039,6 @@ getAtlasIndex : function () {},
 setRotation : function () {},
 
 /**
- * @method updateDisplayedOpacity
- * @param {GLubyte}
- */
-updateDisplayedOpacity : function () {},
-
-/**
  * @method setBatchNode
  * @param {cocos2d::SpriteBatchNode*}
  */
@@ -6010,12 +6082,6 @@ isDirty : function () {},
 setAtlasIndex : function () {},
 
 /**
- * @method updateDisplayedColor
- * @param {const cocos2d::Color3B&}
- */
-updateDisplayedColor : function () {},
-
-/**
  * @method setDirty
  * @param {bool}
  */
@@ -6049,12 +6115,6 @@ getTextureRect : function () {},
  * @param {bool}
  */
 ignoreAnchorPointForPosition : function () {},
-
-/**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
 
 /**
  * @method getTextureAtlas
@@ -6505,6 +6565,24 @@ cc.LabelBMFont = {
 setAnchorPoint : function () {},
 
 /**
+ * @method setScaleY
+ * @param {float}
+ */
+setScaleY : function () {},
+
+/**
+ * @method setScaleX
+ * @param {float}
+ */
+setScaleX : function () {},
+
+/**
+ * @method isOpacityModifyRGB
+ * @return A value converted from C/C++ "bool"
+ */
+isOpacityModifyRGB : function () {},
+
+/**
  * @method createFontChars
  */
 createFontChars : function () {},
@@ -6516,57 +6594,10 @@ createFontChars : function () {},
 getString : function () {},
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
- */
-getDescription : function () {},
-
-/**
- * @method setScale
- * @param {float}
- */
-setScale : function () {},
-
-/**
- * @method setOpacity
- * @param {GLubyte}
- */
-setOpacity : function () {},
-
-/**
- * @method setCascadeOpacityEnabled
+ * @method setLineBreakWithoutSpace
  * @param {bool}
  */
-setCascadeOpacityEnabled : function () {},
-
-/**
- * @method getFntFile
- * @return A value converted from C/C++ "const std::string&"
- */
-getFntFile : function () {},
-
-/**
- * @method updateLabel
- */
-updateLabel : function () {},
-
-/**
- * @method setWidth
- * @param {float}
- */
-setWidth : function () {},
-
-/**
- * @method isOpacityModifyRGB
- * @return A value converted from C/C++ "bool"
- */
-isOpacityModifyRGB : function () {},
-
-/**
- * @method isCascadeOpacityEnabled
- * @return A value converted from C/C++ "bool"
- */
-isCascadeOpacityEnabled : function () {},
+setLineBreakWithoutSpace : function () {},
 
 /**
  * @method initWithString
@@ -6580,82 +6611,10 @@ isCascadeOpacityEnabled : function () {},
 initWithString : function () {},
 
 /**
- * @method setCascadeColorEnabled
- * @param {bool}
+ * @method getDescription
+ * @return A value converted from C/C++ "std::string"
  */
-setCascadeColorEnabled : function () {},
-
-/**
- * @method setOpacityModifyRGB
- * @param {bool}
- */
-setOpacityModifyRGB : function () {},
-
-/**
- * @method updateDisplayedOpacity
- * @param {GLubyte}
- */
-updateDisplayedOpacity : function () {},
-
-/**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
-
-/**
- * @method setFntFile
- * @param {const std::string&}
- */
-setFntFile : function () {},
-
-/**
- * @method getOpacity
- * @return A value converted from C/C++ "GLubyte"
- */
-getOpacity : function () {},
-
-/**
- * @method setLineBreakWithoutSpace
- * @param {bool}
- */
-setLineBreakWithoutSpace : function () {},
-
-/**
- * @method setScaleY
- * @param {float}
- */
-setScaleY : function () {},
-
-/**
- * @method setScaleX
- * @param {float}
- */
-setScaleX : function () {},
-
-/**
- * @method getColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
- */
-getColor : function () {},
-
-/**
- * @method getDisplayedOpacity
- * @return A value converted from C/C++ "GLubyte"
- */
-getDisplayedOpacity : function () {},
-
-/**
- * @method isCascadeColorEnabled
- * @return A value converted from C/C++ "bool"
- */
-isCascadeColorEnabled : function () {},
-
-/**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
+getDescription : function () {},
 
 /**
  * @method setCString
@@ -6664,22 +6623,51 @@ setColor : function () {},
 setCString : function () {},
 
 /**
- * @method getDisplayedColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
+ * @method setScale
+ * @param {float}
  */
-getDisplayedColor : function () {},
+setScale : function () {},
 
 /**
- * @method updateDisplayedColor
- * @param {const cocos2d::Color3B&}
+ * @method setOpacityModifyRGB
+ * @param {bool}
  */
-updateDisplayedColor : function () {},
+setOpacityModifyRGB : function () {},
+
+/**
+ * @method setFntFile
+ * @param {const std::string&}
+ */
+setFntFile : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ */
+init : function () {},
+
+/**
+ * @method getFntFile
+ * @return A value converted from C/C++ "const std::string&"
+ */
+getFntFile : function () {},
+
+/**
+ * @method updateLabel
+ */
+updateLabel : function () {},
 
 /**
  * @method setAlignment
  * @param {cocos2d::TextHAlignment}
  */
 setAlignment : function () {},
+
+/**
+ * @method setWidth
+ * @param {float}
+ */
+setWidth : function () {},
 
 /**
  * @method purgeCachedData
@@ -6745,12 +6733,6 @@ setScale : function () {},
 setLabelEffect : function () {},
 
 /**
- * @method setCascadeOpacityEnabled
- * @param {bool}
- */
-setCascadeOpacityEnabled : function () {},
-
-/**
  * @method getLetterPosXRight
  * @return A value converted from C/C++ "float"
  * @param {int}
@@ -6780,12 +6762,6 @@ breakLineWithoutSpace : function () {},
  * @param {float}
  */
 setWidth : function () {},
-
-/**
- * @method getStringLenght
- * @return A value converted from C/C++ "int"
- */
-getStringLenght : function () {},
 
 /**
  * @method getMaxLineWidth
@@ -6819,12 +6795,6 @@ getScaleY : function () {},
 getScaleX : function () {},
 
 /**
- * @method setCascadeColorEnabled
- * @param {bool}
- */
-setCascadeColorEnabled : function () {},
-
-/**
  * @method setOpacityModifyRGB
  * @param {bool}
  */
@@ -6838,10 +6808,10 @@ setOpacityModifyRGB : function () {},
 getYOffsetForChar : function () {},
 
 /**
- * @method updateDisplayedOpacity
- * @param {GLubyte}
+ * @method getStringLenght
+ * @return A value converted from C/C++ "int"
  */
-updateDisplayedOpacity : function () {},
+getStringLenght : function () {},
 
 /**
  * @method recordPlaceholderInfo
@@ -6856,12 +6826,6 @@ recordPlaceholderInfo : function () {},
  * @param {int}
  */
 getLetterPosXLeft : function () {},
-
-/**
- * @method getOpacity
- * @return A value converted from C/C++ "unsigned char"
- */
-getOpacity : function () {},
 
 /**
  * @method getStringNumLines
@@ -6903,36 +6867,12 @@ getCharAtStringPosition : function () {},
 getAdvanceForChar : function () {},
 
 /**
- * @method getColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
- */
-getColor : function () {},
-
-/**
- * @method getDisplayedOpacity
- * @return A value converted from C/C++ "unsigned char"
- */
-getDisplayedOpacity : function () {},
-
-/**
- * @method getUTF8String
- * @return A value converted from C/C++ "unsigned short*"
- */
-getUTF8String : function () {},
-
-/**
  * @method getKerningForCharsPair
  * @return A value converted from C/C++ "int"
  * @param {unsigned short}
  * @param {unsigned short}
  */
 getKerningForCharsPair : function () {},
-
-/**
- * @method setOpacity
- * @param {GLubyte}
- */
-setOpacity : function () {},
 
 /**
  * @method getLetter
@@ -6960,12 +6900,6 @@ assignNewUTF8String : function () {},
 setColor : function () {},
 
 /**
- * @method getDisplayedColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
- */
-getDisplayedColor : function () {},
-
-/**
  * @method setText
  * @return A value converted from C/C++ "bool"
  * @param {const std::string&}
@@ -6976,28 +6910,16 @@ getDisplayedColor : function () {},
 setText : function () {},
 
 /**
- * @method isCascadeOpacityEnabled
- * @return A value converted from C/C++ "bool"
+ * @method getUTF8String
+ * @return A value converted from C/C++ "unsigned short*"
  */
-isCascadeOpacityEnabled : function () {},
+getUTF8String : function () {},
 
 /**
  * @method getTextAlignment
  * @return A value converted from C/C++ "cocos2d::TextHAlignment"
  */
 getTextAlignment : function () {},
-
-/**
- * @method isCascadeColorEnabled
- * @return A value converted from C/C++ "bool"
- */
-isCascadeColorEnabled : function () {},
-
-/**
- * @method updateDisplayedColor
- * @param {const cocos2d::Color3B&}
- */
-updateDisplayedColor : function () {},
 
 /**
  * @method setAlignment
@@ -7060,7 +6982,7 @@ create : function () {},
 };
 
 /**
- * @class LayerRGBA
+ * @class __LayerRGBA
  */
 cc.LayerRGBA = {
 
@@ -7143,12 +7065,6 @@ updateDisplayedColor : function () {},
 getOpacity : function () {},
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
- */
-getDescription : function () {},
-
-/**
  * @method getDisplayedColor
  * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
@@ -7156,7 +7072,7 @@ getDisplayedColor : function () {},
 
 /**
  * @method create
- * @return A value converted from C/C++ "cocos2d::LayerRGBA*"
+ * @return A value converted from C/C++ "cocos2d::__LayerRGBA*"
  */
 create : function () {},
 
@@ -7171,12 +7087,6 @@ cc.LayerColor = {
  * @method draw
  */
 draw : function () {},
-
-/**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
 
 /**
  * @method onDraw
@@ -7195,12 +7105,6 @@ getDescription : function () {},
  * @param {GLfloat}
  */
 changeWidthAndHeight : function () {},
-
-/**
- * @method setOpacity
- * @param {GLubyte}
- */
-setOpacity : function () {},
 
 /**
  * @method changeWidth
@@ -8604,18 +8508,6 @@ setSprite : function () {},
 getType : function () {},
 
 /**
- * @method getOpacity
- * @return A value converted from C/C++ "GLubyte"
- */
-getOpacity : function () {},
-
-/**
- * @method setOpacity
- * @param {GLubyte}
- */
-setOpacity : function () {},
-
-/**
  * @method getSprite
  * @return A value converted from C/C++ "cocos2d::Sprite*"
  */
@@ -8628,12 +8520,6 @@ getSprite : function () {},
 setMidpoint : function () {},
 
 /**
- * @method getColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
- */
-getColor : function () {},
-
-/**
  * @method getBarChangeRate
  * @return A value converted from C/C++ "cocos2d::Point"
  */
@@ -8644,12 +8530,6 @@ getBarChangeRate : function () {},
  * @return A value converted from C/C++ "cocos2d::Point"
  */
 getMidpoint : function () {},
-
-/**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
 
 /**
  * @method setPercentage

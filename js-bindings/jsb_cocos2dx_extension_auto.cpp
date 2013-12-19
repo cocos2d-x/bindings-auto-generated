@@ -281,23 +281,6 @@ JSBool js_cocos2dx_extension_Scale9Sprite_setPreferredSize(JSContext *cx, uint32
 	JS_ReportError(cx, "js_cocos2dx_extension_Scale9Sprite_setPreferredSize : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_extension_Scale9Sprite_getOpacity(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::Scale9Sprite* cobj = (cocos2d::extension::Scale9Sprite *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_Scale9Sprite_getOpacity : Invalid Native Object");
-	if (argc == 0) {
-		unsigned char ret = cobj->getOpacity();
-		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_Scale9Sprite_getOpacity : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_extension_Scale9Sprite_setSpriteFrame(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -323,23 +306,6 @@ JSBool js_cocos2dx_extension_Scale9Sprite_setSpriteFrame(JSContext *cx, uint32_t
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_extension_Scale9Sprite_setSpriteFrame : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_extension_Scale9Sprite_getColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::extension::Scale9Sprite* cobj = (cocos2d::extension::Scale9Sprite *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_extension_Scale9Sprite_getColor : Invalid Native Object");
-	if (argc == 0) {
-		const cocos2d::Color3B& ret = cobj->getColor();
-		jsval jsret;
-		jsret = cccolor3b_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_extension_Scale9Sprite_getColor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_extension_Scale9Sprite_initWithBatchNode(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1058,7 +1024,7 @@ JSBool js_cocos2dx_extension_Scale9Sprite_constructor(JSContext *cx, uint32_t ar
 }
 
 
-extern JSObject *jsb_NodeRGBA_prototype;
+extern JSObject *jsb_Node_prototype;
 
 void js_cocos2dx_extension_Scale9Sprite_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Scale9Sprite)", obj);
@@ -1093,9 +1059,7 @@ void js_register_cocos2dx_extension_Scale9Sprite(JSContext *cx, JSObject *global
 		JS_FN("updateDisplayedOpacity", js_cocos2dx_extension_Scale9Sprite_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("init", js_cocos2dx_extension_Scale9Sprite_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setPreferredSize", js_cocos2dx_extension_Scale9Sprite_setPreferredSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getOpacity", js_cocos2dx_extension_Scale9Sprite_getOpacity, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSpriteFrame", js_cocos2dx_extension_Scale9Sprite_setSpriteFrame, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getColor", js_cocos2dx_extension_Scale9Sprite_getColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("initWithBatchNode", js_cocos2dx_extension_Scale9Sprite_initWithBatchNode, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getInsetBottom", js_cocos2dx_extension_Scale9Sprite_getInsetBottom, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCapInsets", js_cocos2dx_extension_Scale9Sprite_getCapInsets, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -1124,7 +1088,7 @@ void js_register_cocos2dx_extension_Scale9Sprite(JSContext *cx, JSObject *global
 
 	jsb_Scale9Sprite_prototype = JS_InitClass(
 		cx, global,
-		jsb_NodeRGBA_prototype,
+		jsb_Node_prototype,
 		jsb_Scale9Sprite_class,
 		js_cocos2dx_extension_Scale9Sprite_constructor, 0, // constructor
 		properties,
@@ -1144,7 +1108,7 @@ void js_register_cocos2dx_extension_Scale9Sprite(JSContext *cx, JSObject *global
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_Scale9Sprite_class;
 		p->proto = jsb_Scale9Sprite_prototype;
-		p->parentProto = jsb_NodeRGBA_prototype;
+		p->parentProto = jsb_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -1449,7 +1413,7 @@ JSBool js_cocos2dx_extension_Control_create(JSContext *cx, uint32_t argc, jsval 
 }
 
 
-extern JSObject *jsb_LayerRGBA_prototype;
+extern JSObject *jsb_Layer_prototype;
 
 void js_cocos2dx_extension_Control_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Control)", obj);
@@ -1497,7 +1461,7 @@ void js_register_cocos2dx_extension_Control(JSContext *cx, JSObject *global) {
 
 	jsb_Control_prototype = JS_InitClass(
 		cx, global,
-		jsb_LayerRGBA_prototype,
+		jsb_Layer_prototype,
 		jsb_Control_class,
 		dummy_constructor<cocos2d::extension::Control>, 0, // no constructor
 		properties,
@@ -1517,7 +1481,7 @@ void js_register_cocos2dx_extension_Control(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_Control_class;
 		p->proto = jsb_Control_prototype;
-		p->parentProto = jsb_LayerRGBA_prototype;
+		p->parentProto = jsb_Layer_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -8738,19 +8702,19 @@ void register_all_cocos2dx_extension(JSContext* cx, JSObject* obj) {
 	obj = ns;
 
 	js_register_cocos2dx_extension_Control(cx, obj);
-	js_register_cocos2dx_extension_ControlHuePicker(cx, obj);
 	js_register_cocos2dx_extension_TableViewCell(cx, obj);
 	js_register_cocos2dx_extension_Scale9Sprite(cx, obj);
-	js_register_cocos2dx_extension_AssetsManager(cx, obj);
-	js_register_cocos2dx_extension_ControlColourPicker(cx, obj);
 	js_register_cocos2dx_extension_ControlSwitch(cx, obj);
-	js_register_cocos2dx_extension_ControlSlider(cx, obj);
-	js_register_cocos2dx_extension_ControlSaturationBrightnessPicker(cx, obj);
 	js_register_cocos2dx_extension_ScrollView(cx, obj);
-	js_register_cocos2dx_extension_ControlPotentiometer(cx, obj);
-	js_register_cocos2dx_extension_ControlStepper(cx, obj);
 	js_register_cocos2dx_extension_TableView(cx, obj);
+	js_register_cocos2dx_extension_AssetsManager(cx, obj);
 	js_register_cocos2dx_extension_ControlButton(cx, obj);
 	js_register_cocos2dx_extension_EditBox(cx, obj);
+	js_register_cocos2dx_extension_ControlSlider(cx, obj);
+	js_register_cocos2dx_extension_ControlStepper(cx, obj);
+	js_register_cocos2dx_extension_ControlSaturationBrightnessPicker(cx, obj);
+	js_register_cocos2dx_extension_ControlColourPicker(cx, obj);
+	js_register_cocos2dx_extension_ControlPotentiometer(cx, obj);
+	js_register_cocos2dx_extension_ControlHuePicker(cx, obj);
 }
 

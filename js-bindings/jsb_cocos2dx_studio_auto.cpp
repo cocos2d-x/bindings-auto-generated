@@ -1740,26 +1740,6 @@ JSBool js_cocos2dx_studio_Bone_updateZOrder(JSContext *cx, uint32_t argc, jsval 
 	JS_ReportError(cx, "js_cocos2dx_studio_Bone_updateZOrder : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_studio_Bone_setTransformDirty(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocostudio::Bone* cobj = (cocostudio::Bone *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_setTransformDirty : Invalid Native Object");
-	if (argc == 1) {
-		JSBool arg0;
-		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Bone_setTransformDirty : Error processing arguments");
-		cobj->setTransformDirty(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_studio_Bone_setTransformDirty : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_studio_Bone_getDisplayRenderNode(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -1932,24 +1912,24 @@ JSBool js_cocos2dx_studio_Bone_getName(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_studio_Bone_getName : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_studio_Bone_setOpacity(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_studio_Bone_setTransformDirty(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocostudio::Bone* cobj = (cocostudio::Bone *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_setOpacity : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_setTransformDirty : Invalid Native Object");
 	if (argc == 1) {
-		uint16_t arg0;
-		ok &= jsval_to_uint16(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Bone_setOpacity : Error processing arguments");
-		cobj->setOpacity(arg0);
+		JSBool arg0;
+		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Bone_setTransformDirty : Error processing arguments");
+		cobj->setTransformDirty(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_studio_Bone_setOpacity : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_studio_Bone_setTransformDirty : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_studio_Bone_getDisplayRenderNodeType(JSContext *cx, uint32_t argc, jsval *vp)
@@ -2390,26 +2370,6 @@ JSBool js_cocos2dx_studio_Bone_getNodeToWorldTransform(JSContext *cx, uint32_t a
 	JS_ReportError(cx, "js_cocos2dx_studio_Bone_getNodeToWorldTransform : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_studio_Bone_setColor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocostudio::Bone* cobj = (cocostudio::Bone *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_setColor : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Color3B arg0;
-		ok &= jsval_to_cccolor3b(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Bone_setColor : Error processing arguments");
-		cobj->setColor(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_studio_Bone_setColor : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_studio_Bone_removeChildBone(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -2645,7 +2605,7 @@ JSBool js_cocos2dx_studio_Bone_constructor(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-extern JSObject *jsb_NodeRGBA_prototype;
+extern JSObject *jsb_Node_prototype;
 
 void js_cocos2dx_studio_Bone_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Bone)", obj);
@@ -2672,7 +2632,6 @@ void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
 		JS_FN("isTransformDirty", js_cocos2dx_studio_Bone_isTransformDirty, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isIgnoreMovementBoneData", js_cocos2dx_studio_Bone_isIgnoreMovementBoneData, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("updateZOrder", js_cocos2dx_studio_Bone_updateZOrder, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setTransformDirty", js_cocos2dx_studio_Bone_setTransformDirty, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getDisplayRenderNode", js_cocos2dx_studio_Bone_getDisplayRenderNode, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isBlendDirty", js_cocos2dx_studio_Bone_isBlendDirty, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addChildBone", js_cocos2dx_studio_Bone_addChildBone, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2681,7 +2640,7 @@ void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
 		JS_FN("getParentBone", js_cocos2dx_studio_Bone_getParentBone, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("updateColor", js_cocos2dx_studio_Bone_updateColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getName", js_cocos2dx_studio_Bone_getName, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setOpacity", js_cocos2dx_studio_Bone_setOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setTransformDirty", js_cocos2dx_studio_Bone_setTransformDirty, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getDisplayRenderNodeType", js_cocos2dx_studio_Bone_getDisplayRenderNodeType, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeDisplay", js_cocos2dx_studio_Bone_removeDisplay, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("updateDisplayedOpacity", js_cocos2dx_studio_Bone_updateDisplayedOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2700,7 +2659,6 @@ void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
 		JS_FN("setBlendDirty", js_cocos2dx_studio_Bone_setBlendDirty, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addDisplay", js_cocos2dx_studio_Bone_addDisplay, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getNodeToWorldTransform", js_cocos2dx_studio_Bone_getNodeToWorldTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setColor", js_cocos2dx_studio_Bone_setColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeChildBone", js_cocos2dx_studio_Bone_removeChildBone, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setChildArmature", js_cocos2dx_studio_Bone_setChildArmature, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getNodeToArmatureTransform", js_cocos2dx_studio_Bone_getNodeToArmatureTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -2718,7 +2676,7 @@ void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
 
 	jsb_Bone_prototype = JS_InitClass(
 		cx, global,
-		jsb_NodeRGBA_prototype,
+		jsb_Node_prototype,
 		jsb_Bone_class,
 		js_cocos2dx_studio_Bone_constructor, 0, // constructor
 		properties,
@@ -2738,7 +2696,7 @@ void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_Bone_class;
 		p->proto = jsb_Bone_prototype;
-		p->parentProto = jsb_NodeRGBA_prototype;
+		p->parentProto = jsb_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -4953,7 +4911,7 @@ JSBool js_cocos2dx_studio_Armature_constructor(JSContext *cx, uint32_t argc, jsv
 }
 
 
-extern JSObject *jsb_NodeRGBA_prototype;
+extern JSObject *jsb_Node_prototype;
 
 void js_cocos2dx_studio_Armature_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Armature)", obj);
@@ -5013,7 +4971,7 @@ void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
 
 	jsb_Armature_prototype = JS_InitClass(
 		cx, global,
-		jsb_NodeRGBA_prototype,
+		jsb_Node_prototype,
 		jsb_Armature_class,
 		js_cocos2dx_studio_Armature_constructor, 0, // constructor
 		properties,
@@ -5033,7 +4991,7 @@ void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_Armature_class;
 		p->proto = jsb_Armature_prototype;
-		p->parentProto = jsb_NodeRGBA_prototype;
+		p->parentProto = jsb_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeId, p));
 	}
 }
@@ -7249,16 +7207,16 @@ void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_studio_ArmatureDataManager(cx, obj);
 	js_register_cocos2dx_studio_InputDelegate(cx, obj);
 	js_register_cocos2dx_studio_ComController(cx, obj);
-	js_register_cocos2dx_studio_ComRender(cx, obj);
+	js_register_cocos2dx_studio_Bone(cx, obj);
 	js_register_cocos2dx_studio_BatchNode(cx, obj);
 	js_register_cocos2dx_studio_ActionObject(cx, obj);
-	js_register_cocos2dx_studio_ComAttribute(cx, obj);
+	js_register_cocos2dx_studio_DisplayManager(cx, obj);
 	js_register_cocos2dx_studio_GUIReader(cx, obj);
 	js_register_cocos2dx_studio_ArmatureAnimation(cx, obj);
 	js_register_cocos2dx_studio_Armature(cx, obj);
 	js_register_cocos2dx_studio_ActionManagerEx(cx, obj);
-	js_register_cocos2dx_studio_Bone(cx, obj);
-	js_register_cocos2dx_studio_DisplayManager(cx, obj);
+	js_register_cocos2dx_studio_ComRender(cx, obj);
+	js_register_cocos2dx_studio_ComAttribute(cx, obj);
 	js_register_cocos2dx_studio_ColliderFilter(cx, obj);
 	js_register_cocos2dx_studio_Skin(cx, obj);
 	js_register_cocos2dx_studio_BaseData(cx, obj);

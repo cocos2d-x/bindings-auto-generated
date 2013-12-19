@@ -493,47 +493,6 @@ int lua_cocos2dx_extension_Scale9Sprite_setPreferredSize(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_extension_Scale9Sprite_getOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::Scale9Sprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Scale9Sprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::Scale9Sprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_Scale9Sprite_getOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_Scale9Sprite_getOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_extension_Scale9Sprite_setSpriteFrame(lua_State* tolua_S)
 {
     int argc = 0;
@@ -582,47 +541,6 @@ int lua_cocos2dx_extension_Scale9Sprite_setSpriteFrame(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_Scale9Sprite_setSpriteFrame'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_extension_Scale9Sprite_getColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::extension::Scale9Sprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Scale9Sprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::extension::Scale9Sprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_Scale9Sprite_getColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const cocos2d::Color3B& ret = cobj->getColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColor",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_Scale9Sprite_getColor'.",&tolua_err);
 #endif
     return 0;
 }
@@ -1811,7 +1729,7 @@ static int lua_cocos2dx_extension_Scale9Sprite_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_extension_Scale9Sprite(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"Scale9Sprite");
-    tolua_cclass(tolua_S,"Scale9Sprite","Scale9Sprite","NodeRGBA",NULL);
+    tolua_cclass(tolua_S,"Scale9Sprite","Scale9Sprite","Node",NULL);
 
     tolua_beginmodule(tolua_S,"Scale9Sprite");
         tolua_function(tolua_S,"resizableSpriteWithCapInsets",lua_cocos2dx_extension_Scale9Sprite_resizableSpriteWithCapInsets);
@@ -1825,9 +1743,7 @@ int lua_register_cocos2dx_extension_Scale9Sprite(lua_State* tolua_S)
         tolua_function(tolua_S,"updateDisplayedOpacity",lua_cocos2dx_extension_Scale9Sprite_updateDisplayedOpacity);
         tolua_function(tolua_S,"init",lua_cocos2dx_extension_Scale9Sprite_init);
         tolua_function(tolua_S,"setPreferredSize",lua_cocos2dx_extension_Scale9Sprite_setPreferredSize);
-        tolua_function(tolua_S,"getOpacity",lua_cocos2dx_extension_Scale9Sprite_getOpacity);
         tolua_function(tolua_S,"setSpriteFrame",lua_cocos2dx_extension_Scale9Sprite_setSpriteFrame);
-        tolua_function(tolua_S,"getColor",lua_cocos2dx_extension_Scale9Sprite_getColor);
         tolua_function(tolua_S,"initWithBatchNode",lua_cocos2dx_extension_Scale9Sprite_initWithBatchNode);
         tolua_function(tolua_S,"getInsetBottom",lua_cocos2dx_extension_Scale9Sprite_getInsetBottom);
         tolua_function(tolua_S,"getCapInsets",lua_cocos2dx_extension_Scale9Sprite_getCapInsets);
@@ -2755,7 +2671,7 @@ static int lua_cocos2dx_extension_Control_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_extension_Control(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"Control");
-    tolua_cclass(tolua_S,"Control","Control","LayerRGBA",NULL);
+    tolua_cclass(tolua_S,"Control","Control","Layer",NULL);
 
     tolua_beginmodule(tolua_S,"Control");
         tolua_function(tolua_S,"setEnabled",lua_cocos2dx_extension_Control_setEnabled);
@@ -19547,22 +19463,22 @@ TOLUA_API int register_all_cocos2dx_extension(lua_State* tolua_S)
 	tolua_beginmodule(tolua_S,"cc");
 
 	lua_register_cocos2dx_extension_Control(tolua_S);
-	lua_register_cocos2dx_extension_ControlHuePicker(tolua_S);
 	lua_register_cocos2dx_extension_TableViewCell(tolua_S);
 	lua_register_cocos2dx_extension_Scale9Sprite(tolua_S);
-	lua_register_cocos2dx_extension_AssetsManager(tolua_S);
-	lua_register_cocos2dx_extension_ControlColourPicker(tolua_S);
-	lua_register_cocos2dx_extension_CCBAnimationManager(tolua_S);
 	lua_register_cocos2dx_extension_ControlSwitch(tolua_S);
-	lua_register_cocos2dx_extension_ControlSlider(tolua_S);
-	lua_register_cocos2dx_extension_ControlSaturationBrightnessPicker(tolua_S);
 	lua_register_cocos2dx_extension_ScrollView(tolua_S);
-	lua_register_cocos2dx_extension_ControlPotentiometer(tolua_S);
-	lua_register_cocos2dx_extension_ControlStepper(tolua_S);
 	lua_register_cocos2dx_extension_TableView(tolua_S);
+	lua_register_cocos2dx_extension_AssetsManager(tolua_S);
 	lua_register_cocos2dx_extension_ControlButton(tolua_S);
 	lua_register_cocos2dx_extension_EditBox(tolua_S);
+	lua_register_cocos2dx_extension_ControlSlider(tolua_S);
+	lua_register_cocos2dx_extension_ControlStepper(tolua_S);
 	lua_register_cocos2dx_extension_CCBReader(tolua_S);
+	lua_register_cocos2dx_extension_ControlSaturationBrightnessPicker(tolua_S);
+	lua_register_cocos2dx_extension_ControlColourPicker(tolua_S);
+	lua_register_cocos2dx_extension_ControlPotentiometer(tolua_S);
+	lua_register_cocos2dx_extension_CCBAnimationManager(tolua_S);
+	lua_register_cocos2dx_extension_ControlHuePicker(tolua_S);
 
 	tolua_endmodule(tolua_S);
 	return 1;

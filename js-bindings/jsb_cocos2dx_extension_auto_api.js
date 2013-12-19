@@ -70,22 +70,10 @@ init : function () {},
 setPreferredSize : function () {},
 
 /**
- * @method getOpacity
- * @return A value converted from C/C++ "GLubyte"
- */
-getOpacity : function () {},
-
-/**
  * @method setSpriteFrame
  * @param {cocos2d::SpriteFrame*}
  */
 setSpriteFrame : function () {},
-
-/**
- * @method getColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
- */
-getColor : function () {},
 
 /**
  * @method getInsetBottom

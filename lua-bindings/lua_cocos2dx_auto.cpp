@@ -5209,6 +5209,90 @@ int lua_cocos2dx_Node_getDescription(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_Node_setOpacityModifyRGB(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setOpacityModifyRGB'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        bool arg0;
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setOpacityModifyRGB(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacityModifyRGB",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_setOpacityModifyRGB'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_Node_setCascadeOpacityEnabled(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setCascadeOpacityEnabled'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        bool arg0;
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setCascadeOpacityEnabled(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeOpacityEnabled",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_setCascadeOpacityEnabled'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_Node_getChildren(lua_State* tolua_S)
 {
     int argc = 0;
@@ -5374,6 +5458,48 @@ int lua_cocos2dx_Node_isIgnoreAnchorPointForPosition(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_isIgnoreAnchorPointForPosition'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_Node_updateDisplayedOpacity(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_updateDisplayedOpacity'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        uint16_t arg0;
+        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->updateDisplayedOpacity(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedOpacity",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_updateDisplayedOpacity'.",&tolua_err);
 #endif
     return 0;
 }
@@ -5545,6 +5671,47 @@ int lua_cocos2dx_Node_setScaleX(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_Node_getColor(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getColor'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        const cocos2d::Color3B& ret = cobj->getColor();
+        color3b_to_luaval(tolua_S, ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColor",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_getColor'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_Node_removeAllComponents(lua_State* tolua_S)
 {
     int argc = 0;
@@ -5582,6 +5749,47 @@ int lua_cocos2dx_Node_removeAllComponents(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_removeAllComponents'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_Node_getOpacity(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getOpacity'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        unsigned char ret = cobj->getOpacity();
+        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOpacity",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_getOpacity'.",&tolua_err);
 #endif
     return 0;
 }
@@ -6180,6 +6388,47 @@ int lua_cocos2dx_Node_getNodeToParentAffineTransform(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_Node_isCascadeOpacityEnabled(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isCascadeOpacityEnabled'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        bool ret = cobj->isCascadeOpacityEnabled();
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeOpacityEnabled",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_isCascadeOpacityEnabled'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_Node_setParent(lua_State* tolua_S)
 {
     int argc = 0;
@@ -6664,6 +6913,48 @@ int lua_cocos2dx_Node_ignoreAnchorPointForPosition(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_ignoreAnchorPointForPosition'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_Node_setColor(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setColor'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::Color3B arg0;
+        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
+        if(!ok)
+            return 0;
+        cobj->setColor(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_setColor'.",&tolua_err);
 #endif
     return 0;
 }
@@ -7625,6 +7916,47 @@ int lua_cocos2dx_Node_getSkewY(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_Node_getDisplayedColor(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getDisplayedColor'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        const cocos2d::Color3B& ret = cobj->getDisplayedColor();
+        color3b_to_luaval(tolua_S, ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedColor",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_getDisplayedColor'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_Node_getActionByTag(lua_State* tolua_S)
 {
     int argc = 0;
@@ -7811,6 +8143,47 @@ int lua_cocos2dx_Node_setAdditionalTransform(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_setAdditionalTransform'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_Node_getDisplayedOpacity(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getDisplayedOpacity'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        unsigned char ret = cobj->getDisplayedOpacity();
+        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedOpacity",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_getDisplayedOpacity'.",&tolua_err);
 #endif
     return 0;
 }
@@ -8301,6 +8674,48 @@ int lua_cocos2dx_Node_removeChildByTag(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_Node_updateDisplayedColor(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_updateDisplayedColor'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::Color3B arg0;
+        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
+        if(!ok)
+            return 0;
+        cobj->updateDisplayedColor(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedColor",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_updateDisplayedColor'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_Node_setVisible(lua_State* tolua_S)
 {
     int argc = 0;
@@ -8738,6 +9153,90 @@ int lua_cocos2dx_Node_getWorldToNodeAffineTransform(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_getWorldToNodeAffineTransform'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_Node_setCascadeColorEnabled(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setCascadeColorEnabled'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        bool arg0;
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setCascadeColorEnabled(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeColorEnabled",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_setCascadeColorEnabled'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_Node_setOpacity(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_setOpacity'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        uint16_t arg0;
+        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setOpacity(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_setOpacity'.",&tolua_err);
 #endif
     return 0;
 }
@@ -9549,6 +10048,88 @@ int lua_cocos2dx_Node_setTag(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_Node_isCascadeColorEnabled(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isCascadeColorEnabled'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        bool ret = cobj->isCascadeColorEnabled();
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeColorEnabled",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_isCascadeColorEnabled'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_Node_isOpacityModifyRGB(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_isOpacityModifyRGB'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        bool ret = cobj->isOpacityModifyRGB();
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isOpacityModifyRGB",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_isOpacityModifyRGB'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_Node_stopAction(lua_State* tolua_S)
 {
     int argc = 0;
@@ -9728,15 +10309,20 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"setPhysicsBody",lua_cocos2dx_Node_setPhysicsBody);
         tolua_function(tolua_S,"getShaderProgram",lua_cocos2dx_Node_getShaderProgram);
         tolua_function(tolua_S,"getDescription",lua_cocos2dx_Node_getDescription);
+        tolua_function(tolua_S,"setOpacityModifyRGB",lua_cocos2dx_Node_setOpacityModifyRGB);
+        tolua_function(tolua_S,"setCascadeOpacityEnabled",lua_cocos2dx_Node_setCascadeOpacityEnabled);
         tolua_function(tolua_S,"getChildren",lua_cocos2dx_Node_getChildren);
         tolua_function(tolua_S,"pause",lua_cocos2dx_Node_pause);
         tolua_function(tolua_S,"convertToWorldSpaceAR",lua_cocos2dx_Node_convertToWorldSpaceAR);
         tolua_function(tolua_S,"isIgnoreAnchorPointForPosition",lua_cocos2dx_Node_isIgnoreAnchorPointForPosition);
+        tolua_function(tolua_S,"updateDisplayedOpacity",lua_cocos2dx_Node_updateDisplayedOpacity);
         tolua_function(tolua_S,"setRotation",lua_cocos2dx_Node_setRotation);
         tolua_function(tolua_S,"setZOrder",lua_cocos2dx_Node_setZOrder);
         tolua_function(tolua_S,"setScaleY",lua_cocos2dx_Node_setScaleY);
         tolua_function(tolua_S,"setScaleX",lua_cocos2dx_Node_setScaleX);
+        tolua_function(tolua_S,"getColor",lua_cocos2dx_Node_getColor);
         tolua_function(tolua_S,"removeAllComponents",lua_cocos2dx_Node_removeAllComponents);
+        tolua_function(tolua_S,"getOpacity",lua_cocos2dx_Node_getOpacity);
         tolua_function(tolua_S,"getTag",lua_cocos2dx_Node_getTag);
         tolua_function(tolua_S,"getNodeToWorldAffineTransform",lua_cocos2dx_Node_getNodeToWorldAffineTransform);
         tolua_function(tolua_S,"getNodeToWorldTransform",lua_cocos2dx_Node_getNodeToWorldTransform);
@@ -9750,6 +10336,7 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"getRotationX",lua_cocos2dx_Node_getRotationX);
         tolua_function(tolua_S,"getRotationY",lua_cocos2dx_Node_getRotationY);
         tolua_function(tolua_S,"getNodeToParentAffineTransform",lua_cocos2dx_Node_getNodeToParentAffineTransform);
+        tolua_function(tolua_S,"isCascadeOpacityEnabled",lua_cocos2dx_Node_isCascadeOpacityEnabled);
         tolua_function(tolua_S,"setParent",lua_cocos2dx_Node_setParent);
         tolua_function(tolua_S,"getNodeToParentTransform",lua_cocos2dx_Node_getNodeToParentTransform);
         tolua_function(tolua_S,"convertToNodeSpace",lua_cocos2dx_Node_convertToNodeSpace);
@@ -9760,6 +10347,7 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"stopActionByTag",lua_cocos2dx_Node_stopActionByTag);
         tolua_function(tolua_S,"reorderChild",lua_cocos2dx_Node_reorderChild);
         tolua_function(tolua_S,"ignoreAnchorPointForPosition",lua_cocos2dx_Node_ignoreAnchorPointForPosition);
+        tolua_function(tolua_S,"setColor",lua_cocos2dx_Node_setColor);
         tolua_function(tolua_S,"setPositionY",lua_cocos2dx_Node_setPositionY);
         tolua_function(tolua_S,"setPositionX",lua_cocos2dx_Node_setPositionX);
         tolua_function(tolua_S,"getAnchorPoint",lua_cocos2dx_Node_getAnchorPoint);
@@ -9782,10 +10370,12 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"stopAllActions",lua_cocos2dx_Node_stopAllActions);
         tolua_function(tolua_S,"getSkewX",lua_cocos2dx_Node_getSkewX);
         tolua_function(tolua_S,"getSkewY",lua_cocos2dx_Node_getSkewY);
+        tolua_function(tolua_S,"getDisplayedColor",lua_cocos2dx_Node_getDisplayedColor);
         tolua_function(tolua_S,"getActionByTag",lua_cocos2dx_Node_getActionByTag);
         tolua_function(tolua_S,"setRotationX",lua_cocos2dx_Node_setRotationX);
         tolua_function(tolua_S,"setRotationY",lua_cocos2dx_Node_setRotationY);
         tolua_function(tolua_S,"setAdditionalTransform",lua_cocos2dx_Node_setAdditionalTransform);
+        tolua_function(tolua_S,"getDisplayedOpacity",lua_cocos2dx_Node_getDisplayedOpacity);
         tolua_function(tolua_S,"getScheduler",lua_cocos2dx_Node_getScheduler);
         tolua_function(tolua_S,"getParentToNodeAffineTransform",lua_cocos2dx_Node_getParentToNodeAffineTransform);
         tolua_function(tolua_S,"getOrderOfArrival",lua_cocos2dx_Node_getOrderOfArrival);
@@ -9796,6 +10386,7 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"getPositionY",lua_cocos2dx_Node_getPositionY);
         tolua_function(tolua_S,"getPositionX",lua_cocos2dx_Node_getPositionX);
         tolua_function(tolua_S,"removeChildByTag",lua_cocos2dx_Node_removeChildByTag);
+        tolua_function(tolua_S,"updateDisplayedColor",lua_cocos2dx_Node_updateDisplayedColor);
         tolua_function(tolua_S,"setVisible",lua_cocos2dx_Node_setVisible);
         tolua_function(tolua_S,"getParentToNodeTransform",lua_cocos2dx_Node_getParentToNodeTransform);
         tolua_function(tolua_S,"getVertexZ",lua_cocos2dx_Node_getVertexZ);
@@ -9806,6 +10397,8 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"getScaleY",lua_cocos2dx_Node_getScaleY);
         tolua_function(tolua_S,"getScaleX",lua_cocos2dx_Node_getScaleX);
         tolua_function(tolua_S,"getWorldToNodeAffineTransform",lua_cocos2dx_Node_getWorldToNodeAffineTransform);
+        tolua_function(tolua_S,"setCascadeColorEnabled",lua_cocos2dx_Node_setCascadeColorEnabled);
+        tolua_function(tolua_S,"setOpacity",lua_cocos2dx_Node_setOpacity);
         tolua_function(tolua_S,"cleanup",lua_cocos2dx_Node_cleanup);
         tolua_function(tolua_S,"getComponent",lua_cocos2dx_Node_getComponent);
         tolua_function(tolua_S,"getContentSize",lua_cocos2dx_Node_getContentSize);
@@ -9824,625 +10417,14 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"getScale",lua_cocos2dx_Node_getScale);
         tolua_function(tolua_S,"getCamera",lua_cocos2dx_Node_getCamera);
         tolua_function(tolua_S,"setTag",lua_cocos2dx_Node_setTag);
+        tolua_function(tolua_S,"isCascadeColorEnabled",lua_cocos2dx_Node_isCascadeColorEnabled);
+        tolua_function(tolua_S,"isOpacityModifyRGB",lua_cocos2dx_Node_isOpacityModifyRGB);
         tolua_function(tolua_S,"stopAction",lua_cocos2dx_Node_stopAction);
         tolua_function(tolua_S,"getActionManager",lua_cocos2dx_Node_getActionManager);
         tolua_function(tolua_S,"create", lua_cocos2dx_Node_create);
     tolua_endmodule(tolua_S);
     long typeId = typeid(cocos2d::Node).hash_code();
     g_luaType[typeId] = "Node";
-    return 1;
-}
-
-int lua_cocos2dx_NodeRGBA_isOpacityModifyRGB(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_isOpacityModifyRGB'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isOpacityModifyRGB();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isOpacityModifyRGB",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_isOpacityModifyRGB'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_setColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_setColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_setColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_isCascadeOpacityEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_isCascadeOpacityEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isCascadeOpacityEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeOpacityEnabled",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_isCascadeOpacityEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_getColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_getColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const cocos2d::Color3B& ret = cobj->getColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColor",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_getColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_getDisplayedOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_getDisplayedOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getDisplayedOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_getDisplayedOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_setCascadeColorEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_setCascadeColorEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setCascadeColorEnabled(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeColorEnabled",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_setCascadeColorEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_setOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_setOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_setOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_setOpacityModifyRGB(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_setOpacityModifyRGB'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacityModifyRGB(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacityModifyRGB",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_setOpacityModifyRGB'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_setCascadeOpacityEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_setCascadeOpacityEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setCascadeOpacityEnabled(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeOpacityEnabled",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_setCascadeOpacityEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_updateDisplayedOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_updateDisplayedOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->updateDisplayedOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_updateDisplayedOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_isCascadeColorEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_isCascadeColorEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isCascadeColorEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeColorEnabled",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_isCascadeColorEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_updateDisplayedColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_updateDisplayedColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->updateDisplayedColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_updateDisplayedColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_getOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_getOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_getOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_NodeRGBA_getDisplayedColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::NodeRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"NodeRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::NodeRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeRGBA_getDisplayedColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const cocos2d::Color3B& ret = cobj->getDisplayedColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedColor",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeRGBA_getDisplayedColor'.",&tolua_err);
-#endif
-    return 0;
-}
-static int lua_cocos2dx_NodeRGBA_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (NodeRGBA)");
-    return 0;
-}
-
-int lua_register_cocos2dx_NodeRGBA(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"NodeRGBA");
-    tolua_cclass(tolua_S,"NodeRGBA","NodeRGBA","Node",NULL);
-
-    tolua_beginmodule(tolua_S,"NodeRGBA");
-        tolua_function(tolua_S,"isOpacityModifyRGB",lua_cocos2dx_NodeRGBA_isOpacityModifyRGB);
-        tolua_function(tolua_S,"setColor",lua_cocos2dx_NodeRGBA_setColor);
-        tolua_function(tolua_S,"isCascadeOpacityEnabled",lua_cocos2dx_NodeRGBA_isCascadeOpacityEnabled);
-        tolua_function(tolua_S,"getColor",lua_cocos2dx_NodeRGBA_getColor);
-        tolua_function(tolua_S,"getDisplayedOpacity",lua_cocos2dx_NodeRGBA_getDisplayedOpacity);
-        tolua_function(tolua_S,"setCascadeColorEnabled",lua_cocos2dx_NodeRGBA_setCascadeColorEnabled);
-        tolua_function(tolua_S,"setOpacity",lua_cocos2dx_NodeRGBA_setOpacity);
-        tolua_function(tolua_S,"setOpacityModifyRGB",lua_cocos2dx_NodeRGBA_setOpacityModifyRGB);
-        tolua_function(tolua_S,"setCascadeOpacityEnabled",lua_cocos2dx_NodeRGBA_setCascadeOpacityEnabled);
-        tolua_function(tolua_S,"updateDisplayedOpacity",lua_cocos2dx_NodeRGBA_updateDisplayedOpacity);
-        tolua_function(tolua_S,"isCascadeColorEnabled",lua_cocos2dx_NodeRGBA_isCascadeColorEnabled);
-        tolua_function(tolua_S,"updateDisplayedColor",lua_cocos2dx_NodeRGBA_updateDisplayedColor);
-        tolua_function(tolua_S,"getOpacity",lua_cocos2dx_NodeRGBA_getOpacity);
-        tolua_function(tolua_S,"getDisplayedColor",lua_cocos2dx_NodeRGBA_getDisplayedColor);
-    tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::NodeRGBA).hash_code();
-    g_luaType[typeId] = "NodeRGBA";
     return 1;
 }
 
@@ -38287,7 +38269,7 @@ static int lua_cocos2dx_AtlasNode_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_AtlasNode(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"AtlasNode");
-    tolua_cclass(tolua_S,"AtlasNode","AtlasNode","NodeRGBA",NULL);
+    tolua_cclass(tolua_S,"AtlasNode","AtlasNode","Node",NULL);
 
     tolua_beginmodule(tolua_S,"AtlasNode");
         tolua_function(tolua_S,"draw",lua_cocos2dx_AtlasNode_draw);
@@ -43848,7 +43830,7 @@ int lua_cocos2dx_Sprite_setScale(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Sprite_setOpacity(lua_State* tolua_S)
+int lua_cocos2dx_Sprite_setOpacityModifyRGB(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Sprite* cobj = nullptr;
@@ -43867,7 +43849,7 @@ int lua_cocos2dx_Sprite_setOpacity(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setOpacity'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setOpacityModifyRGB'", NULL);
         return 0;
     }
 #endif
@@ -43875,18 +43857,18 @@ int lua_cocos2dx_Sprite_setOpacity(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
+        bool arg0;
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        cobj->setOpacity(arg0);
+        cobj->setOpacityModifyRGB(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacityModifyRGB",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Sprite_setOpacity'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Sprite_setOpacityModifyRGB'.",&tolua_err);
 #endif
     return 0;
 }
@@ -44071,48 +44053,6 @@ int lua_cocos2dx_Sprite_setAnchorPoint(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Sprite_setAnchorPoint'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Sprite_setOpacityModifyRGB(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Sprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Sprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setOpacityModifyRGB'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacityModifyRGB(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacityModifyRGB",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Sprite_setOpacityModifyRGB'.",&tolua_err);
 #endif
     return 0;
 }
@@ -44620,48 +44560,6 @@ int lua_cocos2dx_Sprite_setRotation(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Sprite_updateDisplayedOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Sprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Sprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_updateDisplayedOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->updateDisplayedOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Sprite_updateDisplayedOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_Sprite_setBatchNode(lua_State* tolua_S)
 {
     int argc = 0;
@@ -44986,48 +44884,6 @@ int lua_cocos2dx_Sprite_setAtlasIndex(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Sprite_updateDisplayedColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Sprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Sprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_updateDisplayedColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->updateDisplayedColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Sprite_updateDisplayedColor'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_Sprite_setDirty(lua_State* tolua_S)
 {
     int argc = 0;
@@ -45272,48 +45128,6 @@ int lua_cocos2dx_Sprite_ignoreAnchorPointForPosition(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Sprite_ignoreAnchorPointForPosition'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Sprite_setColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Sprite* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Sprite",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Sprite*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Sprite_setColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Sprite_setColor'.",&tolua_err);
 #endif
     return 0;
 }
@@ -46011,7 +45825,7 @@ static int lua_cocos2dx_Sprite_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_Sprite(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"Sprite");
-    tolua_cclass(tolua_S,"Sprite","Sprite","NodeRGBA",NULL);
+    tolua_cclass(tolua_S,"Sprite","Sprite","Node",NULL);
 
     tolua_beginmodule(tolua_S,"Sprite");
         tolua_function(tolua_S,"draw",lua_cocos2dx_Sprite_draw);
@@ -46024,11 +45838,10 @@ int lua_register_cocos2dx_Sprite(lua_State* tolua_S)
         tolua_function(tolua_S,"getDescription",lua_cocos2dx_Sprite_getDescription);
         tolua_function(tolua_S,"setRotationX",lua_cocos2dx_Sprite_setRotationX);
         tolua_function(tolua_S,"setScale",lua_cocos2dx_Sprite_setScale);
-        tolua_function(tolua_S,"setOpacity",lua_cocos2dx_Sprite_setOpacity);
+        tolua_function(tolua_S,"setOpacityModifyRGB",lua_cocos2dx_Sprite_setOpacityModifyRGB);
         tolua_function(tolua_S,"setScaleX",lua_cocos2dx_Sprite_setScaleX);
         tolua_function(tolua_S,"addChild",lua_cocos2dx_Sprite_addChild);
         tolua_function(tolua_S,"setAnchorPoint",lua_cocos2dx_Sprite_setAnchorPoint);
-        tolua_function(tolua_S,"setOpacityModifyRGB",lua_cocos2dx_Sprite_setOpacityModifyRGB);
         tolua_function(tolua_S,"getBatchNode",lua_cocos2dx_Sprite_getBatchNode);
         tolua_function(tolua_S,"getOffsetPosition",lua_cocos2dx_Sprite_getOffsetPosition);
         tolua_function(tolua_S,"removeAllChildrenWithCleanup",lua_cocos2dx_Sprite_removeAllChildrenWithCleanup);
@@ -46040,7 +45853,6 @@ int lua_register_cocos2dx_Sprite(lua_State* tolua_S)
         tolua_function(tolua_S,"isFrameDisplayed",lua_cocos2dx_Sprite_isFrameDisplayed);
         tolua_function(tolua_S,"getAtlasIndex",lua_cocos2dx_Sprite_getAtlasIndex);
         tolua_function(tolua_S,"setRotation",lua_cocos2dx_Sprite_setRotation);
-        tolua_function(tolua_S,"updateDisplayedOpacity",lua_cocos2dx_Sprite_updateDisplayedOpacity);
         tolua_function(tolua_S,"setBatchNode",lua_cocos2dx_Sprite_setBatchNode);
         tolua_function(tolua_S,"setScaleY",lua_cocos2dx_Sprite_setScaleY);
         tolua_function(tolua_S,"setDisplayFrameWithAnimationName",lua_cocos2dx_Sprite_setDisplayFrameWithAnimationName);
@@ -46048,14 +45860,12 @@ int lua_register_cocos2dx_Sprite(lua_State* tolua_S)
         tolua_function(tolua_S,"getSpriteFrame",lua_cocos2dx_Sprite_getSpriteFrame);
         tolua_function(tolua_S,"isDirty",lua_cocos2dx_Sprite_isDirty);
         tolua_function(tolua_S,"setAtlasIndex",lua_cocos2dx_Sprite_setAtlasIndex);
-        tolua_function(tolua_S,"updateDisplayedColor",lua_cocos2dx_Sprite_updateDisplayedColor);
         tolua_function(tolua_S,"setDirty",lua_cocos2dx_Sprite_setDirty);
         tolua_function(tolua_S,"isOpacityModifyRGB",lua_cocos2dx_Sprite_isOpacityModifyRGB);
         tolua_function(tolua_S,"isTextureRectRotated",lua_cocos2dx_Sprite_isTextureRectRotated);
         tolua_function(tolua_S,"sortAllChildren",lua_cocos2dx_Sprite_sortAllChildren);
         tolua_function(tolua_S,"getTextureRect",lua_cocos2dx_Sprite_getTextureRect);
         tolua_function(tolua_S,"ignoreAnchorPointForPosition",lua_cocos2dx_Sprite_ignoreAnchorPointForPosition);
-        tolua_function(tolua_S,"setColor",lua_cocos2dx_Sprite_setColor);
         tolua_function(tolua_S,"getTextureAtlas",lua_cocos2dx_Sprite_getTextureAtlas);
         tolua_function(tolua_S,"removeChild",lua_cocos2dx_Sprite_removeChild);
         tolua_function(tolua_S,"isFlippedX",lua_cocos2dx_Sprite_isFlippedX);
@@ -49318,6 +49128,131 @@ int lua_cocos2dx_LabelBMFont_setAnchorPoint(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_LabelBMFont_setScaleY(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::LabelBMFont* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setScaleY'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        double arg0;
+        ok &= luaval_to_number(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setScaleY(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScaleY",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setScaleY'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_LabelBMFont_setScaleX(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::LabelBMFont* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setScaleX'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        double arg0;
+        ok &= luaval_to_number(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setScaleX(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScaleX",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setScaleX'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_LabelBMFont_isOpacityModifyRGB(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::LabelBMFont* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_isOpacityModifyRGB'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        bool ret = cobj->isOpacityModifyRGB();
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isOpacityModifyRGB",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_isOpacityModifyRGB'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_LabelBMFont_createFontChars(lua_State* tolua_S)
 {
     int argc = 0;
@@ -49399,7 +49334,7 @@ int lua_cocos2dx_LabelBMFont_getString(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_LabelBMFont_getDescription(lua_State* tolua_S)
+int lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::LabelBMFont* cobj = nullptr;
@@ -49418,132 +49353,7 @@ int lua_cocos2dx_LabelBMFont_getDescription(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_getDescription'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        std::string ret = cobj->getDescription();
-        tolua_pushcppstring(tolua_S,ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_getDescription'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setScale(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setScale'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        double arg0;
-        ok &= luaval_to_number(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setScale(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScale",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setScale'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setCascadeOpacityEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setCascadeOpacityEnabled'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace'", NULL);
         return 0;
     }
 #endif
@@ -49555,219 +49365,14 @@ int lua_cocos2dx_LabelBMFont_setCascadeOpacityEnabled(lua_State* tolua_S)
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        cobj->setCascadeOpacityEnabled(arg0);
+        cobj->setLineBreakWithoutSpace(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeOpacityEnabled",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setLineBreakWithoutSpace",argc, 1);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setCascadeOpacityEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_getFntFile(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_getFntFile'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const std::string& ret = cobj->getFntFile();
-        tolua_pushcppstring(tolua_S,ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFntFile",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_getFntFile'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_updateLabel(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_updateLabel'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cobj->updateLabel();
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateLabel",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_updateLabel'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setWidth(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setWidth'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        double arg0;
-        ok &= luaval_to_number(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setWidth(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setWidth",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setWidth'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_isOpacityModifyRGB(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_isOpacityModifyRGB'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isOpacityModifyRGB();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isOpacityModifyRGB",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_isOpacityModifyRGB'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_isCascadeOpacityEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_isCascadeOpacityEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isCascadeOpacityEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeOpacityEnabled",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_isCascadeOpacityEnabled'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace'.",&tolua_err);
 #endif
     return 0;
 }
@@ -49918,7 +49523,7 @@ int lua_cocos2dx_LabelBMFont_initWithString(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_LabelBMFont_setCascadeColorEnabled(lua_State* tolua_S)
+int lua_cocos2dx_LabelBMFont_getDescription(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::LabelBMFont* cobj = nullptr;
@@ -49937,133 +49542,7 @@ int lua_cocos2dx_LabelBMFont_setCascadeColorEnabled(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setCascadeColorEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setCascadeColorEnabled(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeColorEnabled",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setCascadeColorEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setOpacityModifyRGB(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setOpacityModifyRGB'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacityModifyRGB(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacityModifyRGB",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setOpacityModifyRGB'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_updateDisplayedOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_updateDisplayedOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->updateDisplayedOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_updateDisplayedOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_init(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_init'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_getDescription'", NULL);
         return 0;
     }
 #endif
@@ -50073,389 +49552,15 @@ int lua_cocos2dx_LabelBMFont_init(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        bool ret = cobj->init();
-        tolua_pushboolean(tolua_S,(bool)ret);
+        std::string ret = cobj->getDescription();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_init'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setFntFile(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setFntFile'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        std::string arg0;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setFntFile(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFntFile",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setFntFile'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_getOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_getOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_getOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setLineBreakWithoutSpace(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setLineBreakWithoutSpace",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setScaleY(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setScaleY'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        double arg0;
-        ok &= luaval_to_number(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setScaleY(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScaleY",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setScaleY'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setScaleX(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setScaleX'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        double arg0;
-        ok &= luaval_to_number(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setScaleX(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScaleX",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setScaleX'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_getColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_getColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const cocos2d::Color3B& ret = cobj->getColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColor",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_getColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_getDisplayedOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_getDisplayedOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getDisplayedOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_getDisplayedOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_isCascadeColorEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_isCascadeColorEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isCascadeColorEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeColorEnabled",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_isCascadeColorEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setColor'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_getDescription'.",&tolua_err);
 #endif
     return 0;
 }
@@ -50501,7 +49606,7 @@ int lua_cocos2dx_LabelBMFont_setCString(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_LabelBMFont_getDisplayedColor(lua_State* tolua_S)
+int lua_cocos2dx_LabelBMFont_setScale(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::LabelBMFont* cobj = nullptr;
@@ -50520,7 +49625,133 @@ int lua_cocos2dx_LabelBMFont_getDisplayedColor(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_getDisplayedColor'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setScale'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        double arg0;
+        ok &= luaval_to_number(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setScale(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScale",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setScale'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_LabelBMFont_setOpacityModifyRGB(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::LabelBMFont* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setOpacityModifyRGB'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        bool arg0;
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setOpacityModifyRGB(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacityModifyRGB",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setOpacityModifyRGB'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_LabelBMFont_setFntFile(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::LabelBMFont* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setFntFile'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setFntFile(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFntFile",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setFntFile'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_LabelBMFont_init(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::LabelBMFont* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_init'", NULL);
         return 0;
     }
 #endif
@@ -50530,19 +49761,19 @@ int lua_cocos2dx_LabelBMFont_getDisplayedColor(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const cocos2d::Color3B& ret = cobj->getDisplayedColor();
-        color3b_to_luaval(tolua_S, ret);
+        bool ret = cobj->init();
+        tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedColor",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_getDisplayedColor'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_init'.",&tolua_err);
 #endif
     return 0;
 }
-int lua_cocos2dx_LabelBMFont_updateDisplayedColor(lua_State* tolua_S)
+int lua_cocos2dx_LabelBMFont_getFntFile(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::LabelBMFont* cobj = nullptr;
@@ -50561,26 +49792,65 @@ int lua_cocos2dx_LabelBMFont_updateDisplayedColor(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_updateDisplayedColor'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_getFntFile'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 0) 
     {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
-        cobj->updateDisplayedColor(arg0);
-        return 0;
+        const std::string& ret = cobj->getFntFile();
+        tolua_pushcppstring(tolua_S,ret);
+        return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedColor",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFntFile",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_updateDisplayedColor'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_getFntFile'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_LabelBMFont_updateLabel(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::LabelBMFont* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_updateLabel'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cobj->updateLabel();
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateLabel",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_updateLabel'.",&tolua_err);
 #endif
     return 0;
 }
@@ -50623,6 +49893,48 @@ int lua_cocos2dx_LabelBMFont_setAlignment(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setAlignment'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_LabelBMFont_setWidth(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::LabelBMFont* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setWidth'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        double arg0;
+        ok &= luaval_to_number(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        cobj->setWidth(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setWidth",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setWidth'.",&tolua_err);
 #endif
     return 0;
 }
@@ -50884,36 +50196,24 @@ int lua_register_cocos2dx_LabelBMFont(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"LabelBMFont");
         tolua_function(tolua_S,"setAnchorPoint",lua_cocos2dx_LabelBMFont_setAnchorPoint);
-        tolua_function(tolua_S,"createFontChars",lua_cocos2dx_LabelBMFont_createFontChars);
-        tolua_function(tolua_S,"getString",lua_cocos2dx_LabelBMFont_getString);
-        tolua_function(tolua_S,"getDescription",lua_cocos2dx_LabelBMFont_getDescription);
-        tolua_function(tolua_S,"setScale",lua_cocos2dx_LabelBMFont_setScale);
-        tolua_function(tolua_S,"setOpacity",lua_cocos2dx_LabelBMFont_setOpacity);
-        tolua_function(tolua_S,"setCascadeOpacityEnabled",lua_cocos2dx_LabelBMFont_setCascadeOpacityEnabled);
-        tolua_function(tolua_S,"getFntFile",lua_cocos2dx_LabelBMFont_getFntFile);
-        tolua_function(tolua_S,"updateLabel",lua_cocos2dx_LabelBMFont_updateLabel);
-        tolua_function(tolua_S,"setWidth",lua_cocos2dx_LabelBMFont_setWidth);
-        tolua_function(tolua_S,"isOpacityModifyRGB",lua_cocos2dx_LabelBMFont_isOpacityModifyRGB);
-        tolua_function(tolua_S,"isCascadeOpacityEnabled",lua_cocos2dx_LabelBMFont_isCascadeOpacityEnabled);
-        tolua_function(tolua_S,"setString",lua_cocos2dx_LabelBMFont_setString);
-        tolua_function(tolua_S,"initWithString",lua_cocos2dx_LabelBMFont_initWithString);
-        tolua_function(tolua_S,"setCascadeColorEnabled",lua_cocos2dx_LabelBMFont_setCascadeColorEnabled);
-        tolua_function(tolua_S,"setOpacityModifyRGB",lua_cocos2dx_LabelBMFont_setOpacityModifyRGB);
-        tolua_function(tolua_S,"updateDisplayedOpacity",lua_cocos2dx_LabelBMFont_updateDisplayedOpacity);
-        tolua_function(tolua_S,"init",lua_cocos2dx_LabelBMFont_init);
-        tolua_function(tolua_S,"setFntFile",lua_cocos2dx_LabelBMFont_setFntFile);
-        tolua_function(tolua_S,"getOpacity",lua_cocos2dx_LabelBMFont_getOpacity);
-        tolua_function(tolua_S,"setLineBreakWithoutSpace",lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace);
         tolua_function(tolua_S,"setScaleY",lua_cocos2dx_LabelBMFont_setScaleY);
         tolua_function(tolua_S,"setScaleX",lua_cocos2dx_LabelBMFont_setScaleX);
-        tolua_function(tolua_S,"getColor",lua_cocos2dx_LabelBMFont_getColor);
-        tolua_function(tolua_S,"getDisplayedOpacity",lua_cocos2dx_LabelBMFont_getDisplayedOpacity);
-        tolua_function(tolua_S,"isCascadeColorEnabled",lua_cocos2dx_LabelBMFont_isCascadeColorEnabled);
-        tolua_function(tolua_S,"setColor",lua_cocos2dx_LabelBMFont_setColor);
+        tolua_function(tolua_S,"isOpacityModifyRGB",lua_cocos2dx_LabelBMFont_isOpacityModifyRGB);
+        tolua_function(tolua_S,"createFontChars",lua_cocos2dx_LabelBMFont_createFontChars);
+        tolua_function(tolua_S,"getString",lua_cocos2dx_LabelBMFont_getString);
+        tolua_function(tolua_S,"setLineBreakWithoutSpace",lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace);
+        tolua_function(tolua_S,"setString",lua_cocos2dx_LabelBMFont_setString);
+        tolua_function(tolua_S,"initWithString",lua_cocos2dx_LabelBMFont_initWithString);
+        tolua_function(tolua_S,"getDescription",lua_cocos2dx_LabelBMFont_getDescription);
         tolua_function(tolua_S,"setCString",lua_cocos2dx_LabelBMFont_setCString);
-        tolua_function(tolua_S,"getDisplayedColor",lua_cocos2dx_LabelBMFont_getDisplayedColor);
-        tolua_function(tolua_S,"updateDisplayedColor",lua_cocos2dx_LabelBMFont_updateDisplayedColor);
+        tolua_function(tolua_S,"setScale",lua_cocos2dx_LabelBMFont_setScale);
+        tolua_function(tolua_S,"setOpacityModifyRGB",lua_cocos2dx_LabelBMFont_setOpacityModifyRGB);
+        tolua_function(tolua_S,"setFntFile",lua_cocos2dx_LabelBMFont_setFntFile);
+        tolua_function(tolua_S,"init",lua_cocos2dx_LabelBMFont_init);
+        tolua_function(tolua_S,"getFntFile",lua_cocos2dx_LabelBMFont_getFntFile);
+        tolua_function(tolua_S,"updateLabel",lua_cocos2dx_LabelBMFont_updateLabel);
         tolua_function(tolua_S,"setAlignment",lua_cocos2dx_LabelBMFont_setAlignment);
+        tolua_function(tolua_S,"setWidth",lua_cocos2dx_LabelBMFont_setWidth);
         tolua_function(tolua_S,"new",lua_cocos2dx_LabelBMFont_constructor);
         tolua_function(tolua_S,"purgeCachedData", lua_cocos2dx_LabelBMFont_purgeCachedData);
         tolua_function(tolua_S,"create", lua_cocos2dx_LabelBMFont_create);
@@ -51267,48 +50567,6 @@ int lua_cocos2dx_Label_setLabelEffect(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Label_setCascadeOpacityEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setCascadeOpacityEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setCascadeOpacityEnabled(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeOpacityEnabled",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_setCascadeOpacityEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_Label_getLetterPosXRight(lua_State* tolua_S)
 {
     int argc = 0;
@@ -51514,47 +50772,6 @@ int lua_cocos2dx_Label_setWidth(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_setWidth'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Label_getStringLenght(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getStringLenght'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        int ret = cobj->getStringLenght();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringLenght",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getStringLenght'.",&tolua_err);
 #endif
     return 0;
 }
@@ -51819,48 +51036,6 @@ int lua_cocos2dx_Label_setString(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Label_setCascadeColorEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setCascadeColorEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setCascadeColorEnabled(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeColorEnabled",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_setCascadeColorEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_Label_setOpacityModifyRGB(lua_State* tolua_S)
 {
     int argc = 0;
@@ -51946,7 +51121,7 @@ int lua_cocos2dx_Label_getYOffsetForChar(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Label_updateDisplayedOpacity(lua_State* tolua_S)
+int lua_cocos2dx_Label_getStringLenght(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Label* cobj = nullptr;
@@ -51965,26 +51140,25 @@ int lua_cocos2dx_Label_updateDisplayedOpacity(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_updateDisplayedOpacity'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getStringLenght'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 0) 
     {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        cobj->updateDisplayedOpacity(arg0);
-        return 0;
+        int ret = cobj->getStringLenght();
+        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedOpacity",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringLenght",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_updateDisplayedOpacity'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getStringLenght'.",&tolua_err);
 #endif
     return 0;
 }
@@ -52071,47 +51245,6 @@ int lua_cocos2dx_Label_getLetterPosXLeft(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getLetterPosXLeft'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Label_getOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getOpacity'.",&tolua_err);
 #endif
     return 0;
 }
@@ -52370,129 +51503,6 @@ int lua_cocos2dx_Label_getAdvanceForChar(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Label_getColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const cocos2d::Color3B& ret = cobj->getColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColor",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Label_getDisplayedOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getDisplayedOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getDisplayedOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getDisplayedOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Label_getUTF8String(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getUTF8String'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned short* ret = cobj->getUTF8String();
-        #pragma warning NO CONVERSION FROM NATIVE FOR unsigned short*;
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getUTF8String",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getUTF8String'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_Label_getKerningForCharsPair(lua_State* tolua_S)
 {
     int argc = 0;
@@ -52535,48 +51545,6 @@ int lua_cocos2dx_Label_getKerningForCharsPair(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getKerningForCharsPair'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Label_setOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_setOpacity'.",&tolua_err);
 #endif
     return 0;
 }
@@ -52761,47 +51729,6 @@ int lua_cocos2dx_Label_setColor(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Label_getDisplayedColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getDisplayedColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const cocos2d::Color3B& ret = cobj->getDisplayedColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedColor",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getDisplayedColor'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_Label_setText(lua_State* tolua_S)
 {
     int argc = 0;
@@ -52877,7 +51804,7 @@ int lua_cocos2dx_Label_setText(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Label_isCascadeOpacityEnabled(lua_State* tolua_S)
+int lua_cocos2dx_Label_getUTF8String(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Label* cobj = nullptr;
@@ -52896,7 +51823,7 @@ int lua_cocos2dx_Label_isCascadeOpacityEnabled(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_isCascadeOpacityEnabled'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getUTF8String'", NULL);
         return 0;
     }
 #endif
@@ -52906,15 +51833,15 @@ int lua_cocos2dx_Label_isCascadeOpacityEnabled(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        bool ret = cobj->isCascadeOpacityEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
+        unsigned short* ret = cobj->getUTF8String();
+        #pragma warning NO CONVERSION FROM NATIVE FOR unsigned short*;
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeOpacityEnabled",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getUTF8String",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_isCascadeOpacityEnabled'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getUTF8String'.",&tolua_err);
 #endif
     return 0;
 }
@@ -52956,89 +51883,6 @@ int lua_cocos2dx_Label_getTextAlignment(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getTextAlignment'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Label_isCascadeColorEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_isCascadeColorEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isCascadeColorEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeColorEnabled",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_isCascadeColorEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_Label_updateDisplayedColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_updateDisplayedColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->updateDisplayedColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_updateDisplayedColor'.",&tolua_err);
 #endif
     return 0;
 }
@@ -53460,47 +52304,36 @@ int lua_register_cocos2dx_Label(lua_State* tolua_S)
         tolua_function(tolua_S,"getXOffsetForChar",lua_cocos2dx_Label_getXOffsetForChar);
         tolua_function(tolua_S,"setScale",lua_cocos2dx_Label_setScale);
         tolua_function(tolua_S,"setLabelEffect",lua_cocos2dx_Label_setLabelEffect);
-        tolua_function(tolua_S,"setCascadeOpacityEnabled",lua_cocos2dx_Label_setCascadeOpacityEnabled);
         tolua_function(tolua_S,"getLetterPosXRight",lua_cocos2dx_Label_getLetterPosXRight);
         tolua_function(tolua_S,"getCommonLineHeight",lua_cocos2dx_Label_getCommonLineHeight);
         tolua_function(tolua_S,"getLabelContentSize",lua_cocos2dx_Label_getLabelContentSize);
         tolua_function(tolua_S,"breakLineWithoutSpace",lua_cocos2dx_Label_breakLineWithoutSpace);
         tolua_function(tolua_S,"setWidth",lua_cocos2dx_Label_setWidth);
-        tolua_function(tolua_S,"getStringLenght",lua_cocos2dx_Label_getStringLenght);
         tolua_function(tolua_S,"getMaxLineWidth",lua_cocos2dx_Label_getMaxLineWidth);
         tolua_function(tolua_S,"isOpacityModifyRGB",lua_cocos2dx_Label_isOpacityModifyRGB);
         tolua_function(tolua_S,"getRectForChar",lua_cocos2dx_Label_getRectForChar);
         tolua_function(tolua_S,"getScaleY",lua_cocos2dx_Label_getScaleY);
         tolua_function(tolua_S,"getScaleX",lua_cocos2dx_Label_getScaleX);
         tolua_function(tolua_S,"setString",lua_cocos2dx_Label_setString);
-        tolua_function(tolua_S,"setCascadeColorEnabled",lua_cocos2dx_Label_setCascadeColorEnabled);
         tolua_function(tolua_S,"setOpacityModifyRGB",lua_cocos2dx_Label_setOpacityModifyRGB);
         tolua_function(tolua_S,"getYOffsetForChar",lua_cocos2dx_Label_getYOffsetForChar);
-        tolua_function(tolua_S,"updateDisplayedOpacity",lua_cocos2dx_Label_updateDisplayedOpacity);
+        tolua_function(tolua_S,"getStringLenght",lua_cocos2dx_Label_getStringLenght);
         tolua_function(tolua_S,"recordPlaceholderInfo",lua_cocos2dx_Label_recordPlaceholderInfo);
         tolua_function(tolua_S,"getLetterPosXLeft",lua_cocos2dx_Label_getLetterPosXLeft);
-        tolua_function(tolua_S,"getOpacity",lua_cocos2dx_Label_getOpacity);
         tolua_function(tolua_S,"getStringNumLines",lua_cocos2dx_Label_getStringNumLines);
         tolua_function(tolua_S,"setLineBreakWithoutSpace",lua_cocos2dx_Label_setLineBreakWithoutSpace);
         tolua_function(tolua_S,"setScaleY",lua_cocos2dx_Label_setScaleY);
         tolua_function(tolua_S,"setScaleX",lua_cocos2dx_Label_setScaleX);
         tolua_function(tolua_S,"getCharAtStringPosition",lua_cocos2dx_Label_getCharAtStringPosition);
         tolua_function(tolua_S,"getAdvanceForChar",lua_cocos2dx_Label_getAdvanceForChar);
-        tolua_function(tolua_S,"getColor",lua_cocos2dx_Label_getColor);
-        tolua_function(tolua_S,"getDisplayedOpacity",lua_cocos2dx_Label_getDisplayedOpacity);
-        tolua_function(tolua_S,"getUTF8String",lua_cocos2dx_Label_getUTF8String);
         tolua_function(tolua_S,"getKerningForCharsPair",lua_cocos2dx_Label_getKerningForCharsPair);
-        tolua_function(tolua_S,"setOpacity",lua_cocos2dx_Label_setOpacity);
         tolua_function(tolua_S,"getLetter",lua_cocos2dx_Label_getLetter);
         tolua_function(tolua_S,"setLabelContentSize",lua_cocos2dx_Label_setLabelContentSize);
         tolua_function(tolua_S,"assignNewUTF8String",lua_cocos2dx_Label_assignNewUTF8String);
         tolua_function(tolua_S,"setColor",lua_cocos2dx_Label_setColor);
-        tolua_function(tolua_S,"getDisplayedColor",lua_cocos2dx_Label_getDisplayedColor);
         tolua_function(tolua_S,"setText",lua_cocos2dx_Label_setText);
-        tolua_function(tolua_S,"isCascadeOpacityEnabled",lua_cocos2dx_Label_isCascadeOpacityEnabled);
+        tolua_function(tolua_S,"getUTF8String",lua_cocos2dx_Label_getUTF8String);
         tolua_function(tolua_S,"getTextAlignment",lua_cocos2dx_Label_getTextAlignment);
-        tolua_function(tolua_S,"isCascadeColorEnabled",lua_cocos2dx_Label_isCascadeColorEnabled);
-        tolua_function(tolua_S,"updateDisplayedColor",lua_cocos2dx_Label_updateDisplayedColor);
         tolua_function(tolua_S,"setAlignment",lua_cocos2dx_Label_setAlignment);
         tolua_function(tolua_S,"recordLetterInfo",lua_cocos2dx_Label_recordLetterInfo);
         tolua_function(tolua_S,"createWithBMFont", lua_cocos2dx_Label_createWithBMFont);
@@ -53615,705 +52448,6 @@ int lua_register_cocos2dx_Layer(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_LayerRGBA_isOpacityModifyRGB(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_isOpacityModifyRGB'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isOpacityModifyRGB();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isOpacityModifyRGB",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_isOpacityModifyRGB'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_setColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_setColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_setColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_isCascadeOpacityEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_isCascadeOpacityEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isCascadeOpacityEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeOpacityEnabled",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_isCascadeOpacityEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_getColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_getColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const cocos2d::Color3B& ret = cobj->getColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColor",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_getColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_getDisplayedOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_getDisplayedOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getDisplayedOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_getDisplayedOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_setCascadeColorEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_setCascadeColorEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setCascadeColorEnabled(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeColorEnabled",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_setCascadeColorEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_setOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_setOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_setOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_setOpacityModifyRGB(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_setOpacityModifyRGB'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacityModifyRGB(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacityModifyRGB",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_setOpacityModifyRGB'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_setCascadeOpacityEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_setCascadeOpacityEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setCascadeOpacityEnabled(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeOpacityEnabled",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_setCascadeOpacityEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_updateDisplayedOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_updateDisplayedOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->updateDisplayedOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_updateDisplayedOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_isCascadeColorEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_isCascadeColorEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isCascadeColorEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeColorEnabled",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_isCascadeColorEnabled'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_updateDisplayedColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_updateDisplayedColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->updateDisplayedColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateDisplayedColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_updateDisplayedColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_getOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_getOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_getOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_getDescription(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_getDescription'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        std::string ret = cobj->getDescription();
-        tolua_pushcppstring(tolua_S,ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_getDescription'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_getDisplayedColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerRGBA* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerRGBA*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerRGBA_getDisplayedColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const cocos2d::Color3B& ret = cobj->getDisplayedColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayedColor",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_getDisplayedColor'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerRGBA_create(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"LayerRGBA",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S) - 1;
-
-    if (argc == 0)
-    {
-        if(!ok)
-            return 0;
-        cocos2d::LayerRGBA* ret = cocos2d::LayerRGBA::create();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerRGBA*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"LayerRGBA");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"LayerRGBA");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerRGBA_create'.",&tolua_err);
-#endif
-    return 0;
-}
-static int lua_cocos2dx_LayerRGBA_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (LayerRGBA)");
-    return 0;
-}
-
-int lua_register_cocos2dx_LayerRGBA(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"LayerRGBA");
-    tolua_cclass(tolua_S,"LayerRGBA","LayerRGBA","Layer",NULL);
-
-    tolua_beginmodule(tolua_S,"LayerRGBA");
-        tolua_function(tolua_S,"isOpacityModifyRGB",lua_cocos2dx_LayerRGBA_isOpacityModifyRGB);
-        tolua_function(tolua_S,"setColor",lua_cocos2dx_LayerRGBA_setColor);
-        tolua_function(tolua_S,"isCascadeOpacityEnabled",lua_cocos2dx_LayerRGBA_isCascadeOpacityEnabled);
-        tolua_function(tolua_S,"getColor",lua_cocos2dx_LayerRGBA_getColor);
-        tolua_function(tolua_S,"getDisplayedOpacity",lua_cocos2dx_LayerRGBA_getDisplayedOpacity);
-        tolua_function(tolua_S,"setCascadeColorEnabled",lua_cocos2dx_LayerRGBA_setCascadeColorEnabled);
-        tolua_function(tolua_S,"setOpacity",lua_cocos2dx_LayerRGBA_setOpacity);
-        tolua_function(tolua_S,"setOpacityModifyRGB",lua_cocos2dx_LayerRGBA_setOpacityModifyRGB);
-        tolua_function(tolua_S,"setCascadeOpacityEnabled",lua_cocos2dx_LayerRGBA_setCascadeOpacityEnabled);
-        tolua_function(tolua_S,"updateDisplayedOpacity",lua_cocos2dx_LayerRGBA_updateDisplayedOpacity);
-        tolua_function(tolua_S,"isCascadeColorEnabled",lua_cocos2dx_LayerRGBA_isCascadeColorEnabled);
-        tolua_function(tolua_S,"updateDisplayedColor",lua_cocos2dx_LayerRGBA_updateDisplayedColor);
-        tolua_function(tolua_S,"getOpacity",lua_cocos2dx_LayerRGBA_getOpacity);
-        tolua_function(tolua_S,"getDescription",lua_cocos2dx_LayerRGBA_getDescription);
-        tolua_function(tolua_S,"getDisplayedColor",lua_cocos2dx_LayerRGBA_getDisplayedColor);
-        tolua_function(tolua_S,"create", lua_cocos2dx_LayerRGBA_create);
-    tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::LayerRGBA).hash_code();
-    g_luaType[typeId] = "LayerRGBA";
-    return 1;
-}
-
 int lua_cocos2dx_LayerColor_draw(lua_State* tolua_S)
 {
     int argc = 0;
@@ -54351,48 +52485,6 @@ int lua_cocos2dx_LayerColor_draw(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerColor_draw'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerColor_setColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerColor* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerColor",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerColor*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerColor_setColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerColor_setColor'.",&tolua_err);
 #endif
     return 0;
 }
@@ -54518,48 +52610,6 @@ int lua_cocos2dx_LayerColor_changeWidthAndHeight(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerColor_changeWidthAndHeight'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_LayerColor_setOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LayerColor* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayerColor",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LayerColor*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LayerColor_setOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LayerColor_setOpacity'.",&tolua_err);
 #endif
     return 0;
 }
@@ -54798,15 +52848,13 @@ static int lua_cocos2dx_LayerColor_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_LayerColor(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"LayerColor");
-    tolua_cclass(tolua_S,"LayerColor","LayerColor","LayerRGBA",NULL);
+    tolua_cclass(tolua_S,"LayerColor","LayerColor","Layer",NULL);
 
     tolua_beginmodule(tolua_S,"LayerColor");
         tolua_function(tolua_S,"draw",lua_cocos2dx_LayerColor_draw);
-        tolua_function(tolua_S,"setColor",lua_cocos2dx_LayerColor_setColor);
         tolua_function(tolua_S,"onDraw",lua_cocos2dx_LayerColor_onDraw);
         tolua_function(tolua_S,"getDescription",lua_cocos2dx_LayerColor_getDescription);
         tolua_function(tolua_S,"changeWidthAndHeight",lua_cocos2dx_LayerColor_changeWidthAndHeight);
-        tolua_function(tolua_S,"setOpacity",lua_cocos2dx_LayerColor_setOpacity);
         tolua_function(tolua_S,"changeWidth",lua_cocos2dx_LayerColor_changeWidth);
         tolua_function(tolua_S,"setContentSize",lua_cocos2dx_LayerColor_setContentSize);
         tolua_function(tolua_S,"changeHeight",lua_cocos2dx_LayerColor_changeHeight);
@@ -60965,7 +59013,7 @@ static int lua_cocos2dx_MenuItem_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_MenuItem(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"MenuItem");
-    tolua_cclass(tolua_S,"MenuItem","MenuItem","NodeRGBA",NULL);
+    tolua_cclass(tolua_S,"MenuItem","MenuItem","Node",NULL);
 
     tolua_beginmodule(tolua_S,"MenuItem");
         tolua_function(tolua_S,"setEnabled",lua_cocos2dx_MenuItem_setEnabled);
@@ -63322,7 +61370,7 @@ static int lua_cocos2dx_Menu_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_Menu(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"Menu");
-    tolua_cclass(tolua_S,"Menu","Menu","LayerRGBA",NULL);
+    tolua_cclass(tolua_S,"Menu","Menu","Layer",NULL);
 
     tolua_beginmodule(tolua_S,"Menu");
         tolua_function(tolua_S,"setEnabled",lua_cocos2dx_Menu_setEnabled);
@@ -64430,7 +62478,7 @@ static int lua_cocos2dx_MotionStreak_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_MotionStreak(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"MotionStreak");
-    tolua_cclass(tolua_S,"MotionStreak","MotionStreak","NodeRGBA",NULL);
+    tolua_cclass(tolua_S,"MotionStreak","MotionStreak","Node",NULL);
 
     tolua_beginmodule(tolua_S,"MotionStreak");
         tolua_function(tolua_S,"reset",lua_cocos2dx_MotionStreak_reset);
@@ -64751,89 +62799,6 @@ int lua_cocos2dx_ProgressTimer_getType(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_ProgressTimer_getOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::ProgressTimer* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ProgressTimer",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_getOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        unsigned char ret = cobj->getOpacity();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOpacity",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ProgressTimer_getOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_ProgressTimer_setOpacity(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::ProgressTimer* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ProgressTimer",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_setOpacity'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        uint16_t arg0;
-        ok &= luaval_to_uint16(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setOpacity(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ProgressTimer_setOpacity'.",&tolua_err);
-#endif
-    return 0;
-}
 int lua_cocos2dx_ProgressTimer_getSprite(lua_State* tolua_S)
 {
     int argc = 0;
@@ -64926,47 +62891,6 @@ int lua_cocos2dx_ProgressTimer_setMidpoint(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ProgressTimer_setMidpoint'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_ProgressTimer_getColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::ProgressTimer* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ProgressTimer",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_getColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        const cocos2d::Color3B& ret = cobj->getColor();
-        color3b_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColor",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ProgressTimer_getColor'.",&tolua_err);
 #endif
     return 0;
 }
@@ -65099,48 +63023,6 @@ int lua_cocos2dx_ProgressTimer_getMidpoint(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ProgressTimer_getMidpoint'.",&tolua_err);
-#endif
-    return 0;
-}
-int lua_cocos2dx_ProgressTimer_setColor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::ProgressTimer* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ProgressTimer",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::ProgressTimer*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ProgressTimer_setColor'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Color3B arg0;
-        ok &= luaval_to_color3b(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setColor(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ProgressTimer_setColor'.",&tolua_err);
 #endif
     return 0;
 }
@@ -65291,7 +63173,7 @@ static int lua_cocos2dx_ProgressTimer_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_ProgressTimer(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"ProgressTimer");
-    tolua_cclass(tolua_S,"ProgressTimer","ProgressTimer","NodeRGBA",NULL);
+    tolua_cclass(tolua_S,"ProgressTimer","ProgressTimer","Node",NULL);
 
     tolua_beginmodule(tolua_S,"ProgressTimer");
         tolua_function(tolua_S,"setAnchorPoint",lua_cocos2dx_ProgressTimer_setAnchorPoint);
@@ -65301,15 +63183,11 @@ int lua_register_cocos2dx_ProgressTimer(lua_State* tolua_S)
         tolua_function(tolua_S,"getPercentage",lua_cocos2dx_ProgressTimer_getPercentage);
         tolua_function(tolua_S,"setSprite",lua_cocos2dx_ProgressTimer_setSprite);
         tolua_function(tolua_S,"getType",lua_cocos2dx_ProgressTimer_getType);
-        tolua_function(tolua_S,"getOpacity",lua_cocos2dx_ProgressTimer_getOpacity);
-        tolua_function(tolua_S,"setOpacity",lua_cocos2dx_ProgressTimer_setOpacity);
         tolua_function(tolua_S,"getSprite",lua_cocos2dx_ProgressTimer_getSprite);
         tolua_function(tolua_S,"setMidpoint",lua_cocos2dx_ProgressTimer_setMidpoint);
-        tolua_function(tolua_S,"getColor",lua_cocos2dx_ProgressTimer_getColor);
         tolua_function(tolua_S,"getBarChangeRate",lua_cocos2dx_ProgressTimer_getBarChangeRate);
         tolua_function(tolua_S,"setReverseDirection",lua_cocos2dx_ProgressTimer_setReverseDirection);
         tolua_function(tolua_S,"getMidpoint",lua_cocos2dx_ProgressTimer_getMidpoint);
-        tolua_function(tolua_S,"setColor",lua_cocos2dx_ProgressTimer_setColor);
         tolua_function(tolua_S,"setPercentage",lua_cocos2dx_ProgressTimer_setPercentage);
         tolua_function(tolua_S,"setType",lua_cocos2dx_ProgressTimer_setType);
         tolua_function(tolua_S,"create", lua_cocos2dx_ProgressTimer_create);
@@ -86293,7 +84171,6 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_TransitionEaseScene(tolua_S);
 	lua_register_cocos2dx_TransitionMoveInL(tolua_S);
 	lua_register_cocos2dx_TransitionMoveInB(tolua_S);
-	lua_register_cocos2dx_NodeRGBA(tolua_S);
 	lua_register_cocos2dx_AtlasNode(tolua_S);
 	lua_register_cocos2dx_TileMapAtlas(tolua_S);
 	lua_register_cocos2dx_TransitionMoveInT(tolua_S);
@@ -86370,7 +84247,6 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_FadeOutUpTiles(tolua_S);
 	lua_register_cocos2dx_FadeOutDownTiles(tolua_S);
 	lua_register_cocos2dx_TextureCache(tolua_S);
-	lua_register_cocos2dx_LayerRGBA(tolua_S);
 	lua_register_cocos2dx_ActionTween(tolua_S);
 	lua_register_cocos2dx_TransitionFadeDown(tolua_S);
 	lua_register_cocos2dx_ParticleSun(tolua_S);
@@ -86385,7 +84261,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_Repeat(tolua_S);
 	lua_register_cocos2dx_Place(tolua_S);
 	lua_register_cocos2dx_GLProgram(tolua_S);
-	lua_register_cocos2dx_EaseBounceOut(tolua_S);
+	lua_register_cocos2dx_Twirl(tolua_S);
 	lua_register_cocos2dx_TintBy(tolua_S);
 	lua_register_cocos2dx_TransitionShrinkGrow(tolua_S);
 	lua_register_cocos2dx_Sprite(tolua_S);
@@ -86408,7 +84284,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_GridBase(tolua_S);
 	lua_register_cocos2dx_TiledGrid3D(tolua_S);
 	lua_register_cocos2dx_ParticleGalaxy(tolua_S);
-	lua_register_cocos2dx_Twirl(tolua_S);
+	lua_register_cocos2dx_EaseBounceOut(tolua_S);
 	lua_register_cocos2dx_MenuItemLabel(tolua_S);
 	lua_register_cocos2dx_LayerColor(tolua_S);
 	lua_register_cocos2dx_FadeOutBLTiles(tolua_S);
@@ -86446,6 +84322,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_PageTurn3D(tolua_S);
 	lua_register_cocos2dx_Grid3D(tolua_S);
 	lua_register_cocos2dx_TransitionProgressInOut(tolua_S);
+	lua_register_cocos2dx_Animation(tolua_S);
 	lua_register_cocos2dx_EaseBackIn(tolua_S);
 	lua_register_cocos2dx_SplitRows(tolua_S);
 	lua_register_cocos2dx_Follow(tolua_S);
@@ -86457,7 +84334,6 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_TransitionZoomFlipY(tolua_S);
 	lua_register_cocos2dx_ScaleBy(tolua_S);
 	lua_register_cocos2dx_Lens3D(tolua_S);
-	lua_register_cocos2dx_Animation(tolua_S);
 	lua_register_cocos2dx_TMXMapInfo(tolua_S);
 	lua_register_cocos2dx_EaseExponentialIn(tolua_S);
 	lua_register_cocos2dx_ReuseGrid(tolua_S);

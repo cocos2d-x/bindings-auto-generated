@@ -396,12 +396,6 @@ isIgnoreMovementBoneData : function () {},
 updateZOrder : function () {},
 
 /**
- * @method setTransformDirty
- * @param {bool}
- */
-setTransformDirty : function () {},
-
-/**
  * @method getDisplayRenderNode
  * @return A value converted from C/C++ "cocos2d::Node*"
  */
@@ -449,10 +443,10 @@ updateColor : function () {},
 getName : function () {},
 
 /**
- * @method setOpacity
- * @param {GLubyte}
+ * @method setTransformDirty
+ * @param {bool}
  */
-setOpacity : function () {},
+setTransformDirty : function () {},
 
 /**
  * @method getDisplayRenderNodeType
@@ -550,12 +544,6 @@ setBlendDirty : function () {},
  * @return A value converted from C/C++ "kmMat4"
  */
 getNodeToWorldTransform : function () {},
-
-/**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
 
 /**
  * @method removeChildBone
