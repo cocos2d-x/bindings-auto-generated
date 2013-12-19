@@ -225,6 +225,7 @@ void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_studio_Armature_getBone(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_changeBoneParent(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_Armature_setAnchorPoint(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_setAnimation(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getBoneAtPoint(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getArmatureTransformDirty(JSContext *cx, uint32_t argc, jsval *vp);
@@ -233,7 +234,7 @@ JSBool js_cocos2dx_studio_Armature_updateOffsetPoint(JSContext *cx, uint32_t arg
 JSBool js_cocos2dx_studio_Armature_getParentBone(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_setName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_removeBone(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_Armature_getBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_Armature_getAnchorPointInPoints(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_init(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getNodeToParentTransform(JSContext *cx, uint32_t argc, jsval *vp);
@@ -249,6 +250,7 @@ JSBool js_cocos2dx_studio_Armature_getArmatureData(JSContext *cx, uint32_t argc,
 JSBool js_cocos2dx_studio_Armature_getVersion(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getAnimation(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_getBoneDic(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_Armature_getBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_Armature(JSContext *cx, uint32_t argc, jsval *vp);
 

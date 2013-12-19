@@ -846,6 +846,12 @@ getBone : function () {},
 changeBoneParent : function () {},
 
 /**
+ * @method setAnchorPoint
+ * @param {const cocos2d::Point&}
+ */
+setAnchorPoint : function () {},
+
+/**
  * @method setAnimation
  * @param {cocostudio::ArmatureAnimation*}
  */
@@ -896,10 +902,10 @@ setName : function () {},
 removeBone : function () {},
 
 /**
- * @method getBatchNode
- * @return A value converted from C/C++ "cocostudio::BatchNode*"
+ * @method getAnchorPointInPoints
+ * @return A value converted from C/C++ "const cocos2d::Point&"
  */
-getBatchNode : function () {},
+getAnchorPointInPoints : function () {},
 
 /**
  * @method getName
@@ -983,6 +989,12 @@ getAnimation : function () {},
  * @return A value converted from C/C++ "const cocos2d::Map<std::basic_string<char>, cocostudio::Bone *>&"
  */
 getBoneDic : function () {},
+
+/**
+ * @method getBatchNode
+ * @return A value converted from C/C++ "cocostudio::BatchNode*"
+ */
+getBatchNode : function () {},
 
 /**
  * @method Armature

@@ -27456,6 +27456,48 @@ int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_studio_Armature_setAnchorPoint(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocostudio::Armature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Armature_setAnchorPoint'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::Point arg0;
+        ok &= luaval_to_point(tolua_S, 2, &arg0);
+        if(!ok)
+            return 0;
+        cobj->setAnchorPoint(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAnchorPoint",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_setAnchorPoint'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_studio_Armature_setAnimation(lua_State* tolua_S)
 {
     int argc = 0;
@@ -27835,7 +27877,7 @@ int lua_cocos2dx_studio_Armature_removeBone(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
+int lua_cocos2dx_studio_Armature_getAnchorPointInPoints(lua_State* tolua_S)
 {
     int argc = 0;
     cocostudio::Armature* cobj = nullptr;
@@ -27854,7 +27896,7 @@ int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Armature_getBatchNode'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Armature_getAnchorPointInPoints'", NULL);
         return 0;
     }
 #endif
@@ -27864,27 +27906,15 @@ int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocostudio::BatchNode* ret = cobj->getBatchNode();
-        do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BatchNode");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"BatchNode");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        const cocos2d::Point& ret = cobj->getAnchorPointInPoints();
+        point_to_luaval(tolua_S, ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBatchNode",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnchorPointInPoints",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getBatchNode'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getAnchorPointInPoints'.",&tolua_err);
 #endif
     return 0;
 }
@@ -28600,6 +28630,59 @@ int lua_cocos2dx_studio_Armature_getBoneDic(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocostudio::Armature* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Armature_getBatchNode'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cocostudio::BatchNode* ret = cobj->getBatchNode();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BatchNode*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BatchNode");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"BatchNode");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBatchNode",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getBatchNode'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
 {
     int argc = 0;
@@ -28761,6 +28844,7 @@ int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"Armature");
         tolua_function(tolua_S,"getBone",lua_cocos2dx_studio_Armature_getBone);
         tolua_function(tolua_S,"changeBoneParent",lua_cocos2dx_studio_Armature_changeBoneParent);
+        tolua_function(tolua_S,"setAnchorPoint",lua_cocos2dx_studio_Armature_setAnchorPoint);
         tolua_function(tolua_S,"setAnimation",lua_cocos2dx_studio_Armature_setAnimation);
         tolua_function(tolua_S,"getBoneAtPoint",lua_cocos2dx_studio_Armature_getBoneAtPoint);
         tolua_function(tolua_S,"getArmatureTransformDirty",lua_cocos2dx_studio_Armature_getArmatureTransformDirty);
@@ -28769,7 +28853,7 @@ int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
         tolua_function(tolua_S,"getParentBone",lua_cocos2dx_studio_Armature_getParentBone);
         tolua_function(tolua_S,"setName",lua_cocos2dx_studio_Armature_setName);
         tolua_function(tolua_S,"removeBone",lua_cocos2dx_studio_Armature_removeBone);
-        tolua_function(tolua_S,"getBatchNode",lua_cocos2dx_studio_Armature_getBatchNode);
+        tolua_function(tolua_S,"getAnchorPointInPoints",lua_cocos2dx_studio_Armature_getAnchorPointInPoints);
         tolua_function(tolua_S,"getName",lua_cocos2dx_studio_Armature_getName);
         tolua_function(tolua_S,"init",lua_cocos2dx_studio_Armature_init);
         tolua_function(tolua_S,"getNodeToParentTransform",lua_cocos2dx_studio_Armature_getNodeToParentTransform);
@@ -28785,6 +28869,7 @@ int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
         tolua_function(tolua_S,"getVersion",lua_cocos2dx_studio_Armature_getVersion);
         tolua_function(tolua_S,"getAnimation",lua_cocos2dx_studio_Armature_getAnimation);
         tolua_function(tolua_S,"getBoneDic",lua_cocos2dx_studio_Armature_getBoneDic);
+        tolua_function(tolua_S,"getBatchNode",lua_cocos2dx_studio_Armature_getBatchNode);
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_Armature_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_Armature_create);
     tolua_endmodule(tolua_S);
