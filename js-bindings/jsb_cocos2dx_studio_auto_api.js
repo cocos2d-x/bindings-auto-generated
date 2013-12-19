@@ -252,30 +252,6 @@ Tween : function () {},
  */
 ccs.ColliderFilter = {
 
-/**
- * @method setCollisionType
- * @param {uintptr_t}
- */
-setCollisionType : function () {},
-
-/**
- * @method setGroup
- * @param {uintptr_t}
- */
-setGroup : function () {},
-
-/**
- * @method getCollisionType
- * @return A value converted from C/C++ "uintptr_t"
- */
-getCollisionType : function () {},
-
-/**
- * @method getGroup
- * @return A value converted from C/C++ "uintptr_t"
- */
-getGroup : function () {},
-
 };
 
 /**
@@ -327,6 +303,13 @@ init : function () {},
 getContentSize : function () {},
 
 /**
+ * @method changeDisplayByName
+ * @param {const char*}
+ * @param {bool}
+ */
+changeDisplayByName : function () {},
+
+/**
  * @method getBoundingBox
  * @return A value converted from C/C++ "cocos2d::Rect"
  */
@@ -352,7 +335,7 @@ getAnchorPoint : function () {},
 
 /**
  * @method getDecorativeDisplayList
- * @return A value converted from C/C++ "cocos2d::Array*"
+ * @return A value converted from C/C++ "const cocos2d::Vector<cocostudio::DecorativeDisplay *>&"
  */
 getDecorativeDisplayList : function () {},
 
@@ -425,6 +408,12 @@ setTransformDirty : function () {},
 getDisplayRenderNode : function () {},
 
 /**
+ * @method isBlendDirty
+ * @return A value converted from C/C++ "bool"
+ */
+isBlendDirty : function () {},
+
+/**
  * @method addChildBone
  * @param {cocostudio::Bone*}
  */
@@ -447,12 +436,6 @@ getTween : function () {},
  * @return A value converted from C/C++ "cocostudio::Bone*"
  */
 getParentBone : function () {},
-
-/**
- * @method getBlendType
- * @return A value converted from C/C++ "cocostudio::BlendType"
- */
-getBlendType : function () {},
 
 /**
  * @method updateColor
@@ -490,22 +473,17 @@ removeDisplay : function () {},
 updateDisplayedOpacity : function () {},
 
 /**
- * @method setParentBone
- * @param {cocostudio::Bone*}
+ * @method changeDisplayByName
+ * @param {const char*}
+ * @param {bool}
  */
-setParentBone : function () {},
+changeDisplayByName : function () {},
 
 /**
  * @method setZOrder
  * @param {int}
  */
 setZOrder : function () {},
-
-/**
- * @method getColliderFilter
- * @return A value converted from C/C++ "cocostudio::ColliderFilter*"
- */
-getColliderFilter : function () {},
 
 /**
  * @method setIgnoreMovementBoneData
@@ -526,10 +504,16 @@ setName : function () {},
 removeFromParent : function () {},
 
 /**
- * @method getChildArmature
- * @return A value converted from C/C++ "cocostudio::Armature*"
+ * @method getColliderDetector
+ * @return A value converted from C/C++ "cocostudio::ColliderDetector*"
  */
-getChildArmature : function () {},
+getColliderDetector : function () {},
+
+/**
+ * @method setParentBone
+ * @param {cocostudio::Bone*}
+ */
+setParentBone : function () {},
 
 /**
  * @method update
@@ -538,16 +522,10 @@ getChildArmature : function () {},
 update : function () {},
 
 /**
- * @method setColliderFilter
- * @param {cocostudio::ColliderFilter*}
+ * @method getChildArmature
+ * @return A value converted from C/C++ "cocostudio::Armature*"
  */
-setColliderFilter : function () {},
-
-/**
- * @method getColliderBodyList
- * @return A value converted from C/C++ "cocos2d::Array*"
- */
-getColliderBodyList : function () {},
+getChildArmature : function () {},
 
 /**
  * @method setBoneData
@@ -560,6 +538,12 @@ setBoneData : function () {},
  * @param {cocostudio::Armature*}
  */
 setArmature : function () {},
+
+/**
+ * @method setBlendDirty
+ * @param {bool}
+ */
+setBlendDirty : function () {},
 
 /**
  * @method getNodeToWorldTransform
@@ -603,12 +587,6 @@ getDisplayManager : function () {},
  * @return A value converted from C/C++ "cocostudio::Armature*"
  */
 getArmature : function () {},
-
-/**
- * @method setBlendType
- * @param {cocostudio::BlendType}
- */
-setBlendType : function () {},
 
 /**
  * @method changeDisplayByIndex
@@ -669,25 +647,9 @@ ccs.ArmatureAnimation = {
 getSpeedScale : function () {},
 
 /**
- * @method play
- * @param {const char*}
- * @param {int}
- * @param {int}
- * @param {int}
- * @param {int}
- */
-play : function () {},
-
-/**
  * @method pause
  */
 pause : function () {},
-
-/**
- * @method setAnimationInternal
- * @param {float}
- */
-setAnimationInternal : function () {},
 
 /**
  * @method gotoAndPause
@@ -706,6 +668,12 @@ resume : function () {},
 stop : function () {},
 
 /**
+ * @method setMovementEventCallFunc
+ * @param {std::function<void (cocostudio::Armature *, cocostudio::MovementEventType, const char *)>}
+ */
+setMovementEventCallFunc : function () {},
+
+/**
  * @method setSpeedScale
  * @param {float}
  */
@@ -716,16 +684,6 @@ setSpeedScale : function () {},
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method playByIndex
- * @param {int}
- * @param {int}
- * @param {int}
- * @param {int}
- * @param {int}
- */
-playByIndex : function () {},
 
 /**
  * @method gotoAndPlay
@@ -742,9 +700,15 @@ init : function () {},
 
 /**
  * @method getMovementCount
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "long"
  */
 getMovementCount : function () {},
+
+/**
+ * @method setFrameEventCallFunc
+ * @param {std::function<void (cocostudio::Bone *, const char *, int, int)>}
+ */
+setFrameEventCallFunc : function () {},
 
 /**
  * @method getCurrentMovementID
@@ -774,7 +738,7 @@ ccs.ArmatureDataManager = {
 
 /**
  * @method getAnimationDatas
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
+ * @return A value converted from C/C++ "const cocos2d::Map<std::basic_string<char>, cocostudio::AnimationData *>&"
  */
 getAnimationDatas : function () {},
 
@@ -841,7 +805,7 @@ removeArmatureData : function () {},
 
 /**
  * @method getArmatureDatas
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
+ * @return A value converted from C/C++ "const cocos2d::Map<std::basic_string<char>, cocostudio::ArmatureData *>&"
  */
 getArmatureDatas : function () {},
 
@@ -937,10 +901,10 @@ setVersion : function () {},
 updateOffsetPoint : function () {},
 
 /**
- * @method setColliderFilter
- * @param {cocostudio::ColliderFilter*}
+ * @method getParentBone
+ * @return A value converted from C/C++ "cocostudio::Bone*"
  */
-setColliderFilter : function () {},
+getParentBone : function () {},
 
 /**
  * @method setName
@@ -986,6 +950,11 @@ setParentBone : function () {},
 getBoundingBox : function () {},
 
 /**
+ * @method drawContour
+ */
+drawContour : function () {},
+
+/**
  * @method setBatchNode
  * @param {cocostudio::BatchNode*}
  */
@@ -1022,12 +991,6 @@ update : function () {},
 getArmatureData : function () {},
 
 /**
- * @method getParentBone
- * @return A value converted from C/C++ "cocostudio::Bone*"
- */
-getParentBone : function () {},
-
-/**
  * @method getVersion
  * @return A value converted from C/C++ "float"
  */
@@ -1041,7 +1004,7 @@ getAnimation : function () {},
 
 /**
  * @method getBoneDic
- * @return A value converted from C/C++ "cocos2d::Dictionary*"
+ * @return A value converted from C/C++ "const cocos2d::Map<std::basic_string<char>, cocostudio::Bone *>&"
  */
 getBoneDic : function () {},
 
@@ -1063,6 +1026,11 @@ ccs.Skin = {
  * @return A value converted from C/C++ "cocostudio::Bone*"
  */
 getBone : function () {},
+
+/**
+ * @method draw
+ */
+draw : function () {},
 
 /**
  * @method getNodeToWorldTransformAR
