@@ -1053,7 +1053,7 @@ int lua_cocos2dx_FiniteTimeAction_getDuration(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getDuration();
+        double ret = cobj->getDuration();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -1218,7 +1218,7 @@ int lua_cocos2dx_Speed_getSpeed(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getSpeed();
+        double ret = cobj->getSpeed();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -3600,7 +3600,7 @@ int lua_cocos2dx_Texture2D_getMaxT(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getMaxT();
+        double ret = cobj->getMaxT();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -3807,7 +3807,7 @@ int lua_cocos2dx_Texture2D_getMaxS(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getMaxS();
+        double ret = cobj->getMaxS();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -5781,7 +5781,7 @@ int lua_cocos2dx_Node_getOpacity(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned char ret = cobj->getOpacity();
+        uint16_t ret = cobj->getOpacity();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -6294,7 +6294,7 @@ int lua_cocos2dx_Node_getRotationX(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getRotationX();
+        double ret = cobj->getRotationX();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -6335,7 +6335,7 @@ int lua_cocos2dx_Node_getRotationY(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getRotationY();
+        double ret = cobj->getRotationY();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -7503,7 +7503,7 @@ int lua_cocos2dx_Node_getRotation(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getRotation();
+        double ret = cobj->getRotation();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -7863,7 +7863,7 @@ int lua_cocos2dx_Node_getSkewX(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getSkewX();
+        double ret = cobj->getSkewX();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -7904,7 +7904,7 @@ int lua_cocos2dx_Node_getSkewY(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getSkewY();
+        double ret = cobj->getSkewY();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8175,7 +8175,7 @@ int lua_cocos2dx_Node_getDisplayedOpacity(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned char ret = cobj->getDisplayedOpacity();
+        uint16_t ret = cobj->getDisplayedOpacity();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8568,7 +8568,7 @@ int lua_cocos2dx_Node_getPositionY(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getPositionY();
+        double ret = cobj->getPositionY();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8609,7 +8609,7 @@ int lua_cocos2dx_Node_getPositionX(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getPositionX();
+        double ret = cobj->getPositionX();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8828,7 +8828,7 @@ int lua_cocos2dx_Node_getVertexZ(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getVertexZ();
+        double ret = cobj->getVertexZ();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -9062,7 +9062,7 @@ int lua_cocos2dx_Node_getScaleY(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getScaleY();
+        double ret = cobj->getScaleY();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -9103,7 +9103,7 @@ int lua_cocos2dx_Node_getScaleX(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getScaleX();
+        double ret = cobj->getScaleX();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -9941,7 +9941,7 @@ int lua_cocos2dx_Node_getScale(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getScale();
+        double ret = cobj->getScale();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -11831,7 +11831,7 @@ int lua_cocos2dx_AnimationFrame_getDelayUnits(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getDelayUnits();
+        double ret = cobj->getDelayUnits();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -12185,7 +12185,7 @@ int lua_cocos2dx_Animation_getDuration(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getDuration();
+        double ret = cobj->getDuration();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -12435,7 +12435,7 @@ int lua_cocos2dx_Animation_getTotalDelayUnits(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getTotalDelayUnits();
+        double ret = cobj->getTotalDelayUnits();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -12476,7 +12476,7 @@ int lua_cocos2dx_Animation_getDelayPerUnit(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getDelayPerUnit();
+        double ret = cobj->getDelayPerUnit();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -12963,7 +12963,7 @@ int lua_cocos2dx_ActionInterval_getAmplitudeRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitudeRate();
+        double ret = cobj->getAmplitudeRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -13046,7 +13046,7 @@ int lua_cocos2dx_ActionInterval_getElapsed(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getElapsed();
+        double ret = cobj->getElapsed();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -21924,7 +21924,7 @@ int lua_cocos2dx_EaseRateAction_getRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getRate();
+        double ret = cobj->getRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -24157,7 +24157,7 @@ int lua_cocos2dx_EaseElastic_getPeriod(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getPeriod();
+        double ret = cobj->getPeriod();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -25064,7 +25064,7 @@ int lua_cocos2dx_EaseBounce_bounceTime(lua_State* tolua_S)
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        float ret = cobj->bounceTime(arg0);
+        double ret = cobj->bounceTime(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -29732,7 +29732,7 @@ int lua_cocos2dx_Waves3D_getAmplitudeRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitudeRate();
+        double ret = cobj->getAmplitudeRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -29815,7 +29815,7 @@ int lua_cocos2dx_Waves3D_getAmplitude(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitude();
+        double ret = cobj->getAmplitude();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -30422,7 +30422,7 @@ int lua_cocos2dx_Lens3D_getLensEffect(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getLensEffect();
+        double ret = cobj->getLensEffect();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -30813,7 +30813,7 @@ int lua_cocos2dx_Ripple3D_getAmplitudeRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitudeRate();
+        double ret = cobj->getAmplitudeRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -30896,7 +30896,7 @@ int lua_cocos2dx_Ripple3D_getAmplitude(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitude();
+        double ret = cobj->getAmplitude();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -31448,7 +31448,7 @@ int lua_cocos2dx_Liquid_getAmplitudeRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitudeRate();
+        double ret = cobj->getAmplitudeRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -31531,7 +31531,7 @@ int lua_cocos2dx_Liquid_getAmplitude(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitude();
+        double ret = cobj->getAmplitude();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -31827,7 +31827,7 @@ int lua_cocos2dx_Waves_getAmplitudeRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitudeRate();
+        double ret = cobj->getAmplitudeRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -31910,7 +31910,7 @@ int lua_cocos2dx_Waves_getAmplitude(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitude();
+        double ret = cobj->getAmplitude();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -32210,7 +32210,7 @@ int lua_cocos2dx_Twirl_getAmplitudeRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitudeRate();
+        double ret = cobj->getAmplitudeRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -32293,7 +32293,7 @@ int lua_cocos2dx_Twirl_getAmplitude(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitude();
+        double ret = cobj->getAmplitude();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -34154,7 +34154,7 @@ int lua_cocos2dx_FadeOutTRTiles_testFunc(lua_State* tolua_S)
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
-        float ret = cobj->testFunc(arg0, arg1);
+        double ret = cobj->testFunc(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -34324,7 +34324,7 @@ int lua_cocos2dx_FadeOutBLTiles_testFunc(lua_State* tolua_S)
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
-        float ret = cobj->testFunc(arg0, arg1);
+        double ret = cobj->testFunc(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -34534,7 +34534,7 @@ int lua_cocos2dx_FadeOutUpTiles_testFunc(lua_State* tolua_S)
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
-        float ret = cobj->testFunc(arg0, arg1);
+        double ret = cobj->testFunc(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -34701,7 +34701,7 @@ int lua_cocos2dx_FadeOutDownTiles_testFunc(lua_State* tolua_S)
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
-        float ret = cobj->testFunc(arg0, arg1);
+        double ret = cobj->testFunc(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -35327,7 +35327,7 @@ int lua_cocos2dx_WavesTiles3D_getAmplitudeRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitudeRate();
+        double ret = cobj->getAmplitudeRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -35410,7 +35410,7 @@ int lua_cocos2dx_WavesTiles3D_getAmplitude(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitude();
+        double ret = cobj->getAmplitude();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -35664,7 +35664,7 @@ int lua_cocos2dx_JumpTiles3D_getAmplitudeRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitudeRate();
+        double ret = cobj->getAmplitudeRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -35747,7 +35747,7 @@ int lua_cocos2dx_JumpTiles3D_getAmplitude(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAmplitude();
+        double ret = cobj->getAmplitude();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -39112,7 +39112,7 @@ int lua_cocos2dx_Camera_getZEye(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cocos2d::Camera::getZEye();
+        double ret = cocos2d::Camera::getZEye();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -39785,7 +39785,7 @@ int lua_cocos2dx_Director_getContentScaleFactor(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getContentScaleFactor();
+        double ret = cobj->getContentScaleFactor();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -39867,7 +39867,7 @@ int lua_cocos2dx_Director_getDeltaTime(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getDeltaTime();
+        double ret = cobj->getDeltaTime();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -40392,7 +40392,7 @@ int lua_cocos2dx_Director_getFrameRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getFrameRate();
+        double ret = cobj->getFrameRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -40433,7 +40433,7 @@ int lua_cocos2dx_Director_getSecondsPerFrame(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getSecondsPerFrame();
+        double ret = cobj->getSecondsPerFrame();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -41374,7 +41374,7 @@ int lua_cocos2dx_Director_getZEye(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getZEye();
+        double ret = cobj->getZEye();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -46228,7 +46228,7 @@ int lua_cocos2dx_LabelTTF_getFontSize(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getFontSize();
+        double ret = cobj->getFontSize();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -50598,7 +50598,7 @@ int lua_cocos2dx_Label_getLetterPosXRight(lua_State* tolua_S)
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
-        float ret = cobj->getLetterPosXRight(arg0);
+        double ret = cobj->getLetterPosXRight(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -50804,7 +50804,7 @@ int lua_cocos2dx_Label_getMaxLineWidth(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getMaxLineWidth();
+        double ret = cobj->getMaxLineWidth();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -50929,7 +50929,7 @@ int lua_cocos2dx_Label_getScaleY(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getScaleY();
+        double ret = cobj->getScaleY();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -50970,7 +50970,7 @@ int lua_cocos2dx_Label_getScaleX(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getScaleX();
+        double ret = cobj->getScaleX();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -51236,7 +51236,7 @@ int lua_cocos2dx_Label_getLetterPosXLeft(lua_State* tolua_S)
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
-        float ret = cobj->getLetterPosXLeft(arg0);
+        double ret = cobj->getLetterPosXLeft(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -52976,7 +52976,7 @@ int lua_cocos2dx_LayerGradient_getStartOpacity(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned char ret = cobj->getStartOpacity();
+        uint16_t ret = cobj->getStartOpacity();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -53381,7 +53381,7 @@ int lua_cocos2dx_LayerGradient_getEndOpacity(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned char ret = cobj->getEndOpacity();
+        uint16_t ret = cobj->getEndOpacity();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -61593,7 +61593,7 @@ int lua_cocos2dx_ClippingNode_getAlphaThreshold(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAlphaThreshold();
+        double ret = cobj->getAlphaThreshold();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -62268,7 +62268,7 @@ int lua_cocos2dx_MotionStreak_getOpacity(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned char ret = cobj->getOpacity();
+        uint16_t ret = cobj->getOpacity();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -62695,7 +62695,7 @@ int lua_cocos2dx_ProgressTimer_getPercentage(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getPercentage();
+        double ret = cobj->getPercentage();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -64065,7 +64065,7 @@ int lua_cocos2dx_RenderTexture_getClearDepth(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getClearDepth();
+        double ret = cobj->getClearDepth();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -66406,7 +66406,7 @@ int lua_cocos2dx_ParticleSystem_getStartSizeVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getStartSizeVar();
+        double ret = cobj->getStartSizeVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -66718,7 +66718,7 @@ int lua_cocos2dx_ParticleSystem_getEndSpin(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getEndSpin();
+        double ret = cobj->getEndSpin();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -66801,7 +66801,7 @@ int lua_cocos2dx_ParticleSystem_getStartSpinVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getStartSpinVar();
+        double ret = cobj->getStartSpinVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -66842,7 +66842,7 @@ int lua_cocos2dx_ParticleSystem_getRadialAccelVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getRadialAccelVar();
+        double ret = cobj->getRadialAccelVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -66883,7 +66883,7 @@ int lua_cocos2dx_ParticleSystem_getEndSizeVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getEndSizeVar();
+        double ret = cobj->getEndSizeVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -67092,7 +67092,7 @@ int lua_cocos2dx_ParticleSystem_getRadialAccel(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getRadialAccel();
+        double ret = cobj->getRadialAccel();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -67300,7 +67300,7 @@ int lua_cocos2dx_ParticleSystem_getTangentialAccel(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getTangentialAccel();
+        double ret = cobj->getTangentialAccel();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -67383,7 +67383,7 @@ int lua_cocos2dx_ParticleSystem_getSpeed(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getSpeed();
+        double ret = cobj->getSpeed();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -67424,7 +67424,7 @@ int lua_cocos2dx_ParticleSystem_getAngle(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAngle();
+        double ret = cobj->getAngle();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -67764,7 +67764,7 @@ int lua_cocos2dx_ParticleSystem_getSpeedVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getSpeedVar();
+        double ret = cobj->getSpeedVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -68139,7 +68139,7 @@ int lua_cocos2dx_ParticleSystem_getStartSize(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getStartSize();
+        double ret = cobj->getStartSize();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -68388,7 +68388,7 @@ int lua_cocos2dx_ParticleSystem_getEndRadius(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getEndRadius();
+        double ret = cobj->getEndRadius();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -68637,7 +68637,7 @@ int lua_cocos2dx_ParticleSystem_getStartSpin(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getStartSpin();
+        double ret = cobj->getStartSpin();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -68678,7 +68678,7 @@ int lua_cocos2dx_ParticleSystem_getRotatePerSecond(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getRotatePerSecond();
+        double ret = cobj->getRotatePerSecond();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -68803,7 +68803,7 @@ int lua_cocos2dx_ParticleSystem_getDuration(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getDuration();
+        double ret = cobj->getDuration();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -68886,7 +68886,7 @@ int lua_cocos2dx_ParticleSystem_getEndSpinVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getEndSpinVar();
+        double ret = cobj->getEndSpinVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -69230,7 +69230,7 @@ int lua_cocos2dx_ParticleSystem_getTangentialAccelVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getTangentialAccelVar();
+        double ret = cobj->getTangentialAccelVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -69354,7 +69354,7 @@ int lua_cocos2dx_ParticleSystem_getAngleVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getAngleVar();
+        double ret = cobj->getAngleVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -69437,7 +69437,7 @@ int lua_cocos2dx_ParticleSystem_getRotatePerSecondVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getRotatePerSecondVar();
+        double ret = cobj->getRotatePerSecondVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -69478,7 +69478,7 @@ int lua_cocos2dx_ParticleSystem_getEndSize(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getEndSize();
+        double ret = cobj->getEndSize();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -69519,7 +69519,7 @@ int lua_cocos2dx_ParticleSystem_getLife(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getLife();
+        double ret = cobj->getLife();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -69892,7 +69892,7 @@ int lua_cocos2dx_ParticleSystem_getEmissionRate(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getEmissionRate();
+        double ret = cobj->getEmissionRate();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -69974,7 +69974,7 @@ int lua_cocos2dx_ParticleSystem_getLifeVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getLifeVar();
+        double ret = cobj->getLifeVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -70140,7 +70140,7 @@ int lua_cocos2dx_ParticleSystem_getStartRadius(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getStartRadius();
+        double ret = cobj->getStartRadius();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -70222,7 +70222,7 @@ int lua_cocos2dx_ParticleSystem_getStartRadiusVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getStartRadiusVar();
+        double ret = cobj->getStartRadiusVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -70555,7 +70555,7 @@ int lua_cocos2dx_ParticleSystem_getEndRadiusVar(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getEndRadiusVar();
+        double ret = cobj->getEndRadiusVar();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -74221,7 +74221,7 @@ int lua_cocos2dx_EGLViewProtocol_getScaleY(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getScaleY();
+        double ret = cobj->getScaleY();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -74262,7 +74262,7 @@ int lua_cocos2dx_EGLViewProtocol_getScaleX(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getScaleX();
+        double ret = cobj->getScaleX();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -76389,7 +76389,7 @@ int lua_cocos2dx_UserDefault_getFloatForKey(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 3,&arg1);
 
             if (!ok) { break; }
-            float ret = cobj->getFloatForKey(arg0, arg1);
+            double ret = cobj->getFloatForKey(arg0, arg1);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
@@ -76401,7 +76401,7 @@ int lua_cocos2dx_UserDefault_getFloatForKey(lua_State* tolua_S)
             std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
 
             if (!ok) { break; }
-            float ret = cobj->getFloatForKey(arg0);
+            double ret = cobj->getFloatForKey(arg0);
             tolua_pushnumber(tolua_S,(lua_Number)ret);
             return 1;
         }
@@ -82654,7 +82654,7 @@ int lua_cocos2dx_Timer_getInterval(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getInterval();
+        double ret = cobj->getInterval();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -83018,7 +83018,7 @@ int lua_cocos2dx_Scheduler_getTimeScale(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getTimeScale();
+        double ret = cobj->getTimeScale();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -83253,7 +83253,7 @@ int lua_cocos2dx_SimpleAudioEngine_getBackgroundMusicVolume(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getBackgroundMusicVolume();
+        double ret = cobj->getBackgroundMusicVolume();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -83459,7 +83459,7 @@ int lua_cocos2dx_SimpleAudioEngine_getEffectsVolume(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getEffectsVolume();
+        double ret = cobj->getEffectsVolume();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }

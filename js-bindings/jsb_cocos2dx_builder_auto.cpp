@@ -479,7 +479,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_init(JSContext *cx, uint32_t argc
 	cocosbuilder::CCBAnimationManager* cobj = (cocosbuilder::CCBAnimationManager *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_init : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->init();
+		JSBool ret = cobj->init();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -709,7 +709,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getSequenceDuration(JSContext *cx
 		const char* arg0;
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getSequenceDuration : Error processing arguments");
-		float ret = cobj->getSequenceDuration(arg0);
+		double ret = cobj->getSequenceDuration(arg0);
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1227,7 +1227,7 @@ JSBool js_cocos2dx_builder_CCBReader_readSoundKeyframesForSeq(JSContext *cx, uin
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_readSoundKeyframesForSeq : Error processing arguments");
-		bool ret = cobj->readSoundKeyframesForSeq(arg0);
+		JSBool ret = cobj->readSoundKeyframesForSeq(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1361,7 +1361,7 @@ JSBool js_cocos2dx_builder_CCBReader_readCallbackKeyframesForSeq(JSContext *cx, 
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_readCallbackKeyframesForSeq : Error processing arguments");
-		bool ret = cobj->readCallbackKeyframesForSeq(arg0);
+		JSBool ret = cobj->readCallbackKeyframesForSeq(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);

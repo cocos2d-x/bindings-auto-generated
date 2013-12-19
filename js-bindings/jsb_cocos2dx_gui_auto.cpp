@@ -560,7 +560,7 @@ JSBool js_cocos2dx_gui_UIWidget_addChild(JSContext *cx, uint32_t argc, jsval *vp
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_addChild : Error processing arguments");
-		bool ret = cobj->addChild(arg0);
+		JSBool ret = cobj->addChild(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -721,7 +721,7 @@ JSBool js_cocos2dx_gui_UIWidget_isEnabled(JSContext *cx, uint32_t argc, jsval *v
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isEnabled();
+		JSBool ret = cobj->isEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -738,7 +738,7 @@ JSBool js_cocos2dx_gui_UIWidget_isFlipX(JSContext *cx, uint32_t argc, jsval *vp)
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isFlipX : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipX();
+		JSBool ret = cobj->isFlipX();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -755,7 +755,7 @@ JSBool js_cocos2dx_gui_UIWidget_isFlipY(JSContext *cx, uint32_t argc, jsval *vp)
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isFlipY : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipY();
+		JSBool ret = cobj->isFlipY();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -913,7 +913,7 @@ JSBool js_cocos2dx_gui_UIWidget_isBright(JSContext *cx, uint32_t argc, jsval *vp
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isBright : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isBright();
+		JSBool ret = cobj->isBright();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1039,7 +1039,7 @@ JSBool js_cocos2dx_gui_UIWidget_removeChild(JSContext *cx, uint32_t argc, jsval 
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_removeChild : Error processing arguments");
-		bool ret = cobj->removeChild(arg0);
+		JSBool ret = cobj->removeChild(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1113,7 +1113,7 @@ JSBool js_cocos2dx_gui_UIWidget_getRotationX(JSContext *cx, uint32_t argc, jsval
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getRotationX : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getRotationX();
+		double ret = cobj->getRotationX();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1130,7 +1130,7 @@ JSBool js_cocos2dx_gui_UIWidget_getRotationY(JSContext *cx, uint32_t argc, jsval
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getRotationY : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getRotationY();
+		double ret = cobj->getRotationY();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1184,7 +1184,7 @@ JSBool js_cocos2dx_gui_UIWidget_isCascadeOpacityEnabled(JSContext *cx, uint32_t 
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isCascadeOpacityEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isCascadeOpacityEnabled();
+		JSBool ret = cobj->isCascadeOpacityEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1245,7 +1245,7 @@ JSBool js_cocos2dx_gui_UIWidget_isTouchEnabled(JSContext *cx, uint32_t argc, jsv
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isTouchEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isTouchEnabled();
+		JSBool ret = cobj->isTouchEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1314,7 +1314,7 @@ JSBool js_cocos2dx_gui_UIWidget_clippingParentAreaContainPoint(JSContext *cx, ui
 		cocos2d::Point arg0;
 		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_clippingParentAreaContainPoint : Error processing arguments");
-		bool ret = cobj->clippingParentAreaContainPoint(arg0);
+		JSBool ret = cobj->clippingParentAreaContainPoint(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1427,7 +1427,7 @@ JSBool js_cocos2dx_gui_UIWidget_getScale(JSContext *cx, uint32_t argc, jsval *vp
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getScale : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getScale();
+		double ret = cobj->getScale();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1481,7 +1481,7 @@ JSBool js_cocos2dx_gui_UIWidget_isFocused(JSContext *cx, uint32_t argc, jsval *v
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isFocused : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFocused();
+		JSBool ret = cobj->isFocused();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1498,7 +1498,7 @@ JSBool js_cocos2dx_gui_UIWidget_isVisible(JSContext *cx, uint32_t argc, jsval *v
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isVisible : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isVisible();
+		JSBool ret = cobj->isVisible();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1535,7 +1535,7 @@ JSBool js_cocos2dx_gui_UIWidget_getLeftInParent(JSContext *cx, uint32_t argc, js
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getLeftInParent : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getLeftInParent();
+		double ret = cobj->getLeftInParent();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1572,7 +1572,7 @@ JSBool js_cocos2dx_gui_UIWidget_getRotation(JSContext *cx, uint32_t argc, jsval 
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getRotation : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getRotation();
+		double ret = cobj->getRotation();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1589,7 +1589,7 @@ JSBool js_cocos2dx_gui_UIWidget_getBottomInParent(JSContext *cx, uint32_t argc, 
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getBottomInParent : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getBottomInParent();
+		double ret = cobj->getBottomInParent();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -1973,7 +1973,7 @@ JSBool js_cocos2dx_gui_UIWidget_hitTest(JSContext *cx, uint32_t argc, jsval *vp)
 		cocos2d::Point arg0;
 		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_hitTest : Error processing arguments");
-		bool ret = cobj->hitTest(arg0);
+		JSBool ret = cobj->hitTest(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2116,7 +2116,7 @@ JSBool js_cocos2dx_gui_UIWidget_isIgnoreContentAdaptWithSize(JSContext *cx, uint
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isIgnoreContentAdaptWithSize : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isIgnoreContentAdaptWithSize();
+		JSBool ret = cobj->isIgnoreContentAdaptWithSize();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2133,7 +2133,7 @@ JSBool js_cocos2dx_gui_UIWidget_isUpdateEnabled(JSContext *cx, uint32_t argc, js
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isUpdateEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isUpdateEnabled();
+		JSBool ret = cobj->isUpdateEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2206,7 +2206,7 @@ JSBool js_cocos2dx_gui_UIWidget_getScaleY(JSContext *cx, uint32_t argc, jsval *v
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getScaleY : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getScaleY();
+		double ret = cobj->getScaleY();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2223,7 +2223,7 @@ JSBool js_cocos2dx_gui_UIWidget_getScaleX(JSContext *cx, uint32_t argc, jsval *v
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getScaleX : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getScaleX();
+		double ret = cobj->getScaleX();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2387,7 +2387,7 @@ JSBool js_cocos2dx_gui_UIWidget_isCascadeColorEnabled(JSContext *cx, uint32_t ar
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_isCascadeColorEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isCascadeColorEnabled();
+		JSBool ret = cobj->isCascadeColorEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2435,7 +2435,7 @@ JSBool js_cocos2dx_gui_UIWidget_getTopInParent(JSContext *cx, uint32_t argc, jsv
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getTopInParent : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getTopInParent();
+		double ret = cobj->getTopInParent();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2452,7 +2452,7 @@ JSBool js_cocos2dx_gui_UIWidget_getRightInParent(JSContext *cx, uint32_t argc, j
 	gui::UIWidget* cobj = (gui::UIWidget *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIWidget_getRightInParent : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getRightInParent();
+		double ret = cobj->getRightInParent();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -2829,7 +2829,7 @@ JSBool js_cocos2dx_gui_UILayout_isClippingEnabled(JSContext *cx, uint32_t argc, 
 	gui::UILayout* cobj = (gui::UILayout *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UILayout_isClippingEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isClippingEnabled();
+		JSBool ret = cobj->isClippingEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -3031,7 +3031,7 @@ JSBool js_cocos2dx_gui_UILayout_hitTest(JSContext *cx, uint32_t argc, jsval *vp)
 		cocos2d::Point arg0;
 		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UILayout_hitTest : Error processing arguments");
-		bool ret = cobj->hitTest(arg0);
+		JSBool ret = cobj->hitTest(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -3100,7 +3100,7 @@ JSBool js_cocos2dx_gui_UILayout_addChild(JSContext *cx, uint32_t argc, jsval *vp
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UILayout_addChild : Error processing arguments");
-		bool ret = cobj->addChild(arg0);
+		JSBool ret = cobj->addChild(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -3533,7 +3533,7 @@ JSBool js_cocos2dx_gui_UIButton_isFlipX(JSContext *cx, uint32_t argc, jsval *vp)
 	gui::UIButton* cobj = (gui::UIButton *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIButton_isFlipX : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipX();
+		JSBool ret = cobj->isFlipX();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -3550,7 +3550,7 @@ JSBool js_cocos2dx_gui_UIButton_isFlipY(JSContext *cx, uint32_t argc, jsval *vp)
 	gui::UIButton* cobj = (gui::UIButton *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIButton_isFlipY : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipY();
+		JSBool ret = cobj->isFlipY();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -3869,7 +3869,7 @@ JSBool js_cocos2dx_gui_UIButton_getTitleFontSize(JSContext *cx, uint32_t argc, j
 	gui::UIButton* cobj = (gui::UIButton *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIButton_getTitleFontSize : Invalid Native Object");
 	if (argc == 0) {
-		float ret = cobj->getTitleFontSize();
+		double ret = cobj->getTitleFontSize();
 		jsval jsret;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -4102,7 +4102,7 @@ JSBool js_cocos2dx_gui_UICheckBox_getSelectedState(JSContext *cx, uint32_t argc,
 	gui::UICheckBox* cobj = (gui::UICheckBox *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UICheckBox_getSelectedState : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->getSelectedState();
+		JSBool ret = cobj->getSelectedState();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -4236,7 +4236,7 @@ JSBool js_cocos2dx_gui_UICheckBox_isFlipX(JSContext *cx, uint32_t argc, jsval *v
 	gui::UICheckBox* cobj = (gui::UICheckBox *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UICheckBox_isFlipX : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipX();
+		JSBool ret = cobj->isFlipX();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -4253,7 +4253,7 @@ JSBool js_cocos2dx_gui_UICheckBox_isFlipY(JSContext *cx, uint32_t argc, jsval *v
 	gui::UICheckBox* cobj = (gui::UICheckBox *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UICheckBox_isFlipY : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipY();
+		JSBool ret = cobj->isFlipY();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -4765,7 +4765,7 @@ JSBool js_cocos2dx_gui_UIImageView_isFlipX(JSContext *cx, uint32_t argc, jsval *
 	gui::UIImageView* cobj = (gui::UIImageView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIImageView_isFlipX : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipX();
+		JSBool ret = cobj->isFlipX();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -4782,7 +4782,7 @@ JSBool js_cocos2dx_gui_UIImageView_isFlipY(JSContext *cx, uint32_t argc, jsval *
 	gui::UIImageView* cobj = (gui::UIImageView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIImageView_isFlipY : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipY();
+		JSBool ret = cobj->isFlipY();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -5159,7 +5159,7 @@ JSBool js_cocos2dx_gui_UILabel_isFlipX(JSContext *cx, uint32_t argc, jsval *vp)
 	gui::UILabel* cobj = (gui::UILabel *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UILabel_isFlipX : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipX();
+		JSBool ret = cobj->isFlipX();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -5176,7 +5176,7 @@ JSBool js_cocos2dx_gui_UILabel_isFlipY(JSContext *cx, uint32_t argc, jsval *vp)
 	gui::UILabel* cobj = (gui::UILabel *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UILabel_isFlipY : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isFlipY();
+		JSBool ret = cobj->isFlipY();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -5210,7 +5210,7 @@ JSBool js_cocos2dx_gui_UILabel_isTouchScaleChangeEnabled(JSContext *cx, uint32_t
 	gui::UILabel* cobj = (gui::UILabel *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UILabel_isTouchScaleChangeEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isTouchScaleChangeEnabled();
+		JSBool ret = cobj->isTouchScaleChangeEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -6153,7 +6153,7 @@ JSBool js_cocos2dx_gui_UIScrollView_addChild(JSContext *cx, uint32_t argc, jsval
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_addChild : Error processing arguments");
-		bool ret = cobj->addChild(arg0);
+		JSBool ret = cobj->addChild(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -6459,7 +6459,7 @@ JSBool js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled(JSContext *cx, uint32
 	gui::UIScrollView* cobj = (gui::UIScrollView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isInertiaScrollEnabled();
+		JSBool ret = cobj->isInertiaScrollEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -6493,7 +6493,7 @@ JSBool js_cocos2dx_gui_UIScrollView_isBounceEnabled(JSContext *cx, uint32_t argc
 	gui::UIScrollView* cobj = (gui::UIScrollView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_isBounceEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isBounceEnabled();
+		JSBool ret = cobj->isBounceEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -6846,7 +6846,7 @@ JSBool js_cocos2dx_gui_UIScrollView_removeChild(JSContext *cx, uint32_t argc, js
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_removeChild : Error processing arguments");
-		bool ret = cobj->removeChild(arg0);
+		JSBool ret = cobj->removeChild(arg0);
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -8143,7 +8143,7 @@ JSBool js_cocos2dx_gui_UITextField_getDeleteBackward(JSContext *cx, uint32_t arg
 	gui::UITextField* cobj = (gui::UITextField *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UITextField_getDeleteBackward : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->getDeleteBackward();
+		JSBool ret = cobj->getDeleteBackward();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -8160,7 +8160,7 @@ JSBool js_cocos2dx_gui_UITextField_getAttachWithIME(JSContext *cx, uint32_t argc
 	gui::UITextField* cobj = (gui::UITextField *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UITextField_getAttachWithIME : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->getAttachWithIME();
+		JSBool ret = cobj->getAttachWithIME();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -8197,7 +8197,7 @@ JSBool js_cocos2dx_gui_UITextField_getInsertText(JSContext *cx, uint32_t argc, j
 	gui::UITextField* cobj = (gui::UITextField *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UITextField_getInsertText : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->getInsertText();
+		JSBool ret = cobj->getInsertText();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -8229,7 +8229,7 @@ JSBool js_cocos2dx_gui_UITextField_getDetachWithIME(JSContext *cx, uint32_t argc
 	gui::UITextField* cobj = (gui::UITextField *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UITextField_getDetachWithIME : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->getDetachWithIME();
+		JSBool ret = cobj->getDetachWithIME();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -8266,7 +8266,7 @@ JSBool js_cocos2dx_gui_UITextField_init(JSContext *cx, uint32_t argc, jsval *vp)
 	gui::UITextField* cobj = (gui::UITextField *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UITextField_init : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->init();
+		JSBool ret = cobj->init();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -8315,7 +8315,7 @@ JSBool js_cocos2dx_gui_UITextField_isPasswordEnabled(JSContext *cx, uint32_t arg
 	gui::UITextField* cobj = (gui::UITextField *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UITextField_isPasswordEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isPasswordEnabled();
+		JSBool ret = cobj->isPasswordEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -8504,7 +8504,7 @@ JSBool js_cocos2dx_gui_UITextField_isMaxLengthEnabled(JSContext *cx, uint32_t ar
 	gui::UITextField* cobj = (gui::UITextField *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UITextField_isMaxLengthEnabled : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->isMaxLengthEnabled();
+		JSBool ret = cobj->isMaxLengthEnabled();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
@@ -9762,7 +9762,7 @@ JSBool js_cocos2dx_gui_UILayer_init(JSContext *cx, uint32_t argc, jsval *vp)
 	gui::UILayer* cobj = (gui::UILayer *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UILayer_init : Invalid Native Object");
 	if (argc == 0) {
-		bool ret = cobj->init();
+		JSBool ret = cobj->init();
 		jsval jsret;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);

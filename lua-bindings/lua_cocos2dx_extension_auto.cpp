@@ -663,7 +663,7 @@ int lua_cocos2dx_extension_Scale9Sprite_getInsetBottom(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getInsetBottom();
+        double ret = cobj->getInsetBottom();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -803,7 +803,7 @@ int lua_cocos2dx_extension_Scale9Sprite_getInsetRight(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getInsetRight();
+        double ret = cobj->getInsetRight();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -1019,7 +1019,7 @@ int lua_cocos2dx_extension_Scale9Sprite_getInsetTop(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getInsetTop();
+        double ret = cobj->getInsetTop();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -1259,7 +1259,7 @@ int lua_cocos2dx_extension_Scale9Sprite_getInsetLeft(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getInsetLeft();
+        double ret = cobj->getInsetLeft();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -3243,7 +3243,7 @@ int lua_cocos2dx_extension_ControlButton_getTitleTTFSizeForState(lua_State* tolu
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
-        float ret = cobj->getTitleTTFSizeForState(arg0);
+        double ret = cobj->getTitleTTFSizeForState(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -3465,7 +3465,7 @@ int lua_cocos2dx_extension_ControlButton_getOpacity(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned char ret = cobj->getOpacity();
+        uint16_t ret = cobj->getOpacity();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -5265,7 +5265,7 @@ int lua_cocos2dx_extension_ControlHuePicker_getHue(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getHue();
+        double ret = cobj->getHue();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -5568,7 +5568,7 @@ int lua_cocos2dx_extension_ControlHuePicker_getHuePercentage(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getHuePercentage();
+        double ret = cobj->getHuePercentage();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -6139,7 +6139,7 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getSaturation(lua_S
     {
         if(!ok)
             return 0;
-        float ret = cobj->getSaturation();
+        double ret = cobj->getSaturation();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -6180,7 +6180,7 @@ int lua_cocos2dx_extension_ControlSaturationBrightnessPicker_getBrightness(lua_S
     {
         if(!ok)
             return 0;
-        float ret = cobj->getBrightness();
+        double ret = cobj->getBrightness();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -7264,7 +7264,7 @@ int lua_cocos2dx_extension_ControlPotentiometer_getMinimumValue(lua_State* tolua
     {
         if(!ok)
             return 0;
-        float ret = cobj->getMinimumValue();
+        double ret = cobj->getMinimumValue();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -7636,7 +7636,7 @@ int lua_cocos2dx_extension_ControlPotentiometer_angleInDegreesBetweenLineFromPoi
         ok &= luaval_to_point(tolua_S, 5, &arg3);
         if(!ok)
             return 0;
-        float ret = cobj->angleInDegreesBetweenLineFromPoint_toPoint_toLineFromPoint_toPoint(arg0, arg1, arg2, arg3);
+        double ret = cobj->angleInDegreesBetweenLineFromPoint_toPoint_toLineFromPoint_toPoint(arg0, arg1, arg2, arg3);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -7723,7 +7723,7 @@ int lua_cocos2dx_extension_ControlPotentiometer_distanceBetweenPointAndPoint(lua
         ok &= luaval_to_point(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
-        float ret = cobj->distanceBetweenPointAndPoint(arg0, arg1);
+        double ret = cobj->distanceBetweenPointAndPoint(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -7817,7 +7817,7 @@ int lua_cocos2dx_extension_ControlPotentiometer_getMaximumValue(lua_State* tolua
     {
         if(!ok)
             return 0;
-        float ret = cobj->getMaximumValue();
+        double ret = cobj->getMaximumValue();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -7910,7 +7910,7 @@ int lua_cocos2dx_extension_ControlPotentiometer_getValue(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getValue();
+        double ret = cobj->getValue();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8356,7 +8356,7 @@ int lua_cocos2dx_extension_ControlSlider_getMaximumAllowedValue(lua_State* tolua
     {
         if(!ok)
             return 0;
-        float ret = cobj->getMaximumAllowedValue();
+        double ret = cobj->getMaximumAllowedValue();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8397,7 +8397,7 @@ int lua_cocos2dx_extension_ControlSlider_getMinimumAllowedValue(lua_State* tolua
     {
         if(!ok)
             return 0;
-        float ret = cobj->getMinimumAllowedValue();
+        double ret = cobj->getMinimumAllowedValue();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8438,7 +8438,7 @@ int lua_cocos2dx_extension_ControlSlider_getMinimumValue(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getMinimumValue();
+        double ret = cobj->getMinimumValue();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8907,7 +8907,7 @@ int lua_cocos2dx_extension_ControlSlider_getMaximumValue(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getMaximumValue();
+        double ret = cobj->getMaximumValue();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -9000,7 +9000,7 @@ int lua_cocos2dx_extension_ControlSlider_getValue(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getValue();
+        double ret = cobj->getValue();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -12137,7 +12137,7 @@ int lua_cocos2dx_extension_ScrollView_getZoomScale(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        float ret = cobj->getZoomScale();
+        double ret = cobj->getZoomScale();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -17901,7 +17901,7 @@ int lua_cocos2dx_extension_CCBAnimationManager_getSequenceDuration(lua_State* to
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
-        float ret = cobj->getSequenceDuration(arg0);
+        double ret = cobj->getSequenceDuration(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }

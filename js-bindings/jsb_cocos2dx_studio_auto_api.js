@@ -656,12 +656,6 @@ resume : function () {},
 stop : function () {},
 
 /**
- * @method setMovementEventCallFunc
- * @param {std::function<void (cocostudio::Armature *, cocostudio::MovementEventType, const char *)>}
- */
-setMovementEventCallFunc : function () {},
-
-/**
  * @method setSpeedScale
  * @param {float}
  */
@@ -691,12 +685,6 @@ init : function () {},
  * @return A value converted from C/C++ "long"
  */
 getMovementCount : function () {},
-
-/**
- * @method setFrameEventCallFunc
- * @param {std::function<void (cocostudio::Bone *, const char *, int, int)>}
- */
-setFrameEventCallFunc : function () {},
 
 /**
  * @method getCurrentMovementID
