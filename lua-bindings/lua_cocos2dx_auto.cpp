@@ -85094,18 +85094,8 @@ int lua_cocos2dx_Scheduler_performFunctionInCocosThread(lua_State* tolua_S)
     {
         std::function<void ()> arg0;
         do {
-			/*
-			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[0]));
-			auto lambda = [=]() -> void {
-				jsval largv[0];
-				jsval rval;
-				JSBool ok = func->invoke(0, &largv[0], rval);
-				if (!ok && JS_IsExceptionPending(cx)) {
-					JS_ReportPendingException(cx);
-				}
-			};
-			arg0 = lambda;
-			*/
+			// Lambda binding for lua is not supported.
+			assert(false);
 		} while(0)
 		;
         if(!ok)

@@ -16462,50 +16462,18 @@ int lua_cocos2dx_extension_AssetsManager_create(lua_State* tolua_S)
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         do {
-			/*
-			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[3]));
-			auto lambda = [=](int larg0) -> void {
-				jsval largv[1];
-				tolua_pushnumber(tolua_S,(lua_Number)larg0);
-				jsval rval;
-				JSBool ok = func->invoke(1, &largv[0], rval);
-				if (!ok && JS_IsExceptionPending(cx)) {
-					JS_ReportPendingException(cx);
-				}
-			};
-			arg3 = lambda;
-			*/
+			// Lambda binding for lua is not supported.
+			assert(false);
 		} while(0)
 		;
         do {
-			/*
-			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[4]));
-			auto lambda = [=](int larg0) -> void {
-				jsval largv[1];
-				tolua_pushnumber(tolua_S,(lua_Number)larg0);
-				jsval rval;
-				JSBool ok = func->invoke(1, &largv[0], rval);
-				if (!ok && JS_IsExceptionPending(cx)) {
-					JS_ReportPendingException(cx);
-				}
-			};
-			arg4 = lambda;
-			*/
+			// Lambda binding for lua is not supported.
+			assert(false);
 		} while(0)
 		;
         do {
-			/*
-			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[5]));
-			auto lambda = [=]() -> void {
-				jsval largv[0];
-				jsval rval;
-				JSBool ok = func->invoke(0, &largv[0], rval);
-				if (!ok && JS_IsExceptionPending(cx)) {
-					JS_ReportPendingException(cx);
-				}
-			};
-			arg5 = lambda;
-			*/
+			// Lambda binding for lua is not supported.
+			assert(false);
 		} while(0)
 		;
         if(!ok)
