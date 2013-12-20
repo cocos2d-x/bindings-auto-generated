@@ -202,7 +202,6 @@ JSBool js_cocos2dx_Node_setParent(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getNodeToParentTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_convertToNodeSpace(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_resume(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Node_getGrid(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getPhysicsBody(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_stopActionByTag(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_reorderChild(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2316,6 +2315,7 @@ JSBool js_cocos2dx_TransitionTurnOffTiles_constructor(JSContext *cx, uint32_t ar
 void js_cocos2dx_TransitionTurnOffTiles_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_TransitionTurnOffTiles(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_TransitionTurnOffTiles_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionTurnOffTiles_easeActionWithAction(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionTurnOffTiles_create(JSContext *cx, uint32_t argc, jsval *vp);
 
@@ -2328,6 +2328,7 @@ void js_register_cocos2dx_TransitionSplitCols(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_TransitionSplitCols_action(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionSplitCols_easeActionWithAction(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_TransitionSplitCols_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionSplitCols_create(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_TransitionSplitRows_class;
@@ -2347,6 +2348,7 @@ JSBool js_cocos2dx_TransitionFadeTR_constructor(JSContext *cx, uint32_t argc, js
 void js_cocos2dx_TransitionFadeTR_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_TransitionFadeTR(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_TransitionFadeTR_draw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionFadeTR_easeActionWithAction(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionFadeTR_actionWithSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionFadeTR_create(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2389,8 +2391,8 @@ void js_cocos2dx_TransitionPageTurn_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_TransitionPageTurn(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_TransitionPageTurn_draw(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_TransitionPageTurn_actionWithSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionPageTurn_initWithDuration(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_TransitionPageTurn_actionWithSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionPageTurn_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_TransitionPageTurn_TransitionPageTurn(JSContext *cx, uint32_t argc, jsval *vp);
 

@@ -1215,12 +1215,6 @@ getComponent : function () {},
 getContentSize : function () {},
 
 /**
- * @method setGrid
- * @param {cocos2d::GridBase*}
- */
-setGrid : function () {},
-
-/**
  * @method getBoundingBox
  * @return A value converted from C/C++ "cocos2d::Rect"
  */
@@ -7484,6 +7478,11 @@ create : function () {},
 cc.TransitionTurnOffTiles = {
 
 /**
+ * @method draw
+ */
+draw : function () {},
+
+/**
  * @method easeActionWithAction
  * @return A value converted from C/C++ "cocos2d::ActionInterval*"
  * @param {cocos2d::ActionInterval*}
@@ -7517,6 +7516,11 @@ action : function () {},
  * @param {cocos2d::ActionInterval*}
  */
 easeActionWithAction : function () {},
+
+/**
+ * @method draw
+ */
+draw : function () {},
 
 /**
  * @method create
@@ -7553,6 +7557,11 @@ create : function () {},
  * @class TransitionFadeTR
  */
 cc.TransitionFadeTR = {
+
+/**
+ * @method draw
+ */
+draw : function () {},
 
 /**
  * @method easeActionWithAction
@@ -7655,13 +7664,6 @@ cc.TransitionPageTurn = {
 draw : function () {},
 
 /**
- * @method actionWithSize
- * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {const cocos2d::Size&}
- */
-actionWithSize : function () {},
-
-/**
  * @method initWithDuration
  * @return A value converted from C/C++ "bool"
  * @param {float}
@@ -7669,6 +7671,13 @@ actionWithSize : function () {},
  * @param {bool}
  */
 initWithDuration : function () {},
+
+/**
+ * @method actionWithSize
+ * @return A value converted from C/C++ "cocos2d::ActionInterval*"
+ * @param {const cocos2d::Size&}
+ */
+actionWithSize : function () {},
 
 /**
  * @method create

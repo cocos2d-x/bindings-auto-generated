@@ -3613,54 +3613,6 @@ JSBool js_cocos2dx_Node_resume(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Node_resume : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Node_getGrid(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-
-	JSObject *obj = NULL;
-	cocos2d::Node* cobj = NULL;
-	obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getGrid : Invalid Native Object");
-	do {
-		if (argc == 0) {
-			const cocos2d::GridBase* ret = cobj->getGrid();
-			jsval jsret;
-			do {
-			if (ret) {
-				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::GridBase>(cx, (cocos2d::GridBase*)ret);
-				jsret = OBJECT_TO_JSVAL(proxy->obj);
-			} else {
-				jsret = JSVAL_NULL;
-			}
-		} while (0);
-			JS_SET_RVAL(cx, vp, jsret);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 0) {
-			cocos2d::GridBase* ret = cobj->getGrid();
-			jsval jsret;
-			do {
-			if (ret) {
-				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::GridBase>(cx, (cocos2d::GridBase*)ret);
-				jsret = OBJECT_TO_JSVAL(proxy->obj);
-			} else {
-				jsret = JSVAL_NULL;
-			}
-		} while (0);
-			JS_SET_RVAL(cx, vp, jsret);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	JS_ReportError(cx, "js_cocos2dx_Node_getGrid : wrong number of arguments");
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Node_getPhysicsBody(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -5469,7 +5421,6 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("getNodeToParentTransform", js_cocos2dx_Node_getNodeToParentTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("convertToNodeSpace", js_cocos2dx_Node_convertToNodeSpace, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("resume", js_cocos2dx_Node_resume, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getGrid", js_cocos2dx_Node_getGrid, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPhysicsBody", js_cocos2dx_Node_getPhysicsBody, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("stopActionByTag", js_cocos2dx_Node_stopActionByTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("reorderChild", js_cocos2dx_Node_reorderChild, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -18924,7 +18875,9 @@ void js_register_cocos2dx_StopGrid(JSContext *cx, JSObject *global) {
 	jsb_StopGrid_class->finalize = js_cocos2dx_StopGrid_finalize;
 	jsb_StopGrid_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-	JSPropertySpec *properties = NULL;
+	static JSPropertySpec properties[] = {
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("startWithTarget", js_cocos2dx_StopGrid_startWithTarget, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -37652,6 +37605,21 @@ void js_register_cocos2dx_TransitionCrossFade(JSContext *cx, JSObject *global) {
 JSClass  *jsb_TransitionTurnOffTiles_class;
 JSObject *jsb_TransitionTurnOffTiles_prototype;
 
+JSBool js_cocos2dx_TransitionTurnOffTiles_draw(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TransitionTurnOffTiles* cobj = (cocos2d::TransitionTurnOffTiles *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TransitionTurnOffTiles_draw : Invalid Native Object");
+	if (argc == 0) {
+		cobj->draw();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_TransitionTurnOffTiles_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_TransitionTurnOffTiles_easeActionWithAction(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -37742,9 +37710,12 @@ void js_register_cocos2dx_TransitionTurnOffTiles(JSContext *cx, JSObject *global
 	jsb_TransitionTurnOffTiles_class->finalize = js_cocos2dx_TransitionTurnOffTiles_finalize;
 	jsb_TransitionTurnOffTiles_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-	JSPropertySpec *properties = NULL;
+	static JSPropertySpec properties[] = {
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
 
 	static JSFunctionSpec funcs[] = {
+		JS_FN("draw", js_cocos2dx_TransitionTurnOffTiles_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("easeActionWithAction", js_cocos2dx_TransitionTurnOffTiles_easeActionWithAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
@@ -37845,6 +37816,21 @@ JSBool js_cocos2dx_TransitionSplitCols_easeActionWithAction(JSContext *cx, uint3
 	JS_ReportError(cx, "js_cocos2dx_TransitionSplitCols_easeActionWithAction : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_TransitionSplitCols_draw(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TransitionSplitCols* cobj = (cocos2d::TransitionSplitCols *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TransitionSplitCols_draw : Invalid Native Object");
+	if (argc == 0) {
+		cobj->draw();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_TransitionSplitCols_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_TransitionSplitCols_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -37899,11 +37885,14 @@ void js_register_cocos2dx_TransitionSplitCols(JSContext *cx, JSObject *global) {
 	jsb_TransitionSplitCols_class->finalize = js_cocos2dx_TransitionSplitCols_finalize;
 	jsb_TransitionSplitCols_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-	JSPropertySpec *properties = NULL;
+	static JSPropertySpec properties[] = {
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("action", js_cocos2dx_TransitionSplitCols_action, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("easeActionWithAction", js_cocos2dx_TransitionSplitCols_easeActionWithAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("draw", js_cocos2dx_TransitionSplitCols_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -38064,6 +38053,21 @@ void js_register_cocos2dx_TransitionSplitRows(JSContext *cx, JSObject *global) {
 JSClass  *jsb_TransitionFadeTR_class;
 JSObject *jsb_TransitionFadeTR_prototype;
 
+JSBool js_cocos2dx_TransitionFadeTR_draw(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TransitionFadeTR* cobj = (cocos2d::TransitionFadeTR *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TransitionFadeTR_draw : Invalid Native Object");
+	if (argc == 0) {
+		cobj->draw();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_TransitionFadeTR_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_TransitionFadeTR_easeActionWithAction(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -38183,9 +38187,12 @@ void js_register_cocos2dx_TransitionFadeTR(JSContext *cx, JSObject *global) {
 	jsb_TransitionFadeTR_class->finalize = js_cocos2dx_TransitionFadeTR_finalize;
 	jsb_TransitionFadeTR_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-	JSPropertySpec *properties = NULL;
+	static JSPropertySpec properties[] = {
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
 
 	static JSFunctionSpec funcs[] = {
+		JS_FN("draw", js_cocos2dx_TransitionFadeTR_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("easeActionWithAction", js_cocos2dx_TransitionFadeTR_easeActionWithAction, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("actionWithSize", js_cocos2dx_TransitionFadeTR_actionWithSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
@@ -38620,35 +38627,6 @@ JSBool js_cocos2dx_TransitionPageTurn_draw(JSContext *cx, uint32_t argc, jsval *
 	JS_ReportError(cx, "js_cocos2dx_TransitionPageTurn_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_TransitionPageTurn_actionWithSize(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::TransitionPageTurn* cobj = (cocos2d::TransitionPageTurn *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TransitionPageTurn_actionWithSize : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Size arg0;
-		ok &= jsval_to_ccsize(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TransitionPageTurn_actionWithSize : Error processing arguments");
-		cocos2d::ActionInterval* ret = cobj->actionWithSize(arg0);
-		jsval jsret;
-		do {
-			if (ret) {
-				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::ActionInterval>(cx, (cocos2d::ActionInterval*)ret);
-				jsret = OBJECT_TO_JSVAL(proxy->obj);
-			} else {
-				jsret = JSVAL_NULL;
-			}
-		} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_TransitionPageTurn_actionWithSize : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_TransitionPageTurn_initWithDuration(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -38680,6 +38658,35 @@ JSBool js_cocos2dx_TransitionPageTurn_initWithDuration(JSContext *cx, uint32_t a
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_TransitionPageTurn_initWithDuration : wrong number of arguments: %d, was expecting %d", argc, 3);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_TransitionPageTurn_actionWithSize(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::TransitionPageTurn* cobj = (cocos2d::TransitionPageTurn *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TransitionPageTurn_actionWithSize : Invalid Native Object");
+	if (argc == 1) {
+		cocos2d::Size arg0;
+		ok &= jsval_to_ccsize(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TransitionPageTurn_actionWithSize : Error processing arguments");
+		cocos2d::ActionInterval* ret = cobj->actionWithSize(arg0);
+		jsval jsret;
+		do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::ActionInterval>(cx, (cocos2d::ActionInterval*)ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_TransitionPageTurn_actionWithSize : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_TransitionPageTurn_create(JSContext *cx, uint32_t argc, jsval *vp)
@@ -38771,8 +38778,8 @@ void js_register_cocos2dx_TransitionPageTurn(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("draw", js_cocos2dx_TransitionPageTurn_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("actionWithSize", js_cocos2dx_TransitionPageTurn_actionWithSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("initWithDuration", js_cocos2dx_TransitionPageTurn_initWithDuration, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("actionWithSize", js_cocos2dx_TransitionPageTurn_actionWithSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
