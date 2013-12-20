@@ -12,8 +12,8 @@ static JSBool dummy_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	{
 		TypeTest<T> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -82,8 +82,8 @@ JSBool js_cocos2dx_gui_UILayoutParameter_constructor(JSContext *cx, uint32_t arg
 		}
 		TypeTest<gui::UILayoutParameter> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -148,14 +148,14 @@ void js_register_cocos2dx_gui_UILayoutParameter(JSContext *cx, JSObject *global)
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UILayoutParameter> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UILayoutParameter_class;
 		p->proto = jsb_UILayoutParameter_prototype;
 		p->parentProto = NULL;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -230,8 +230,8 @@ JSBool js_cocos2dx_gui_UILinearLayoutParameter_constructor(JSContext *cx, uint32
 		}
 		TypeTest<gui::UILinearLayoutParameter> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -298,14 +298,14 @@ void js_register_cocos2dx_gui_UILinearLayoutParameter(JSContext *cx, JSObject *g
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UILinearLayoutParameter> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UILinearLayoutParameter_class;
 		p->proto = jsb_UILinearLayoutParameter_prototype;
 		p->parentProto = jsb_UILayoutParameter_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -454,8 +454,8 @@ JSBool js_cocos2dx_gui_UIRelativeLayoutParameter_constructor(JSContext *cx, uint
 		}
 		TypeTest<gui::UIRelativeLayoutParameter> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -526,14 +526,14 @@ void js_register_cocos2dx_gui_UIRelativeLayoutParameter(JSContext *cx, JSObject 
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UIRelativeLayoutParameter> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UIRelativeLayoutParameter_class;
 		p->proto = jsb_UIRelativeLayoutParameter_prototype;
 		p->parentProto = jsb_UILayoutParameter_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -2620,8 +2620,8 @@ JSBool js_cocos2dx_gui_UIWidget_constructor(JSContext *cx, uint32_t argc, jsval 
 		}
 		TypeTest<gui::UIWidget> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -2787,14 +2787,14 @@ void js_register_cocos2dx_gui_UIWidget(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UIWidget> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UIWidget_class;
 		p->proto = jsb_UIWidget_prototype;
 		p->parentProto = NULL;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -3247,8 +3247,8 @@ JSBool js_cocos2dx_gui_UILayout_constructor(JSContext *cx, uint32_t argc, jsval 
 		}
 		TypeTest<gui::UILayout> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -3333,14 +3333,14 @@ void js_register_cocos2dx_gui_UILayout(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UILayout> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UILayout_class;
 		p->proto = jsb_UILayout_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -3966,8 +3966,8 @@ JSBool js_cocos2dx_gui_UIButton_constructor(JSContext *cx, uint32_t argc, jsval 
 		}
 		TypeTest<gui::UIButton> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -4060,14 +4060,14 @@ void js_register_cocos2dx_gui_UIButton(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UIButton> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UIButton_class;
 		p->proto = jsb_UIButton_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -4490,8 +4490,8 @@ JSBool js_cocos2dx_gui_UICheckBox_constructor(JSContext *cx, uint32_t argc, jsva
 		}
 		TypeTest<gui::UICheckBox> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -4572,14 +4572,14 @@ void js_register_cocos2dx_gui_UICheckBox(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UICheckBox> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UICheckBox_class;
 		p->proto = jsb_UICheckBox_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -4899,8 +4899,8 @@ JSBool js_cocos2dx_gui_UIImageView_constructor(JSContext *cx, uint32_t argc, jsv
 		}
 		TypeTest<gui::UIImageView> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -4979,14 +4979,14 @@ void js_register_cocos2dx_gui_UIImageView(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UIImageView> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UIImageView_class;
 		p->proto = jsb_UIImageView_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -5427,8 +5427,8 @@ JSBool js_cocos2dx_gui_UILabel_constructor(JSContext *cx, uint32_t argc, jsval *
 		}
 		TypeTest<gui::UILabel> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -5514,14 +5514,14 @@ void js_register_cocos2dx_gui_UILabel(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UILabel> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UILabel_class;
 		p->proto = jsb_UILabel_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -5702,8 +5702,8 @@ JSBool js_cocos2dx_gui_UILabelAtlas_constructor(JSContext *cx, uint32_t argc, js
 		}
 		TypeTest<gui::UILabelAtlas> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -5775,14 +5775,14 @@ void js_register_cocos2dx_gui_UILabelAtlas(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UILabelAtlas> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UILabelAtlas_class;
 		p->proto = jsb_UILabelAtlas_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -6042,8 +6042,8 @@ JSBool js_cocos2dx_gui_UILoadingBar_constructor(JSContext *cx, uint32_t argc, js
 		}
 		TypeTest<gui::UILoadingBar> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -6119,14 +6119,14 @@ void js_register_cocos2dx_gui_UILoadingBar(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UILoadingBar> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UILoadingBar_class;
 		p->proto = jsb_UILoadingBar_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -6943,8 +6943,8 @@ JSBool js_cocos2dx_gui_UIScrollView_constructor(JSContext *cx, uint32_t argc, js
 		}
 		TypeTest<gui::UIScrollView> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -7049,14 +7049,14 @@ void js_register_cocos2dx_gui_UIScrollView(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UIScrollView> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UIScrollView_class;
 		p->proto = jsb_UIScrollView_prototype;
 		p->parentProto = jsb_UILayout_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -7431,8 +7431,8 @@ JSBool js_cocos2dx_gui_UIListView_constructor(JSContext *cx, uint32_t argc, jsva
 		}
 		TypeTest<gui::UIListView> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -7513,14 +7513,14 @@ void js_register_cocos2dx_gui_UIListView(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UIListView> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UIListView_class;
 		p->proto = jsb_UIListView_prototype;
 		p->parentProto = jsb_UIScrollView_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -7941,8 +7941,8 @@ JSBool js_cocos2dx_gui_UISlider_constructor(JSContext *cx, uint32_t argc, jsval 
 		}
 		TypeTest<gui::UISlider> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -8023,14 +8023,14 @@ void js_register_cocos2dx_gui_UISlider(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UISlider> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UISlider_class;
 		p->proto = jsb_UISlider_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -8664,8 +8664,8 @@ JSBool js_cocos2dx_gui_UITextField_constructor(JSContext *cx, uint32_t argc, jsv
 		}
 		TypeTest<gui::UITextField> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -8762,14 +8762,14 @@ void js_register_cocos2dx_gui_UITextField(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UITextField> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UITextField_class;
 		p->proto = jsb_UITextField_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -8942,8 +8942,8 @@ JSBool js_cocos2dx_gui_UILabelBMFont_constructor(JSContext *cx, uint32_t argc, j
 		}
 		TypeTest<gui::UILabelBMFont> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -9015,14 +9015,14 @@ void js_register_cocos2dx_gui_UILabelBMFont(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UILabelBMFont> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UILabelBMFont_class;
 		p->proto = jsb_UILabelBMFont_prototype;
 		p->parentProto = jsb_UIWidget_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -9381,8 +9381,8 @@ JSBool js_cocos2dx_gui_UIPageView_constructor(JSContext *cx, uint32_t argc, jsva
 		}
 		TypeTest<gui::UIPageView> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -9462,14 +9462,14 @@ void js_register_cocos2dx_gui_UIPageView(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UIPageView> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UIPageView_class;
 		p->proto = jsb_UIPageView_prototype;
 		p->parentProto = jsb_UILayout_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -9660,14 +9660,14 @@ void js_register_cocos2dx_gui_UIHelper(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UIHelper> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UIHelper_class;
 		p->proto = jsb_UIHelper_prototype;
 		p->parentProto = NULL;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
@@ -9893,8 +9893,8 @@ JSBool js_cocos2dx_gui_UILayer_constructor(JSContext *cx, uint32_t argc, jsval *
 		}
 		TypeTest<gui::UILayer> t;
 		js_type_class_t *typeClass = nullptr;
-		long typeId = t.s_id();
-		auto typeMapIter = _js_global_type_map.find(typeId);
+		std::string typeName = t.s_name();
+		auto typeMapIter = _js_global_type_map.find(typeName);
 		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
 		typeClass = typeMapIter->second;
 		CCASSERT(typeClass, "The value is null.");
@@ -9967,14 +9967,14 @@ void js_register_cocos2dx_gui_UILayer(JSContext *cx, JSObject *global) {
 	// add the proto and JSClass to the type->js info hash table
 	TypeTest<gui::UILayer> t;
 	js_type_class_t *p;
-	long typeId = t.s_id();
-	if (_js_global_type_map.find(typeId) == _js_global_type_map.end())
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_UILayer_class;
 		p->proto = jsb_UILayer_prototype;
 		p->parentProto = jsb_Layer_prototype;
-		_js_global_type_map.insert(std::make_pair(typeId, p));
+		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 

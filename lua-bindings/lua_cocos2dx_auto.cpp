@@ -227,8 +227,8 @@ int lua_register_cocos2dx_Object(lua_State* tolua_S)
         tolua_function(tolua_S,"retainCount",lua_cocos2dx_Object_retainCount);
         tolua_function(tolua_S,"new",lua_cocos2dx_Object_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Object).hash_code();
-    g_luaType[typeId] = "Object";
+    std::string typeName = typeid(cocos2d::Object).name();
+    g_luaType[typeName] = "Object";
     return 1;
 }
 
@@ -871,8 +871,8 @@ int lua_register_cocos2dx_Action(lua_State* tolua_S)
         tolua_function(tolua_S,"isDone",lua_cocos2dx_Action_isDone);
         tolua_function(tolua_S,"reverse",lua_cocos2dx_Action_reverse);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Action).hash_code();
-    g_luaType[typeId] = "Action";
+    std::string typeName = typeid(cocos2d::Action).name();
+    g_luaType[typeName] = "Action";
     return 1;
 }
 
@@ -1082,8 +1082,8 @@ int lua_register_cocos2dx_FiniteTimeAction(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_FiniteTimeAction_reverse);
         tolua_function(tolua_S,"getDuration",lua_cocos2dx_FiniteTimeAction_getDuration);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FiniteTimeAction).hash_code();
-    g_luaType[typeId] = "FiniteTimeAction";
+    std::string typeName = typeid(cocos2d::FiniteTimeAction).name();
+    g_luaType[typeName] = "FiniteTimeAction";
     return 1;
 }
 
@@ -1634,8 +1634,8 @@ int lua_register_cocos2dx_Speed(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_Speed_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_Speed_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Speed).hash_code();
-    g_luaType[typeId] = "Speed";
+    std::string typeName = typeid(cocos2d::Speed).name();
+    g_luaType[typeName] = "Speed";
     return 1;
 }
 
@@ -2059,8 +2059,8 @@ int lua_register_cocos2dx_Follow(lua_State* tolua_S)
         tolua_function(tolua_S,"isBoundarySet",lua_cocos2dx_Follow_isBoundarySet);
         tolua_function(tolua_S,"create", lua_cocos2dx_Follow_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Follow).hash_code();
-    g_luaType[typeId] = "Follow";
+    std::string typeName = typeid(cocos2d::Follow).name();
+    g_luaType[typeName] = "Follow";
     return 1;
 }
 
@@ -3070,8 +3070,8 @@ int lua_register_cocos2dx_GLProgram(lua_State* tolua_S)
         tolua_function(tolua_S,"setUniformLocationWith2i",lua_cocos2dx_GLProgram_setUniformLocationWith2i);
         tolua_function(tolua_S,"new",lua_cocos2dx_GLProgram_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::GLProgram).hash_code();
-    g_luaType[typeId] = "GLProgram";
+    std::string typeName = typeid(cocos2d::GLProgram).name();
+    g_luaType[typeName] = "GLProgram";
     return 1;
 }
 
@@ -3513,8 +3513,8 @@ int lua_register_cocos2dx_Touch(lua_State* tolua_S)
         tolua_function(tolua_S,"getPreviousLocation",lua_cocos2dx_Touch_getPreviousLocation);
         tolua_function(tolua_S,"new",lua_cocos2dx_Touch_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Touch).hash_code();
-    g_luaType[typeId] = "Touch";
+    std::string typeName = typeid(cocos2d::Touch).name();
+    g_luaType[typeName] = "Touch";
     return 1;
 }
 
@@ -4901,8 +4901,8 @@ int lua_register_cocos2dx_Texture2D(lua_State* tolua_S)
         tolua_function(tolua_S,"getDefaultAlphaPixelFormat", lua_cocos2dx_Texture2D_getDefaultAlphaPixelFormat);
         tolua_function(tolua_S,"PVRImagesHavePremultipliedAlpha", lua_cocos2dx_Texture2D_PVRImagesHavePremultipliedAlpha);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Texture2D).hash_code();
-    g_luaType[typeId] = "Texture2D";
+    std::string typeName = typeid(cocos2d::Texture2D).name();
+    g_luaType[typeName] = "Texture2D";
     return 1;
 }
 
@@ -10302,8 +10302,8 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"getActionManager",lua_cocos2dx_Node_getActionManager);
         tolua_function(tolua_S,"create", lua_cocos2dx_Node_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Node).hash_code();
-    g_luaType[typeId] = "Node";
+    std::string typeName = typeid(cocos2d::Node).name();
+    g_luaType[typeName] = "Node";
     return 1;
 }
 
@@ -11433,8 +11433,8 @@ int lua_register_cocos2dx_SpriteFrame(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_SpriteFrame_create);
         tolua_function(tolua_S,"createWithTexture", lua_cocos2dx_SpriteFrame_createWithTexture);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::SpriteFrame).hash_code();
-    g_luaType[typeId] = "SpriteFrame";
+    std::string typeName = typeid(cocos2d::SpriteFrame).name();
+    g_luaType[typeName] = "SpriteFrame";
     return 1;
 }
 
@@ -11843,8 +11843,8 @@ int lua_register_cocos2dx_AnimationFrame(lua_State* tolua_S)
         tolua_function(tolua_S,"setUserInfo",lua_cocos2dx_AnimationFrame_setUserInfo);
         tolua_function(tolua_S,"create", lua_cocos2dx_AnimationFrame_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::AnimationFrame).hash_code();
-    g_luaType[typeId] = "AnimationFrame";
+    std::string typeName = typeid(cocos2d::AnimationFrame).name();
+    g_luaType[typeName] = "AnimationFrame";
     return 1;
 }
 
@@ -12662,8 +12662,8 @@ int lua_register_cocos2dx_Animation(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_Animation_create);
         tolua_function(tolua_S,"createWithSpriteFrames", lua_cocos2dx_Animation_createWithSpriteFrames);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Animation).hash_code();
-    g_luaType[typeId] = "Animation";
+    std::string typeName = typeid(cocos2d::Animation).name();
+    g_luaType[typeName] = "Animation";
     return 1;
 }
 
@@ -13052,8 +13052,8 @@ int lua_register_cocos2dx_ActionInterval(lua_State* tolua_S)
         tolua_function(tolua_S,"isDone",lua_cocos2dx_ActionInterval_isDone);
         tolua_function(tolua_S,"reverse",lua_cocos2dx_ActionInterval_reverse);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ActionInterval).hash_code();
-    g_luaType[typeId] = "ActionInterval";
+    std::string typeName = typeid(cocos2d::ActionInterval).name();
+    g_luaType[typeName] = "ActionInterval";
     return 1;
 }
 
@@ -13314,8 +13314,8 @@ int lua_register_cocos2dx_Sequence(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_Sequence_reverse);
         tolua_function(tolua_S,"update",lua_cocos2dx_Sequence_update);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Sequence).hash_code();
-    g_luaType[typeId] = "Sequence";
+    std::string typeName = typeid(cocos2d::Sequence).name();
+    g_luaType[typeName] = "Sequence";
     return 1;
 }
 
@@ -13781,8 +13781,8 @@ int lua_register_cocos2dx_Repeat(lua_State* tolua_S)
         tolua_function(tolua_S,"isDone",lua_cocos2dx_Repeat_isDone);
         tolua_function(tolua_S,"create", lua_cocos2dx_Repeat_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Repeat).hash_code();
-    g_luaType[typeId] = "Repeat";
+    std::string typeName = typeid(cocos2d::Repeat).name();
+    g_luaType[typeName] = "Repeat";
     return 1;
 }
 
@@ -14205,8 +14205,8 @@ int lua_register_cocos2dx_RepeatForever(lua_State* tolua_S)
         tolua_function(tolua_S,"isDone",lua_cocos2dx_RepeatForever_isDone);
         tolua_function(tolua_S,"create", lua_cocos2dx_RepeatForever_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::RepeatForever).hash_code();
-    g_luaType[typeId] = "RepeatForever";
+    std::string typeName = typeid(cocos2d::RepeatForever).name();
+    g_luaType[typeName] = "RepeatForever";
     return 1;
 }
 
@@ -14467,8 +14467,8 @@ int lua_register_cocos2dx_Spawn(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_Spawn_reverse);
         tolua_function(tolua_S,"update",lua_cocos2dx_Spawn_update);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Spawn).hash_code();
-    g_luaType[typeId] = "Spawn";
+    std::string typeName = typeid(cocos2d::Spawn).name();
+    g_luaType[typeName] = "Spawn";
     return 1;
 }
 
@@ -14770,8 +14770,8 @@ int lua_register_cocos2dx_RotateTo(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_RotateTo_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_RotateTo_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::RotateTo).hash_code();
-    g_luaType[typeId] = "RotateTo";
+    std::string typeName = typeid(cocos2d::RotateTo).name();
+    g_luaType[typeName] = "RotateTo";
     return 1;
 }
 
@@ -15073,8 +15073,8 @@ int lua_register_cocos2dx_RotateBy(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_RotateBy_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_RotateBy_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::RotateBy).hash_code();
-    g_luaType[typeId] = "RotateBy";
+    std::string typeName = typeid(cocos2d::RotateBy).name();
+    g_luaType[typeName] = "RotateBy";
     return 1;
 }
 
@@ -15342,8 +15342,8 @@ int lua_register_cocos2dx_MoveBy(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_MoveBy_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_MoveBy_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MoveBy).hash_code();
-    g_luaType[typeId] = "MoveBy";
+    std::string typeName = typeid(cocos2d::MoveBy).name();
+    g_luaType[typeName] = "MoveBy";
     return 1;
 }
 
@@ -15514,8 +15514,8 @@ int lua_register_cocos2dx_MoveTo(lua_State* tolua_S)
         tolua_function(tolua_S,"clone",lua_cocos2dx_MoveTo_clone);
         tolua_function(tolua_S,"create", lua_cocos2dx_MoveTo_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MoveTo).hash_code();
-    g_luaType[typeId] = "MoveTo";
+    std::string typeName = typeid(cocos2d::MoveTo).name();
+    g_luaType[typeName] = "MoveTo";
     return 1;
 }
 
@@ -15785,8 +15785,8 @@ int lua_register_cocos2dx_SkewTo(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_SkewTo_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_SkewTo_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::SkewTo).hash_code();
-    g_luaType[typeId] = "SkewTo";
+    std::string typeName = typeid(cocos2d::SkewTo).name();
+    g_luaType[typeName] = "SkewTo";
     return 1;
 }
 
@@ -16013,8 +16013,8 @@ int lua_register_cocos2dx_SkewBy(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_SkewBy_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_SkewBy_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::SkewBy).hash_code();
-    g_luaType[typeId] = "SkewBy";
+    std::string typeName = typeid(cocos2d::SkewBy).name();
+    g_luaType[typeName] = "SkewBy";
     return 1;
 }
 
@@ -16286,8 +16286,8 @@ int lua_register_cocos2dx_JumpBy(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_JumpBy_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_JumpBy_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::JumpBy).hash_code();
-    g_luaType[typeId] = "JumpBy";
+    std::string typeName = typeid(cocos2d::JumpBy).name();
+    g_luaType[typeName] = "JumpBy";
     return 1;
 }
 
@@ -16516,8 +16516,8 @@ int lua_register_cocos2dx_JumpTo(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_JumpTo_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_JumpTo_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::JumpTo).hash_code();
-    g_luaType[typeId] = "JumpTo";
+    std::string typeName = typeid(cocos2d::JumpTo).name();
+    g_luaType[typeName] = "JumpTo";
     return 1;
 }
 
@@ -16737,8 +16737,8 @@ int lua_register_cocos2dx_BezierBy(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_BezierBy_reverse);
         tolua_function(tolua_S,"update",lua_cocos2dx_BezierBy_update);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::BezierBy).hash_code();
-    g_luaType[typeId] = "BezierBy";
+    std::string typeName = typeid(cocos2d::BezierBy).name();
+    g_luaType[typeName] = "BezierBy";
     return 1;
 }
 
@@ -16915,8 +16915,8 @@ int lua_register_cocos2dx_BezierTo(lua_State* tolua_S)
         tolua_function(tolua_S,"clone",lua_cocos2dx_BezierTo_clone);
         tolua_function(tolua_S,"reverse",lua_cocos2dx_BezierTo_reverse);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::BezierTo).hash_code();
-    g_luaType[typeId] = "BezierTo";
+    std::string typeName = typeid(cocos2d::BezierTo).name();
+    g_luaType[typeName] = "BezierTo";
     return 1;
 }
 
@@ -17218,8 +17218,8 @@ int lua_register_cocos2dx_ScaleTo(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_ScaleTo_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_ScaleTo_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ScaleTo).hash_code();
-    g_luaType[typeId] = "ScaleTo";
+    std::string typeName = typeid(cocos2d::ScaleTo).name();
+    g_luaType[typeName] = "ScaleTo";
     return 1;
 }
 
@@ -17478,8 +17478,8 @@ int lua_register_cocos2dx_ScaleBy(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_ScaleBy_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_ScaleBy_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ScaleBy).hash_code();
-    g_luaType[typeId] = "ScaleBy";
+    std::string typeName = typeid(cocos2d::ScaleBy).name();
+    g_luaType[typeName] = "ScaleBy";
     return 1;
 }
 
@@ -17788,8 +17788,8 @@ int lua_register_cocos2dx_Blink(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_Blink_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_Blink_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Blink).hash_code();
-    g_luaType[typeId] = "Blink";
+    std::string typeName = typeid(cocos2d::Blink).name();
+    g_luaType[typeName] = "Blink";
     return 1;
 }
 
@@ -18003,8 +18003,8 @@ int lua_register_cocos2dx_FadeIn(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_FadeIn_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_FadeIn_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FadeIn).hash_code();
-    g_luaType[typeId] = "FadeIn";
+    std::string typeName = typeid(cocos2d::FadeIn).name();
+    g_luaType[typeName] = "FadeIn";
     return 1;
 }
 
@@ -18218,8 +18218,8 @@ int lua_register_cocos2dx_FadeOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_FadeOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_FadeOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FadeOut).hash_code();
-    g_luaType[typeId] = "FadeOut";
+    std::string typeName = typeid(cocos2d::FadeOut).name();
+    g_luaType[typeName] = "FadeOut";
     return 1;
 }
 
@@ -18487,8 +18487,8 @@ int lua_register_cocos2dx_FadeTo(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_FadeTo_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_FadeTo_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FadeTo).hash_code();
-    g_luaType[typeId] = "FadeTo";
+    std::string typeName = typeid(cocos2d::FadeTo).name();
+    g_luaType[typeName] = "FadeTo";
     return 1;
 }
 
@@ -18760,8 +18760,8 @@ int lua_register_cocos2dx_TintTo(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_TintTo_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_TintTo_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TintTo).hash_code();
-    g_luaType[typeId] = "TintTo";
+    std::string typeName = typeid(cocos2d::TintTo).name();
+    g_luaType[typeName] = "TintTo";
     return 1;
 }
 
@@ -19033,8 +19033,8 @@ int lua_register_cocos2dx_TintBy(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_TintBy_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_TintBy_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TintBy).hash_code();
-    g_luaType[typeId] = "TintBy";
+    std::string typeName = typeid(cocos2d::TintBy).name();
+    g_luaType[typeName] = "TintBy";
     return 1;
 }
 
@@ -19248,8 +19248,8 @@ int lua_register_cocos2dx_DelayTime(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_DelayTime_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_DelayTime_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::DelayTime).hash_code();
-    g_luaType[typeId] = "DelayTime";
+    std::string typeName = typeid(cocos2d::DelayTime).name();
+    g_luaType[typeName] = "DelayTime";
     return 1;
 }
 
@@ -19686,8 +19686,8 @@ int lua_register_cocos2dx_Animate(lua_State* tolua_S)
         tolua_function(tolua_S,"setAnimation",lua_cocos2dx_Animate_setAnimation);
         tolua_function(tolua_S,"create", lua_cocos2dx_Animate_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Animate).hash_code();
-    g_luaType[typeId] = "Animate";
+    std::string typeName = typeid(cocos2d::Animate).name();
+    g_luaType[typeName] = "Animate";
     return 1;
 }
 
@@ -20135,8 +20135,8 @@ int lua_register_cocos2dx_TargetedAction(lua_State* tolua_S)
         tolua_function(tolua_S,"getForcedTarget",lua_cocos2dx_TargetedAction_getForcedTarget);
         tolua_function(tolua_S,"create", lua_cocos2dx_TargetedAction_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TargetedAction).hash_code();
-    g_luaType[typeId] = "TargetedAction";
+    std::string typeName = typeid(cocos2d::TargetedAction).name();
+    g_luaType[typeName] = "TargetedAction";
     return 1;
 }
 
@@ -20355,8 +20355,8 @@ int lua_register_cocos2dx_ActionCamera(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_ActionCamera_reverse);
         tolua_function(tolua_S,"new",lua_cocos2dx_ActionCamera_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ActionCamera).hash_code();
-    g_luaType[typeId] = "ActionCamera";
+    std::string typeName = typeid(cocos2d::ActionCamera).name();
+    g_luaType[typeName] = "ActionCamera";
     return 1;
 }
 
@@ -20725,8 +20725,8 @@ int lua_register_cocos2dx_OrbitCamera(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_OrbitCamera_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_OrbitCamera_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::OrbitCamera).hash_code();
-    g_luaType[typeId] = "OrbitCamera";
+    std::string typeName = typeid(cocos2d::OrbitCamera).name();
+    g_luaType[typeName] = "OrbitCamera";
     return 1;
 }
 
@@ -21358,8 +21358,8 @@ int lua_register_cocos2dx_ActionManager(lua_State* tolua_S)
         tolua_function(tolua_S,"pauseAllRunningActions",lua_cocos2dx_ActionManager_pauseAllRunningActions);
         tolua_function(tolua_S,"new",lua_cocos2dx_ActionManager_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ActionManager).hash_code();
-    g_luaType[typeId] = "ActionManager";
+    std::string typeName = typeid(cocos2d::ActionManager).name();
+    g_luaType[typeName] = "ActionManager";
     return 1;
 }
 
@@ -21674,8 +21674,8 @@ int lua_register_cocos2dx_ActionEase(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_ActionEase_update);
         tolua_function(tolua_S,"getInnerAction",lua_cocos2dx_ActionEase_getInnerAction);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ActionEase).hash_code();
-    g_luaType[typeId] = "ActionEase";
+    std::string typeName = typeid(cocos2d::ActionEase).name();
+    g_luaType[typeName] = "ActionEase";
     return 1;
 }
 
@@ -21885,8 +21885,8 @@ int lua_register_cocos2dx_EaseRateAction(lua_State* tolua_S)
         tolua_function(tolua_S,"getRate",lua_cocos2dx_EaseRateAction_getRate);
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseRateAction_reverse);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseRateAction).hash_code();
-    g_luaType[typeId] = "EaseRateAction";
+    std::string typeName = typeid(cocos2d::EaseRateAction).name();
+    g_luaType[typeName] = "EaseRateAction";
     return 1;
 }
 
@@ -22111,8 +22111,8 @@ int lua_register_cocos2dx_EaseIn(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseIn_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseIn_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseIn).hash_code();
-    g_luaType[typeId] = "EaseIn";
+    std::string typeName = typeid(cocos2d::EaseIn).name();
+    g_luaType[typeName] = "EaseIn";
     return 1;
 }
 
@@ -22337,8 +22337,8 @@ int lua_register_cocos2dx_EaseOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseOut).hash_code();
-    g_luaType[typeId] = "EaseOut";
+    std::string typeName = typeid(cocos2d::EaseOut).name();
+    g_luaType[typeName] = "EaseOut";
     return 1;
 }
 
@@ -22563,8 +22563,8 @@ int lua_register_cocos2dx_EaseInOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseInOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseInOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseInOut).hash_code();
-    g_luaType[typeId] = "EaseInOut";
+    std::string typeName = typeid(cocos2d::EaseInOut).name();
+    g_luaType[typeName] = "EaseInOut";
     return 1;
 }
 
@@ -22787,8 +22787,8 @@ int lua_register_cocos2dx_EaseExponentialIn(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseExponentialIn_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseExponentialIn_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseExponentialIn).hash_code();
-    g_luaType[typeId] = "EaseExponentialIn";
+    std::string typeName = typeid(cocos2d::EaseExponentialIn).name();
+    g_luaType[typeName] = "EaseExponentialIn";
     return 1;
 }
 
@@ -23011,8 +23011,8 @@ int lua_register_cocos2dx_EaseExponentialOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseExponentialOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseExponentialOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseExponentialOut).hash_code();
-    g_luaType[typeId] = "EaseExponentialOut";
+    std::string typeName = typeid(cocos2d::EaseExponentialOut).name();
+    g_luaType[typeName] = "EaseExponentialOut";
     return 1;
 }
 
@@ -23235,8 +23235,8 @@ int lua_register_cocos2dx_EaseExponentialInOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseExponentialInOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseExponentialInOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseExponentialInOut).hash_code();
-    g_luaType[typeId] = "EaseExponentialInOut";
+    std::string typeName = typeid(cocos2d::EaseExponentialInOut).name();
+    g_luaType[typeName] = "EaseExponentialInOut";
     return 1;
 }
 
@@ -23459,8 +23459,8 @@ int lua_register_cocos2dx_EaseSineIn(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseSineIn_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseSineIn_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseSineIn).hash_code();
-    g_luaType[typeId] = "EaseSineIn";
+    std::string typeName = typeid(cocos2d::EaseSineIn).name();
+    g_luaType[typeName] = "EaseSineIn";
     return 1;
 }
 
@@ -23683,8 +23683,8 @@ int lua_register_cocos2dx_EaseSineOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseSineOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseSineOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseSineOut).hash_code();
-    g_luaType[typeId] = "EaseSineOut";
+    std::string typeName = typeid(cocos2d::EaseSineOut).name();
+    g_luaType[typeName] = "EaseSineOut";
     return 1;
 }
 
@@ -23907,8 +23907,8 @@ int lua_register_cocos2dx_EaseSineInOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseSineInOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseSineInOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseSineInOut).hash_code();
-    g_luaType[typeId] = "EaseSineInOut";
+    std::string typeName = typeid(cocos2d::EaseSineInOut).name();
+    g_luaType[typeName] = "EaseSineInOut";
     return 1;
 }
 
@@ -24118,8 +24118,8 @@ int lua_register_cocos2dx_EaseElastic(lua_State* tolua_S)
         tolua_function(tolua_S,"getPeriod",lua_cocos2dx_EaseElastic_getPeriod);
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseElastic_reverse);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseElastic).hash_code();
-    g_luaType[typeId] = "EaseElastic";
+    std::string typeName = typeid(cocos2d::EaseElastic).name();
+    g_luaType[typeName] = "EaseElastic";
     return 1;
 }
 
@@ -24381,8 +24381,8 @@ int lua_register_cocos2dx_EaseElasticIn(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseElasticIn_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseElasticIn_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseElasticIn).hash_code();
-    g_luaType[typeId] = "EaseElasticIn";
+    std::string typeName = typeid(cocos2d::EaseElasticIn).name();
+    g_luaType[typeName] = "EaseElasticIn";
     return 1;
 }
 
@@ -24644,8 +24644,8 @@ int lua_register_cocos2dx_EaseElasticOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseElasticOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseElasticOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseElasticOut).hash_code();
-    g_luaType[typeId] = "EaseElasticOut";
+    std::string typeName = typeid(cocos2d::EaseElasticOut).name();
+    g_luaType[typeName] = "EaseElasticOut";
     return 1;
 }
 
@@ -24907,8 +24907,8 @@ int lua_register_cocos2dx_EaseElasticInOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseElasticInOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseElasticInOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseElasticInOut).hash_code();
-    g_luaType[typeId] = "EaseElasticInOut";
+    std::string typeName = typeid(cocos2d::EaseElasticInOut).name();
+    g_luaType[typeName] = "EaseElasticInOut";
     return 1;
 }
 
@@ -25077,8 +25077,8 @@ int lua_register_cocos2dx_EaseBounce(lua_State* tolua_S)
         tolua_function(tolua_S,"clone",lua_cocos2dx_EaseBounce_clone);
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseBounce_reverse);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseBounce).hash_code();
-    g_luaType[typeId] = "EaseBounce";
+    std::string typeName = typeid(cocos2d::EaseBounce).name();
+    g_luaType[typeName] = "EaseBounce";
     return 1;
 }
 
@@ -25301,8 +25301,8 @@ int lua_register_cocos2dx_EaseBounceIn(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseBounceIn_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseBounceIn_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseBounceIn).hash_code();
-    g_luaType[typeId] = "EaseBounceIn";
+    std::string typeName = typeid(cocos2d::EaseBounceIn).name();
+    g_luaType[typeName] = "EaseBounceIn";
     return 1;
 }
 
@@ -25525,8 +25525,8 @@ int lua_register_cocos2dx_EaseBounceOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseBounceOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseBounceOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseBounceOut).hash_code();
-    g_luaType[typeId] = "EaseBounceOut";
+    std::string typeName = typeid(cocos2d::EaseBounceOut).name();
+    g_luaType[typeName] = "EaseBounceOut";
     return 1;
 }
 
@@ -25749,8 +25749,8 @@ int lua_register_cocos2dx_EaseBounceInOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseBounceInOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseBounceInOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseBounceInOut).hash_code();
-    g_luaType[typeId] = "EaseBounceInOut";
+    std::string typeName = typeid(cocos2d::EaseBounceInOut).name();
+    g_luaType[typeName] = "EaseBounceInOut";
     return 1;
 }
 
@@ -25973,8 +25973,8 @@ int lua_register_cocos2dx_EaseBackIn(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseBackIn_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseBackIn_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseBackIn).hash_code();
-    g_luaType[typeId] = "EaseBackIn";
+    std::string typeName = typeid(cocos2d::EaseBackIn).name();
+    g_luaType[typeName] = "EaseBackIn";
     return 1;
 }
 
@@ -26197,8 +26197,8 @@ int lua_register_cocos2dx_EaseBackOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseBackOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseBackOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseBackOut).hash_code();
-    g_luaType[typeId] = "EaseBackOut";
+    std::string typeName = typeid(cocos2d::EaseBackOut).name();
+    g_luaType[typeName] = "EaseBackOut";
     return 1;
 }
 
@@ -26421,8 +26421,8 @@ int lua_register_cocos2dx_EaseBackInOut(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_EaseBackInOut_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_EaseBackInOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EaseBackInOut).hash_code();
-    g_luaType[typeId] = "EaseBackInOut";
+    std::string typeName = typeid(cocos2d::EaseBackInOut).name();
+    g_luaType[typeName] = "EaseBackInOut";
     return 1;
 }
 
@@ -26675,8 +26675,8 @@ int lua_register_cocos2dx_ActionInstant(lua_State* tolua_S)
         tolua_function(tolua_S,"isDone",lua_cocos2dx_ActionInstant_isDone);
         tolua_function(tolua_S,"update",lua_cocos2dx_ActionInstant_update);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ActionInstant).hash_code();
-    g_luaType[typeId] = "ActionInstant";
+    std::string typeName = typeid(cocos2d::ActionInstant).name();
+    g_luaType[typeName] = "ActionInstant";
     return 1;
 }
 
@@ -26888,8 +26888,8 @@ int lua_register_cocos2dx_Show(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_Show_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_Show_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Show).hash_code();
-    g_luaType[typeId] = "Show";
+    std::string typeName = typeid(cocos2d::Show).name();
+    g_luaType[typeName] = "Show";
     return 1;
 }
 
@@ -27101,8 +27101,8 @@ int lua_register_cocos2dx_Hide(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_Hide_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_Hide_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Hide).hash_code();
-    g_luaType[typeId] = "Hide";
+    std::string typeName = typeid(cocos2d::Hide).name();
+    g_luaType[typeName] = "Hide";
     return 1;
 }
 
@@ -27314,8 +27314,8 @@ int lua_register_cocos2dx_ToggleVisibility(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_ToggleVisibility_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_ToggleVisibility_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ToggleVisibility).hash_code();
-    g_luaType[typeId] = "ToggleVisibility";
+    std::string typeName = typeid(cocos2d::ToggleVisibility).name();
+    g_luaType[typeName] = "ToggleVisibility";
     return 1;
 }
 
@@ -27549,8 +27549,8 @@ int lua_register_cocos2dx_RemoveSelf(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_RemoveSelf_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_RemoveSelf_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::RemoveSelf).hash_code();
-    g_luaType[typeId] = "RemoveSelf";
+    std::string typeName = typeid(cocos2d::RemoveSelf).name();
+    g_luaType[typeName] = "RemoveSelf";
     return 1;
 }
 
@@ -27764,8 +27764,8 @@ int lua_register_cocos2dx_FlipX(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_FlipX_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_FlipX_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FlipX).hash_code();
-    g_luaType[typeId] = "FlipX";
+    std::string typeName = typeid(cocos2d::FlipX).name();
+    g_luaType[typeName] = "FlipX";
     return 1;
 }
 
@@ -27979,8 +27979,8 @@ int lua_register_cocos2dx_FlipY(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_FlipY_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_FlipY_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FlipY).hash_code();
-    g_luaType[typeId] = "FlipY";
+    std::string typeName = typeid(cocos2d::FlipY).name();
+    g_luaType[typeName] = "FlipY";
     return 1;
 }
 
@@ -28194,8 +28194,8 @@ int lua_register_cocos2dx_Place(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_Place_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_Place_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Place).hash_code();
-    g_luaType[typeId] = "Place";
+    std::string typeName = typeid(cocos2d::Place).name();
+    g_luaType[typeName] = "Place";
     return 1;
 }
 
@@ -28510,8 +28510,8 @@ int lua_register_cocos2dx_CallFunc(lua_State* tolua_S)
         tolua_function(tolua_S,"getTargetCallback",lua_cocos2dx_CallFunc_getTargetCallback);
         tolua_function(tolua_S,"setTargetCallback",lua_cocos2dx_CallFunc_setTargetCallback);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::CallFunc).hash_code();
-    g_luaType[typeId] = "CallFunc";
+    std::string typeName = typeid(cocos2d::CallFunc).name();
+    g_luaType[typeName] = "CallFunc";
     return 1;
 }
 
@@ -28742,8 +28742,8 @@ int lua_register_cocos2dx_GridAction(lua_State* tolua_S)
         tolua_function(tolua_S,"getGrid",lua_cocos2dx_GridAction_getGrid);
         tolua_function(tolua_S,"reverse",lua_cocos2dx_GridAction_reverse);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::GridAction).hash_code();
-    g_luaType[typeId] = "GridAction";
+    std::string typeName = typeid(cocos2d::GridAction).name();
+    g_luaType[typeName] = "GridAction";
     return 1;
 }
 
@@ -28868,8 +28868,8 @@ int lua_register_cocos2dx_Grid3DAction(lua_State* tolua_S)
         tolua_function(tolua_S,"clone",lua_cocos2dx_Grid3DAction_clone);
         tolua_function(tolua_S,"getGrid",lua_cocos2dx_Grid3DAction_getGrid);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Grid3DAction).hash_code();
-    g_luaType[typeId] = "Grid3DAction";
+    std::string typeName = typeid(cocos2d::Grid3DAction).name();
+    g_luaType[typeName] = "Grid3DAction";
     return 1;
 }
 
@@ -28994,8 +28994,8 @@ int lua_register_cocos2dx_TiledGrid3DAction(lua_State* tolua_S)
         tolua_function(tolua_S,"clone",lua_cocos2dx_TiledGrid3DAction_clone);
         tolua_function(tolua_S,"getGrid",lua_cocos2dx_TiledGrid3DAction_getGrid);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TiledGrid3DAction).hash_code();
-    g_luaType[typeId] = "TiledGrid3DAction";
+    std::string typeName = typeid(cocos2d::TiledGrid3DAction).name();
+    g_luaType[typeName] = "TiledGrid3DAction";
     return 1;
 }
 
@@ -29216,8 +29216,8 @@ int lua_register_cocos2dx_StopGrid(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_StopGrid_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_StopGrid_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::StopGrid).hash_code();
-    g_luaType[typeId] = "StopGrid";
+    std::string typeName = typeid(cocos2d::StopGrid).name();
+    g_luaType[typeName] = "StopGrid";
     return 1;
 }
 
@@ -29440,8 +29440,8 @@ int lua_register_cocos2dx_ReuseGrid(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_ReuseGrid_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_ReuseGrid_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ReuseGrid).hash_code();
-    g_luaType[typeId] = "ReuseGrid";
+    std::string typeName = typeid(cocos2d::ReuseGrid).name();
+    g_luaType[typeName] = "ReuseGrid";
     return 1;
 }
 
@@ -29777,8 +29777,8 @@ int lua_register_cocos2dx_Waves3D(lua_State* tolua_S)
         tolua_function(tolua_S,"getAmplitude",lua_cocos2dx_Waves3D_getAmplitude);
         tolua_function(tolua_S,"create", lua_cocos2dx_Waves3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Waves3D).hash_code();
-    g_luaType[typeId] = "Waves3D";
+    std::string typeName = typeid(cocos2d::Waves3D).name();
+    g_luaType[typeName] = "Waves3D";
     return 1;
 }
 
@@ -29938,8 +29938,8 @@ int lua_register_cocos2dx_FlipX3D(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_FlipX3D_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_FlipX3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FlipX3D).hash_code();
-    g_luaType[typeId] = "FlipX3D";
+    std::string typeName = typeid(cocos2d::FlipX3D).name();
+    g_luaType[typeName] = "FlipX3D";
     return 1;
 }
 
@@ -30141,8 +30141,8 @@ int lua_register_cocos2dx_FlipY3D(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_FlipY3D_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_FlipY3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FlipY3D).hash_code();
-    g_luaType[typeId] = "FlipY3D";
+    std::string typeName = typeid(cocos2d::FlipY3D).name();
+    g_luaType[typeName] = "FlipY3D";
     return 1;
 }
 
@@ -30521,8 +30521,8 @@ int lua_register_cocos2dx_Lens3D(lua_State* tolua_S)
         tolua_function(tolua_S,"getPosition",lua_cocos2dx_Lens3D_getPosition);
         tolua_function(tolua_S,"create", lua_cocos2dx_Lens3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Lens3D).hash_code();
-    g_luaType[typeId] = "Lens3D";
+    std::string typeName = typeid(cocos2d::Lens3D).name();
+    g_luaType[typeName] = "Lens3D";
     return 1;
 }
 
@@ -30947,8 +30947,8 @@ int lua_register_cocos2dx_Ripple3D(lua_State* tolua_S)
         tolua_function(tolua_S,"getPosition",lua_cocos2dx_Ripple3D_getPosition);
         tolua_function(tolua_S,"create", lua_cocos2dx_Ripple3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Ripple3D).hash_code();
-    g_luaType[typeId] = "Ripple3D";
+    std::string typeName = typeid(cocos2d::Ripple3D).name();
+    g_luaType[typeName] = "Ripple3D";
     return 1;
 }
 
@@ -31156,8 +31156,8 @@ int lua_register_cocos2dx_Shaky3D(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_Shaky3D_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_Shaky3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Shaky3D).hash_code();
-    g_luaType[typeId] = "Shaky3D";
+    std::string typeName = typeid(cocos2d::Shaky3D).name();
+    g_luaType[typeName] = "Shaky3D";
     return 1;
 }
 
@@ -31535,8 +31535,8 @@ int lua_register_cocos2dx_Liquid(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_Liquid_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_Liquid_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Liquid).hash_code();
-    g_luaType[typeId] = "Liquid";
+    std::string typeName = typeid(cocos2d::Liquid).name();
+    g_luaType[typeName] = "Liquid";
     return 1;
 }
 
@@ -31918,8 +31918,8 @@ int lua_register_cocos2dx_Waves(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_Waves_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_Waves_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Waves).hash_code();
-    g_luaType[typeId] = "Waves";
+    std::string typeName = typeid(cocos2d::Waves).name();
+    g_luaType[typeName] = "Waves";
     return 1;
 }
 
@@ -32384,8 +32384,8 @@ int lua_register_cocos2dx_Twirl(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_Twirl_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_Twirl_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Twirl).hash_code();
-    g_luaType[typeId] = "Twirl";
+    std::string typeName = typeid(cocos2d::Twirl).name();
+    g_luaType[typeName] = "Twirl";
     return 1;
 }
 
@@ -32547,8 +32547,8 @@ int lua_register_cocos2dx_PageTurn3D(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_PageTurn3D_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_PageTurn3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::PageTurn3D).hash_code();
-    g_luaType[typeId] = "PageTurn3D";
+    std::string typeName = typeid(cocos2d::PageTurn3D).name();
+    g_luaType[typeName] = "PageTurn3D";
     return 1;
 }
 
@@ -32816,8 +32816,8 @@ int lua_register_cocos2dx_ProgressTo(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_ProgressTo_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_ProgressTo_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ProgressTo).hash_code();
-    g_luaType[typeId] = "ProgressTo";
+    std::string typeName = typeid(cocos2d::ProgressTo).name();
+    g_luaType[typeName] = "ProgressTo";
     return 1;
 }
 
@@ -33087,8 +33087,8 @@ int lua_register_cocos2dx_ProgressFromTo(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_ProgressFromTo_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_ProgressFromTo_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ProgressFromTo).hash_code();
-    g_luaType[typeId] = "ProgressFromTo";
+    std::string typeName = typeid(cocos2d::ProgressFromTo).name();
+    g_luaType[typeName] = "ProgressFromTo";
     return 1;
 }
 
@@ -33254,8 +33254,8 @@ int lua_register_cocos2dx_ShakyTiles3D(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_ShakyTiles3D_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_ShakyTiles3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ShakyTiles3D).hash_code();
-    g_luaType[typeId] = "ShakyTiles3D";
+    std::string typeName = typeid(cocos2d::ShakyTiles3D).name();
+    g_luaType[typeName] = "ShakyTiles3D";
     return 1;
 }
 
@@ -33421,8 +33421,8 @@ int lua_register_cocos2dx_ShatteredTiles3D(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_ShatteredTiles3D_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_ShatteredTiles3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ShatteredTiles3D).hash_code();
-    g_luaType[typeId] = "ShatteredTiles3D";
+    std::string typeName = typeid(cocos2d::ShatteredTiles3D).name();
+    g_luaType[typeName] = "ShatteredTiles3D";
     return 1;
 }
 
@@ -33772,8 +33772,8 @@ int lua_register_cocos2dx_ShuffleTiles(lua_State* tolua_S)
         tolua_function(tolua_S,"shuffle",lua_cocos2dx_ShuffleTiles_shuffle);
         tolua_function(tolua_S,"create", lua_cocos2dx_ShuffleTiles_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ShuffleTiles).hash_code();
-    g_luaType[typeId] = "ShuffleTiles";
+    std::string typeName = typeid(cocos2d::ShuffleTiles).name();
+    g_luaType[typeName] = "ShuffleTiles";
     return 1;
 }
 
@@ -34112,8 +34112,8 @@ int lua_register_cocos2dx_FadeOutTRTiles(lua_State* tolua_S)
         tolua_function(tolua_S,"testFunc",lua_cocos2dx_FadeOutTRTiles_testFunc);
         tolua_function(tolua_S,"create", lua_cocos2dx_FadeOutTRTiles_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FadeOutTRTiles).hash_code();
-    g_luaType[typeId] = "FadeOutTRTiles";
+    std::string typeName = typeid(cocos2d::FadeOutTRTiles).name();
+    g_luaType[typeName] = "FadeOutTRTiles";
     return 1;
 }
 
@@ -34278,8 +34278,8 @@ int lua_register_cocos2dx_FadeOutBLTiles(lua_State* tolua_S)
         tolua_function(tolua_S,"testFunc",lua_cocos2dx_FadeOutBLTiles_testFunc);
         tolua_function(tolua_S,"create", lua_cocos2dx_FadeOutBLTiles_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FadeOutBLTiles).hash_code();
-    g_luaType[typeId] = "FadeOutBLTiles";
+    std::string typeName = typeid(cocos2d::FadeOutBLTiles).name();
+    g_luaType[typeName] = "FadeOutBLTiles";
     return 1;
 }
 
@@ -34489,8 +34489,8 @@ int lua_register_cocos2dx_FadeOutUpTiles(lua_State* tolua_S)
         tolua_function(tolua_S,"testFunc",lua_cocos2dx_FadeOutUpTiles_testFunc);
         tolua_function(tolua_S,"create", lua_cocos2dx_FadeOutUpTiles_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FadeOutUpTiles).hash_code();
-    g_luaType[typeId] = "FadeOutUpTiles";
+    std::string typeName = typeid(cocos2d::FadeOutUpTiles).name();
+    g_luaType[typeName] = "FadeOutUpTiles";
     return 1;
 }
 
@@ -34655,8 +34655,8 @@ int lua_register_cocos2dx_FadeOutDownTiles(lua_State* tolua_S)
         tolua_function(tolua_S,"testFunc",lua_cocos2dx_FadeOutDownTiles_testFunc);
         tolua_function(tolua_S,"create", lua_cocos2dx_FadeOutDownTiles_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FadeOutDownTiles).hash_code();
-    g_luaType[typeId] = "FadeOutDownTiles";
+    std::string typeName = typeid(cocos2d::FadeOutDownTiles).name();
+    g_luaType[typeName] = "FadeOutDownTiles";
     return 1;
 }
 
@@ -35035,8 +35035,8 @@ int lua_register_cocos2dx_TurnOffTiles(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_TurnOffTiles_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_TurnOffTiles_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TurnOffTiles).hash_code();
-    g_luaType[typeId] = "TurnOffTiles";
+    std::string typeName = typeid(cocos2d::TurnOffTiles).name();
+    g_luaType[typeName] = "TurnOffTiles";
     return 1;
 }
 
@@ -35372,8 +35372,8 @@ int lua_register_cocos2dx_WavesTiles3D(lua_State* tolua_S)
         tolua_function(tolua_S,"getAmplitude",lua_cocos2dx_WavesTiles3D_getAmplitude);
         tolua_function(tolua_S,"create", lua_cocos2dx_WavesTiles3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::WavesTiles3D).hash_code();
-    g_luaType[typeId] = "WavesTiles3D";
+    std::string typeName = typeid(cocos2d::WavesTiles3D).name();
+    g_luaType[typeName] = "WavesTiles3D";
     return 1;
 }
 
@@ -35709,8 +35709,8 @@ int lua_register_cocos2dx_JumpTiles3D(lua_State* tolua_S)
         tolua_function(tolua_S,"getAmplitude",lua_cocos2dx_JumpTiles3D_getAmplitude);
         tolua_function(tolua_S,"create", lua_cocos2dx_JumpTiles3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::JumpTiles3D).hash_code();
-    g_luaType[typeId] = "JumpTiles3D";
+    std::string typeName = typeid(cocos2d::JumpTiles3D).name();
+    g_luaType[typeName] = "JumpTiles3D";
     return 1;
 }
 
@@ -35924,8 +35924,8 @@ int lua_register_cocos2dx_SplitRows(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_SplitRows_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_SplitRows_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::SplitRows).hash_code();
-    g_luaType[typeId] = "SplitRows";
+    std::string typeName = typeid(cocos2d::SplitRows).name();
+    g_luaType[typeName] = "SplitRows";
     return 1;
 }
 
@@ -36139,8 +36139,8 @@ int lua_register_cocos2dx_SplitCols(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_SplitCols_update);
         tolua_function(tolua_S,"create", lua_cocos2dx_SplitCols_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::SplitCols).hash_code();
-    g_luaType[typeId] = "SplitCols";
+    std::string typeName = typeid(cocos2d::SplitCols).name();
+    g_luaType[typeName] = "SplitCols";
     return 1;
 }
 
@@ -36462,8 +36462,8 @@ int lua_register_cocos2dx_ActionTween(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_ActionTween_reverse);
         tolua_function(tolua_S,"create", lua_cocos2dx_ActionTween_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ActionTween).hash_code();
-    g_luaType[typeId] = "ActionTween";
+    std::string typeName = typeid(cocos2d::ActionTween).name();
+    g_luaType[typeName] = "ActionTween";
     return 1;
 }
 
@@ -36879,8 +36879,8 @@ int lua_register_cocos2dx_CardinalSplineTo(lua_State* tolua_S)
         tolua_function(tolua_S,"update",lua_cocos2dx_CardinalSplineTo_update);
         tolua_function(tolua_S,"new",lua_cocos2dx_CardinalSplineTo_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::CardinalSplineTo).hash_code();
-    g_luaType[typeId] = "CardinalSplineTo";
+    std::string typeName = typeid(cocos2d::CardinalSplineTo).name();
+    g_luaType[typeName] = "CardinalSplineTo";
     return 1;
 }
 
@@ -37142,8 +37142,8 @@ int lua_register_cocos2dx_CardinalSplineBy(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_CardinalSplineBy_reverse);
         tolua_function(tolua_S,"new",lua_cocos2dx_CardinalSplineBy_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::CardinalSplineBy).hash_code();
-    g_luaType[typeId] = "CardinalSplineBy";
+    std::string typeName = typeid(cocos2d::CardinalSplineBy).name();
+    g_luaType[typeName] = "CardinalSplineBy";
     return 1;
 }
 
@@ -37323,8 +37323,8 @@ int lua_register_cocos2dx_CatmullRomTo(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_CatmullRomTo_reverse);
         tolua_function(tolua_S,"initWithDuration",lua_cocos2dx_CatmullRomTo_initWithDuration);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::CatmullRomTo).hash_code();
-    g_luaType[typeId] = "CatmullRomTo";
+    std::string typeName = typeid(cocos2d::CatmullRomTo).name();
+    g_luaType[typeName] = "CatmullRomTo";
     return 1;
 }
 
@@ -37504,8 +37504,8 @@ int lua_register_cocos2dx_CatmullRomBy(lua_State* tolua_S)
         tolua_function(tolua_S,"reverse",lua_cocos2dx_CatmullRomBy_reverse);
         tolua_function(tolua_S,"initWithDuration",lua_cocos2dx_CatmullRomBy_initWithDuration);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::CatmullRomBy).hash_code();
-    g_luaType[typeId] = "CatmullRomBy";
+    std::string typeName = typeid(cocos2d::CatmullRomBy).name();
+    g_luaType[typeName] = "CatmullRomBy";
     return 1;
 }
 
@@ -38166,8 +38166,8 @@ int lua_register_cocos2dx_AtlasNode(lua_State* tolua_S)
         tolua_function(tolua_S,"setQuadsToDraw",lua_cocos2dx_AtlasNode_setQuadsToDraw);
         tolua_function(tolua_S,"create", lua_cocos2dx_AtlasNode_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::AtlasNode).hash_code();
-    g_luaType[typeId] = "AtlasNode";
+    std::string typeName = typeid(cocos2d::AtlasNode).name();
+    g_luaType[typeName] = "AtlasNode";
     return 1;
 }
 
@@ -38447,8 +38447,8 @@ int lua_register_cocos2dx_DrawNode(lua_State* tolua_S)
         tolua_function(tolua_S,"drawSegment",lua_cocos2dx_DrawNode_drawSegment);
         tolua_function(tolua_S,"create", lua_cocos2dx_DrawNode_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::DrawNode).hash_code();
-    g_luaType[typeId] = "DrawNode";
+    std::string typeName = typeid(cocos2d::DrawNode).name();
+    g_luaType[typeName] = "DrawNode";
     return 1;
 }
 
@@ -39071,8 +39071,8 @@ int lua_register_cocos2dx_Camera(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_Camera_constructor);
         tolua_function(tolua_S,"getZEye", lua_cocos2dx_Camera_getZEye);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Camera).hash_code();
-    g_luaType[typeId] = "Camera";
+    std::string typeName = typeid(cocos2d::Camera).name();
+    g_luaType[typeName] = "Camera";
     return 1;
 }
 
@@ -39497,8 +39497,8 @@ int lua_register_cocos2dx_LabelAtlas(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_LabelAtlas_constructor);
         tolua_function(tolua_S,"_create", lua_cocos2dx_LabelAtlas_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::LabelAtlas).hash_code();
-    g_luaType[typeId] = "LabelAtlas";
+    std::string typeName = typeid(cocos2d::LabelAtlas).name();
+    g_luaType[typeName] = "LabelAtlas";
     return 1;
 }
 
@@ -41830,8 +41830,8 @@ int lua_register_cocos2dx_Director(lua_State* tolua_S)
         tolua_function(tolua_S,"getActionManager",lua_cocos2dx_Director_getActionManager);
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_Director_getInstance);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Director).hash_code();
-    g_luaType[typeId] = "Director";
+    std::string typeName = typeid(cocos2d::Director).name();
+    g_luaType[typeName] = "Director";
     return 1;
 }
 
@@ -42688,8 +42688,8 @@ int lua_register_cocos2dx_GridBase(lua_State* tolua_S)
         tolua_function(tolua_S,"reuse",lua_cocos2dx_GridBase_reuse);
         tolua_function(tolua_S,"create", lua_cocos2dx_GridBase_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::GridBase).hash_code();
-    g_luaType[typeId] = "GridBase";
+    std::string typeName = typeid(cocos2d::GridBase).name();
+    g_luaType[typeName] = "GridBase";
     return 1;
 }
 
@@ -42959,8 +42959,8 @@ int lua_register_cocos2dx_Grid3D(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_Grid3D_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_Grid3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Grid3D).hash_code();
-    g_luaType[typeId] = "Grid3D";
+    std::string typeName = typeid(cocos2d::Grid3D).name();
+    g_luaType[typeName] = "Grid3D";
     return 1;
 }
 
@@ -43230,8 +43230,8 @@ int lua_register_cocos2dx_TiledGrid3D(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_TiledGrid3D_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_TiledGrid3D_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TiledGrid3D).hash_code();
-    g_luaType[typeId] = "TiledGrid3D";
+    std::string typeName = typeid(cocos2d::TiledGrid3D).name();
+    g_luaType[typeName] = "TiledGrid3D";
     return 1;
 }
 
@@ -45758,8 +45758,8 @@ int lua_register_cocos2dx_Sprite(lua_State* tolua_S)
         tolua_function(tolua_S,"createWithSpriteFrameName", lua_cocos2dx_Sprite_createWithSpriteFrameName);
         tolua_function(tolua_S,"createWithSpriteFrame", lua_cocos2dx_Sprite_createWithSpriteFrame);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Sprite).hash_code();
-    g_luaType[typeId] = "Sprite";
+    std::string typeName = typeid(cocos2d::Sprite).name();
+    g_luaType[typeName] = "Sprite";
     return 1;
 }
 
@@ -45970,8 +45970,8 @@ int lua_register_cocos2dx_NewSprite(lua_State* tolua_S)
         tolua_function(tolua_S,"culling",lua_cocos2dx_NewSprite_culling);
         tolua_function(tolua_S,"create", lua_cocos2dx_NewSprite_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::NewSprite).hash_code();
-    g_luaType[typeId] = "NewSprite";
+    std::string typeName = typeid(cocos2d::NewSprite).name();
+    g_luaType[typeName] = "NewSprite";
     return 1;
 }
 
@@ -47339,8 +47339,8 @@ int lua_register_cocos2dx_LabelTTF(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_LabelTTF_create);
         tolua_function(tolua_S,"createWithFontDefinition", lua_cocos2dx_LabelTTF_createWithFontDefinition);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::LabelTTF).hash_code();
-    g_luaType[typeId] = "LabelTTF";
+    std::string typeName = typeid(cocos2d::LabelTTF).name();
+    g_luaType[typeName] = "LabelTTF";
     return 1;
 }
 
@@ -48743,8 +48743,8 @@ int lua_register_cocos2dx_SpriteBatchNode(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_SpriteBatchNode_create);
         tolua_function(tolua_S,"createWithTexture", lua_cocos2dx_SpriteBatchNode_createWithTexture);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::SpriteBatchNode).hash_code();
-    g_luaType[typeId] = "SpriteBatchNode";
+    std::string typeName = typeid(cocos2d::SpriteBatchNode).name();
+    g_luaType[typeName] = "SpriteBatchNode";
     return 1;
 }
 
@@ -48960,8 +48960,8 @@ int lua_register_cocos2dx_NewSpriteBatchNode(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_NewSpriteBatchNode_create);
         tolua_function(tolua_S,"createWithTexture", lua_cocos2dx_NewSpriteBatchNode_createWithTexture);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::NewSpriteBatchNode).hash_code();
-    g_luaType[typeId] = "NewSpriteBatchNode";
+    std::string typeName = typeid(cocos2d::NewSpriteBatchNode).name();
+    g_luaType[typeName] = "NewSpriteBatchNode";
     return 1;
 }
 
@@ -50097,8 +50097,8 @@ int lua_register_cocos2dx_LabelBMFont(lua_State* tolua_S)
         tolua_function(tolua_S,"purgeCachedData", lua_cocos2dx_LabelBMFont_purgeCachedData);
         tolua_function(tolua_S,"create", lua_cocos2dx_LabelBMFont_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::LabelBMFont).hash_code();
-    g_luaType[typeId] = "LabelBMFont";
+    std::string typeName = typeid(cocos2d::LabelBMFont).name();
+    g_luaType[typeName] = "LabelBMFont";
     return 1;
 }
 
@@ -52218,8 +52218,8 @@ int lua_register_cocos2dx_Label(lua_State* tolua_S)
         tolua_function(tolua_S,"createWithBMFont", lua_cocos2dx_Label_createWithBMFont);
         tolua_function(tolua_S,"createWithTTF", lua_cocos2dx_Label_createWithTTF);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Label).hash_code();
-    g_luaType[typeId] = "Label";
+    std::string typeName = typeid(cocos2d::Label).name();
+    g_luaType[typeName] = "Label";
     return 1;
 }
 
@@ -52322,8 +52322,8 @@ int lua_register_cocos2dx_Layer(lua_State* tolua_S)
         tolua_function(tolua_S,"getDescription",lua_cocos2dx_Layer_getDescription);
         tolua_function(tolua_S,"create", lua_cocos2dx_Layer_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Layer).hash_code();
-    g_luaType[typeId] = "Layer";
+    std::string typeName = typeid(cocos2d::Layer).name();
+    g_luaType[typeName] = "Layer";
     return 1;
 }
 
@@ -52739,8 +52739,8 @@ int lua_register_cocos2dx_LayerColor(lua_State* tolua_S)
         tolua_function(tolua_S,"changeHeight",lua_cocos2dx_LayerColor_changeHeight);
         tolua_function(tolua_S,"create", lua_cocos2dx_LayerColor_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::LayerColor).hash_code();
-    g_luaType[typeId] = "LayerColor";
+    std::string typeName = typeid(cocos2d::LayerColor).name();
+    g_luaType[typeName] = "LayerColor";
     return 1;
 }
 
@@ -53486,8 +53486,8 @@ int lua_register_cocos2dx_LayerGradient(lua_State* tolua_S)
         tolua_function(tolua_S,"getDescription",lua_cocos2dx_LayerGradient_getDescription);
         tolua_function(tolua_S,"create", lua_cocos2dx_LayerGradient_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::LayerGradient).hash_code();
-    g_luaType[typeId] = "LayerGradient";
+    std::string typeName = typeid(cocos2d::LayerGradient).name();
+    g_luaType[typeName] = "LayerGradient";
     return 1;
 }
 
@@ -53684,8 +53684,8 @@ int lua_register_cocos2dx_LayerMultiplex(lua_State* tolua_S)
         tolua_function(tolua_S,"addLayer",lua_cocos2dx_LayerMultiplex_addLayer);
         tolua_function(tolua_S,"switchTo",lua_cocos2dx_LayerMultiplex_switchTo);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::LayerMultiplex).hash_code();
-    g_luaType[typeId] = "LayerMultiplex";
+    std::string typeName = typeid(cocos2d::LayerMultiplex).name();
+    g_luaType[typeName] = "LayerMultiplex";
     return 1;
 }
 
@@ -54030,8 +54030,8 @@ int lua_register_cocos2dx_Scene(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_Scene_create);
         tolua_function(tolua_S,"createWithPhysics", lua_cocos2dx_Scene_createWithPhysics);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Scene).hash_code();
-    g_luaType[typeId] = "Scene";
+    std::string typeName = typeid(cocos2d::Scene).name();
+    g_luaType[typeName] = "Scene";
     return 1;
 }
 
@@ -54113,8 +54113,8 @@ int lua_register_cocos2dx_TransitionEaseScene(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionEaseScene");
         tolua_function(tolua_S,"easeActionWithAction",lua_cocos2dx_TransitionEaseScene_easeActionWithAction);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionEaseScene).hash_code();
-    g_luaType[typeId] = "TransitionEaseScene";
+    std::string typeName = typeid(cocos2d::TransitionEaseScene).name();
+    g_luaType[typeName] = "TransitionEaseScene";
     return 1;
 }
 
@@ -54352,8 +54352,8 @@ int lua_register_cocos2dx_TransitionScene(lua_State* tolua_S)
         tolua_function(tolua_S,"hideOutShowIn",lua_cocos2dx_TransitionScene_hideOutShowIn);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionScene_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionScene).hash_code();
-    g_luaType[typeId] = "TransitionScene";
+    std::string typeName = typeid(cocos2d::TransitionScene).name();
+    g_luaType[typeName] = "TransitionScene";
     return 1;
 }
 
@@ -54429,8 +54429,8 @@ int lua_register_cocos2dx_TransitionSceneOriented(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionSceneOriented");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionSceneOriented_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionSceneOriented).hash_code();
-    g_luaType[typeId] = "TransitionSceneOriented";
+    std::string typeName = typeid(cocos2d::TransitionSceneOriented).name();
+    g_luaType[typeName] = "TransitionSceneOriented";
     return 1;
 }
 
@@ -54504,8 +54504,8 @@ int lua_register_cocos2dx_TransitionRotoZoom(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionRotoZoom");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionRotoZoom_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionRotoZoom).hash_code();
-    g_luaType[typeId] = "TransitionRotoZoom";
+    std::string typeName = typeid(cocos2d::TransitionRotoZoom).name();
+    g_luaType[typeName] = "TransitionRotoZoom";
     return 1;
 }
 
@@ -54579,8 +54579,8 @@ int lua_register_cocos2dx_TransitionJumpZoom(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionJumpZoom");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionJumpZoom_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionJumpZoom).hash_code();
-    g_luaType[typeId] = "TransitionJumpZoom";
+    std::string typeName = typeid(cocos2d::TransitionJumpZoom).name();
+    g_luaType[typeName] = "TransitionJumpZoom";
     return 1;
 }
 
@@ -54773,8 +54773,8 @@ int lua_register_cocos2dx_TransitionMoveInL(lua_State* tolua_S)
         tolua_function(tolua_S,"easeActionWithAction",lua_cocos2dx_TransitionMoveInL_easeActionWithAction);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionMoveInL_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionMoveInL).hash_code();
-    g_luaType[typeId] = "TransitionMoveInL";
+    std::string typeName = typeid(cocos2d::TransitionMoveInL).name();
+    g_luaType[typeName] = "TransitionMoveInL";
     return 1;
 }
 
@@ -54848,8 +54848,8 @@ int lua_register_cocos2dx_TransitionMoveInR(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionMoveInR");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionMoveInR_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionMoveInR).hash_code();
-    g_luaType[typeId] = "TransitionMoveInR";
+    std::string typeName = typeid(cocos2d::TransitionMoveInR).name();
+    g_luaType[typeName] = "TransitionMoveInR";
     return 1;
 }
 
@@ -54923,8 +54923,8 @@ int lua_register_cocos2dx_TransitionMoveInT(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionMoveInT");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionMoveInT_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionMoveInT).hash_code();
-    g_luaType[typeId] = "TransitionMoveInT";
+    std::string typeName = typeid(cocos2d::TransitionMoveInT).name();
+    g_luaType[typeName] = "TransitionMoveInT";
     return 1;
 }
 
@@ -54998,8 +54998,8 @@ int lua_register_cocos2dx_TransitionMoveInB(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionMoveInB");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionMoveInB_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionMoveInB).hash_code();
-    g_luaType[typeId] = "TransitionMoveInB";
+    std::string typeName = typeid(cocos2d::TransitionMoveInB).name();
+    g_luaType[typeName] = "TransitionMoveInB";
     return 1;
 }
 
@@ -55192,8 +55192,8 @@ int lua_register_cocos2dx_TransitionSlideInL(lua_State* tolua_S)
         tolua_function(tolua_S,"easeActionWithAction",lua_cocos2dx_TransitionSlideInL_easeActionWithAction);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionSlideInL_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionSlideInL).hash_code();
-    g_luaType[typeId] = "TransitionSlideInL";
+    std::string typeName = typeid(cocos2d::TransitionSlideInL).name();
+    g_luaType[typeName] = "TransitionSlideInL";
     return 1;
 }
 
@@ -55321,8 +55321,8 @@ int lua_register_cocos2dx_TransitionSlideInR(lua_State* tolua_S)
         tolua_function(tolua_S,"action",lua_cocos2dx_TransitionSlideInR_action);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionSlideInR_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionSlideInR).hash_code();
-    g_luaType[typeId] = "TransitionSlideInR";
+    std::string typeName = typeid(cocos2d::TransitionSlideInR).name();
+    g_luaType[typeName] = "TransitionSlideInR";
     return 1;
 }
 
@@ -55450,8 +55450,8 @@ int lua_register_cocos2dx_TransitionSlideInB(lua_State* tolua_S)
         tolua_function(tolua_S,"action",lua_cocos2dx_TransitionSlideInB_action);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionSlideInB_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionSlideInB).hash_code();
-    g_luaType[typeId] = "TransitionSlideInB";
+    std::string typeName = typeid(cocos2d::TransitionSlideInB).name();
+    g_luaType[typeName] = "TransitionSlideInB";
     return 1;
 }
 
@@ -55579,8 +55579,8 @@ int lua_register_cocos2dx_TransitionSlideInT(lua_State* tolua_S)
         tolua_function(tolua_S,"action",lua_cocos2dx_TransitionSlideInT_action);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionSlideInT_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionSlideInT).hash_code();
-    g_luaType[typeId] = "TransitionSlideInT";
+    std::string typeName = typeid(cocos2d::TransitionSlideInT).name();
+    g_luaType[typeName] = "TransitionSlideInT";
     return 1;
 }
 
@@ -55719,8 +55719,8 @@ int lua_register_cocos2dx_TransitionShrinkGrow(lua_State* tolua_S)
         tolua_function(tolua_S,"easeActionWithAction",lua_cocos2dx_TransitionShrinkGrow_easeActionWithAction);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionShrinkGrow_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionShrinkGrow).hash_code();
-    g_luaType[typeId] = "TransitionShrinkGrow";
+    std::string typeName = typeid(cocos2d::TransitionShrinkGrow).name();
+    g_luaType[typeName] = "TransitionShrinkGrow";
     return 1;
 }
 
@@ -55837,8 +55837,8 @@ int lua_register_cocos2dx_TransitionFlipX(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionFlipX");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionFlipX_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionFlipX).hash_code();
-    g_luaType[typeId] = "TransitionFlipX";
+    std::string typeName = typeid(cocos2d::TransitionFlipX).name();
+    g_luaType[typeName] = "TransitionFlipX";
     return 1;
 }
 
@@ -55955,8 +55955,8 @@ int lua_register_cocos2dx_TransitionFlipY(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionFlipY");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionFlipY_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionFlipY).hash_code();
-    g_luaType[typeId] = "TransitionFlipY";
+    std::string typeName = typeid(cocos2d::TransitionFlipY).name();
+    g_luaType[typeName] = "TransitionFlipY";
     return 1;
 }
 
@@ -56073,8 +56073,8 @@ int lua_register_cocos2dx_TransitionFlipAngular(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionFlipAngular");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionFlipAngular_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionFlipAngular).hash_code();
-    g_luaType[typeId] = "TransitionFlipAngular";
+    std::string typeName = typeid(cocos2d::TransitionFlipAngular).name();
+    g_luaType[typeName] = "TransitionFlipAngular";
     return 1;
 }
 
@@ -56191,8 +56191,8 @@ int lua_register_cocos2dx_TransitionZoomFlipX(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionZoomFlipX");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionZoomFlipX_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionZoomFlipX).hash_code();
-    g_luaType[typeId] = "TransitionZoomFlipX";
+    std::string typeName = typeid(cocos2d::TransitionZoomFlipX).name();
+    g_luaType[typeName] = "TransitionZoomFlipX";
     return 1;
 }
 
@@ -56309,8 +56309,8 @@ int lua_register_cocos2dx_TransitionZoomFlipY(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionZoomFlipY");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionZoomFlipY_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionZoomFlipY).hash_code();
-    g_luaType[typeId] = "TransitionZoomFlipY";
+    std::string typeName = typeid(cocos2d::TransitionZoomFlipY).name();
+    g_luaType[typeName] = "TransitionZoomFlipY";
     return 1;
 }
 
@@ -56427,8 +56427,8 @@ int lua_register_cocos2dx_TransitionZoomFlipAngular(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionZoomFlipAngular");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionZoomFlipAngular_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionZoomFlipAngular).hash_code();
-    g_luaType[typeId] = "TransitionZoomFlipAngular";
+    std::string typeName = typeid(cocos2d::TransitionZoomFlipAngular).name();
+    g_luaType[typeName] = "TransitionZoomFlipAngular";
     return 1;
 }
 
@@ -56545,8 +56545,8 @@ int lua_register_cocos2dx_TransitionFade(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionFade");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionFade_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionFade).hash_code();
-    g_luaType[typeId] = "TransitionFade";
+    std::string typeName = typeid(cocos2d::TransitionFade).name();
+    g_luaType[typeName] = "TransitionFade";
     return 1;
 }
 
@@ -56661,8 +56661,8 @@ int lua_register_cocos2dx_TransitionCrossFade(lua_State* tolua_S)
         tolua_function(tolua_S,"draw",lua_cocos2dx_TransitionCrossFade_draw);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionCrossFade_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionCrossFade).hash_code();
-    g_luaType[typeId] = "TransitionCrossFade";
+    std::string typeName = typeid(cocos2d::TransitionCrossFade).name();
+    g_luaType[typeName] = "TransitionCrossFade";
     return 1;
 }
 
@@ -56842,8 +56842,8 @@ int lua_register_cocos2dx_TransitionTurnOffTiles(lua_State* tolua_S)
         tolua_function(tolua_S,"easeActionWithAction",lua_cocos2dx_TransitionTurnOffTiles_easeActionWithAction);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionTurnOffTiles_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionTurnOffTiles).hash_code();
-    g_luaType[typeId] = "TransitionTurnOffTiles";
+    std::string typeName = typeid(cocos2d::TransitionTurnOffTiles).name();
+    g_luaType[typeName] = "TransitionTurnOffTiles";
     return 1;
 }
 
@@ -57077,8 +57077,8 @@ int lua_register_cocos2dx_TransitionSplitCols(lua_State* tolua_S)
         tolua_function(tolua_S,"draw",lua_cocos2dx_TransitionSplitCols_draw);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionSplitCols_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionSplitCols).hash_code();
-    g_luaType[typeId] = "TransitionSplitCols";
+    std::string typeName = typeid(cocos2d::TransitionSplitCols).name();
+    g_luaType[typeName] = "TransitionSplitCols";
     return 1;
 }
 
@@ -57206,8 +57206,8 @@ int lua_register_cocos2dx_TransitionSplitRows(lua_State* tolua_S)
         tolua_function(tolua_S,"action",lua_cocos2dx_TransitionSplitRows_action);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionSplitRows_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionSplitRows).hash_code();
-    g_luaType[typeId] = "TransitionSplitRows";
+    std::string typeName = typeid(cocos2d::TransitionSplitRows).name();
+    g_luaType[typeName] = "TransitionSplitRows";
     return 1;
 }
 
@@ -57443,8 +57443,8 @@ int lua_register_cocos2dx_TransitionFadeTR(lua_State* tolua_S)
         tolua_function(tolua_S,"actionWithSize",lua_cocos2dx_TransitionFadeTR_actionWithSize);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionFadeTR_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionFadeTR).hash_code();
-    g_luaType[typeId] = "TransitionFadeTR";
+    std::string typeName = typeid(cocos2d::TransitionFadeTR).name();
+    g_luaType[typeName] = "TransitionFadeTR";
     return 1;
 }
 
@@ -57574,8 +57574,8 @@ int lua_register_cocos2dx_TransitionFadeBL(lua_State* tolua_S)
         tolua_function(tolua_S,"actionWithSize",lua_cocos2dx_TransitionFadeBL_actionWithSize);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionFadeBL_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionFadeBL).hash_code();
-    g_luaType[typeId] = "TransitionFadeBL";
+    std::string typeName = typeid(cocos2d::TransitionFadeBL).name();
+    g_luaType[typeName] = "TransitionFadeBL";
     return 1;
 }
 
@@ -57705,8 +57705,8 @@ int lua_register_cocos2dx_TransitionFadeUp(lua_State* tolua_S)
         tolua_function(tolua_S,"actionWithSize",lua_cocos2dx_TransitionFadeUp_actionWithSize);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionFadeUp_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionFadeUp).hash_code();
-    g_luaType[typeId] = "TransitionFadeUp";
+    std::string typeName = typeid(cocos2d::TransitionFadeUp).name();
+    g_luaType[typeName] = "TransitionFadeUp";
     return 1;
 }
 
@@ -57836,8 +57836,8 @@ int lua_register_cocos2dx_TransitionFadeDown(lua_State* tolua_S)
         tolua_function(tolua_S,"actionWithSize",lua_cocos2dx_TransitionFadeDown_actionWithSize);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionFadeDown_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionFadeDown).hash_code();
-    g_luaType[typeId] = "TransitionFadeDown";
+    std::string typeName = typeid(cocos2d::TransitionFadeDown).name();
+    g_luaType[typeName] = "TransitionFadeDown";
     return 1;
 }
 
@@ -58109,8 +58109,8 @@ int lua_register_cocos2dx_TransitionPageTurn(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_TransitionPageTurn_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionPageTurn_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionPageTurn).hash_code();
-    g_luaType[typeId] = "TransitionPageTurn";
+    std::string typeName = typeid(cocos2d::TransitionPageTurn).name();
+    g_luaType[typeName] = "TransitionPageTurn";
     return 1;
 }
 
@@ -58225,8 +58225,8 @@ int lua_register_cocos2dx_TransitionProgress(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionProgress");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionProgress_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionProgress).hash_code();
-    g_luaType[typeId] = "TransitionProgress";
+    std::string typeName = typeid(cocos2d::TransitionProgress).name();
+    g_luaType[typeName] = "TransitionProgress";
     return 1;
 }
 
@@ -58300,8 +58300,8 @@ int lua_register_cocos2dx_TransitionProgressRadialCCW(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionProgressRadialCCW");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionProgressRadialCCW_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionProgressRadialCCW).hash_code();
-    g_luaType[typeId] = "TransitionProgressRadialCCW";
+    std::string typeName = typeid(cocos2d::TransitionProgressRadialCCW).name();
+    g_luaType[typeName] = "TransitionProgressRadialCCW";
     return 1;
 }
 
@@ -58375,8 +58375,8 @@ int lua_register_cocos2dx_TransitionProgressRadialCW(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionProgressRadialCW");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionProgressRadialCW_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionProgressRadialCW).hash_code();
-    g_luaType[typeId] = "TransitionProgressRadialCW";
+    std::string typeName = typeid(cocos2d::TransitionProgressRadialCW).name();
+    g_luaType[typeName] = "TransitionProgressRadialCW";
     return 1;
 }
 
@@ -58450,8 +58450,8 @@ int lua_register_cocos2dx_TransitionProgressHorizontal(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionProgressHorizontal");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionProgressHorizontal_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionProgressHorizontal).hash_code();
-    g_luaType[typeId] = "TransitionProgressHorizontal";
+    std::string typeName = typeid(cocos2d::TransitionProgressHorizontal).name();
+    g_luaType[typeName] = "TransitionProgressHorizontal";
     return 1;
 }
 
@@ -58525,8 +58525,8 @@ int lua_register_cocos2dx_TransitionProgressVertical(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionProgressVertical");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionProgressVertical_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionProgressVertical).hash_code();
-    g_luaType[typeId] = "TransitionProgressVertical";
+    std::string typeName = typeid(cocos2d::TransitionProgressVertical).name();
+    g_luaType[typeName] = "TransitionProgressVertical";
     return 1;
 }
 
@@ -58600,8 +58600,8 @@ int lua_register_cocos2dx_TransitionProgressInOut(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionProgressInOut");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionProgressInOut_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionProgressInOut).hash_code();
-    g_luaType[typeId] = "TransitionProgressInOut";
+    std::string typeName = typeid(cocos2d::TransitionProgressInOut).name();
+    g_luaType[typeName] = "TransitionProgressInOut";
     return 1;
 }
 
@@ -58675,8 +58675,8 @@ int lua_register_cocos2dx_TransitionProgressOutIn(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TransitionProgressOutIn");
         tolua_function(tolua_S,"create", lua_cocos2dx_TransitionProgressOutIn_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TransitionProgressOutIn).hash_code();
-    g_luaType[typeId] = "TransitionProgressOutIn";
+    std::string typeName = typeid(cocos2d::TransitionProgressOutIn).name();
+    g_luaType[typeName] = "TransitionProgressOutIn";
     return 1;
 }
 
@@ -59027,8 +59027,8 @@ int lua_register_cocos2dx_MenuItem(lua_State* tolua_S)
         tolua_function(tolua_S,"unselected",lua_cocos2dx_MenuItem_unselected);
         tolua_function(tolua_S,"rect",lua_cocos2dx_MenuItem_rect);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MenuItem).hash_code();
-    g_luaType[typeId] = "MenuItem";
+    std::string typeName = typeid(cocos2d::MenuItem).name();
+    g_luaType[typeName] = "MenuItem";
     return 1;
 }
 
@@ -59445,8 +59445,8 @@ int lua_register_cocos2dx_MenuItemLabel(lua_State* tolua_S)
         tolua_function(tolua_S,"getLabel",lua_cocos2dx_MenuItemLabel_getLabel);
         tolua_function(tolua_S,"unselected",lua_cocos2dx_MenuItemLabel_unselected);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MenuItemLabel).hash_code();
-    g_luaType[typeId] = "MenuItemLabel";
+    std::string typeName = typeid(cocos2d::MenuItemLabel).name();
+    g_luaType[typeName] = "MenuItemLabel";
     return 1;
 }
 
@@ -59463,8 +59463,8 @@ int lua_register_cocos2dx_MenuItemAtlasFont(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"MenuItemAtlasFont");
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MenuItemAtlasFont).hash_code();
-    g_luaType[typeId] = "MenuItemAtlasFont";
+    std::string typeName = typeid(cocos2d::MenuItemAtlasFont).name();
+    g_luaType[typeName] = "MenuItemAtlasFont";
     return 1;
 }
 
@@ -59781,8 +59781,8 @@ int lua_register_cocos2dx_MenuItemFont(lua_State* tolua_S)
         tolua_function(tolua_S,"getFontName", lua_cocos2dx_MenuItemFont_getFontName);
         tolua_function(tolua_S,"setFontSize", lua_cocos2dx_MenuItemFont_setFontSize);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MenuItemFont).hash_code();
-    g_luaType[typeId] = "MenuItemFont";
+    std::string typeName = typeid(cocos2d::MenuItemFont).name();
+    g_luaType[typeName] = "MenuItemFont";
     return 1;
 }
 
@@ -60242,8 +60242,8 @@ int lua_register_cocos2dx_MenuItemSprite(lua_State* tolua_S)
         tolua_function(tolua_S,"getNormalImage",lua_cocos2dx_MenuItemSprite_getNormalImage);
         tolua_function(tolua_S,"unselected",lua_cocos2dx_MenuItemSprite_unselected);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MenuItemSprite).hash_code();
-    g_luaType[typeId] = "MenuItemSprite";
+    std::string typeName = typeid(cocos2d::MenuItemSprite).name();
+    g_luaType[typeName] = "MenuItemSprite";
     return 1;
 }
 
@@ -60416,8 +60416,8 @@ int lua_register_cocos2dx_MenuItemImage(lua_State* tolua_S)
         tolua_function(tolua_S,"setSelectedSpriteFrame",lua_cocos2dx_MenuItemImage_setSelectedSpriteFrame);
         tolua_function(tolua_S,"setNormalSpriteFrame",lua_cocos2dx_MenuItemImage_setNormalSpriteFrame);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MenuItemImage).hash_code();
-    g_luaType[typeId] = "MenuItemImage";
+    std::string typeName = typeid(cocos2d::MenuItemImage).name();
+    g_luaType[typeName] = "MenuItemImage";
     return 1;
 }
 
@@ -60834,8 +60834,8 @@ int lua_register_cocos2dx_MenuItemToggle(lua_State* tolua_S)
         tolua_function(tolua_S,"getSelectedItem",lua_cocos2dx_MenuItemToggle_getSelectedItem);
         tolua_function(tolua_S,"setSelectedIndex",lua_cocos2dx_MenuItemToggle_setSelectedIndex);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MenuItemToggle).hash_code();
-    g_luaType[typeId] = "MenuItemToggle";
+    std::string typeName = typeid(cocos2d::MenuItemToggle).name();
+    g_luaType[typeName] = "MenuItemToggle";
     return 1;
 }
 
@@ -61387,8 +61387,8 @@ int lua_register_cocos2dx_Menu(lua_State* tolua_S)
         tolua_function(tolua_S,"alignItemsVerticallyWithPadding",lua_cocos2dx_Menu_alignItemsVerticallyWithPadding);
         tolua_function(tolua_S,"isOpacityModifyRGB",lua_cocos2dx_Menu_isOpacityModifyRGB);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Menu).hash_code();
-    g_luaType[typeId] = "Menu";
+    std::string typeName = typeid(cocos2d::Menu).name();
+    g_luaType[typeName] = "Menu";
     return 1;
 }
 
@@ -61801,8 +61801,8 @@ int lua_register_cocos2dx_ClippingNode(lua_State* tolua_S)
         tolua_function(tolua_S,"setAlphaThreshold",lua_cocos2dx_ClippingNode_setAlphaThreshold);
         tolua_function(tolua_S,"create", lua_cocos2dx_ClippingNode_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ClippingNode).hash_code();
-    g_luaType[typeId] = "ClippingNode";
+    std::string typeName = typeid(cocos2d::ClippingNode).name();
+    g_luaType[typeName] = "ClippingNode";
     return 1;
 }
 
@@ -62498,8 +62498,8 @@ int lua_register_cocos2dx_MotionStreak(lua_State* tolua_S)
         tolua_function(tolua_S,"setFastMode",lua_cocos2dx_MotionStreak_setFastMode);
         tolua_function(tolua_S,"create", lua_cocos2dx_MotionStreak_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::MotionStreak).hash_code();
-    g_luaType[typeId] = "MotionStreak";
+    std::string typeName = typeid(cocos2d::MotionStreak).name();
+    g_luaType[typeName] = "MotionStreak";
     return 1;
 }
 
@@ -63194,8 +63194,8 @@ int lua_register_cocos2dx_ProgressTimer(lua_State* tolua_S)
         tolua_function(tolua_S,"setType",lua_cocos2dx_ProgressTimer_setType);
         tolua_function(tolua_S,"create", lua_cocos2dx_ProgressTimer_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ProgressTimer).hash_code();
-    g_luaType[typeId] = "ProgressTimer";
+    std::string typeName = typeid(cocos2d::ProgressTimer).name();
+    g_luaType[typeName] = "ProgressTimer";
     return 1;
 }
 
@@ -63900,8 +63900,8 @@ int lua_register_cocos2dx_Image(lua_State* tolua_S)
         tolua_function(tolua_S,"getMipmaps",lua_cocos2dx_Image_getMipmaps);
         tolua_function(tolua_S,"new",lua_cocos2dx_Image_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Image).hash_code();
-    g_luaType[typeId] = "Image";
+    std::string typeName = typeid(cocos2d::Image).name();
+    g_luaType[typeName] = "Image";
     return 1;
 }
 
@@ -65367,8 +65367,8 @@ int lua_register_cocos2dx_RenderTexture(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_RenderTexture_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_RenderTexture_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::RenderTexture).hash_code();
-    g_luaType[typeId] = "RenderTexture";
+    std::string typeName = typeid(cocos2d::RenderTexture).name();
+    g_luaType[typeName] = "RenderTexture";
     return 1;
 }
 
@@ -66374,8 +66374,8 @@ int lua_register_cocos2dx_ParticleBatchNode(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleBatchNode_create);
         tolua_function(tolua_S,"createWithTexture", lua_cocos2dx_ParticleBatchNode_createWithTexture);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleBatchNode).hash_code();
-    g_luaType[typeId] = "ParticleBatchNode";
+    std::string typeName = typeid(cocos2d::ParticleBatchNode).name();
+    g_luaType[typeName] = "ParticleBatchNode";
     return 1;
 }
 
@@ -70816,8 +70816,8 @@ int lua_register_cocos2dx_ParticleSystem(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleSystem_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleSystem_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleSystem).hash_code();
-    g_luaType[typeId] = "ParticleSystem";
+    std::string typeName = typeid(cocos2d::ParticleSystem).name();
+    g_luaType[typeName] = "ParticleSystem";
     return 1;
 }
 
@@ -71098,8 +71098,8 @@ int lua_register_cocos2dx_ParticleSystemQuad(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleSystemQuad_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleSystemQuad_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleSystemQuad).hash_code();
-    g_luaType[typeId] = "ParticleSystemQuad";
+    std::string typeName = typeid(cocos2d::ParticleSystemQuad).name();
+    g_luaType[typeName] = "ParticleSystemQuad";
     return 1;
 }
 
@@ -71206,8 +71206,8 @@ int lua_register_cocos2dx_ParticleFire(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleFire_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleFire_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleFire).hash_code();
-    g_luaType[typeId] = "ParticleFire";
+    std::string typeName = typeid(cocos2d::ParticleFire).name();
+    g_luaType[typeName] = "ParticleFire";
     return 1;
 }
 
@@ -71314,8 +71314,8 @@ int lua_register_cocos2dx_ParticleFireworks(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleFireworks_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleFireworks_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleFireworks).hash_code();
-    g_luaType[typeId] = "ParticleFireworks";
+    std::string typeName = typeid(cocos2d::ParticleFireworks).name();
+    g_luaType[typeName] = "ParticleFireworks";
     return 1;
 }
 
@@ -71422,8 +71422,8 @@ int lua_register_cocos2dx_ParticleSun(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleSun_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleSun_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleSun).hash_code();
-    g_luaType[typeId] = "ParticleSun";
+    std::string typeName = typeid(cocos2d::ParticleSun).name();
+    g_luaType[typeName] = "ParticleSun";
     return 1;
 }
 
@@ -71530,8 +71530,8 @@ int lua_register_cocos2dx_ParticleGalaxy(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleGalaxy_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleGalaxy_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleGalaxy).hash_code();
-    g_luaType[typeId] = "ParticleGalaxy";
+    std::string typeName = typeid(cocos2d::ParticleGalaxy).name();
+    g_luaType[typeName] = "ParticleGalaxy";
     return 1;
 }
 
@@ -71638,8 +71638,8 @@ int lua_register_cocos2dx_ParticleFlower(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleFlower_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleFlower_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleFlower).hash_code();
-    g_luaType[typeId] = "ParticleFlower";
+    std::string typeName = typeid(cocos2d::ParticleFlower).name();
+    g_luaType[typeName] = "ParticleFlower";
     return 1;
 }
 
@@ -71746,8 +71746,8 @@ int lua_register_cocos2dx_ParticleMeteor(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleMeteor_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleMeteor_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleMeteor).hash_code();
-    g_luaType[typeId] = "ParticleMeteor";
+    std::string typeName = typeid(cocos2d::ParticleMeteor).name();
+    g_luaType[typeName] = "ParticleMeteor";
     return 1;
 }
 
@@ -71854,8 +71854,8 @@ int lua_register_cocos2dx_ParticleSpiral(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleSpiral_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleSpiral_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleSpiral).hash_code();
-    g_luaType[typeId] = "ParticleSpiral";
+    std::string typeName = typeid(cocos2d::ParticleSpiral).name();
+    g_luaType[typeName] = "ParticleSpiral";
     return 1;
 }
 
@@ -71962,8 +71962,8 @@ int lua_register_cocos2dx_ParticleExplosion(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleExplosion_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleExplosion_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleExplosion).hash_code();
-    g_luaType[typeId] = "ParticleExplosion";
+    std::string typeName = typeid(cocos2d::ParticleExplosion).name();
+    g_luaType[typeName] = "ParticleExplosion";
     return 1;
 }
 
@@ -72070,8 +72070,8 @@ int lua_register_cocos2dx_ParticleSmoke(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleSmoke_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleSmoke_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleSmoke).hash_code();
-    g_luaType[typeId] = "ParticleSmoke";
+    std::string typeName = typeid(cocos2d::ParticleSmoke).name();
+    g_luaType[typeName] = "ParticleSmoke";
     return 1;
 }
 
@@ -72178,8 +72178,8 @@ int lua_register_cocos2dx_ParticleSnow(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleSnow_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleSnow_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleSnow).hash_code();
-    g_luaType[typeId] = "ParticleSnow";
+    std::string typeName = typeid(cocos2d::ParticleSnow).name();
+    g_luaType[typeName] = "ParticleSnow";
     return 1;
 }
 
@@ -72286,8 +72286,8 @@ int lua_register_cocos2dx_ParticleRain(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleRain_create);
         tolua_function(tolua_S,"createWithTotalParticles", lua_cocos2dx_ParticleRain_createWithTotalParticles);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParticleRain).hash_code();
-    g_luaType[typeId] = "ParticleRain";
+    std::string typeName = typeid(cocos2d::ParticleRain).name();
+    g_luaType[typeName] = "ParticleRain";
     return 1;
 }
 
@@ -72731,8 +72731,8 @@ int lua_register_cocos2dx_NewRenderTexture(lua_State* tolua_S)
         tolua_function(tolua_S,"draw",lua_cocos2dx_NewRenderTexture_draw);
         tolua_function(tolua_S,"create", lua_cocos2dx_NewRenderTexture_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::NewRenderTexture).hash_code();
-    g_luaType[typeId] = "NewRenderTexture";
+    std::string typeName = typeid(cocos2d::NewRenderTexture).name();
+    g_luaType[typeName] = "NewRenderTexture";
     return 1;
 }
 
@@ -72869,8 +72869,8 @@ int lua_register_cocos2dx_NewClippingNode(lua_State* tolua_S)
         tolua_function(tolua_S,"visit",lua_cocos2dx_NewClippingNode_visit);
         tolua_function(tolua_S,"create", lua_cocos2dx_NewClippingNode_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::NewClippingNode).hash_code();
-    g_luaType[typeId] = "NewClippingNode";
+    std::string typeName = typeid(cocos2d::NewClippingNode).name();
+    g_luaType[typeName] = "NewClippingNode";
     return 1;
 }
 
@@ -73614,8 +73614,8 @@ int lua_register_cocos2dx_FileUtils(lua_State* tolua_S)
         tolua_function(tolua_S,"destroyInstance", lua_cocos2dx_FileUtils_destroyInstance);
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_FileUtils_getInstance);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::FileUtils).hash_code();
-    g_luaType[typeId] = "FileUtils";
+    std::string typeName = typeid(cocos2d::FileUtils).name();
+    g_luaType[typeName] = "FileUtils";
     return 1;
 }
 
@@ -73803,8 +73803,8 @@ int lua_register_cocos2dx_Application(lua_State* tolua_S)
         tolua_function(tolua_S,"getCurrentLanguage",lua_cocos2dx_Application_getCurrentLanguage);
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_Application_getInstance);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Application).hash_code();
-    g_luaType[typeId] = "Application";
+    std::string typeName = typeid(cocos2d::Application).name();
+    g_luaType[typeName] = "Application";
     return 1;
 }
 
@@ -74878,8 +74878,8 @@ int lua_register_cocos2dx_EGLViewProtocol(lua_State* tolua_S)
         tolua_function(tolua_S,"isScissorEnabled",lua_cocos2dx_EGLViewProtocol_isScissorEnabled);
         tolua_function(tolua_S,"handleTouchesEnd",lua_cocos2dx_EGLViewProtocol_handleTouchesEnd);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EGLViewProtocol).hash_code();
-    g_luaType[typeId] = "EGLViewProtocol";
+    std::string typeName = typeid(cocos2d::EGLViewProtocol).name();
+    g_luaType[typeName] = "EGLViewProtocol";
     return 1;
 }
 
@@ -75025,8 +75025,8 @@ int lua_register_cocos2dx_EGLView(lua_State* tolua_S)
         tolua_function(tolua_S,"isOpenGLReady",lua_cocos2dx_EGLView_isOpenGLReady);
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_EGLView_getInstance);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::EGLView).hash_code();
-    g_luaType[typeId] = "EGLView";
+    std::string typeName = typeid(cocos2d::EGLView).name();
+    g_luaType[typeName] = "EGLView";
     return 1;
 }
 
@@ -75352,8 +75352,8 @@ int lua_register_cocos2dx_ShaderCache(lua_State* tolua_S)
         tolua_function(tolua_S,"destroyInstance", lua_cocos2dx_ShaderCache_destroyInstance);
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_ShaderCache_getInstance);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ShaderCache).hash_code();
-    g_luaType[typeId] = "ShaderCache";
+    std::string typeName = typeid(cocos2d::ShaderCache).name();
+    g_luaType[typeName] = "ShaderCache";
     return 1;
 }
 
@@ -75768,8 +75768,8 @@ int lua_register_cocos2dx_AnimationCache(lua_State* tolua_S)
         tolua_function(tolua_S,"destroyInstance", lua_cocos2dx_AnimationCache_destroyInstance);
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_AnimationCache_getInstance);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::AnimationCache).hash_code();
-    g_luaType[typeId] = "AnimationCache";
+    std::string typeName = typeid(cocos2d::AnimationCache).name();
+    g_luaType[typeName] = "AnimationCache";
     return 1;
 }
 
@@ -76312,8 +76312,8 @@ int lua_register_cocos2dx_SpriteFrameCache(lua_State* tolua_S)
         tolua_function(tolua_S,"destroyInstance", lua_cocos2dx_SpriteFrameCache_destroyInstance);
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_SpriteFrameCache_getInstance);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::SpriteFrameCache).hash_code();
-    g_luaType[typeId] = "SpriteFrameCache";
+    std::string typeName = typeid(cocos2d::SpriteFrameCache).name();
+    g_luaType[typeName] = "SpriteFrameCache";
     return 1;
 }
 
@@ -76976,8 +76976,8 @@ int lua_register_cocos2dx_UserDefault(lua_State* tolua_S)
         tolua_function(tolua_S,"getXMLFilePath", lua_cocos2dx_UserDefault_getXMLFilePath);
         tolua_function(tolua_S,"isXMLFileExist", lua_cocos2dx_UserDefault_isXMLFileExist);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::UserDefault).hash_code();
-    g_luaType[typeId] = "UserDefault";
+    std::string typeName = typeid(cocos2d::UserDefault).name();
+    g_luaType[typeName] = "UserDefault";
     return 1;
 }
 
@@ -77483,8 +77483,8 @@ int lua_register_cocos2dx_TextureCache(lua_State* tolua_S)
         tolua_function(tolua_S,"waitForQuit",lua_cocos2dx_TextureCache_waitForQuit);
         tolua_function(tolua_S,"new",lua_cocos2dx_TextureCache_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TextureCache).hash_code();
-    g_luaType[typeId] = "TextureCache";
+    std::string typeName = typeid(cocos2d::TextureCache).name();
+    g_luaType[typeName] = "TextureCache";
     return 1;
 }
 
@@ -77860,8 +77860,8 @@ int lua_register_cocos2dx_ParallaxNode(lua_State* tolua_S)
         tolua_function(tolua_S,"setParallaxArray",lua_cocos2dx_ParallaxNode_setParallaxArray);
         tolua_function(tolua_S,"create", lua_cocos2dx_ParallaxNode_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::ParallaxNode).hash_code();
-    g_luaType[typeId] = "ParallaxNode";
+    std::string typeName = typeid(cocos2d::ParallaxNode).name();
+    g_luaType[typeName] = "ParallaxNode";
     return 1;
 }
 
@@ -78354,8 +78354,8 @@ int lua_register_cocos2dx_TMXObjectGroup(lua_State* tolua_S)
         tolua_function(tolua_S,"setObjects",lua_cocos2dx_TMXObjectGroup_setObjects);
         tolua_function(tolua_S,"new",lua_cocos2dx_TMXObjectGroup_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TMXObjectGroup).hash_code();
-    g_luaType[typeId] = "TMXObjectGroup";
+    std::string typeName = typeid(cocos2d::TMXObjectGroup).name();
+    g_luaType[typeName] = "TMXObjectGroup";
     return 1;
 }
 
@@ -78499,8 +78499,8 @@ int lua_register_cocos2dx_TMXLayerInfo(lua_State* tolua_S)
         tolua_function(tolua_S,"getProperties",lua_cocos2dx_TMXLayerInfo_getProperties);
         tolua_function(tolua_S,"new",lua_cocos2dx_TMXLayerInfo_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TMXLayerInfo).hash_code();
-    g_luaType[typeId] = "TMXLayerInfo";
+    std::string typeName = typeid(cocos2d::TMXLayerInfo).name();
+    g_luaType[typeName] = "TMXLayerInfo";
     return 1;
 }
 
@@ -78603,8 +78603,8 @@ int lua_register_cocos2dx_TMXTilesetInfo(lua_State* tolua_S)
         tolua_function(tolua_S,"rectForGID",lua_cocos2dx_TMXTilesetInfo_rectForGID);
         tolua_function(tolua_S,"new",lua_cocos2dx_TMXTilesetInfo_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TMXTilesetInfo).hash_code();
-    g_luaType[typeId] = "TMXTilesetInfo";
+    std::string typeName = typeid(cocos2d::TMXTilesetInfo).name();
+    g_luaType[typeName] = "TMXTilesetInfo";
     return 1;
 }
 
@@ -80134,8 +80134,8 @@ int lua_register_cocos2dx_TMXMapInfo(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_TMXMapInfo_create);
         tolua_function(tolua_S,"createWithXML", lua_cocos2dx_TMXMapInfo_createWithXML);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TMXMapInfo).hash_code();
-    g_luaType[typeId] = "TMXMapInfo";
+    std::string typeName = typeid(cocos2d::TMXMapInfo).name();
+    g_luaType[typeName] = "TMXMapInfo";
     return 1;
 }
 
@@ -81463,8 +81463,8 @@ int lua_register_cocos2dx_TMXLayer(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_TMXLayer_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_TMXLayer_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TMXLayer).hash_code();
-    g_luaType[typeId] = "TMXLayer";
+    std::string typeName = typeid(cocos2d::TMXLayer).name();
+    g_luaType[typeName] = "TMXLayer";
     return 1;
 }
 
@@ -82245,8 +82245,8 @@ int lua_register_cocos2dx_TMXTiledMap(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_TMXTiledMap_create);
         tolua_function(tolua_S,"createWithXML", lua_cocos2dx_TMXTiledMap_createWithXML);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TMXTiledMap).hash_code();
-    g_luaType[typeId] = "TMXTiledMap";
+    std::string typeName = typeid(cocos2d::TMXTiledMap).name();
+    g_luaType[typeName] = "TMXTiledMap";
     return 1;
 }
 
@@ -82622,8 +82622,8 @@ int lua_register_cocos2dx_TileMapAtlas(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_TileMapAtlas_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_TileMapAtlas_create);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::TileMapAtlas).hash_code();
-    g_luaType[typeId] = "TileMapAtlas";
+    std::string typeName = typeid(cocos2d::TileMapAtlas).name();
+    g_luaType[typeName] = "TileMapAtlas";
     return 1;
 }
 
@@ -82898,8 +82898,8 @@ int lua_register_cocos2dx_Timer(lua_State* tolua_S)
         tolua_function(tolua_S,"getScriptHandler",lua_cocos2dx_Timer_getScriptHandler);
         tolua_function(tolua_S,"new",lua_cocos2dx_Timer_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Timer).hash_code();
-    g_luaType[typeId] = "Timer";
+    std::string typeName = typeid(cocos2d::Timer).name();
+    g_luaType[typeName] = "Timer";
     return 1;
 }
 
@@ -83090,8 +83090,8 @@ int lua_register_cocos2dx_Scheduler(lua_State* tolua_S)
         tolua_function(tolua_S,"getTimeScale",lua_cocos2dx_Scheduler_getTimeScale);
         tolua_function(tolua_S,"new",lua_cocos2dx_Scheduler_constructor);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(cocos2d::Scheduler).hash_code();
-    g_luaType[typeId] = "Scheduler";
+    std::string typeName = typeid(cocos2d::Scheduler).name();
+    g_luaType[typeName] = "Scheduler";
     return 1;
 }
 
@@ -84149,8 +84149,8 @@ int lua_register_cocos2dx_SimpleAudioEngine(lua_State* tolua_S)
         tolua_function(tolua_S,"end", lua_cocos2dx_SimpleAudioEngine_end);
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_SimpleAudioEngine_getInstance);
     tolua_endmodule(tolua_S);
-    long typeId = typeid(CocosDenshion::SimpleAudioEngine).hash_code();
-    g_luaType[typeId] = "SimpleAudioEngine";
+    std::string typeName = typeid(CocosDenshion::SimpleAudioEngine).name();
+    g_luaType[typeName] = "SimpleAudioEngine";
     return 1;
 }
 TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
