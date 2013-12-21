@@ -835,13 +835,6 @@ setParent : function () {},
 getNodeToParentTransform : function () {},
 
 /**
- * @method convertToNodeSpace
- * @return A value converted from C/C++ "cocos2d::Point"
- * @param {const cocos2d::Point&}
- */
-convertToNodeSpace : function () {},
-
-/**
  * @method resume
  */
 resume : function () {},
@@ -888,6 +881,12 @@ setPositionY : function () {},
  * @param {float}
  */
 setPositionX : function () {},
+
+/**
+ * @method setNodeToParentTransform
+ * @param {const kmMat4&}
+ */
+setNodeToParentTransform : function () {},
 
 /**
  * @method getAnchorPoint
@@ -1244,10 +1243,11 @@ getWorldToNodeTransform : function () {},
 getScale : function () {},
 
 /**
- * @method getCamera
- * @return A value converted from C/C++ "cocos2d::Camera*"
+ * @method convertToNodeSpace
+ * @return A value converted from C/C++ "cocos2d::Point"
+ * @param {const cocos2d::Point&}
  */
-getCamera : function () {},
+convertToNodeSpace : function () {},
 
 /**
  * @method setTag
@@ -5301,106 +5301,6 @@ drawSegment : function () {},
  * @return A value converted from C/C++ "cocos2d::DrawNode*"
  */
 create : function () {},
-
-};
-
-/**
- * @class Camera
- */
-cc.Camera = {
-
-/**
- * @method locate
- */
-locate : function () {},
-
-/**
- * @method restore
- */
-restore : function () {},
-
-/**
- * @method getEye
- * @param {float*}
- * @param {float*}
- * @param {float*}
- */
-getEye : function () {},
-
-/**
- * @method setEye
- * @param {float}
- * @param {float}
- * @param {float}
- */
-setEye : function () {},
-
-/**
- * @method setCenter
- * @param {float}
- * @param {float}
- * @param {float}
- */
-setCenter : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
- */
-getDescription : function () {},
-
-/**
- * @method getCenter
- * @param {float*}
- * @param {float*}
- * @param {float*}
- */
-getCenter : function () {},
-
-/**
- * @method isDirty
- * @return A value converted from C/C++ "bool"
- */
-isDirty : function () {},
-
-/**
- * @method init
- */
-init : function () {},
-
-/**
- * @method setDirty
- * @param {bool}
- */
-setDirty : function () {},
-
-/**
- * @method setUp
- * @param {float}
- * @param {float}
- * @param {float}
- */
-setUp : function () {},
-
-/**
- * @method getUp
- * @param {float*}
- * @param {float*}
- * @param {float*}
- */
-getUp : function () {},
-
-/**
- * @method getZEye
- * @return A value converted from C/C++ "float"
- */
-getZEye : function () {},
-
-/**
- * @method Camera
- * @constructor
- */
-Camera : function () {},
 
 };
 

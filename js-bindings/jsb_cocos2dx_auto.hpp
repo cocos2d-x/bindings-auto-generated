@@ -200,7 +200,6 @@ JSBool js_cocos2dx_Node_getNodeToParentAffineTransform(JSContext *cx, uint32_t a
 JSBool js_cocos2dx_Node_isCascadeOpacityEnabled(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setParent(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getNodeToParentTransform(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Node_convertToNodeSpace(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_resume(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getPhysicsBody(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_stopActionByTag(JSContext *cx, uint32_t argc, jsval *vp);
@@ -209,6 +208,7 @@ JSBool js_cocos2dx_Node_ignoreAnchorPointForPosition(JSContext *cx, uint32_t arg
 JSBool js_cocos2dx_Node_setColor(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setPositionY(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setPositionX(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_setNodeToParentTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getAnchorPoint(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getNumberOfRunningActions(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_updateTransform(JSContext *cx, uint32_t argc, jsval *vp);
@@ -274,7 +274,7 @@ JSBool js_cocos2dx_Node_update(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_sortAllChildren(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getWorldToNodeTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getScale(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Node_getCamera(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_convertToNodeSpace(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setTag(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_isCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp);
@@ -1619,28 +1619,6 @@ JSBool js_cocos2dx_DrawNode_clear(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_DrawNode_drawDot(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_DrawNode_drawSegment(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_DrawNode_create(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_Camera_class;
-extern JSObject *jsb_Camera_prototype;
-
-JSBool js_cocos2dx_Camera_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_Camera_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_Camera(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_Camera_locate(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_restore(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_getEye(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_setEye(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_setCenter(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_getDescription(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_getCenter(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_isDirty(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_init(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_setDirty(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_setUp(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_getUp(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_getZEye(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Camera_Camera(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_LabelAtlas_class;
 extern JSObject *jsb_LabelAtlas_prototype;
