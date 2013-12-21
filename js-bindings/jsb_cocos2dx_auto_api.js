@@ -774,6 +774,12 @@ removeChild : function () {},
 convertToWorldSpace : function () {},
 
 /**
+ * @method getScene
+ * @return A value converted from C/C++ "cocos2d::Scene*"
+ */
+getScene : function () {},
+
+/**
  * @method getEventDispatcher
  * @return A value converted from C/C++ "cocos2d::EventDispatcher*"
  */
@@ -7152,6 +7158,12 @@ cc.Scene = {
  * @return A value converted from C/C++ "std::string"
  */
 getDescription : function () {},
+
+/**
+ * @method getScene
+ * @return A value converted from C/C++ "cocos2d::Scene*"
+ */
+getScene : function () {},
 
 /**
  * @method update

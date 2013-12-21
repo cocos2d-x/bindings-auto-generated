@@ -189,6 +189,7 @@ JSBool js_cocos2dx_Node_getNodeToWorldAffineTransform(JSContext *cx, uint32_t ar
 JSBool js_cocos2dx_Node_getNodeToWorldTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_removeChild(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_convertToWorldSpace(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_getScene(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getEventDispatcher(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setSkewX(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setSkewY(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2070,6 +2071,7 @@ void js_register_cocos2dx_Scene(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_Scene_addChild(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Scene_getDescription(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Scene_getScene(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Scene_update(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Scene_getPhysicsWorld(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Scene_create(JSContext *cx, uint32_t argc, jsval *vp);

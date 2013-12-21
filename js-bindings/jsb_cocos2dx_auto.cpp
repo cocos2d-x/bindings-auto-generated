@@ -3338,6 +3338,30 @@ JSBool js_cocos2dx_Node_convertToWorldSpace(JSContext *cx, uint32_t argc, jsval 
 	JS_ReportError(cx, "js_cocos2dx_Node_convertToWorldSpace : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Node_getScene(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Node* cobj = (cocos2d::Node *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Node_getScene : Invalid Native Object");
+	if (argc == 0) {
+		cocos2d::Scene* ret = cobj->getScene();
+		jsval jsret;
+		do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Scene>(cx, (cocos2d::Scene*)ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Node_getScene : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Node_getEventDispatcher(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -5404,6 +5428,7 @@ void js_register_cocos2dx_Node(JSContext *cx, JSObject *global) {
 		JS_FN("getNodeToWorldTransform", js_cocos2dx_Node_getNodeToWorldTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeChild", js_cocos2dx_Node_removeChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("convertToWorldSpace", js_cocos2dx_Node_convertToWorldSpace, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getScene", js_cocos2dx_Node_getScene, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getEventDispatcher", js_cocos2dx_Node_getEventDispatcher, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSkewX", js_cocos2dx_Node_setSkewX, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSkewY", js_cocos2dx_Node_setSkewY, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -34419,6 +34444,30 @@ JSBool js_cocos2dx_Scene_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Scene_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Scene_getScene(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Scene* cobj = (cocos2d::Scene *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Scene_getScene : Invalid Native Object");
+	if (argc == 0) {
+		cocos2d::Scene* ret = cobj->getScene();
+		jsval jsret;
+		do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Scene>(cx, (cocos2d::Scene*)ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Scene_getScene : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Scene_update(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -34539,6 +34588,7 @@ void js_register_cocos2dx_Scene(JSContext *cx, JSObject *global) {
 	static JSFunctionSpec funcs[] = {
 		JS_FN("addChild", js_cocos2dx_Scene_addChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getDescription", js_cocos2dx_Scene_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getScene", js_cocos2dx_Scene_getScene, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("update", js_cocos2dx_Scene_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPhysicsWorld", js_cocos2dx_Scene_getPhysicsWorld, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FN("ctor", js_cocos2dx_Scene_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

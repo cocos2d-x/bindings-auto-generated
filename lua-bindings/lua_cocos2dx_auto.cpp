@@ -6030,6 +6030,59 @@ int lua_cocos2dx_Node_convertToWorldSpace(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_Node_getScene(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Node* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Node",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Node*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Node_getScene'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cocos2d::Scene* ret = cobj->getScene();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scene*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scene");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Scene");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getScene",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Node_getScene'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_Node_getEventDispatcher(lua_State* tolua_S)
 {
     int argc = 0;
@@ -10198,6 +10251,7 @@ int lua_register_cocos2dx_Node(lua_State* tolua_S)
         tolua_function(tolua_S,"getNodeToWorldTransform",lua_cocos2dx_Node_getNodeToWorldTransform);
         tolua_function(tolua_S,"removeChild",lua_cocos2dx_Node_removeChild);
         tolua_function(tolua_S,"convertToWorldSpace",lua_cocos2dx_Node_convertToWorldSpace);
+        tolua_function(tolua_S,"getScene",lua_cocos2dx_Node_getScene);
         tolua_function(tolua_S,"getEventDispatcher",lua_cocos2dx_Node_getEventDispatcher);
         tolua_function(tolua_S,"setSkewX",lua_cocos2dx_Node_setSkewX);
         tolua_function(tolua_S,"setSkewY",lua_cocos2dx_Node_setSkewY);
@@ -53195,6 +53249,59 @@ int lua_cocos2dx_Scene_getDescription(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_Scene_getScene(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Scene* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Scene",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Scene*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Scene_getScene'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cocos2d::Scene* ret = cobj->getScene();
+        do {
+			if (NULL != ret){
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scene*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Scene");
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,"Scene");
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getScene",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Scene_getScene'.",&tolua_err);
+#endif
+    return 0;
+}
 int lua_cocos2dx_Scene_update(lua_State* tolua_S)
 {
     int argc = 0;
@@ -53390,6 +53497,7 @@ int lua_register_cocos2dx_Scene(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"Scene");
         tolua_function(tolua_S,"addChild",lua_cocos2dx_Scene_addChild);
         tolua_function(tolua_S,"getDescription",lua_cocos2dx_Scene_getDescription);
+        tolua_function(tolua_S,"getScene",lua_cocos2dx_Scene_getScene);
         tolua_function(tolua_S,"update",lua_cocos2dx_Scene_update);
         tolua_function(tolua_S,"getPhysicsWorld",lua_cocos2dx_Scene_getPhysicsWorld);
         tolua_function(tolua_S,"create", lua_cocos2dx_Scene_create);
