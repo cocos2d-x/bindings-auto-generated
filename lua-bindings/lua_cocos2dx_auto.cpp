@@ -33117,6 +33117,24 @@ int lua_register_cocos2dx_Director(lua_State* tolua_S)
     return 1;
 }
 
+static int lua_cocos2dx_DisplayLinkDirector_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (DisplayLinkDirector)");
+    return 0;
+}
+
+int lua_register_cocos2dx_DisplayLinkDirector(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"DisplayLinkDirector");
+    tolua_cclass(tolua_S,"DisplayLinkDirector","DisplayLinkDirector","Director",NULL);
+
+    tolua_beginmodule(tolua_S,"DisplayLinkDirector");
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::DisplayLinkDirector).name();
+    g_luaType[typeName] = "DisplayLinkDirector";
+    return 1;
+}
+
 int lua_cocos2dx_GridBase_setGridSize(lua_State* tolua_S)
 {
     int argc = 0;
@@ -72798,6 +72816,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_Liquid(tolua_S);
 	lua_register_cocos2dx_OrbitCamera(tolua_S);
 	lua_register_cocos2dx_EventCustom(tolua_S);
+	lua_register_cocos2dx_DisplayLinkDirector(tolua_S);
 	lua_register_cocos2dx_EventListenerTouchOneByOne(tolua_S);
 	lua_register_cocos2dx_ParticleRain(tolua_S);
 	lua_register_cocos2dx_Waves(tolua_S);

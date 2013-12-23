@@ -4700,6 +4700,13 @@ getInstance : function () {},
 };
 
 /**
+ * @class DisplayLinkDirector
+ */
+cc.DisplayLinkDirector = {
+
+};
+
+/**
  * @class GridBase
  */
 cc.GridBase = {
