@@ -511,6 +511,76 @@ Touch : function () {},
 };
 
 /**
+ * @class Event
+ */
+cc.Event = {
+
+/**
+ * @method isStopped
+ * @return A value converted from C/C++ "bool"
+ */
+isStopped : function () {},
+
+/**
+ * @method getType
+ * @return A value converted from C/C++ "cocos2d::Event::Type"
+ */
+getType : function () {},
+
+/**
+ * @method getCurrentTarget
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ */
+getCurrentTarget : function () {},
+
+/**
+ * @method stopPropagation
+ */
+stopPropagation : function () {},
+
+};
+
+/**
+ * @class EventTouch
+ */
+cc.EventTouch = {
+
+/**
+ * @method getEventCode
+ * @return A value converted from C/C++ "cocos2d::EventTouch::EventCode"
+ */
+getEventCode : function () {},
+
+/**
+ * @method setEventCode
+ * @param {cocos2d::EventTouch::EventCode}
+ */
+setEventCode : function () {},
+
+/**
+ * @method EventTouch
+ * @constructor
+ */
+EventTouch : function () {},
+
+};
+
+/**
+ * @class EventKeyboard
+ */
+cc.EventKeyboard = {
+
+/**
+ * @method EventKeyboard
+ * @constructor
+ * @param {cocos2d::EventKeyboard::KeyCode}
+ * @param {bool}
+ */
+EventKeyboard : function () {},
+
+};
+
+/**
  * @class Texture2D
  */
 cc.Texture2D = {
@@ -672,6 +742,115 @@ PVRImagesHavePremultipliedAlpha : function () {},
  * @constructor
  */
 Texture2D : function () {},
+
+};
+
+/**
+ * @class EventListener
+ */
+cc.EventListener = {
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListener*"
+ */
+clone : function () {},
+
+/**
+ * @method checkAvailable
+ * @return A value converted from C/C++ "bool"
+ */
+checkAvailable : function () {},
+
+};
+
+/**
+ * @class EventDispatcher
+ */
+cc.EventDispatcher = {
+
+/**
+ * @method setEnabled
+ * @param {bool}
+ */
+setEnabled : function () {},
+
+/**
+ * @method addEventListenerWithSceneGraphPriority
+ * @param {cocos2d::EventListener*}
+ * @param {cocos2d::Node*}
+ */
+addEventListenerWithSceneGraphPriority : function () {},
+
+/**
+ * @method addEventListenerWithFixedPriority
+ * @param {cocos2d::EventListener*}
+ * @param {int}
+ */
+addEventListenerWithFixedPriority : function () {},
+
+/**
+ * @method removeEventListener
+ * @param {cocos2d::EventListener*}
+ */
+removeEventListener : function () {},
+
+/**
+ * @method removeEventListeners
+ * @param {cocos2d::EventListener::Type}
+ */
+removeEventListeners : function () {},
+
+/**
+ * @method dispatchCustomEvent
+ * @param {const std::string&}
+ * @param {void*}
+ */
+dispatchCustomEvent : function () {},
+
+/**
+ * @method setPriority
+ * @param {cocos2d::EventListener*}
+ * @param {int}
+ */
+setPriority : function () {},
+
+/**
+ * @method addCustomEventListener
+ * @return A value converted from C/C++ "cocos2d::EventListenerCustom*"
+ * @param {const std::string&}
+ * @param {std::function<void (cocos2d::EventCustom *)>}
+ */
+addCustomEventListener : function () {},
+
+/**
+ * @method dispatchEvent
+ * @param {cocos2d::Event*}
+ */
+dispatchEvent : function () {},
+
+/**
+ * @method removeAllEventListeners
+ */
+removeAllEventListeners : function () {},
+
+/**
+ * @method removeCustomEventListeners
+ * @param {const std::string&}
+ */
+removeCustomEventListeners : function () {},
+
+/**
+ * @method isEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isEnabled : function () {},
+
+/**
+ * @method EventDispatcher
+ * @constructor
+ */
+EventDispatcher : function () {},
 
 };
 
@@ -9614,6 +9793,107 @@ visit : function () {},
 };
 
 /**
+ * @class EventListenerCustom
+ */
+cc.EventListenerCustom = {
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerCustom*"
+ */
+clone : function () {},
+
+/**
+ * @method checkAvailable
+ * @return A value converted from C/C++ "bool"
+ */
+checkAvailable : function () {},
+
+};
+
+/**
+ * @class EventListenerPhysicsContact
+ */
+cc.EventListenerPhysicsContact = {
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerPhysicsContact*"
+ */
+clone : function () {},
+
+/**
+ * @method checkAvailable
+ * @return A value converted from C/C++ "bool"
+ */
+checkAvailable : function () {},
+
+};
+
+/**
+ * @class EventListenerPhysicsContactWithBodies
+ */
+cc.EventListenerPhysicsContactWithBodies = {
+
+/**
+ * @method hitTest
+ * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::PhysicsShape*}
+ * @param {cocos2d::PhysicsShape*}
+ */
+hitTest : function () {},
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerPhysicsContactWithBodies*"
+ */
+clone : function () {},
+
+};
+
+/**
+ * @class EventListenerPhysicsContactWithShapes
+ */
+cc.EventListenerPhysicsContactWithShapes = {
+
+/**
+ * @method hitTest
+ * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::PhysicsShape*}
+ * @param {cocos2d::PhysicsShape*}
+ */
+hitTest : function () {},
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerPhysicsContactWithShapes*"
+ */
+clone : function () {},
+
+};
+
+/**
+ * @class EventListenerPhysicsContactWithGroup
+ */
+cc.EventListenerPhysicsContactWithGroup = {
+
+/**
+ * @method hitTest
+ * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::PhysicsShape*}
+ * @param {cocos2d::PhysicsShape*}
+ */
+hitTest : function () {},
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerPhysicsContactWithGroup*"
+ */
+clone : function () {},
+
+};
+
+/**
  * @class FileUtils
  */
 cc.FileUtils = {
@@ -10944,6 +11224,210 @@ create : function () {},
  * @constructor
  */
 TileMapAtlas : function () {},
+
+};
+
+/**
+ * @class EventListenerTouchOneByOne
+ */
+cc.EventListenerTouchOneByOne = {
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerTouchOneByOne*"
+ */
+clone : function () {},
+
+/**
+ * @method setSwallowTouches
+ * @param {bool}
+ */
+setSwallowTouches : function () {},
+
+/**
+ * @method checkAvailable
+ * @return A value converted from C/C++ "bool"
+ */
+checkAvailable : function () {},
+
+};
+
+/**
+ * @class EventListenerTouchAllAtOnce
+ */
+cc.EventListenerTouchAllAtOnce = {
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerTouchAllAtOnce*"
+ */
+clone : function () {},
+
+/**
+ * @method checkAvailable
+ * @return A value converted from C/C++ "bool"
+ */
+checkAvailable : function () {},
+
+};
+
+/**
+ * @class EventListenerKeyboard
+ */
+cc.EventListenerKeyboard = {
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerKeyboard*"
+ */
+clone : function () {},
+
+/**
+ * @method checkAvailable
+ * @return A value converted from C/C++ "bool"
+ */
+checkAvailable : function () {},
+
+};
+
+/**
+ * @class EventMouse
+ */
+cc.EventMouse = {
+
+/**
+ * @method getMouseButton
+ * @return A value converted from C/C++ "int"
+ */
+getMouseButton : function () {},
+
+/**
+ * @method setScrollData
+ * @param {float}
+ * @param {float}
+ */
+setScrollData : function () {},
+
+/**
+ * @method setMouseButton
+ * @param {int}
+ */
+setMouseButton : function () {},
+
+/**
+ * @method getScrollY
+ * @return A value converted from C/C++ "float"
+ */
+getScrollY : function () {},
+
+/**
+ * @method getScrollX
+ * @return A value converted from C/C++ "float"
+ */
+getScrollX : function () {},
+
+/**
+ * @method getCursorX
+ * @return A value converted from C/C++ "float"
+ */
+getCursorX : function () {},
+
+/**
+ * @method getCursorY
+ * @return A value converted from C/C++ "float"
+ */
+getCursorY : function () {},
+
+/**
+ * @method setCursorPosition
+ * @param {float}
+ * @param {float}
+ */
+setCursorPosition : function () {},
+
+/**
+ * @method EventMouse
+ * @constructor
+ * @param {cocos2d::EventMouse::MouseEventType}
+ */
+EventMouse : function () {},
+
+};
+
+/**
+ * @class EventListenerMouse
+ */
+cc.EventListenerMouse = {
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerMouse*"
+ */
+clone : function () {},
+
+/**
+ * @method checkAvailable
+ * @return A value converted from C/C++ "bool"
+ */
+checkAvailable : function () {},
+
+};
+
+/**
+ * @class EventAcceleration
+ */
+cc.EventAcceleration = {
+
+};
+
+/**
+ * @class EventListenerAcceleration
+ */
+cc.EventListenerAcceleration = {
+
+/**
+ * @method clone
+ * @return A value converted from C/C++ "cocos2d::EventListenerAcceleration*"
+ */
+clone : function () {},
+
+/**
+ * @method checkAvailable
+ * @return A value converted from C/C++ "bool"
+ */
+checkAvailable : function () {},
+
+};
+
+/**
+ * @class EventCustom
+ */
+cc.EventCustom = {
+
+/**
+ * @method getEventName
+ * @return A value converted from C/C++ "const std::string&"
+ */
+getEventName : function () {},
+
+/**
+ * @method setUserData
+ * @param {void*}
+ */
+setUserData : function () {},
+
+/**
+ * @method getUserData
+ * @return A value converted from C/C++ "void*"
+ */
+getUserData : function () {},
+
+/**
+ * @method EventCustom
+ * @constructor
+ * @param {const std::string&}
+ */
+EventCustom : function () {},
 
 };
 
