@@ -93,22 +93,10 @@ reverse : function () {},
 cc.FiniteTimeAction = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::FiniteTimeAction*"
- */
-clone : function () {},
-
-/**
  * @method setDuration
  * @param {float}
  */
 setDuration : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::FiniteTimeAction*"
- */
-reverse : function () {},
 
 /**
  * @method getDuration
@@ -130,39 +118,10 @@ cc.Speed = {
 setInnerAction : function () {},
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method getSpeed
- * @return A value converted from C/C++ "float"
- */
-getSpeed : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Speed*"
- */
-clone : function () {},
-
-/**
- * @method stop
- */
-stop : function () {},
-
-/**
  * @method setSpeed
  * @param {float}
  */
 setSpeed : function () {},
-
-/**
- * @method step
- * @param {float}
- */
-step : function () {},
 
 /**
  * @method getInnerAction
@@ -171,16 +130,10 @@ step : function () {},
 getInnerAction : function () {},
 
 /**
- * @method isDone
- * @return A value converted from C/C++ "bool"
+ * @method getSpeed
+ * @return A value converted from C/C++ "float"
  */
-isDone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::Speed*"
- */
-reverse : function () {},
+getSpeed : function () {},
 
 /**
  * @method create
@@ -198,39 +151,10 @@ create : function () {},
 cc.Follow = {
 
 /**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::Follow*"
- */
-reverse : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Follow*"
- */
-clone : function () {},
-
-/**
- * @method stop
- */
-stop : function () {},
-
-/**
  * @method setBoudarySet
  * @param {bool}
  */
 setBoudarySet : function () {},
-
-/**
- * @method step
- * @param {float}
- */
-step : function () {},
-
-/**
- * @method isDone
- * @return A value converted from C/C++ "bool"
- */
-isDone : function () {},
 
 /**
  * @method isBoundarySet
@@ -1292,90 +1216,6 @@ create : function () {},
  */
 cc.NodeRGBA = {
 
-/**
- * @method isOpacityModifyRGB
- * @return A value converted from C/C++ "bool"
- */
-isOpacityModifyRGB : function () {},
-
-/**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
-
-/**
- * @method isCascadeOpacityEnabled
- * @return A value converted from C/C++ "bool"
- */
-isCascadeOpacityEnabled : function () {},
-
-/**
- * @method getColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
- */
-getColor : function () {},
-
-/**
- * @method getDisplayedOpacity
- * @return A value converted from C/C++ "GLubyte"
- */
-getDisplayedOpacity : function () {},
-
-/**
- * @method setCascadeColorEnabled
- * @param {bool}
- */
-setCascadeColorEnabled : function () {},
-
-/**
- * @method setOpacity
- * @param {GLubyte}
- */
-setOpacity : function () {},
-
-/**
- * @method setOpacityModifyRGB
- * @param {bool}
- */
-setOpacityModifyRGB : function () {},
-
-/**
- * @method setCascadeOpacityEnabled
- * @param {bool}
- */
-setCascadeOpacityEnabled : function () {},
-
-/**
- * @method updateDisplayedOpacity
- * @param {GLubyte}
- */
-updateDisplayedOpacity : function () {},
-
-/**
- * @method isCascadeColorEnabled
- * @return A value converted from C/C++ "bool"
- */
-isCascadeColorEnabled : function () {},
-
-/**
- * @method updateDisplayedColor
- * @param {const cocos2d::Color3B&}
- */
-updateDisplayedColor : function () {},
-
-/**
- * @method getOpacity
- * @return A value converted from C/C++ "GLubyte"
- */
-getOpacity : function () {},
-
-/**
- * @method getDisplayedColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
- */
-getDisplayedColor : function () {},
-
 };
 
 /**
@@ -1692,27 +1532,9 @@ reverse : function () {},
 cc.Sequence = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Sequence*"
- */
-clone : function () {},
-
-/**
  * @method stop
  */
 stop : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::Sequence*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -1734,33 +1556,9 @@ cc.Repeat = {
 setInnerAction : function () {},
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::Repeat*"
- */
-reverse : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Repeat*"
- */
-clone : function () {},
-
-/**
  * @method stop
  */
 stop : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method getInnerAction
@@ -1769,10 +1567,10 @@ update : function () {},
 getInnerAction : function () {},
 
 /**
- * @method isDone
- * @return A value converted from C/C++ "bool"
+ * @method update
+ * @param {float}
  */
-isDone : function () {},
+update : function () {},
 
 /**
  * @method create
@@ -1796,40 +1594,10 @@ cc.RepeatForever = {
 setInnerAction : function () {},
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::RepeatForever*"
- */
-reverse : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::RepeatForever*"
- */
-clone : function () {},
-
-/**
- * @method step
- * @param {float}
- */
-step : function () {},
-
-/**
  * @method getInnerAction
  * @return A value converted from C/C++ "cocos2d::ActionInterval*"
  */
 getInnerAction : function () {},
-
-/**
- * @method isDone
- * @return A value converted from C/C++ "bool"
- */
-isDone : function () {},
 
 /**
  * @method create
@@ -1846,27 +1614,9 @@ create : function () {},
 cc.Spawn = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Spawn*"
- */
-clone : function () {},
-
-/**
  * @method stop
  */
 stop : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::Spawn*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -1882,24 +1632,6 @@ update : function () {},
 cc.RotateTo = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::RotateTo*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::RotateTo*"
- */
-reverse : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -1913,24 +1645,6 @@ update : function () {},
 cc.RotateBy = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::RotateBy*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::RotateBy*"
- */
-reverse : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -1942,24 +1656,6 @@ update : function () {},
  * @class MoveBy
  */
 cc.MoveBy = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::MoveBy*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::MoveBy*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -2008,24 +1704,6 @@ create : function () {},
  * @class SkewTo
  */
 cc.SkewTo = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::SkewTo*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::SkewTo*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -2082,24 +1760,6 @@ create : function () {},
  * @class JumpBy
  */
 cc.JumpBy = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::JumpBy*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::JumpBy*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -2160,24 +1820,6 @@ create : function () {},
 cc.BezierBy = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::BezierBy*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::BezierBy*"
- */
-reverse : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -2214,24 +1856,6 @@ reverse : function () {},
  * @class ScaleTo
  */
 cc.ScaleTo = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ScaleTo*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ScaleTo*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -2272,27 +1896,9 @@ reverse : function () {},
 cc.Blink = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Blink*"
- */
-clone : function () {},
-
-/**
  * @method stop
  */
 stop : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::Blink*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -2316,22 +1922,10 @@ create : function () {},
 cc.FadeIn = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::FadeIn*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -2348,22 +1942,10 @@ create : function () {},
 cc.FadeOut = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::FadeOut*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -2378,24 +1960,6 @@ create : function () {},
  * @class FadeTo
  */
 cc.FadeTo = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::FadeTo*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::FadeTo*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -2417,24 +1981,6 @@ create : function () {},
  * @class TintTo
  */
 cc.TintTo = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::TintTo*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::TintTo*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -2460,24 +2006,6 @@ create : function () {},
 cc.TintBy = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::TintBy*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::TintBy*"
- */
-reverse : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -2501,22 +2029,10 @@ create : function () {},
 cc.DelayTime = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::DelayTime*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::DelayTime*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -2531,24 +2047,6 @@ create : function () {},
  * @class Animate
  */
 cc.Animate = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::Animate*"
- */
-reverse : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Animate*"
- */
-clone : function () {},
 
 /**
  * @method stop
@@ -2582,30 +2080,6 @@ create : function () {},
 cc.TargetedAction = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::TargetedAction*"
- */
-reverse : function () {},
-
-/**
- * @method setForcedTarget
- * @param {cocos2d::Node*}
- */
-setForcedTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::TargetedAction*"
- */
-clone : function () {},
-
-/**
  * @method stop
  */
 stop : function () {},
@@ -2615,6 +2089,12 @@ stop : function () {},
  * @param {float}
  */
 update : function () {},
+
+/**
+ * @method setForcedTarget
+ * @param {cocos2d::Node*}
+ */
+setForcedTarget : function () {},
 
 /**
  * @method create
@@ -2630,24 +2110,6 @@ create : function () {},
  * @class ActionCamera
  */
 cc.ActionCamera = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ActionCamera*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ActionCamera*"
- */
-reverse : function () {},
 
 /**
  * @method ActionCamera
@@ -2812,39 +2274,21 @@ ActionManager : function () {},
 cc.ActionEase = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ActionEase*"
- */
-reverse : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ActionEase*"
- */
-clone : function () {},
-
-/**
  * @method stop
  */
 stop : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method getInnerAction
  * @return A value converted from C/C++ "cocos2d::ActionInterval*"
  */
 getInnerAction : function () {},
+
+/**
+ * @method update
+ * @param {float}
+ */
+update : function () {},
 
 };
 
@@ -2885,22 +2329,10 @@ reverse : function () {},
 cc.EaseIn = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::EaseIn*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::EaseIn*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -2918,22 +2350,10 @@ create : function () {},
 cc.EaseOut = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::EaseOut*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::EaseOut*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -2951,22 +2371,10 @@ create : function () {},
 cc.EaseInOut = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::EaseInOut*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::EaseInOut*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -2988,12 +2396,6 @@ cc.EaseExponentialIn = {
  * @return A value converted from C/C++ "cocos2d::EaseExponentialIn*"
  */
 clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method reverse
@@ -3022,12 +2424,6 @@ cc.EaseExponentialOut = {
 clone : function () {},
 
 /**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
  * @method reverse
  * @return A value converted from C/C++ "cocos2d::ActionEase*"
  */
@@ -3052,12 +2448,6 @@ cc.EaseExponentialInOut = {
  * @return A value converted from C/C++ "cocos2d::EaseExponentialInOut*"
  */
 clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method reverse
@@ -3086,12 +2476,6 @@ cc.EaseSineIn = {
 clone : function () {},
 
 /**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
  * @method reverse
  * @return A value converted from C/C++ "cocos2d::ActionEase*"
  */
@@ -3118,12 +2502,6 @@ cc.EaseSineOut = {
 clone : function () {},
 
 /**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
  * @method reverse
  * @return A value converted from C/C++ "cocos2d::ActionEase*"
  */
@@ -3148,12 +2526,6 @@ cc.EaseSineInOut = {
  * @return A value converted from C/C++ "cocos2d::EaseSineInOut*"
  */
 clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method reverse
@@ -3207,22 +2579,10 @@ reverse : function () {},
 cc.EaseElasticIn = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::EaseElasticIn*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::EaseElastic*"
- */
-reverse : function () {},
 
 };
 
@@ -3232,22 +2592,10 @@ reverse : function () {},
 cc.EaseElasticOut = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::EaseElasticOut*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::EaseElastic*"
- */
-reverse : function () {},
 
 };
 
@@ -3257,22 +2605,10 @@ reverse : function () {},
 cc.EaseElasticInOut = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::EaseElasticInOut*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::EaseElasticInOut*"
- */
-reverse : function () {},
 
 };
 
@@ -3308,22 +2644,10 @@ reverse : function () {},
 cc.EaseBounceIn = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::EaseBounceIn*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::EaseBounce*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -3340,22 +2664,10 @@ create : function () {},
 cc.EaseBounceOut = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::EaseBounceOut*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::EaseBounce*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -3372,22 +2684,10 @@ create : function () {},
 cc.EaseBounceInOut = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::EaseBounceInOut*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::EaseBounceInOut*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -3408,12 +2708,6 @@ cc.EaseBackIn = {
  * @return A value converted from C/C++ "cocos2d::EaseBackIn*"
  */
 clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method reverse
@@ -3442,12 +2736,6 @@ cc.EaseBackOut = {
 clone : function () {},
 
 /**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
  * @method reverse
  * @return A value converted from C/C++ "cocos2d::ActionEase*"
  */
@@ -3472,12 +2760,6 @@ cc.EaseBackInOut = {
  * @return A value converted from C/C++ "cocos2d::EaseBackInOut*"
  */
 clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method reverse
@@ -3537,24 +2819,6 @@ update : function () {},
 cc.Show = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Show*"
- */
-clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ActionInstant*"
- */
-reverse : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::Show*"
  */
@@ -3566,24 +2830,6 @@ create : function () {},
  * @class Hide
  */
 cc.Hide = {
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Hide*"
- */
-clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ActionInstant*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -3599,24 +2845,6 @@ create : function () {},
 cc.ToggleVisibility = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ToggleVisibility*"
- */
-clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ToggleVisibility*"
- */
-reverse : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::ToggleVisibility*"
  */
@@ -3630,24 +2858,6 @@ create : function () {},
 cc.RemoveSelf = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::RemoveSelf*"
- */
-clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::RemoveSelf*"
- */
-reverse : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::RemoveSelf*"
  */
@@ -3659,24 +2869,6 @@ create : function () {},
  * @class FlipX
  */
 cc.FlipX = {
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::FlipX*"
- */
-clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::FlipX*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -3693,24 +2885,6 @@ create : function () {},
 cc.FlipY = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::FlipY*"
- */
-clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::FlipY*"
- */
-reverse : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::FlipY*"
  * @param {bool}
@@ -3723,24 +2897,6 @@ create : function () {},
  * @class Place
  */
 cc.Place = {
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Place*"
- */
-clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::Place*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -3762,24 +2918,6 @@ cc.CallFunc = {
 execute : function () {},
 
 /**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::CallFunc*"
- */
-reverse : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::CallFunc*"
- */
-clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
  * @method getTargetCallback
  * @return A value converted from C/C++ "cocos2d::Object*"
  */
@@ -3799,28 +2937,10 @@ setTargetCallback : function () {},
 cc.GridAction = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::GridAction*"
- */
-clone : function () {},
-
-/**
  * @method getGrid
  * @return A value converted from C/C++ "cocos2d::GridBase*"
  */
 getGrid : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::GridAction*"
- */
-reverse : function () {},
 
 };
 
@@ -3874,18 +2994,6 @@ cc.StopGrid = {
 startWithTarget : function () {},
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::StopGrid*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::StopGrid*"
- */
-reverse : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::StopGrid*"
  */
@@ -3905,18 +3013,6 @@ cc.ReuseGrid = {
 startWithTarget : function () {},
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ReuseGrid*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ReuseGrid*"
- */
-reverse : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::ReuseGrid*"
  * @param {int}
@@ -3931,16 +3027,10 @@ create : function () {},
 cc.Waves3D = {
 
 /**
- * @method setAmplitudeRate
- * @param {float}
+ * @method getAmplitudeRate
+ * @return A value converted from C/C++ "float"
  */
-setAmplitudeRate : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Waves3D*"
- */
-clone : function () {},
+getAmplitudeRate : function () {},
 
 /**
  * @method update
@@ -3949,16 +3039,16 @@ clone : function () {},
 update : function () {},
 
 /**
- * @method getAmplitudeRate
- * @return A value converted from C/C++ "float"
- */
-getAmplitudeRate : function () {},
-
-/**
  * @method setAmplitude
  * @param {float}
  */
 setAmplitude : function () {},
+
+/**
+ * @method setAmplitudeRate
+ * @param {float}
+ */
+setAmplitudeRate : function () {},
 
 /**
  * @method getAmplitude
@@ -3982,12 +3072,6 @@ create : function () {},
  * @class FlipX3D
  */
 cc.FlipX3D = {
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::FlipX3D*"
- */
-clone : function () {},
 
 /**
  * @method update
@@ -4014,12 +3098,6 @@ cc.FlipY3D = {
  * @return A value converted from C/C++ "cocos2d::FlipY3D*"
  */
 clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method create
@@ -4072,12 +3150,6 @@ getLensEffect : function () {},
 setPosition : function () {},
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Lens3D*"
- */
-clone : function () {},
-
-/**
  * @method getPosition
  * @return A value converted from C/C++ "const cocos2d::Point&"
  */
@@ -4105,12 +3177,6 @@ cc.Ripple3D = {
  * @param {float}
  */
 setAmplitudeRate : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Ripple3D*"
- */
-clone : function () {},
 
 /**
  * @method update
@@ -4168,12 +3234,6 @@ create : function () {},
 cc.Shaky3D = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Shaky3D*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -4207,12 +3267,6 @@ cc.Liquid = {
  * @param {float}
  */
 setAmplitudeRate : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Liquid*"
- */
-clone : function () {},
 
 /**
  * @method update
@@ -4268,12 +3322,6 @@ cc.Waves = {
 setAmplitudeRate : function () {},
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Waves*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -4327,12 +3375,6 @@ cc.Twirl = {
  * @param {float}
  */
 setAmplitudeRate : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::Twirl*"
- */
-clone : function () {},
 
 /**
  * @method update
@@ -4395,12 +3437,6 @@ Twirl : function () {},
 cc.PageTurn3D = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::PageTurn3D*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -4422,24 +3458,6 @@ create : function () {},
 cc.ProgressTo = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ProgressTo*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ProgressTo*"
- */
-reverse : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -4459,24 +3477,6 @@ create : function () {},
  * @class ProgressFromTo
  */
 cc.ProgressFromTo = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ProgressFromTo*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ProgressFromTo*"
- */
-reverse : function () {},
 
 /**
  * @method update
@@ -4501,12 +3501,6 @@ create : function () {},
 cc.ShakyTiles3D = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ShakyTiles3D*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -4528,12 +3522,6 @@ create : function () {},
  * @class ShatteredTiles3D
  */
 cc.ShatteredTiles3D = {
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ShatteredTiles3D*"
- */
-clone : function () {},
 
 /**
  * @method update
@@ -4572,17 +3560,11 @@ startWithTarget : function () {},
 placeTile : function () {},
 
 /**
- * @method getDelta
- * @return A value converted from C/C++ "cocos2d::Size"
- * @param {const cocos2d::Size&}
+ * @method shuffle
+ * @param {unsigned int*}
+ * @param {unsigned int}
  */
-getDelta : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ShuffleTiles*"
- */
-clone : function () {},
+shuffle : function () {},
 
 /**
  * @method update
@@ -4591,11 +3573,11 @@ clone : function () {},
 update : function () {},
 
 /**
- * @method shuffle
- * @param {unsigned int*}
- * @param {unsigned int}
+ * @method getDelta
+ * @return A value converted from C/C++ "cocos2d::Size"
+ * @param {const cocos2d::Size&}
  */
-shuffle : function () {},
+getDelta : function () {},
 
 /**
  * @method create
@@ -4633,24 +3615,18 @@ turnOffTile : function () {},
 transformTile : function () {},
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::FadeOutTRTiles*"
- */
-clone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
  * @method testFunc
  * @return A value converted from C/C++ "float"
  * @param {const cocos2d::Size&}
  * @param {float}
  */
 testFunc : function () {},
+
+/**
+ * @method update
+ * @param {float}
+ */
+update : function () {},
 
 /**
  * @method create
@@ -4672,14 +3648,6 @@ cc.FadeOutBLTiles = {
  * @return A value converted from C/C++ "cocos2d::FadeOutBLTiles*"
  */
 clone : function () {},
-
-/**
- * @method testFunc
- * @return A value converted from C/C++ "float"
- * @param {const cocos2d::Size&}
- * @param {float}
- */
-testFunc : function () {},
 
 /**
  * @method create
@@ -4710,14 +3678,6 @@ clone : function () {},
 transformTile : function () {},
 
 /**
- * @method testFunc
- * @return A value converted from C/C++ "float"
- * @param {const cocos2d::Size&}
- * @param {float}
- */
-testFunc : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::FadeOutUpTiles*"
  * @param {float}
@@ -4731,12 +3691,6 @@ create : function () {},
  * @class FadeOutDownTiles
  */
 cc.FadeOutDownTiles = {
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::FadeOutDownTiles*"
- */
-clone : function () {},
 
 /**
  * @method testFunc
@@ -4787,12 +3741,6 @@ turnOffTile : function () {},
 shuffle : function () {},
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::TurnOffTiles*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -4806,16 +3754,10 @@ update : function () {},
 cc.WavesTiles3D = {
 
 /**
- * @method setAmplitudeRate
- * @param {float}
+ * @method getAmplitudeRate
+ * @return A value converted from C/C++ "float"
  */
-setAmplitudeRate : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::WavesTiles3D*"
- */
-clone : function () {},
+getAmplitudeRate : function () {},
 
 /**
  * @method update
@@ -4824,16 +3766,16 @@ clone : function () {},
 update : function () {},
 
 /**
- * @method getAmplitudeRate
- * @return A value converted from C/C++ "float"
- */
-getAmplitudeRate : function () {},
-
-/**
  * @method setAmplitude
  * @param {float}
  */
 setAmplitude : function () {},
+
+/**
+ * @method setAmplitudeRate
+ * @param {float}
+ */
+setAmplitudeRate : function () {},
 
 /**
  * @method getAmplitude
@@ -4859,16 +3801,10 @@ create : function () {},
 cc.JumpTiles3D = {
 
 /**
- * @method setAmplitudeRate
- * @param {float}
+ * @method getAmplitudeRate
+ * @return A value converted from C/C++ "float"
  */
-setAmplitudeRate : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::JumpTiles3D*"
- */
-clone : function () {},
+getAmplitudeRate : function () {},
 
 /**
  * @method update
@@ -4877,16 +3813,16 @@ clone : function () {},
 update : function () {},
 
 /**
- * @method getAmplitudeRate
- * @return A value converted from C/C++ "float"
- */
-getAmplitudeRate : function () {},
-
-/**
  * @method setAmplitude
  * @param {float}
  */
 setAmplitude : function () {},
+
+/**
+ * @method setAmplitudeRate
+ * @param {float}
+ */
+setAmplitudeRate : function () {},
 
 /**
  * @method getAmplitude
@@ -4918,12 +3854,6 @@ cc.SplitRows = {
 startWithTarget : function () {},
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::SplitRows*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -4951,12 +3881,6 @@ cc.SplitCols = {
 startWithTarget : function () {},
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::SplitCols*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -4978,18 +3902,6 @@ create : function () {},
 cc.ActionTween = {
 
 /**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::ActionTween*"
- */
-clone : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -5004,12 +3916,6 @@ update : function () {},
  * @param {float}
  */
 initWithDuration : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::ActionTween*"
- */
-reverse : function () {},
 
 /**
  * @method create
@@ -5027,18 +3933,6 @@ create : function () {},
  * @class CardinalSplineTo
  */
 cc.CardinalSplineTo = {
-
-/**
- * @method startWithTarget
- * @param {cocos2d::Node*}
- */
-startWithTarget : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::CardinalSplineTo*"
- */
-reverse : function () {},
 
 /**
  * @method initWithDuration
@@ -5060,12 +3954,6 @@ getPoints : function () {},
  * @param {cocos2d::Point&}
  */
 updatePosition : function () {},
-
-/**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::CardinalSplineTo*"
- */
-clone : function () {},
 
 /**
  * @method update
@@ -5097,12 +3985,6 @@ startWithTarget : function () {},
  * @return A value converted from C/C++ "cocos2d::CardinalSplineBy*"
  */
 clone : function () {},
-
-/**
- * @method updatePosition
- * @param {cocos2d::Point&}
- */
-updatePosition : function () {},
 
 /**
  * @method reverse
@@ -5151,18 +4033,6 @@ initWithDuration : function () {},
 cc.CatmullRomBy = {
 
 /**
- * @method clone
- * @return A value converted from C/C++ "cocos2d::CatmullRomBy*"
- */
-clone : function () {},
-
-/**
- * @method reverse
- * @return A value converted from C/C++ "cocos2d::CatmullRomBy*"
- */
-reverse : function () {},
-
-/**
  * @method initWithDuration
  * @return A value converted from C/C++ "bool"
  * @param {float}
@@ -5178,26 +4048,9 @@ initWithDuration : function () {},
 cc.AtlasNode = {
 
 /**
- * @method draw
- */
-draw : function () {},
-
-/**
  * @method updateAtlasValues
  */
 updateAtlasValues : function () {},
-
-/**
- * @method isOpacityModifyRGB
- * @return A value converted from C/C++ "bool"
- */
-isOpacityModifyRGB : function () {},
-
-/**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
 
 /**
  * @method getTexture
@@ -5218,12 +4071,6 @@ setTextureAtlas : function () {},
 getTextureAtlas : function () {},
 
 /**
- * @method setOpacityModifyRGB
- * @param {bool}
- */
-setOpacityModifyRGB : function () {},
-
-/**
  * @method getQuadsToDraw
  * @return A value converted from C/C++ "int"
  */
@@ -5234,18 +4081,6 @@ getQuadsToDraw : function () {},
  * @param {cocos2d::Texture2D*}
  */
 setTexture : function () {},
-
-/**
- * @method getColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
- */
-getColor : function () {},
-
-/**
- * @method setOpacity
- * @param {GLubyte}
- */
-setOpacity : function () {},
 
 /**
  * @method setQuadsToDraw
@@ -5269,11 +4104,6 @@ create : function () {},
  * @class DrawNode
  */
 cc.DrawNode = {
-
-/**
- * @method draw
- */
-draw : function () {},
 
 /**
  * @method onDraw
@@ -5770,21 +4600,6 @@ reuse : function () {},
 cc.Grid3D = {
 
 /**
- * @method calculateVertexPoints
- */
-calculateVertexPoints : function () {},
-
-/**
- * @method reuse
- */
-reuse : function () {},
-
-/**
- * @method blit
- */
-blit : function () {},
-
-/**
  * @method Grid3D
  * @constructor
  */
@@ -5796,21 +4611,6 @@ Grid3D : function () {},
  * @class TiledGrid3D
  */
 cc.TiledGrid3D = {
-
-/**
- * @method calculateVertexPoints
- */
-calculateVertexPoints : function () {},
-
-/**
- * @method reuse
- */
-reuse : function () {},
-
-/**
- * @method blit
- */
-blit : function () {},
 
 /**
  * @method TiledGrid3D
@@ -5826,21 +4626,10 @@ TiledGrid3D : function () {},
 cc.Sprite = {
 
 /**
- * @method draw
- */
-draw : function () {},
-
-/**
  * @method getTexture
  * @return A value converted from C/C++ "cocos2d::Texture2D*"
  */
 getTexture : function () {},
-
-/**
- * @method setRotationY
- * @param {float}
- */
-setRotationY : function () {},
 
 /**
  * @method setFlippedY
@@ -5853,36 +4642,6 @@ setFlippedY : function () {},
  * @param {bool}
  */
 setFlippedX : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
- */
-getDescription : function () {},
-
-/**
- * @method setRotationX
- * @param {float}
- */
-setRotationX : function () {},
-
-/**
- * @method setOpacityModifyRGB
- * @param {bool}
- */
-setOpacityModifyRGB : function () {},
-
-/**
- * @method setScaleX
- * @param {float}
- */
-setScaleX : function () {},
-
-/**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
 
 /**
  * @method getBatchNode
@@ -5913,19 +4672,6 @@ updateQuadVertices : function () {},
 updateTransform : function () {},
 
 /**
- * @method setVertexZ
- * @param {float}
- */
-setVertexZ : function () {},
-
-/**
- * @method reorderChild
- * @param {cocos2d::Node*}
- * @param {int}
- */
-reorderChild : function () {},
-
-/**
  * @method isFrameDisplayed
  * @return A value converted from C/C++ "bool"
  * @param {cocos2d::SpriteFrame*}
@@ -5939,22 +4685,10 @@ isFrameDisplayed : function () {},
 getAtlasIndex : function () {},
 
 /**
- * @method setRotation
- * @param {float}
- */
-setRotation : function () {},
-
-/**
  * @method setBatchNode
  * @param {cocos2d::SpriteBatchNode*}
  */
 setBatchNode : function () {},
-
-/**
- * @method setScaleY
- * @param {float}
- */
-setScaleY : function () {},
 
 /**
  * @method setDisplayFrameWithAnimationName
@@ -5994,21 +4728,10 @@ setAtlasIndex : function () {},
 setDirty : function () {},
 
 /**
- * @method isOpacityModifyRGB
- * @return A value converted from C/C++ "bool"
- */
-isOpacityModifyRGB : function () {},
-
-/**
  * @method isTextureRectRotated
  * @return A value converted from C/C++ "bool"
  */
 isTextureRectRotated : function () {},
-
-/**
- * @method sortAllChildren
- */
-sortAllChildren : function () {},
 
 /**
  * @method getTextureRect
@@ -6017,23 +4740,10 @@ sortAllChildren : function () {},
 getTextureRect : function () {},
 
 /**
- * @method ignoreAnchorPointForPosition
- * @param {bool}
- */
-ignoreAnchorPointForPosition : function () {},
-
-/**
  * @method getTextureAtlas
  * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
  */
 getTextureAtlas : function () {},
-
-/**
- * @method removeChild
- * @param {cocos2d::Node*}
- * @param {bool}
- */
-removeChild : function () {},
 
 /**
  * @method isFlippedX
@@ -6052,24 +4762,6 @@ isFlippedY : function () {},
  * @param {const cocos2d::Rect&}
  */
 setVertexRect : function () {},
-
-/**
- * @method setSkewX
- * @param {float}
- */
-setSkewX : function () {},
-
-/**
- * @method setSkewY
- * @param {float}
- */
-setSkewY : function () {},
-
-/**
- * @method setVisible
- * @param {bool}
- */
-setVisible : function () {},
 
 /**
  * @method createWithSpriteFrameName
@@ -6287,27 +4979,71 @@ appendChild : function () {},
 reorderBatch : function () {},
 
 /**
- * @method visit
+ * @method initWithTexture
+ * @return A value converted from C/C++ "bool"
+ * @param {cocos2d::Texture2D*}
+ * @param {ssize_t}
  */
-visit : function () {},
+initWithTexture : function () {},
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
+ * @method lowestAtlasIndexInChild
+ * @return A value converted from C/C++ "ssize_t"
+ * @param {cocos2d::Sprite*}
  */
-getDescription : function () {},
+lowestAtlasIndexInChild : function () {},
 
 /**
- * @method removeAllChildrenWithCleanup
- * @param {bool}
+ * @method atlasIndexForChild
+ * @return A value converted from C/C++ "ssize_t"
+ * @param {cocos2d::Sprite*}
+ * @param {int}
  */
-removeAllChildrenWithCleanup : function () {},
+atlasIndexForChild : function () {},
+
+/**
+ * @method setTextureAtlas
+ * @param {cocos2d::TextureAtlas*}
+ */
+setTextureAtlas : function () {},
+
+/**
+ * @method rebuildIndexInOrder
+ * @return A value converted from C/C++ "ssize_t"
+ * @param {cocos2d::Sprite*}
+ * @param {ssize_t}
+ */
+rebuildIndexInOrder : function () {},
+
+/**
+ * @method increaseAtlasCapacity
+ */
+increaseAtlasCapacity : function () {},
+
+/**
+ * @method getTextureAtlas
+ * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
+ */
+getTextureAtlas : function () {},
 
 /**
  * @method setTexture
  * @param {cocos2d::Texture2D*}
  */
 setTexture : function () {},
+
+/**
+ * @method getTexture
+ * @return A value converted from C/C++ "cocos2d::Texture2D*"
+ */
+getTexture : function () {},
+
+/**
+ * @method highestAtlasIndexInChild
+ * @return A value converted from C/C++ "ssize_t"
+ * @param {cocos2d::Sprite*}
+ */
+highestAtlasIndexInChild : function () {},
 
 /**
  * @method removeChildAtIndex
@@ -6321,91 +5057,6 @@ removeChildAtIndex : function () {},
  * @param {cocos2d::Sprite*}
  */
 removeSpriteFromAtlas : function () {},
-
-/**
- * @method atlasIndexForChild
- * @return A value converted from C/C++ "ssize_t"
- * @param {cocos2d::Sprite*}
- * @param {int}
- */
-atlasIndexForChild : function () {},
-
-/**
- * @method getTexture
- * @return A value converted from C/C++ "cocos2d::Texture2D*"
- */
-getTexture : function () {},
-
-/**
- * @method increaseAtlasCapacity
- */
-increaseAtlasCapacity : function () {},
-
-/**
- * @method lowestAtlasIndexInChild
- * @return A value converted from C/C++ "ssize_t"
- * @param {cocos2d::Sprite*}
- */
-lowestAtlasIndexInChild : function () {},
-
-/**
- * @method draw
- */
-draw : function () {},
-
-/**
- * @method initWithTexture
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Texture2D*}
- * @param {ssize_t}
- */
-initWithTexture : function () {},
-
-/**
- * @method setTextureAtlas
- * @param {cocos2d::TextureAtlas*}
- */
-setTextureAtlas : function () {},
-
-/**
- * @method sortAllChildren
- */
-sortAllChildren : function () {},
-
-/**
- * @method reorderChild
- * @param {cocos2d::Node*}
- * @param {int}
- */
-reorderChild : function () {},
-
-/**
- * @method rebuildIndexInOrder
- * @return A value converted from C/C++ "ssize_t"
- * @param {cocos2d::Sprite*}
- * @param {ssize_t}
- */
-rebuildIndexInOrder : function () {},
-
-/**
- * @method getTextureAtlas
- * @return A value converted from C/C++ "cocos2d::TextureAtlas*"
- */
-getTextureAtlas : function () {},
-
-/**
- * @method removeChild
- * @param {cocos2d::Node*}
- * @param {bool}
- */
-removeChild : function () {},
-
-/**
- * @method highestAtlasIndexInChild
- * @return A value converted from C/C++ "ssize_t"
- * @param {cocos2d::Sprite*}
- */
-highestAtlasIndexInChild : function () {},
 
 /**
  * @method create
@@ -6874,12 +5525,6 @@ createWithTTF : function () {},
 cc.Layer = {
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
- */
-getDescription : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::Layer*"
  */
@@ -7109,12 +5754,6 @@ getEndOpacity : function () {},
  */
 setStartColor : function () {},
 
-/**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
- */
-getDescription : function () {},
-
 };
 
 /**
@@ -7152,24 +5791,6 @@ switchTo : function () {},
  * @class Scene
  */
 cc.Scene = {
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
- */
-getDescription : function () {},
-
-/**
- * @method getScene
- * @return A value converted from C/C++ "cocos2d::Scene*"
- */
-getScene : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method getPhysicsWorld
@@ -7527,11 +6148,6 @@ cc.TransitionFade = {
 cc.TransitionCrossFade = {
 
 /**
- * @method draw
- */
-draw : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TransitionCrossFade*"
  * @param {float}
@@ -7545,11 +6161,6 @@ create : function () {},
  * @class TransitionTurnOffTiles
  */
 cc.TransitionTurnOffTiles = {
-
-/**
- * @method draw
- */
-draw : function () {},
 
 /**
  * @method easeActionWithAction
@@ -7587,11 +6198,6 @@ action : function () {},
 easeActionWithAction : function () {},
 
 /**
- * @method draw
- */
-draw : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TransitionSplitCols*"
  * @param {float}
@@ -7607,12 +6213,6 @@ create : function () {},
 cc.TransitionSplitRows = {
 
 /**
- * @method action
- * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- */
-action : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TransitionSplitRows*"
  * @param {float}
@@ -7626,11 +6226,6 @@ create : function () {},
  * @class TransitionFadeTR
  */
 cc.TransitionFadeTR = {
-
-/**
- * @method draw
- */
-draw : function () {},
 
 /**
  * @method easeActionWithAction
@@ -7662,13 +6257,6 @@ create : function () {},
 cc.TransitionFadeBL = {
 
 /**
- * @method actionWithSize
- * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {const cocos2d::Size&}
- */
-actionWithSize : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TransitionFadeBL*"
  * @param {float}
@@ -7682,13 +6270,6 @@ create : function () {},
  * @class TransitionFadeUp
  */
 cc.TransitionFadeUp = {
-
-/**
- * @method actionWithSize
- * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {const cocos2d::Size&}
- */
-actionWithSize : function () {},
 
 /**
  * @method create
@@ -7706,13 +6287,6 @@ create : function () {},
 cc.TransitionFadeDown = {
 
 /**
- * @method actionWithSize
- * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {const cocos2d::Size&}
- */
-actionWithSize : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::TransitionFadeDown*"
  * @param {float}
@@ -7728,9 +6302,11 @@ create : function () {},
 cc.TransitionPageTurn = {
 
 /**
- * @method draw
+ * @method actionWithSize
+ * @return A value converted from C/C++ "cocos2d::ActionInterval*"
+ * @param {const cocos2d::Size&}
  */
-draw : function () {},
+actionWithSize : function () {},
 
 /**
  * @method initWithDuration
@@ -7740,13 +6316,6 @@ draw : function () {},
  * @param {bool}
  */
 initWithDuration : function () {},
-
-/**
- * @method actionWithSize
- * @return A value converted from C/C++ "cocos2d::ActionInterval*"
- * @param {const cocos2d::Size&}
- */
-actionWithSize : function () {},
 
 /**
  * @method create
@@ -7904,12 +6473,6 @@ isEnabled : function () {},
 selected : function () {},
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
- */
-getDescription : function () {},
-
-/**
  * @method isSelected
  * @return A value converted from C/C++ "bool"
  */
@@ -7934,23 +6497,6 @@ rect : function () {},
 cc.MenuItemLabel = {
 
 /**
- * @method setEnabled
- * @param {bool}
- */
-setEnabled : function () {},
-
-/**
- * @method setLabel
- * @param {cocos2d::Node*}
- */
-setLabel : function () {},
-
-/**
- * @method activate
- */
-activate : function () {},
-
-/**
  * @method getDisabledColor
  * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
@@ -7963,9 +6509,10 @@ getDisabledColor : function () {},
 setString : function () {},
 
 /**
- * @method selected
+ * @method setLabel
+ * @param {cocos2d::Node*}
  */
-selected : function () {},
+setLabel : function () {},
 
 /**
  * @method setDisabledColor
@@ -7978,11 +6525,6 @@ setDisabledColor : function () {},
  * @return A value converted from C/C++ "cocos2d::Node*"
  */
 getLabel : function () {},
-
-/**
- * @method unselected
- */
-unselected : function () {},
 
 };
 
@@ -8144,17 +6686,6 @@ cc.MenuItemToggle = {
 setSubItems : function () {},
 
 /**
- * @method activate
- */
-activate : function () {},
-
-/**
- * @method setEnabled
- * @param {bool}
- */
-setEnabled : function () {},
-
-/**
  * @method getSelectedIndex
  * @return A value converted from C/C++ "unsigned int"
  */
@@ -8165,16 +6696,6 @@ getSelectedIndex : function () {},
  * @param {cocos2d::MenuItem*}
  */
 addSubItem : function () {},
-
-/**
- * @method selected
- */
-selected : function () {},
-
-/**
- * @method unselected
- */
-unselected : function () {},
 
 /**
  * @method getSelectedItem
@@ -8268,11 +6789,6 @@ cc.ClippingNode = {
 isInverted : function () {},
 
 /**
- * @method visit
- */
-visit : function () {},
-
-/**
  * @method setInverted
  * @param {bool}
  */
@@ -8321,18 +6837,6 @@ reset : function () {},
 setTexture : function () {},
 
 /**
- * @method isOpacityModifyRGB
- * @return A value converted from C/C++ "bool"
- */
-isOpacityModifyRGB : function () {},
-
-/**
- * @method setOpacity
- * @param {GLubyte}
- */
-setOpacity : function () {},
-
-/**
  * @method getTexture
  * @return A value converted from C/C++ "cocos2d::Texture2D*"
  */
@@ -8363,24 +6867,6 @@ isStartingPositionInitialized : function () {},
 isFastMode : function () {},
 
 /**
- * @method setOpacityModifyRGB
- * @param {bool}
- */
-setOpacityModifyRGB : function () {},
-
-/**
- * @method getOpacity
- * @return A value converted from C/C++ "GLubyte"
- */
-getOpacity : function () {},
-
-/**
- * @method setPosition
- * @param {const cocos2d::Point&}
- */
-setPosition : function () {},
-
-/**
  * @method setFastMode
  * @param {bool}
  */
@@ -8392,17 +6878,6 @@ setFastMode : function () {},
  * @class ProgressTimer
  */
 cc.ProgressTimer = {
-
-/**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
-
-/**
- * @method draw
- */
-draw : function () {},
 
 /**
  * @method isReverseDirection
@@ -8491,11 +6966,6 @@ cc.RenderTexture = {
 clearStencil : function () {},
 
 /**
- * @method draw
- */
-draw : function () {},
-
-/**
  * @method listenToForeground
  * @param {cocos2d::Object*}
  */
@@ -8529,11 +6999,6 @@ setClearStencil : function () {},
  * @param {cocos2d::Sprite*}
  */
 setSprite : function () {},
-
-/**
- * @method visit
- */
-visit : function () {},
 
 /**
  * @method getSprite
@@ -8634,11 +7099,6 @@ RenderTexture : function () {},
 cc.ParticleBatchNode = {
 
 /**
- * @method draw
- */
-draw : function () {},
-
-/**
  * @method setTexture
  * @param {cocos2d::Texture2D*}
  */
@@ -8688,13 +7148,6 @@ removeAllChildrenWithCleanup : function () {},
 getTextureAtlas : function () {},
 
 /**
- * @method removeChild
- * @param {cocos2d::Node*}
- * @param {bool}
- */
-removeChild : function () {},
-
-/**
  * @method insertChild
  * @param {cocos2d::ParticleSystem*}
  * @param {int}
@@ -8715,13 +7168,6 @@ initWithTexture : function () {},
  * @param {bool}
  */
 removeChildAtIndex : function () {},
-
-/**
- * @method reorderChild
- * @param {cocos2d::Node*}
- * @param {int}
- */
-reorderChild : function () {},
 
 /**
  * @method create
@@ -9314,12 +7760,6 @@ setStartColorVar : function () {},
 setEndSpin : function () {},
 
 /**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
  * @method setRadialAccel
  * @param {float}
  */
@@ -9634,16 +8074,6 @@ cc.NewRenderTexture = {
  * @param {float}
  */
 clearDepth : function () {},
-
-/**
- * @method end
- */
-end : function () {},
-
-/**
- * @method begin
- */
-begin : function () {},
 
 /**
  * @method draw
@@ -10063,22 +8493,10 @@ getDelegate : function () {},
 setSecureTextEntry : function () {},
 
 /**
- * @method getString
- * @return A value converted from C/C++ "const std::string&"
- */
-getString : function () {},
-
-/**
  * @method getColorSpaceHolder
  * @return A value converted from C/C++ "const cocos2d::Color3B&"
  */
 getColorSpaceHolder : function () {},
-
-/**
- * @method getPlaceHolder
- * @return A value converted from C/C++ "const std::string&"
- */
-getPlaceHolder : function () {},
 
 /**
  * @method setColorSpaceHolder
@@ -10111,10 +8529,10 @@ setPlaceHolder : function () {},
 isSecureTextEntry : function () {},
 
 /**
- * @method setString
- * @param {const std::string&}
+ * @method getPlaceHolder
+ * @return A value converted from C/C++ "const std::string&"
  */
-setString : function () {},
+getPlaceHolder : function () {},
 
 /**
  * @method attachWithIME
@@ -10194,22 +8612,19 @@ TextureCache : function () {},
 cc.ParallaxNode = {
 
 /**
- * @method visit
+ * @method addChild
+ * @param {cocos2d::Node*}
+ * @param {int}
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Point&}
  */
-visit : function () {},
+addChild : function () {},
 
 /**
  * @method removeAllChildrenWithCleanup
  * @param {bool}
  */
 removeAllChildrenWithCleanup : function () {},
-
-/**
- * @method removeChild
- * @param {cocos2d::Node*}
- * @param {bool}
- */
-removeChild : function () {},
 
 /**
  * @method setParallaxArray
@@ -10739,12 +9154,6 @@ setMapSize : function () {},
  * @param {const std::string&}
  */
 getObjectGroup : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "std::string"
- */
-getDescription : function () {},
 
 /**
  * @method getTileSize

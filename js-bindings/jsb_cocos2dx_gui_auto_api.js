@@ -766,12 +766,6 @@ ccs.UILayout = {
 setBackGroundColorVector : function () {},
 
 /**
- * @method isClippingEnabled
- * @return A value converted from C/C++ "bool"
- */
-isClippingEnabled : function () {},
-
-/**
  * @method getBackGroundImageTextureSize
  * @return A value converted from C/C++ "const cocos2d::Size&"
  */
@@ -782,12 +776,6 @@ getBackGroundImageTextureSize : function () {},
  * @return A value converted from C/C++ "gui::LayoutType"
  */
 getLayoutType : function () {},
-
-/**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
 
 /**
  * @method setBackGroundColorType
@@ -803,23 +791,10 @@ setBackGroundColorType : function () {},
 setBackGroundImage : function () {},
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
- * @method setOpacity
- * @param {int}
- */
-setOpacity : function () {},
-
-/**
- * @method hitTest
+ * @method isClippingEnabled
  * @return A value converted from C/C++ "bool"
- * @param {const cocos2d::Point&}
  */
-hitTest : function () {},
+isClippingEnabled : function () {},
 
 /**
  * @method setBackGroundColorOpacity
@@ -832,13 +807,6 @@ setBackGroundColorOpacity : function () {},
  * @param {const cocos2d::Rect&}
  */
 setBackGroundImageCapInsets : function () {},
-
-/**
- * @method addChild
- * @return A value converted from C/C++ "bool"
- * @param {gui::UIWidget*}
- */
-addChild : function () {},
 
 /**
  * @method removeBackGroundImage
@@ -861,12 +829,6 @@ doLayout : function () {},
  * @param {bool}
  */
 setClippingEnabled : function () {},
-
-/**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
 
 /**
  * @method setLayoutType
@@ -894,95 +856,29 @@ UILayout : function () {},
 ccs.UIButton = {
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
-
-/**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
-
-/**
  * @method getTitleText
  * @return A value converted from C/C++ "const std::string&"
  */
 getTitleText : function () {},
 
 /**
- * @method setTitleFontSize
- * @param {float}
- */
-setTitleFontSize : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
- * @method setScale9Enabled
- * @param {bool}
- */
-setScale9Enabled : function () {},
-
-/**
- * @method setTitleColor
- * @param {const cocos2d::Color3B&}
- */
-setTitleColor : function () {},
-
-/**
- * @method ignoreContentAdaptWithSize
- * @param {bool}
- */
-ignoreContentAdaptWithSize : function () {},
-
-/**
- * @method setCapInsetsDisabledRenderer
- * @param {const cocos2d::Rect&}
- */
-setCapInsetsDisabledRenderer : function () {},
-
-/**
- * @method isFlipX
- * @return A value converted from C/C++ "bool"
- */
-isFlipX : function () {},
-
-/**
- * @method isFlipY
- * @return A value converted from C/C++ "bool"
- */
-isFlipY : function () {},
-
-/**
- * @method loadTextureDisabled
+ * @method loadTextureNormal
  * @param {const char*}
  * @param {gui::TextureResType}
  */
-loadTextureDisabled : function () {},
-
-/**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
-
-/**
- * @method setTitleText
- * @param {const std::string&}
- */
-setTitleText : function () {},
+loadTextureNormal : function () {},
 
 /**
  * @method setCapInsetsNormalRenderer
  * @param {const cocos2d::Rect&}
  */
 setCapInsetsNormalRenderer : function () {},
+
+/**
+ * @method setCapInsetsPressedRenderer
+ * @param {const cocos2d::Rect&}
+ */
+setCapInsetsPressedRenderer : function () {},
 
 /**
  * @method loadTexturePressed
@@ -992,22 +888,59 @@ setCapInsetsNormalRenderer : function () {},
 loadTexturePressed : function () {},
 
 /**
- * @method setFlipY
- * @param {bool}
+ * @method setTitleFontSize
+ * @param {float}
  */
-setFlipY : function () {},
+setTitleFontSize : function () {},
 
 /**
- * @method setFlipX
- * @param {bool}
+ * @method setCapInsetsDisabledRenderer
+ * @param {const cocos2d::Rect&}
  */
-setFlipX : function () {},
+setCapInsetsDisabledRenderer : function () {},
 
 /**
  * @method setTitleFontName
  * @param {const char*}
  */
 setTitleFontName : function () {},
+
+/**
+ * @method getTitleColor
+ * @return A value converted from C/C++ "const cocos2d::Color3B&"
+ */
+getTitleColor : function () {},
+
+/**
+ * @method loadTextureDisabled
+ * @param {const char*}
+ * @param {gui::TextureResType}
+ */
+loadTextureDisabled : function () {},
+
+/**
+ * @method getTitleFontName
+ * @return A value converted from C/C++ "const char*"
+ */
+getTitleFontName : function () {},
+
+/**
+ * @method setPressedActionEnabled
+ * @param {bool}
+ */
+setPressedActionEnabled : function () {},
+
+/**
+ * @method setCapInsets
+ * @param {const cocos2d::Rect&}
+ */
+setCapInsets : function () {},
+
+/**
+ * @method setScale9Enabled
+ * @param {bool}
+ */
+setScale9Enabled : function () {},
 
 /**
  * @method loadTextures
@@ -1019,53 +952,22 @@ setTitleFontName : function () {},
 loadTextures : function () {},
 
 /**
- * @method getTitleColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
- */
-getTitleColor : function () {},
-
-/**
- * @method loadTextureNormal
- * @param {const char*}
- * @param {gui::TextureResType}
- */
-loadTextureNormal : function () {},
-
-/**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
-
-/**
- * @method setCapInsetsPressedRenderer
- * @param {const cocos2d::Rect&}
- */
-setCapInsetsPressedRenderer : function () {},
-
-/**
  * @method getTitleFontSize
  * @return A value converted from C/C++ "float"
  */
 getTitleFontSize : function () {},
 
 /**
- * @method getTitleFontName
- * @return A value converted from C/C++ "const char*"
+ * @method setTitleText
+ * @param {const std::string&}
  */
-getTitleFontName : function () {},
+setTitleText : function () {},
 
 /**
- * @method setCapInsets
- * @param {const cocos2d::Rect&}
+ * @method setTitleColor
+ * @param {const cocos2d::Color3B&}
  */
-setCapInsets : function () {},
-
-/**
- * @method setPressedActionEnabled
- * @param {bool}
- */
-setPressedActionEnabled : function () {},
+setTitleColor : function () {},
 
 /**
  * @method create
@@ -1085,12 +987,6 @@ UIButton : function () {},
  * @class UICheckBox
  */
 ccs.UICheckBox = {
-
-/**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
 
 /**
  * @method getSelectedState
@@ -1113,53 +1009,11 @@ loadTextureBackGroundSelected : function () {},
 loadTextureBackGroundDisabled : function () {},
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
- * @method setFlipY
- * @param {bool}
- */
-setFlipY : function () {},
-
-/**
- * @method setFlipX
- * @param {bool}
- */
-setFlipX : function () {},
-
-/**
- * @method isFlipX
- * @return A value converted from C/C++ "bool"
- */
-isFlipX : function () {},
-
-/**
- * @method isFlipY
- * @return A value converted from C/C++ "bool"
- */
-isFlipY : function () {},
-
-/**
  * @method loadTextureFrontCross
  * @param {const char*}
  * @param {gui::TextureResType}
  */
 loadTextureFrontCross : function () {},
-
-/**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
-
-/**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
 
 /**
  * @method loadTextures
@@ -1212,22 +1066,10 @@ UICheckBox : function () {},
 ccs.UIImageView = {
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
-
-/**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
-
-/**
- * @method ignoreContentAdaptWithSize
+ * @method setDoubleClickEnabled
  * @param {bool}
  */
-ignoreContentAdaptWithSize : function () {},
+setDoubleClickEnabled : function () {},
 
 /**
  * @method loadTexture
@@ -1235,42 +1077,6 @@ ignoreContentAdaptWithSize : function () {},
  * @param {gui::TextureResType}
  */
 loadTexture : function () {},
-
-/**
- * @method setDoubleClickEnabled
- * @param {bool}
- */
-setDoubleClickEnabled : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
- * @method setFlipY
- * @param {bool}
- */
-setFlipY : function () {},
-
-/**
- * @method setFlipX
- * @param {bool}
- */
-setFlipX : function () {},
-
-/**
- * @method isFlipX
- * @return A value converted from C/C++ "bool"
- */
-isFlipX : function () {},
-
-/**
- * @method isFlipY
- * @return A value converted from C/C++ "bool"
- */
-isFlipY : function () {},
 
 /**
  * @method setScale9Enabled
@@ -1289,12 +1095,6 @@ setTextureRect : function () {},
  * @param {const cocos2d::Rect&}
  */
 setCapInsets : function () {},
-
-/**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
 
 /**
  * @method create
@@ -1316,40 +1116,10 @@ UIImageView : function () {},
 ccs.UILabel = {
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
+ * @method getStringLength
+ * @return A value converted from C/C++ "int"
  */
-setAnchorPoint : function () {},
-
-/**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
-
-/**
- * @method getStringValue
- * @return A value converted from C/C++ "const std::string&"
- */
-getStringValue : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
- * @method setScale
- * @param {float}
- */
-setScale : function () {},
-
-/**
- * @method setTextVerticalAlignment
- * @param {cocos2d::TextVAlignment}
- */
-setTextVerticalAlignment : function () {},
+getStringLength : function () {},
 
 /**
  * @method setFontName
@@ -1364,70 +1134,10 @@ setFontName : function () {},
 setTouchScaleChangeEnabled : function () {},
 
 /**
- * @method isFlipX
- * @return A value converted from C/C++ "bool"
+ * @method getStringValue
+ * @return A value converted from C/C++ "const std::string&"
  */
-isFlipX : function () {},
-
-/**
- * @method isFlipY
- * @return A value converted from C/C++ "bool"
- */
-isFlipY : function () {},
-
-/**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
-
-/**
- * @method isTouchScaleChangeEnabled
- * @return A value converted from C/C++ "bool"
- */
-isTouchScaleChangeEnabled : function () {},
-
-/**
- * @method setTextAreaSize
- * @param {const cocos2d::Size&}
- */
-setTextAreaSize : function () {},
-
-/**
- * @method getStringLength
- * @return A value converted from C/C++ "int"
- */
-getStringLength : function () {},
-
-/**
- * @method setScaleY
- * @param {float}
- */
-setScaleY : function () {},
-
-/**
- * @method setScaleX
- * @param {float}
- */
-setScaleX : function () {},
-
-/**
- * @method setFlipY
- * @param {bool}
- */
-setFlipY : function () {},
-
-/**
- * @method setFlipX
- * @param {bool}
- */
-setFlipX : function () {},
-
-/**
- * @method setFontSize
- * @param {int}
- */
-setFontSize : function () {},
+getStringValue : function () {},
 
 /**
  * @method setText
@@ -1436,10 +1146,34 @@ setFontSize : function () {},
 setText : function () {},
 
 /**
+ * @method setTextVerticalAlignment
+ * @param {cocos2d::TextVAlignment}
+ */
+setTextVerticalAlignment : function () {},
+
+/**
+ * @method setFontSize
+ * @param {int}
+ */
+setFontSize : function () {},
+
+/**
+ * @method isTouchScaleChangeEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isTouchScaleChangeEnabled : function () {},
+
+/**
  * @method setTextHorizontalAlignment
  * @param {cocos2d::TextHAlignment}
  */
 setTextHorizontalAlignment : function () {},
+
+/**
+ * @method setTextAreaSize
+ * @param {const cocos2d::Size&}
+ */
+setTextAreaSize : function () {},
 
 /**
  * @method create
@@ -1461,36 +1195,6 @@ UILabel : function () {},
 ccs.UILabelAtlas = {
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
-
-/**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
-
-/**
- * @method getStringValue
- * @return A value converted from C/C++ "const std::string&"
- */
-getStringValue : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
-
-/**
  * @method setProperty
  * @param {const std::string&}
  * @param {const std::string&}
@@ -1499,6 +1203,12 @@ getContentSize : function () {},
  * @param {const std::string&}
  */
 setProperty : function () {},
+
+/**
+ * @method getStringValue
+ * @return A value converted from C/C++ "const std::string&"
+ */
+getStringValue : function () {},
 
 /**
  * @method setStringValue
@@ -1532,18 +1242,6 @@ ccs.UILoadingBar = {
 setPercent : function () {},
 
 /**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
-
-/**
- * @method ignoreContentAdaptWithSize
- * @param {bool}
- */
-ignoreContentAdaptWithSize : function () {},
-
-/**
  * @method loadTexture
  * @param {const char*}
  * @param {gui::TextureResType}
@@ -1555,12 +1253,6 @@ loadTexture : function () {},
  * @param {gui::LoadingBarType}
  */
 setDirection : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
 
 /**
  * @method setScale9Enabled
@@ -1579,12 +1271,6 @@ setCapInsets : function () {},
  * @return A value converted from C/C++ "int"
  */
 getDirection : function () {},
-
-/**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
 
 /**
  * @method getPercent
@@ -1736,11 +1422,6 @@ isBounceEnabled : function () {},
 jumpToPercentVertical : function () {},
 
 /**
- * @method doLayout
- */
-doLayout : function () {},
-
-/**
  * @method setInertiaScrollEnabled
  * @param {bool}
  */
@@ -1767,12 +1448,6 @@ jumpToBottomRight : function () {},
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method getLayoutType
- * @return A value converted from C/C++ "gui::LayoutType"
- */
-getLayoutType : function () {},
 
 /**
  * @method setBounceEnabled
@@ -1840,12 +1515,6 @@ scrollToRight : function () {},
 removeChild : function () {},
 
 /**
- * @method setLayoutType
- * @param {gui::LayoutType}
- */
-setLayoutType : function () {},
-
-/**
  * @method jumpToRight
  */
 jumpToRight : function () {},
@@ -1896,22 +1565,10 @@ setGravity : function () {},
 pushBackCustomItem : function () {},
 
 /**
- * @method setDirection
- * @param {gui::SCROLLVIEW_DIR}
- */
-setDirection : function () {},
-
-/**
  * @method getItems
  * @return A value converted from C/C++ "cocos2d::Array*"
  */
 getItems : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
 
 /**
  * @method removeItem
@@ -2040,34 +1697,16 @@ setCapInsetProgressBarRebderer : function () {},
 setCapInsetsBarRenderer : function () {},
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
  * @method setScale9Enabled
  * @param {bool}
  */
 setScale9Enabled : function () {},
 
 /**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
-
-/**
  * @method setCapInsets
  * @param {const cocos2d::Rect&}
  */
 setCapInsets : function () {},
-
-/**
- * @method ignoreContentAdaptWithSize
- * @param {bool}
- */
-ignoreContentAdaptWithSize : function () {},
 
 /**
  * @method loadSlidBallTexturePressed
@@ -2082,12 +1721,6 @@ loadSlidBallTexturePressed : function () {},
  * @param {gui::TextureResType}
  */
 loadSlidBallTextureDisabled : function () {},
-
-/**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
 
 /**
  * @method getPercent
@@ -2115,12 +1748,6 @@ UISlider : function () {},
 ccs.UITextField = {
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
-
-/**
  * @method setAttachWithIME
  * @param {bool}
  */
@@ -2131,18 +1758,6 @@ setAttachWithIME : function () {},
  * @return A value converted from C/C++ "const std::string&"
  */
 getStringValue : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
 
 /**
  * @method getDeleteBackward
@@ -2180,33 +1795,15 @@ initRenderer : function () {},
 getDetachWithIME : function () {},
 
 /**
- * @method setOpacity
- * @param {int}
- */
-setOpacity : function () {},
-
-/**
  * @method init
  * @return A value converted from C/C++ "bool"
  */
 init : function () {},
 
 /**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
-
-/**
  * @method didNotSelectSelf
  */
 didNotSelectSelf : function () {},
-
-/**
- * @method isPasswordEnabled
- * @return A value converted from C/C++ "bool"
- */
-isPasswordEnabled : function () {},
 
 /**
  * @method attachWithIME
@@ -2232,10 +1829,10 @@ update : function () {},
 setMaxLengthEnabled : function () {},
 
 /**
- * @method setPasswordStyleText
- * @param {const char*}
+ * @method isPasswordEnabled
+ * @return A value converted from C/C++ "bool"
  */
-setPasswordStyleText : function () {},
+isPasswordEnabled : function () {},
 
 /**
  * @method setFontSize
@@ -2250,10 +1847,10 @@ setFontSize : function () {},
 setPlaceHolder : function () {},
 
 /**
- * @method setColor
- * @param {const cocos2d::Color3B&}
+ * @method setPasswordStyleText
+ * @param {const char*}
  */
-setColor : function () {},
+setPasswordStyleText : function () {},
 
 /**
  * @method getMaxLength
@@ -2323,16 +1920,10 @@ UITextField : function () {},
 ccs.UILabelBMFont = {
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
+ * @method setFntFile
+ * @param {const char*}
  */
-setAnchorPoint : function () {},
-
-/**
- * @method getVirtualRenderer
- * @return A value converted from C/C++ "cocos2d::Node*"
- */
-getVirtualRenderer : function () {},
+setFntFile : function () {},
 
 /**
  * @method getStringValue
@@ -2345,24 +1936,6 @@ getStringValue : function () {},
  * @param {const char*}
  */
 setText : function () {},
-
-/**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
-
-/**
- * @method setFntFile
- * @param {const char*}
- */
-setFntFile : function () {},
 
 /**
  * @method create
@@ -2382,12 +1955,6 @@ UILabelBMFont : function () {},
  * @class UIPageView
  */
 ccs.UIPageView = {
-
-/**
- * @method getLayoutType
- * @return A value converted from C/C++ "gui::LayoutType"
- */
-getLayoutType : function () {},
 
 /**
  * @method getCurPageIndex
@@ -2430,12 +1997,6 @@ getDescription : function () {},
 insertPage : function () {},
 
 /**
- * @method setLayoutType
- * @param {gui::LayoutType}
- */
-setLayoutType : function () {},
-
-/**
  * @method scrollToPage
  * @param {int}
  */
@@ -2446,11 +2007,6 @@ scrollToPage : function () {},
  * @param {float}
  */
 update : function () {},
-
-/**
- * @method doLayout
- */
-doLayout : function () {},
 
 /**
  * @method removePageAtIndex

@@ -16,46 +16,16 @@ cc.Scale9Sprite = {
 resizableSpriteWithCapInsets : function () {},
 
 /**
- * @method setOpacityModifyRGB
- * @param {bool}
- */
-setOpacityModifyRGB : function () {},
-
-/**
- * @method setContentSize
- * @param {const cocos2d::Size&}
- */
-setContentSize : function () {},
-
-/**
  * @method setInsetBottom
  * @param {float}
  */
 setInsetBottom : function () {},
 
 /**
- * @method isOpacityModifyRGB
- * @return A value converted from C/C++ "bool"
- */
-isOpacityModifyRGB : function () {},
-
-/**
- * @method setOpacity
- * @param {GLubyte}
- */
-setOpacity : function () {},
-
-/**
  * @method setInsetTop
  * @param {float}
  */
 setInsetTop : function () {},
-
-/**
- * @method updateDisplayedOpacity
- * @param {GLubyte}
- */
-updateDisplayedOpacity : function () {},
 
 /**
  * @method init
@@ -110,12 +80,6 @@ getInsetRight : function () {},
 getOriginalSize : function () {},
 
 /**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
-
-/**
  * @method getInsetTop
  * @return A value converted from C/C++ "float"
  */
@@ -144,12 +108,6 @@ setCapInsets : function () {},
  * @return A value converted from C/C++ "float"
  */
 getInsetLeft : function () {},
-
-/**
- * @method updateDisplayedColor
- * @param {const cocos2d::Color3B&}
- */
-updateDisplayedColor : function () {},
 
 /**
  * @method setInsetRight
@@ -294,12 +252,6 @@ setTitleLabelForState : function () {},
 setAdjustBackgroundImage : function () {},
 
 /**
- * @method getLabelAnchorPoint
- * @return A value converted from C/C++ "const cocos2d::Point&"
- */
-getLabelAnchorPoint : function () {},
-
-/**
  * @method setHighlighted
  * @param {bool}
  */
@@ -323,6 +275,12 @@ setTitleForState : function () {},
  * @param {const cocos2d::Point&}
  */
 setLabelAnchorPoint : function () {},
+
+/**
+ * @method getLabelAnchorPoint
+ * @return A value converted from C/C++ "const cocos2d::Point&"
+ */
+getLabelAnchorPoint : function () {},
 
 /**
  * @method getTitleTTFSizeForState
@@ -790,82 +748,10 @@ cc.ControlPotentiometer = {
 setPreviousLocation : function () {},
 
 /**
- * @method setProgressTimer
- * @param {cocos2d::ProgressTimer*}
- */
-setProgressTimer : function () {},
-
-/**
- * @method potentiometerMoved
- * @param {cocos2d::Point}
- */
-potentiometerMoved : function () {},
-
-/**
- * @method getMinimumValue
- * @return A value converted from C/C++ "float"
- */
-getMinimumValue : function () {},
-
-/**
- * @method setThumbSprite
- * @param {cocos2d::Sprite*}
- */
-setThumbSprite : function () {},
-
-/**
- * @method setMinimumValue
- * @param {float}
- */
-setMinimumValue : function () {},
-
-/**
- * @method getPreviousLocation
- * @return A value converted from C/C++ "cocos2d::Point"
- */
-getPreviousLocation : function () {},
-
-/**
- * @method setEnabled
- * @param {bool}
- */
-setEnabled : function () {},
-
-/**
  * @method setValue
  * @param {float}
  */
 setValue : function () {},
-
-/**
- * @method setMaximumValue
- * @param {float}
- */
-setMaximumValue : function () {},
-
-/**
- * @method angleInDegreesBetweenLineFromPoint_toPoint_toLineFromPoint_toPoint
- * @return A value converted from C/C++ "float"
- * @param {cocos2d::Point}
- * @param {cocos2d::Point}
- * @param {cocos2d::Point}
- * @param {cocos2d::Point}
- */
-angleInDegreesBetweenLineFromPoint_toPoint_toLineFromPoint_toPoint : function () {},
-
-/**
- * @method potentiometerEnded
- * @param {cocos2d::Point}
- */
-potentiometerEnded : function () {},
-
-/**
- * @method distanceBetweenPointAndPoint
- * @return A value converted from C/C++ "float"
- * @param {cocos2d::Point}
- * @param {cocos2d::Point}
- */
-distanceBetweenPointAndPoint : function () {},
 
 /**
  * @method getProgressTimer
@@ -880,11 +766,38 @@ getProgressTimer : function () {},
 getMaximumValue : function () {},
 
 /**
- * @method isTouchInside
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Touch*}
+ * @method angleInDegreesBetweenLineFromPoint_toPoint_toLineFromPoint_toPoint
+ * @return A value converted from C/C++ "float"
+ * @param {cocos2d::Point}
+ * @param {cocos2d::Point}
+ * @param {cocos2d::Point}
+ * @param {cocos2d::Point}
  */
-isTouchInside : function () {},
+angleInDegreesBetweenLineFromPoint_toPoint_toLineFromPoint_toPoint : function () {},
+
+/**
+ * @method potentiometerBegan
+ * @param {cocos2d::Point}
+ */
+potentiometerBegan : function () {},
+
+/**
+ * @method setMaximumValue
+ * @param {float}
+ */
+setMaximumValue : function () {},
+
+/**
+ * @method getMinimumValue
+ * @return A value converted from C/C++ "float"
+ */
+getMinimumValue : function () {},
+
+/**
+ * @method setThumbSprite
+ * @param {cocos2d::Sprite*}
+ */
+setThumbSprite : function () {},
 
 /**
  * @method getValue
@@ -893,10 +806,36 @@ isTouchInside : function () {},
 getValue : function () {},
 
 /**
- * @method potentiometerBegan
+ * @method getPreviousLocation
+ * @return A value converted from C/C++ "cocos2d::Point"
+ */
+getPreviousLocation : function () {},
+
+/**
+ * @method distanceBetweenPointAndPoint
+ * @return A value converted from C/C++ "float"
+ * @param {cocos2d::Point}
  * @param {cocos2d::Point}
  */
-potentiometerBegan : function () {},
+distanceBetweenPointAndPoint : function () {},
+
+/**
+ * @method potentiometerEnded
+ * @param {cocos2d::Point}
+ */
+potentiometerEnded : function () {},
+
+/**
+ * @method setProgressTimer
+ * @param {cocos2d::ProgressTimer*}
+ */
+setProgressTimer : function () {},
+
+/**
+ * @method setMinimumValue
+ * @param {float}
+ */
+setMinimumValue : function () {},
 
 /**
  * @method getThumbSprite
@@ -912,6 +851,12 @@ getThumbSprite : function () {},
  * @param {cocos2d::Sprite*}
  */
 initWithTrackSprite_ProgressTimer_ThumbSprite : function () {},
+
+/**
+ * @method potentiometerMoved
+ * @param {cocos2d::Point}
+ */
+potentiometerMoved : function () {},
 
 /**
  * @method create
@@ -1289,6 +1234,14 @@ setContentOffsetInDuration : function () {},
  * @param {float}
  */
 setZoomScaleInDuration : function () {},
+
+/**
+ * @method addChild
+ * @param {cocos2d::Node*}
+ * @param {int}
+ * @param {int}
+ */
+addChild : function () {},
 
 /**
  * @method setBounceable

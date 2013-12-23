@@ -461,10 +461,10 @@ getDisplayRenderNodeType : function () {},
 removeDisplay : function () {},
 
 /**
- * @method updateDisplayedOpacity
- * @param {GLubyte}
+ * @method setBoneData
+ * @param {cocostudio::BoneData*}
  */
-updateDisplayedOpacity : function () {},
+setBoneData : function () {},
 
 /**
  * @method changeDisplayByName
@@ -472,12 +472,6 @@ updateDisplayedOpacity : function () {},
  * @param {bool}
  */
 changeDisplayByName : function () {},
-
-/**
- * @method setZOrder
- * @param {int}
- */
-setZOrder : function () {},
 
 /**
  * @method setIgnoreMovementBoneData
@@ -510,22 +504,10 @@ getColliderDetector : function () {},
 setParentBone : function () {},
 
 /**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
  * @method getChildArmature
  * @return A value converted from C/C++ "cocostudio::Armature*"
  */
 getChildArmature : function () {},
-
-/**
- * @method setBoneData
- * @param {cocostudio::BoneData*}
- */
-setBoneData : function () {},
 
 /**
  * @method setArmature
@@ -538,12 +520,6 @@ setArmature : function () {},
  * @param {bool}
  */
 setBlendDirty : function () {},
-
-/**
- * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "kmMat4"
- */
-getNodeToWorldTransform : function () {},
 
 /**
  * @method removeChildBone
@@ -584,12 +560,6 @@ getArmature : function () {},
 changeDisplayByIndex : function () {},
 
 /**
- * @method updateDisplayedColor
- * @param {const cocos2d::Color3B&}
- */
-updateDisplayedColor : function () {},
-
-/**
  * @method Bone
  * @constructor
  */
@@ -607,13 +577,6 @@ ccs.BatchNode = {
  * @param {bool}
  */
 setPopGroupCommand : function () {},
-
-/**
- * @method removeChild
- * @param {cocos2d::Node*}
- * @param {bool}
- */
-removeChild : function () {},
 
 /**
  * @method create
@@ -846,12 +809,6 @@ getBone : function () {},
 changeBoneParent : function () {},
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
-
-/**
  * @method setAnimation
  * @param {cocostudio::ArmatureAnimation*}
  */
@@ -889,10 +846,10 @@ updateOffsetPoint : function () {},
 getParentBone : function () {},
 
 /**
- * @method setName
- * @param {const std::string&}
+ * @method setArmatureData
+ * @param {cocostudio::ArmatureData*}
  */
-setName : function () {},
+setArmatureData : function () {},
 
 /**
  * @method removeBone
@@ -902,10 +859,10 @@ setName : function () {},
 removeBone : function () {},
 
 /**
- * @method getAnchorPointInPoints
- * @return A value converted from C/C++ "const cocos2d::Point&"
+ * @method getBatchNode
+ * @return A value converted from C/C++ "cocostudio::BatchNode*"
  */
-getAnchorPointInPoints : function () {},
+getBatchNode : function () {},
 
 /**
  * @method getName
@@ -914,22 +871,10 @@ getAnchorPointInPoints : function () {},
 getName : function () {},
 
 /**
- * @method getNodeToParentTransform
- * @return A value converted from C/C++ "const kmMat4&"
- */
-getNodeToParentTransform : function () {},
-
-/**
  * @method setParentBone
  * @param {cocostudio::Bone*}
  */
 setParentBone : function () {},
-
-/**
- * @method getBoundingBox
- * @return A value converted from C/C++ "cocos2d::Rect"
- */
-getBoundingBox : function () {},
 
 /**
  * @method drawContour
@@ -943,15 +888,10 @@ drawContour : function () {},
 setBatchNode : function () {},
 
 /**
- * @method draw
+ * @method setName
+ * @param {const std::string&}
  */
-draw : function () {},
-
-/**
- * @method setArmatureData
- * @param {cocostudio::ArmatureData*}
- */
-setArmatureData : function () {},
+setName : function () {},
 
 /**
  * @method addBone
@@ -959,12 +899,6 @@ setArmatureData : function () {},
  * @param {const char*}
  */
 addBone : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method getArmatureData
@@ -989,12 +923,6 @@ getAnimation : function () {},
  * @return A value converted from C/C++ "const cocos2d::Map<std::basic_string<char>, cocostudio::Bone *>&"
  */
 getBoneDic : function () {},
-
-/**
- * @method getBatchNode
- * @return A value converted from C/C++ "cocostudio::BatchNode*"
- */
-getBatchNode : function () {},
 
 /**
  * @method Armature
@@ -1027,15 +955,11 @@ draw : function () {},
 getNodeToWorldTransformAR : function () {},
 
 /**
- * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "kmMat4"
+ * @method initWithFile
+ * @return A value converted from C/C++ "bool"
+ * @param {const std::string&}
  */
-getNodeToWorldTransform : function () {},
-
-/**
- * @method updateTransform
- */
-updateTransform : function () {},
+initWithFile : function () {},
 
 /**
  * @method getDisplayName
@@ -1056,11 +980,10 @@ updateArmatureTransform : function () {},
 initWithSpriteFrameName : function () {},
 
 /**
- * @method initWithFile
- * @return A value converted from C/C++ "bool"
- * @param {const std::string&}
+ * @method getNodeToWorldTransform
+ * @return A value converted from C/C++ "kmMat4"
  */
-initWithFile : function () {},
+getNodeToWorldTransform : function () {},
 
 /**
  * @method setBone
@@ -1391,24 +1314,6 @@ setTouchMode : function () {},
  * @class ComController
  */
 ccs.ComController = {
-
-/**
- * @method setEnabled
- * @param {bool}
- */
-setEnabled : function () {},
-
-/**
- * @method isEnabled
- * @return A value converted from C/C++ "bool"
- */
-isEnabled : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method init
