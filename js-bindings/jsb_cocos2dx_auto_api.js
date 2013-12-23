@@ -8065,24 +8065,6 @@ createWithTotalParticles : function () {},
 };
 
 /**
- * @class NewRenderTexture
- */
-cc.NewRenderTexture = {
-
-/**
- * @method clearDepth
- * @param {float}
- */
-clearDepth : function () {},
-
-/**
- * @method draw
- */
-draw : function () {},
-
-};
-
-/**
  * @class NewClippingNode
  */
 cc.NewClippingNode = {

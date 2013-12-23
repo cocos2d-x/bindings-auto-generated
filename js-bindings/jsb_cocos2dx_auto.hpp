@@ -2650,18 +2650,6 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_ParticleRain_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_ParticleRain_createWithTotalParticles(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_NewRenderTexture_class;
-extern JSObject *jsb_NewRenderTexture_prototype;
-
-JSBool js_cocos2dx_NewRenderTexture_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_NewRenderTexture_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_NewRenderTexture(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_NewRenderTexture_clearDepth(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewRenderTexture_draw(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewRenderTexture_beginWithClear(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewRenderTexture_create(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_NewClippingNode_class;
 extern JSObject *jsb_NewClippingNode_prototype;
 
