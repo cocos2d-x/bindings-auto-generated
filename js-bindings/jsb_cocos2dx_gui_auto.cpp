@@ -5073,35 +5073,6 @@ void js_register_cocos2dx_gui_UILoadingBar(JSContext *cx, JSObject *global) {
 JSClass  *jsb_UIScrollView_class;
 JSObject *jsb_UIScrollView_prototype;
 
-JSBool js_cocos2dx_gui_UIScrollView_addChild(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	gui::UIScrollView* cobj = (gui::UIScrollView *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_addChild : Invalid Native Object");
-	if (argc == 1) {
-		gui::UIWidget* arg0;
-		do {
-			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (gui::UIWidget*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_addChild : Error processing arguments");
-		JSBool ret = cobj->addChild(arg0);
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_addChild : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_gui_UIScrollView_scrollToTop(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -5148,36 +5119,21 @@ JSBool js_cocos2dx_gui_UIScrollView_scrollToPercentHorizontal(JSContext *cx, uin
 	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_scrollToPercentHorizontal : wrong number of arguments: %d, was expecting %d", argc, 3);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_UIScrollView_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	gui::UIScrollView* cobj = (gui::UIScrollView *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_getDescription : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled : Invalid Native Object");
 	if (argc == 0) {
-		const char* ret = cobj->getDescription();
+		JSBool ret = cobj->isInertiaScrollEnabled();
 		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
+		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_gui_UIScrollView_removeAllChildren(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	gui::UIScrollView* cobj = (gui::UIScrollView *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_removeAllChildren : Invalid Native Object");
-	if (argc == 0) {
-		cobj->removeAllChildren();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_removeAllChildren : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_gui_UIScrollView_scrollToPercentBothDirection(JSContext *cx, uint32_t argc, jsval *vp)
@@ -5202,23 +5158,6 @@ JSBool js_cocos2dx_gui_UIScrollView_scrollToPercentBothDirection(JSContext *cx, 
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_scrollToPercentBothDirection : wrong number of arguments: %d, was expecting %d", argc, 3);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_gui_UIScrollView_getChildren(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	gui::UIScrollView* cobj = (gui::UIScrollView *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_getChildren : Invalid Native Object");
-	if (argc == 0) {
-		cocos2d::Array* ret = cobj->getChildren();
-		jsval jsret;
-		jsret = ccarray_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_getChildren : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_gui_UIScrollView_getDirection(JSContext *cx, uint32_t argc, jsval *vp)
@@ -5389,23 +5328,6 @@ JSBool js_cocos2dx_gui_UIScrollView_setInnerContainerSize(JSContext *cx, uint32_
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_setInnerContainerSize : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	gui::UIScrollView* cobj = (gui::UIScrollView *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled : Invalid Native Object");
-	if (argc == 0) {
-		JSBool ret = cobj->isInertiaScrollEnabled();
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_gui_UIScrollView_getInnerContainerSize(JSContext *cx, uint32_t argc, jsval *vp)
@@ -5734,35 +5656,6 @@ JSBool js_cocos2dx_gui_UIScrollView_scrollToRight(JSContext *cx, uint32_t argc, 
 	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_scrollToRight : wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_UIScrollView_removeChild(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	gui::UIScrollView* cobj = (gui::UIScrollView *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_removeChild : Invalid Native Object");
-	if (argc == 1) {
-		gui::UIWidget* arg0;
-		do {
-			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (gui::UIWidget*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIScrollView_removeChild : Error processing arguments");
-		JSBool ret = cobj->removeChild(arg0);
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_UIScrollView_removeChild : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_gui_UIScrollView_jumpToRight(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -5872,13 +5765,10 @@ void js_register_cocos2dx_gui_UIScrollView(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("addChild", js_cocos2dx_gui_UIScrollView_addChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("scrollToTop", js_cocos2dx_gui_UIScrollView_scrollToTop, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("scrollToPercentHorizontal", js_cocos2dx_gui_UIScrollView_scrollToPercentHorizontal, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDescription", js_cocos2dx_gui_UIScrollView_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("removeAllChildren", js_cocos2dx_gui_UIScrollView_removeAllChildren, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isInertiaScrollEnabled", js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("scrollToPercentBothDirection", js_cocos2dx_gui_UIScrollView_scrollToPercentBothDirection, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getChildren", js_cocos2dx_gui_UIScrollView_getChildren, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getDirection", js_cocos2dx_gui_UIScrollView_getDirection, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("scrollToBottomLeft", js_cocos2dx_gui_UIScrollView_scrollToBottomLeft, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getInnerContainer", js_cocos2dx_gui_UIScrollView_getInnerContainer, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5888,7 +5778,6 @@ void js_register_cocos2dx_gui_UIScrollView(JSContext *cx, JSObject *global) {
 		JS_FN("jumpToTopRight", js_cocos2dx_gui_UIScrollView_jumpToTopRight, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("jumpToBottomLeft", js_cocos2dx_gui_UIScrollView_jumpToBottomLeft, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setInnerContainerSize", js_cocos2dx_gui_UIScrollView_setInnerContainerSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isInertiaScrollEnabled", js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getInnerContainerSize", js_cocos2dx_gui_UIScrollView_getInnerContainerSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isBounceEnabled", js_cocos2dx_gui_UIScrollView_isBounceEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("jumpToPercentVertical", js_cocos2dx_gui_UIScrollView_jumpToPercentVertical, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5906,7 +5795,6 @@ void js_register_cocos2dx_gui_UIScrollView(JSContext *cx, JSObject *global) {
 		JS_FN("scrollToBottomRight", js_cocos2dx_gui_UIScrollView_scrollToBottomRight, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("jumpToLeft", js_cocos2dx_gui_UIScrollView_jumpToLeft, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("scrollToRight", js_cocos2dx_gui_UIScrollView_scrollToRight, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("removeChild", js_cocos2dx_gui_UIScrollView_removeChild, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("jumpToRight", js_cocos2dx_gui_UIScrollView_jumpToRight, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("scrollToTopRight", js_cocos2dx_gui_UIScrollView_scrollToTopRight, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
@@ -7691,21 +7579,24 @@ JSBool js_cocos2dx_gui_UIPageView_removePage(JSContext *cx, uint32_t argc, jsval
 	JS_ReportError(cx, "js_cocos2dx_gui_UIPageView_removePage : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_UIPageView_getDescription(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_UIPageView_update(JSContext *cx, uint32_t argc, jsval *vp)
 {
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	gui::UIPageView* cobj = (gui::UIPageView *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIPageView_getDescription : Invalid Native Object");
-	if (argc == 0) {
-		const char* ret = cobj->getDescription();
-		jsval jsret;
-		jsret = c_string_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIPageView_update : Invalid Native Object");
+	if (argc == 1) {
+		double arg0;
+		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIPageView_update : Error processing arguments");
+		cobj->update(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_UIPageView_getDescription : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_UIPageView_update : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_gui_UIPageView_insertPage(JSContext *cx, uint32_t argc, jsval *vp)
@@ -7755,26 +7646,6 @@ JSBool js_cocos2dx_gui_UIPageView_scrollToPage(JSContext *cx, uint32_t argc, jsv
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_gui_UIPageView_scrollToPage : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_gui_UIPageView_update(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	gui::UIPageView* cobj = (gui::UIPageView *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UIPageView_update : Invalid Native Object");
-	if (argc == 1) {
-		double arg0;
-		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UIPageView_update : Error processing arguments");
-		cobj->update(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_UIPageView_update : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_gui_UIPageView_removePageAtIndex(JSContext *cx, uint32_t argc, jsval *vp)
@@ -7932,10 +7803,9 @@ void js_register_cocos2dx_gui_UIPageView(JSContext *cx, JSObject *global) {
 		JS_FN("addWidgetToPage", js_cocos2dx_gui_UIPageView_addWidgetToPage, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPage", js_cocos2dx_gui_UIPageView_getPage, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removePage", js_cocos2dx_gui_UIPageView_removePage, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getDescription", js_cocos2dx_gui_UIPageView_getDescription, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("update", js_cocos2dx_gui_UIPageView_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("insertPage", js_cocos2dx_gui_UIPageView_insertPage, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("scrollToPage", js_cocos2dx_gui_UIPageView_scrollToPage, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("update", js_cocos2dx_gui_UIPageView_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removePageAtIndex", js_cocos2dx_gui_UIPageView_removePageAtIndex, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPages", js_cocos2dx_gui_UIPageView_getPages, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeAllPages", js_cocos2dx_gui_UIPageView_removeAllPages, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -8330,26 +8200,6 @@ JSBool js_cocos2dx_gui_UILayer_addWidget(JSContext *cx, uint32_t argc, jsval *vp
 	JS_ReportError(cx, "js_cocos2dx_gui_UILayer_addWidget : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_UILayer_setVisible(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	gui::UILayer* cobj = (gui::UILayer *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_UILayer_setVisible : Invalid Native Object");
-	if (argc == 1) {
-		JSBool arg0;
-		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_UILayer_setVisible : Error processing arguments");
-		cobj->setVisible(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_UILayer_setVisible : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_gui_UILayer_clear(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -8443,7 +8293,6 @@ void js_register_cocos2dx_gui_UILayer(JSContext *cx, JSObject *global) {
 		JS_FN("init", js_cocos2dx_gui_UILayer_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getWidgetByName", js_cocos2dx_gui_UILayer_getWidgetByName, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addWidget", js_cocos2dx_gui_UILayer_addWidget, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setVisible", js_cocos2dx_gui_UILayer_setVisible, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("clear", js_cocos2dx_gui_UILayer_clear, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};

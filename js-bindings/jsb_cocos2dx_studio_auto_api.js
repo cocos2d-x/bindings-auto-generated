@@ -944,11 +944,6 @@ ccs.Skin = {
 getBone : function () {},
 
 /**
- * @method draw
- */
-draw : function () {},
-
-/**
  * @method getNodeToWorldTransformAR
  * @return A value converted from C/C++ "kmMat4"
  */
@@ -978,12 +973,6 @@ updateArmatureTransform : function () {},
  * @param {const std::string&}
  */
 initWithSpriteFrameName : function () {},
-
-/**
- * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "kmMat4"
- */
-getNodeToWorldTransform : function () {},
 
 /**
  * @method setBone

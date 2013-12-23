@@ -218,18 +218,6 @@ isTouchInside : function () {},
 setHighlighted : function () {},
 
 /**
- * @method setOpacityModifyRGB
- * @param {bool}
- */
-setOpacityModifyRGB : function () {},
-
-/**
- * @method isOpacityModifyRGB
- * @return A value converted from C/C++ "bool"
- */
-isOpacityModifyRGB : function () {},
-
-/**
  * @method getTouchLocation
  * @return A value converted from C/C++ "cocos2d::Point"
  * @param {cocos2d::Touch*}
@@ -319,12 +307,6 @@ getLabelAnchorPoint : function () {},
 getTitleTTFSizeForState : function () {},
 
 /**
- * @method setOpacity
- * @param {GLubyte}
- */
-setOpacity : function () {},
-
-/**
  * @method setTitleTTFForState
  * @param {const std::string&}
  * @param {cocos2d::extension::Control::State}
@@ -345,10 +327,10 @@ setTitleTTFSizeForState : function () {},
 setTitleLabel : function () {},
 
 /**
- * @method getOpacity
- * @return A value converted from C/C++ "GLubyte"
+ * @method setPreferredSize
+ * @param {const cocos2d::Size&}
  */
-getOpacity : function () {},
+setPreferredSize : function () {},
 
 /**
  * @method getCurrentTitleColor
@@ -370,21 +352,15 @@ setEnabled : function () {},
 getBackgroundSpriteForState : function () {},
 
 /**
- * @method getColor
- * @return A value converted from C/C++ "const cocos2d::Color3B&"
+ * @method getHorizontalOrigin
+ * @return A value converted from C/C++ "int"
  */
-getColor : function () {},
+getHorizontalOrigin : function () {},
 
 /**
  * @method needsLayout
  */
 needsLayout : function () {},
-
-/**
- * @method getHorizontalOrigin
- * @return A value converted from C/C++ "int"
- */
-getHorizontalOrigin : function () {},
 
 /**
  * @method getTitleTTFForState
@@ -434,22 +410,10 @@ setBackgroundSpriteFrameForState : function () {},
 setBackgroundSpriteForState : function () {},
 
 /**
- * @method setColor
- * @param {const cocos2d::Color3B&}
- */
-setColor : function () {},
-
-/**
  * @method setBackgroundSprite
  * @param {cocos2d::extension::Scale9Sprite*}
  */
 setBackgroundSprite : function () {},
-
-/**
- * @method setPreferredSize
- * @param {const cocos2d::Size&}
- */
-setPreferredSize : function () {},
 
 /**
  * @method getTitleLabel
@@ -1272,14 +1236,6 @@ setContentOffsetInDuration : function () {},
 setZoomScaleInDuration : function () {},
 
 /**
- * @method addChild
- * @param {cocos2d::Node*}
- * @param {int}
- * @param {int}
- */
-addChild : function () {},
-
-/**
  * @method setBounceable
  * @param {bool}
  */
@@ -1360,12 +1316,6 @@ isTouchEnabled : function () {},
 isBounceable : function () {},
 
 /**
- * @method getContentSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getContentSize : function () {},
-
-/**
  * @method setTouchEnabled
  * @param {bool}
  */
@@ -1420,12 +1370,6 @@ getViewSize : function () {},
  * @return A value converted from C/C++ "cocos2d::Point"
  */
 maxContainerOffset : function () {},
-
-/**
- * @method setContentSize
- * @param {const cocos2d::Size&}
- */
-setContentSize : function () {},
 
 /**
  * @method onTouchBegan

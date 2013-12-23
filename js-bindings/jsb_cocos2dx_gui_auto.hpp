@@ -298,13 +298,10 @@ JSBool js_cocos2dx_gui_UIScrollView_constructor(JSContext *cx, uint32_t argc, js
 void js_cocos2dx_gui_UIScrollView_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_gui_UIScrollView(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_gui(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_gui_UIScrollView_addChild(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_scrollToTop(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_scrollToPercentHorizontal(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_UIScrollView_getDescription(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_UIScrollView_removeAllChildren(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_scrollToPercentBothDirection(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_UIScrollView_getChildren(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_getDirection(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_scrollToBottomLeft(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_getInnerContainer(JSContext *cx, uint32_t argc, jsval *vp);
@@ -314,7 +311,6 @@ JSBool js_cocos2dx_gui_UIScrollView_scrollToTopLeft(JSContext *cx, uint32_t argc
 JSBool js_cocos2dx_gui_UIScrollView_jumpToTopRight(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_jumpToBottomLeft(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_setInnerContainerSize(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_UIScrollView_isInertiaScrollEnabled(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_getInnerContainerSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_isBounceEnabled(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_jumpToPercentVertical(JSContext *cx, uint32_t argc, jsval *vp);
@@ -332,7 +328,6 @@ JSBool js_cocos2dx_gui_UIScrollView_scrollToBottom(JSContext *cx, uint32_t argc,
 JSBool js_cocos2dx_gui_UIScrollView_scrollToBottomRight(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_jumpToLeft(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_scrollToRight(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_UIScrollView_removeChild(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_jumpToRight(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_scrollToTopRight(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIScrollView_create(JSContext *cx, uint32_t argc, jsval *vp);
@@ -444,10 +439,9 @@ JSBool js_cocos2dx_gui_UIPageView_getCurPageIndex(JSContext *cx, uint32_t argc, 
 JSBool js_cocos2dx_gui_UIPageView_addWidgetToPage(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIPageView_getPage(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIPageView_removePage(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_UIPageView_getDescription(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_UIPageView_update(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIPageView_insertPage(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIPageView_scrollToPage(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_UIPageView_update(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIPageView_removePageAtIndex(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIPageView_getPages(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UIPageView_removeAllPages(JSContext *cx, uint32_t argc, jsval *vp);
@@ -480,7 +474,6 @@ JSBool js_cocos2dx_gui_UILayer_removeWidget(JSContext *cx, uint32_t argc, jsval 
 JSBool js_cocos2dx_gui_UILayer_init(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UILayer_getWidgetByName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UILayer_addWidget(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_UILayer_setVisible(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UILayer_clear(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UILayer_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_UILayer_UILayer(JSContext *cx, uint32_t argc, jsval *vp);

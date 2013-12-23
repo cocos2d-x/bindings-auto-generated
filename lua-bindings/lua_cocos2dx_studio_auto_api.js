@@ -856,12 +856,6 @@ UILayout : function () {},
 ccs.UIRootWidget = {
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
- */
-getDescription : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "gui::UIRootWidget*"
  */
@@ -1226,17 +1220,6 @@ UILabel : function () {},
 ccs.UICCLabelAtlas = {
 
 /**
- * @method updateDisplayedOpacity
- * @param {GLubyte}
- */
-updateDisplayedOpacity : function () {},
-
-/**
- * @method draw
- */
-draw : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "gui::UICCLabelAtlas*"
  */
@@ -1359,13 +1342,6 @@ UILoadingBar : function () {},
 ccs.UIScrollView = {
 
 /**
- * @method addChild
- * @return A value converted from C/C++ "bool"
- * @param {gui::UIWidget*}
- */
-addChild : function () {},
-
-/**
  * @method scrollToTop
  * @param {float}
  * @param {bool}
@@ -1381,15 +1357,10 @@ scrollToTop : function () {},
 scrollToPercentHorizontal : function () {},
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
+ * @method isInertiaScrollEnabled
+ * @return A value converted from C/C++ "bool"
  */
-getDescription : function () {},
-
-/**
- * @method removeAllChildren
- */
-removeAllChildren : function () {},
+isInertiaScrollEnabled : function () {},
 
 /**
  * @method scrollToPercentBothDirection
@@ -1398,12 +1369,6 @@ removeAllChildren : function () {},
  * @param {bool}
  */
 scrollToPercentBothDirection : function () {},
-
-/**
- * @method getChildren
- * @return A value converted from C/C++ "cocos2d::Array*"
- */
-getChildren : function () {},
 
 /**
  * @method getDirection
@@ -1457,12 +1422,6 @@ jumpToBottomLeft : function () {},
  * @param {const cocos2d::Size&}
  */
 setInnerContainerSize : function () {},
-
-/**
- * @method isInertiaScrollEnabled
- * @return A value converted from C/C++ "bool"
- */
-isInertiaScrollEnabled : function () {},
 
 /**
  * @method getInnerContainerSize
@@ -1567,13 +1526,6 @@ jumpToLeft : function () {},
  * @param {bool}
  */
 scrollToRight : function () {},
-
-/**
- * @method removeChild
- * @return A value converted from C/C++ "bool"
- * @param {gui::UIWidget*}
- */
-removeChild : function () {},
 
 /**
  * @method jumpToRight
@@ -2223,10 +2175,10 @@ getPage : function () {},
 removePage : function () {},
 
 /**
- * @method getDescription
- * @return A value converted from C/C++ "const char*"
+ * @method update
+ * @param {float}
  */
-getDescription : function () {},
+update : function () {},
 
 /**
  * @method insertPage
@@ -2240,12 +2192,6 @@ insertPage : function () {},
  * @param {int}
  */
 scrollToPage : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
 
 /**
  * @method removePageAtIndex
@@ -2365,12 +2311,6 @@ getWidgetByName : function () {},
  * @param {gui::UIWidget*}
  */
 addWidget : function () {},
-
-/**
- * @method setVisible
- * @param {bool}
- */
-setVisible : function () {},
 
 /**
  * @method clear
@@ -3469,11 +3409,6 @@ ccs.Skin = {
 getBone : function () {},
 
 /**
- * @method draw
- */
-draw : function () {},
-
-/**
  * @method getNodeToWorldTransformAR
  * @return A value converted from C/C++ "kmMat4"
  */
@@ -3503,12 +3438,6 @@ updateArmatureTransform : function () {},
  * @param {const std::string&}
  */
 initWithSpriteFrameName : function () {},
-
-/**
- * @method getNodeToWorldTransform
- * @return A value converted from C/C++ "kmMat4"
- */
-getNodeToWorldTransform : function () {},
 
 /**
  * @method setBone
