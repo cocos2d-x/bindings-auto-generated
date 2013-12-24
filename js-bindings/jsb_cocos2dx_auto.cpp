@@ -36273,119 +36273,6 @@ void js_register_cocos2dx_ParticleRain(JSContext *cx, JSObject *global) {
 }
 
 
-JSClass  *jsb_NewClippingNode_class;
-JSObject *jsb_NewClippingNode_prototype;
-
-JSBool js_cocos2dx_NewClippingNode_create(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	
-	do {
-		if (argc == 1) {
-			cocos2d::Node* arg0;
-			do {
-				if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-				js_proxy_t *proxy;
-				JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-				proxy = jsb_get_js_proxy(tmpObj);
-				arg0 = (cocos2d::Node*)(proxy ? proxy->ptr : NULL);
-				JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-			} while (0);
-			if (!ok) { ok = JS_TRUE; break; }
-			cocos2d::NewClippingNode* ret = cocos2d::NewClippingNode::create(arg0);
-			jsval jsret;
-			do {
-				if (ret) {
-					js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::NewClippingNode>(cx, (cocos2d::NewClippingNode*)ret);
-					jsret = OBJECT_TO_JSVAL(proxy->obj);
-				} else {
-					jsret = JSVAL_NULL;
-				}
-			} while (0);
-			JS_SET_RVAL(cx, vp, jsret);
-			return JS_TRUE;
-		}
-	} while (0);
-	
-	do {
-		if (argc == 0) {
-			cocos2d::NewClippingNode* ret = cocos2d::NewClippingNode::create();
-			jsval jsret;
-			do {
-				if (ret) {
-					js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::NewClippingNode>(cx, (cocos2d::NewClippingNode*)ret);
-					jsret = OBJECT_TO_JSVAL(proxy->obj);
-				} else {
-					jsret = JSVAL_NULL;
-				}
-			} while (0);
-			JS_SET_RVAL(cx, vp, jsret);
-			return JS_TRUE;
-		}
-	} while (0);
-	JS_ReportError(cx, "js_cocos2dx_NewClippingNode_create : wrong number of arguments");
-	return JS_FALSE;
-}
-
-extern JSObject *jsb_ClippingNode_prototype;
-
-void js_cocos2dx_NewClippingNode_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (NewClippingNode)", obj);
-}
-
-void js_register_cocos2dx_NewClippingNode(JSContext *cx, JSObject *global) {
-	jsb_NewClippingNode_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_NewClippingNode_class->name = "NewClippingNode";
-	jsb_NewClippingNode_class->addProperty = JS_PropertyStub;
-	jsb_NewClippingNode_class->delProperty = JS_DeletePropertyStub;
-	jsb_NewClippingNode_class->getProperty = JS_PropertyStub;
-	jsb_NewClippingNode_class->setProperty = JS_StrictPropertyStub;
-	jsb_NewClippingNode_class->enumerate = JS_EnumerateStub;
-	jsb_NewClippingNode_class->resolve = JS_ResolveStub;
-	jsb_NewClippingNode_class->convert = JS_ConvertStub;
-	jsb_NewClippingNode_class->finalize = js_cocos2dx_NewClippingNode_finalize;
-	jsb_NewClippingNode_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-	static JSPropertySpec properties[] = {
-		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
-	};
-
-	JSFunctionSpec *funcs = NULL;
-
-	static JSFunctionSpec st_funcs[] = {
-		JS_FN("create", js_cocos2dx_NewClippingNode_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FS_END
-	};
-
-	jsb_NewClippingNode_prototype = JS_InitClass(
-		cx, global,
-		jsb_ClippingNode_prototype,
-		jsb_NewClippingNode_class,
-		dummy_constructor<cocos2d::NewClippingNode>, 0, // no constructor
-		properties,
-		funcs,
-		NULL, // no static properties
-		st_funcs);
-	// make the class enumerable in the registered namespace
-	JSBool found;
-	JS_SetPropertyAttributes(cx, global, "NewClippingNode", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
-
-	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::NewClippingNode> t;
-	js_type_class_t *p;
-	std::string typeName = t.s_name();
-	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
-	{
-		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_NewClippingNode_class;
-		p->proto = jsb_NewClippingNode_prototype;
-		p->parentProto = jsb_ClippingNode_prototype;
-		_js_global_type_map.insert(std::make_pair(typeName, p));
-	}
-}
-
-
 JSClass  *jsb_FileUtils_class;
 JSObject *jsb_FileUtils_prototype;
 
@@ -42987,8 +42874,6 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_DelayTime(cx, obj);
 	js_register_cocos2dx_LabelAtlas(cx, obj);
 	js_register_cocos2dx_LabelBMFont(cx, obj);
-	js_register_cocos2dx_ClippingNode(cx, obj);
-	js_register_cocos2dx_NewClippingNode(cx, obj);
 	js_register_cocos2dx_TransitionFadeTR(cx, obj);
 	js_register_cocos2dx_TransitionFadeBL(cx, obj);
 	js_register_cocos2dx_EaseElasticIn(cx, obj);
@@ -43018,6 +42903,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_TransitionShrinkGrow(cx, obj);
 	js_register_cocos2dx_Sprite(cx, obj);
 	js_register_cocos2dx_LabelTTF(cx, obj);
+	js_register_cocos2dx_ClippingNode(cx, obj);
 	js_register_cocos2dx_ParticleFlower(cx, obj);
 	js_register_cocos2dx_ParticleSmoke(cx, obj);
 	js_register_cocos2dx_LayerMultiplex(cx, obj);

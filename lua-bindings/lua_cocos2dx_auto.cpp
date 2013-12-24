@@ -52539,103 +52539,6 @@ int lua_register_cocos2dx_ParticleRain(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_NewClippingNode_create(lua_State* tolua_S)
-{
-    int argc = 0;
-    bool ok  = true;
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"NewClippingNode",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-
-    do 
-    {
-        if (argc == 1)
-        {
-            cocos2d::Node* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-            if (!ok) { break; }
-            cocos2d::NewClippingNode* ret = cocos2d::NewClippingNode::create(arg0);
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::NewClippingNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"NewClippingNode");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"NewClippingNode");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-            return 1;
-        }
-    } while (0);
-    ok  = true;
-    do 
-    {
-        if (argc == 0)
-        {
-            cocos2d::NewClippingNode* ret = cocos2d::NewClippingNode::create();
-            do {
-			if (NULL != ret){
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::NewClippingNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"NewClippingNode");
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"NewClippingNode");
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-            return 1;
-        }
-    } while (0);
-    ok  = true;
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 0);
-    return 0;
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NewClippingNode_create'.",&tolua_err);
-#endif
-    return 0;
-}
-static int lua_cocos2dx_NewClippingNode_finalize(lua_State* tolua_S)
-{
-    printf("luabindings: finalizing LUA object (NewClippingNode)");
-    return 0;
-}
-
-int lua_register_cocos2dx_NewClippingNode(lua_State* tolua_S)
-{
-    tolua_usertype(tolua_S,"NewClippingNode");
-    tolua_cclass(tolua_S,"NewClippingNode","NewClippingNode","ClippingNode",NULL);
-
-    tolua_beginmodule(tolua_S,"NewClippingNode");
-        tolua_function(tolua_S,"create", lua_cocos2dx_NewClippingNode_create);
-    tolua_endmodule(tolua_S);
-    std::string typeName = typeid(cocos2d::NewClippingNode).name();
-    g_luaType[typeName] = "NewClippingNode";
-    return 1;
-}
-
 static int lua_cocos2dx_EventListenerCustom_finalize(lua_State* tolua_S)
 {
     printf("luabindings: finalizing LUA object (EventListenerCustom)");
@@ -64714,8 +64617,6 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_DelayTime(tolua_S);
 	lua_register_cocos2dx_LabelAtlas(tolua_S);
 	lua_register_cocos2dx_LabelBMFont(tolua_S);
-	lua_register_cocos2dx_ClippingNode(tolua_S);
-	lua_register_cocos2dx_NewClippingNode(tolua_S);
 	lua_register_cocos2dx_TransitionFadeTR(tolua_S);
 	lua_register_cocos2dx_TransitionFadeBL(tolua_S);
 	lua_register_cocos2dx_EaseElasticIn(tolua_S);
@@ -64747,6 +64648,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_TransitionShrinkGrow(tolua_S);
 	lua_register_cocos2dx_Sprite(tolua_S);
 	lua_register_cocos2dx_LabelTTF(tolua_S);
+	lua_register_cocos2dx_ClippingNode(tolua_S);
 	lua_register_cocos2dx_ParticleFlower(tolua_S);
 	lua_register_cocos2dx_ParticleSmoke(tolua_S);
 	lua_register_cocos2dx_Image(tolua_S);

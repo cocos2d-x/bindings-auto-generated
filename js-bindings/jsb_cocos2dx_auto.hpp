@@ -2461,15 +2461,6 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_ParticleRain_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_ParticleRain_createWithTotalParticles(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_NewClippingNode_class;
-extern JSObject *jsb_NewClippingNode_prototype;
-
-JSBool js_cocos2dx_NewClippingNode_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_NewClippingNode_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_NewClippingNode(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_NewClippingNode_create(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_FileUtils_class;
 extern JSObject *jsb_FileUtils_prototype;
 

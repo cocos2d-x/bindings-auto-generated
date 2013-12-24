@@ -7030,13 +7030,6 @@ createWithTotalParticles : function () {},
 };
 
 /**
- * @class NewClippingNode
- */
-cc.NewClippingNode = {
-
-};
-
-/**
  * @class FileUtils
  */
 cc.FileUtils = {

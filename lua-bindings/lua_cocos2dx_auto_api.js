@@ -7339,13 +7339,6 @@ createWithTotalParticles : function () {},
 };
 
 /**
- * @class NewClippingNode
- */
-cc.NewClippingNode = {
-
-};
-
-/**
  * @class EventListenerCustom
  */
 cc.EventListenerCustom = {
