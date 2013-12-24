@@ -1458,17 +1458,6 @@ JSBool js_cocos2dx_Sprite_createWithTexture(JSContext *cx, uint32_t argc, jsval 
 JSBool js_cocos2dx_Sprite_createWithSpriteFrameName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Sprite_createWithSpriteFrame(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_NewSprite_class;
-extern JSObject *jsb_NewSprite_prototype;
-
-JSBool js_cocos2dx_NewSprite_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_NewSprite_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_NewSprite(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_NewSprite_updateQuadVertices(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewSprite_culling(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewSprite_create(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_LabelTTF_class;
 extern JSObject *jsb_LabelTTF_prototype;
 

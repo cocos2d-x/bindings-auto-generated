@@ -4011,24 +4011,6 @@ createWithSpriteFrame : function () {},
 };
 
 /**
- * @class NewSprite
- */
-cc.NewSprite = {
-
-/**
- * @method updateQuadVertices
- */
-updateQuadVertices : function () {},
-
-/**
- * @method culling
- * @return A value converted from C/C++ "bool"
- */
-culling : function () {},
-
-};
-
-/**
  * @class LabelTTF
  */
 cc.LabelTTF = {
