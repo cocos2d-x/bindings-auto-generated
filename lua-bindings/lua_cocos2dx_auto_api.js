@@ -1062,12 +1062,6 @@ isVisible : function () {},
 getChildrenCount : function () {},
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
-
-/**
  * @method convertToNodeSpaceAR
  * @return A value converted from C/C++ "cocos2d::Point"
  * @param {const cocos2d::Point&}
@@ -1193,12 +1187,6 @@ getParentToNodeAffineTransform : function () {},
  * @return A value converted from C/C++ "int"
  */
 getOrderOfArrival : function () {},
-
-/**
- * @method setContentSize
- * @param {const cocos2d::Size&}
- */
-setContentSize : function () {},
 
 /**
  * @method setActionManager
