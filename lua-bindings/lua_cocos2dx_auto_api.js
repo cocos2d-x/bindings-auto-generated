@@ -4513,34 +4513,6 @@ SpriteBatchNode : function () {},
 };
 
 /**
- * @class NewSpriteBatchNode
- */
-cc.NewSpriteBatchNode = {
-
-/**
- * @method draw
- */
-draw : function () {},
-
-/**
- * @method create
- * @return A value converted from C/C++ "cocos2d::NewSpriteBatchNode*"
- * @param {const char*}
- * @param {long}
- */
-create : function () {},
-
-/**
- * @method createWithTexture
- * @return A value converted from C/C++ "cocos2d::NewSpriteBatchNode*"
- * @param {cocos2d::Texture2D*}
- * @param {int}
- */
-createWithTexture : function () {},
-
-};
-
-/**
  * @class LabelBMFont
  */
 cc.LabelBMFont = {

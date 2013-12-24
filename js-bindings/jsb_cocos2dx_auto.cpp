@@ -22134,187 +22134,6 @@ void js_register_cocos2dx_SpriteBatchNode(JSContext *cx, JSObject *global) {
 }
 
 
-JSClass  *jsb_NewSpriteBatchNode_class;
-JSObject *jsb_NewSpriteBatchNode_prototype;
-
-JSBool js_cocos2dx_NewSpriteBatchNode_draw(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NewSpriteBatchNode* cobj = (cocos2d::NewSpriteBatchNode *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NewSpriteBatchNode_draw : Invalid Native Object");
-	if (argc == 0) {
-		cobj->draw();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_NewSpriteBatchNode_draw : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_NewSpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NewSpriteBatchNode_create : Error processing arguments");
-		cocos2d::NewSpriteBatchNode* ret = cocos2d::NewSpriteBatchNode::create(arg0);
-		jsval jsret;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::NewSpriteBatchNode>(cx, (cocos2d::NewSpriteBatchNode*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 2) {
-		const char* arg0;
-		long arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		ok &= jsval_to_long(cx, argv[1], &arg1);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NewSpriteBatchNode_create : Error processing arguments");
-		cocos2d::NewSpriteBatchNode* ret = cocos2d::NewSpriteBatchNode::create(arg0, arg1);
-		jsval jsret;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::NewSpriteBatchNode>(cx, (cocos2d::NewSpriteBatchNode*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	JS_ReportError(cx, "js_cocos2dx_NewSpriteBatchNode_create : wrong number of arguments");
-	return JS_FALSE;
-}
-
-JSBool js_cocos2dx_NewSpriteBatchNode_createWithTexture(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	if (argc == 1) {
-		cocos2d::Texture2D* arg0;
-		do {
-			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NewSpriteBatchNode_createWithTexture : Error processing arguments");
-		cocos2d::NewSpriteBatchNode* ret = cocos2d::NewSpriteBatchNode::createWithTexture(arg0);
-		jsval jsret;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::NewSpriteBatchNode>(cx, (cocos2d::NewSpriteBatchNode*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 2) {
-		cocos2d::Texture2D* arg0;
-		int arg1;
-		do {
-			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NewSpriteBatchNode_createWithTexture : Error processing arguments");
-		cocos2d::NewSpriteBatchNode* ret = cocos2d::NewSpriteBatchNode::createWithTexture(arg0, arg1);
-		jsval jsret;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::NewSpriteBatchNode>(cx, (cocos2d::NewSpriteBatchNode*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	JS_ReportError(cx, "js_cocos2dx_NewSpriteBatchNode_createWithTexture : wrong number of arguments");
-	return JS_FALSE;
-}
-
-
-extern JSObject *jsb_SpriteBatchNode_prototype;
-
-void js_cocos2dx_NewSpriteBatchNode_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (NewSpriteBatchNode)", obj);
-}
-
-void js_register_cocos2dx_NewSpriteBatchNode(JSContext *cx, JSObject *global) {
-	jsb_NewSpriteBatchNode_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_NewSpriteBatchNode_class->name = "NewSpriteBatchNode";
-	jsb_NewSpriteBatchNode_class->addProperty = JS_PropertyStub;
-	jsb_NewSpriteBatchNode_class->delProperty = JS_DeletePropertyStub;
-	jsb_NewSpriteBatchNode_class->getProperty = JS_PropertyStub;
-	jsb_NewSpriteBatchNode_class->setProperty = JS_StrictPropertyStub;
-	jsb_NewSpriteBatchNode_class->enumerate = JS_EnumerateStub;
-	jsb_NewSpriteBatchNode_class->resolve = JS_ResolveStub;
-	jsb_NewSpriteBatchNode_class->convert = JS_ConvertStub;
-	jsb_NewSpriteBatchNode_class->finalize = js_cocos2dx_NewSpriteBatchNode_finalize;
-	jsb_NewSpriteBatchNode_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
-
-	JSPropertySpec *properties = NULL;
-
-	static JSFunctionSpec funcs[] = {
-		JS_FN("draw", js_cocos2dx_NewSpriteBatchNode_draw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-        JS_FS_END
-	};
-
-	static JSFunctionSpec st_funcs[] = {
-		JS_FN("create", js_cocos2dx_NewSpriteBatchNode_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("createWithTexture", js_cocos2dx_NewSpriteBatchNode_createWithTexture, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FS_END
-	};
-
-	jsb_NewSpriteBatchNode_prototype = JS_InitClass(
-		cx, global,
-		jsb_SpriteBatchNode_prototype,
-		jsb_NewSpriteBatchNode_class,
-		dummy_constructor<cocos2d::NewSpriteBatchNode>, 0, // no constructor
-		properties,
-		funcs,
-		NULL, // no static properties
-		st_funcs);
-	// make the class enumerable in the registered namespace
-	JSBool found;
-	JS_SetPropertyAttributes(cx, global, "NewSpriteBatchNode", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
-
-	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::NewSpriteBatchNode> t;
-	js_type_class_t *p;
-	std::string typeName = t.s_name();
-	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
-	{
-		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_NewSpriteBatchNode_class;
-		p->proto = jsb_NewSpriteBatchNode_prototype;
-		p->parentProto = jsb_SpriteBatchNode_prototype;
-		_js_global_type_map.insert(std::make_pair(typeName, p));
-	}
-}
-
-
 JSClass  *jsb_LabelBMFont_class;
 JSObject *jsb_LabelBMFont_prototype;
 
@@ -22900,7 +22719,7 @@ JSBool js_cocos2dx_LabelBMFont_constructor(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-extern JSObject *jsb_NewSpriteBatchNode_prototype;
+extern JSObject *jsb_SpriteBatchNode_prototype;
 
 void js_cocos2dx_LabelBMFont_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (LabelBMFont)", obj);
@@ -22953,7 +22772,7 @@ void js_register_cocos2dx_LabelBMFont(JSContext *cx, JSObject *global) {
 
 	jsb_LabelBMFont_prototype = JS_InitClass(
 		cx, global,
-		jsb_NewSpriteBatchNode_prototype,
+		jsb_SpriteBatchNode_prototype,
 		jsb_LabelBMFont_class,
 		js_cocos2dx_LabelBMFont_constructor, 0, // constructor
 		properties,
@@ -22973,7 +22792,7 @@ void js_register_cocos2dx_LabelBMFont(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_LabelBMFont_class;
 		p->proto = jsb_LabelBMFont_prototype;
-		p->parentProto = jsb_NewSpriteBatchNode_prototype;
+		p->parentProto = jsb_SpriteBatchNode_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
@@ -43093,13 +42912,11 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	}
 	obj = ns;
 
-	js_register_cocos2dx_Node(cx, obj);
-	js_register_cocos2dx_SpriteBatchNode(cx, obj);
-	js_register_cocos2dx_NewSpriteBatchNode(cx, obj);
 	js_register_cocos2dx_Action(cx, obj);
 	js_register_cocos2dx_FiniteTimeAction(cx, obj);
 	js_register_cocos2dx_ActionInstant(cx, obj);
 	js_register_cocos2dx_Hide(cx, obj);
+	js_register_cocos2dx_Node(cx, obj);
 	js_register_cocos2dx_Scene(cx, obj);
 	js_register_cocos2dx_TransitionScene(cx, obj);
 	js_register_cocos2dx_TransitionEaseScene(cx, obj);
@@ -43164,6 +42981,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_EaseExponentialInOut(cx, obj);
 	js_register_cocos2dx_EaseBackInOut(cx, obj);
 	js_register_cocos2dx_EaseExponentialOut(cx, obj);
+	js_register_cocos2dx_SpriteBatchNode(cx, obj);
 	js_register_cocos2dx_Label(cx, obj);
 	js_register_cocos2dx_Application(cx, obj);
 	js_register_cocos2dx_DelayTime(cx, obj);

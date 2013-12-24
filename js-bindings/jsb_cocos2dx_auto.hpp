@@ -1517,17 +1517,6 @@ JSBool js_cocos2dx_SpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *v
 JSBool js_cocos2dx_SpriteBatchNode_createWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_SpriteBatchNode_SpriteBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_NewSpriteBatchNode_class;
-extern JSObject *jsb_NewSpriteBatchNode_prototype;
-
-JSBool js_cocos2dx_NewSpriteBatchNode_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_NewSpriteBatchNode_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_NewSpriteBatchNode(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_NewSpriteBatchNode_draw(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewSpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NewSpriteBatchNode_createWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_LabelBMFont_class;
 extern JSObject *jsb_LabelBMFont_prototype;
 
