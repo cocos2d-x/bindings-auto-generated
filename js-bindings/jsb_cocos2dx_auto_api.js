@@ -7035,19 +7035,6 @@ createWithTotalParticles : function () {},
 cc.FileUtils = {
 
 /**
- * @method isFileExist
- * @return A value converted from C/C++ "bool"
- * @param {const std::string&}
- */
-isFileExist : function () {},
-
-/**
- * @method isPopupNotify
- * @return A value converted from C/C++ "bool"
- */
-isPopupNotify : function () {},
-
-/**
  * @method fullPathForFilename
  * @return A value converted from C/C++ "std::string"
  * @param {const std::string&}
@@ -7055,12 +7042,11 @@ isPopupNotify : function () {},
 fullPathForFilename : function () {},
 
 /**
- * @method fullPathFromRelativeFile
+ * @method getStringFromFile
  * @return A value converted from C/C++ "std::string"
  * @param {const std::string&}
- * @param {const std::string&}
  */
-fullPathFromRelativeFile : function () {},
+getStringFromFile : function () {},
 
 /**
  * @method setFilenameLookupDictionary
@@ -7069,10 +7055,30 @@ fullPathFromRelativeFile : function () {},
 setFilenameLookupDictionary : function () {},
 
 /**
- * @method addSearchResolutionsOrder
+ * @method isAbsolutePath
+ * @return A value converted from C/C++ "bool"
  * @param {const std::string&}
  */
-addSearchResolutionsOrder : function () {},
+isAbsolutePath : function () {},
+
+/**
+ * @method loadFilenameLookupDictionaryFromFile
+ * @param {const std::string&}
+ */
+loadFilenameLookupDictionaryFromFile : function () {},
+
+/**
+ * @method isPopupNotify
+ * @return A value converted from C/C++ "bool"
+ */
+isPopupNotify : function () {},
+
+/**
+ * @method getValueVectorFromFile
+ * @return A value converted from C/C++ "cocos2d::ValueVector"
+ * @param {const std::string&}
+ */
+getValueVectorFromFile : function () {},
 
 /**
  * @method writeToFile
@@ -7083,29 +7089,17 @@ addSearchResolutionsOrder : function () {},
 writeToFile : function () {},
 
 /**
- * @method purgeCachedEntries
- */
-purgeCachedEntries : function () {},
-
-/**
- * @method isAbsolutePath
- * @return A value converted from C/C++ "bool"
- * @param {const std::string&}
- */
-isAbsolutePath : function () {},
-
-/**
- * @method getWritablePath
- * @return A value converted from C/C++ "std::string"
- */
-getWritablePath : function () {},
-
-/**
  * @method getValueMapFromFile
  * @return A value converted from C/C++ "cocos2d::ValueMap"
  * @param {const std::string&}
  */
 getValueMapFromFile : function () {},
+
+/**
+ * @method addSearchResolutionsOrder
+ * @param {const std::string&}
+ */
+addSearchResolutionsOrder : function () {},
 
 /**
  * @method addSearchPath
@@ -7114,11 +7108,24 @@ getValueMapFromFile : function () {},
 addSearchPath : function () {},
 
 /**
- * @method getValueVectorFromFile
- * @return A value converted from C/C++ "cocos2d::ValueVector"
+ * @method isFileExist
+ * @return A value converted from C/C++ "bool"
  * @param {const std::string&}
  */
-getValueVectorFromFile : function () {},
+isFileExist : function () {},
+
+/**
+ * @method purgeCachedEntries
+ */
+purgeCachedEntries : function () {},
+
+/**
+ * @method fullPathFromRelativeFile
+ * @return A value converted from C/C++ "std::string"
+ * @param {const std::string&}
+ * @param {const std::string&}
+ */
+fullPathFromRelativeFile : function () {},
 
 /**
  * @method setPopupNotify
@@ -7127,10 +7134,10 @@ getValueVectorFromFile : function () {},
 setPopupNotify : function () {},
 
 /**
- * @method loadFilenameLookupDictionaryFromFile
- * @param {const std::string&}
+ * @method getWritablePath
+ * @return A value converted from C/C++ "std::string"
  */
-loadFilenameLookupDictionaryFromFile : function () {},
+getWritablePath : function () {},
 
 /**
  * @method destroyInstance
