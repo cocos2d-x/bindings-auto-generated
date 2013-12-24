@@ -304,7 +304,7 @@ getContentSize : function () {},
 
 /**
  * @method changeDisplayByName
- * @param {const char*}
+ * @param {const std::string&}
  * @param {bool}
  */
 changeDisplayByName : function () {},
@@ -468,7 +468,7 @@ setBoneData : function () {},
 
 /**
  * @method changeDisplayByName
- * @param {const char*}
+ * @param {const std::string&}
  * @param {bool}
  */
 changeDisplayByName : function () {},
@@ -683,50 +683,50 @@ getAnimationDatas : function () {},
 
 /**
  * @method removeAnimationData
- * @param {const char*}
+ * @param {const std::string&}
  */
 removeAnimationData : function () {},
 
 /**
  * @method addArmatureData
- * @param {const char*}
+ * @param {const std::string&}
  * @param {cocostudio::ArmatureData*}
- * @param {const char*}
+ * @param {const std::string&}
  */
 addArmatureData : function () {},
 
 /**
  * @method removeArmatureFileInfo
- * @param {const char*}
+ * @param {const std::string&}
  */
 removeArmatureFileInfo : function () {},
 
 /**
  * @method getTextureData
  * @return A value converted from C/C++ "cocostudio::TextureData*"
- * @param {const char*}
+ * @param {const std::string&}
  */
 getTextureData : function () {},
 
 /**
  * @method getArmatureData
  * @return A value converted from C/C++ "cocostudio::ArmatureData*"
- * @param {const char*}
+ * @param {const std::string&}
  */
 getArmatureData : function () {},
 
 /**
  * @method getAnimationData
  * @return A value converted from C/C++ "cocostudio::AnimationData*"
- * @param {const char*}
+ * @param {const std::string&}
  */
 getAnimationData : function () {},
 
 /**
  * @method addAnimationData
- * @param {const char*}
+ * @param {const std::string&}
  * @param {cocostudio::AnimationData*}
- * @param {const char*}
+ * @param {const std::string&}
  */
 addAnimationData : function () {},
 
@@ -738,7 +738,7 @@ init : function () {},
 
 /**
  * @method removeArmatureData
- * @param {const char*}
+ * @param {const std::string&}
  */
 removeArmatureData : function () {},
 
@@ -750,15 +750,15 @@ getArmatureDatas : function () {},
 
 /**
  * @method removeTextureData
- * @param {const char*}
+ * @param {const std::string&}
  */
 removeTextureData : function () {},
 
 /**
  * @method addTextureData
- * @param {const char*}
+ * @param {const std::string&}
  * @param {cocostudio::TextureData*}
- * @param {const char*}
+ * @param {const std::string&}
  */
 addTextureData : function () {},
 
@@ -770,9 +770,9 @@ isAutoLoadSpriteFile : function () {},
 
 /**
  * @method addSpriteFrameFromFile
- * @param {const char*}
- * @param {const char*}
- * @param {const char*}
+ * @param {const std::string&}
+ * @param {const std::string&}
+ * @param {const std::string&}
  */
 addSpriteFrameFromFile : function () {},
 
@@ -797,14 +797,14 @@ ccs.Armature = {
 /**
  * @method getBone
  * @return A value converted from C/C++ "cocostudio::Bone*"
- * @param {const char*}
+ * @param {const std::string&}
  */
 getBone : function () {},
 
 /**
  * @method changeBoneParent
  * @param {cocostudio::Bone*}
- * @param {const char*}
+ * @param {const std::string&}
  */
 changeBoneParent : function () {},
 
@@ -896,7 +896,7 @@ setName : function () {},
 /**
  * @method addBone
  * @param {cocostudio::Bone*}
- * @param {const char*}
+ * @param {const std::string&}
  */
 addBone : function () {},
 
@@ -983,7 +983,7 @@ setBone : function () {},
 /**
  * @method createWithSpriteFrameName
  * @return A value converted from C/C++ "cocostudio::Skin*"
- * @param {const char*}
+ * @param {const std::string&}
  */
 createWithSpriteFrameName : function () {},
 

@@ -17068,12 +17068,12 @@ int lua_cocos2dx_studio_DisplayData_changeDisplayToTexture(lua_State* tolua_S)
 
     if (argc == 1)
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        const char* ret = cocostudio::DisplayData::changeDisplayToTexture(arg0);
-        tolua_pushstring(tolua_S,(const char*)ret);
+        const std::string& ret = cocostudio::DisplayData::changeDisplayToTexture(arg0);
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "changeDisplayToTexture",argc, 1);
@@ -17925,8 +17925,8 @@ int lua_cocos2dx_studio_ArmatureData_getBoneData(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocostudio::BoneData* ret = cobj->getBoneData(arg0);
@@ -18497,8 +18497,8 @@ int lua_cocos2dx_studio_MovementData_getMovementBoneData(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocostudio::MovementBoneData* ret = cobj->getMovementBoneData(arg0);
@@ -18709,8 +18709,8 @@ int lua_cocos2dx_studio_AnimationData_getMovement(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocostudio::MovementData* ret = cobj->getMovement(arg0);
@@ -20084,8 +20084,8 @@ int lua_cocos2dx_studio_Bone_init(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             bool ret = cobj->init(arg0);
@@ -20137,9 +20137,9 @@ int lua_cocos2dx_studio_Bone_changeDisplayByName(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
+        std::string arg0;
         bool arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -20983,8 +20983,8 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
     {
         if (argc == 1)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocostudio::Bone* ret = cocostudio::Bone::create(arg0);
             do {
@@ -21425,8 +21425,8 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
     ok  = true;
     do{
         if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             cobj->play(arg0);
@@ -21436,8 +21436,8 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
     ok  = true;
     do{
         if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             int arg1;
@@ -21451,8 +21451,8 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
     ok  = true;
     do{
         if (argc == 3) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             int arg1;
@@ -22318,8 +22318,8 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeAnimationData(lua_State* tolua
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->removeAnimationData(arg0);
@@ -22360,9 +22360,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
+        std::string arg0;
         cocostudio::ArmatureData* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         do {
 				if (!luaval_is_usertype(tolua_S,3,"ArmatureData",0)){
 					ok = false;
@@ -22380,10 +22380,10 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
     }
     if (argc == 3) 
     {
-        const char* arg0;
+        std::string arg0;
         cocostudio::ArmatureData* arg1;
-        const char* arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg2;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         do {
 				if (!luaval_is_usertype(tolua_S,3,"ArmatureData",0)){
 					ok = false;
@@ -22394,7 +22394,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
         cobj->addArmatureData(arg0, arg1, arg2);
@@ -22430,16 +22430,16 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureFileInfo(lua_State* tolua
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 3) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
-            const char* arg1;
-            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            std::string arg1;
+            ok &= luaval_to_std_string(tolua_S, 3,&arg1);
 
             if (!ok) { break; }
-            const char* arg2;
-            std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+            std::string arg2;
+            ok &= luaval_to_std_string(tolua_S, 4,&arg2);
 
             if (!ok) { break; }
             cobj->addArmatureFileInfo(arg0, arg1, arg2);
@@ -22449,8 +22449,8 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureFileInfo(lua_State* tolua
     ok  = true;
     do{
         if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             cobj->addArmatureFileInfo(arg0);
@@ -22493,8 +22493,8 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureFileInfo(lua_State* to
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->removeArmatureFileInfo(arg0);
@@ -22576,8 +22576,8 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureData(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocostudio::TextureData* ret = cobj->getTextureData(arg0);
@@ -22631,8 +22631,8 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureData(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocostudio::ArmatureData* ret = cobj->getArmatureData(arg0);
@@ -22686,8 +22686,8 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationData(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocostudio::AnimationData* ret = cobj->getAnimationData(arg0);
@@ -22741,9 +22741,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
+        std::string arg0;
         cocostudio::AnimationData* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         do {
 				if (!luaval_is_usertype(tolua_S,3,"AnimationData",0)){
 					ok = false;
@@ -22761,10 +22761,10 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
     }
     if (argc == 3) 
     {
-        const char* arg0;
+        std::string arg0;
         cocostudio::AnimationData* arg1;
-        const char* arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg2;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         do {
 				if (!luaval_is_usertype(tolua_S,3,"AnimationData",0)){
 					ok = false;
@@ -22775,7 +22775,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
         cobj->addAnimationData(arg0, arg1, arg2);
@@ -22857,8 +22857,8 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureData(lua_State* tolua_
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->removeArmatureData(arg0);
@@ -22940,8 +22940,8 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeTextureData(lua_State* tolua_S
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->removeTextureData(arg0);
@@ -22982,9 +22982,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
+        std::string arg0;
         cocostudio::TextureData* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         do {
 				if (!luaval_is_usertype(tolua_S,3,"TextureData",0)){
 					ok = false;
@@ -23002,10 +23002,10 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
     }
     if (argc == 3) 
     {
-        const char* arg0;
+        std::string arg0;
         cocostudio::TextureData* arg1;
-        const char* arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg2;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         do {
 				if (!luaval_is_usertype(tolua_S,3,"TextureData",0)){
 					ok = false;
@@ -23016,7 +23016,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
-        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
         cobj->addTextureData(arg0, arg1, arg2);
@@ -23098,10 +23098,10 @@ int lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(lua_State* to
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        const char* arg0;
-        const char* arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        std::string arg0;
+        std::string arg1;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cobj->addSpriteFrameFromFile(arg0, arg1);
@@ -23109,12 +23109,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(lua_State* to
     }
     if (argc == 3) 
     {
-        const char* arg0;
-        const char* arg1;
-        const char* arg2;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-        std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+        std::string arg0;
+        std::string arg1;
+        std::string arg2;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
+        ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
         cobj->addSpriteFrameFromFile(arg0, arg1, arg2);
@@ -23265,8 +23265,8 @@ int lua_cocos2dx_studio_Armature_getBone(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocostudio::Bone* ret = cobj->getBone(arg0);
@@ -23321,7 +23321,7 @@ int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocostudio::Bone* arg0;
-        const char* arg1;
+        std::string arg1;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
 					ok = false;
@@ -23332,7 +23332,7 @@ int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cobj->changeBoneParent(arg0, arg1);
@@ -23850,8 +23850,8 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 1) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             bool ret = cobj->init(arg0);
@@ -23870,8 +23870,8 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
     ok  = true;
     do{
         if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             cocostudio::Bone* arg1;
@@ -24113,7 +24113,7 @@ int lua_cocos2dx_studio_Armature_addBone(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocostudio::Bone* arg0;
-        const char* arg1;
+        std::string arg1;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
 					ok = false;
@@ -24124,7 +24124,7 @@ int lua_cocos2dx_studio_Armature_addBone(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cobj->addBone(arg0, arg1);
@@ -24344,8 +24344,8 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
     {
         if (argc == 1)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocostudio::Armature* ret = cocostudio::Armature::create(arg0);
             do {
@@ -24391,8 +24391,8 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
     {
         if (argc == 2)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocostudio::Bone* arg1;
             do {
@@ -24845,8 +24845,8 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
     {
         if (argc == 1)
         {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocostudio::Skin* ret = cocostudio::Skin::create(arg0);
             do {
@@ -24913,8 +24913,8 @@ int lua_cocos2dx_studio_Skin_createWithSpriteFrameName(lua_State* tolua_S)
 
     if (argc == 1)
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocostudio::Skin* ret = cocostudio::Skin::createWithSpriteFrameName(arg0);
