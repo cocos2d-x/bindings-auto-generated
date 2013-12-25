@@ -41,10 +41,12 @@ int lua_cocos2dx_studio_UILayoutParameter_getLayoutType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLayoutType",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayoutParameter_getLayoutType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayoutParameter_create(lua_State* tolua_S)
@@ -69,13 +71,21 @@ int lua_cocos2dx_studio_UILayoutParameter_create(lua_State* tolua_S)
         gui::UILayoutParameter* ret = gui::UILayoutParameter::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILayoutParameter";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayoutParameter*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILayoutParameter");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILayoutParameter");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -124,10 +134,11 @@ int lua_cocos2dx_studio_UILayoutParameter_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UILayoutParameter",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayoutParameter_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -188,10 +199,12 @@ int lua_cocos2dx_studio_UILinearLayoutParameter_setGravity(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setGravity",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILinearLayoutParameter_setGravity'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILinearLayoutParameter_getGravity(lua_State* tolua_S)
@@ -229,10 +242,12 @@ int lua_cocos2dx_studio_UILinearLayoutParameter_getGravity(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getGravity",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILinearLayoutParameter_getGravity'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILinearLayoutParameter_create(lua_State* tolua_S)
@@ -257,13 +272,21 @@ int lua_cocos2dx_studio_UILinearLayoutParameter_create(lua_State* tolua_S)
         gui::UILinearLayoutParameter* ret = gui::UILinearLayoutParameter::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILinearLayoutParameter";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILinearLayoutParameter*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILinearLayoutParameter");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILinearLayoutParameter");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -312,10 +335,11 @@ int lua_cocos2dx_studio_UILinearLayoutParameter_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UILinearLayoutParameter",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILinearLayoutParameter_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -377,10 +401,12 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_setAlign(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAlign",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIRelativeLayoutParameter_setAlign'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIRelativeLayoutParameter_setRelativeToWidgetName(lua_State* tolua_S)
@@ -419,10 +445,12 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_setRelativeToWidgetName(lua_St
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setRelativeToWidgetName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIRelativeLayoutParameter_setRelativeToWidgetName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIRelativeLayoutParameter_getRelativeName(lua_State* tolua_S)
@@ -460,10 +488,12 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_getRelativeName(lua_State* tol
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRelativeName",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIRelativeLayoutParameter_getRelativeName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIRelativeLayoutParameter_getRelativeToWidgetName(lua_State* tolua_S)
@@ -501,10 +531,12 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_getRelativeToWidgetName(lua_St
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRelativeToWidgetName",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIRelativeLayoutParameter_getRelativeToWidgetName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIRelativeLayoutParameter_setRelativeName(lua_State* tolua_S)
@@ -543,10 +575,12 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_setRelativeName(lua_State* tol
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setRelativeName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIRelativeLayoutParameter_setRelativeName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIRelativeLayoutParameter_getAlign(lua_State* tolua_S)
@@ -584,10 +618,12 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_getAlign(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAlign",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIRelativeLayoutParameter_getAlign'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIRelativeLayoutParameter_create(lua_State* tolua_S)
@@ -612,13 +648,21 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_create(lua_State* tolua_S)
         gui::UIRelativeLayoutParameter* ret = gui::UIRelativeLayoutParameter::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIRelativeLayoutParameter";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIRelativeLayoutParameter*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIRelativeLayoutParameter");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIRelativeLayoutParameter");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -667,10 +711,11 @@ int lua_cocos2dx_studio_UIRelativeLayoutParameter_constructor(lua_State* tolua_S
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UIRelativeLayoutParameter",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIRelativeLayoutParameter_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -746,10 +791,12 @@ int lua_cocos2dx_studio_UIWidget_addChild(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChild",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_addChild'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getVirtualRenderer(lua_State* tolua_S)
@@ -784,13 +831,21 @@ int lua_cocos2dx_studio_UIWidget_getVirtualRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getVirtualRenderer();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Node";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -799,10 +854,12 @@ int lua_cocos2dx_studio_UIWidget_getVirtualRenderer(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getVirtualRenderer",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getVirtualRenderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setActionTag(lua_State* tolua_S)
@@ -841,10 +898,12 @@ int lua_cocos2dx_studio_UIWidget_setActionTag(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setActionTag",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setActionTag'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getDescription(lua_State* tolua_S)
@@ -882,10 +941,12 @@ int lua_cocos2dx_studio_UIWidget_getDescription(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDescription",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getDescription'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setCascadeOpacityEnabled(lua_State* tolua_S)
@@ -924,10 +985,12 @@ int lua_cocos2dx_studio_UIWidget_setCascadeOpacityEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeOpacityEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setCascadeOpacityEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getChildren(lua_State* tolua_S)
@@ -965,10 +1028,12 @@ int lua_cocos2dx_studio_UIWidget_getChildren(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getChildren",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getChildren'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getPositionType(lua_State* tolua_S)
@@ -1006,10 +1071,12 @@ int lua_cocos2dx_studio_UIWidget_getPositionType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPositionType",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getPositionType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getChildByName(lua_State* tolua_S)
@@ -1046,13 +1113,21 @@ int lua_cocos2dx_studio_UIWidget_getChildByName(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getChildByName(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -1061,10 +1136,12 @@ int lua_cocos2dx_studio_UIWidget_getChildByName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getChildByName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getChildByName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isEnabled(lua_State* tolua_S)
@@ -1102,10 +1179,12 @@ int lua_cocos2dx_studio_UIWidget_isEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isFlipX(lua_State* tolua_S)
@@ -1143,10 +1222,12 @@ int lua_cocos2dx_studio_UIWidget_isFlipX(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isFlipX",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isFlipX'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isFlipY(lua_State* tolua_S)
@@ -1184,10 +1265,12 @@ int lua_cocos2dx_studio_UIWidget_isFlipY(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isFlipY",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isFlipY'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_didNotSelectSelf(lua_State* tolua_S)
@@ -1224,10 +1307,12 @@ int lua_cocos2dx_studio_UIWidget_didNotSelectSelf(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "didNotSelectSelf",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_didNotSelectSelf'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setFocused(lua_State* tolua_S)
@@ -1266,10 +1351,12 @@ int lua_cocos2dx_studio_UIWidget_setFocused(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFocused",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setFocused'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setZOrder(lua_State* tolua_S)
@@ -1308,10 +1395,12 @@ int lua_cocos2dx_studio_UIWidget_setZOrder(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setZOrder",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setZOrder'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setScaleY(lua_State* tolua_S)
@@ -1350,10 +1439,12 @@ int lua_cocos2dx_studio_UIWidget_setScaleY(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScaleY",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setScaleY'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setScaleX(lua_State* tolua_S)
@@ -1392,10 +1483,12 @@ int lua_cocos2dx_studio_UIWidget_setScaleX(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScaleX",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setScaleX'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getLayoutParameter(lua_State* tolua_S)
@@ -1432,13 +1525,21 @@ int lua_cocos2dx_studio_UIWidget_getLayoutParameter(lua_State* tolua_S)
         gui::UILayoutParameter* ret = cobj->getLayoutParameter(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILayoutParameter";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayoutParameter*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILayoutParameter");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILayoutParameter");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -1447,10 +1548,12 @@ int lua_cocos2dx_studio_UIWidget_getLayoutParameter(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLayoutParameter",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getLayoutParameter'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getColor(lua_State* tolua_S)
@@ -1488,10 +1591,12 @@ int lua_cocos2dx_studio_UIWidget_getColor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColor",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getColor'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isBright(lua_State* tolua_S)
@@ -1529,10 +1634,12 @@ int lua_cocos2dx_studio_UIWidget_isBright(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isBright",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isBright'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getTag(lua_State* tolua_S)
@@ -1570,10 +1677,12 @@ int lua_cocos2dx_studio_UIWidget_getTag(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTag",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getTag'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_addRenderer(lua_State* tolua_S)
@@ -1623,10 +1732,12 @@ int lua_cocos2dx_studio_UIWidget_addRenderer(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addRenderer",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_addRenderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getSize(lua_State* tolua_S)
@@ -1664,10 +1775,12 @@ int lua_cocos2dx_studio_UIWidget_getSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSize",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getSizeType(lua_State* tolua_S)
@@ -1705,10 +1818,12 @@ int lua_cocos2dx_studio_UIWidget_getSizeType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSizeType",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getSizeType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getPositionPercent(lua_State* tolua_S)
@@ -1746,10 +1861,12 @@ int lua_cocos2dx_studio_UIWidget_getPositionPercent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPositionPercent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getPositionPercent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_removeChild(lua_State* tolua_S)
@@ -1798,10 +1915,12 @@ int lua_cocos2dx_studio_UIWidget_removeChild(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeChild",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_removeChild'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_convertToWorldSpace(lua_State* tolua_S)
@@ -1841,10 +1960,12 @@ int lua_cocos2dx_studio_UIWidget_convertToWorldSpace(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "convertToWorldSpace",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_convertToWorldSpace'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setSize(lua_State* tolua_S)
@@ -1883,10 +2004,12 @@ int lua_cocos2dx_studio_UIWidget_setSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setSize",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_removeAllChildren(lua_State* tolua_S)
@@ -1923,10 +2046,12 @@ int lua_cocos2dx_studio_UIWidget_removeAllChildren(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeAllChildren",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_removeAllChildren'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getRotationX(lua_State* tolua_S)
@@ -1964,10 +2089,12 @@ int lua_cocos2dx_studio_UIWidget_getRotationX(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRotationX",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getRotationX'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getRotationY(lua_State* tolua_S)
@@ -2005,10 +2132,12 @@ int lua_cocos2dx_studio_UIWidget_getRotationY(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRotationY",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getRotationY'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getSizePercent(lua_State* tolua_S)
@@ -2046,10 +2175,12 @@ int lua_cocos2dx_studio_UIWidget_getSizePercent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSizePercent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getSizePercent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setPositionType(lua_State* tolua_S)
@@ -2088,10 +2219,12 @@ int lua_cocos2dx_studio_UIWidget_setPositionType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPositionType",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setPositionType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isCascadeOpacityEnabled(lua_State* tolua_S)
@@ -2129,10 +2262,12 @@ int lua_cocos2dx_studio_UIWidget_isCascadeOpacityEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeOpacityEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isCascadeOpacityEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setParent(lua_State* tolua_S)
@@ -2180,10 +2315,12 @@ int lua_cocos2dx_studio_UIWidget_setParent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setParent",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setParent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getName(lua_State* tolua_S)
@@ -2221,10 +2358,12 @@ int lua_cocos2dx_studio_UIWidget_getName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getName",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isTouchEnabled(lua_State* tolua_S)
@@ -2262,10 +2401,12 @@ int lua_cocos2dx_studio_UIWidget_isTouchEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isTouchEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isTouchEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setTouchEnabled(lua_State* tolua_S)
@@ -2304,10 +2445,12 @@ int lua_cocos2dx_studio_UIWidget_setTouchEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTouchEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setTouchEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setLayoutParameter(lua_State* tolua_S)
@@ -2355,10 +2498,12 @@ int lua_cocos2dx_studio_UIWidget_setLayoutParameter(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setLayoutParameter",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setLayoutParameter'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_clippingParentAreaContainPoint(lua_State* tolua_S)
@@ -2398,10 +2543,12 @@ int lua_cocos2dx_studio_UIWidget_clippingParentAreaContainPoint(lua_State* tolua
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clippingParentAreaContainPoint",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_clippingParentAreaContainPoint'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setPosition(lua_State* tolua_S)
@@ -2440,10 +2587,12 @@ int lua_cocos2dx_studio_UIWidget_setPosition(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPosition",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setPosition'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_removeRenderer(lua_State* tolua_S)
@@ -2493,10 +2642,12 @@ int lua_cocos2dx_studio_UIWidget_removeRenderer(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeRenderer",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_removeRenderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_stopActionByTag(lua_State* tolua_S)
@@ -2535,10 +2686,12 @@ int lua_cocos2dx_studio_UIWidget_stopActionByTag(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stopActionByTag",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_stopActionByTag'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_reorderChild(lua_State* tolua_S)
@@ -2586,10 +2739,12 @@ int lua_cocos2dx_studio_UIWidget_reorderChild(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "reorderChild",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_reorderChild'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getScale(lua_State* tolua_S)
@@ -2627,10 +2782,12 @@ int lua_cocos2dx_studio_UIWidget_getScale(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getScale",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getScale'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setColor(lua_State* tolua_S)
@@ -2669,10 +2826,12 @@ int lua_cocos2dx_studio_UIWidget_setColor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setColor'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getAnchorPoint(lua_State* tolua_S)
@@ -2710,10 +2869,12 @@ int lua_cocos2dx_studio_UIWidget_getAnchorPoint(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnchorPoint",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getAnchorPoint'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isFocused(lua_State* tolua_S)
@@ -2751,10 +2912,12 @@ int lua_cocos2dx_studio_UIWidget_isFocused(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isFocused",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isFocused'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isVisible(lua_State* tolua_S)
@@ -2792,10 +2955,12 @@ int lua_cocos2dx_studio_UIWidget_isVisible(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isVisible",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isVisible'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setAnchorPoint(lua_State* tolua_S)
@@ -2834,10 +2999,12 @@ int lua_cocos2dx_studio_UIWidget_setAnchorPoint(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAnchorPoint",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setAnchorPoint'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getLeftInParent(lua_State* tolua_S)
@@ -2875,10 +3042,12 @@ int lua_cocos2dx_studio_UIWidget_getLeftInParent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLeftInParent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getLeftInParent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setPositionPercent(lua_State* tolua_S)
@@ -2917,10 +3086,12 @@ int lua_cocos2dx_studio_UIWidget_setPositionPercent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPositionPercent",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setPositionPercent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getRotation(lua_State* tolua_S)
@@ -2958,10 +3129,12 @@ int lua_cocos2dx_studio_UIWidget_getRotation(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRotation",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getRotation'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getBottomInParent(lua_State* tolua_S)
@@ -2999,10 +3172,12 @@ int lua_cocos2dx_studio_UIWidget_getBottomInParent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBottomInParent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getBottomInParent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_ignoreContentAdaptWithSize(lua_State* tolua_S)
@@ -3041,10 +3216,12 @@ int lua_cocos2dx_studio_UIWidget_ignoreContentAdaptWithSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ignoreContentAdaptWithSize",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_ignoreContentAdaptWithSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getZOrder(lua_State* tolua_S)
@@ -3082,10 +3259,12 @@ int lua_cocos2dx_studio_UIWidget_getZOrder(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getZOrder",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getZOrder'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_runAction(lua_State* tolua_S)
@@ -3131,13 +3310,21 @@ int lua_cocos2dx_studio_UIWidget_runAction(lua_State* tolua_S)
         cocos2d::Action* ret = cobj->runAction(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Action";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Action");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Action");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -3146,10 +3333,12 @@ int lua_cocos2dx_studio_UIWidget_runAction(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "runAction",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_runAction'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_stopAllActions(lua_State* tolua_S)
@@ -3186,10 +3375,12 @@ int lua_cocos2dx_studio_UIWidget_stopAllActions(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stopAllActions",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_stopAllActions'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getActionTag(lua_State* tolua_S)
@@ -3227,10 +3418,12 @@ int lua_cocos2dx_studio_UIWidget_getActionTag(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getActionTag",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getActionTag'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getActionByTag(lua_State* tolua_S)
@@ -3267,13 +3460,21 @@ int lua_cocos2dx_studio_UIWidget_getActionByTag(lua_State* tolua_S)
         cocos2d::Action* ret = cobj->getActionByTag(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Action";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Action");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Action");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -3282,10 +3483,12 @@ int lua_cocos2dx_studio_UIWidget_getActionByTag(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getActionByTag",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getActionByTag'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setRotationX(lua_State* tolua_S)
@@ -3324,10 +3527,12 @@ int lua_cocos2dx_studio_UIWidget_setRotationX(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setRotationX",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setRotationX'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setRotationY(lua_State* tolua_S)
@@ -3366,10 +3571,12 @@ int lua_cocos2dx_studio_UIWidget_setRotationY(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setRotationY",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setRotationY'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setBrightStyle(lua_State* tolua_S)
@@ -3408,10 +3615,12 @@ int lua_cocos2dx_studio_UIWidget_setBrightStyle(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBrightStyle",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setBrightStyle'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setName(lua_State* tolua_S)
@@ -3450,10 +3659,12 @@ int lua_cocos2dx_studio_UIWidget_setName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setFlipY(lua_State* tolua_S)
@@ -3492,10 +3703,12 @@ int lua_cocos2dx_studio_UIWidget_setFlipY(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFlipY",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setFlipY'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setFlipX(lua_State* tolua_S)
@@ -3534,10 +3747,12 @@ int lua_cocos2dx_studio_UIWidget_setFlipX(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFlipX",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setFlipX'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setUpdateEnabled(lua_State* tolua_S)
@@ -3576,10 +3791,12 @@ int lua_cocos2dx_studio_UIWidget_setUpdateEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setUpdateEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setUpdateEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setRotation(lua_State* tolua_S)
@@ -3618,10 +3835,12 @@ int lua_cocos2dx_studio_UIWidget_setRotation(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setRotation",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setRotation'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setActionManager(lua_State* tolua_S)
@@ -3669,10 +3888,12 @@ int lua_cocos2dx_studio_UIWidget_setActionManager(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setActionManager",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setActionManager'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getPosition(lua_State* tolua_S)
@@ -3710,10 +3931,12 @@ int lua_cocos2dx_studio_UIWidget_getPosition(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPosition",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getPosition'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getParent(lua_State* tolua_S)
@@ -3748,13 +3971,21 @@ int lua_cocos2dx_studio_UIWidget_getParent(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getParent();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -3763,10 +3994,12 @@ int lua_cocos2dx_studio_UIWidget_getParent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getParent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getParent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_hitTest(lua_State* tolua_S)
@@ -3806,10 +4039,12 @@ int lua_cocos2dx_studio_UIWidget_hitTest(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "hitTest",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_hitTest'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setVisible(lua_State* tolua_S)
@@ -3848,10 +4083,12 @@ int lua_cocos2dx_studio_UIWidget_setVisible(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setVisible",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setVisible'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setSizePercent(lua_State* tolua_S)
@@ -3890,10 +4127,12 @@ int lua_cocos2dx_studio_UIWidget_setSizePercent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setSizePercent",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setSizePercent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setEnabled(lua_State* tolua_S)
@@ -3932,10 +4171,12 @@ int lua_cocos2dx_studio_UIWidget_setEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setScale(lua_State* tolua_S)
@@ -3974,10 +4215,12 @@ int lua_cocos2dx_studio_UIWidget_setScale(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScale",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setScale'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getTouchEndPos(lua_State* tolua_S)
@@ -4015,10 +4258,12 @@ int lua_cocos2dx_studio_UIWidget_getTouchEndPos(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTouchEndPos",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getTouchEndPos'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getChildByTag(lua_State* tolua_S)
@@ -4055,13 +4300,21 @@ int lua_cocos2dx_studio_UIWidget_getChildByTag(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getChildByTag(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -4070,10 +4323,12 @@ int lua_cocos2dx_studio_UIWidget_getChildByTag(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getChildByTag",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getChildByTag'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isIgnoreContentAdaptWithSize(lua_State* tolua_S)
@@ -4111,10 +4366,12 @@ int lua_cocos2dx_studio_UIWidget_isIgnoreContentAdaptWithSize(lua_State* tolua_S
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isIgnoreContentAdaptWithSize",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isIgnoreContentAdaptWithSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isUpdateEnabled(lua_State* tolua_S)
@@ -4152,10 +4409,12 @@ int lua_cocos2dx_studio_UIWidget_isUpdateEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isUpdateEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isUpdateEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_updateSizeAndPosition(lua_State* tolua_S)
@@ -4192,10 +4451,12 @@ int lua_cocos2dx_studio_UIWidget_updateSizeAndPosition(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateSizeAndPosition",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_updateSizeAndPosition'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getRenderer(lua_State* tolua_S)
@@ -4230,13 +4491,21 @@ int lua_cocos2dx_studio_UIWidget_getRenderer(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getRenderer();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Node";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -4245,10 +4514,12 @@ int lua_cocos2dx_studio_UIWidget_getRenderer(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRenderer",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getRenderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getWidgetType(lua_State* tolua_S)
@@ -4286,10 +4557,12 @@ int lua_cocos2dx_studio_UIWidget_getWidgetType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getWidgetType",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getWidgetType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getScaleY(lua_State* tolua_S)
@@ -4327,10 +4600,12 @@ int lua_cocos2dx_studio_UIWidget_getScaleY(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getScaleY",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getScaleY'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getScaleX(lua_State* tolua_S)
@@ -4368,10 +4643,12 @@ int lua_cocos2dx_studio_UIWidget_getScaleX(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getScaleX",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getScaleX'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setCascadeColorEnabled(lua_State* tolua_S)
@@ -4410,10 +4687,12 @@ int lua_cocos2dx_studio_UIWidget_setCascadeColorEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCascadeColorEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setCascadeColorEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setOpacity(lua_State* tolua_S)
@@ -4452,10 +4731,12 @@ int lua_cocos2dx_studio_UIWidget_setOpacity(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setOpacity",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setOpacity'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getContentSize(lua_State* tolua_S)
@@ -4493,10 +4774,12 @@ int lua_cocos2dx_studio_UIWidget_getContentSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getContentSize",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getContentSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getOpacity(lua_State* tolua_S)
@@ -4534,10 +4817,12 @@ int lua_cocos2dx_studio_UIWidget_getOpacity(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOpacity",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getOpacity'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getTouchMovePos(lua_State* tolua_S)
@@ -4575,10 +4860,12 @@ int lua_cocos2dx_studio_UIWidget_getTouchMovePos(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTouchMovePos",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getTouchMovePos'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_removeFromParent(lua_State* tolua_S)
@@ -4615,10 +4902,12 @@ int lua_cocos2dx_studio_UIWidget_removeFromParent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeFromParent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_removeFromParent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getWorldPosition(lua_State* tolua_S)
@@ -4656,10 +4945,12 @@ int lua_cocos2dx_studio_UIWidget_getWorldPosition(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getWorldPosition",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getWorldPosition'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_clone(lua_State* tolua_S)
@@ -4694,13 +4985,21 @@ int lua_cocos2dx_studio_UIWidget_clone(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->clone();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -4709,10 +5008,12 @@ int lua_cocos2dx_studio_UIWidget_clone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clone",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_clone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_isCascadeColorEnabled(lua_State* tolua_S)
@@ -4750,10 +5051,12 @@ int lua_cocos2dx_studio_UIWidget_isCascadeColorEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isCascadeColorEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_isCascadeColorEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_checkChildInfo(lua_State* tolua_S)
@@ -4805,10 +5108,12 @@ int lua_cocos2dx_studio_UIWidget_checkChildInfo(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "checkChildInfo",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_checkChildInfo'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getTopInParent(lua_State* tolua_S)
@@ -4846,10 +5151,12 @@ int lua_cocos2dx_studio_UIWidget_getTopInParent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTopInParent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getTopInParent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getRightInParent(lua_State* tolua_S)
@@ -4887,10 +5194,12 @@ int lua_cocos2dx_studio_UIWidget_getRightInParent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRightInParent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getRightInParent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setTag(lua_State* tolua_S)
@@ -4929,10 +5238,12 @@ int lua_cocos2dx_studio_UIWidget_setTag(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTag",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setTag'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getTouchStartPos(lua_State* tolua_S)
@@ -4970,10 +5281,12 @@ int lua_cocos2dx_studio_UIWidget_getTouchStartPos(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTouchStartPos",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getTouchStartPos'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setSizeType(lua_State* tolua_S)
@@ -5012,10 +5325,12 @@ int lua_cocos2dx_studio_UIWidget_setSizeType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setSizeType",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setSizeType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_stopAction(lua_State* tolua_S)
@@ -5063,10 +5378,12 @@ int lua_cocos2dx_studio_UIWidget_stopAction(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stopAction",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_stopAction'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_setBright(lua_State* tolua_S)
@@ -5105,10 +5422,12 @@ int lua_cocos2dx_studio_UIWidget_setBright(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBright",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_setBright'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_getActionManager(lua_State* tolua_S)
@@ -5143,13 +5462,21 @@ int lua_cocos2dx_studio_UIWidget_getActionManager(lua_State* tolua_S)
         cocos2d::ActionManager* ret = cobj->getActionManager();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ActionManager";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ActionManager");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ActionManager");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -5158,10 +5485,12 @@ int lua_cocos2dx_studio_UIWidget_getActionManager(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getActionManager",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_getActionManager'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIWidget_create(lua_State* tolua_S)
@@ -5186,13 +5515,21 @@ int lua_cocos2dx_studio_UIWidget_create(lua_State* tolua_S)
         gui::UIWidget* ret = gui::UIWidget::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -5241,10 +5578,11 @@ int lua_cocos2dx_studio_UIWidget_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UIWidget",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIWidget_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -5406,10 +5744,12 @@ int lua_cocos2dx_studio_UILayout_setBackGroundColorVector(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackGroundColorVector",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_setBackGroundColorVector'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_getBackGroundImageTextureSize(lua_State* tolua_S)
@@ -5447,10 +5787,12 @@ int lua_cocos2dx_studio_UILayout_getBackGroundImageTextureSize(lua_State* tolua_
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBackGroundImageTextureSize",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_getBackGroundImageTextureSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_getLayoutType(lua_State* tolua_S)
@@ -5488,10 +5830,12 @@ int lua_cocos2dx_studio_UILayout_getLayoutType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLayoutType",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_getLayoutType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_setBackGroundColorType(lua_State* tolua_S)
@@ -5530,10 +5874,12 @@ int lua_cocos2dx_studio_UILayout_setBackGroundColorType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackGroundColorType",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_setBackGroundColorType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_setBackGroundImage(lua_State* tolua_S)
@@ -5583,10 +5929,12 @@ int lua_cocos2dx_studio_UILayout_setBackGroundImage(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackGroundImage",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_setBackGroundImage'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_setBackGroundColor(lua_State* tolua_S)
@@ -5637,10 +5985,12 @@ int lua_cocos2dx_studio_UILayout_setBackGroundColor(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackGroundColor",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_setBackGroundColor'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_isClippingEnabled(lua_State* tolua_S)
@@ -5678,10 +6028,12 @@ int lua_cocos2dx_studio_UILayout_isClippingEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isClippingEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_isClippingEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_setBackGroundColorOpacity(lua_State* tolua_S)
@@ -5720,10 +6072,12 @@ int lua_cocos2dx_studio_UILayout_setBackGroundColorOpacity(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackGroundColorOpacity",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_setBackGroundColorOpacity'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_setBackGroundImageCapInsets(lua_State* tolua_S)
@@ -5762,10 +6116,12 @@ int lua_cocos2dx_studio_UILayout_setBackGroundImageCapInsets(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackGroundImageCapInsets",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_setBackGroundImageCapInsets'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_removeBackGroundImage(lua_State* tolua_S)
@@ -5802,10 +6158,12 @@ int lua_cocos2dx_studio_UILayout_removeBackGroundImage(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeBackGroundImage",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_removeBackGroundImage'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_setBackGroundImageScale9Enabled(lua_State* tolua_S)
@@ -5844,10 +6202,12 @@ int lua_cocos2dx_studio_UILayout_setBackGroundImageScale9Enabled(lua_State* tolu
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackGroundImageScale9Enabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_setBackGroundImageScale9Enabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_doLayout(lua_State* tolua_S)
@@ -5884,10 +6244,12 @@ int lua_cocos2dx_studio_UILayout_doLayout(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "doLayout",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_doLayout'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_setClippingEnabled(lua_State* tolua_S)
@@ -5926,10 +6288,12 @@ int lua_cocos2dx_studio_UILayout_setClippingEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setClippingEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_setClippingEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_setLayoutType(lua_State* tolua_S)
@@ -5968,10 +6332,12 @@ int lua_cocos2dx_studio_UILayout_setLayoutType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setLayoutType",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_setLayoutType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayout_create(lua_State* tolua_S)
@@ -5996,13 +6362,21 @@ int lua_cocos2dx_studio_UILayout_create(lua_State* tolua_S)
         gui::UILayout* ret = gui::UILayout::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILayout";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayout*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILayout");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILayout");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -6051,10 +6425,11 @@ int lua_cocos2dx_studio_UILayout_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UILayout",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayout_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -6114,13 +6489,21 @@ int lua_cocos2dx_studio_UIRootWidget_create(lua_State* tolua_S)
         gui::UIRootWidget* ret = gui::UIRootWidget::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIRootWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIRootWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIRootWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIRootWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -6169,10 +6552,11 @@ int lua_cocos2dx_studio_UIRootWidget_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UIRootWidget",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIRootWidget_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -6230,10 +6614,12 @@ int lua_cocos2dx_studio_UIButton_getTitleText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleText",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_getTitleText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_loadTextureNormal(lua_State* tolua_S)
@@ -6283,10 +6669,12 @@ int lua_cocos2dx_studio_UIButton_loadTextureNormal(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextureNormal",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_loadTextureNormal'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setCapInsetsNormalRenderer(lua_State* tolua_S)
@@ -6325,10 +6713,12 @@ int lua_cocos2dx_studio_UIButton_setCapInsetsNormalRenderer(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCapInsetsNormalRenderer",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setCapInsetsNormalRenderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setCapInsetsPressedRenderer(lua_State* tolua_S)
@@ -6367,10 +6757,12 @@ int lua_cocos2dx_studio_UIButton_setCapInsetsPressedRenderer(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCapInsetsPressedRenderer",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setCapInsetsPressedRenderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_loadTexturePressed(lua_State* tolua_S)
@@ -6420,10 +6812,12 @@ int lua_cocos2dx_studio_UIButton_loadTexturePressed(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTexturePressed",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_loadTexturePressed'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setTitleFontSize(lua_State* tolua_S)
@@ -6462,10 +6856,12 @@ int lua_cocos2dx_studio_UIButton_setTitleFontSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTitleFontSize",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setTitleFontSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setCapInsetsDisabledRenderer(lua_State* tolua_S)
@@ -6504,10 +6900,12 @@ int lua_cocos2dx_studio_UIButton_setCapInsetsDisabledRenderer(lua_State* tolua_S
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCapInsetsDisabledRenderer",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setCapInsetsDisabledRenderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setTitleFontName(lua_State* tolua_S)
@@ -6546,10 +6944,12 @@ int lua_cocos2dx_studio_UIButton_setTitleFontName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTitleFontName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setTitleFontName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_getTitleColor(lua_State* tolua_S)
@@ -6587,10 +6987,12 @@ int lua_cocos2dx_studio_UIButton_getTitleColor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleColor",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_getTitleColor'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_loadTextureDisabled(lua_State* tolua_S)
@@ -6640,10 +7042,12 @@ int lua_cocos2dx_studio_UIButton_loadTextureDisabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextureDisabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_loadTextureDisabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_getTitleFontName(lua_State* tolua_S)
@@ -6681,10 +7085,12 @@ int lua_cocos2dx_studio_UIButton_getTitleFontName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleFontName",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_getTitleFontName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setPressedActionEnabled(lua_State* tolua_S)
@@ -6723,10 +7129,12 @@ int lua_cocos2dx_studio_UIButton_setPressedActionEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPressedActionEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setPressedActionEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setCapInsets(lua_State* tolua_S)
@@ -6765,10 +7173,12 @@ int lua_cocos2dx_studio_UIButton_setCapInsets(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCapInsets",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setCapInsets'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setScale9Enabled(lua_State* tolua_S)
@@ -6807,10 +7217,12 @@ int lua_cocos2dx_studio_UIButton_setScale9Enabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScale9Enabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setScale9Enabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_loadTextures(lua_State* tolua_S)
@@ -6868,10 +7280,12 @@ int lua_cocos2dx_studio_UIButton_loadTextures(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextures",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_loadTextures'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_getTitleFontSize(lua_State* tolua_S)
@@ -6909,10 +7323,12 @@ int lua_cocos2dx_studio_UIButton_getTitleFontSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTitleFontSize",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_getTitleFontSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setTitleText(lua_State* tolua_S)
@@ -6951,10 +7367,12 @@ int lua_cocos2dx_studio_UIButton_setTitleText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTitleText",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setTitleText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_setTitleColor(lua_State* tolua_S)
@@ -6993,10 +7411,12 @@ int lua_cocos2dx_studio_UIButton_setTitleColor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTitleColor",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_setTitleColor'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIButton_create(lua_State* tolua_S)
@@ -7021,13 +7441,21 @@ int lua_cocos2dx_studio_UIButton_create(lua_State* tolua_S)
         gui::UIButton* ret = gui::UIButton::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIButton";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIButton*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIButton");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIButton");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -7076,10 +7504,11 @@ int lua_cocos2dx_studio_UIButton_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UIButton",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIButton_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -7156,10 +7585,12 @@ int lua_cocos2dx_studio_UICheckBox_getSelectedState(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSelectedState",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICheckBox_getSelectedState'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundSelected(lua_State* tolua_S)
@@ -7209,10 +7640,12 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundSelected(lua_State* tolu
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextureBackGroundSelected",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundSelected'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundDisabled(lua_State* tolua_S)
@@ -7262,10 +7695,12 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundDisabled(lua_State* tolu
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextureBackGroundDisabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICheckBox_loadTextureBackGroundDisabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICheckBox_loadTextureFrontCross(lua_State* tolua_S)
@@ -7315,10 +7750,12 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureFrontCross(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextureFrontCross",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICheckBox_loadTextureFrontCross'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICheckBox_loadTextures(lua_State* tolua_S)
@@ -7384,10 +7821,12 @@ int lua_cocos2dx_studio_UICheckBox_loadTextures(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextures",argc, 5);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICheckBox_loadTextures'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICheckBox_loadTextureBackGround(lua_State* tolua_S)
@@ -7437,10 +7876,12 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureBackGround(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextureBackGround",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICheckBox_loadTextureBackGround'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICheckBox_setSelectedState(lua_State* tolua_S)
@@ -7479,10 +7920,12 @@ int lua_cocos2dx_studio_UICheckBox_setSelectedState(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setSelectedState",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICheckBox_setSelectedState'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICheckBox_loadTextureFrontCrossDisabled(lua_State* tolua_S)
@@ -7532,10 +7975,12 @@ int lua_cocos2dx_studio_UICheckBox_loadTextureFrontCrossDisabled(lua_State* tolu
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTextureFrontCrossDisabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICheckBox_loadTextureFrontCrossDisabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICheckBox_create(lua_State* tolua_S)
@@ -7560,13 +8005,21 @@ int lua_cocos2dx_studio_UICheckBox_create(lua_State* tolua_S)
         gui::UICheckBox* ret = gui::UICheckBox::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UICheckBox";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UICheckBox*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UICheckBox");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UICheckBox");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -7615,10 +8068,11 @@ int lua_cocos2dx_studio_UICheckBox_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UICheckBox",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICheckBox_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -7686,10 +8140,12 @@ int lua_cocos2dx_studio_UIImageView_setDoubleClickEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDoubleClickEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIImageView_setDoubleClickEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIImageView_checkDoubleClick(lua_State* tolua_S)
@@ -7728,10 +8184,12 @@ int lua_cocos2dx_studio_UIImageView_checkDoubleClick(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "checkDoubleClick",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIImageView_checkDoubleClick'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIImageView_loadTexture(lua_State* tolua_S)
@@ -7781,10 +8239,12 @@ int lua_cocos2dx_studio_UIImageView_loadTexture(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTexture",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIImageView_loadTexture'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIImageView_setScale9Enabled(lua_State* tolua_S)
@@ -7823,10 +8283,12 @@ int lua_cocos2dx_studio_UIImageView_setScale9Enabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScale9Enabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIImageView_setScale9Enabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIImageView_setTextureRect(lua_State* tolua_S)
@@ -7865,10 +8327,12 @@ int lua_cocos2dx_studio_UIImageView_setTextureRect(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTextureRect",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIImageView_setTextureRect'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIImageView_setCapInsets(lua_State* tolua_S)
@@ -7907,10 +8371,12 @@ int lua_cocos2dx_studio_UIImageView_setCapInsets(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCapInsets",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIImageView_setCapInsets'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIImageView_create(lua_State* tolua_S)
@@ -7935,13 +8401,21 @@ int lua_cocos2dx_studio_UIImageView_create(lua_State* tolua_S)
         gui::UIImageView* ret = gui::UIImageView::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIImageView";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIImageView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIImageView");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIImageView");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -7990,10 +8464,11 @@ int lua_cocos2dx_studio_UIImageView_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UIImageView",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIImageView_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -8058,10 +8533,12 @@ int lua_cocos2dx_studio_UILabel_getStringLength(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringLength",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_getStringLength'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_setFontName(lua_State* tolua_S)
@@ -8100,10 +8577,12 @@ int lua_cocos2dx_studio_UILabel_setFontName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFontName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_setFontName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_setTouchScaleChangeEnabled(lua_State* tolua_S)
@@ -8142,10 +8621,12 @@ int lua_cocos2dx_studio_UILabel_setTouchScaleChangeEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTouchScaleChangeEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_setTouchScaleChangeEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_getStringValue(lua_State* tolua_S)
@@ -8183,10 +8664,12 @@ int lua_cocos2dx_studio_UILabel_getStringValue(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringValue",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_getStringValue'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_setText(lua_State* tolua_S)
@@ -8225,10 +8708,12 @@ int lua_cocos2dx_studio_UILabel_setText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setText",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_setText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_setTextVerticalAlignment(lua_State* tolua_S)
@@ -8267,10 +8752,12 @@ int lua_cocos2dx_studio_UILabel_setTextVerticalAlignment(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTextVerticalAlignment",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_setTextVerticalAlignment'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_setFontSize(lua_State* tolua_S)
@@ -8309,10 +8796,12 @@ int lua_cocos2dx_studio_UILabel_setFontSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFontSize",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_setFontSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_isTouchScaleChangeEnabled(lua_State* tolua_S)
@@ -8350,10 +8839,12 @@ int lua_cocos2dx_studio_UILabel_isTouchScaleChangeEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isTouchScaleChangeEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_isTouchScaleChangeEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_setTextHorizontalAlignment(lua_State* tolua_S)
@@ -8392,10 +8883,12 @@ int lua_cocos2dx_studio_UILabel_setTextHorizontalAlignment(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTextHorizontalAlignment",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_setTextHorizontalAlignment'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_setTextAreaSize(lua_State* tolua_S)
@@ -8434,10 +8927,12 @@ int lua_cocos2dx_studio_UILabel_setTextAreaSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTextAreaSize",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_setTextAreaSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabel_create(lua_State* tolua_S)
@@ -8462,13 +8957,21 @@ int lua_cocos2dx_studio_UILabel_create(lua_State* tolua_S)
         gui::UILabel* ret = gui::UILabel::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILabel";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILabel*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILabel");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILabel");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -8517,10 +9020,11 @@ int lua_cocos2dx_studio_UILabel_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UILabel",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabel_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -8639,10 +9143,12 @@ int lua_cocos2dx_studio_UICCLabelAtlas_setProperty(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setProperty",argc, 5);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCLabelAtlas_setProperty'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCLabelAtlas_create(lua_State* tolua_S)
@@ -8667,13 +9173,21 @@ int lua_cocos2dx_studio_UICCLabelAtlas_create(lua_State* tolua_S)
         gui::UICCLabelAtlas* ret = gui::UICCLabelAtlas::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UICCLabelAtlas";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UICCLabelAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UICCLabelAtlas");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UICCLabelAtlas");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -8722,10 +9236,11 @@ int lua_cocos2dx_studio_UICCLabelAtlas_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UICCLabelAtlas",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCLabelAtlas_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -8794,10 +9309,12 @@ int lua_cocos2dx_studio_UILabelAtlas_setProperty(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setProperty",argc, 5);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabelAtlas_setProperty'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabelAtlas_getStringValue(lua_State* tolua_S)
@@ -8835,10 +9352,12 @@ int lua_cocos2dx_studio_UILabelAtlas_getStringValue(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringValue",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabelAtlas_getStringValue'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabelAtlas_setStringValue(lua_State* tolua_S)
@@ -8877,10 +9396,12 @@ int lua_cocos2dx_studio_UILabelAtlas_setStringValue(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setStringValue",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabelAtlas_setStringValue'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabelAtlas_create(lua_State* tolua_S)
@@ -8905,13 +9426,21 @@ int lua_cocos2dx_studio_UILabelAtlas_create(lua_State* tolua_S)
         gui::UILabelAtlas* ret = gui::UILabelAtlas::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILabelAtlas";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILabelAtlas*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILabelAtlas");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILabelAtlas");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -8960,10 +9489,11 @@ int lua_cocos2dx_studio_UILabelAtlas_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UILabelAtlas",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabelAtlas_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -9026,10 +9556,12 @@ int lua_cocos2dx_studio_UILoadingBar_setPercent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPercent",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILoadingBar_setPercent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILoadingBar_loadTexture(lua_State* tolua_S)
@@ -9079,10 +9611,12 @@ int lua_cocos2dx_studio_UILoadingBar_loadTexture(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadTexture",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILoadingBar_loadTexture'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILoadingBar_setDirection(lua_State* tolua_S)
@@ -9121,10 +9655,12 @@ int lua_cocos2dx_studio_UILoadingBar_setDirection(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDirection",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILoadingBar_setDirection'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILoadingBar_setScale9Enabled(lua_State* tolua_S)
@@ -9163,10 +9699,12 @@ int lua_cocos2dx_studio_UILoadingBar_setScale9Enabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScale9Enabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILoadingBar_setScale9Enabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILoadingBar_setCapInsets(lua_State* tolua_S)
@@ -9205,10 +9743,12 @@ int lua_cocos2dx_studio_UILoadingBar_setCapInsets(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCapInsets",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILoadingBar_setCapInsets'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILoadingBar_getDirection(lua_State* tolua_S)
@@ -9246,10 +9786,12 @@ int lua_cocos2dx_studio_UILoadingBar_getDirection(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDirection",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILoadingBar_getDirection'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILoadingBar_getPercent(lua_State* tolua_S)
@@ -9287,10 +9829,12 @@ int lua_cocos2dx_studio_UILoadingBar_getPercent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPercent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILoadingBar_getPercent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILoadingBar_create(lua_State* tolua_S)
@@ -9315,13 +9859,21 @@ int lua_cocos2dx_studio_UILoadingBar_create(lua_State* tolua_S)
         gui::UILoadingBar* ret = gui::UILoadingBar::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILoadingBar";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILoadingBar*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILoadingBar");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILoadingBar");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -9370,10 +9922,11 @@ int lua_cocos2dx_studio_UILoadingBar_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UILoadingBar",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILoadingBar_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -9442,10 +9995,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToTop(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToTop",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToTop'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToPercentHorizontal(lua_State* tolua_S)
@@ -9488,10 +10043,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToPercentHorizontal(lua_State* tolua_
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToPercentHorizontal",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToPercentHorizontal'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_isInertiaScrollEnabled(lua_State* tolua_S)
@@ -9529,10 +10086,12 @@ int lua_cocos2dx_studio_UIScrollView_isInertiaScrollEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isInertiaScrollEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_isInertiaScrollEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToPercentBothDirection(lua_State* tolua_S)
@@ -9575,10 +10134,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToPercentBothDirection(lua_State* tol
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToPercentBothDirection",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToPercentBothDirection'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_getDirection(lua_State* tolua_S)
@@ -9616,10 +10177,12 @@ int lua_cocos2dx_studio_UIScrollView_getDirection(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDirection",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_getDirection'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToBottomLeft(lua_State* tolua_S)
@@ -9660,10 +10223,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToBottomLeft(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToBottomLeft",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToBottomLeft'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_getInnerContainer(lua_State* tolua_S)
@@ -9698,13 +10263,21 @@ int lua_cocos2dx_studio_UIScrollView_getInnerContainer(lua_State* tolua_S)
         gui::UILayout* ret = cobj->getInnerContainer();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILayout";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayout*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILayout");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILayout");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -9713,10 +10286,12 @@ int lua_cocos2dx_studio_UIScrollView_getInnerContainer(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInnerContainer",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_getInnerContainer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToBottom(lua_State* tolua_S)
@@ -9753,10 +10328,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToBottom(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToBottom",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToBottom'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_setDirection(lua_State* tolua_S)
@@ -9795,10 +10372,12 @@ int lua_cocos2dx_studio_UIScrollView_setDirection(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDirection",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_setDirection'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToTopLeft(lua_State* tolua_S)
@@ -9839,10 +10418,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToTopLeft(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToTopLeft",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToTopLeft'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToTopRight(lua_State* tolua_S)
@@ -9879,10 +10460,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToTopRight(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToTopRight",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToTopRight'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToBottomLeft(lua_State* tolua_S)
@@ -9919,10 +10502,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToBottomLeft(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToBottomLeft",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToBottomLeft'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_setInnerContainerSize(lua_State* tolua_S)
@@ -9961,10 +10546,12 @@ int lua_cocos2dx_studio_UIScrollView_setInnerContainerSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setInnerContainerSize",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_setInnerContainerSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_getInnerContainerSize(lua_State* tolua_S)
@@ -10002,10 +10589,12 @@ int lua_cocos2dx_studio_UIScrollView_getInnerContainerSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInnerContainerSize",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_getInnerContainerSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_isBounceEnabled(lua_State* tolua_S)
@@ -10043,10 +10632,12 @@ int lua_cocos2dx_studio_UIScrollView_isBounceEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isBounceEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_isBounceEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToPercentVertical(lua_State* tolua_S)
@@ -10085,10 +10676,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToPercentVertical(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToPercentVertical",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToPercentVertical'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_setInertiaScrollEnabled(lua_State* tolua_S)
@@ -10127,10 +10720,12 @@ int lua_cocos2dx_studio_UIScrollView_setInertiaScrollEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setInertiaScrollEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_setInertiaScrollEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToTopLeft(lua_State* tolua_S)
@@ -10167,10 +10762,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToTopLeft(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToTopLeft",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToTopLeft'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToPercentHorizontal(lua_State* tolua_S)
@@ -10209,10 +10806,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToPercentHorizontal(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToPercentHorizontal",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToPercentHorizontal'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToBottomRight(lua_State* tolua_S)
@@ -10249,10 +10848,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToBottomRight(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToBottomRight",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToBottomRight'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_update(lua_State* tolua_S)
@@ -10291,10 +10892,12 @@ int lua_cocos2dx_studio_UIScrollView_update(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "update",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_update'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_setBounceEnabled(lua_State* tolua_S)
@@ -10333,10 +10936,12 @@ int lua_cocos2dx_studio_UIScrollView_setBounceEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBounceEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_setBounceEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToTop(lua_State* tolua_S)
@@ -10373,10 +10978,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToTop(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToTop",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToTop'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToLeft(lua_State* tolua_S)
@@ -10417,10 +11024,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToLeft(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToLeft",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToLeft'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToPercentBothDirection(lua_State* tolua_S)
@@ -10459,10 +11068,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToPercentBothDirection(lua_State* tolua
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToPercentBothDirection",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToPercentBothDirection'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToPercentVertical(lua_State* tolua_S)
@@ -10505,10 +11116,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToPercentVertical(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToPercentVertical",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToPercentVertical'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToBottom(lua_State* tolua_S)
@@ -10549,10 +11162,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToBottom(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToBottom",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToBottom'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToBottomRight(lua_State* tolua_S)
@@ -10593,10 +11208,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToBottomRight(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToBottomRight",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToBottomRight'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToLeft(lua_State* tolua_S)
@@ -10633,10 +11250,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToLeft(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToLeft",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToLeft'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToRight(lua_State* tolua_S)
@@ -10677,10 +11296,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToRight(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToRight",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToRight'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_jumpToRight(lua_State* tolua_S)
@@ -10717,10 +11338,12 @@ int lua_cocos2dx_studio_UIScrollView_jumpToRight(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "jumpToRight",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_jumpToRight'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_scrollToTopRight(lua_State* tolua_S)
@@ -10761,10 +11384,12 @@ int lua_cocos2dx_studio_UIScrollView_scrollToTopRight(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToTopRight",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_scrollToTopRight'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIScrollView_create(lua_State* tolua_S)
@@ -10789,13 +11414,21 @@ int lua_cocos2dx_studio_UIScrollView_create(lua_State* tolua_S)
         gui::UIScrollView* ret = gui::UIScrollView::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIScrollView";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIScrollView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIScrollView");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIScrollView");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -10844,10 +11477,11 @@ int lua_cocos2dx_studio_UIScrollView_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UIScrollView",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIScrollView_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -10949,10 +11583,12 @@ int lua_cocos2dx_studio_UIListView_getIndex(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getIndex",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_getIndex'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_setGravity(lua_State* tolua_S)
@@ -10991,10 +11627,12 @@ int lua_cocos2dx_studio_UIListView_setGravity(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setGravity",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_setGravity'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_pushBackCustomItem(lua_State* tolua_S)
@@ -11042,10 +11680,12 @@ int lua_cocos2dx_studio_UIListView_pushBackCustomItem(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "pushBackCustomItem",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_pushBackCustomItem'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_getItems(lua_State* tolua_S)
@@ -11083,10 +11723,12 @@ int lua_cocos2dx_studio_UIListView_getItems(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getItems",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_getItems'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_removeItem(lua_State* tolua_S)
@@ -11125,10 +11767,12 @@ int lua_cocos2dx_studio_UIListView_removeItem(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeItem",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_removeItem'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_getCurSelectedIndex(lua_State* tolua_S)
@@ -11166,10 +11810,12 @@ int lua_cocos2dx_studio_UIListView_getCurSelectedIndex(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurSelectedIndex",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_getCurSelectedIndex'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_insertDefaultItem(lua_State* tolua_S)
@@ -11208,10 +11854,12 @@ int lua_cocos2dx_studio_UIListView_insertDefaultItem(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "insertDefaultItem",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_insertDefaultItem'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_setItemsMargin(lua_State* tolua_S)
@@ -11250,10 +11898,12 @@ int lua_cocos2dx_studio_UIListView_setItemsMargin(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setItemsMargin",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_setItemsMargin'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_refreshView(lua_State* tolua_S)
@@ -11290,10 +11940,12 @@ int lua_cocos2dx_studio_UIListView_refreshView(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "refreshView",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_refreshView'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_removeLastItem(lua_State* tolua_S)
@@ -11330,10 +11982,12 @@ int lua_cocos2dx_studio_UIListView_removeLastItem(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeLastItem",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_removeLastItem'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_getItem(lua_State* tolua_S)
@@ -11370,13 +12024,21 @@ int lua_cocos2dx_studio_UIListView_getItem(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getItem(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -11385,10 +12047,12 @@ int lua_cocos2dx_studio_UIListView_getItem(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getItem",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_getItem'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_setItemModel(lua_State* tolua_S)
@@ -11436,10 +12100,12 @@ int lua_cocos2dx_studio_UIListView_setItemModel(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setItemModel",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_setItemModel'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_pushBackDefaultItem(lua_State* tolua_S)
@@ -11476,10 +12142,12 @@ int lua_cocos2dx_studio_UIListView_pushBackDefaultItem(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "pushBackDefaultItem",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_pushBackDefaultItem'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_insertCustomItem(lua_State* tolua_S)
@@ -11529,10 +12197,12 @@ int lua_cocos2dx_studio_UIListView_insertCustomItem(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "insertCustomItem",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_insertCustomItem'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIListView_create(lua_State* tolua_S)
@@ -11557,13 +12227,21 @@ int lua_cocos2dx_studio_UIListView_create(lua_State* tolua_S)
         gui::UIListView* ret = gui::UIListView::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIListView";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIListView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIListView");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIListView");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -11612,10 +12290,11 @@ int lua_cocos2dx_studio_UIListView_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UIListView",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIListView_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -11689,10 +12368,12 @@ int lua_cocos2dx_studio_UISlider_setPercent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPercent",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_setPercent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_loadSlidBallTextureNormal(lua_State* tolua_S)
@@ -11742,10 +12423,12 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTextureNormal(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadSlidBallTextureNormal",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_loadSlidBallTextureNormal'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_loadBarTexture(lua_State* tolua_S)
@@ -11795,10 +12478,12 @@ int lua_cocos2dx_studio_UISlider_loadBarTexture(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadBarTexture",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_loadBarTexture'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_loadProgressBarTexture(lua_State* tolua_S)
@@ -11848,10 +12533,12 @@ int lua_cocos2dx_studio_UISlider_loadProgressBarTexture(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadProgressBarTexture",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_loadProgressBarTexture'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_loadSlidBallTextures(lua_State* tolua_S)
@@ -11909,10 +12596,12 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTextures(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadSlidBallTextures",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_loadSlidBallTextures'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_setCapInsetProgressBarRebderer(lua_State* tolua_S)
@@ -11951,10 +12640,12 @@ int lua_cocos2dx_studio_UISlider_setCapInsetProgressBarRebderer(lua_State* tolua
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCapInsetProgressBarRebderer",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_setCapInsetProgressBarRebderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_setCapInsetsBarRenderer(lua_State* tolua_S)
@@ -11993,10 +12684,12 @@ int lua_cocos2dx_studio_UISlider_setCapInsetsBarRenderer(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCapInsetsBarRenderer",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_setCapInsetsBarRenderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_setScale9Enabled(lua_State* tolua_S)
@@ -12035,10 +12728,12 @@ int lua_cocos2dx_studio_UISlider_setScale9Enabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setScale9Enabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_setScale9Enabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_setCapInsets(lua_State* tolua_S)
@@ -12077,10 +12772,12 @@ int lua_cocos2dx_studio_UISlider_setCapInsets(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCapInsets",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_setCapInsets'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_loadSlidBallTexturePressed(lua_State* tolua_S)
@@ -12130,10 +12827,12 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTexturePressed(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadSlidBallTexturePressed",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_loadSlidBallTexturePressed'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_loadSlidBallTextureDisabled(lua_State* tolua_S)
@@ -12183,10 +12882,12 @@ int lua_cocos2dx_studio_UISlider_loadSlidBallTextureDisabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "loadSlidBallTextureDisabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_loadSlidBallTextureDisabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_getPercent(lua_State* tolua_S)
@@ -12224,10 +12925,12 @@ int lua_cocos2dx_studio_UISlider_getPercent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPercent",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_getPercent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UISlider_create(lua_State* tolua_S)
@@ -12252,13 +12955,21 @@ int lua_cocos2dx_studio_UISlider_create(lua_State* tolua_S)
         gui::UISlider* ret = gui::UISlider::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UISlider";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UISlider*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UISlider");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UISlider");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -12307,10 +13018,11 @@ int lua_cocos2dx_studio_UISlider_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UISlider",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UISlider_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -12392,10 +13104,12 @@ int lua_cocos2dx_studio_UICCTextField_onTextFieldAttachWithIME(lua_State* tolua_
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "onTextFieldAttachWithIME",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_onTextFieldAttachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_setPasswordText(lua_State* tolua_S)
@@ -12434,10 +13148,12 @@ int lua_cocos2dx_studio_UICCTextField_setPasswordText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPasswordText",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_setPasswordText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_setAttachWithIME(lua_State* tolua_S)
@@ -12476,10 +13192,12 @@ int lua_cocos2dx_studio_UICCTextField_setAttachWithIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAttachWithIME",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_setAttachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_getDeleteBackward(lua_State* tolua_S)
@@ -12517,10 +13235,12 @@ int lua_cocos2dx_studio_UICCTextField_getDeleteBackward(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDeleteBackward",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_getDeleteBackward'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_getAttachWithIME(lua_State* tolua_S)
@@ -12558,10 +13278,12 @@ int lua_cocos2dx_studio_UICCTextField_getAttachWithIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAttachWithIME",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_getAttachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_onTextFieldDeleteBackward(lua_State* tolua_S)
@@ -12614,10 +13336,12 @@ int lua_cocos2dx_studio_UICCTextField_onTextFieldDeleteBackward(lua_State* tolua
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "onTextFieldDeleteBackward",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_onTextFieldDeleteBackward'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_getInsertText(lua_State* tolua_S)
@@ -12655,10 +13379,12 @@ int lua_cocos2dx_studio_UICCTextField_getInsertText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInsertText",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_getInsertText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_deleteBackward(lua_State* tolua_S)
@@ -12695,10 +13421,12 @@ int lua_cocos2dx_studio_UICCTextField_deleteBackward(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "deleteBackward",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_deleteBackward'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_setInsertText(lua_State* tolua_S)
@@ -12737,10 +13465,12 @@ int lua_cocos2dx_studio_UICCTextField_setInsertText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setInsertText",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_setInsertText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_getDetachWithIME(lua_State* tolua_S)
@@ -12778,10 +13508,12 @@ int lua_cocos2dx_studio_UICCTextField_getDetachWithIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDetachWithIME",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_getDetachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_getCharCount(lua_State* tolua_S)
@@ -12819,10 +13551,12 @@ int lua_cocos2dx_studio_UICCTextField_getCharCount(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCharCount",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_getCharCount'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_closeIME(lua_State* tolua_S)
@@ -12859,10 +13593,12 @@ int lua_cocos2dx_studio_UICCTextField_closeIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "closeIME",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_closeIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_setPasswordEnabled(lua_State* tolua_S)
@@ -12901,10 +13637,12 @@ int lua_cocos2dx_studio_UICCTextField_setPasswordEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPasswordEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_setPasswordEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_setMaxLengthEnabled(lua_State* tolua_S)
@@ -12943,10 +13681,12 @@ int lua_cocos2dx_studio_UICCTextField_setMaxLengthEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setMaxLengthEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_setMaxLengthEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_isPasswordEnabled(lua_State* tolua_S)
@@ -12984,10 +13724,12 @@ int lua_cocos2dx_studio_UICCTextField_isPasswordEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isPasswordEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_isPasswordEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_insertText(lua_State* tolua_S)
@@ -13028,10 +13770,12 @@ int lua_cocos2dx_studio_UICCTextField_insertText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "insertText",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_insertText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_setPasswordStyleText(lua_State* tolua_S)
@@ -13070,10 +13814,12 @@ int lua_cocos2dx_studio_UICCTextField_setPasswordStyleText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPasswordStyleText",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_setPasswordStyleText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_onTextFieldInsertText(lua_State* tolua_S)
@@ -13126,10 +13872,12 @@ int lua_cocos2dx_studio_UICCTextField_onTextFieldInsertText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "onTextFieldInsertText",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_onTextFieldInsertText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_onTextFieldDetachWithIME(lua_State* tolua_S)
@@ -13178,10 +13926,12 @@ int lua_cocos2dx_studio_UICCTextField_onTextFieldDetachWithIME(lua_State* tolua_
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "onTextFieldDetachWithIME",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_onTextFieldDetachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_getMaxLength(lua_State* tolua_S)
@@ -13219,10 +13969,12 @@ int lua_cocos2dx_studio_UICCTextField_getMaxLength(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getMaxLength",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_getMaxLength'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_isMaxLengthEnabled(lua_State* tolua_S)
@@ -13260,10 +14012,12 @@ int lua_cocos2dx_studio_UICCTextField_isMaxLengthEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isMaxLengthEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_isMaxLengthEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_openIME(lua_State* tolua_S)
@@ -13300,10 +14054,12 @@ int lua_cocos2dx_studio_UICCTextField_openIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "openIME",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_openIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_setDetachWithIME(lua_State* tolua_S)
@@ -13342,10 +14098,12 @@ int lua_cocos2dx_studio_UICCTextField_setDetachWithIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDetachWithIME",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_setDetachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_setMaxLength(lua_State* tolua_S)
@@ -13384,10 +14142,12 @@ int lua_cocos2dx_studio_UICCTextField_setMaxLength(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setMaxLength",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_setMaxLength'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_setDeleteBackward(lua_State* tolua_S)
@@ -13426,10 +14186,12 @@ int lua_cocos2dx_studio_UICCTextField_setDeleteBackward(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDeleteBackward",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_setDeleteBackward'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UICCTextField_create(lua_State* tolua_S)
@@ -13460,13 +14222,21 @@ int lua_cocos2dx_studio_UICCTextField_create(lua_State* tolua_S)
         gui::UICCTextField* ret = gui::UICCTextField::create(arg0, arg1, arg2);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UICCTextField";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UICCTextField*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UICCTextField");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UICCTextField");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -13515,10 +14285,11 @@ int lua_cocos2dx_studio_UICCTextField_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UICCTextField",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UICCTextField_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -13603,10 +14374,12 @@ int lua_cocos2dx_studio_UITextField_setAttachWithIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAttachWithIME",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setAttachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_getStringValue(lua_State* tolua_S)
@@ -13644,10 +14417,12 @@ int lua_cocos2dx_studio_UITextField_getStringValue(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringValue",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_getStringValue'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_getDeleteBackward(lua_State* tolua_S)
@@ -13685,10 +14460,12 @@ int lua_cocos2dx_studio_UITextField_getDeleteBackward(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDeleteBackward",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_getDeleteBackward'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_getAttachWithIME(lua_State* tolua_S)
@@ -13726,10 +14503,12 @@ int lua_cocos2dx_studio_UITextField_getAttachWithIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAttachWithIME",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_getAttachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setFontName(lua_State* tolua_S)
@@ -13768,10 +14547,12 @@ int lua_cocos2dx_studio_UITextField_setFontName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFontName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setFontName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_getInsertText(lua_State* tolua_S)
@@ -13809,10 +14590,12 @@ int lua_cocos2dx_studio_UITextField_getInsertText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInsertText",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_getInsertText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_initRenderer(lua_State* tolua_S)
@@ -13849,10 +14632,12 @@ int lua_cocos2dx_studio_UITextField_initRenderer(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initRenderer",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_initRenderer'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_getDetachWithIME(lua_State* tolua_S)
@@ -13890,10 +14675,12 @@ int lua_cocos2dx_studio_UITextField_getDetachWithIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDetachWithIME",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_getDetachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_init(lua_State* tolua_S)
@@ -13931,10 +14718,12 @@ int lua_cocos2dx_studio_UITextField_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_didNotSelectSelf(lua_State* tolua_S)
@@ -13971,10 +14760,12 @@ int lua_cocos2dx_studio_UITextField_didNotSelectSelf(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "didNotSelectSelf",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_didNotSelectSelf'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_attachWithIME(lua_State* tolua_S)
@@ -14011,10 +14802,12 @@ int lua_cocos2dx_studio_UITextField_attachWithIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "attachWithIME",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_attachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setPasswordEnabled(lua_State* tolua_S)
@@ -14053,10 +14846,12 @@ int lua_cocos2dx_studio_UITextField_setPasswordEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPasswordEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setPasswordEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_update(lua_State* tolua_S)
@@ -14095,10 +14890,12 @@ int lua_cocos2dx_studio_UITextField_update(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "update",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_update'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setMaxLengthEnabled(lua_State* tolua_S)
@@ -14137,10 +14934,12 @@ int lua_cocos2dx_studio_UITextField_setMaxLengthEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setMaxLengthEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setMaxLengthEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_isPasswordEnabled(lua_State* tolua_S)
@@ -14178,10 +14977,12 @@ int lua_cocos2dx_studio_UITextField_isPasswordEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isPasswordEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_isPasswordEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setFontSize(lua_State* tolua_S)
@@ -14220,10 +15021,12 @@ int lua_cocos2dx_studio_UITextField_setFontSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFontSize",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setFontSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setPlaceHolder(lua_State* tolua_S)
@@ -14262,10 +15065,12 @@ int lua_cocos2dx_studio_UITextField_setPlaceHolder(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPlaceHolder",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setPlaceHolder'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setPasswordStyleText(lua_State* tolua_S)
@@ -14304,10 +15109,12 @@ int lua_cocos2dx_studio_UITextField_setPasswordStyleText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPasswordStyleText",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setPasswordStyleText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_getMaxLength(lua_State* tolua_S)
@@ -14345,10 +15152,12 @@ int lua_cocos2dx_studio_UITextField_getMaxLength(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getMaxLength",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_getMaxLength'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_isMaxLengthEnabled(lua_State* tolua_S)
@@ -14386,10 +15195,12 @@ int lua_cocos2dx_studio_UITextField_isMaxLengthEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isMaxLengthEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_isMaxLengthEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setDetachWithIME(lua_State* tolua_S)
@@ -14428,10 +15239,12 @@ int lua_cocos2dx_studio_UITextField_setDetachWithIME(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDetachWithIME",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setDetachWithIME'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setText(lua_State* tolua_S)
@@ -14470,10 +15283,12 @@ int lua_cocos2dx_studio_UITextField_setText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setText",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setInsertText(lua_State* tolua_S)
@@ -14512,10 +15327,12 @@ int lua_cocos2dx_studio_UITextField_setInsertText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setInsertText",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setInsertText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setMaxLength(lua_State* tolua_S)
@@ -14554,10 +15371,12 @@ int lua_cocos2dx_studio_UITextField_setMaxLength(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setMaxLength",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setMaxLength'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setTouchSize(lua_State* tolua_S)
@@ -14596,10 +15415,12 @@ int lua_cocos2dx_studio_UITextField_setTouchSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTouchSize",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setTouchSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_setDeleteBackward(lua_State* tolua_S)
@@ -14638,10 +15459,12 @@ int lua_cocos2dx_studio_UITextField_setDeleteBackward(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setDeleteBackward",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_setDeleteBackward'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UITextField_create(lua_State* tolua_S)
@@ -14666,13 +15489,21 @@ int lua_cocos2dx_studio_UITextField_create(lua_State* tolua_S)
         gui::UITextField* ret = gui::UITextField::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UITextField";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UITextField*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UITextField");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UITextField");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -14721,10 +15552,11 @@ int lua_cocos2dx_studio_UITextField_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UITextField",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UITextField_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -14810,10 +15642,12 @@ int lua_cocos2dx_studio_UILabelBMFont_setFntFile(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFntFile",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabelBMFont_setFntFile'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabelBMFont_getStringValue(lua_State* tolua_S)
@@ -14851,10 +15685,12 @@ int lua_cocos2dx_studio_UILabelBMFont_getStringValue(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStringValue",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabelBMFont_getStringValue'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabelBMFont_setText(lua_State* tolua_S)
@@ -14893,10 +15729,12 @@ int lua_cocos2dx_studio_UILabelBMFont_setText(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setText",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabelBMFont_setText'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILabelBMFont_create(lua_State* tolua_S)
@@ -14921,13 +15759,21 @@ int lua_cocos2dx_studio_UILabelBMFont_create(lua_State* tolua_S)
         gui::UILabelBMFont* ret = gui::UILabelBMFont::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILabelBMFont";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILabelBMFont*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILabelBMFont");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILabelBMFont");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -14976,10 +15822,11 @@ int lua_cocos2dx_studio_UILabelBMFont_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UILabelBMFont",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILabelBMFont_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -15041,10 +15888,12 @@ int lua_cocos2dx_studio_UIPageView_getCurPageIndex(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurPageIndex",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_getCurPageIndex'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_addWidgetToPage(lua_State* tolua_S)
@@ -15096,10 +15945,12 @@ int lua_cocos2dx_studio_UIPageView_addWidgetToPage(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addWidgetToPage",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_addWidgetToPage'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_getPage(lua_State* tolua_S)
@@ -15136,13 +15987,21 @@ int lua_cocos2dx_studio_UIPageView_getPage(lua_State* tolua_S)
         gui::UILayout* ret = cobj->getPage(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILayout";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayout*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILayout");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILayout");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -15151,10 +16010,12 @@ int lua_cocos2dx_studio_UIPageView_getPage(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPage",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_getPage'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_removePage(lua_State* tolua_S)
@@ -15202,10 +16063,12 @@ int lua_cocos2dx_studio_UIPageView_removePage(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removePage",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_removePage'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_update(lua_State* tolua_S)
@@ -15244,10 +16107,12 @@ int lua_cocos2dx_studio_UIPageView_update(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "update",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_update'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_insertPage(lua_State* tolua_S)
@@ -15297,10 +16162,12 @@ int lua_cocos2dx_studio_UIPageView_insertPage(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "insertPage",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_insertPage'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_scrollToPage(lua_State* tolua_S)
@@ -15339,10 +16206,12 @@ int lua_cocos2dx_studio_UIPageView_scrollToPage(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "scrollToPage",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_scrollToPage'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_removePageAtIndex(lua_State* tolua_S)
@@ -15381,10 +16250,12 @@ int lua_cocos2dx_studio_UIPageView_removePageAtIndex(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removePageAtIndex",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_removePageAtIndex'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_getPages(lua_State* tolua_S)
@@ -15422,10 +16293,12 @@ int lua_cocos2dx_studio_UIPageView_getPages(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPages",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_getPages'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_removeAllPages(lua_State* tolua_S)
@@ -15462,10 +16335,12 @@ int lua_cocos2dx_studio_UIPageView_removeAllPages(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeAllPages",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_removeAllPages'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_addPage(lua_State* tolua_S)
@@ -15513,10 +16388,12 @@ int lua_cocos2dx_studio_UIPageView_addPage(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addPage",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_addPage'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UIPageView_create(lua_State* tolua_S)
@@ -15541,13 +16418,21 @@ int lua_cocos2dx_studio_UIPageView_create(lua_State* tolua_S)
         gui::UIPageView* ret = gui::UIPageView::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIPageView";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIPageView*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIPageView");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIPageView");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -15596,10 +16481,11 @@ int lua_cocos2dx_studio_UIPageView_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UIPageView",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UIPageView_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -15669,13 +16555,21 @@ int lua_cocos2dx_studio_UIHelper_seekActionWidgetByActionTag(lua_State* tolua_S)
         gui::UIWidget* ret = gui::UIHelper::seekActionWidgetByActionTag(arg0, arg1);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -15725,13 +16619,21 @@ int lua_cocos2dx_studio_UIHelper_seekWidgetByTag(lua_State* tolua_S)
         gui::UIWidget* ret = gui::UIHelper::seekWidgetByTag(arg0, arg1);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -15781,13 +16683,21 @@ int lua_cocos2dx_studio_UIHelper_seekWidgetByRelativeName(lua_State* tolua_S)
         gui::UIWidget* ret = gui::UIHelper::seekWidgetByRelativeName(arg0, arg1);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -15837,13 +16747,21 @@ int lua_cocos2dx_studio_UIHelper_seekWidgetByName(lua_State* tolua_S)
         gui::UIWidget* ret = gui::UIHelper::seekWidgetByName(arg0, arg1);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -15912,13 +16830,21 @@ int lua_cocos2dx_studio_UILayer_getRootWidget(lua_State* tolua_S)
         gui::UIRootWidget* ret = cobj->getRootWidget();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIRootWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIRootWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIRootWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIRootWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -15927,10 +16853,12 @@ int lua_cocos2dx_studio_UILayer_getRootWidget(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRootWidget",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayer_getRootWidget'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayer_getWidgetByTag(lua_State* tolua_S)
@@ -15967,13 +16895,21 @@ int lua_cocos2dx_studio_UILayer_getWidgetByTag(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getWidgetByTag(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -15982,10 +16918,12 @@ int lua_cocos2dx_studio_UILayer_getWidgetByTag(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getWidgetByTag",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayer_getWidgetByTag'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayer_removeWidget(lua_State* tolua_S)
@@ -16033,10 +16971,12 @@ int lua_cocos2dx_studio_UILayer_removeWidget(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeWidget",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayer_removeWidget'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayer_init(lua_State* tolua_S)
@@ -16074,10 +17014,12 @@ int lua_cocos2dx_studio_UILayer_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayer_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayer_getWidgetByName(lua_State* tolua_S)
@@ -16114,13 +17056,21 @@ int lua_cocos2dx_studio_UILayer_getWidgetByName(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->getWidgetByName(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -16129,10 +17079,12 @@ int lua_cocos2dx_studio_UILayer_getWidgetByName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getWidgetByName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayer_getWidgetByName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayer_addWidget(lua_State* tolua_S)
@@ -16180,10 +17132,12 @@ int lua_cocos2dx_studio_UILayer_addWidget(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addWidget",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayer_addWidget'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayer_clear(lua_State* tolua_S)
@@ -16220,10 +17174,12 @@ int lua_cocos2dx_studio_UILayer_clear(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clear",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayer_clear'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_UILayer_create(lua_State* tolua_S)
@@ -16248,13 +17204,21 @@ int lua_cocos2dx_studio_UILayer_create(lua_State* tolua_S)
         gui::UILayer* ret = gui::UILayer::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UILayer";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UILayer*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UILayer");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UILayer");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -16303,10 +17267,11 @@ int lua_cocos2dx_studio_UILayer_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "UILayer",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_UILayer_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -16373,13 +17338,21 @@ int lua_cocos2dx_studio_ActionManagerEx_playActionByName(lua_State* tolua_S)
         cocostudio::ActionObject* ret = cobj->playActionByName(arg0, arg1);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ActionObject";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionObject*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ActionObject");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ActionObject");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -16388,10 +17361,12 @@ int lua_cocos2dx_studio_ActionManagerEx_playActionByName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "playActionByName",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ActionManagerEx_playActionByName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ActionManagerEx_getActionByName(lua_State* tolua_S)
@@ -16430,13 +17405,21 @@ int lua_cocos2dx_studio_ActionManagerEx_getActionByName(lua_State* tolua_S)
         cocostudio::ActionObject* ret = cobj->getActionByName(arg0, arg1);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ActionObject";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionObject*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ActionObject");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ActionObject");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -16445,10 +17428,12 @@ int lua_cocos2dx_studio_ActionManagerEx_getActionByName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getActionByName",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ActionManagerEx_getActionByName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ActionManagerEx_initWithDictionary(lua_State* tolua_S)
@@ -16509,10 +17494,12 @@ int lua_cocos2dx_studio_ActionManagerEx_initWithDictionary(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithDictionary",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ActionManagerEx_initWithDictionary'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ActionManagerEx_releaseActions(lua_State* tolua_S)
@@ -16549,10 +17536,12 @@ int lua_cocos2dx_studio_ActionManagerEx_releaseActions(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "releaseActions",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ActionManagerEx_releaseActions'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ActionManagerEx_purgeActionManager(lua_State* tolua_S)
@@ -16607,13 +17596,21 @@ int lua_cocos2dx_studio_ActionManagerEx_shareManager(lua_State* tolua_S)
         cocostudio::ActionManagerEx* ret = cocostudio::ActionManagerEx::shareManager();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ActionManagerEx";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionManagerEx*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ActionManagerEx");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ActionManagerEx");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -16662,10 +17659,11 @@ int lua_cocos2dx_studio_ActionManagerEx_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ActionManagerEx",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ActionManagerEx_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -16729,10 +17727,12 @@ int lua_cocos2dx_studio_BaseData_getColor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColor",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BaseData_getColor'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_BaseData_copy(lua_State* tolua_S)
@@ -16780,10 +17780,12 @@ int lua_cocos2dx_studio_BaseData_copy(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "copy",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BaseData_copy'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_BaseData_subtract(lua_State* tolua_S)
@@ -16844,10 +17846,12 @@ int lua_cocos2dx_studio_BaseData_subtract(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "subtract",argc, 3);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BaseData_subtract'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_BaseData_setColor(lua_State* tolua_S)
@@ -16886,10 +17890,12 @@ int lua_cocos2dx_studio_BaseData_setColor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setColor",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BaseData_setColor'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_BaseData_create(lua_State* tolua_S)
@@ -16914,13 +17920,21 @@ int lua_cocos2dx_studio_BaseData_create(lua_State* tolua_S)
         cocostudio::BaseData* ret = cocostudio::BaseData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "BaseData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BaseData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BaseData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"BaseData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -16969,10 +17983,11 @@ int lua_cocos2dx_studio_BaseData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "BaseData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BaseData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -17045,10 +18060,12 @@ int lua_cocos2dx_studio_DisplayData_copy(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "copy",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_DisplayData_copy'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_DisplayData_changeDisplayToTexture(lua_State* tolua_S)
@@ -17106,13 +18123,21 @@ int lua_cocos2dx_studio_DisplayData_create(lua_State* tolua_S)
         cocostudio::DisplayData* ret = cocostudio::DisplayData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "DisplayData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"DisplayData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"DisplayData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -17161,10 +18186,11 @@ int lua_cocos2dx_studio_DisplayData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "DisplayData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_DisplayData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -17235,10 +18261,12 @@ int lua_cocos2dx_studio_SpriteDisplayData_copy(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "copy",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_SpriteDisplayData_copy'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_SpriteDisplayData_create(lua_State* tolua_S)
@@ -17263,13 +18291,21 @@ int lua_cocos2dx_studio_SpriteDisplayData_create(lua_State* tolua_S)
         cocostudio::SpriteDisplayData* ret = cocostudio::SpriteDisplayData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "SpriteDisplayData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::SpriteDisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"SpriteDisplayData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"SpriteDisplayData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -17318,10 +18354,11 @@ int lua_cocos2dx_studio_SpriteDisplayData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "SpriteDisplayData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_SpriteDisplayData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -17368,13 +18405,21 @@ int lua_cocos2dx_studio_ArmatureDisplayData_create(lua_State* tolua_S)
         cocostudio::ArmatureDisplayData* ret = cocostudio::ArmatureDisplayData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ArmatureDisplayData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureDisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureDisplayData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureDisplayData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -17423,10 +18468,11 @@ int lua_cocos2dx_studio_ArmatureDisplayData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ArmatureDisplayData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDisplayData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -17471,13 +18517,21 @@ int lua_cocos2dx_studio_ParticleDisplayData_create(lua_State* tolua_S)
         cocostudio::ParticleDisplayData* ret = cocostudio::ParticleDisplayData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ParticleDisplayData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ParticleDisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ParticleDisplayData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ParticleDisplayData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -17526,10 +18580,11 @@ int lua_cocos2dx_studio_ParticleDisplayData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ParticleDisplayData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ParticleDisplayData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -17586,13 +18641,21 @@ int lua_cocos2dx_studio_BoneData_getDisplayData(lua_State* tolua_S)
         cocostudio::DisplayData* ret = cobj->getDisplayData(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "DisplayData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"DisplayData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"DisplayData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -17601,10 +18664,12 @@ int lua_cocos2dx_studio_BoneData_getDisplayData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BoneData_getDisplayData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_BoneData_init(lua_State* tolua_S)
@@ -17642,10 +18707,12 @@ int lua_cocos2dx_studio_BoneData_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BoneData_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_BoneData_addDisplayData(lua_State* tolua_S)
@@ -17693,10 +18760,12 @@ int lua_cocos2dx_studio_BoneData_addDisplayData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addDisplayData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BoneData_addDisplayData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_BoneData_create(lua_State* tolua_S)
@@ -17721,13 +18790,21 @@ int lua_cocos2dx_studio_BoneData_create(lua_State* tolua_S)
         cocostudio::BoneData* ret = cocostudio::BoneData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "BoneData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BoneData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"BoneData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -17776,10 +18853,11 @@ int lua_cocos2dx_studio_BoneData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "BoneData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BoneData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -17851,10 +18929,12 @@ int lua_cocos2dx_studio_ArmatureData_addBoneData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addBoneData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureData_addBoneData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureData_init(lua_State* tolua_S)
@@ -17892,10 +18972,12 @@ int lua_cocos2dx_studio_ArmatureData_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureData_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureData_getBoneData(lua_State* tolua_S)
@@ -17932,13 +19014,21 @@ int lua_cocos2dx_studio_ArmatureData_getBoneData(lua_State* tolua_S)
         cocostudio::BoneData* ret = cobj->getBoneData(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "BoneData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BoneData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"BoneData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -17947,10 +19037,12 @@ int lua_cocos2dx_studio_ArmatureData_getBoneData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBoneData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureData_getBoneData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureData_create(lua_State* tolua_S)
@@ -17975,13 +19067,21 @@ int lua_cocos2dx_studio_ArmatureData_create(lua_State* tolua_S)
         cocostudio::ArmatureData* ret = cocostudio::ArmatureData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ArmatureData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -18030,10 +19130,11 @@ int lua_cocos2dx_studio_ArmatureData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ArmatureData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -18105,10 +19206,12 @@ int lua_cocos2dx_studio_FrameData_copy(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "copy",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_FrameData_copy'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_FrameData_create(lua_State* tolua_S)
@@ -18133,13 +19236,21 @@ int lua_cocos2dx_studio_FrameData_create(lua_State* tolua_S)
         cocostudio::FrameData* ret = cocostudio::FrameData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "FrameData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::FrameData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"FrameData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"FrameData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -18188,10 +19299,11 @@ int lua_cocos2dx_studio_FrameData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "FrameData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_FrameData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -18251,10 +19363,12 @@ int lua_cocos2dx_studio_MovementBoneData_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_MovementBoneData_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_MovementBoneData_getFrameData(lua_State* tolua_S)
@@ -18291,13 +19405,21 @@ int lua_cocos2dx_studio_MovementBoneData_getFrameData(lua_State* tolua_S)
         cocostudio::FrameData* ret = cobj->getFrameData(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "FrameData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::FrameData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"FrameData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"FrameData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -18306,10 +19428,12 @@ int lua_cocos2dx_studio_MovementBoneData_getFrameData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFrameData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_MovementBoneData_getFrameData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_MovementBoneData_addFrameData(lua_State* tolua_S)
@@ -18357,10 +19481,12 @@ int lua_cocos2dx_studio_MovementBoneData_addFrameData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addFrameData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_MovementBoneData_addFrameData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_MovementBoneData_create(lua_State* tolua_S)
@@ -18385,13 +19511,21 @@ int lua_cocos2dx_studio_MovementBoneData_create(lua_State* tolua_S)
         cocostudio::MovementBoneData* ret = cocostudio::MovementBoneData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "MovementBoneData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementBoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"MovementBoneData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"MovementBoneData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -18440,10 +19574,11 @@ int lua_cocos2dx_studio_MovementBoneData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "MovementBoneData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_MovementBoneData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -18504,13 +19639,21 @@ int lua_cocos2dx_studio_MovementData_getMovementBoneData(lua_State* tolua_S)
         cocostudio::MovementBoneData* ret = cobj->getMovementBoneData(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "MovementBoneData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementBoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"MovementBoneData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"MovementBoneData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -18519,10 +19662,12 @@ int lua_cocos2dx_studio_MovementData_getMovementBoneData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getMovementBoneData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_MovementData_getMovementBoneData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_MovementData_addMovementBoneData(lua_State* tolua_S)
@@ -18570,10 +19715,12 @@ int lua_cocos2dx_studio_MovementData_addMovementBoneData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addMovementBoneData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_MovementData_addMovementBoneData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_MovementData_create(lua_State* tolua_S)
@@ -18598,13 +19745,21 @@ int lua_cocos2dx_studio_MovementData_create(lua_State* tolua_S)
         cocostudio::MovementData* ret = cocostudio::MovementData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "MovementData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"MovementData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"MovementData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -18653,10 +19808,11 @@ int lua_cocos2dx_studio_MovementData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "MovementData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_MovementData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -18716,13 +19872,21 @@ int lua_cocos2dx_studio_AnimationData_getMovement(lua_State* tolua_S)
         cocostudio::MovementData* ret = cobj->getMovement(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "MovementData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"MovementData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"MovementData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -18731,10 +19895,12 @@ int lua_cocos2dx_studio_AnimationData_getMovement(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getMovement",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_AnimationData_getMovement'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_AnimationData_getMovementCount(lua_State* tolua_S)
@@ -18772,10 +19938,12 @@ int lua_cocos2dx_studio_AnimationData_getMovementCount(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getMovementCount",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_AnimationData_getMovementCount'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_AnimationData_addMovement(lua_State* tolua_S)
@@ -18823,10 +19991,12 @@ int lua_cocos2dx_studio_AnimationData_addMovement(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addMovement",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_AnimationData_addMovement'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_AnimationData_create(lua_State* tolua_S)
@@ -18851,13 +20021,21 @@ int lua_cocos2dx_studio_AnimationData_create(lua_State* tolua_S)
         cocostudio::AnimationData* ret = cocostudio::AnimationData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "AnimationData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::AnimationData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"AnimationData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"AnimationData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -18906,10 +20084,11 @@ int lua_cocos2dx_studio_AnimationData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "AnimationData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_AnimationData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -18971,10 +20150,12 @@ int lua_cocos2dx_studio_ContourData_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ContourData_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ContourData_addVertex(lua_State* tolua_S)
@@ -19013,10 +20194,12 @@ int lua_cocos2dx_studio_ContourData_addVertex(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addVertex",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ContourData_addVertex'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ContourData_create(lua_State* tolua_S)
@@ -19041,13 +20224,21 @@ int lua_cocos2dx_studio_ContourData_create(lua_State* tolua_S)
         cocostudio::ContourData* ret = cocostudio::ContourData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ContourData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ContourData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ContourData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ContourData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -19096,10 +20287,11 @@ int lua_cocos2dx_studio_ContourData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ContourData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ContourData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -19159,13 +20351,21 @@ int lua_cocos2dx_studio_TextureData_getContourData(lua_State* tolua_S)
         cocostudio::ContourData* ret = cobj->getContourData(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ContourData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ContourData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ContourData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ContourData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -19174,10 +20374,12 @@ int lua_cocos2dx_studio_TextureData_getContourData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getContourData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_TextureData_getContourData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_TextureData_init(lua_State* tolua_S)
@@ -19215,10 +20417,12 @@ int lua_cocos2dx_studio_TextureData_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_TextureData_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_TextureData_addContourData(lua_State* tolua_S)
@@ -19266,10 +20470,12 @@ int lua_cocos2dx_studio_TextureData_addContourData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addContourData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_TextureData_addContourData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_TextureData_create(lua_State* tolua_S)
@@ -19294,13 +20500,21 @@ int lua_cocos2dx_studio_TextureData_create(lua_State* tolua_S)
         cocostudio::TextureData* ret = cocostudio::TextureData::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "TextureData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::TextureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"TextureData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -19349,10 +20563,11 @@ int lua_cocos2dx_studio_TextureData_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TextureData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_TextureData_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -19414,10 +20629,12 @@ int lua_cocos2dx_studio_Bone_isTransformDirty(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isTransformDirty",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_isTransformDirty'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_isIgnoreMovementBoneData(lua_State* tolua_S)
@@ -19455,10 +20672,12 @@ int lua_cocos2dx_studio_Bone_isIgnoreMovementBoneData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isIgnoreMovementBoneData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_isIgnoreMovementBoneData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_updateZOrder(lua_State* tolua_S)
@@ -19495,10 +20714,12 @@ int lua_cocos2dx_studio_Bone_updateZOrder(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateZOrder",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_updateZOrder'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getDisplayRenderNode(lua_State* tolua_S)
@@ -19533,13 +20754,21 @@ int lua_cocos2dx_studio_Bone_getDisplayRenderNode(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getDisplayRenderNode();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Node";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -19548,10 +20777,12 @@ int lua_cocos2dx_studio_Bone_getDisplayRenderNode(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayRenderNode",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getDisplayRenderNode'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_isBlendDirty(lua_State* tolua_S)
@@ -19589,10 +20820,12 @@ int lua_cocos2dx_studio_Bone_isBlendDirty(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isBlendDirty",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_isBlendDirty'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_addChildBone(lua_State* tolua_S)
@@ -19640,10 +20873,12 @@ int lua_cocos2dx_studio_Bone_addChildBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addChildBone",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_addChildBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getWorldInfo(lua_State* tolua_S)
@@ -19678,13 +20913,21 @@ int lua_cocos2dx_studio_Bone_getWorldInfo(lua_State* tolua_S)
         cocostudio::BaseData* ret = cobj->getWorldInfo();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "BaseData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BaseData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BaseData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"BaseData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -19693,10 +20936,12 @@ int lua_cocos2dx_studio_Bone_getWorldInfo(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getWorldInfo",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getWorldInfo'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getTween(lua_State* tolua_S)
@@ -19731,13 +20976,21 @@ int lua_cocos2dx_studio_Bone_getTween(lua_State* tolua_S)
         cocostudio::Tween* ret = cobj->getTween();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Tween";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Tween*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Tween");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Tween");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -19746,10 +20999,12 @@ int lua_cocos2dx_studio_Bone_getTween(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTween",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getTween'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getParentBone(lua_State* tolua_S)
@@ -19784,13 +21039,21 @@ int lua_cocos2dx_studio_Bone_getParentBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getParentBone();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Bone";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -19799,10 +21062,12 @@ int lua_cocos2dx_studio_Bone_getParentBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getParentBone",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getParentBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_updateColor(lua_State* tolua_S)
@@ -19839,10 +21104,12 @@ int lua_cocos2dx_studio_Bone_updateColor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateColor",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_updateColor'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getName(lua_State* tolua_S)
@@ -19880,10 +21147,12 @@ int lua_cocos2dx_studio_Bone_getName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getName",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_setTransformDirty(lua_State* tolua_S)
@@ -19922,10 +21191,12 @@ int lua_cocos2dx_studio_Bone_setTransformDirty(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTransformDirty",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setTransformDirty'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getDisplayRenderNodeType(lua_State* tolua_S)
@@ -19963,10 +21234,12 @@ int lua_cocos2dx_studio_Bone_getDisplayRenderNodeType(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayRenderNodeType",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getDisplayRenderNodeType'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_removeDisplay(lua_State* tolua_S)
@@ -20005,10 +21278,12 @@ int lua_cocos2dx_studio_Bone_removeDisplay(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeDisplay",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_removeDisplay'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_setBoneData(lua_State* tolua_S)
@@ -20056,10 +21331,12 @@ int lua_cocos2dx_studio_Bone_setBoneData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBoneData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setBoneData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_init(lua_State* tolua_S)
@@ -20104,10 +21381,12 @@ int lua_cocos2dx_studio_Bone_init(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_changeDisplayByName(lua_State* tolua_S)
@@ -20148,10 +21427,12 @@ int lua_cocos2dx_studio_Bone_changeDisplayByName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "changeDisplayByName",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_changeDisplayByName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_addDisplay(lua_State* tolua_S)
@@ -20224,10 +21505,12 @@ int lua_cocos2dx_studio_Bone_addDisplay(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addDisplay",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_addDisplay'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_setName(lua_State* tolua_S)
@@ -20266,10 +21549,12 @@ int lua_cocos2dx_studio_Bone_setName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_removeFromParent(lua_State* tolua_S)
@@ -20308,10 +21593,12 @@ int lua_cocos2dx_studio_Bone_removeFromParent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeFromParent",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_removeFromParent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getColliderDetector(lua_State* tolua_S)
@@ -20346,13 +21633,21 @@ int lua_cocos2dx_studio_Bone_getColliderDetector(lua_State* tolua_S)
         cocostudio::ColliderDetector* ret = cobj->getColliderDetector();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ColliderDetector";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ColliderDetector*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ColliderDetector");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ColliderDetector");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -20361,10 +21656,12 @@ int lua_cocos2dx_studio_Bone_getColliderDetector(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getColliderDetector",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getColliderDetector'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_setParentBone(lua_State* tolua_S)
@@ -20412,10 +21709,12 @@ int lua_cocos2dx_studio_Bone_setParentBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setParentBone",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setParentBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getTweenData(lua_State* tolua_S)
@@ -20450,13 +21749,21 @@ int lua_cocos2dx_studio_Bone_getTweenData(lua_State* tolua_S)
         cocostudio::FrameData* ret = cobj->getTweenData();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "FrameData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::FrameData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"FrameData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"FrameData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -20465,10 +21772,12 @@ int lua_cocos2dx_studio_Bone_getTweenData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTweenData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getTweenData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getChildArmature(lua_State* tolua_S)
@@ -20503,13 +21812,21 @@ int lua_cocos2dx_studio_Bone_getChildArmature(lua_State* tolua_S)
         cocostudio::Armature* ret = cobj->getChildArmature();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Armature";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -20518,10 +21835,12 @@ int lua_cocos2dx_studio_Bone_getChildArmature(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getChildArmature",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getChildArmature'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_setArmature(lua_State* tolua_S)
@@ -20569,10 +21888,12 @@ int lua_cocos2dx_studio_Bone_setArmature(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setArmature",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setArmature'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_setBlendDirty(lua_State* tolua_S)
@@ -20611,10 +21932,12 @@ int lua_cocos2dx_studio_Bone_setBlendDirty(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBlendDirty",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setBlendDirty'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_removeChildBone(lua_State* tolua_S)
@@ -20664,10 +21987,12 @@ int lua_cocos2dx_studio_Bone_removeChildBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeChildBone",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_removeChildBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_setChildArmature(lua_State* tolua_S)
@@ -20715,10 +22040,12 @@ int lua_cocos2dx_studio_Bone_setChildArmature(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setChildArmature",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_setChildArmature'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getNodeToArmatureTransform(lua_State* tolua_S)
@@ -20756,10 +22083,12 @@ int lua_cocos2dx_studio_Bone_getNodeToArmatureTransform(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodeToArmatureTransform",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getNodeToArmatureTransform'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getDisplayManager(lua_State* tolua_S)
@@ -20794,13 +22123,21 @@ int lua_cocos2dx_studio_Bone_getDisplayManager(lua_State* tolua_S)
         cocostudio::DisplayManager* ret = cobj->getDisplayManager();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "DisplayManager";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"DisplayManager");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"DisplayManager");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -20809,10 +22146,12 @@ int lua_cocos2dx_studio_Bone_getDisplayManager(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayManager",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getDisplayManager'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getArmature(lua_State* tolua_S)
@@ -20847,13 +22186,21 @@ int lua_cocos2dx_studio_Bone_getArmature(lua_State* tolua_S)
         cocostudio::Armature* ret = cobj->getArmature();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Armature";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -20862,10 +22209,12 @@ int lua_cocos2dx_studio_Bone_getArmature(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getArmature",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getArmature'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_changeDisplayByIndex(lua_State* tolua_S)
@@ -20906,10 +22255,12 @@ int lua_cocos2dx_studio_Bone_changeDisplayByIndex(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "changeDisplayByIndex",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_changeDisplayByIndex'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_getBoneData(lua_State* tolua_S)
@@ -20944,13 +22295,21 @@ int lua_cocos2dx_studio_Bone_getBoneData(lua_State* tolua_S)
         cocostudio::BoneData* ret = cobj->getBoneData();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "BoneData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BoneData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BoneData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"BoneData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -20959,10 +22318,12 @@ int lua_cocos2dx_studio_Bone_getBoneData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBoneData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_getBoneData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
@@ -20989,13 +22350,21 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
             cocostudio::Bone* ret = cocostudio::Bone::create(arg0);
             do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Bone";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -21011,13 +22380,21 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
             cocostudio::Bone* ret = cocostudio::Bone::create();
             do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Bone";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -21068,10 +22445,11 @@ int lua_cocos2dx_studio_Bone_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Bone",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Bone_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -21163,10 +22541,12 @@ int lua_cocos2dx_studio_BatchNode_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BatchNode_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_BatchNode_setPopGroupCommand(lua_State* tolua_S)
@@ -21205,10 +22585,12 @@ int lua_cocos2dx_studio_BatchNode_setPopGroupCommand(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPopGroupCommand",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BatchNode_setPopGroupCommand'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_BatchNode_create(lua_State* tolua_S)
@@ -21233,13 +22615,21 @@ int lua_cocos2dx_studio_BatchNode_create(lua_State* tolua_S)
         cocostudio::BatchNode* ret = cocostudio::BatchNode::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "BatchNode";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BatchNode");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"BatchNode");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -21288,10 +22678,11 @@ int lua_cocos2dx_studio_BatchNode_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "BatchNode",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_BatchNode_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -21352,10 +22743,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_getSpeedScale(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSpeedScale",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_getSpeedScale'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
@@ -21470,10 +22863,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "play",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_play'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_pause(lua_State* tolua_S)
@@ -21510,10 +22905,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_pause(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "pause",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_pause'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_gotoAndPause(lua_State* tolua_S)
@@ -21552,10 +22949,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_gotoAndPause(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "gotoAndPause",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_gotoAndPause'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_resume(lua_State* tolua_S)
@@ -21592,10 +22991,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_resume(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "resume",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_resume'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_stop(lua_State* tolua_S)
@@ -21632,10 +23033,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_stop(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stop",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_stop'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_setAnimationData(lua_State* tolua_S)
@@ -21683,10 +23086,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_setAnimationData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAnimationData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_setAnimationData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_setSpeedScale(lua_State* tolua_S)
@@ -21725,10 +23130,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_setSpeedScale(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setSpeedScale",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_setSpeedScale'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_update(lua_State* tolua_S)
@@ -21767,10 +23174,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_update(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "update",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_update'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_getAnimationData(lua_State* tolua_S)
@@ -21805,13 +23214,21 @@ int lua_cocos2dx_studio_ArmatureAnimation_getAnimationData(lua_State* tolua_S)
         cocostudio::AnimationData* ret = cobj->getAnimationData();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "AnimationData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::AnimationData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"AnimationData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"AnimationData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -21820,10 +23237,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_getAnimationData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimationData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_getAnimationData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_playByIndex(lua_State* tolua_S)
@@ -21938,10 +23357,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_playByIndex(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "playByIndex",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_playByIndex'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_gotoAndPlay(lua_State* tolua_S)
@@ -21980,10 +23401,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_gotoAndPlay(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "gotoAndPlay",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_gotoAndPlay'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_init(lua_State* tolua_S)
@@ -22032,10 +23455,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_getMovementCount(lua_State* tolua_S)
@@ -22073,10 +23498,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_getMovementCount(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getMovementCount",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_getMovementCount'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID(lua_State* tolua_S)
@@ -22114,10 +23541,12 @@ int lua_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID(lua_State* tolua_
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurrentMovementID",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureAnimation_create(lua_State* tolua_S)
@@ -22153,13 +23582,21 @@ int lua_cocos2dx_studio_ArmatureAnimation_create(lua_State* tolua_S)
         cocostudio::ArmatureAnimation* ret = cocostudio::ArmatureAnimation::create(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ArmatureAnimation";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureAnimation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureAnimation");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureAnimation");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -22208,10 +23645,11 @@ int lua_cocos2dx_studio_ArmatureAnimation_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ArmatureAnimation",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureAnimation_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -22285,10 +23723,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationDatas(lua_State* tolua_S
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimationDatas",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_getAnimationDatas'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_removeAnimationData(lua_State* tolua_S)
@@ -22327,10 +23767,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeAnimationData(lua_State* tolua
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeAnimationData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_removeAnimationData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
@@ -22402,10 +23844,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addArmatureData",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_addArmatureData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_addArmatureFileInfo(lua_State* tolua_S)
@@ -22460,10 +23904,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureFileInfo(lua_State* tolua
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addArmatureFileInfo",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_addArmatureFileInfo'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureFileInfo(lua_State* tolua_S)
@@ -22502,10 +23948,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureFileInfo(lua_State* to
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeArmatureFileInfo",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_removeArmatureFileInfo'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_getTextureDatas(lua_State* tolua_S)
@@ -22543,10 +23991,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureDatas(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureDatas",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_getTextureDatas'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_getTextureData(lua_State* tolua_S)
@@ -22583,13 +24033,21 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureData(lua_State* tolua_S)
         cocostudio::TextureData* ret = cobj->getTextureData(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "TextureData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::TextureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"TextureData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"TextureData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -22598,10 +24056,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_getTextureData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_getArmatureData(lua_State* tolua_S)
@@ -22638,13 +24098,21 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureData(lua_State* tolua_S)
         cocostudio::ArmatureData* ret = cobj->getArmatureData(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ArmatureData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -22653,10 +24121,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getArmatureData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_getArmatureData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_getAnimationData(lua_State* tolua_S)
@@ -22693,13 +24163,21 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationData(lua_State* tolua_S)
         cocostudio::AnimationData* ret = cobj->getAnimationData(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "AnimationData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::AnimationData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"AnimationData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"AnimationData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -22708,10 +24186,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimationData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_getAnimationData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
@@ -22783,10 +24263,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addAnimationData",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_addAnimationData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_init(lua_State* tolua_S)
@@ -22824,10 +24306,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureData(lua_State* tolua_S)
@@ -22866,10 +24350,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureData(lua_State* tolua_
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeArmatureData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_removeArmatureData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_getArmatureDatas(lua_State* tolua_S)
@@ -22907,10 +24393,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureDatas(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getArmatureDatas",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_getArmatureDatas'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_removeTextureData(lua_State* tolua_S)
@@ -22949,10 +24437,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeTextureData(lua_State* tolua_S
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeTextureData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_removeTextureData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
@@ -23024,10 +24514,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addTextureData",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_addTextureData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_isAutoLoadSpriteFile(lua_State* tolua_S)
@@ -23065,10 +24557,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_isAutoLoadSpriteFile(lua_State* tolu
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isAutoLoadSpriteFile",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_isAutoLoadSpriteFile'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(lua_State* tolua_S)
@@ -23122,10 +24616,12 @@ int lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(lua_State* to
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addSpriteFrameFromFile",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ArmatureDataManager_destoryInstance(lua_State* tolua_S)
@@ -23180,13 +24676,21 @@ int lua_cocos2dx_studio_ArmatureDataManager_getInstance(lua_State* tolua_S)
         cocostudio::ArmatureDataManager* ret = cocostudio::ArmatureDataManager::getInstance();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ArmatureDataManager";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureDataManager*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureDataManager");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureDataManager");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -23272,13 +24776,21 @@ int lua_cocos2dx_studio_Armature_getBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getBone(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Bone";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -23287,10 +24799,12 @@ int lua_cocos2dx_studio_Armature_getBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBone",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
@@ -23340,10 +24854,12 @@ int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "changeBoneParent",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_changeBoneParent'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_setAnimation(lua_State* tolua_S)
@@ -23391,10 +24907,12 @@ int lua_cocos2dx_studio_Armature_setAnimation(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAnimation",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_setAnimation'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_getBoneAtPoint(lua_State* tolua_S)
@@ -23433,13 +24951,21 @@ int lua_cocos2dx_studio_Armature_getBoneAtPoint(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getBoneAtPoint(arg0, arg1);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Bone";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -23448,10 +24974,12 @@ int lua_cocos2dx_studio_Armature_getBoneAtPoint(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBoneAtPoint",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getBoneAtPoint'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_getArmatureTransformDirty(lua_State* tolua_S)
@@ -23489,10 +25017,12 @@ int lua_cocos2dx_studio_Armature_getArmatureTransformDirty(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getArmatureTransformDirty",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getArmatureTransformDirty'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_setVersion(lua_State* tolua_S)
@@ -23531,10 +25061,12 @@ int lua_cocos2dx_studio_Armature_setVersion(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setVersion",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_setVersion'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_updateOffsetPoint(lua_State* tolua_S)
@@ -23571,10 +25103,12 @@ int lua_cocos2dx_studio_Armature_updateOffsetPoint(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateOffsetPoint",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_updateOffsetPoint'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_getParentBone(lua_State* tolua_S)
@@ -23609,13 +25143,21 @@ int lua_cocos2dx_studio_Armature_getParentBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getParentBone();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Bone";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -23624,10 +25166,12 @@ int lua_cocos2dx_studio_Armature_getParentBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getParentBone",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getParentBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_setArmatureData(lua_State* tolua_S)
@@ -23675,10 +25219,12 @@ int lua_cocos2dx_studio_Armature_setArmatureData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setArmatureData",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_setArmatureData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_removeBone(lua_State* tolua_S)
@@ -23728,10 +25274,12 @@ int lua_cocos2dx_studio_Armature_removeBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeBone",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_removeBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
@@ -23766,13 +25314,21 @@ int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
         cocostudio::BatchNode* ret = cobj->getBatchNode();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "BatchNode";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BatchNode*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"BatchNode");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"BatchNode");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -23781,10 +25337,12 @@ int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBatchNode",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getBatchNode'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_getName(lua_State* tolua_S)
@@ -23822,10 +25380,12 @@ int lua_cocos2dx_studio_Armature_getName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getName",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
@@ -23895,10 +25455,12 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_setParentBone(lua_State* tolua_S)
@@ -23946,10 +25508,12 @@ int lua_cocos2dx_studio_Armature_setParentBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setParentBone",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_setParentBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_drawContour(lua_State* tolua_S)
@@ -23986,10 +25550,12 @@ int lua_cocos2dx_studio_Armature_drawContour(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "drawContour",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_drawContour'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_setBatchNode(lua_State* tolua_S)
@@ -24037,10 +25603,12 @@ int lua_cocos2dx_studio_Armature_setBatchNode(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBatchNode",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_setBatchNode'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_setName(lua_State* tolua_S)
@@ -24079,10 +25647,12 @@ int lua_cocos2dx_studio_Armature_setName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_setName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_addBone(lua_State* tolua_S)
@@ -24132,10 +25702,12 @@ int lua_cocos2dx_studio_Armature_addBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addBone",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_addBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_getArmatureData(lua_State* tolua_S)
@@ -24170,13 +25742,21 @@ int lua_cocos2dx_studio_Armature_getArmatureData(lua_State* tolua_S)
         cocostudio::ArmatureData* ret = cobj->getArmatureData();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ArmatureData";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureData*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureData");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureData");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -24185,10 +25765,12 @@ int lua_cocos2dx_studio_Armature_getArmatureData(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getArmatureData",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getArmatureData'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_getVersion(lua_State* tolua_S)
@@ -24226,10 +25808,12 @@ int lua_cocos2dx_studio_Armature_getVersion(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getVersion",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getVersion'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_getAnimation(lua_State* tolua_S)
@@ -24264,13 +25848,21 @@ int lua_cocos2dx_studio_Armature_getAnimation(lua_State* tolua_S)
         cocostudio::ArmatureAnimation* ret = cobj->getAnimation();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ArmatureAnimation";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureAnimation*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ArmatureAnimation");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ArmatureAnimation");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -24279,10 +25871,12 @@ int lua_cocos2dx_studio_Armature_getAnimation(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimation",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getAnimation'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_getBoneDic(lua_State* tolua_S)
@@ -24320,10 +25914,12 @@ int lua_cocos2dx_studio_Armature_getBoneDic(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBoneDic",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_getBoneDic'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
@@ -24350,13 +25946,21 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             cocostudio::Armature* ret = cocostudio::Armature::create(arg0);
             do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Armature";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -24372,13 +25976,21 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             cocostudio::Armature* ret = cocostudio::Armature::create();
             do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Armature";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -24409,13 +26021,21 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             cocostudio::Armature* ret = cocostudio::Armature::create(arg0, arg1);
             do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Armature";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Armature");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Armature");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -24466,10 +26086,11 @@ int lua_cocos2dx_studio_Armature_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Armature",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Armature_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -24547,13 +26168,21 @@ int lua_cocos2dx_studio_Skin_getBone(lua_State* tolua_S)
         cocostudio::Bone* ret = cobj->getBone();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Bone";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Bone");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Bone");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -24562,10 +26191,12 @@ int lua_cocos2dx_studio_Skin_getBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBone",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Skin_getBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Skin_getNodeToWorldTransformAR(lua_State* tolua_S)
@@ -24603,10 +26234,12 @@ int lua_cocos2dx_studio_Skin_getNodeToWorldTransformAR(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodeToWorldTransformAR",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Skin_getNodeToWorldTransformAR'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Skin_initWithFile(lua_State* tolua_S)
@@ -24646,10 +26279,12 @@ int lua_cocos2dx_studio_Skin_initWithFile(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithFile",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Skin_initWithFile'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Skin_getDisplayName(lua_State* tolua_S)
@@ -24687,10 +26322,12 @@ int lua_cocos2dx_studio_Skin_getDisplayName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisplayName",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Skin_getDisplayName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Skin_updateArmatureTransform(lua_State* tolua_S)
@@ -24727,10 +26364,12 @@ int lua_cocos2dx_studio_Skin_updateArmatureTransform(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateArmatureTransform",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Skin_updateArmatureTransform'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Skin_initWithSpriteFrameName(lua_State* tolua_S)
@@ -24770,10 +26409,12 @@ int lua_cocos2dx_studio_Skin_initWithSpriteFrameName(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithSpriteFrameName",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Skin_initWithSpriteFrameName'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Skin_setBone(lua_State* tolua_S)
@@ -24821,10 +26462,12 @@ int lua_cocos2dx_studio_Skin_setBone(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBone",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Skin_setBone'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
@@ -24851,13 +26494,21 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
             cocostudio::Skin* ret = cocostudio::Skin::create(arg0);
             do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Skin";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Skin*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Skin");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Skin");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -24873,13 +26524,21 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
             cocostudio::Skin* ret = cocostudio::Skin::create();
             do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Skin";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Skin*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Skin");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Skin");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -24920,13 +26579,21 @@ int lua_cocos2dx_studio_Skin_createWithSpriteFrameName(lua_State* tolua_S)
         cocostudio::Skin* ret = cocostudio::Skin::createWithSpriteFrameName(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Skin";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Skin*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Skin");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Skin");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -24975,10 +26642,11 @@ int lua_cocos2dx_studio_Skin_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Skin",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Skin_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -25047,10 +26715,12 @@ int lua_cocos2dx_studio_ComAttribute_getFloat(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFloat",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_getFloat'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_getDict(lua_State* tolua_S)
@@ -25085,13 +26755,21 @@ int lua_cocos2dx_studio_ComAttribute_getDict(lua_State* tolua_S)
         cocostudio::JsonDictionary* ret = cobj->getDict();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "JsonDictionary";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::JsonDictionary*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"JsonDictionary");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"JsonDictionary");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -25100,10 +26778,12 @@ int lua_cocos2dx_studio_ComAttribute_getDict(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDict",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_getDict'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_setFloat(lua_State* tolua_S)
@@ -25144,10 +26824,12 @@ int lua_cocos2dx_studio_ComAttribute_setFloat(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFloat",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setFloat'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_setCString(lua_State* tolua_S)
@@ -25188,10 +26870,12 @@ int lua_cocos2dx_studio_ComAttribute_setCString(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCString",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setCString'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_getCString(lua_State* tolua_S)
@@ -25231,10 +26915,12 @@ int lua_cocos2dx_studio_ComAttribute_getCString(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCString",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_getCString'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_getBool(lua_State* tolua_S)
@@ -25274,10 +26960,12 @@ int lua_cocos2dx_studio_ComAttribute_getBool(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBool",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_getBool'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_setInt(lua_State* tolua_S)
@@ -25318,10 +27006,12 @@ int lua_cocos2dx_studio_ComAttribute_setInt(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setInt",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setInt'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_getInt(lua_State* tolua_S)
@@ -25361,10 +27051,12 @@ int lua_cocos2dx_studio_ComAttribute_getInt(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInt",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_getInt'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_init(lua_State* tolua_S)
@@ -25402,10 +27094,12 @@ int lua_cocos2dx_studio_ComAttribute_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_setBool(lua_State* tolua_S)
@@ -25446,10 +27140,12 @@ int lua_cocos2dx_studio_ComAttribute_setBool(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBool",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_setBool'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAttribute_create(lua_State* tolua_S)
@@ -25474,13 +27170,21 @@ int lua_cocos2dx_studio_ComAttribute_create(lua_State* tolua_S)
         cocostudio::ComAttribute* ret = cocostudio::ComAttribute::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ComAttribute";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComAttribute*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ComAttribute");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ComAttribute");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -25558,10 +27262,12 @@ int lua_cocos2dx_studio_ComAudio_stopAllEffects(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stopAllEffects",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_stopAllEffects'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_getEffectsVolume(lua_State* tolua_S)
@@ -25599,10 +27305,12 @@ int lua_cocos2dx_studio_ComAudio_getEffectsVolume(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getEffectsVolume",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_getEffectsVolume'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_stopEffect(lua_State* tolua_S)
@@ -25641,10 +27349,12 @@ int lua_cocos2dx_studio_ComAudio_stopEffect(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stopEffect",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_stopEffect'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_getBackgroundMusicVolume(lua_State* tolua_S)
@@ -25682,10 +27392,12 @@ int lua_cocos2dx_studio_ComAudio_getBackgroundMusicVolume(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBackgroundMusicVolume",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_getBackgroundMusicVolume'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_willPlayBackgroundMusic(lua_State* tolua_S)
@@ -25723,10 +27435,12 @@ int lua_cocos2dx_studio_ComAudio_willPlayBackgroundMusic(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "willPlayBackgroundMusic",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_willPlayBackgroundMusic'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_setBackgroundMusicVolume(lua_State* tolua_S)
@@ -25765,10 +27479,12 @@ int lua_cocos2dx_studio_ComAudio_setBackgroundMusicVolume(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBackgroundMusicVolume",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_setBackgroundMusicVolume'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_end(lua_State* tolua_S)
@@ -25805,10 +27521,12 @@ int lua_cocos2dx_studio_ComAudio_end(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "end",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_end'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_isEnabled(lua_State* tolua_S)
@@ -25846,10 +27564,12 @@ int lua_cocos2dx_studio_ComAudio_isEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isEnabled",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_isEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_stopBackgroundMusic(lua_State* tolua_S)
@@ -25892,10 +27612,12 @@ int lua_cocos2dx_studio_ComAudio_stopBackgroundMusic(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "stopBackgroundMusic",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_stopBackgroundMusic'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_pauseBackgroundMusic(lua_State* tolua_S)
@@ -25932,10 +27654,12 @@ int lua_cocos2dx_studio_ComAudio_pauseBackgroundMusic(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "pauseBackgroundMusic",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_pauseBackgroundMusic'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_isBackgroundMusicPlaying(lua_State* tolua_S)
@@ -25973,10 +27697,12 @@ int lua_cocos2dx_studio_ComAudio_isBackgroundMusicPlaying(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isBackgroundMusicPlaying",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_isBackgroundMusicPlaying'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_init(lua_State* tolua_S)
@@ -26014,10 +27740,12 @@ int lua_cocos2dx_studio_ComAudio_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_isLoop(lua_State* tolua_S)
@@ -26055,10 +27783,12 @@ int lua_cocos2dx_studio_ComAudio_isLoop(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isLoop",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_isLoop'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_pauseAllEffects(lua_State* tolua_S)
@@ -26095,10 +27825,12 @@ int lua_cocos2dx_studio_ComAudio_pauseAllEffects(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "pauseAllEffects",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_pauseAllEffects'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_setEnabled(lua_State* tolua_S)
@@ -26137,10 +27869,12 @@ int lua_cocos2dx_studio_ComAudio_setEnabled(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setEnabled",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_setEnabled'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_preloadBackgroundMusic(lua_State* tolua_S)
@@ -26179,10 +27913,12 @@ int lua_cocos2dx_studio_ComAudio_preloadBackgroundMusic(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "preloadBackgroundMusic",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_preloadBackgroundMusic'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_playBackgroundMusic(lua_State* tolua_S)
@@ -26233,10 +27969,12 @@ int lua_cocos2dx_studio_ComAudio_playBackgroundMusic(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "playBackgroundMusic",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_playBackgroundMusic'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_playEffect(lua_State* tolua_S)
@@ -26289,10 +28027,12 @@ int lua_cocos2dx_studio_ComAudio_playEffect(lua_State* tolua_S)
     ok  = true;
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "playEffect",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_playEffect'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_resumeAllEffects(lua_State* tolua_S)
@@ -26329,10 +28069,12 @@ int lua_cocos2dx_studio_ComAudio_resumeAllEffects(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "resumeAllEffects",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_resumeAllEffects'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_setLoop(lua_State* tolua_S)
@@ -26371,10 +28113,12 @@ int lua_cocos2dx_studio_ComAudio_setLoop(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setLoop",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_setLoop'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_unloadEffect(lua_State* tolua_S)
@@ -26413,10 +28157,12 @@ int lua_cocos2dx_studio_ComAudio_unloadEffect(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "unloadEffect",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_unloadEffect'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_rewindBackgroundMusic(lua_State* tolua_S)
@@ -26453,10 +28199,12 @@ int lua_cocos2dx_studio_ComAudio_rewindBackgroundMusic(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "rewindBackgroundMusic",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_rewindBackgroundMusic'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_preloadEffect(lua_State* tolua_S)
@@ -26495,10 +28243,12 @@ int lua_cocos2dx_studio_ComAudio_preloadEffect(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "preloadEffect",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_preloadEffect'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_pauseEffect(lua_State* tolua_S)
@@ -26537,10 +28287,12 @@ int lua_cocos2dx_studio_ComAudio_pauseEffect(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "pauseEffect",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_pauseEffect'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_resumeBackgroundMusic(lua_State* tolua_S)
@@ -26577,10 +28329,12 @@ int lua_cocos2dx_studio_ComAudio_resumeBackgroundMusic(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "resumeBackgroundMusic",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_resumeBackgroundMusic'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_setFile(lua_State* tolua_S)
@@ -26619,10 +28373,12 @@ int lua_cocos2dx_studio_ComAudio_setFile(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setFile",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_setFile'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_setEffectsVolume(lua_State* tolua_S)
@@ -26661,10 +28417,12 @@ int lua_cocos2dx_studio_ComAudio_setEffectsVolume(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setEffectsVolume",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_setEffectsVolume'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_getFile(lua_State* tolua_S)
@@ -26702,10 +28460,12 @@ int lua_cocos2dx_studio_ComAudio_getFile(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFile",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_getFile'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_resumeEffect(lua_State* tolua_S)
@@ -26744,10 +28504,12 @@ int lua_cocos2dx_studio_ComAudio_resumeEffect(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "resumeEffect",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_resumeEffect'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComAudio_create(lua_State* tolua_S)
@@ -26772,13 +28534,21 @@ int lua_cocos2dx_studio_ComAudio_create(lua_State* tolua_S)
         cocostudio::ComAudio* ret = cocostudio::ComAudio::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ComAudio";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComAudio*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ComAudio");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ComAudio");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -26876,10 +28646,12 @@ int lua_cocos2dx_studio_ComController_init(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComController_init'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComController_create(lua_State* tolua_S)
@@ -26904,13 +28676,21 @@ int lua_cocos2dx_studio_ComController_create(lua_State* tolua_S)
         cocostudio::ComController* ret = cocostudio::ComController::create();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ComController";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComController*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ComController");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ComController");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -26959,10 +28739,11 @@ int lua_cocos2dx_studio_ComController_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ComController",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComController_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -27019,13 +28800,21 @@ int lua_cocos2dx_studio_ComRender_getNode(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->getNode();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Node";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -27034,10 +28823,12 @@ int lua_cocos2dx_studio_ComRender_getNode(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNode",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComRender_getNode'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
@@ -27075,13 +28866,21 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
         cocostudio::ComRender* ret = cocostudio::ComRender::create(arg0, arg1);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ComRender";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComRender*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"ComRender");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"ComRender");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -27150,13 +28949,21 @@ int lua_cocos2dx_studio_GUIReader_widgetFromJsonFile(lua_State* tolua_S)
         gui::UIWidget* ret = cobj->widgetFromJsonFile(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "UIWidget";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((gui::UIWidget*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"UIWidget");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"UIWidget");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -27165,10 +28972,12 @@ int lua_cocos2dx_studio_GUIReader_widgetFromJsonFile(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "widgetFromJsonFile",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_GUIReader_widgetFromJsonFile'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_GUIReader_getVersionInteger(lua_State* tolua_S)
@@ -27208,10 +29017,12 @@ int lua_cocos2dx_studio_GUIReader_getVersionInteger(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getVersionInteger",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_GUIReader_getVersionInteger'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_GUIReader_getFileDesignSize(lua_State* tolua_S)
@@ -27251,10 +29062,12 @@ int lua_cocos2dx_studio_GUIReader_getFileDesignSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFileDesignSize",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_GUIReader_getFileDesignSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_GUIReader_storeFileDesignSize(lua_State* tolua_S)
@@ -27295,10 +29108,12 @@ int lua_cocos2dx_studio_GUIReader_storeFileDesignSize(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "storeFileDesignSize",argc, 2);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_GUIReader_storeFileDesignSize'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_GUIReader_purgeGUIReader(lua_State* tolua_S)
@@ -27353,13 +29168,21 @@ int lua_cocos2dx_studio_GUIReader_shareReader(lua_State* tolua_S)
         cocostudio::GUIReader* ret = cocostudio::GUIReader::shareReader();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "GUIReader";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::GUIReader*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"GUIReader");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"GUIReader");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -27408,10 +29231,11 @@ int lua_cocos2dx_studio_GUIReader_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "GUIReader",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_GUIReader_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
@@ -27474,10 +29298,12 @@ int lua_cocos2dx_studio_SceneReader_purgeSceneReader(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "purgeSceneReader",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_SceneReader_purgeSceneReader'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_SceneReader_createNodeWithSceneFile(lua_State* tolua_S)
@@ -27514,13 +29340,21 @@ int lua_cocos2dx_studio_SceneReader_createNodeWithSceneFile(lua_State* tolua_S)
         cocos2d::Node* ret = cobj->createNodeWithSceneFile(arg0);
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Node";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"Node");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"Node");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -27529,10 +29363,12 @@ int lua_cocos2dx_studio_SceneReader_createNodeWithSceneFile(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "createNodeWithSceneFile",argc, 1);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_SceneReader_createNodeWithSceneFile'.",&tolua_err);
 #endif
+
     return 0;
 }
 int lua_cocos2dx_studio_SceneReader_sceneReaderVersion(lua_State* tolua_S)
@@ -27588,13 +29424,21 @@ int lua_cocos2dx_studio_SceneReader_getInstance(lua_State* tolua_S)
         cocostudio::SceneReader* ret = cocostudio::SceneReader::getInstance();
         do {
 			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "SceneReader";
+				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::SceneReader*)ret);
 				if (NULL != dynObject) {
 					int ID = ret ? (int)(dynObject->_ID) : -1;
 					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,"SceneReader");
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
 				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,"SceneReader");
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
 			}} else {
 				lua_pushnil(tolua_S);
 			}
@@ -27643,10 +29487,11 @@ int lua_cocos2dx_studio_SceneReader_constructor(lua_State* tolua_S)
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "SceneReader",argc, 0);
     return 0;
+
 #if COCOS2D_DEBUG >= 1
-    tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_SceneReader_constructor'.",&tolua_err);
 #endif
+
     return 0;
 }
 
