@@ -1,12 +1,12 @@
 /**
  * @module cocos2dx_spine
  */
-var cc = cc || {};
+var sp = sp || {};
 
 /**
- * @class CCSkeleton
+ * @class Skeleton
  */
-cc.Skeleton = {
+sp.Skeleton = {
 
 /**
  * @method setSlotsToSetupPose
@@ -80,9 +80,9 @@ findBone : function () {},
 };
 
 /**
- * @class CCSkeletonAnimation
+ * @class SkeletonAnimation
  */
-cc.SkeletonAnimation = {
+sp.SkeletonAnimation = {
 
 /**
  * @method addAnimation
