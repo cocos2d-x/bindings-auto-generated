@@ -5578,8 +5578,8 @@ int lua_cocos2dx_Node_removeComponent(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->removeComponent(arg0);
@@ -9752,8 +9752,8 @@ int lua_cocos2dx_Node_getComponent(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::Component* ret = cobj->getComponent(arg0);
@@ -31480,8 +31480,8 @@ int lua_cocos2dx_SpriteBatchNode_init(lua_State* tolua_S)
     ok  = true;
     do{
         if (argc == 2) {
-            const char* arg0;
-            std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             ssize_t arg1;
@@ -31812,8 +31812,8 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
 
     if (argc == 1)
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0);
@@ -31834,9 +31834,9 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
     }
     if (argc == 2)
     {
-        const char* arg0;
+        std::string arg0;
         ssize_t arg1;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         ok &= luaval_to_ssize(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
@@ -43178,8 +43178,8 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
             cocos2d::Color3B arg3;
             ok &= luaval_to_color3b(tolua_S, 5, &arg3);
             if (!ok) { break; }
-            const char* arg4;
-            std::string arg4_tmp; ok &= luaval_to_std_string(tolua_S, 6, &arg4_tmp); arg4 = arg4_tmp.c_str();
+            std::string arg4;
+            ok &= luaval_to_std_string(tolua_S, 6,&arg4);
             if (!ok) { break; }
             cocos2d::MotionStreak* ret = cocos2d::MotionStreak::create(arg0, arg1, arg2, arg3, arg4);
             do {
@@ -44119,8 +44119,8 @@ int lua_cocos2dx_Image_initWithImageFile(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->initWithImageFile(arg0);
@@ -60401,8 +60401,8 @@ int lua_cocos2dx_TMXLayer_setLayerName(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
         cobj->setLayerName(arg0);
@@ -60789,8 +60789,8 @@ int lua_cocos2dx_TMXLayer_getLayerName(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        const char* ret = cobj->getLayerName();
-        tolua_pushstring(tolua_S,(const char*)ret);
+        const std::string& ret = cobj->getLayerName();
+        tolua_pushcppstring(tolua_S,ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLayerName",argc, 0);

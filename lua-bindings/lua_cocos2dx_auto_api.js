@@ -786,7 +786,7 @@ cc.Node = {
 /**
  * @method removeComponent
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {const std::string&}
  */
 removeComponent : function () {},
 
@@ -1300,7 +1300,7 @@ cleanup : function () {},
 /**
  * @method getComponent
  * @return A value converted from C/C++ "cocos2d::Component*"
- * @param {const char*}
+ * @param {const std::string&}
  */
 getComponent : function () {},
 
@@ -4472,7 +4472,7 @@ removeSpriteFromAtlas : function () {},
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::SpriteBatchNode*"
- * @param {const char*}
+ * @param {const std::string&}
  * @param {ssize_t}
  */
 create : function () {},
@@ -6165,7 +6165,7 @@ getHeight : function () {},
 /**
  * @method initWithImageFile
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {const std::string&}
  */
 initWithImageFile : function () {},
 
@@ -8448,7 +8448,7 @@ setProperties : function () {},
 
 /**
  * @method setLayerName
- * @param {const char*}
+ * @param {const std::string&}
  */
 setLayerName : function () {},
 
@@ -8493,7 +8493,7 @@ setLayerSize : function () {},
 
 /**
  * @method getLayerName
- * @return A value converted from C/C++ "const char*"
+ * @return A value converted from C/C++ "const std::string&"
  */
 getLayerName : function () {},
 
