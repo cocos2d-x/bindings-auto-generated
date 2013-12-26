@@ -31,9 +31,8 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	return JS_FALSE;
 }
 
-
-JSClass  *jsb_Scale9Sprite_class;
-JSObject *jsb_Scale9Sprite_prototype;
+JSClass  *jsb_cocos2d_extension_Scale9Sprite_class;
+JSObject *jsb_cocos2d_extension_Scale9Sprite_prototype;
 
 JSBool js_cocos2dx_extension_Scale9Sprite_resizableSpriteWithCapInsets(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -887,24 +886,24 @@ JSBool js_cocos2dx_extension_Scale9Sprite_constructor(JSContext *cx, uint32_t ar
 }
 
 
-extern JSObject *jsb_Node_prototype;
+extern JSObject *jsb_cocos2d_Node_prototype;
 
-void js_cocos2dx_extension_Scale9Sprite_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_Scale9Sprite_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Scale9Sprite)", obj);
 }
 
 void js_register_cocos2dx_extension_Scale9Sprite(JSContext *cx, JSObject *global) {
-	jsb_Scale9Sprite_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_Scale9Sprite_class->name = "Scale9Sprite";
-	jsb_Scale9Sprite_class->addProperty = JS_PropertyStub;
-	jsb_Scale9Sprite_class->delProperty = JS_DeletePropertyStub;
-	jsb_Scale9Sprite_class->getProperty = JS_PropertyStub;
-	jsb_Scale9Sprite_class->setProperty = JS_StrictPropertyStub;
-	jsb_Scale9Sprite_class->enumerate = JS_EnumerateStub;
-	jsb_Scale9Sprite_class->resolve = JS_ResolveStub;
-	jsb_Scale9Sprite_class->convert = JS_ConvertStub;
-	jsb_Scale9Sprite_class->finalize = js_cocos2dx_extension_Scale9Sprite_finalize;
-	jsb_Scale9Sprite_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_Scale9Sprite_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_Scale9Sprite_class->name = "Scale9Sprite";
+	jsb_cocos2d_extension_Scale9Sprite_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_Scale9Sprite_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_Scale9Sprite_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_Scale9Sprite_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_Scale9Sprite_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_Scale9Sprite_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_Scale9Sprite_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_Scale9Sprite_class->finalize = js_cocos2d_extension_Scale9Sprite_finalize;
+	jsb_cocos2d_extension_Scale9Sprite_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -942,10 +941,10 @@ void js_register_cocos2dx_extension_Scale9Sprite(JSContext *cx, JSObject *global
 		JS_FS_END
 	};
 
-	jsb_Scale9Sprite_prototype = JS_InitClass(
+	jsb_cocos2d_extension_Scale9Sprite_prototype = JS_InitClass(
 		cx, global,
-		jsb_Node_prototype,
-		jsb_Scale9Sprite_class,
+		jsb_cocos2d_Node_prototype,
+		jsb_cocos2d_extension_Scale9Sprite_class,
 		js_cocos2dx_extension_Scale9Sprite_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -962,16 +961,15 @@ void js_register_cocos2dx_extension_Scale9Sprite(JSContext *cx, JSObject *global
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_Scale9Sprite_class;
-		p->proto = jsb_Scale9Sprite_prototype;
-		p->parentProto = jsb_Node_prototype;
+		p->jsclass = jsb_cocos2d_extension_Scale9Sprite_class;
+		p->proto = jsb_cocos2d_extension_Scale9Sprite_prototype;
+		p->parentProto = jsb_cocos2d_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_Control_class;
-JSObject *jsb_Control_prototype;
+JSClass  *jsb_cocos2d_extension_Control_class;
+JSObject *jsb_cocos2d_extension_Control_prototype;
 
 JSBool js_cocos2dx_extension_Control_setEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -1232,24 +1230,24 @@ JSBool js_cocos2dx_extension_Control_create(JSContext *cx, uint32_t argc, jsval 
 }
 
 
-extern JSObject *jsb_Layer_prototype;
+extern JSObject *jsb_cocos2d_Layer_prototype;
 
-void js_cocos2dx_extension_Control_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_Control_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Control)", obj);
 }
 
 void js_register_cocos2dx_extension_Control(JSContext *cx, JSObject *global) {
-	jsb_Control_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_Control_class->name = "Control";
-	jsb_Control_class->addProperty = JS_PropertyStub;
-	jsb_Control_class->delProperty = JS_DeletePropertyStub;
-	jsb_Control_class->getProperty = JS_PropertyStub;
-	jsb_Control_class->setProperty = JS_StrictPropertyStub;
-	jsb_Control_class->enumerate = JS_EnumerateStub;
-	jsb_Control_class->resolve = JS_ResolveStub;
-	jsb_Control_class->convert = JS_ConvertStub;
-	jsb_Control_class->finalize = js_cocos2dx_extension_Control_finalize;
-	jsb_Control_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_Control_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_Control_class->name = "Control";
+	jsb_cocos2d_extension_Control_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_Control_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_Control_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_Control_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_Control_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_Control_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_Control_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_Control_class->finalize = js_cocos2d_extension_Control_finalize;
+	jsb_cocos2d_extension_Control_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -1276,10 +1274,10 @@ void js_register_cocos2dx_extension_Control(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_Control_prototype = JS_InitClass(
+	jsb_cocos2d_extension_Control_prototype = JS_InitClass(
 		cx, global,
-		jsb_Layer_prototype,
-		jsb_Control_class,
+		jsb_cocos2d_Layer_prototype,
+		jsb_cocos2d_extension_Control_class,
 		dummy_constructor<cocos2d::extension::Control>, 0, // no constructor
 		properties,
 		funcs,
@@ -1296,16 +1294,15 @@ void js_register_cocos2dx_extension_Control(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_Control_class;
-		p->proto = jsb_Control_prototype;
-		p->parentProto = jsb_Layer_prototype;
+		p->jsclass = jsb_cocos2d_extension_Control_class;
+		p->proto = jsb_cocos2d_extension_Control_prototype;
+		p->parentProto = jsb_cocos2d_Layer_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ControlButton_class;
-JSObject *jsb_ControlButton_prototype;
+JSClass  *jsb_cocos2d_extension_ControlButton_class;
+JSObject *jsb_cocos2d_extension_ControlButton_prototype;
 
 JSBool js_cocos2dx_extension_ControlButton_isPushed(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -2236,24 +2233,24 @@ JSBool js_cocos2dx_extension_ControlButton_create(JSContext *cx, uint32_t argc, 
 	return JS_FALSE;
 }
 
-extern JSObject *jsb_Control_prototype;
+extern JSObject *jsb_cocos2d_extension_Control_prototype;
 
-void js_cocos2dx_extension_ControlButton_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_ControlButton_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ControlButton)", obj);
 }
 
 void js_register_cocos2dx_extension_ControlButton(JSContext *cx, JSObject *global) {
-	jsb_ControlButton_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ControlButton_class->name = "ControlButton";
-	jsb_ControlButton_class->addProperty = JS_PropertyStub;
-	jsb_ControlButton_class->delProperty = JS_DeletePropertyStub;
-	jsb_ControlButton_class->getProperty = JS_PropertyStub;
-	jsb_ControlButton_class->setProperty = JS_StrictPropertyStub;
-	jsb_ControlButton_class->enumerate = JS_EnumerateStub;
-	jsb_ControlButton_class->resolve = JS_ResolveStub;
-	jsb_ControlButton_class->convert = JS_ConvertStub;
-	jsb_ControlButton_class->finalize = js_cocos2dx_extension_ControlButton_finalize;
-	jsb_ControlButton_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_ControlButton_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_ControlButton_class->name = "ControlButton";
+	jsb_cocos2d_extension_ControlButton_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlButton_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_ControlButton_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlButton_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_ControlButton_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_ControlButton_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_ControlButton_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_ControlButton_class->finalize = js_cocos2d_extension_ControlButton_finalize;
+	jsb_cocos2d_extension_ControlButton_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -2305,10 +2302,10 @@ void js_register_cocos2dx_extension_ControlButton(JSContext *cx, JSObject *globa
 		JS_FS_END
 	};
 
-	jsb_ControlButton_prototype = JS_InitClass(
+	jsb_cocos2d_extension_ControlButton_prototype = JS_InitClass(
 		cx, global,
-		jsb_Control_prototype,
-		jsb_ControlButton_class,
+		jsb_cocos2d_extension_Control_prototype,
+		jsb_cocos2d_extension_ControlButton_class,
 		dummy_constructor<cocos2d::extension::ControlButton>, 0, // no constructor
 		properties,
 		funcs,
@@ -2325,16 +2322,15 @@ void js_register_cocos2dx_extension_ControlButton(JSContext *cx, JSObject *globa
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ControlButton_class;
-		p->proto = jsb_ControlButton_prototype;
-		p->parentProto = jsb_Control_prototype;
+		p->jsclass = jsb_cocos2d_extension_ControlButton_class;
+		p->proto = jsb_cocos2d_extension_ControlButton_prototype;
+		p->parentProto = jsb_cocos2d_extension_Control_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ControlHuePicker_class;
-JSObject *jsb_ControlHuePicker_prototype;
+JSClass  *jsb_cocos2d_extension_ControlHuePicker_class;
+JSObject *jsb_cocos2d_extension_ControlHuePicker_prototype;
 
 JSBool js_cocos2dx_extension_ControlHuePicker_setEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -2642,24 +2638,24 @@ JSBool js_cocos2dx_extension_ControlHuePicker_constructor(JSContext *cx, uint32_
 }
 
 
-extern JSObject *jsb_Control_prototype;
+extern JSObject *jsb_cocos2d_extension_Control_prototype;
 
-void js_cocos2dx_extension_ControlHuePicker_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_ControlHuePicker_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ControlHuePicker)", obj);
 }
 
 void js_register_cocos2dx_extension_ControlHuePicker(JSContext *cx, JSObject *global) {
-	jsb_ControlHuePicker_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ControlHuePicker_class->name = "ControlHuePicker";
-	jsb_ControlHuePicker_class->addProperty = JS_PropertyStub;
-	jsb_ControlHuePicker_class->delProperty = JS_DeletePropertyStub;
-	jsb_ControlHuePicker_class->getProperty = JS_PropertyStub;
-	jsb_ControlHuePicker_class->setProperty = JS_StrictPropertyStub;
-	jsb_ControlHuePicker_class->enumerate = JS_EnumerateStub;
-	jsb_ControlHuePicker_class->resolve = JS_ResolveStub;
-	jsb_ControlHuePicker_class->convert = JS_ConvertStub;
-	jsb_ControlHuePicker_class->finalize = js_cocos2dx_extension_ControlHuePicker_finalize;
-	jsb_ControlHuePicker_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_ControlHuePicker_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_ControlHuePicker_class->name = "ControlHuePicker";
+	jsb_cocos2d_extension_ControlHuePicker_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlHuePicker_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_ControlHuePicker_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlHuePicker_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_ControlHuePicker_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_ControlHuePicker_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_ControlHuePicker_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_ControlHuePicker_class->finalize = js_cocos2d_extension_ControlHuePicker_finalize;
+	jsb_cocos2d_extension_ControlHuePicker_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -2685,10 +2681,10 @@ void js_register_cocos2dx_extension_ControlHuePicker(JSContext *cx, JSObject *gl
 		JS_FS_END
 	};
 
-	jsb_ControlHuePicker_prototype = JS_InitClass(
+	jsb_cocos2d_extension_ControlHuePicker_prototype = JS_InitClass(
 		cx, global,
-		jsb_Control_prototype,
-		jsb_ControlHuePicker_class,
+		jsb_cocos2d_extension_Control_prototype,
+		jsb_cocos2d_extension_ControlHuePicker_class,
 		js_cocos2dx_extension_ControlHuePicker_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -2705,16 +2701,15 @@ void js_register_cocos2dx_extension_ControlHuePicker(JSContext *cx, JSObject *gl
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ControlHuePicker_class;
-		p->proto = jsb_ControlHuePicker_prototype;
-		p->parentProto = jsb_Control_prototype;
+		p->jsclass = jsb_cocos2d_extension_ControlHuePicker_class;
+		p->proto = jsb_cocos2d_extension_ControlHuePicker_prototype;
+		p->parentProto = jsb_cocos2d_extension_Control_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ControlSaturationBrightnessPicker_class;
-JSObject *jsb_ControlSaturationBrightnessPicker_prototype;
+JSClass  *jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class;
+JSObject *jsb_cocos2d_extension_ControlSaturationBrightnessPicker_prototype;
 
 JSBool js_cocos2dx_extension_ControlSaturationBrightnessPicker_getShadow(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -2976,24 +2971,24 @@ JSBool js_cocos2dx_extension_ControlSaturationBrightnessPicker_constructor(JSCon
 }
 
 
-extern JSObject *jsb_Control_prototype;
+extern JSObject *jsb_cocos2d_extension_Control_prototype;
 
-void js_cocos2dx_extension_ControlSaturationBrightnessPicker_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_ControlSaturationBrightnessPicker_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ControlSaturationBrightnessPicker)", obj);
 }
 
 void js_register_cocos2dx_extension_ControlSaturationBrightnessPicker(JSContext *cx, JSObject *global) {
-	jsb_ControlSaturationBrightnessPicker_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ControlSaturationBrightnessPicker_class->name = "ControlSaturationBrightnessPicker";
-	jsb_ControlSaturationBrightnessPicker_class->addProperty = JS_PropertyStub;
-	jsb_ControlSaturationBrightnessPicker_class->delProperty = JS_DeletePropertyStub;
-	jsb_ControlSaturationBrightnessPicker_class->getProperty = JS_PropertyStub;
-	jsb_ControlSaturationBrightnessPicker_class->setProperty = JS_StrictPropertyStub;
-	jsb_ControlSaturationBrightnessPicker_class->enumerate = JS_EnumerateStub;
-	jsb_ControlSaturationBrightnessPicker_class->resolve = JS_ResolveStub;
-	jsb_ControlSaturationBrightnessPicker_class->convert = JS_ConvertStub;
-	jsb_ControlSaturationBrightnessPicker_class->finalize = js_cocos2dx_extension_ControlSaturationBrightnessPicker_finalize;
-	jsb_ControlSaturationBrightnessPicker_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->name = "ControlSaturationBrightnessPicker";
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->finalize = js_cocos2d_extension_ControlSaturationBrightnessPicker_finalize;
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -3017,10 +3012,10 @@ void js_register_cocos2dx_extension_ControlSaturationBrightnessPicker(JSContext 
 		JS_FS_END
 	};
 
-	jsb_ControlSaturationBrightnessPicker_prototype = JS_InitClass(
+	jsb_cocos2d_extension_ControlSaturationBrightnessPicker_prototype = JS_InitClass(
 		cx, global,
-		jsb_Control_prototype,
-		jsb_ControlSaturationBrightnessPicker_class,
+		jsb_cocos2d_extension_Control_prototype,
+		jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class,
 		js_cocos2dx_extension_ControlSaturationBrightnessPicker_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -3037,16 +3032,15 @@ void js_register_cocos2dx_extension_ControlSaturationBrightnessPicker(JSContext 
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ControlSaturationBrightnessPicker_class;
-		p->proto = jsb_ControlSaturationBrightnessPicker_prototype;
-		p->parentProto = jsb_Control_prototype;
+		p->jsclass = jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class;
+		p->proto = jsb_cocos2d_extension_ControlSaturationBrightnessPicker_prototype;
+		p->parentProto = jsb_cocos2d_extension_Control_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ControlColourPicker_class;
-JSObject *jsb_ControlColourPicker_prototype;
+JSClass  *jsb_cocos2d_extension_ControlColourPicker_class;
+JSObject *jsb_cocos2d_extension_ControlColourPicker_prototype;
 
 JSBool js_cocos2dx_extension_ControlColourPicker_setEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -3364,24 +3358,24 @@ JSBool js_cocos2dx_extension_ControlColourPicker_constructor(JSContext *cx, uint
 }
 
 
-extern JSObject *jsb_Control_prototype;
+extern JSObject *jsb_cocos2d_extension_Control_prototype;
 
-void js_cocos2dx_extension_ControlColourPicker_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_ControlColourPicker_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ControlColourPicker)", obj);
 }
 
 void js_register_cocos2dx_extension_ControlColourPicker(JSContext *cx, JSObject *global) {
-	jsb_ControlColourPicker_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ControlColourPicker_class->name = "ControlColourPicker";
-	jsb_ControlColourPicker_class->addProperty = JS_PropertyStub;
-	jsb_ControlColourPicker_class->delProperty = JS_DeletePropertyStub;
-	jsb_ControlColourPicker_class->getProperty = JS_PropertyStub;
-	jsb_ControlColourPicker_class->setProperty = JS_StrictPropertyStub;
-	jsb_ControlColourPicker_class->enumerate = JS_EnumerateStub;
-	jsb_ControlColourPicker_class->resolve = JS_ResolveStub;
-	jsb_ControlColourPicker_class->convert = JS_ConvertStub;
-	jsb_ControlColourPicker_class->finalize = js_cocos2dx_extension_ControlColourPicker_finalize;
-	jsb_ControlColourPicker_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_ControlColourPicker_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_ControlColourPicker_class->name = "ControlColourPicker";
+	jsb_cocos2d_extension_ControlColourPicker_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlColourPicker_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_ControlColourPicker_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlColourPicker_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_ControlColourPicker_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_ControlColourPicker_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_ControlColourPicker_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_ControlColourPicker_class->finalize = js_cocos2d_extension_ControlColourPicker_finalize;
+	jsb_cocos2d_extension_ControlColourPicker_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -3407,10 +3401,10 @@ void js_register_cocos2dx_extension_ControlColourPicker(JSContext *cx, JSObject 
 		JS_FS_END
 	};
 
-	jsb_ControlColourPicker_prototype = JS_InitClass(
+	jsb_cocos2d_extension_ControlColourPicker_prototype = JS_InitClass(
 		cx, global,
-		jsb_Control_prototype,
-		jsb_ControlColourPicker_class,
+		jsb_cocos2d_extension_Control_prototype,
+		jsb_cocos2d_extension_ControlColourPicker_class,
 		js_cocos2dx_extension_ControlColourPicker_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -3427,16 +3421,15 @@ void js_register_cocos2dx_extension_ControlColourPicker(JSContext *cx, JSObject 
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ControlColourPicker_class;
-		p->proto = jsb_ControlColourPicker_prototype;
-		p->parentProto = jsb_Control_prototype;
+		p->jsclass = jsb_cocos2d_extension_ControlColourPicker_class;
+		p->proto = jsb_cocos2d_extension_ControlColourPicker_prototype;
+		p->parentProto = jsb_cocos2d_extension_Control_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ControlPotentiometer_class;
-JSObject *jsb_ControlPotentiometer_prototype;
+JSClass  *jsb_cocos2d_extension_ControlPotentiometer_class;
+JSObject *jsb_cocos2d_extension_ControlPotentiometer_prototype;
 
 JSBool js_cocos2dx_extension_ControlPotentiometer_setPreviousLocation(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -3904,24 +3897,24 @@ JSBool js_cocos2dx_extension_ControlPotentiometer_constructor(JSContext *cx, uin
 }
 
 
-extern JSObject *jsb_Control_prototype;
+extern JSObject *jsb_cocos2d_extension_Control_prototype;
 
-void js_cocos2dx_extension_ControlPotentiometer_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_ControlPotentiometer_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ControlPotentiometer)", obj);
 }
 
 void js_register_cocos2dx_extension_ControlPotentiometer(JSContext *cx, JSObject *global) {
-	jsb_ControlPotentiometer_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ControlPotentiometer_class->name = "ControlPotentiometer";
-	jsb_ControlPotentiometer_class->addProperty = JS_PropertyStub;
-	jsb_ControlPotentiometer_class->delProperty = JS_DeletePropertyStub;
-	jsb_ControlPotentiometer_class->getProperty = JS_PropertyStub;
-	jsb_ControlPotentiometer_class->setProperty = JS_StrictPropertyStub;
-	jsb_ControlPotentiometer_class->enumerate = JS_EnumerateStub;
-	jsb_ControlPotentiometer_class->resolve = JS_ResolveStub;
-	jsb_ControlPotentiometer_class->convert = JS_ConvertStub;
-	jsb_ControlPotentiometer_class->finalize = js_cocos2dx_extension_ControlPotentiometer_finalize;
-	jsb_ControlPotentiometer_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_ControlPotentiometer_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_ControlPotentiometer_class->name = "ControlPotentiometer";
+	jsb_cocos2d_extension_ControlPotentiometer_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlPotentiometer_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_ControlPotentiometer_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlPotentiometer_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_ControlPotentiometer_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_ControlPotentiometer_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_ControlPotentiometer_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_ControlPotentiometer_class->finalize = js_cocos2d_extension_ControlPotentiometer_finalize;
+	jsb_cocos2d_extension_ControlPotentiometer_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -3954,10 +3947,10 @@ void js_register_cocos2dx_extension_ControlPotentiometer(JSContext *cx, JSObject
 		JS_FS_END
 	};
 
-	jsb_ControlPotentiometer_prototype = JS_InitClass(
+	jsb_cocos2d_extension_ControlPotentiometer_prototype = JS_InitClass(
 		cx, global,
-		jsb_Control_prototype,
-		jsb_ControlPotentiometer_class,
+		jsb_cocos2d_extension_Control_prototype,
+		jsb_cocos2d_extension_ControlPotentiometer_class,
 		js_cocos2dx_extension_ControlPotentiometer_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -3974,16 +3967,15 @@ void js_register_cocos2dx_extension_ControlPotentiometer(JSContext *cx, JSObject
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ControlPotentiometer_class;
-		p->proto = jsb_ControlPotentiometer_prototype;
-		p->parentProto = jsb_Control_prototype;
+		p->jsclass = jsb_cocos2d_extension_ControlPotentiometer_class;
+		p->proto = jsb_cocos2d_extension_ControlPotentiometer_prototype;
+		p->parentProto = jsb_cocos2d_extension_Control_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ControlSlider_class;
-JSObject *jsb_ControlSlider_prototype;
+JSClass  *jsb_cocos2d_extension_ControlSlider_class;
+JSObject *jsb_cocos2d_extension_ControlSlider_prototype;
 
 JSBool js_cocos2dx_extension_ControlSlider_locationFromTouch(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -4571,24 +4563,24 @@ JSBool js_cocos2dx_extension_ControlSlider_constructor(JSContext *cx, uint32_t a
 }
 
 
-extern JSObject *jsb_Control_prototype;
+extern JSObject *jsb_cocos2d_extension_Control_prototype;
 
-void js_cocos2dx_extension_ControlSlider_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_ControlSlider_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ControlSlider)", obj);
 }
 
 void js_register_cocos2dx_extension_ControlSlider(JSContext *cx, JSObject *global) {
-	jsb_ControlSlider_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ControlSlider_class->name = "ControlSlider";
-	jsb_ControlSlider_class->addProperty = JS_PropertyStub;
-	jsb_ControlSlider_class->delProperty = JS_DeletePropertyStub;
-	jsb_ControlSlider_class->getProperty = JS_PropertyStub;
-	jsb_ControlSlider_class->setProperty = JS_StrictPropertyStub;
-	jsb_ControlSlider_class->enumerate = JS_EnumerateStub;
-	jsb_ControlSlider_class->resolve = JS_ResolveStub;
-	jsb_ControlSlider_class->convert = JS_ConvertStub;
-	jsb_ControlSlider_class->finalize = js_cocos2dx_extension_ControlSlider_finalize;
-	jsb_ControlSlider_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_ControlSlider_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_ControlSlider_class->name = "ControlSlider";
+	jsb_cocos2d_extension_ControlSlider_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlSlider_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_ControlSlider_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlSlider_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_ControlSlider_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_ControlSlider_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_ControlSlider_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_ControlSlider_class->finalize = js_cocos2d_extension_ControlSlider_finalize;
+	jsb_cocos2d_extension_ControlSlider_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -4624,10 +4616,10 @@ void js_register_cocos2dx_extension_ControlSlider(JSContext *cx, JSObject *globa
 		JS_FS_END
 	};
 
-	jsb_ControlSlider_prototype = JS_InitClass(
+	jsb_cocos2d_extension_ControlSlider_prototype = JS_InitClass(
 		cx, global,
-		jsb_Control_prototype,
-		jsb_ControlSlider_class,
+		jsb_cocos2d_extension_Control_prototype,
+		jsb_cocos2d_extension_ControlSlider_class,
 		js_cocos2dx_extension_ControlSlider_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -4644,16 +4636,15 @@ void js_register_cocos2dx_extension_ControlSlider(JSContext *cx, JSObject *globa
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ControlSlider_class;
-		p->proto = jsb_ControlSlider_prototype;
-		p->parentProto = jsb_Control_prototype;
+		p->jsclass = jsb_cocos2d_extension_ControlSlider_class;
+		p->proto = jsb_cocos2d_extension_ControlSlider_prototype;
+		p->parentProto = jsb_cocos2d_extension_Control_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ControlStepper_class;
-JSObject *jsb_ControlStepper_prototype;
+JSClass  *jsb_cocos2d_extension_ControlStepper_class;
+JSObject *jsb_cocos2d_extension_ControlStepper_prototype;
 
 JSBool js_cocos2dx_extension_ControlStepper_setMinusSprite(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -5192,24 +5183,24 @@ JSBool js_cocos2dx_extension_ControlStepper_constructor(JSContext *cx, uint32_t 
 }
 
 
-extern JSObject *jsb_Control_prototype;
+extern JSObject *jsb_cocos2d_extension_Control_prototype;
 
-void js_cocos2dx_extension_ControlStepper_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_ControlStepper_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ControlStepper)", obj);
 }
 
 void js_register_cocos2dx_extension_ControlStepper(JSContext *cx, JSObject *global) {
-	jsb_ControlStepper_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ControlStepper_class->name = "ControlStepper";
-	jsb_ControlStepper_class->addProperty = JS_PropertyStub;
-	jsb_ControlStepper_class->delProperty = JS_DeletePropertyStub;
-	jsb_ControlStepper_class->getProperty = JS_PropertyStub;
-	jsb_ControlStepper_class->setProperty = JS_StrictPropertyStub;
-	jsb_ControlStepper_class->enumerate = JS_EnumerateStub;
-	jsb_ControlStepper_class->resolve = JS_ResolveStub;
-	jsb_ControlStepper_class->convert = JS_ConvertStub;
-	jsb_ControlStepper_class->finalize = js_cocos2dx_extension_ControlStepper_finalize;
-	jsb_ControlStepper_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_ControlStepper_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_ControlStepper_class->name = "ControlStepper";
+	jsb_cocos2d_extension_ControlStepper_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlStepper_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_ControlStepper_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlStepper_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_ControlStepper_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_ControlStepper_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_ControlStepper_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_ControlStepper_class->finalize = js_cocos2d_extension_ControlStepper_finalize;
+	jsb_cocos2d_extension_ControlStepper_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -5245,10 +5236,10 @@ void js_register_cocos2dx_extension_ControlStepper(JSContext *cx, JSObject *glob
 		JS_FS_END
 	};
 
-	jsb_ControlStepper_prototype = JS_InitClass(
+	jsb_cocos2d_extension_ControlStepper_prototype = JS_InitClass(
 		cx, global,
-		jsb_Control_prototype,
-		jsb_ControlStepper_class,
+		jsb_cocos2d_extension_Control_prototype,
+		jsb_cocos2d_extension_ControlStepper_class,
 		js_cocos2dx_extension_ControlStepper_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -5265,16 +5256,15 @@ void js_register_cocos2dx_extension_ControlStepper(JSContext *cx, JSObject *glob
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ControlStepper_class;
-		p->proto = jsb_ControlStepper_prototype;
-		p->parentProto = jsb_Control_prototype;
+		p->jsclass = jsb_cocos2d_extension_ControlStepper_class;
+		p->proto = jsb_cocos2d_extension_ControlStepper_prototype;
+		p->parentProto = jsb_cocos2d_extension_Control_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ControlSwitch_class;
-JSObject *jsb_ControlSwitch_prototype;
+JSClass  *jsb_cocos2d_extension_ControlSwitch_class;
+JSObject *jsb_cocos2d_extension_ControlSwitch_prototype;
 
 JSBool js_cocos2dx_extension_ControlSwitch_setEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -5701,24 +5691,24 @@ JSBool js_cocos2dx_extension_ControlSwitch_constructor(JSContext *cx, uint32_t a
 }
 
 
-extern JSObject *jsb_Control_prototype;
+extern JSObject *jsb_cocos2d_extension_Control_prototype;
 
-void js_cocos2dx_extension_ControlSwitch_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_ControlSwitch_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ControlSwitch)", obj);
 }
 
 void js_register_cocos2dx_extension_ControlSwitch(JSContext *cx, JSObject *global) {
-	jsb_ControlSwitch_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ControlSwitch_class->name = "ControlSwitch";
-	jsb_ControlSwitch_class->addProperty = JS_PropertyStub;
-	jsb_ControlSwitch_class->delProperty = JS_DeletePropertyStub;
-	jsb_ControlSwitch_class->getProperty = JS_PropertyStub;
-	jsb_ControlSwitch_class->setProperty = JS_StrictPropertyStub;
-	jsb_ControlSwitch_class->enumerate = JS_EnumerateStub;
-	jsb_ControlSwitch_class->resolve = JS_ResolveStub;
-	jsb_ControlSwitch_class->convert = JS_ConvertStub;
-	jsb_ControlSwitch_class->finalize = js_cocos2dx_extension_ControlSwitch_finalize;
-	jsb_ControlSwitch_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_ControlSwitch_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_ControlSwitch_class->name = "ControlSwitch";
+	jsb_cocos2d_extension_ControlSwitch_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlSwitch_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_ControlSwitch_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ControlSwitch_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_ControlSwitch_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_ControlSwitch_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_ControlSwitch_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_ControlSwitch_class->finalize = js_cocos2d_extension_ControlSwitch_finalize;
+	jsb_cocos2d_extension_ControlSwitch_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -5739,10 +5729,10 @@ void js_register_cocos2dx_extension_ControlSwitch(JSContext *cx, JSObject *globa
 		JS_FS_END
 	};
 
-	jsb_ControlSwitch_prototype = JS_InitClass(
+	jsb_cocos2d_extension_ControlSwitch_prototype = JS_InitClass(
 		cx, global,
-		jsb_Control_prototype,
-		jsb_ControlSwitch_class,
+		jsb_cocos2d_extension_Control_prototype,
+		jsb_cocos2d_extension_ControlSwitch_class,
 		js_cocos2dx_extension_ControlSwitch_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -5759,16 +5749,15 @@ void js_register_cocos2dx_extension_ControlSwitch(JSContext *cx, JSObject *globa
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ControlSwitch_class;
-		p->proto = jsb_ControlSwitch_prototype;
-		p->parentProto = jsb_Control_prototype;
+		p->jsclass = jsb_cocos2d_extension_ControlSwitch_class;
+		p->proto = jsb_cocos2d_extension_ControlSwitch_prototype;
+		p->parentProto = jsb_cocos2d_extension_Control_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ScrollView_class;
-JSObject *jsb_ScrollView_prototype;
+JSClass  *jsb_cocos2d_extension_ScrollView_class;
+JSObject *jsb_cocos2d_extension_ScrollView_prototype;
 
 JSBool js_cocos2dx_extension_ScrollView_isClippingToBounds(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -6478,24 +6467,24 @@ JSBool js_cocos2dx_extension_ScrollView_constructor(JSContext *cx, uint32_t argc
 }
 
 
-extern JSObject *jsb_Layer_prototype;
+extern JSObject *jsb_cocos2d_Layer_prototype;
 
-void js_cocos2dx_extension_ScrollView_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_ScrollView_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ScrollView)", obj);
 }
 
 void js_register_cocos2dx_extension_ScrollView(JSContext *cx, JSObject *global) {
-	jsb_ScrollView_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ScrollView_class->name = "ScrollView";
-	jsb_ScrollView_class->addProperty = JS_PropertyStub;
-	jsb_ScrollView_class->delProperty = JS_DeletePropertyStub;
-	jsb_ScrollView_class->getProperty = JS_PropertyStub;
-	jsb_ScrollView_class->setProperty = JS_StrictPropertyStub;
-	jsb_ScrollView_class->enumerate = JS_EnumerateStub;
-	jsb_ScrollView_class->resolve = JS_ResolveStub;
-	jsb_ScrollView_class->convert = JS_ConvertStub;
-	jsb_ScrollView_class->finalize = js_cocos2dx_extension_ScrollView_finalize;
-	jsb_ScrollView_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_ScrollView_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_ScrollView_class->name = "ScrollView";
+	jsb_cocos2d_extension_ScrollView_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ScrollView_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_ScrollView_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_ScrollView_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_ScrollView_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_ScrollView_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_ScrollView_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_ScrollView_class->finalize = js_cocos2d_extension_ScrollView_finalize;
+	jsb_cocos2d_extension_ScrollView_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -6538,10 +6527,10 @@ void js_register_cocos2dx_extension_ScrollView(JSContext *cx, JSObject *global) 
 		JS_FS_END
 	};
 
-	jsb_ScrollView_prototype = JS_InitClass(
+	jsb_cocos2d_extension_ScrollView_prototype = JS_InitClass(
 		cx, global,
-		jsb_Layer_prototype,
-		jsb_ScrollView_class,
+		jsb_cocos2d_Layer_prototype,
+		jsb_cocos2d_extension_ScrollView_class,
 		js_cocos2dx_extension_ScrollView_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -6558,16 +6547,15 @@ void js_register_cocos2dx_extension_ScrollView(JSContext *cx, JSObject *global) 
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ScrollView_class;
-		p->proto = jsb_ScrollView_prototype;
-		p->parentProto = jsb_Layer_prototype;
+		p->jsclass = jsb_cocos2d_extension_ScrollView_class;
+		p->proto = jsb_cocos2d_extension_ScrollView_prototype;
+		p->parentProto = jsb_cocos2d_Layer_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_TableViewCell_class;
-JSObject *jsb_TableViewCell_prototype;
+JSClass  *jsb_cocos2d_extension_TableViewCell_class;
+JSObject *jsb_cocos2d_extension_TableViewCell_prototype;
 
 JSBool js_cocos2dx_extension_TableViewCell_reset(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -6686,24 +6674,24 @@ JSBool js_cocos2dx_extension_TableViewCell_constructor(JSContext *cx, uint32_t a
 }
 
 
-extern JSObject *jsb_Node_prototype;
+extern JSObject *jsb_cocos2d_Node_prototype;
 
-void js_cocos2dx_extension_TableViewCell_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_TableViewCell_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (TableViewCell)", obj);
 }
 
 void js_register_cocos2dx_extension_TableViewCell(JSContext *cx, JSObject *global) {
-	jsb_TableViewCell_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_TableViewCell_class->name = "TableViewCell";
-	jsb_TableViewCell_class->addProperty = JS_PropertyStub;
-	jsb_TableViewCell_class->delProperty = JS_DeletePropertyStub;
-	jsb_TableViewCell_class->getProperty = JS_PropertyStub;
-	jsb_TableViewCell_class->setProperty = JS_StrictPropertyStub;
-	jsb_TableViewCell_class->enumerate = JS_EnumerateStub;
-	jsb_TableViewCell_class->resolve = JS_ResolveStub;
-	jsb_TableViewCell_class->convert = JS_ConvertStub;
-	jsb_TableViewCell_class->finalize = js_cocos2dx_extension_TableViewCell_finalize;
-	jsb_TableViewCell_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_TableViewCell_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_TableViewCell_class->name = "TableViewCell";
+	jsb_cocos2d_extension_TableViewCell_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_TableViewCell_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_TableViewCell_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_TableViewCell_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_TableViewCell_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_TableViewCell_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_TableViewCell_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_TableViewCell_class->finalize = js_cocos2d_extension_TableViewCell_finalize;
+	jsb_cocos2d_extension_TableViewCell_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -6720,10 +6708,10 @@ void js_register_cocos2dx_extension_TableViewCell(JSContext *cx, JSObject *globa
 
 	JSFunctionSpec *st_funcs = NULL;
 
-	jsb_TableViewCell_prototype = JS_InitClass(
+	jsb_cocos2d_extension_TableViewCell_prototype = JS_InitClass(
 		cx, global,
-		jsb_Node_prototype,
-		jsb_TableViewCell_class,
+		jsb_cocos2d_Node_prototype,
+		jsb_cocos2d_extension_TableViewCell_class,
 		js_cocos2dx_extension_TableViewCell_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -6740,16 +6728,15 @@ void js_register_cocos2dx_extension_TableViewCell(JSContext *cx, JSObject *globa
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_TableViewCell_class;
-		p->proto = jsb_TableViewCell_prototype;
-		p->parentProto = jsb_Node_prototype;
+		p->jsclass = jsb_cocos2d_extension_TableViewCell_class;
+		p->proto = jsb_cocos2d_extension_TableViewCell_prototype;
+		p->parentProto = jsb_cocos2d_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_TableView_class;
-JSObject *jsb_TableView_prototype;
+JSClass  *jsb_cocos2d_extension_TableView_class;
+JSObject *jsb_cocos2d_extension_TableView_prototype;
 
 JSBool js_cocos2dx_extension_TableView_updateCellAtIndex(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -7054,24 +7041,24 @@ JSBool js_cocos2dx_extension_TableView_constructor(JSContext *cx, uint32_t argc,
 }
 
 
-extern JSObject *jsb_ScrollView_prototype;
+extern JSObject *jsb_cocos2d_extension_ScrollView_prototype;
 
-void js_cocos2dx_extension_TableView_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_TableView_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (TableView)", obj);
 }
 
 void js_register_cocos2dx_extension_TableView(JSContext *cx, JSObject *global) {
-	jsb_TableView_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_TableView_class->name = "TableView";
-	jsb_TableView_class->addProperty = JS_PropertyStub;
-	jsb_TableView_class->delProperty = JS_DeletePropertyStub;
-	jsb_TableView_class->getProperty = JS_PropertyStub;
-	jsb_TableView_class->setProperty = JS_StrictPropertyStub;
-	jsb_TableView_class->enumerate = JS_EnumerateStub;
-	jsb_TableView_class->resolve = JS_ResolveStub;
-	jsb_TableView_class->convert = JS_ConvertStub;
-	jsb_TableView_class->finalize = js_cocos2dx_extension_TableView_finalize;
-	jsb_TableView_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_TableView_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_TableView_class->name = "TableView";
+	jsb_cocos2d_extension_TableView_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_TableView_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_TableView_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_TableView_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_TableView_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_TableView_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_TableView_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_TableView_class->finalize = js_cocos2d_extension_TableView_finalize;
+	jsb_cocos2d_extension_TableView_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -7095,10 +7082,10 @@ void js_register_cocos2dx_extension_TableView(JSContext *cx, JSObject *global) {
 
 	JSFunctionSpec *st_funcs = NULL;
 
-	jsb_TableView_prototype = JS_InitClass(
+	jsb_cocos2d_extension_TableView_prototype = JS_InitClass(
 		cx, global,
-		jsb_ScrollView_prototype,
-		jsb_TableView_class,
+		jsb_cocos2d_extension_ScrollView_prototype,
+		jsb_cocos2d_extension_TableView_class,
 		js_cocos2dx_extension_TableView_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -7115,16 +7102,15 @@ void js_register_cocos2dx_extension_TableView(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_TableView_class;
-		p->proto = jsb_TableView_prototype;
-		p->parentProto = jsb_ScrollView_prototype;
+		p->jsclass = jsb_cocos2d_extension_TableView_class;
+		p->proto = jsb_cocos2d_extension_TableView_prototype;
+		p->parentProto = jsb_cocos2d_extension_ScrollView_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_EditBox_class;
-JSObject *jsb_EditBox_prototype;
+JSClass  *jsb_cocos2d_extension_EditBox_class;
+JSObject *jsb_cocos2d_extension_EditBox_prototype;
 
 JSBool js_cocos2dx_extension_EditBox_setAnchorPoint(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -7713,24 +7699,24 @@ JSBool js_cocos2dx_extension_EditBox_constructor(JSContext *cx, uint32_t argc, j
 }
 
 
-extern JSObject *jsb_ControlButton_prototype;
+extern JSObject *jsb_cocos2d_extension_ControlButton_prototype;
 
-void js_cocos2dx_extension_EditBox_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_EditBox_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (EditBox)", obj);
 }
 
 void js_register_cocos2dx_extension_EditBox(JSContext *cx, JSObject *global) {
-	jsb_EditBox_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_EditBox_class->name = "EditBox";
-	jsb_EditBox_class->addProperty = JS_PropertyStub;
-	jsb_EditBox_class->delProperty = JS_DeletePropertyStub;
-	jsb_EditBox_class->getProperty = JS_PropertyStub;
-	jsb_EditBox_class->setProperty = JS_StrictPropertyStub;
-	jsb_EditBox_class->enumerate = JS_EnumerateStub;
-	jsb_EditBox_class->resolve = JS_ResolveStub;
-	jsb_EditBox_class->convert = JS_ConvertStub;
-	jsb_EditBox_class->finalize = js_cocos2dx_extension_EditBox_finalize;
-	jsb_EditBox_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_EditBox_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_EditBox_class->name = "EditBox";
+	jsb_cocos2d_extension_EditBox_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_EditBox_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_EditBox_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_EditBox_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_EditBox_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_EditBox_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_EditBox_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_EditBox_class->finalize = js_cocos2d_extension_EditBox_finalize;
+	jsb_cocos2d_extension_EditBox_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -7767,10 +7753,10 @@ void js_register_cocos2dx_extension_EditBox(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_EditBox_prototype = JS_InitClass(
+	jsb_cocos2d_extension_EditBox_prototype = JS_InitClass(
 		cx, global,
-		jsb_ControlButton_prototype,
-		jsb_EditBox_class,
+		jsb_cocos2d_extension_ControlButton_prototype,
+		jsb_cocos2d_extension_EditBox_class,
 		js_cocos2dx_extension_EditBox_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -7787,16 +7773,15 @@ void js_register_cocos2dx_extension_EditBox(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_EditBox_class;
-		p->proto = jsb_EditBox_prototype;
-		p->parentProto = jsb_ControlButton_prototype;
+		p->jsclass = jsb_cocos2d_extension_EditBox_class;
+		p->proto = jsb_cocos2d_extension_EditBox_prototype;
+		p->parentProto = jsb_cocos2d_extension_ControlButton_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_AssetsManager_class;
-JSObject *jsb_AssetsManager_prototype;
+JSClass  *jsb_cocos2d_extension_AssetsManager_class;
+JSObject *jsb_cocos2d_extension_AssetsManager_prototype;
 
 JSBool js_cocos2dx_extension_AssetsManager_setStoragePath(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -8187,24 +8172,24 @@ JSBool js_cocos2dx_extension_AssetsManager_constructor(JSContext *cx, uint32_t a
 }
 
 
-extern JSObject *jsb_Node_prototype;
+extern JSObject *jsb_cocos2d_Node_prototype;
 
-void js_cocos2dx_extension_AssetsManager_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocos2d_extension_AssetsManager_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (AssetsManager)", obj);
 }
 
 void js_register_cocos2dx_extension_AssetsManager(JSContext *cx, JSObject *global) {
-	jsb_AssetsManager_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_AssetsManager_class->name = "AssetsManager";
-	jsb_AssetsManager_class->addProperty = JS_PropertyStub;
-	jsb_AssetsManager_class->delProperty = JS_DeletePropertyStub;
-	jsb_AssetsManager_class->getProperty = JS_PropertyStub;
-	jsb_AssetsManager_class->setProperty = JS_StrictPropertyStub;
-	jsb_AssetsManager_class->enumerate = JS_EnumerateStub;
-	jsb_AssetsManager_class->resolve = JS_ResolveStub;
-	jsb_AssetsManager_class->convert = JS_ConvertStub;
-	jsb_AssetsManager_class->finalize = js_cocos2dx_extension_AssetsManager_finalize;
-	jsb_AssetsManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocos2d_extension_AssetsManager_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_extension_AssetsManager_class->name = "AssetsManager";
+	jsb_cocos2d_extension_AssetsManager_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_AssetsManager_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_extension_AssetsManager_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_extension_AssetsManager_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_extension_AssetsManager_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_extension_AssetsManager_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_extension_AssetsManager_class->convert = JS_ConvertStub;
+	jsb_cocos2d_extension_AssetsManager_class->finalize = js_cocos2d_extension_AssetsManager_finalize;
+	jsb_cocos2d_extension_AssetsManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -8231,10 +8216,10 @@ void js_register_cocos2dx_extension_AssetsManager(JSContext *cx, JSObject *globa
 		JS_FS_END
 	};
 
-	jsb_AssetsManager_prototype = JS_InitClass(
+	jsb_cocos2d_extension_AssetsManager_prototype = JS_InitClass(
 		cx, global,
-		jsb_Node_prototype,
-		jsb_AssetsManager_class,
+		jsb_cocos2d_Node_prototype,
+		jsb_cocos2d_extension_AssetsManager_class,
 		js_cocos2dx_extension_AssetsManager_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -8251,9 +8236,9 @@ void js_register_cocos2dx_extension_AssetsManager(JSContext *cx, JSObject *globa
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_AssetsManager_class;
-		p->proto = jsb_AssetsManager_prototype;
-		p->parentProto = jsb_Node_prototype;
+		p->jsclass = jsb_cocos2d_extension_AssetsManager_class;
+		p->proto = jsb_cocos2d_extension_AssetsManager_prototype;
+		p->parentProto = jsb_cocos2d_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }

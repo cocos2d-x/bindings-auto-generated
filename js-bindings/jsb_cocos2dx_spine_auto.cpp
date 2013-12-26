@@ -31,9 +31,8 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	return JS_FALSE;
 }
 
-
-JSClass  *jsb_Skeleton_class;
-JSObject *jsb_Skeleton_prototype;
+JSClass  *jsb_spine_Skeleton_class;
+JSObject *jsb_spine_Skeleton_prototype;
 
 JSBool js_cocos2dx_spine_Skeleton_setSlotsToSetupPose(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -524,24 +523,24 @@ JSBool js_cocos2dx_spine_Skeleton_constructor(JSContext *cx, uint32_t argc, jsva
 }
 
 
-extern JSObject *jsb_Node_prototype;
+extern JSObject *jsb_cocos2d_Node_prototype;
 
-void js_cocos2dx_spine_Skeleton_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_spine_Skeleton_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Skeleton)", obj);
 }
 
 void js_register_cocos2dx_spine_Skeleton(JSContext *cx, JSObject *global) {
-	jsb_Skeleton_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_Skeleton_class->name = "Skeleton";
-	jsb_Skeleton_class->addProperty = JS_PropertyStub;
-	jsb_Skeleton_class->delProperty = JS_DeletePropertyStub;
-	jsb_Skeleton_class->getProperty = JS_PropertyStub;
-	jsb_Skeleton_class->setProperty = JS_StrictPropertyStub;
-	jsb_Skeleton_class->enumerate = JS_EnumerateStub;
-	jsb_Skeleton_class->resolve = JS_ResolveStub;
-	jsb_Skeleton_class->convert = JS_ConvertStub;
-	jsb_Skeleton_class->finalize = js_cocos2dx_spine_Skeleton_finalize;
-	jsb_Skeleton_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_spine_Skeleton_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_spine_Skeleton_class->name = "Skeleton";
+	jsb_spine_Skeleton_class->addProperty = JS_PropertyStub;
+	jsb_spine_Skeleton_class->delProperty = JS_DeletePropertyStub;
+	jsb_spine_Skeleton_class->getProperty = JS_PropertyStub;
+	jsb_spine_Skeleton_class->setProperty = JS_StrictPropertyStub;
+	jsb_spine_Skeleton_class->enumerate = JS_EnumerateStub;
+	jsb_spine_Skeleton_class->resolve = JS_ResolveStub;
+	jsb_spine_Skeleton_class->convert = JS_ConvertStub;
+	jsb_spine_Skeleton_class->finalize = js_spine_Skeleton_finalize;
+	jsb_spine_Skeleton_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -567,10 +566,10 @@ void js_register_cocos2dx_spine_Skeleton(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_Skeleton_prototype = JS_InitClass(
+	jsb_spine_Skeleton_prototype = JS_InitClass(
 		cx, global,
-		jsb_Node_prototype,
-		jsb_Skeleton_class,
+		jsb_cocos2d_Node_prototype,
+		jsb_spine_Skeleton_class,
 		js_cocos2dx_spine_Skeleton_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -587,16 +586,15 @@ void js_register_cocos2dx_spine_Skeleton(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_Skeleton_class;
-		p->proto = jsb_Skeleton_prototype;
-		p->parentProto = jsb_Node_prototype;
+		p->jsclass = jsb_spine_Skeleton_class;
+		p->proto = jsb_spine_Skeleton_prototype;
+		p->parentProto = jsb_cocos2d_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_SkeletonAnimation_class;
-JSObject *jsb_SkeletonAnimation_prototype;
+JSClass  *jsb_spine_SkeletonAnimation_class;
+JSObject *jsb_spine_SkeletonAnimation_prototype;
 
 JSBool js_cocos2dx_spine_SkeletonAnimation_addAnimation(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -1077,24 +1075,24 @@ JSBool js_cocos2dx_spine_SkeletonAnimation_constructor(JSContext *cx, uint32_t a
 }
 
 
-extern JSObject *jsb_Skeleton_prototype;
+extern JSObject *jsb_spine_Skeleton_prototype;
 
-void js_cocos2dx_spine_SkeletonAnimation_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_spine_SkeletonAnimation_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (SkeletonAnimation)", obj);
 }
 
 void js_register_cocos2dx_spine_SkeletonAnimation(JSContext *cx, JSObject *global) {
-	jsb_SkeletonAnimation_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_SkeletonAnimation_class->name = "SkeletonAnimation";
-	jsb_SkeletonAnimation_class->addProperty = JS_PropertyStub;
-	jsb_SkeletonAnimation_class->delProperty = JS_DeletePropertyStub;
-	jsb_SkeletonAnimation_class->getProperty = JS_PropertyStub;
-	jsb_SkeletonAnimation_class->setProperty = JS_StrictPropertyStub;
-	jsb_SkeletonAnimation_class->enumerate = JS_EnumerateStub;
-	jsb_SkeletonAnimation_class->resolve = JS_ResolveStub;
-	jsb_SkeletonAnimation_class->convert = JS_ConvertStub;
-	jsb_SkeletonAnimation_class->finalize = js_cocos2dx_spine_SkeletonAnimation_finalize;
-	jsb_SkeletonAnimation_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_spine_SkeletonAnimation_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_spine_SkeletonAnimation_class->name = "SkeletonAnimation";
+	jsb_spine_SkeletonAnimation_class->addProperty = JS_PropertyStub;
+	jsb_spine_SkeletonAnimation_class->delProperty = JS_DeletePropertyStub;
+	jsb_spine_SkeletonAnimation_class->getProperty = JS_PropertyStub;
+	jsb_spine_SkeletonAnimation_class->setProperty = JS_StrictPropertyStub;
+	jsb_spine_SkeletonAnimation_class->enumerate = JS_EnumerateStub;
+	jsb_spine_SkeletonAnimation_class->resolve = JS_ResolveStub;
+	jsb_spine_SkeletonAnimation_class->convert = JS_ConvertStub;
+	jsb_spine_SkeletonAnimation_class->finalize = js_spine_SkeletonAnimation_finalize;
+	jsb_spine_SkeletonAnimation_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -1118,10 +1116,10 @@ void js_register_cocos2dx_spine_SkeletonAnimation(JSContext *cx, JSObject *globa
 		JS_FS_END
 	};
 
-	jsb_SkeletonAnimation_prototype = JS_InitClass(
+	jsb_spine_SkeletonAnimation_prototype = JS_InitClass(
 		cx, global,
-		jsb_Skeleton_prototype,
-		jsb_SkeletonAnimation_class,
+		jsb_spine_Skeleton_prototype,
+		jsb_spine_SkeletonAnimation_class,
 		js_cocos2dx_spine_SkeletonAnimation_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -1138,9 +1136,9 @@ void js_register_cocos2dx_spine_SkeletonAnimation(JSContext *cx, JSObject *globa
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_SkeletonAnimation_class;
-		p->proto = jsb_SkeletonAnimation_prototype;
-		p->parentProto = jsb_Skeleton_prototype;
+		p->jsclass = jsb_spine_SkeletonAnimation_class;
+		p->proto = jsb_spine_SkeletonAnimation_prototype;
+		p->parentProto = jsb_spine_Skeleton_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }

@@ -31,9 +31,8 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	return JS_FALSE;
 }
 
-
-JSClass  *jsb_ActionObject_class;
-JSObject *jsb_ActionObject_prototype;
+JSClass  *jsb_cocostudio_ActionObject_class;
+JSObject *jsb_cocostudio_ActionObject_prototype;
 
 JSBool js_cocos2dx_studio_ActionObject_setCurrentTime(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -404,22 +403,22 @@ JSBool js_cocos2dx_studio_ActionObject_constructor(JSContext *cx, uint32_t argc,
 
 
 
-void js_cocos2dx_studio_ActionObject_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_ActionObject_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ActionObject)", obj);
 }
 
 void js_register_cocos2dx_studio_ActionObject(JSContext *cx, JSObject *global) {
-	jsb_ActionObject_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ActionObject_class->name = "ActionObject";
-	jsb_ActionObject_class->addProperty = JS_PropertyStub;
-	jsb_ActionObject_class->delProperty = JS_DeletePropertyStub;
-	jsb_ActionObject_class->getProperty = JS_PropertyStub;
-	jsb_ActionObject_class->setProperty = JS_StrictPropertyStub;
-	jsb_ActionObject_class->enumerate = JS_EnumerateStub;
-	jsb_ActionObject_class->resolve = JS_ResolveStub;
-	jsb_ActionObject_class->convert = JS_ConvertStub;
-	jsb_ActionObject_class->finalize = js_cocos2dx_studio_ActionObject_finalize;
-	jsb_ActionObject_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_ActionObject_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ActionObject_class->name = "ActionObject";
+	jsb_cocostudio_ActionObject_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ActionObject_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ActionObject_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ActionObject_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ActionObject_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ActionObject_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ActionObject_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ActionObject_class->finalize = js_cocostudio_ActionObject_finalize;
+	jsb_cocostudio_ActionObject_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -448,10 +447,10 @@ void js_register_cocos2dx_studio_ActionObject(JSContext *cx, JSObject *global) {
 
 	JSFunctionSpec *st_funcs = NULL;
 
-	jsb_ActionObject_prototype = JS_InitClass(
+	jsb_cocostudio_ActionObject_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_ActionObject_class,
+		jsb_cocostudio_ActionObject_class,
 		js_cocos2dx_studio_ActionObject_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -468,16 +467,15 @@ void js_register_cocos2dx_studio_ActionObject(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ActionObject_class;
-		p->proto = jsb_ActionObject_prototype;
+		p->jsclass = jsb_cocostudio_ActionObject_class;
+		p->proto = jsb_cocostudio_ActionObject_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ActionManagerEx_class;
-JSObject *jsb_ActionManagerEx_prototype;
+JSClass  *jsb_cocostudio_ActionManagerEx_class;
+JSObject *jsb_cocostudio_ActionManagerEx_prototype;
 
 JSBool js_cocos2dx_studio_ActionManagerEx_playActionByName(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -589,22 +587,22 @@ JSBool js_cocos2dx_studio_ActionManagerEx_shareManager(JSContext *cx, uint32_t a
 
 
 
-void js_cocos2dx_studio_ActionManagerEx_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_ActionManagerEx_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ActionManagerEx)", obj);
 }
 
 void js_register_cocos2dx_studio_ActionManagerEx(JSContext *cx, JSObject *global) {
-	jsb_ActionManagerEx_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ActionManagerEx_class->name = "ActionManager";
-	jsb_ActionManagerEx_class->addProperty = JS_PropertyStub;
-	jsb_ActionManagerEx_class->delProperty = JS_DeletePropertyStub;
-	jsb_ActionManagerEx_class->getProperty = JS_PropertyStub;
-	jsb_ActionManagerEx_class->setProperty = JS_StrictPropertyStub;
-	jsb_ActionManagerEx_class->enumerate = JS_EnumerateStub;
-	jsb_ActionManagerEx_class->resolve = JS_ResolveStub;
-	jsb_ActionManagerEx_class->convert = JS_ConvertStub;
-	jsb_ActionManagerEx_class->finalize = js_cocos2dx_studio_ActionManagerEx_finalize;
-	jsb_ActionManagerEx_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_ActionManagerEx_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ActionManagerEx_class->name = "ActionManager";
+	jsb_cocostudio_ActionManagerEx_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ActionManagerEx_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ActionManagerEx_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ActionManagerEx_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ActionManagerEx_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ActionManagerEx_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ActionManagerEx_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ActionManagerEx_class->finalize = js_cocostudio_ActionManagerEx_finalize;
+	jsb_cocostudio_ActionManagerEx_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -623,10 +621,10 @@ void js_register_cocos2dx_studio_ActionManagerEx(JSContext *cx, JSObject *global
 		JS_FS_END
 	};
 
-	jsb_ActionManagerEx_prototype = JS_InitClass(
+	jsb_cocostudio_ActionManagerEx_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_ActionManagerEx_class,
+		jsb_cocostudio_ActionManagerEx_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -643,16 +641,15 @@ void js_register_cocos2dx_studio_ActionManagerEx(JSContext *cx, JSObject *global
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ActionManagerEx_class;
-		p->proto = jsb_ActionManagerEx_prototype;
+		p->jsclass = jsb_cocostudio_ActionManagerEx_class;
+		p->proto = jsb_cocostudio_ActionManagerEx_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_BaseData_class;
-JSObject *jsb_BaseData_prototype;
+JSClass  *jsb_cocostudio_BaseData_class;
+JSObject *jsb_cocostudio_BaseData_prototype;
 
 JSBool js_cocos2dx_studio_BaseData_getColor(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -740,22 +737,22 @@ JSBool js_cocos2dx_studio_BaseData_constructor(JSContext *cx, uint32_t argc, jsv
 
 
 
-void js_cocos2dx_studio_BaseData_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_BaseData_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (BaseData)", obj);
 }
 
 void js_register_cocos2dx_studio_BaseData(JSContext *cx, JSObject *global) {
-	jsb_BaseData_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_BaseData_class->name = "BaseData";
-	jsb_BaseData_class->addProperty = JS_PropertyStub;
-	jsb_BaseData_class->delProperty = JS_DeletePropertyStub;
-	jsb_BaseData_class->getProperty = JS_PropertyStub;
-	jsb_BaseData_class->setProperty = JS_StrictPropertyStub;
-	jsb_BaseData_class->enumerate = JS_EnumerateStub;
-	jsb_BaseData_class->resolve = JS_ResolveStub;
-	jsb_BaseData_class->convert = JS_ConvertStub;
-	jsb_BaseData_class->finalize = js_cocos2dx_studio_BaseData_finalize;
-	jsb_BaseData_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_BaseData_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_BaseData_class->name = "BaseData";
+	jsb_cocostudio_BaseData_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_BaseData_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_BaseData_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_BaseData_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_BaseData_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_BaseData_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_BaseData_class->convert = JS_ConvertStub;
+	jsb_cocostudio_BaseData_class->finalize = js_cocostudio_BaseData_finalize;
+	jsb_cocostudio_BaseData_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -772,10 +769,10 @@ void js_register_cocos2dx_studio_BaseData(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_BaseData_prototype = JS_InitClass(
+	jsb_cocostudio_BaseData_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_BaseData_class,
+		jsb_cocostudio_BaseData_class,
 		js_cocos2dx_studio_BaseData_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -792,16 +789,15 @@ void js_register_cocos2dx_studio_BaseData(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_BaseData_class;
-		p->proto = jsb_BaseData_prototype;
+		p->jsclass = jsb_cocostudio_BaseData_class;
+		p->proto = jsb_cocostudio_BaseData_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_Tween_class;
-JSObject *jsb_Tween_prototype;
+JSClass  *jsb_cocostudio_Tween_class;
+JSObject *jsb_cocostudio_Tween_prototype;
 
 JSBool js_cocos2dx_studio_Tween_getAnimation(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -1019,22 +1015,22 @@ JSBool js_cocos2dx_studio_Tween_constructor(JSContext *cx, uint32_t argc, jsval 
 
 
 
-void js_cocos2dx_studio_Tween_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_Tween_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Tween)", obj);
 }
 
 void js_register_cocos2dx_studio_Tween(JSContext *cx, JSObject *global) {
-	jsb_Tween_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_Tween_class->name = "Tween";
-	jsb_Tween_class->addProperty = JS_PropertyStub;
-	jsb_Tween_class->delProperty = JS_DeletePropertyStub;
-	jsb_Tween_class->getProperty = JS_PropertyStub;
-	jsb_Tween_class->setProperty = JS_StrictPropertyStub;
-	jsb_Tween_class->enumerate = JS_EnumerateStub;
-	jsb_Tween_class->resolve = JS_ResolveStub;
-	jsb_Tween_class->convert = JS_ConvertStub;
-	jsb_Tween_class->finalize = js_cocos2dx_studio_Tween_finalize;
-	jsb_Tween_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_Tween_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_Tween_class->name = "Tween";
+	jsb_cocostudio_Tween_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_Tween_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_Tween_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_Tween_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_Tween_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_Tween_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_Tween_class->convert = JS_ConvertStub;
+	jsb_cocostudio_Tween_class->finalize = js_cocostudio_Tween_finalize;
+	jsb_cocostudio_Tween_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -1055,10 +1051,10 @@ void js_register_cocos2dx_studio_Tween(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_Tween_prototype = JS_InitClass(
+	jsb_cocostudio_Tween_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_Tween_class,
+		jsb_cocostudio_Tween_class,
 		js_cocos2dx_studio_Tween_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -1075,35 +1071,34 @@ void js_register_cocos2dx_studio_Tween(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_Tween_class;
-		p->proto = jsb_Tween_prototype;
+		p->jsclass = jsb_cocostudio_Tween_class;
+		p->proto = jsb_cocostudio_Tween_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ColliderFilter_class;
-JSObject *jsb_ColliderFilter_prototype;
-
+JSClass  *jsb_cocostudio_ColliderFilter_class;
+JSObject *jsb_cocostudio_ColliderFilter_prototype;
 
 
-void js_cocos2dx_studio_ColliderFilter_finalize(JSFreeOp *fop, JSObject *obj) {
+
+void js_cocostudio_ColliderFilter_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ColliderFilter)", obj);
 }
 
 void js_register_cocos2dx_studio_ColliderFilter(JSContext *cx, JSObject *global) {
-	jsb_ColliderFilter_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ColliderFilter_class->name = "ColliderFilter";
-	jsb_ColliderFilter_class->addProperty = JS_PropertyStub;
-	jsb_ColliderFilter_class->delProperty = JS_DeletePropertyStub;
-	jsb_ColliderFilter_class->getProperty = JS_PropertyStub;
-	jsb_ColliderFilter_class->setProperty = JS_StrictPropertyStub;
-	jsb_ColliderFilter_class->enumerate = JS_EnumerateStub;
-	jsb_ColliderFilter_class->resolve = JS_ResolveStub;
-	jsb_ColliderFilter_class->convert = JS_ConvertStub;
-	jsb_ColliderFilter_class->finalize = js_cocos2dx_studio_ColliderFilter_finalize;
-	jsb_ColliderFilter_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_ColliderFilter_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ColliderFilter_class->name = "ColliderFilter";
+	jsb_cocostudio_ColliderFilter_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ColliderFilter_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ColliderFilter_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ColliderFilter_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ColliderFilter_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ColliderFilter_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ColliderFilter_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ColliderFilter_class->finalize = js_cocostudio_ColliderFilter_finalize;
+	jsb_cocostudio_ColliderFilter_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	JSPropertySpec *properties = NULL;
 
@@ -1111,10 +1106,10 @@ void js_register_cocos2dx_studio_ColliderFilter(JSContext *cx, JSObject *global)
 
 	JSFunctionSpec *st_funcs = NULL;
 
-	jsb_ColliderFilter_prototype = JS_InitClass(
+	jsb_cocostudio_ColliderFilter_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_ColliderFilter_class,
+		jsb_cocostudio_ColliderFilter_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -1131,16 +1126,15 @@ void js_register_cocos2dx_studio_ColliderFilter(JSContext *cx, JSObject *global)
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ColliderFilter_class;
-		p->proto = jsb_ColliderFilter_prototype;
+		p->jsclass = jsb_cocostudio_ColliderFilter_class;
+		p->proto = jsb_cocostudio_ColliderFilter_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_DisplayManager_class;
-JSObject *jsb_DisplayManager_prototype;
+JSClass  *jsb_cocostudio_DisplayManager_class;
+JSObject *jsb_cocostudio_DisplayManager_prototype;
 
 JSBool js_cocos2dx_studio_DisplayManager_getDisplayRenderNode(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -1612,22 +1606,22 @@ JSBool js_cocos2dx_studio_DisplayManager_constructor(JSContext *cx, uint32_t arg
 
 
 
-void js_cocos2dx_studio_DisplayManager_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_DisplayManager_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (DisplayManager)", obj);
 }
 
 void js_register_cocos2dx_studio_DisplayManager(JSContext *cx, JSObject *global) {
-	jsb_DisplayManager_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_DisplayManager_class->name = "DisplayManager";
-	jsb_DisplayManager_class->addProperty = JS_PropertyStub;
-	jsb_DisplayManager_class->delProperty = JS_DeletePropertyStub;
-	jsb_DisplayManager_class->getProperty = JS_PropertyStub;
-	jsb_DisplayManager_class->setProperty = JS_StrictPropertyStub;
-	jsb_DisplayManager_class->enumerate = JS_EnumerateStub;
-	jsb_DisplayManager_class->resolve = JS_ResolveStub;
-	jsb_DisplayManager_class->convert = JS_ConvertStub;
-	jsb_DisplayManager_class->finalize = js_cocos2dx_studio_DisplayManager_finalize;
-	jsb_DisplayManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_DisplayManager_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_DisplayManager_class->name = "DisplayManager";
+	jsb_cocostudio_DisplayManager_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_DisplayManager_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_DisplayManager_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_DisplayManager_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_DisplayManager_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_DisplayManager_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_DisplayManager_class->convert = JS_ConvertStub;
+	jsb_cocostudio_DisplayManager_class->finalize = js_cocostudio_DisplayManager_finalize;
+	jsb_cocostudio_DisplayManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -1660,10 +1654,10 @@ void js_register_cocos2dx_studio_DisplayManager(JSContext *cx, JSObject *global)
 		JS_FS_END
 	};
 
-	jsb_DisplayManager_prototype = JS_InitClass(
+	jsb_cocostudio_DisplayManager_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_DisplayManager_class,
+		jsb_cocostudio_DisplayManager_class,
 		js_cocos2dx_studio_DisplayManager_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -1680,16 +1674,15 @@ void js_register_cocos2dx_studio_DisplayManager(JSContext *cx, JSObject *global)
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_DisplayManager_class;
-		p->proto = jsb_DisplayManager_prototype;
+		p->jsclass = jsb_cocostudio_DisplayManager_class;
+		p->proto = jsb_cocostudio_DisplayManager_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_Bone_class;
-JSObject *jsb_Bone_prototype;
+JSClass  *jsb_cocostudio_Bone_class;
+JSObject *jsb_cocostudio_Bone_prototype;
 
 JSBool js_cocos2dx_studio_Bone_isTransformDirty(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -2508,24 +2501,24 @@ JSBool js_cocos2dx_studio_Bone_constructor(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-extern JSObject *jsb_Node_prototype;
+extern JSObject *jsb_cocos2d_Node_prototype;
 
-void js_cocos2dx_studio_Bone_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_Bone_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Bone)", obj);
 }
 
 void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
-	jsb_Bone_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_Bone_class->name = "Bone";
-	jsb_Bone_class->addProperty = JS_PropertyStub;
-	jsb_Bone_class->delProperty = JS_DeletePropertyStub;
-	jsb_Bone_class->getProperty = JS_PropertyStub;
-	jsb_Bone_class->setProperty = JS_StrictPropertyStub;
-	jsb_Bone_class->enumerate = JS_EnumerateStub;
-	jsb_Bone_class->resolve = JS_ResolveStub;
-	jsb_Bone_class->convert = JS_ConvertStub;
-	jsb_Bone_class->finalize = js_cocos2dx_studio_Bone_finalize;
-	jsb_Bone_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_Bone_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_Bone_class->name = "Bone";
+	jsb_cocostudio_Bone_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_Bone_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_Bone_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_Bone_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_Bone_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_Bone_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_Bone_class->convert = JS_ConvertStub;
+	jsb_cocostudio_Bone_class->finalize = js_cocostudio_Bone_finalize;
+	jsb_cocostudio_Bone_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -2572,10 +2565,10 @@ void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_Bone_prototype = JS_InitClass(
+	jsb_cocostudio_Bone_prototype = JS_InitClass(
 		cx, global,
-		jsb_Node_prototype,
-		jsb_Bone_class,
+		jsb_cocos2d_Node_prototype,
+		jsb_cocostudio_Bone_class,
 		js_cocos2dx_studio_Bone_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -2592,16 +2585,15 @@ void js_register_cocos2dx_studio_Bone(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_Bone_class;
-		p->proto = jsb_Bone_prototype;
-		p->parentProto = jsb_Node_prototype;
+		p->jsclass = jsb_cocostudio_Bone_class;
+		p->proto = jsb_cocostudio_Bone_prototype;
+		p->parentProto = jsb_cocos2d_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_BatchNode_class;
-JSObject *jsb_BatchNode_prototype;
+JSClass  *jsb_cocostudio_BatchNode_class;
+JSObject *jsb_cocostudio_BatchNode_prototype;
 
 JSBool js_cocos2dx_studio_BatchNode_setPopGroupCommand(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -2644,24 +2636,24 @@ JSBool js_cocos2dx_studio_BatchNode_create(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-extern JSObject *jsb_Node_prototype;
+extern JSObject *jsb_cocos2d_Node_prototype;
 
-void js_cocos2dx_studio_BatchNode_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_BatchNode_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (BatchNode)", obj);
 }
 
 void js_register_cocos2dx_studio_BatchNode(JSContext *cx, JSObject *global) {
-	jsb_BatchNode_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_BatchNode_class->name = "BatchNode";
-	jsb_BatchNode_class->addProperty = JS_PropertyStub;
-	jsb_BatchNode_class->delProperty = JS_DeletePropertyStub;
-	jsb_BatchNode_class->getProperty = JS_PropertyStub;
-	jsb_BatchNode_class->setProperty = JS_StrictPropertyStub;
-	jsb_BatchNode_class->enumerate = JS_EnumerateStub;
-	jsb_BatchNode_class->resolve = JS_ResolveStub;
-	jsb_BatchNode_class->convert = JS_ConvertStub;
-	jsb_BatchNode_class->finalize = js_cocos2dx_studio_BatchNode_finalize;
-	jsb_BatchNode_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_BatchNode_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_BatchNode_class->name = "BatchNode";
+	jsb_cocostudio_BatchNode_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_BatchNode_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_BatchNode_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_BatchNode_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_BatchNode_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_BatchNode_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_BatchNode_class->convert = JS_ConvertStub;
+	jsb_cocostudio_BatchNode_class->finalize = js_cocostudio_BatchNode_finalize;
+	jsb_cocostudio_BatchNode_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -2677,10 +2669,10 @@ void js_register_cocos2dx_studio_BatchNode(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_BatchNode_prototype = JS_InitClass(
+	jsb_cocostudio_BatchNode_prototype = JS_InitClass(
 		cx, global,
-		jsb_Node_prototype,
-		jsb_BatchNode_class,
+		jsb_cocos2d_Node_prototype,
+		jsb_cocostudio_BatchNode_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -2697,16 +2689,15 @@ void js_register_cocos2dx_studio_BatchNode(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_BatchNode_class;
-		p->proto = jsb_BatchNode_prototype;
-		p->parentProto = jsb_Node_prototype;
+		p->jsclass = jsb_cocostudio_BatchNode_class;
+		p->proto = jsb_cocostudio_BatchNode_prototype;
+		p->parentProto = jsb_cocos2d_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ArmatureAnimation_class;
-JSObject *jsb_ArmatureAnimation_prototype;
+JSClass  *jsb_cocostudio_ArmatureAnimation_class;
+JSObject *jsb_cocostudio_ArmatureAnimation_prototype;
 
 JSBool js_cocos2dx_studio_ArmatureAnimation_getSpeedScale(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -3170,22 +3161,22 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_constructor(JSContext *cx, uint32_t 
 
 
 
-void js_cocos2dx_studio_ArmatureAnimation_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_ArmatureAnimation_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ArmatureAnimation)", obj);
 }
 
 void js_register_cocos2dx_studio_ArmatureAnimation(JSContext *cx, JSObject *global) {
-	jsb_ArmatureAnimation_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ArmatureAnimation_class->name = "ArmatureAnimation";
-	jsb_ArmatureAnimation_class->addProperty = JS_PropertyStub;
-	jsb_ArmatureAnimation_class->delProperty = JS_DeletePropertyStub;
-	jsb_ArmatureAnimation_class->getProperty = JS_PropertyStub;
-	jsb_ArmatureAnimation_class->setProperty = JS_StrictPropertyStub;
-	jsb_ArmatureAnimation_class->enumerate = JS_EnumerateStub;
-	jsb_ArmatureAnimation_class->resolve = JS_ResolveStub;
-	jsb_ArmatureAnimation_class->convert = JS_ConvertStub;
-	jsb_ArmatureAnimation_class->finalize = js_cocos2dx_studio_ArmatureAnimation_finalize;
-	jsb_ArmatureAnimation_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_ArmatureAnimation_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ArmatureAnimation_class->name = "ArmatureAnimation";
+	jsb_cocostudio_ArmatureAnimation_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ArmatureAnimation_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ArmatureAnimation_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ArmatureAnimation_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ArmatureAnimation_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ArmatureAnimation_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ArmatureAnimation_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ArmatureAnimation_class->finalize = js_cocostudio_ArmatureAnimation_finalize;
+	jsb_cocostudio_ArmatureAnimation_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -3213,10 +3204,10 @@ void js_register_cocos2dx_studio_ArmatureAnimation(JSContext *cx, JSObject *glob
 		JS_FS_END
 	};
 
-	jsb_ArmatureAnimation_prototype = JS_InitClass(
+	jsb_cocostudio_ArmatureAnimation_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_ArmatureAnimation_class,
+		jsb_cocostudio_ArmatureAnimation_class,
 		js_cocos2dx_studio_ArmatureAnimation_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -3233,16 +3224,15 @@ void js_register_cocos2dx_studio_ArmatureAnimation(JSContext *cx, JSObject *glob
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ArmatureAnimation_class;
-		p->proto = jsb_ArmatureAnimation_prototype;
+		p->jsclass = jsb_cocostudio_ArmatureAnimation_class;
+		p->proto = jsb_cocostudio_ArmatureAnimation_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ArmatureDataManager_class;
-JSObject *jsb_ArmatureDataManager_prototype;
+JSClass  *jsb_cocostudio_ArmatureDataManager_class;
+JSObject *jsb_cocostudio_ArmatureDataManager_prototype;
 
 JSBool js_cocos2dx_studio_ArmatureDataManager_getAnimationDatas(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -3732,22 +3722,22 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getInstance(JSContext *cx, uint32_
 
 
 
-void js_cocos2dx_studio_ArmatureDataManager_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_ArmatureDataManager_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ArmatureDataManager)", obj);
 }
 
 void js_register_cocos2dx_studio_ArmatureDataManager(JSContext *cx, JSObject *global) {
-	jsb_ArmatureDataManager_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ArmatureDataManager_class->name = "ArmatureDataManager";
-	jsb_ArmatureDataManager_class->addProperty = JS_PropertyStub;
-	jsb_ArmatureDataManager_class->delProperty = JS_DeletePropertyStub;
-	jsb_ArmatureDataManager_class->getProperty = JS_PropertyStub;
-	jsb_ArmatureDataManager_class->setProperty = JS_StrictPropertyStub;
-	jsb_ArmatureDataManager_class->enumerate = JS_EnumerateStub;
-	jsb_ArmatureDataManager_class->resolve = JS_ResolveStub;
-	jsb_ArmatureDataManager_class->convert = JS_ConvertStub;
-	jsb_ArmatureDataManager_class->finalize = js_cocos2dx_studio_ArmatureDataManager_finalize;
-	jsb_ArmatureDataManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_ArmatureDataManager_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ArmatureDataManager_class->name = "ArmatureDataManager";
+	jsb_cocostudio_ArmatureDataManager_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ArmatureDataManager_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ArmatureDataManager_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ArmatureDataManager_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ArmatureDataManager_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ArmatureDataManager_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ArmatureDataManager_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ArmatureDataManager_class->finalize = js_cocostudio_ArmatureDataManager_finalize;
+	jsb_cocostudio_ArmatureDataManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -3779,10 +3769,10 @@ void js_register_cocos2dx_studio_ArmatureDataManager(JSContext *cx, JSObject *gl
 		JS_FS_END
 	};
 
-	jsb_ArmatureDataManager_prototype = JS_InitClass(
+	jsb_cocostudio_ArmatureDataManager_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_ArmatureDataManager_class,
+		jsb_cocostudio_ArmatureDataManager_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -3799,16 +3789,15 @@ void js_register_cocos2dx_studio_ArmatureDataManager(JSContext *cx, JSObject *gl
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ArmatureDataManager_class;
-		p->proto = jsb_ArmatureDataManager_prototype;
+		p->jsclass = jsb_cocostudio_ArmatureDataManager_class;
+		p->proto = jsb_cocostudio_ArmatureDataManager_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_Armature_class;
-JSObject *jsb_Armature_prototype;
+JSClass  *jsb_cocostudio_Armature_class;
+JSObject *jsb_cocostudio_Armature_prototype;
 
 JSBool js_cocos2dx_studio_Armature_getBone(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -4461,24 +4450,24 @@ JSBool js_cocos2dx_studio_Armature_constructor(JSContext *cx, uint32_t argc, jsv
 }
 
 
-extern JSObject *jsb_Node_prototype;
+extern JSObject *jsb_cocos2d_Node_prototype;
 
-void js_cocos2dx_studio_Armature_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_Armature_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Armature)", obj);
 }
 
 void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
-	jsb_Armature_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_Armature_class->name = "Armature";
-	jsb_Armature_class->addProperty = JS_PropertyStub;
-	jsb_Armature_class->delProperty = JS_DeletePropertyStub;
-	jsb_Armature_class->getProperty = JS_PropertyStub;
-	jsb_Armature_class->setProperty = JS_StrictPropertyStub;
-	jsb_Armature_class->enumerate = JS_EnumerateStub;
-	jsb_Armature_class->resolve = JS_ResolveStub;
-	jsb_Armature_class->convert = JS_ConvertStub;
-	jsb_Armature_class->finalize = js_cocos2dx_studio_Armature_finalize;
-	jsb_Armature_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_Armature_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_Armature_class->name = "Armature";
+	jsb_cocostudio_Armature_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_Armature_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_Armature_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_Armature_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_Armature_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_Armature_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_Armature_class->convert = JS_ConvertStub;
+	jsb_cocostudio_Armature_class->finalize = js_cocostudio_Armature_finalize;
+	jsb_cocostudio_Armature_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -4515,10 +4504,10 @@ void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_Armature_prototype = JS_InitClass(
+	jsb_cocostudio_Armature_prototype = JS_InitClass(
 		cx, global,
-		jsb_Node_prototype,
-		jsb_Armature_class,
+		jsb_cocos2d_Node_prototype,
+		jsb_cocostudio_Armature_class,
 		js_cocos2dx_studio_Armature_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -4535,16 +4524,15 @@ void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_Armature_class;
-		p->proto = jsb_Armature_prototype;
-		p->parentProto = jsb_Node_prototype;
+		p->jsclass = jsb_cocostudio_Armature_class;
+		p->proto = jsb_cocostudio_Armature_prototype;
+		p->parentProto = jsb_cocos2d_Node_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_Skin_class;
-JSObject *jsb_Skin_prototype;
+JSClass  *jsb_cocostudio_Skin_class;
+JSObject *jsb_cocostudio_Skin_prototype;
 
 JSBool js_cocos2dx_studio_Skin_getBone(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -4787,24 +4775,24 @@ JSBool js_cocos2dx_studio_Skin_constructor(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-extern JSObject *jsb_Sprite_prototype;
+extern JSObject *jsb_cocos2d_Sprite_prototype;
 
-void js_cocos2dx_studio_Skin_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_Skin_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Skin)", obj);
 }
 
 void js_register_cocos2dx_studio_Skin(JSContext *cx, JSObject *global) {
-	jsb_Skin_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_Skin_class->name = "Skin";
-	jsb_Skin_class->addProperty = JS_PropertyStub;
-	jsb_Skin_class->delProperty = JS_DeletePropertyStub;
-	jsb_Skin_class->getProperty = JS_PropertyStub;
-	jsb_Skin_class->setProperty = JS_StrictPropertyStub;
-	jsb_Skin_class->enumerate = JS_EnumerateStub;
-	jsb_Skin_class->resolve = JS_ResolveStub;
-	jsb_Skin_class->convert = JS_ConvertStub;
-	jsb_Skin_class->finalize = js_cocos2dx_studio_Skin_finalize;
-	jsb_Skin_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_Skin_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_Skin_class->name = "Skin";
+	jsb_cocostudio_Skin_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_Skin_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_Skin_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_Skin_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_Skin_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_Skin_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_Skin_class->convert = JS_ConvertStub;
+	jsb_cocostudio_Skin_class->finalize = js_cocostudio_Skin_finalize;
+	jsb_cocostudio_Skin_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -4827,10 +4815,10 @@ void js_register_cocos2dx_studio_Skin(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_Skin_prototype = JS_InitClass(
+	jsb_cocostudio_Skin_prototype = JS_InitClass(
 		cx, global,
-		jsb_Sprite_prototype,
-		jsb_Skin_class,
+		jsb_cocos2d_Sprite_prototype,
+		jsb_cocostudio_Skin_class,
 		js_cocos2dx_studio_Skin_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -4847,16 +4835,15 @@ void js_register_cocos2dx_studio_Skin(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_Skin_class;
-		p->proto = jsb_Skin_prototype;
-		p->parentProto = jsb_Sprite_prototype;
+		p->jsclass = jsb_cocostudio_Skin_class;
+		p->proto = jsb_cocostudio_Skin_prototype;
+		p->parentProto = jsb_cocos2d_Sprite_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ComAttribute_class;
-JSObject *jsb_ComAttribute_prototype;
+JSClass  *jsb_cocostudio_ComAttribute_class;
+JSObject *jsb_cocostudio_ComAttribute_prototype;
 
 JSBool js_cocos2dx_studio_ComAttribute_getFloat(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -5072,24 +5059,24 @@ JSBool js_cocos2dx_studio_ComAttribute_create(JSContext *cx, uint32_t argc, jsva
 }
 
 
-extern JSObject *jsb_Component_prototype;
+extern JSObject *jsb_cocos2d_Component_prototype;
 
-void js_cocos2dx_studio_ComAttribute_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_ComAttribute_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ComAttribute)", obj);
 }
 
 void js_register_cocos2dx_studio_ComAttribute(JSContext *cx, JSObject *global) {
-	jsb_ComAttribute_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ComAttribute_class->name = "ComAttribute";
-	jsb_ComAttribute_class->addProperty = JS_PropertyStub;
-	jsb_ComAttribute_class->delProperty = JS_DeletePropertyStub;
-	jsb_ComAttribute_class->getProperty = JS_PropertyStub;
-	jsb_ComAttribute_class->setProperty = JS_StrictPropertyStub;
-	jsb_ComAttribute_class->enumerate = JS_EnumerateStub;
-	jsb_ComAttribute_class->resolve = JS_ResolveStub;
-	jsb_ComAttribute_class->convert = JS_ConvertStub;
-	jsb_ComAttribute_class->finalize = js_cocos2dx_studio_ComAttribute_finalize;
-	jsb_ComAttribute_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_ComAttribute_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ComAttribute_class->name = "ComAttribute";
+	jsb_cocostudio_ComAttribute_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ComAttribute_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ComAttribute_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ComAttribute_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ComAttribute_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ComAttribute_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ComAttribute_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ComAttribute_class->finalize = js_cocostudio_ComAttribute_finalize;
+	jsb_cocostudio_ComAttribute_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -5113,10 +5100,10 @@ void js_register_cocos2dx_studio_ComAttribute(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_ComAttribute_prototype = JS_InitClass(
+	jsb_cocostudio_ComAttribute_prototype = JS_InitClass(
 		cx, global,
-		jsb_Component_prototype,
-		jsb_ComAttribute_class,
+		jsb_cocos2d_Component_prototype,
+		jsb_cocostudio_ComAttribute_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -5133,16 +5120,15 @@ void js_register_cocos2dx_studio_ComAttribute(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ComAttribute_class;
-		p->proto = jsb_ComAttribute_prototype;
-		p->parentProto = jsb_Component_prototype;
+		p->jsclass = jsb_cocostudio_ComAttribute_class;
+		p->proto = jsb_cocostudio_ComAttribute_prototype;
+		p->parentProto = jsb_cocos2d_Component_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ComAudio_class;
-JSObject *jsb_ComAudio_prototype;
+JSClass  *jsb_cocostudio_ComAudio_class;
+JSObject *jsb_cocostudio_ComAudio_prototype;
 
 JSBool js_cocos2dx_studio_ComAudio_stopAllEffects(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -5741,24 +5727,24 @@ JSBool js_cocos2dx_studio_ComAudio_create(JSContext *cx, uint32_t argc, jsval *v
 }
 
 
-extern JSObject *jsb_Component_prototype;
+extern JSObject *jsb_cocos2d_Component_prototype;
 
-void js_cocos2dx_studio_ComAudio_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_ComAudio_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ComAudio)", obj);
 }
 
 void js_register_cocos2dx_studio_ComAudio(JSContext *cx, JSObject *global) {
-	jsb_ComAudio_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ComAudio_class->name = "ComAudio";
-	jsb_ComAudio_class->addProperty = JS_PropertyStub;
-	jsb_ComAudio_class->delProperty = JS_DeletePropertyStub;
-	jsb_ComAudio_class->getProperty = JS_PropertyStub;
-	jsb_ComAudio_class->setProperty = JS_StrictPropertyStub;
-	jsb_ComAudio_class->enumerate = JS_EnumerateStub;
-	jsb_ComAudio_class->resolve = JS_ResolveStub;
-	jsb_ComAudio_class->convert = JS_ConvertStub;
-	jsb_ComAudio_class->finalize = js_cocos2dx_studio_ComAudio_finalize;
-	jsb_ComAudio_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_ComAudio_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ComAudio_class->name = "ComAudio";
+	jsb_cocostudio_ComAudio_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ComAudio_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ComAudio_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ComAudio_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ComAudio_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ComAudio_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ComAudio_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ComAudio_class->finalize = js_cocostudio_ComAudio_finalize;
+	jsb_cocostudio_ComAudio_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -5802,10 +5788,10 @@ void js_register_cocos2dx_studio_ComAudio(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_ComAudio_prototype = JS_InitClass(
+	jsb_cocostudio_ComAudio_prototype = JS_InitClass(
 		cx, global,
-		jsb_Component_prototype,
-		jsb_ComAudio_class,
+		jsb_cocos2d_Component_prototype,
+		jsb_cocostudio_ComAudio_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -5822,16 +5808,15 @@ void js_register_cocos2dx_studio_ComAudio(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ComAudio_class;
-		p->proto = jsb_ComAudio_prototype;
-		p->parentProto = jsb_Component_prototype;
+		p->jsclass = jsb_cocostudio_ComAudio_class;
+		p->proto = jsb_cocostudio_ComAudio_prototype;
+		p->parentProto = jsb_cocos2d_Component_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_InputDelegate_class;
-JSObject *jsb_InputDelegate_prototype;
+JSClass  *jsb_cocostudio_InputDelegate_class;
+JSObject *jsb_cocostudio_InputDelegate_prototype;
 
 JSBool js_cocos2dx_studio_InputDelegate_isAccelerometerEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -6020,22 +6005,22 @@ JSBool js_cocos2dx_studio_InputDelegate_setTouchMode(JSContext *cx, uint32_t arg
 }
 
 
-void js_cocos2dx_studio_InputDelegate_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_InputDelegate_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (InputDelegate)", obj);
 }
 
 void js_register_cocos2dx_studio_InputDelegate(JSContext *cx, JSObject *global) {
-	jsb_InputDelegate_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_InputDelegate_class->name = "InputDelegate";
-	jsb_InputDelegate_class->addProperty = JS_PropertyStub;
-	jsb_InputDelegate_class->delProperty = JS_DeletePropertyStub;
-	jsb_InputDelegate_class->getProperty = JS_PropertyStub;
-	jsb_InputDelegate_class->setProperty = JS_StrictPropertyStub;
-	jsb_InputDelegate_class->enumerate = JS_EnumerateStub;
-	jsb_InputDelegate_class->resolve = JS_ResolveStub;
-	jsb_InputDelegate_class->convert = JS_ConvertStub;
-	jsb_InputDelegate_class->finalize = js_cocos2dx_studio_InputDelegate_finalize;
-	jsb_InputDelegate_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_InputDelegate_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_InputDelegate_class->name = "InputDelegate";
+	jsb_cocostudio_InputDelegate_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_InputDelegate_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_InputDelegate_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_InputDelegate_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_InputDelegate_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_InputDelegate_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_InputDelegate_class->convert = JS_ConvertStub;
+	jsb_cocostudio_InputDelegate_class->finalize = js_cocostudio_InputDelegate_finalize;
+	jsb_cocostudio_InputDelegate_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -6057,10 +6042,10 @@ void js_register_cocos2dx_studio_InputDelegate(JSContext *cx, JSObject *global) 
 
 	JSFunctionSpec *st_funcs = NULL;
 
-	jsb_InputDelegate_prototype = JS_InitClass(
+	jsb_cocostudio_InputDelegate_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_InputDelegate_class,
+		jsb_cocostudio_InputDelegate_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -6077,16 +6062,15 @@ void js_register_cocos2dx_studio_InputDelegate(JSContext *cx, JSObject *global) 
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_InputDelegate_class;
-		p->proto = jsb_InputDelegate_prototype;
+		p->jsclass = jsb_cocostudio_InputDelegate_class;
+		p->proto = jsb_cocostudio_InputDelegate_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ComController_class;
-JSObject *jsb_ComController_prototype;
+JSClass  *jsb_cocostudio_ComController_class;
+JSObject *jsb_cocostudio_ComController_prototype;
 
 JSBool js_cocos2dx_studio_ComController_init(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -6153,24 +6137,24 @@ JSBool js_cocos2dx_studio_ComController_constructor(JSContext *cx, uint32_t argc
 }
 
 
-extern JSObject *jsb_Component_prototype;
+extern JSObject *jsb_cocos2d_Component_prototype;
 
-void js_cocos2dx_studio_ComController_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_ComController_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ComController)", obj);
 }
 
 void js_register_cocos2dx_studio_ComController(JSContext *cx, JSObject *global) {
-	jsb_ComController_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ComController_class->name = "ComController";
-	jsb_ComController_class->addProperty = JS_PropertyStub;
-	jsb_ComController_class->delProperty = JS_DeletePropertyStub;
-	jsb_ComController_class->getProperty = JS_PropertyStub;
-	jsb_ComController_class->setProperty = JS_StrictPropertyStub;
-	jsb_ComController_class->enumerate = JS_EnumerateStub;
-	jsb_ComController_class->resolve = JS_ResolveStub;
-	jsb_ComController_class->convert = JS_ConvertStub;
-	jsb_ComController_class->finalize = js_cocos2dx_studio_ComController_finalize;
-	jsb_ComController_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_ComController_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ComController_class->name = "ComController";
+	jsb_cocostudio_ComController_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ComController_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ComController_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ComController_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ComController_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ComController_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ComController_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ComController_class->finalize = js_cocostudio_ComController_finalize;
+	jsb_cocostudio_ComController_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	JSPropertySpec *properties = NULL;
 
@@ -6184,10 +6168,10 @@ void js_register_cocos2dx_studio_ComController(JSContext *cx, JSObject *global) 
 		JS_FS_END
 	};
 
-	jsb_ComController_prototype = JS_InitClass(
+	jsb_cocostudio_ComController_prototype = JS_InitClass(
 		cx, global,
-		jsb_Component_prototype,
-		jsb_ComController_class,
+		jsb_cocos2d_Component_prototype,
+		jsb_cocostudio_ComController_class,
 		js_cocos2dx_studio_ComController_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -6204,16 +6188,15 @@ void js_register_cocos2dx_studio_ComController(JSContext *cx, JSObject *global) 
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ComController_class;
-		p->proto = jsb_ComController_prototype;
-		p->parentProto = jsb_Component_prototype;
+		p->jsclass = jsb_cocostudio_ComController_class;
+		p->proto = jsb_cocostudio_ComController_prototype;
+		p->parentProto = jsb_cocos2d_Component_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_ComRender_class;
-JSObject *jsb_ComRender_prototype;
+JSClass  *jsb_cocostudio_ComRender_class;
+JSObject *jsb_cocostudio_ComRender_prototype;
 
 JSBool js_cocos2dx_studio_ComRender_getNode(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -6274,24 +6257,24 @@ JSBool js_cocos2dx_studio_ComRender_create(JSContext *cx, uint32_t argc, jsval *
 }
 
 
-extern JSObject *jsb_Component_prototype;
+extern JSObject *jsb_cocos2d_Component_prototype;
 
-void js_cocos2dx_studio_ComRender_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_ComRender_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (ComRender)", obj);
 }
 
 void js_register_cocos2dx_studio_ComRender(JSContext *cx, JSObject *global) {
-	jsb_ComRender_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_ComRender_class->name = "ComRender";
-	jsb_ComRender_class->addProperty = JS_PropertyStub;
-	jsb_ComRender_class->delProperty = JS_DeletePropertyStub;
-	jsb_ComRender_class->getProperty = JS_PropertyStub;
-	jsb_ComRender_class->setProperty = JS_StrictPropertyStub;
-	jsb_ComRender_class->enumerate = JS_EnumerateStub;
-	jsb_ComRender_class->resolve = JS_ResolveStub;
-	jsb_ComRender_class->convert = JS_ConvertStub;
-	jsb_ComRender_class->finalize = js_cocos2dx_studio_ComRender_finalize;
-	jsb_ComRender_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_ComRender_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ComRender_class->name = "ComRender";
+	jsb_cocostudio_ComRender_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ComRender_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ComRender_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ComRender_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ComRender_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ComRender_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ComRender_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ComRender_class->finalize = js_cocostudio_ComRender_finalize;
+	jsb_cocostudio_ComRender_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -6307,10 +6290,10 @@ void js_register_cocos2dx_studio_ComRender(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_ComRender_prototype = JS_InitClass(
+	jsb_cocostudio_ComRender_prototype = JS_InitClass(
 		cx, global,
-		jsb_Component_prototype,
-		jsb_ComRender_class,
+		jsb_cocos2d_Component_prototype,
+		jsb_cocostudio_ComRender_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -6327,16 +6310,15 @@ void js_register_cocos2dx_studio_ComRender(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_ComRender_class;
-		p->proto = jsb_ComRender_prototype;
-		p->parentProto = jsb_Component_prototype;
+		p->jsclass = jsb_cocostudio_ComRender_class;
+		p->proto = jsb_cocostudio_ComRender_prototype;
+		p->parentProto = jsb_cocos2d_Component_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_GUIReader_class;
-JSObject *jsb_GUIReader_prototype;
+JSClass  *jsb_cocostudio_GUIReader_class;
+JSObject *jsb_cocostudio_GUIReader_prototype;
 
 JSBool js_cocos2dx_studio_GUIReader_widgetFromJsonFile(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -6422,22 +6404,22 @@ JSBool js_cocos2dx_studio_GUIReader_shareReader(JSContext *cx, uint32_t argc, js
 
 
 
-void js_cocos2dx_studio_GUIReader_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_GUIReader_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (GUIReader)", obj);
 }
 
 void js_register_cocos2dx_studio_GUIReader(JSContext *cx, JSObject *global) {
-	jsb_GUIReader_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_GUIReader_class->name = "GUIReader";
-	jsb_GUIReader_class->addProperty = JS_PropertyStub;
-	jsb_GUIReader_class->delProperty = JS_DeletePropertyStub;
-	jsb_GUIReader_class->getProperty = JS_PropertyStub;
-	jsb_GUIReader_class->setProperty = JS_StrictPropertyStub;
-	jsb_GUIReader_class->enumerate = JS_EnumerateStub;
-	jsb_GUIReader_class->resolve = JS_ResolveStub;
-	jsb_GUIReader_class->convert = JS_ConvertStub;
-	jsb_GUIReader_class->finalize = js_cocos2dx_studio_GUIReader_finalize;
-	jsb_GUIReader_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_GUIReader_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_GUIReader_class->name = "GUIReader";
+	jsb_cocostudio_GUIReader_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_GUIReader_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_GUIReader_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_GUIReader_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_GUIReader_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_GUIReader_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_GUIReader_class->convert = JS_ConvertStub;
+	jsb_cocostudio_GUIReader_class->finalize = js_cocostudio_GUIReader_finalize;
+	jsb_cocostudio_GUIReader_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -6455,10 +6437,10 @@ void js_register_cocos2dx_studio_GUIReader(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_GUIReader_prototype = JS_InitClass(
+	jsb_cocostudio_GUIReader_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_GUIReader_class,
+		jsb_cocostudio_GUIReader_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -6475,16 +6457,15 @@ void js_register_cocos2dx_studio_GUIReader(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_GUIReader_class;
-		p->proto = jsb_GUIReader_prototype;
+		p->jsclass = jsb_cocostudio_GUIReader_class;
+		p->proto = jsb_cocostudio_GUIReader_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_SceneReader_class;
-JSObject *jsb_SceneReader_prototype;
+JSClass  *jsb_cocostudio_SceneReader_class;
+JSObject *jsb_cocostudio_SceneReader_prototype;
 
 JSBool js_cocos2dx_studio_SceneReader_purgeSceneReader(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -6565,22 +6546,22 @@ JSBool js_cocos2dx_studio_SceneReader_getInstance(JSContext *cx, uint32_t argc, 
 
 
 
-void js_cocos2dx_studio_SceneReader_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocostudio_SceneReader_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (SceneReader)", obj);
 }
 
 void js_register_cocos2dx_studio_SceneReader(JSContext *cx, JSObject *global) {
-	jsb_SceneReader_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_SceneReader_class->name = "SceneReader";
-	jsb_SceneReader_class->addProperty = JS_PropertyStub;
-	jsb_SceneReader_class->delProperty = JS_DeletePropertyStub;
-	jsb_SceneReader_class->getProperty = JS_PropertyStub;
-	jsb_SceneReader_class->setProperty = JS_StrictPropertyStub;
-	jsb_SceneReader_class->enumerate = JS_EnumerateStub;
-	jsb_SceneReader_class->resolve = JS_ResolveStub;
-	jsb_SceneReader_class->convert = JS_ConvertStub;
-	jsb_SceneReader_class->finalize = js_cocos2dx_studio_SceneReader_finalize;
-	jsb_SceneReader_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocostudio_SceneReader_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_SceneReader_class->name = "SceneReader";
+	jsb_cocostudio_SceneReader_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_SceneReader_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_SceneReader_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_SceneReader_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_SceneReader_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_SceneReader_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_SceneReader_class->convert = JS_ConvertStub;
+	jsb_cocostudio_SceneReader_class->finalize = js_cocostudio_SceneReader_finalize;
+	jsb_cocostudio_SceneReader_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	JSPropertySpec *properties = NULL;
 
@@ -6596,10 +6577,10 @@ void js_register_cocos2dx_studio_SceneReader(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_SceneReader_prototype = JS_InitClass(
+	jsb_cocostudio_SceneReader_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_SceneReader_class,
+		jsb_cocostudio_SceneReader_class,
 		empty_constructor, 0,
 		properties,
 		funcs,
@@ -6616,8 +6597,8 @@ void js_register_cocos2dx_studio_SceneReader(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_SceneReader_class;
-		p->proto = jsb_SceneReader_prototype;
+		p->jsclass = jsb_cocostudio_SceneReader_class;
+		p->proto = jsb_cocostudio_SceneReader_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}

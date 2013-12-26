@@ -5,8 +5,8 @@
 #include "jsfriendapi.h"
 
 
-extern JSClass  *jsb_Scale9Sprite_class;
-extern JSObject *jsb_Scale9Sprite_prototype;
+extern JSClass  *jsb_cocos2d_extension_Scale9Sprite_class;
+extern JSObject *jsb_cocos2d_extension_Scale9Sprite_prototype;
 
 JSBool js_cocos2dx_extension_Scale9Sprite_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_Scale9Sprite_finalize(JSContext *cx, JSObject *obj);
@@ -38,8 +38,8 @@ JSBool js_cocos2dx_extension_Scale9Sprite_createWithSpriteFrameName(JSContext *c
 JSBool js_cocos2dx_extension_Scale9Sprite_createWithSpriteFrame(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_Scale9Sprite_Scale9Sprite(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Control_class;
-extern JSObject *jsb_Control_prototype;
+extern JSClass  *jsb_cocos2d_extension_Control_class;
+extern JSObject *jsb_cocos2d_extension_Control_prototype;
 
 JSBool js_cocos2dx_extension_Control_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_Control_finalize(JSContext *cx, JSObject *obj);
@@ -59,8 +59,8 @@ JSBool js_cocos2dx_extension_Control_getTouchLocation(JSContext *cx, uint32_t ar
 JSBool js_cocos2dx_extension_Control_isHighlighted(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_Control_create(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ControlButton_class;
-extern JSObject *jsb_ControlButton_prototype;
+extern JSClass  *jsb_cocos2d_extension_ControlButton_class;
+extern JSObject *jsb_cocos2d_extension_ControlButton_prototype;
 
 JSBool js_cocos2dx_extension_ControlButton_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_ControlButton_finalize(JSContext *cx, JSObject *obj);
@@ -105,8 +105,8 @@ JSBool js_cocos2dx_extension_ControlButton_getZoomOnTouchDown(JSContext *cx, uin
 JSBool js_cocos2dx_extension_ControlButton_getTitleForState(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlButton_create(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ControlHuePicker_class;
-extern JSObject *jsb_ControlHuePicker_prototype;
+extern JSClass  *jsb_cocos2d_extension_ControlHuePicker_class;
+extern JSObject *jsb_cocos2d_extension_ControlHuePicker_prototype;
 
 JSBool js_cocos2dx_extension_ControlHuePicker_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_ControlHuePicker_finalize(JSContext *cx, JSObject *obj);
@@ -126,8 +126,8 @@ JSBool js_cocos2dx_extension_ControlHuePicker_setSlider(JSContext *cx, uint32_t 
 JSBool js_cocos2dx_extension_ControlHuePicker_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlHuePicker_ControlHuePicker(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ControlSaturationBrightnessPicker_class;
-extern JSObject *jsb_ControlSaturationBrightnessPicker_prototype;
+extern JSClass  *jsb_cocos2d_extension_ControlSaturationBrightnessPicker_class;
+extern JSObject *jsb_cocos2d_extension_ControlSaturationBrightnessPicker_prototype;
 
 JSBool js_cocos2dx_extension_ControlSaturationBrightnessPicker_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_ControlSaturationBrightnessPicker_finalize(JSContext *cx, JSObject *obj);
@@ -145,8 +145,8 @@ JSBool js_cocos2dx_extension_ControlSaturationBrightnessPicker_getBrightness(JSC
 JSBool js_cocos2dx_extension_ControlSaturationBrightnessPicker_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlSaturationBrightnessPicker_ControlSaturationBrightnessPicker(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ControlColourPicker_class;
-extern JSObject *jsb_ControlColourPicker_prototype;
+extern JSClass  *jsb_cocos2d_extension_ControlColourPicker_class;
+extern JSObject *jsb_cocos2d_extension_ControlColourPicker_prototype;
 
 JSBool js_cocos2dx_extension_ControlColourPicker_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_ControlColourPicker_finalize(JSContext *cx, JSObject *obj);
@@ -166,8 +166,8 @@ JSBool js_cocos2dx_extension_ControlColourPicker_getBackground(JSContext *cx, ui
 JSBool js_cocos2dx_extension_ControlColourPicker_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlColourPicker_ControlColourPicker(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ControlPotentiometer_class;
-extern JSObject *jsb_ControlPotentiometer_prototype;
+extern JSClass  *jsb_cocos2d_extension_ControlPotentiometer_class;
+extern JSObject *jsb_cocos2d_extension_ControlPotentiometer_prototype;
 
 JSBool js_cocos2dx_extension_ControlPotentiometer_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_ControlPotentiometer_finalize(JSContext *cx, JSObject *obj);
@@ -194,8 +194,8 @@ JSBool js_cocos2dx_extension_ControlPotentiometer_potentiometerMoved(JSContext *
 JSBool js_cocos2dx_extension_ControlPotentiometer_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlPotentiometer_ControlPotentiometer(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ControlSlider_class;
-extern JSObject *jsb_ControlSlider_prototype;
+extern JSClass  *jsb_cocos2d_extension_ControlSlider_class;
+extern JSObject *jsb_cocos2d_extension_ControlSlider_prototype;
 
 JSBool js_cocos2dx_extension_ControlSlider_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_ControlSlider_finalize(JSContext *cx, JSObject *obj);
@@ -225,8 +225,8 @@ JSBool js_cocos2dx_extension_ControlSlider_setMaximumAllowedValue(JSContext *cx,
 JSBool js_cocos2dx_extension_ControlSlider_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlSlider_ControlSlider(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ControlStepper_class;
-extern JSObject *jsb_ControlStepper_prototype;
+extern JSClass  *jsb_cocos2d_extension_ControlStepper_class;
+extern JSObject *jsb_cocos2d_extension_ControlStepper_prototype;
 
 JSBool js_cocos2dx_extension_ControlStepper_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_ControlStepper_finalize(JSContext *cx, JSObject *obj);
@@ -256,8 +256,8 @@ JSBool js_cocos2dx_extension_ControlStepper_setPlusLabel(JSContext *cx, uint32_t
 JSBool js_cocos2dx_extension_ControlStepper_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlStepper_ControlStepper(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ControlSwitch_class;
-extern JSObject *jsb_ControlSwitch_prototype;
+extern JSClass  *jsb_cocos2d_extension_ControlSwitch_class;
+extern JSObject *jsb_cocos2d_extension_ControlSwitch_prototype;
 
 JSBool js_cocos2dx_extension_ControlSwitch_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_ControlSwitch_finalize(JSContext *cx, JSObject *obj);
@@ -272,8 +272,8 @@ JSBool js_cocos2dx_extension_ControlSwitch_locationFromTouch(JSContext *cx, uint
 JSBool js_cocos2dx_extension_ControlSwitch_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlSwitch_ControlSwitch(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ScrollView_class;
-extern JSObject *jsb_ScrollView_prototype;
+extern JSClass  *jsb_cocos2d_extension_ScrollView_class;
+extern JSObject *jsb_cocos2d_extension_ScrollView_prototype;
 
 JSBool js_cocos2dx_extension_ScrollView_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_ScrollView_finalize(JSContext *cx, JSObject *obj);
@@ -310,8 +310,8 @@ JSBool js_cocos2dx_extension_ScrollView_setZoomScale(JSContext *cx, uint32_t arg
 JSBool js_cocos2dx_extension_ScrollView_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ScrollView_ScrollView(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_TableViewCell_class;
-extern JSObject *jsb_TableViewCell_prototype;
+extern JSClass  *jsb_cocos2d_extension_TableViewCell_class;
+extern JSObject *jsb_cocos2d_extension_TableViewCell_prototype;
 
 JSBool js_cocos2dx_extension_TableViewCell_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_TableViewCell_finalize(JSContext *cx, JSObject *obj);
@@ -324,8 +324,8 @@ JSBool js_cocos2dx_extension_TableViewCell_getObjectID(JSContext *cx, uint32_t a
 JSBool js_cocos2dx_extension_TableViewCell_getIdx(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_TableViewCell_TableViewCell(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_TableView_class;
-extern JSObject *jsb_TableView_prototype;
+extern JSClass  *jsb_cocos2d_extension_TableView_class;
+extern JSObject *jsb_cocos2d_extension_TableView_prototype;
 
 JSBool js_cocos2dx_extension_TableView_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_TableView_finalize(JSContext *cx, JSObject *obj);
@@ -345,8 +345,8 @@ JSBool js_cocos2dx_extension_TableView_cellAtIndex(JSContext *cx, uint32_t argc,
 JSBool js_cocos2dx_extension_TableView_dequeueCell(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_TableView_TableView(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_EditBox_class;
-extern JSObject *jsb_EditBox_prototype;
+extern JSClass  *jsb_cocos2d_extension_EditBox_class;
+extern JSObject *jsb_cocos2d_extension_EditBox_prototype;
 
 JSBool js_cocos2dx_extension_EditBox_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_EditBox_finalize(JSContext *cx, JSObject *obj);
@@ -377,8 +377,8 @@ JSBool js_cocos2dx_extension_EditBox_setVisible(JSContext *cx, uint32_t argc, js
 JSBool js_cocos2dx_extension_EditBox_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_EditBox_EditBox(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_AssetsManager_class;
-extern JSObject *jsb_AssetsManager_prototype;
+extern JSClass  *jsb_cocos2d_extension_AssetsManager_class;
+extern JSObject *jsb_cocos2d_extension_AssetsManager_prototype;
 
 JSBool js_cocos2dx_extension_AssetsManager_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_extension_AssetsManager_finalize(JSContext *cx, JSObject *obj);

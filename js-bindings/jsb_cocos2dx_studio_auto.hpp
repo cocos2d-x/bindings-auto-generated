@@ -5,8 +5,8 @@
 #include "jsfriendapi.h"
 
 
-extern JSClass  *jsb_ActionObject_class;
-extern JSObject *jsb_ActionObject_prototype;
+extern JSClass  *jsb_cocostudio_ActionObject_class;
+extern JSObject *jsb_cocostudio_ActionObject_prototype;
 
 JSBool js_cocos2dx_studio_ActionObject_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_ActionObject_finalize(JSContext *cx, JSObject *obj);
@@ -31,8 +31,8 @@ JSBool js_cocos2dx_studio_ActionObject_setLoop(JSContext *cx, uint32_t argc, jsv
 JSBool js_cocos2dx_studio_ActionObject_simulationActionUpdate(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_ActionObject(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ActionManagerEx_class;
-extern JSObject *jsb_ActionManagerEx_prototype;
+extern JSClass  *jsb_cocostudio_ActionManagerEx_class;
+extern JSObject *jsb_cocostudio_ActionManagerEx_prototype;
 
 JSBool js_cocos2dx_studio_ActionManagerEx_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_ActionManagerEx_finalize(JSContext *cx, JSObject *obj);
@@ -44,8 +44,8 @@ JSBool js_cocos2dx_studio_ActionManagerEx_releaseActions(JSContext *cx, uint32_t
 JSBool js_cocos2dx_studio_ActionManagerEx_purgeActionManager(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionManagerEx_shareManager(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_BaseData_class;
-extern JSObject *jsb_BaseData_prototype;
+extern JSClass  *jsb_cocostudio_BaseData_class;
+extern JSObject *jsb_cocostudio_BaseData_prototype;
 
 JSBool js_cocos2dx_studio_BaseData_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_BaseData_finalize(JSContext *cx, JSObject *obj);
@@ -56,8 +56,8 @@ JSBool js_cocos2dx_studio_BaseData_setColor(JSContext *cx, uint32_t argc, jsval 
 JSBool js_cocos2dx_studio_BaseData_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_BaseData_BaseData(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Tween_class;
-extern JSObject *jsb_Tween_prototype;
+extern JSClass  *jsb_cocostudio_Tween_class;
+extern JSObject *jsb_cocostudio_Tween_prototype;
 
 JSBool js_cocos2dx_studio_Tween_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_Tween_finalize(JSContext *cx, JSObject *obj);
@@ -72,16 +72,16 @@ JSBool js_cocos2dx_studio_Tween_setAnimation(JSContext *cx, uint32_t argc, jsval
 JSBool js_cocos2dx_studio_Tween_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Tween_Tween(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ColliderFilter_class;
-extern JSObject *jsb_ColliderFilter_prototype;
+extern JSClass  *jsb_cocostudio_ColliderFilter_class;
+extern JSObject *jsb_cocostudio_ColliderFilter_prototype;
 
 JSBool js_cocos2dx_studio_ColliderFilter_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_ColliderFilter_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_studio_ColliderFilter(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 
-extern JSClass  *jsb_DisplayManager_class;
-extern JSObject *jsb_DisplayManager_prototype;
+extern JSClass  *jsb_cocostudio_DisplayManager_class;
+extern JSObject *jsb_cocostudio_DisplayManager_prototype;
 
 JSBool js_cocos2dx_studio_DisplayManager_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_DisplayManager_finalize(JSContext *cx, JSObject *obj);
@@ -108,8 +108,8 @@ JSBool js_cocos2dx_studio_DisplayManager_setVisible(JSContext *cx, uint32_t argc
 JSBool js_cocos2dx_studio_DisplayManager_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_DisplayManager_DisplayManager(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Bone_class;
-extern JSObject *jsb_Bone_prototype;
+extern JSClass  *jsb_cocostudio_Bone_class;
+extern JSObject *jsb_cocostudio_Bone_prototype;
 
 JSBool js_cocos2dx_studio_Bone_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_Bone_finalize(JSContext *cx, JSObject *obj);
@@ -150,8 +150,8 @@ JSBool js_cocos2dx_studio_Bone_changeDisplayByIndex(JSContext *cx, uint32_t argc
 JSBool js_cocos2dx_studio_Bone_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Bone_Bone(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_BatchNode_class;
-extern JSObject *jsb_BatchNode_prototype;
+extern JSClass  *jsb_cocostudio_BatchNode_class;
+extern JSObject *jsb_cocostudio_BatchNode_prototype;
 
 JSBool js_cocos2dx_studio_BatchNode_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_BatchNode_finalize(JSContext *cx, JSObject *obj);
@@ -160,8 +160,8 @@ void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_studio_BatchNode_setPopGroupCommand(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_BatchNode_create(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ArmatureAnimation_class;
-extern JSObject *jsb_ArmatureAnimation_prototype;
+extern JSClass  *jsb_cocostudio_ArmatureAnimation_class;
+extern JSObject *jsb_cocostudio_ArmatureAnimation_prototype;
 
 JSBool js_cocos2dx_studio_ArmatureAnimation_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_ArmatureAnimation_finalize(JSContext *cx, JSObject *obj);
@@ -183,8 +183,8 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID(JSContext *cx, 
 JSBool js_cocos2dx_studio_ArmatureAnimation_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ArmatureAnimation_ArmatureAnimation(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ArmatureDataManager_class;
-extern JSObject *jsb_ArmatureDataManager_prototype;
+extern JSClass  *jsb_cocostudio_ArmatureDataManager_class;
+extern JSObject *jsb_cocostudio_ArmatureDataManager_prototype;
 
 JSBool js_cocos2dx_studio_ArmatureDataManager_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_ArmatureDataManager_finalize(JSContext *cx, JSObject *obj);
@@ -209,8 +209,8 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(JSContext *
 JSBool js_cocos2dx_studio_ArmatureDataManager_destoryInstance(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ArmatureDataManager_getInstance(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Armature_class;
-extern JSObject *jsb_Armature_prototype;
+extern JSClass  *jsb_cocostudio_Armature_class;
+extern JSObject *jsb_cocostudio_Armature_prototype;
 
 JSBool js_cocos2dx_studio_Armature_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_Armature_finalize(JSContext *cx, JSObject *obj);
@@ -241,8 +241,8 @@ JSBool js_cocos2dx_studio_Armature_getBoneDic(JSContext *cx, uint32_t argc, jsva
 JSBool js_cocos2dx_studio_Armature_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Armature_Armature(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_Skin_class;
-extern JSObject *jsb_Skin_prototype;
+extern JSClass  *jsb_cocostudio_Skin_class;
+extern JSObject *jsb_cocostudio_Skin_prototype;
 
 JSBool js_cocos2dx_studio_Skin_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_Skin_finalize(JSContext *cx, JSObject *obj);
@@ -259,8 +259,8 @@ JSBool js_cocos2dx_studio_Skin_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Skin_createWithSpriteFrameName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_Skin_Skin(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ComAttribute_class;
-extern JSObject *jsb_ComAttribute_prototype;
+extern JSClass  *jsb_cocostudio_ComAttribute_class;
+extern JSObject *jsb_cocostudio_ComAttribute_prototype;
 
 JSBool js_cocos2dx_studio_ComAttribute_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_ComAttribute_finalize(JSContext *cx, JSObject *obj);
@@ -277,8 +277,8 @@ JSBool js_cocos2dx_studio_ComAttribute_init(JSContext *cx, uint32_t argc, jsval 
 JSBool js_cocos2dx_studio_ComAttribute_setBool(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ComAttribute_create(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ComAudio_class;
-extern JSObject *jsb_ComAudio_prototype;
+extern JSClass  *jsb_cocostudio_ComAudio_class;
+extern JSObject *jsb_cocostudio_ComAudio_prototype;
 
 JSBool js_cocos2dx_studio_ComAudio_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_ComAudio_finalize(JSContext *cx, JSObject *obj);
@@ -315,8 +315,8 @@ JSBool js_cocos2dx_studio_ComAudio_getFile(JSContext *cx, uint32_t argc, jsval *
 JSBool js_cocos2dx_studio_ComAudio_resumeEffect(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ComAudio_create(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_InputDelegate_class;
-extern JSObject *jsb_InputDelegate_prototype;
+extern JSClass  *jsb_cocostudio_InputDelegate_class;
+extern JSObject *jsb_cocostudio_InputDelegate_prototype;
 
 JSBool js_cocos2dx_studio_InputDelegate_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_InputDelegate_finalize(JSContext *cx, JSObject *obj);
@@ -333,8 +333,8 @@ JSBool js_cocos2dx_studio_InputDelegate_getTouchPriority(JSContext *cx, uint32_t
 JSBool js_cocos2dx_studio_InputDelegate_setTouchEnabled(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_InputDelegate_setTouchMode(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ComController_class;
-extern JSObject *jsb_ComController_prototype;
+extern JSClass  *jsb_cocostudio_ComController_class;
+extern JSObject *jsb_cocostudio_ComController_prototype;
 
 JSBool js_cocos2dx_studio_ComController_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_ComController_finalize(JSContext *cx, JSObject *obj);
@@ -344,8 +344,8 @@ JSBool js_cocos2dx_studio_ComController_init(JSContext *cx, uint32_t argc, jsval
 JSBool js_cocos2dx_studio_ComController_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ComController_ComController(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_ComRender_class;
-extern JSObject *jsb_ComRender_prototype;
+extern JSClass  *jsb_cocostudio_ComRender_class;
+extern JSObject *jsb_cocostudio_ComRender_prototype;
 
 JSBool js_cocos2dx_studio_ComRender_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_ComRender_finalize(JSContext *cx, JSObject *obj);
@@ -354,8 +354,8 @@ void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_studio_ComRender_getNode(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ComRender_create(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_GUIReader_class;
-extern JSObject *jsb_GUIReader_prototype;
+extern JSClass  *jsb_cocostudio_GUIReader_class;
+extern JSObject *jsb_cocostudio_GUIReader_prototype;
 
 JSBool js_cocos2dx_studio_GUIReader_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_GUIReader_finalize(JSContext *cx, JSObject *obj);
@@ -366,8 +366,8 @@ JSBool js_cocos2dx_studio_GUIReader_getVersionInteger(JSContext *cx, uint32_t ar
 JSBool js_cocos2dx_studio_GUIReader_purgeGUIReader(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_GUIReader_shareReader(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_SceneReader_class;
-extern JSObject *jsb_SceneReader_prototype;
+extern JSClass  *jsb_cocostudio_SceneReader_class;
+extern JSObject *jsb_cocostudio_SceneReader_prototype;
 
 JSBool js_cocos2dx_studio_SceneReader_constructor(JSContext *cx, uint32_t argc, jsval *vp);
 void js_cocos2dx_studio_SceneReader_finalize(JSContext *cx, JSObject *obj);

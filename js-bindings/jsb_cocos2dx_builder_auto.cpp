@@ -31,9 +31,8 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	return JS_FALSE;
 }
 
-
-JSClass  *jsb_CCBAnimationManager_class;
-JSObject *jsb_CCBAnimationManager_prototype;
+JSClass  *jsb_cocosbuilder_CCBAnimationManager_class;
+JSObject *jsb_cocosbuilder_CCBAnimationManager_prototype;
 
 JSBool js_cocos2dx_builder_CCBAnimationManager_moveAnimationsFromNode(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -939,22 +938,22 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_constructor(JSContext *cx, uint32
 
 
 
-void js_cocos2dx_builder_CCBAnimationManager_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocosbuilder_CCBAnimationManager_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (CCBAnimationManager)", obj);
 }
 
 void js_register_cocos2dx_builder_CCBAnimationManager(JSContext *cx, JSObject *global) {
-	jsb_CCBAnimationManager_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_CCBAnimationManager_class->name = "BuilderAnimationManager";
-	jsb_CCBAnimationManager_class->addProperty = JS_PropertyStub;
-	jsb_CCBAnimationManager_class->delProperty = JS_DeletePropertyStub;
-	jsb_CCBAnimationManager_class->getProperty = JS_PropertyStub;
-	jsb_CCBAnimationManager_class->setProperty = JS_StrictPropertyStub;
-	jsb_CCBAnimationManager_class->enumerate = JS_EnumerateStub;
-	jsb_CCBAnimationManager_class->resolve = JS_ResolveStub;
-	jsb_CCBAnimationManager_class->convert = JS_ConvertStub;
-	jsb_CCBAnimationManager_class->finalize = js_cocos2dx_builder_CCBAnimationManager_finalize;
-	jsb_CCBAnimationManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocosbuilder_CCBAnimationManager_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocosbuilder_CCBAnimationManager_class->name = "BuilderAnimationManager";
+	jsb_cocosbuilder_CCBAnimationManager_class->addProperty = JS_PropertyStub;
+	jsb_cocosbuilder_CCBAnimationManager_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocosbuilder_CCBAnimationManager_class->getProperty = JS_PropertyStub;
+	jsb_cocosbuilder_CCBAnimationManager_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocosbuilder_CCBAnimationManager_class->enumerate = JS_EnumerateStub;
+	jsb_cocosbuilder_CCBAnimationManager_class->resolve = JS_ResolveStub;
+	jsb_cocosbuilder_CCBAnimationManager_class->convert = JS_ConvertStub;
+	jsb_cocosbuilder_CCBAnimationManager_class->finalize = js_cocosbuilder_CCBAnimationManager_finalize;
+	jsb_cocosbuilder_CCBAnimationManager_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -1005,10 +1004,10 @@ void js_register_cocos2dx_builder_CCBAnimationManager(JSContext *cx, JSObject *g
 
 	JSFunctionSpec *st_funcs = NULL;
 
-	jsb_CCBAnimationManager_prototype = JS_InitClass(
+	jsb_cocosbuilder_CCBAnimationManager_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_CCBAnimationManager_class,
+		jsb_cocosbuilder_CCBAnimationManager_class,
 		js_cocos2dx_builder_CCBAnimationManager_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -1025,16 +1024,15 @@ void js_register_cocos2dx_builder_CCBAnimationManager(JSContext *cx, JSObject *g
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_CCBAnimationManager_class;
-		p->proto = jsb_CCBAnimationManager_prototype;
+		p->jsclass = jsb_cocosbuilder_CCBAnimationManager_class;
+		p->proto = jsb_cocosbuilder_CCBAnimationManager_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-
-JSClass  *jsb_CCBReader_class;
-JSObject *jsb_CCBReader_prototype;
+JSClass  *jsb_cocosbuilder_CCBReader_class;
+JSObject *jsb_cocosbuilder_CCBReader_prototype;
 
 JSBool js_cocos2dx_builder_CCBReader_getAnimationManager(JSContext *cx, uint32_t argc, jsval *vp)
 {
@@ -1668,22 +1666,22 @@ JSBool js_cocos2dx_builder_CCBReader_constructor(JSContext *cx, uint32_t argc, j
 
 
 
-void js_cocos2dx_builder_CCBReader_finalize(JSFreeOp *fop, JSObject *obj) {
+void js_cocosbuilder_CCBReader_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (CCBReader)", obj);
 }
 
 void js_register_cocos2dx_builder_CCBReader(JSContext *cx, JSObject *global) {
-	jsb_CCBReader_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_CCBReader_class->name = "_Reader";
-	jsb_CCBReader_class->addProperty = JS_PropertyStub;
-	jsb_CCBReader_class->delProperty = JS_DeletePropertyStub;
-	jsb_CCBReader_class->getProperty = JS_PropertyStub;
-	jsb_CCBReader_class->setProperty = JS_StrictPropertyStub;
-	jsb_CCBReader_class->enumerate = JS_EnumerateStub;
-	jsb_CCBReader_class->resolve = JS_ResolveStub;
-	jsb_CCBReader_class->convert = JS_ConvertStub;
-	jsb_CCBReader_class->finalize = js_cocos2dx_builder_CCBReader_finalize;
-	jsb_CCBReader_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+	jsb_cocosbuilder_CCBReader_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocosbuilder_CCBReader_class->name = "_Reader";
+	jsb_cocosbuilder_CCBReader_class->addProperty = JS_PropertyStub;
+	jsb_cocosbuilder_CCBReader_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocosbuilder_CCBReader_class->getProperty = JS_PropertyStub;
+	jsb_cocosbuilder_CCBReader_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocosbuilder_CCBReader_class->enumerate = JS_EnumerateStub;
+	jsb_cocosbuilder_CCBReader_class->resolve = JS_ResolveStub;
+	jsb_cocosbuilder_CCBReader_class->convert = JS_ConvertStub;
+	jsb_cocosbuilder_CCBReader_class->finalize = js_cocosbuilder_CCBReader_finalize;
+	jsb_cocosbuilder_CCBReader_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
@@ -1716,10 +1714,10 @@ void js_register_cocos2dx_builder_CCBReader(JSContext *cx, JSObject *global) {
 		JS_FS_END
 	};
 
-	jsb_CCBReader_prototype = JS_InitClass(
+	jsb_cocosbuilder_CCBReader_prototype = JS_InitClass(
 		cx, global,
 		NULL, // parent proto
-		jsb_CCBReader_class,
+		jsb_cocosbuilder_CCBReader_class,
 		js_cocos2dx_builder_CCBReader_constructor, 0, // constructor
 		properties,
 		funcs,
@@ -1736,8 +1734,8 @@ void js_register_cocos2dx_builder_CCBReader(JSContext *cx, JSObject *global) {
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_CCBReader_class;
-		p->proto = jsb_CCBReader_prototype;
+		p->jsclass = jsb_cocosbuilder_CCBReader_class;
+		p->proto = jsb_cocosbuilder_CCBReader_prototype;
 		p->parentProto = NULL;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
