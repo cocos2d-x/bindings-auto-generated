@@ -39601,9 +39601,9 @@ JSBool js_cocos2dx_TMXMapInfo_getTileProperties(JSContext *cx, uint32_t argc, js
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_getTileProperties : Invalid Native Object");
 	if (argc == 0) {
-		cocos2d::IntValueMap& ret = cobj->getTileProperties();
+		cocos2d::ValueMapIntKey& ret = cobj->getTileProperties();
 		jsval jsret;
-		jsret = ccintvaluemap_to_jsval(cx, ret);
+		jsret = ccvaluemapintkey_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -39731,8 +39731,8 @@ JSBool js_cocos2dx_TMXMapInfo_setTileProperties(JSContext *cx, uint32_t argc, js
 	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_setTileProperties : Invalid Native Object");
 	if (argc == 1) {
-		cocos2d::IntValueMap arg0;
-		ok &= jsval_to_ccintvaluemap(cx, argv[0], &arg0);
+		cocos2d::ValueMapIntKey arg0;
+		ok &= jsval_to_ccvaluemapintkey(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_setTileProperties : Error processing arguments");
 		cobj->setTileProperties(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);

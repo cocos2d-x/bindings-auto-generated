@@ -63752,8 +63752,8 @@ int lua_cocos2dx_TMXMapInfo_getTileProperties(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::IntValueMap& ret = cobj->getTileProperties();
-        ccintvaluemap_to_luaval(tolua_S, ret);
+        cocos2d::ValueMapIntKey& ret = cobj->getTileProperties();
+        ccvaluemapintkey_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTileProperties",argc, 0);
@@ -64014,8 +64014,8 @@ int lua_cocos2dx_TMXMapInfo_setTileProperties(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        cocos2d::IntValueMap arg0;
-        ok &= luaval_to_ccintvaluemap(tolua_S, 2, &arg0);
+        cocos2d::ValueMapIntKey arg0;
+        ok &= luaval_to_ccvaluemapintkey(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setTileProperties(arg0);

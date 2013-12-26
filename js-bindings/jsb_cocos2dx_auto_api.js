@@ -7798,7 +7798,7 @@ getTileSize : function () {},
 
 /**
  * @method getTileProperties
- * @return A value converted from C/C++ "cocos2d::IntValueMap&"
+ * @return A value converted from C/C++ "cocos2d::ValueMapIntKey&"
  */
 getTileProperties : function () {},
 
@@ -7828,7 +7828,7 @@ setOrientation : function () {},
 
 /**
  * @method setTileProperties
- * @param {const cocos2d::IntValueMap&}
+ * @param {const cocos2d::ValueMapIntKey&}
  */
 setTileProperties : function () {},
 
