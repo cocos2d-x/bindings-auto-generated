@@ -541,6 +541,11 @@ setBackGroundColorType : function () {},
 setBackGroundImage : function () {},
 
 /**
+ * @method requestDoLayout
+ */
+requestDoLayout : function () {},
+
+/**
  * @method isClippingEnabled
  * @return A value converted from C/C++ "bool"
  */
@@ -1313,6 +1318,11 @@ getItem : function () {},
  * @param {cocos2d::gui::Widget*}
  */
 setItemModel : function () {},
+
+/**
+ * @method requestRefreshView
+ */
+requestRefreshView : function () {},
 
 /**
  * @method pushBackDefaultItem

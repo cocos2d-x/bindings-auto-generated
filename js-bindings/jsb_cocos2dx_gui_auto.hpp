@@ -128,6 +128,7 @@ JSBool js_cocos2dx_gui_Layout_setClippingType(JSContext *cx, uint32_t argc, jsva
 JSBool js_cocos2dx_gui_Layout_setBackGroundColorType(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_Layout_setBackGroundImage(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_Layout_setBackGroundColor(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Layout_requestDoLayout(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_Layout_isClippingEnabled(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_Layout_setBackGroundColorOpacity(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_Layout_setBackGroundImageCapInsets(JSContext *cx, uint32_t argc, jsval *vp);
@@ -307,6 +308,7 @@ JSBool js_cocos2dx_gui_ListView_setItemsMargin(JSContext *cx, uint32_t argc, jsv
 JSBool js_cocos2dx_gui_ListView_removeLastItem(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_ListView_getItem(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_ListView_setItemModel(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_ListView_requestRefreshView(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_ListView_pushBackDefaultItem(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_ListView_insertCustomItem(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_ListView_create(JSContext *cx, uint32_t argc, jsval *vp);

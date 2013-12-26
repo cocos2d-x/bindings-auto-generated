@@ -4018,6 +4018,48 @@ int lua_cocos2dx_studio_Layout_setBackGroundColor(lua_State* tolua_S)
 
     return 0;
 }
+int lua_cocos2dx_studio_Layout_requestDoLayout(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::gui::Layout* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_Layout_requestDoLayout'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cobj->requestDoLayout();
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "requestDoLayout",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_Layout_requestDoLayout'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_cocos2dx_studio_Layout_isClippingEnabled(lua_State* tolua_S)
 {
     int argc = 0;
@@ -4435,6 +4477,7 @@ int lua_register_cocos2dx_studio_Layout(lua_State* tolua_S)
         tolua_function(tolua_S,"setBackGroundColorType",lua_cocos2dx_studio_Layout_setBackGroundColorType);
         tolua_function(tolua_S,"setBackGroundImage",lua_cocos2dx_studio_Layout_setBackGroundImage);
         tolua_function(tolua_S,"setBackGroundColor",lua_cocos2dx_studio_Layout_setBackGroundColor);
+        tolua_function(tolua_S,"requestDoLayout",lua_cocos2dx_studio_Layout_requestDoLayout);
         tolua_function(tolua_S,"isClippingEnabled",lua_cocos2dx_studio_Layout_isClippingEnabled);
         tolua_function(tolua_S,"setBackGroundColorOpacity",lua_cocos2dx_studio_Layout_setBackGroundColorOpacity);
         tolua_function(tolua_S,"setBackGroundImageCapInsets",lua_cocos2dx_studio_Layout_setBackGroundImageCapInsets);
@@ -9595,6 +9638,48 @@ int lua_cocos2dx_studio_ListView_setItemModel(lua_State* tolua_S)
 
     return 0;
 }
+int lua_cocos2dx_studio_ListView_requestRefreshView(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::gui::ListView* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ListView_requestRefreshView'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cobj->requestRefreshView();
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "requestRefreshView",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ListView_requestRefreshView'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_cocos2dx_studio_ListView_pushBackDefaultItem(lua_State* tolua_S)
 {
     int argc = 0;
@@ -9808,6 +9893,7 @@ int lua_register_cocos2dx_studio_ListView(lua_State* tolua_S)
         tolua_function(tolua_S,"removeLastItem",lua_cocos2dx_studio_ListView_removeLastItem);
         tolua_function(tolua_S,"getItem",lua_cocos2dx_studio_ListView_getItem);
         tolua_function(tolua_S,"setItemModel",lua_cocos2dx_studio_ListView_setItemModel);
+        tolua_function(tolua_S,"requestRefreshView",lua_cocos2dx_studio_ListView_requestRefreshView);
         tolua_function(tolua_S,"pushBackDefaultItem",lua_cocos2dx_studio_ListView_pushBackDefaultItem);
         tolua_function(tolua_S,"insertCustomItem",lua_cocos2dx_studio_ListView_insertCustomItem);
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_ListView_constructor);

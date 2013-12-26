@@ -2063,6 +2063,21 @@ JSBool js_cocos2dx_gui_Layout_setBackGroundColor(JSContext *cx, uint32_t argc, j
 	JS_ReportError(cx, "js_cocos2dx_gui_Layout_setBackGroundColor : wrong number of arguments");
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_gui_Layout_requestDoLayout(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::gui::Layout* cobj = (cocos2d::gui::Layout *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Layout_requestDoLayout : Invalid Native Object");
+	if (argc == 0) {
+		cobj->requestDoLayout();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_gui_Layout_requestDoLayout : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_gui_Layout_isClippingEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -2274,6 +2289,7 @@ void js_register_cocos2dx_gui_Layout(JSContext *cx, JSObject *global) {
 		JS_FN("setBackGroundColorType", js_cocos2dx_gui_Layout_setBackGroundColorType, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBackGroundImage", js_cocos2dx_gui_Layout_setBackGroundImage, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBackGroundColor", js_cocos2dx_gui_Layout_setBackGroundColor, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("requestDoLayout", js_cocos2dx_gui_Layout_requestDoLayout, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isClippingEnabled", js_cocos2dx_gui_Layout_isClippingEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBackGroundColorOpacity", js_cocos2dx_gui_Layout_setBackGroundColorOpacity, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBackGroundImageCapInsets", js_cocos2dx_gui_Layout_setBackGroundImageCapInsets, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -5130,6 +5146,21 @@ JSBool js_cocos2dx_gui_ListView_setItemModel(JSContext *cx, uint32_t argc, jsval
 	JS_ReportError(cx, "js_cocos2dx_gui_ListView_setItemModel : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_gui_ListView_requestRefreshView(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::gui::ListView* cobj = (cocos2d::gui::ListView *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ListView_requestRefreshView : Invalid Native Object");
+	if (argc == 0) {
+		cobj->requestRefreshView();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_gui_ListView_requestRefreshView : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_gui_ListView_pushBackDefaultItem(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -5257,6 +5288,7 @@ void js_register_cocos2dx_gui_ListView(JSContext *cx, JSObject *global) {
 		JS_FN("removeLastItem", js_cocos2dx_gui_ListView_removeLastItem, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getItem", js_cocos2dx_gui_ListView_getItem, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setItemModel", js_cocos2dx_gui_ListView_setItemModel, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("requestRefreshView", js_cocos2dx_gui_ListView_requestRefreshView, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("pushBackDefaultItem", js_cocos2dx_gui_ListView_pushBackDefaultItem, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("insertCustomItem", js_cocos2dx_gui_ListView_insertCustomItem, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
