@@ -16,13 +16,13 @@ JSBool js_cocos2dx_studio_ActionObject_setCurrentTime(JSContext *cx, uint32_t ar
 JSBool js_cocos2dx_studio_ActionObject_pause(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_setName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_setUnitTime(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ActionObject_getTotalTime(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_getName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_stop(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_play(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_getCurrentTime(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_removeActionNode(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_getLoop(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_ActionObject_initWithDictionary(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_addActionNode(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_getUnitTime(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionObject_isPlaying(JSContext *cx, uint32_t argc, jsval *vp);
@@ -41,8 +41,8 @@ void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_studio_ActionManagerEx_playActionByName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionManagerEx_getActionByName(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ActionManagerEx_releaseActions(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_ActionManagerEx_purgeActionManager(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_ActionManagerEx_shareManager(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ActionManagerEx_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ActionManagerEx_getInstance(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocostudio_BaseData_class;
 extern JSObject *jsb_cocostudio_BaseData_prototype;
@@ -208,7 +208,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_removeTextureData(JSContext *cx, u
 JSBool js_cocos2dx_studio_ArmatureDataManager_addTextureData(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ArmatureDataManager_isAutoLoadSpriteFile(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_ArmatureDataManager_destoryInstance(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ArmatureDataManager_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ArmatureDataManager_getInstance(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocostudio_Armature_class;
@@ -269,9 +269,9 @@ void js_cocos2dx_studio_ComAttribute_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_studio_ComAttribute(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_studio_ComAttribute_getFloat(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ComAttribute_getString(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ComAttribute_setFloat(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_ComAttribute_setCString(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_studio_ComAttribute_getCString(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ComAttribute_setString(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ComAttribute_getBool(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ComAttribute_setInt(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_ComAttribute_getInt(JSContext *cx, uint32_t argc, jsval *vp);
@@ -375,8 +375,9 @@ JSBool js_cocos2dx_studio_SceneReader_constructor(JSContext *cx, uint32_t argc, 
 void js_cocos2dx_studio_SceneReader_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_studio_SceneReader(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_studio_SceneReader_purgeSceneReader(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_SceneReader_createNodeWithSceneFile(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_SceneReader_getNodeByTag(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_SceneReader_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_SceneReader_sceneReaderVersion(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_SceneReader_getInstance(JSContext *cx, uint32_t argc, jsval *vp);
 #endif

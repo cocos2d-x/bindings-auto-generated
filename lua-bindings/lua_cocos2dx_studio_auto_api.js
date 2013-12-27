@@ -1696,14 +1696,6 @@ PageView : function () {},
 ccs.ActionManagerEx = {
 
 /**
- * @method playActionByName
- * @return A value converted from C/C++ "cocostudio::ActionObject*"
- * @param {const char*}
- * @param {const char*}
- */
-playActionByName : function () {},
-
-/**
  * @method getActionByName
  * @return A value converted from C/C++ "cocostudio::ActionObject*"
  * @param {const char*}
@@ -1712,28 +1704,20 @@ playActionByName : function () {},
 getActionByName : function () {},
 
 /**
- * @method initWithDictionary
- * @param {const char*}
- * @param {cocostudio::JsonDictionary*}
- * @param {cocos2d::Object*}
- */
-initWithDictionary : function () {},
-
-/**
  * @method releaseActions
  */
 releaseActions : function () {},
 
 /**
- * @method purgeActionManager
+ * @method destroyInstance
  */
-purgeActionManager : function () {},
+destroyInstance : function () {},
 
 /**
- * @method shareManager
+ * @method getInstance
  * @return A value converted from C/C++ "cocostudio::ActionManagerEx*"
  */
-shareManager : function () {},
+getInstance : function () {},
 
 /**
  * @method ActionManagerEx
@@ -1801,7 +1785,7 @@ copy : function () {},
 
 /**
  * @method changeDisplayToTexture
- * @return A value converted from C/C++ "const std::string&"
+ * @return A value converted from C/C++ "const std::string"
  * @param {const std::string&}
  */
 changeDisplayToTexture : function () {},
@@ -2633,9 +2617,9 @@ isAutoLoadSpriteFile : function () {},
 addSpriteFrameFromFile : function () {},
 
 /**
- * @method destoryInstance
+ * @method destroyInstance
  */
-destoryInstance : function () {},
+destroyInstance : function () {},
 
 /**
  * @method getInstance
@@ -2859,47 +2843,44 @@ ccs.ComAttribute = {
 /**
  * @method getFloat
  * @return A value converted from C/C++ "float"
- * @param {const char*}
+ * @param {const std::string&}
+ * @param {float}
  */
 getFloat : function () {},
 
 /**
- * @method getDict
- * @return A value converted from C/C++ "cocostudio::JsonDictionary*"
+ * @method getString
+ * @return A value converted from C/C++ "std::string"
+ * @param {const std::string&}
+ * @param {const std::string&}
  */
-getDict : function () {},
+getString : function () {},
 
 /**
  * @method setFloat
- * @param {const char*}
+ * @param {const std::string&}
  * @param {float}
  */
 setFloat : function () {},
 
 /**
- * @method setCString
- * @param {const char*}
- * @param {const char*}
+ * @method setString
+ * @param {const std::string&}
+ * @param {const std::string&}
  */
-setCString : function () {},
-
-/**
- * @method getCString
- * @return A value converted from C/C++ "const char*"
- * @param {const char*}
- */
-getCString : function () {},
+setString : function () {},
 
 /**
  * @method getBool
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {const std::string&}
+ * @param {bool}
  */
 getBool : function () {},
 
 /**
  * @method setInt
- * @param {const char*}
+ * @param {const std::string&}
  * @param {int}
  */
 setInt : function () {},
@@ -2907,7 +2888,8 @@ setInt : function () {},
 /**
  * @method getInt
  * @return A value converted from C/C++ "int"
- * @param {const char*}
+ * @param {const std::string&}
+ * @param {int}
  */
 getInt : function () {},
 
@@ -2919,7 +2901,7 @@ init : function () {},
 
 /**
  * @method setBool
- * @param {const char*}
+ * @param {const std::string&}
  * @param {bool}
  */
 setBool : function () {},
@@ -3146,9 +3128,11 @@ create : function () {},
 ccs.SceneReader = {
 
 /**
- * @method purgeSceneReader
+ * @method getNodeByTag
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ * @param {int}
  */
-purgeSceneReader : function () {},
+getNodeByTag : function () {},
 
 /**
  * @method createNodeWithSceneFile
@@ -3156,6 +3140,11 @@ purgeSceneReader : function () {},
  * @param {const char*}
  */
 createNodeWithSceneFile : function () {},
+
+/**
+ * @method destroyInstance
+ */
+destroyInstance : function () {},
 
 /**
  * @method sceneReaderVersion

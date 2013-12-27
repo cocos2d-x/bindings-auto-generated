@@ -32,6 +32,12 @@ setName : function () {},
 setUnitTime : function () {},
 
 /**
+ * @method getTotalTime
+ * @return A value converted from C/C++ "float"
+ */
+getTotalTime : function () {},
+
+/**
  * @method getName
  * @return A value converted from C/C++ "const char*"
  */
@@ -41,11 +47,6 @@ getName : function () {},
  * @method stop
  */
 stop : function () {},
-
-/**
- * @method play
- */
-play : function () {},
 
 /**
  * @method getCurrentTime
@@ -64,13 +65,6 @@ removeActionNode : function () {},
  * @return A value converted from C/C++ "bool"
  */
 getLoop : function () {},
-
-/**
- * @method initWithDictionary
- * @param {cocostudio::JsonDictionary*}
- * @param {cocos2d::Object*}
- */
-initWithDictionary : function () {},
 
 /**
  * @method addActionNode
@@ -122,14 +116,6 @@ ActionObject : function () {},
 ccs.ActionManager = {
 
 /**
- * @method playActionByName
- * @return A value converted from C/C++ "cocostudio::ActionObject*"
- * @param {const char*}
- * @param {const char*}
- */
-playActionByName : function () {},
-
-/**
  * @method getActionByName
  * @return A value converted from C/C++ "cocostudio::ActionObject*"
  * @param {const char*}
@@ -143,15 +129,15 @@ getActionByName : function () {},
 releaseActions : function () {},
 
 /**
- * @method purgeActionManager
+ * @method destroyInstance
  */
-purgeActionManager : function () {},
+destroyInstance : function () {},
 
 /**
- * @method shareManager
+ * @method getInstance
  * @return A value converted from C/C++ "cocostudio::ActionManagerEx*"
  */
-shareManager : function () {},
+getInstance : function () {},
 
 };
 
@@ -809,9 +795,9 @@ isAutoLoadSpriteFile : function () {},
 addSpriteFrameFromFile : function () {},
 
 /**
- * @method destoryInstance
+ * @method destroyInstance
  */
-destoryInstance : function () {},
+destroyInstance : function () {},
 
 /**
  * @method getInstance
@@ -1035,41 +1021,44 @@ ccs.ComAttribute = {
 /**
  * @method getFloat
  * @return A value converted from C/C++ "float"
- * @param {const char*}
+ * @param {const std::string&}
+ * @param {float}
  */
 getFloat : function () {},
 
 /**
+ * @method getString
+ * @return A value converted from C/C++ "std::string"
+ * @param {const std::string&}
+ * @param {const std::string&}
+ */
+getString : function () {},
+
+/**
  * @method setFloat
- * @param {const char*}
+ * @param {const std::string&}
  * @param {float}
  */
 setFloat : function () {},
 
 /**
- * @method setCString
- * @param {const char*}
- * @param {const char*}
+ * @method setString
+ * @param {const std::string&}
+ * @param {const std::string&}
  */
-setCString : function () {},
-
-/**
- * @method getCString
- * @return A value converted from C/C++ "const char*"
- * @param {const char*}
- */
-getCString : function () {},
+setString : function () {},
 
 /**
  * @method getBool
  * @return A value converted from C/C++ "bool"
- * @param {const char*}
+ * @param {const std::string&}
+ * @param {bool}
  */
 getBool : function () {},
 
 /**
  * @method setInt
- * @param {const char*}
+ * @param {const std::string&}
  * @param {int}
  */
 setInt : function () {},
@@ -1077,7 +1066,8 @@ setInt : function () {},
 /**
  * @method getInt
  * @return A value converted from C/C++ "int"
- * @param {const char*}
+ * @param {const std::string&}
+ * @param {int}
  */
 getInt : function () {},
 
@@ -1089,7 +1079,7 @@ init : function () {},
 
 /**
  * @method setBool
- * @param {const char*}
+ * @param {const std::string&}
  * @param {bool}
  */
 setBool : function () {},
@@ -1415,16 +1405,23 @@ shareReader : function () {},
 ccs.SceneReader = {
 
 /**
- * @method purgeSceneReader
- */
-purgeSceneReader : function () {},
-
-/**
  * @method createNodeWithSceneFile
  * @return A value converted from C/C++ "cocos2d::Node*"
  * @param {const char*}
  */
 createNodeWithSceneFile : function () {},
+
+/**
+ * @method getNodeByTag
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ * @param {int}
+ */
+getNodeByTag : function () {},
+
+/**
+ * @method destroyInstance
+ */
+destroyInstance : function () {},
 
 /**
  * @method sceneReaderVersion
