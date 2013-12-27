@@ -3309,7 +3309,7 @@ getTextureAtlas : function () {},
 
 /**
  * @method getQuadsToDraw
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "ssize_t"
  */
 getQuadsToDraw : function () {},
 
@@ -3321,7 +3321,7 @@ setTexture : function () {},
 
 /**
  * @method setQuadsToDraw
- * @param {int}
+ * @param {ssize_t}
  */
 setQuadsToDraw : function () {},
 
