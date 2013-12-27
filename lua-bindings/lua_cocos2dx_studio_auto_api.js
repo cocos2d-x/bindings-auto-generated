@@ -132,12 +132,6 @@ getVirtualRenderer : function () {},
 setSizePercent : function () {},
 
 /**
- * @method setPositionType
- * @param {cocos2d::gui::PositionType}
- */
-setPositionType : function () {},
-
-/**
  * @method isFlipX
  * @return A value converted from C/C++ "bool"
  */
@@ -150,9 +144,10 @@ isFlipX : function () {},
 setActionTag : function () {},
 
 /**
- * @method removeAllChildren
+ * @method getLeftInParent
+ * @return A value converted from C/C++ "float"
  */
-removeAllChildren : function () {},
+getLeftInParent : function () {},
 
 /**
  * @method setUpdateEnabled
@@ -173,11 +168,10 @@ getTouchEndPos : function () {},
 setPositionPercent : function () {},
 
 /**
- * @method getChildByTag
- * @return A value converted from C/C++ "cocos2d::Node*"
- * @param {int}
+ * @method setPositionType
+ * @param {cocos2d::gui::PositionType}
  */
-getChildByTag : function () {},
+setPositionType : function () {},
 
 /**
  * @method getName
@@ -216,6 +210,13 @@ getActionTag : function () {},
 getLayoutParameter : function () {},
 
 /**
+ * @method hitTest
+ * @return A value converted from C/C++ "bool"
+ * @param {const cocos2d::Point&}
+ */
+hitTest : function () {},
+
+/**
  * @method getPositionType
  * @return A value converted from C/C++ "cocos2d::gui::PositionType"
  */
@@ -233,12 +234,6 @@ getWidgetType : function () {},
  * @param {const char*}
  */
 getChildByName : function () {},
-
-/**
- * @method setPosition
- * @param {const cocos2d::Point&}
- */
-setPosition : function () {},
 
 /**
  * @method isEnabled
@@ -318,11 +313,6 @@ setBrightStyle : function () {},
 setName : function () {},
 
 /**
- * @method removeFromParent
- */
-removeFromParent : function () {},
-
-/**
  * @method setLayoutParameter
  * @param {cocos2d::gui::LayoutParameter*}
  */
@@ -339,18 +329,6 @@ setFlipY : function () {},
  * @param {bool}
  */
 setFlipX : function () {},
-
-/**
- * @method removeAllChildrenWithCleanup
- * @param {bool}
- */
-removeAllChildrenWithCleanup : function () {},
-
-/**
- * @method getLeftInParent
- * @return A value converted from C/C++ "float"
- */
-getLeftInParent : function () {},
 
 /**
  * @method isBright
@@ -372,16 +350,10 @@ clippingParentAreaContainPoint : function () {},
 getSizePercent : function () {},
 
 /**
- * @method removeFromParentAndCleanup
- * @param {bool}
+ * @method setPosition
+ * @param {const cocos2d::Point&}
  */
-removeFromParentAndCleanup : function () {},
-
-/**
- * @method getTopInParent
- * @return A value converted from C/C++ "float"
- */
-getTopInParent : function () {},
+setPosition : function () {},
 
 /**
  * @method isUpdateEnabled
@@ -426,25 +398,10 @@ getWorldPosition : function () {},
 getPositionPercent : function () {},
 
 /**
- * @method removeChildByTag
- * @param {int}
- * @param {bool}
+ * @method getTopInParent
+ * @return A value converted from C/C++ "float"
  */
-removeChildByTag : function () {},
-
-/**
- * @method hitTest
- * @return A value converted from C/C++ "bool"
- * @param {const cocos2d::Point&}
- */
-hitTest : function () {},
-
-/**
- * @method removeChild
- * @param {cocos2d::Node*}
- * @param {bool}
- */
-removeChild : function () {},
+getTopInParent : function () {},
 
 /**
  * @method isFocused
@@ -477,12 +434,6 @@ setSize : function () {},
  * @param {bool}
  */
 setBright : function () {},
-
-/**
- * @method getChildrenCount
- * @return A value converted from C/C++ "long"
- */
-getChildrenCount : function () {},
 
 /**
  * @method create
@@ -1258,6 +1209,11 @@ ccs.ListView = {
  * @param {cocos2d::gui::Widget*}
  */
 getIndex : function () {},
+
+/**
+ * @method removeAllItems
+ */
+removeAllItems : function () {},
 
 /**
  * @method setGravity
@@ -2453,6 +2409,35 @@ getSpeedScale : function () {},
 pause : function () {},
 
 /**
+ * @method setSpeedScale
+ * @param {float}
+ */
+setSpeedScale : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ * @param {cocostudio::Armature*}
+ */
+init : function () {},
+
+/**
+ * @method playWithIndexes
+ * @param {const std::vector<int, std::allocator<int> >&}
+ * @param {int}
+ * @param {bool}
+ */
+playWithIndexes : function () {},
+
+/**
+ * @method play
+ * @param {const std::string&}
+ * @param {int}
+ * @param {int}
+ */
+play : function () {},
+
+/**
  * @method gotoAndPause
  * @param {int}
  */
@@ -2469,18 +2454,6 @@ resume : function () {},
 stop : function () {},
 
 /**
- * @method setAnimationData
- * @param {cocostudio::AnimationData*}
- */
-setAnimationData : function () {},
-
-/**
- * @method setSpeedScale
- * @param {float}
- */
-setSpeedScale : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -2493,29 +2466,44 @@ update : function () {},
 getAnimationData : function () {},
 
 /**
- * @method gotoAndPlay
+ * @method playWithIndex
+ * @param {int}
+ * @param {int}
  * @param {int}
  */
-gotoAndPlay : function () {},
-
-/**
- * @method init
- * @return A value converted from C/C++ "bool"
- * @param {cocostudio::Armature*}
- */
-init : function () {},
-
-/**
- * @method getMovementCount
- * @return A value converted from C/C++ "long"
- */
-getMovementCount : function () {},
+playWithIndex : function () {},
 
 /**
  * @method getCurrentMovementID
  * @return A value converted from C/C++ "std::string"
  */
 getCurrentMovementID : function () {},
+
+/**
+ * @method setAnimationData
+ * @param {cocostudio::AnimationData*}
+ */
+setAnimationData : function () {},
+
+/**
+ * @method gotoAndPlay
+ * @param {int}
+ */
+gotoAndPlay : function () {},
+
+/**
+ * @method playWithNames
+ * @param {const std::vector<std::basic_string<char>, std::allocator<std::basic_string<char> > >&}
+ * @param {int}
+ * @param {bool}
+ */
+playWithNames : function () {},
+
+/**
+ * @method getMovementCount
+ * @return A value converted from C/C++ "long"
+ */
+getMovementCount : function () {},
 
 /**
  * @method create

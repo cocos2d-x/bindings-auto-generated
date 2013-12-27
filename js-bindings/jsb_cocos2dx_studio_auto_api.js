@@ -603,6 +603,35 @@ getSpeedScale : function () {},
 pause : function () {},
 
 /**
+ * @method setSpeedScale
+ * @param {float}
+ */
+setSpeedScale : function () {},
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ * @param {cocostudio::Armature*}
+ */
+init : function () {},
+
+/**
+ * @method playWithIndexes
+ * @param {const std::vector<int, std::allocator<int> >&}
+ * @param {int}
+ * @param {bool}
+ */
+playWithIndexes : function () {},
+
+/**
+ * @method play
+ * @param {const std::string&}
+ * @param {int}
+ * @param {int}
+ */
+play : function () {},
+
+/**
  * @method gotoAndPause
  * @param {int}
  */
@@ -619,16 +648,24 @@ resume : function () {},
 stop : function () {},
 
 /**
- * @method setSpeedScale
- * @param {float}
- */
-setSpeedScale : function () {},
-
-/**
  * @method update
  * @param {float}
  */
 update : function () {},
+
+/**
+ * @method playWithIndex
+ * @param {int}
+ * @param {int}
+ * @param {int}
+ */
+playWithIndex : function () {},
+
+/**
+ * @method getCurrentMovementID
+ * @return A value converted from C/C++ "std::string"
+ */
+getCurrentMovementID : function () {},
 
 /**
  * @method gotoAndPlay
@@ -637,23 +674,18 @@ update : function () {},
 gotoAndPlay : function () {},
 
 /**
- * @method init
- * @return A value converted from C/C++ "bool"
- * @param {cocostudio::Armature*}
+ * @method playWithNames
+ * @param {const std::vector<std::basic_string<char>, std::allocator<std::basic_string<char> > >&}
+ * @param {int}
+ * @param {bool}
  */
-init : function () {},
+playWithNames : function () {},
 
 /**
  * @method getMovementCount
  * @return A value converted from C/C++ "long"
  */
 getMovementCount : function () {},
-
-/**
- * @method getCurrentMovementID
- * @return A value converted from C/C++ "std::string"
- */
-getCurrentMovementID : function () {},
 
 /**
  * @method create

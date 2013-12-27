@@ -2716,104 +2716,6 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_getSpeedScale(JSContext *cx, uint32_
 	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_getSpeedScale : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_studio_ArmatureAnimation_play(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-
-	JSObject *obj = NULL;
-	cocostudio::ArmatureAnimation* cobj = NULL;
-	obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_play : Invalid Native Object");
-	do {
-		if (argc == 1) {
-			std::vector<std::string> arg0;
-			ok &= jsval_to_std_vector_string(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->play(arg0);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 2) {
-			std::vector<std::string> arg0;
-			ok &= jsval_to_std_vector_string(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->play(arg0, arg1);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 3) {
-			std::vector<std::string> arg0;
-			ok &= jsval_to_std_vector_string(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-			if (!ok) { ok = JS_TRUE; break; }
-			JSBool arg2;
-			ok &= JS_ValueToBoolean(cx, argv[2], &arg2);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->play(arg0, arg1, arg2);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 1) {
-			std::string arg0;
-			ok &= jsval_to_std_string(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->play(arg0);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 2) {
-			std::string arg0;
-			ok &= jsval_to_std_string(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->play(arg0, arg1);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 3) {
-			std::string arg0;
-			ok &= jsval_to_std_string(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg2;
-			ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->play(arg0, arg1, arg2);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_play : wrong number of arguments");
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_studio_ArmatureAnimation_pause(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -2827,6 +2729,139 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_pause(JSContext *cx, uint32_t argc, 
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_pause : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ArmatureAnimation_setSpeedScale(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ArmatureAnimation* cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_setSpeedScale : Invalid Native Object");
+	if (argc == 1) {
+		double arg0;
+		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_setSpeedScale : Error processing arguments");
+		cobj->setSpeedScale(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_setSpeedScale : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ArmatureAnimation_init(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ArmatureAnimation* cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_init : Invalid Native Object");
+	if (argc == 1) {
+		cocostudio::Armature* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocostudio::Armature*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_init : Error processing arguments");
+		JSBool ret = cobj->init(arg0);
+		jsval jsret;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_init : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ArmatureAnimation_playWithIndexes(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ArmatureAnimation* cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithIndexes : Invalid Native Object");
+	if (argc == 1) {
+		std::vector<int> arg0;
+		ok &= jsval_to_std_vector_int(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithIndexes : Error processing arguments");
+		cobj->playWithIndexes(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	if (argc == 2) {
+		std::vector<int> arg0;
+		int arg1;
+		ok &= jsval_to_std_vector_int(cx, argv[0], &arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithIndexes : Error processing arguments");
+		cobj->playWithIndexes(arg0, arg1);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	if (argc == 3) {
+		std::vector<int> arg0;
+		int arg1;
+		JSBool arg2;
+		ok &= jsval_to_std_vector_int(cx, argv[0], &arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= JS_ValueToBoolean(cx, argv[2], &arg2);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithIndexes : Error processing arguments");
+		cobj->playWithIndexes(arg0, arg1, arg2);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_playWithIndexes : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ArmatureAnimation_play(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ArmatureAnimation* cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_play : Invalid Native Object");
+	if (argc == 1) {
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_play : Error processing arguments");
+		cobj->play(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	if (argc == 2) {
+		std::string arg0;
+		int arg1;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_play : Error processing arguments");
+		cobj->play(arg0, arg1);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	if (argc == 3) {
+		std::string arg0;
+		int arg1;
+		int arg2;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_play : Error processing arguments");
+		cobj->play(arg0, arg1, arg2);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_play : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_studio_ArmatureAnimation_gotoAndPause(JSContext *cx, uint32_t argc, jsval *vp)
@@ -2879,26 +2914,6 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_stop(JSContext *cx, uint32_t argc, j
 	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_stop : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_studio_ArmatureAnimation_setSpeedScale(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocostudio::ArmatureAnimation* cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_setSpeedScale : Invalid Native Object");
-	if (argc == 1) {
-		double arg0;
-		ok &= JS_ValueToNumber(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_setSpeedScale : Error processing arguments");
-		cobj->setSpeedScale(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_setSpeedScale : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_studio_ArmatureAnimation_update(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -2919,102 +2934,63 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_update(JSContext *cx, uint32_t argc,
 	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_update : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_studio_ArmatureAnimation_playByIndex(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_studio_ArmatureAnimation_playWithIndex(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
-
-	JSObject *obj = NULL;
-	cocostudio::ArmatureAnimation* cobj = NULL;
-	obj = JS_THIS_OBJECT(cx, vp);
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playByIndex : Invalid Native Object");
-	do {
-		if (argc == 1) {
-			std::vector<int> arg0;
-			ok &= jsval_to_std_vector_int(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->playByIndex(arg0);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
+	cocostudio::ArmatureAnimation* cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithIndex : Invalid Native Object");
+	if (argc == 1) {
+		int arg0;
+		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithIndex : Error processing arguments");
+		cobj->playWithIndex(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	if (argc == 2) {
+		int arg0;
+		int arg1;
+		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithIndex : Error processing arguments");
+		cobj->playWithIndex(arg0, arg1);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	if (argc == 3) {
+		int arg0;
+		int arg1;
+		int arg2;
+		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithIndex : Error processing arguments");
+		cobj->playWithIndex(arg0, arg1, arg2);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
 
-	do {
-		if (argc == 2) {
-			std::vector<int> arg0;
-			ok &= jsval_to_std_vector_int(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->playByIndex(arg0, arg1);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
+	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_playWithIndex : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ArmatureAnimation* cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID : Invalid Native Object");
+	if (argc == 0) {
+		std::string ret = cobj->getCurrentMovementID();
+		jsval jsret;
+		jsret = std_string_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
 
-	do {
-		if (argc == 3) {
-			std::vector<int> arg0;
-			ok &= jsval_to_std_vector_int(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-			if (!ok) { ok = JS_TRUE; break; }
-			JSBool arg2;
-			ok &= JS_ValueToBoolean(cx, argv[2], &arg2);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->playByIndex(arg0, arg1, arg2);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 1) {
-			int arg0;
-			ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->playByIndex(arg0);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 2) {
-			int arg0;
-			ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->playByIndex(arg0, arg1);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 3) {
-			int arg0;
-			ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg1;
-			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-			if (!ok) { ok = JS_TRUE; break; }
-			int arg2;
-			ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->playByIndex(arg0, arg1, arg2);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_playByIndex : wrong number of arguments");
+	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_studio_ArmatureAnimation_gotoAndPlay(JSContext *cx, uint32_t argc, jsval *vp)
@@ -3037,33 +3013,46 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_gotoAndPlay(JSContext *cx, uint32_t 
 	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_gotoAndPlay : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_studio_ArmatureAnimation_init(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_studio_ArmatureAnimation_playWithNames(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocostudio::ArmatureAnimation* cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_init : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithNames : Invalid Native Object");
 	if (argc == 1) {
-		cocostudio::Armature* arg0;
-		do {
-			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (cocostudio::Armature*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_init : Error processing arguments");
-		JSBool ret = cobj->init(arg0);
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
+		std::vector<std::string> arg0;
+		ok &= jsval_to_std_vector_string(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithNames : Error processing arguments");
+		cobj->playWithNames(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	if (argc == 2) {
+		std::vector<std::string> arg0;
+		int arg1;
+		ok &= jsval_to_std_vector_string(cx, argv[0], &arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithNames : Error processing arguments");
+		cobj->playWithNames(arg0, arg1);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	if (argc == 3) {
+		std::vector<std::string> arg0;
+		int arg1;
+		JSBool arg2;
+		ok &= jsval_to_std_vector_string(cx, argv[0], &arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= JS_ValueToBoolean(cx, argv[2], &arg2);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_playWithNames : Error processing arguments");
+		cobj->playWithNames(arg0, arg1, arg2);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_init : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_playWithNames : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_studio_ArmatureAnimation_getMovementCount(JSContext *cx, uint32_t argc, jsval *vp)
@@ -3081,23 +3070,6 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_getMovementCount(JSContext *cx, uint
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_getMovementCount : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocostudio::ArmatureAnimation* cobj = (cocostudio::ArmatureAnimation *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID : Invalid Native Object");
-	if (argc == 0) {
-		std::string ret = cobj->getCurrentMovementID();
-		jsval jsret;
-		jsret = std_string_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_studio_ArmatureAnimation_create(JSContext *cx, uint32_t argc, jsval *vp)
@@ -3184,18 +3156,20 @@ void js_register_cocos2dx_studio_ArmatureAnimation(JSContext *cx, JSObject *glob
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("getSpeedScale", js_cocos2dx_studio_ArmatureAnimation_getSpeedScale, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("play", js_cocos2dx_studio_ArmatureAnimation_play, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("pause", js_cocos2dx_studio_ArmatureAnimation_pause, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setSpeedScale", js_cocos2dx_studio_ArmatureAnimation_setSpeedScale, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("init", js_cocos2dx_studio_ArmatureAnimation_init, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("playWithIndexes", js_cocos2dx_studio_ArmatureAnimation_playWithIndexes, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("play", js_cocos2dx_studio_ArmatureAnimation_play, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("gotoAndPause", js_cocos2dx_studio_ArmatureAnimation_gotoAndPause, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("resume", js_cocos2dx_studio_ArmatureAnimation_resume, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("stop", js_cocos2dx_studio_ArmatureAnimation_stop, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setSpeedScale", js_cocos2dx_studio_ArmatureAnimation_setSpeedScale, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("update", js_cocos2dx_studio_ArmatureAnimation_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("playByIndex", js_cocos2dx_studio_ArmatureAnimation_playByIndex, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("gotoAndPlay", js_cocos2dx_studio_ArmatureAnimation_gotoAndPlay, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("init", js_cocos2dx_studio_ArmatureAnimation_init, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getMovementCount", js_cocos2dx_studio_ArmatureAnimation_getMovementCount, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("playWithIndex", js_cocos2dx_studio_ArmatureAnimation_playWithIndex, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getCurrentMovementID", js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("gotoAndPlay", js_cocos2dx_studio_ArmatureAnimation_gotoAndPlay, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("playWithNames", js_cocos2dx_studio_ArmatureAnimation_playWithNames, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getMovementCount", js_cocos2dx_studio_ArmatureAnimation_getMovementCount, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 

@@ -17122,9 +17122,9 @@ JSBool js_cocos2dx_AtlasNode_getQuadsToDraw(JSContext *cx, uint32_t argc, jsval 
 	cocos2d::AtlasNode* cobj = (cocos2d::AtlasNode *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AtlasNode_getQuadsToDraw : Invalid Native Object");
 	if (argc == 0) {
-		int ret = cobj->getQuadsToDraw();
+		ssize_t ret = cobj->getQuadsToDraw();
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = ssize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -17168,8 +17168,8 @@ JSBool js_cocos2dx_AtlasNode_setQuadsToDraw(JSContext *cx, uint32_t argc, jsval 
 	cocos2d::AtlasNode* cobj = (cocos2d::AtlasNode *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AtlasNode_setQuadsToDraw : Invalid Native Object");
 	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AtlasNode_setQuadsToDraw : Error processing arguments");
 		cobj->setQuadsToDraw(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
