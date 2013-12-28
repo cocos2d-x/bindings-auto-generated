@@ -3223,9 +3223,9 @@ JSBool js_cocos2dx_gui_Label_getStringLength(JSContext *cx, uint32_t argc, jsval
 	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_getStringLength : Invalid Native Object");
 	if (argc == 0) {
-		int ret = cobj->getStringLength();
+		unsigned long ret = cobj->getStringLength();
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = ulong_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -4726,9 +4726,9 @@ JSBool js_cocos2dx_gui_ListView_getIndex(JSContext *cx, uint32_t argc, jsval *vp
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_ListView_getIndex : Error processing arguments");
-		unsigned int ret = cobj->getIndex(arg0);
+		ssize_t ret = cobj->getIndex(arg0);
 		jsval jsret;
-		jsret = uint32_to_jsval(cx, ret);
+		jsret = ssize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -4824,8 +4824,8 @@ JSBool js_cocos2dx_gui_ListView_removeItem(JSContext *cx, uint32_t argc, jsval *
 	cocos2d::gui::ListView* cobj = (cocos2d::gui::ListView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ListView_removeItem : Invalid Native Object");
 	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_ListView_removeItem : Error processing arguments");
 		cobj->removeItem(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -4842,9 +4842,9 @@ JSBool js_cocos2dx_gui_ListView_getCurSelectedIndex(JSContext *cx, uint32_t argc
 	cocos2d::gui::ListView* cobj = (cocos2d::gui::ListView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ListView_getCurSelectedIndex : Invalid Native Object");
 	if (argc == 0) {
-		int ret = cobj->getCurSelectedIndex();
+		ssize_t ret = cobj->getCurSelectedIndex();
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = ssize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -4861,8 +4861,8 @@ JSBool js_cocos2dx_gui_ListView_insertDefaultItem(JSContext *cx, uint32_t argc, 
 	cocos2d::gui::ListView* cobj = (cocos2d::gui::ListView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ListView_insertDefaultItem : Invalid Native Object");
 	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_ListView_insertDefaultItem : Error processing arguments");
 		cobj->insertDefaultItem(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -4916,8 +4916,8 @@ JSBool js_cocos2dx_gui_ListView_getItem(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::gui::ListView* cobj = (cocos2d::gui::ListView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ListView_getItem : Invalid Native Object");
 	if (argc == 1) {
-		unsigned int arg0;
-		ok &= jsval_to_uint32(cx, argv[0], &arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_ListView_getItem : Error processing arguments");
 		cocos2d::gui::Widget* ret = cobj->getItem(arg0);
 		jsval jsret;
@@ -5003,7 +5003,7 @@ JSBool js_cocos2dx_gui_ListView_insertCustomItem(JSContext *cx, uint32_t argc, j
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ListView_insertCustomItem : Invalid Native Object");
 	if (argc == 2) {
 		cocos2d::gui::Widget* arg0;
-		int arg1;
+		ssize_t arg1;
 		do {
 			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
 			js_proxy_t *proxy;
@@ -5012,7 +5012,7 @@ JSBool js_cocos2dx_gui_ListView_insertCustomItem(JSContext *cx, uint32_t argc, j
 			arg0 = (cocos2d::gui::Widget*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_ssize(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_ListView_insertCustomItem : Error processing arguments");
 		cobj->insertCustomItem(arg0, arg1);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -6344,9 +6344,9 @@ JSBool js_cocos2dx_gui_PageView_getCurPageIndex(JSContext *cx, uint32_t argc, js
 	cocos2d::gui::PageView* cobj = (cocos2d::gui::PageView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_PageView_getCurPageIndex : Invalid Native Object");
 	if (argc == 0) {
-		int ret = cobj->getCurPageIndex();
+		ssize_t ret = cobj->getCurPageIndex();
 		jsval jsret;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = ssize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
@@ -6364,7 +6364,7 @@ JSBool js_cocos2dx_gui_PageView_addWidgetToPage(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_PageView_addWidgetToPage : Invalid Native Object");
 	if (argc == 3) {
 		cocos2d::gui::Widget* arg0;
-		int arg1;
+		ssize_t arg1;
 		JSBool arg2;
 		do {
 			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
@@ -6374,7 +6374,7 @@ JSBool js_cocos2dx_gui_PageView_addWidgetToPage(JSContext *cx, uint32_t argc, js
 			arg0 = (cocos2d::gui::Widget*)(proxy ? proxy->ptr : NULL);
 			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 		} while (0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= jsval_to_ssize(cx, argv[1], &arg1);
 		ok &= JS_ValueToBoolean(cx, argv[2], &arg2);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_PageView_addWidgetToPage : Error processing arguments");
 		cobj->addWidgetToPage(arg0, arg1, arg2);
@@ -6394,8 +6394,8 @@ JSBool js_cocos2dx_gui_PageView_getPage(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::gui::PageView* cobj = (cocos2d::gui::PageView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_PageView_getPage : Invalid Native Object");
 	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_PageView_getPage : Error processing arguments");
 		cocos2d::gui::Layout* ret = cobj->getPage(arg0);
 		jsval jsret;
@@ -6479,8 +6479,8 @@ JSBool js_cocos2dx_gui_PageView_scrollToPage(JSContext *cx, uint32_t argc, jsval
 	cocos2d::gui::PageView* cobj = (cocos2d::gui::PageView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_PageView_scrollToPage : Invalid Native Object");
 	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_PageView_scrollToPage : Error processing arguments");
 		cobj->scrollToPage(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -6499,8 +6499,8 @@ JSBool js_cocos2dx_gui_PageView_removePageAtIndex(JSContext *cx, uint32_t argc, 
 	cocos2d::gui::PageView* cobj = (cocos2d::gui::PageView *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_PageView_removePageAtIndex : Invalid Native Object");
 	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+		ssize_t arg0;
+		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_PageView_removePageAtIndex : Error processing arguments");
 		cobj->removePageAtIndex(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);

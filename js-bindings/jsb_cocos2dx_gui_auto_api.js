@@ -812,7 +812,7 @@ ccs.Label = {
 
 /**
  * @method getStringLength
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "size_t"
  */
 getStringLength : function () {},
 
@@ -1205,7 +1205,7 @@ ccs.ListView = {
 
 /**
  * @method getIndex
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "ssize_t"
  * @param {cocos2d::gui::Widget*}
  */
 getIndex : function () {},
@@ -1235,19 +1235,19 @@ getItems : function () {},
 
 /**
  * @method removeItem
- * @param {int}
+ * @param {ssize_t}
  */
 removeItem : function () {},
 
 /**
  * @method getCurSelectedIndex
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "ssize_t"
  */
 getCurSelectedIndex : function () {},
 
 /**
  * @method insertDefaultItem
- * @param {int}
+ * @param {ssize_t}
  */
 insertDefaultItem : function () {},
 
@@ -1265,7 +1265,7 @@ removeLastItem : function () {},
 /**
  * @method getItem
  * @return A value converted from C/C++ "cocos2d::gui::Widget*"
- * @param {unsigned int}
+ * @param {ssize_t}
  */
 getItem : function () {},
 
@@ -1288,7 +1288,7 @@ pushBackDefaultItem : function () {},
 /**
  * @method insertCustomItem
  * @param {cocos2d::gui::Widget*}
- * @param {int}
+ * @param {ssize_t}
  */
 insertCustomItem : function () {},
 
@@ -1615,14 +1615,14 @@ ccs.PageView = {
 
 /**
  * @method getCurPageIndex
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "ssize_t"
  */
 getCurPageIndex : function () {},
 
 /**
  * @method addWidgetToPage
  * @param {cocos2d::gui::Widget*}
- * @param {int}
+ * @param {ssize_t}
  * @param {bool}
  */
 addWidgetToPage : function () {},
@@ -1630,7 +1630,7 @@ addWidgetToPage : function () {},
 /**
  * @method getPage
  * @return A value converted from C/C++ "cocos2d::gui::Layout*"
- * @param {int}
+ * @param {ssize_t}
  */
 getPage : function () {},
 
@@ -1649,13 +1649,13 @@ insertPage : function () {},
 
 /**
  * @method scrollToPage
- * @param {int}
+ * @param {ssize_t}
  */
 scrollToPage : function () {},
 
 /**
  * @method removePageAtIndex
- * @param {int}
+ * @param {ssize_t}
  */
 removePageAtIndex : function () {},
 

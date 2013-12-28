@@ -5935,7 +5935,7 @@ int lua_cocos2dx_studio_Label_getStringLength(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        int ret = cobj->getStringLength();
+        unsigned long ret = cobj->getStringLength();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8733,7 +8733,7 @@ int lua_cocos2dx_studio_ListView_getIndex(lua_State* tolua_S)
 			}}} while (0);
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getIndex(arg0);
+        ssize_t ret = cobj->getIndex(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -8956,8 +8956,8 @@ int lua_cocos2dx_studio_ListView_removeItem(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->removeItem(arg0);
@@ -9002,7 +9002,7 @@ int lua_cocos2dx_studio_ListView_getCurSelectedIndex(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        int ret = cobj->getCurSelectedIndex();
+        ssize_t ret = cobj->getCurSelectedIndex();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -9043,8 +9043,8 @@ int lua_cocos2dx_studio_ListView_insertDefaultItem(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->insertDefaultItem(arg0);
@@ -9173,8 +9173,8 @@ int lua_cocos2dx_studio_ListView_getItem(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cocos2d::gui::Widget* ret = cobj->getItem(arg0);
@@ -9376,7 +9376,7 @@ int lua_cocos2dx_studio_ListView_insertCustomItem(lua_State* tolua_S)
     if (argc == 2) 
     {
         cocos2d::gui::Widget* arg0;
-        int arg1;
+        ssize_t arg1;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
 					ok = false;
@@ -9387,7 +9387,7 @@ int lua_cocos2dx_studio_ListView_insertCustomItem(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        ok &= luaval_to_ssize(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cobj->insertCustomItem(arg0, arg1);
@@ -11756,7 +11756,7 @@ int lua_cocos2dx_studio_PageView_getCurPageIndex(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        int ret = cobj->getCurPageIndex();
+        ssize_t ret = cobj->getCurPageIndex();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -11798,7 +11798,7 @@ int lua_cocos2dx_studio_PageView_addWidgetToPage(lua_State* tolua_S)
     if (argc == 3) 
     {
         cocos2d::gui::Widget* arg0;
-        int arg1;
+        ssize_t arg1;
         bool arg2;
         do {
 				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
@@ -11810,7 +11810,7 @@ int lua_cocos2dx_studio_PageView_addWidgetToPage(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        ok &= luaval_to_ssize(tolua_S, 3, &arg1);
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -11854,8 +11854,8 @@ int lua_cocos2dx_studio_PageView_getPage(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cocos2d::gui::Layout* ret = cobj->getPage(arg0);
@@ -12027,8 +12027,8 @@ int lua_cocos2dx_studio_PageView_scrollToPage(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->scrollToPage(arg0);
@@ -12071,8 +12071,8 @@ int lua_cocos2dx_studio_PageView_removePageAtIndex(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        ssize_t arg0;
+        ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->removePageAtIndex(arg0);
