@@ -7678,7 +7678,7 @@ cc.TMXTilesetInfo = {
 /**
  * @method rectForGID
  * @return A value converted from C/C++ "cocos2d::Rect"
- * @param {unsigned int}
+ * @param {int}
  */
 rectForGID : function () {},
 
@@ -7760,7 +7760,7 @@ parseXMLString : function () {},
 
 /**
  * @method getParentGID
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "int"
  */
 getParentGID : function () {},
 
@@ -7780,7 +7780,7 @@ initWithXML : function () {},
 
 /**
  * @method setParentGID
- * @param {unsigned int}
+ * @param {int}
  */
 setParentGID : function () {},
 
@@ -7904,7 +7904,7 @@ cc.TMXLayer = {
 
 /**
  * @method getTileGIDAt
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "int"
  * @param {const cocos2d::Point&}
  * @param {cocos2d::ccTMXTileFlags*}
  */
@@ -7919,7 +7919,7 @@ getPositionAt : function () {},
 
 /**
  * @method setLayerOrientation
- * @param {unsigned int}
+ * @param {int}
  */
 setLayerOrientation : function () {},
 
@@ -7930,7 +7930,7 @@ releaseMap : function () {},
 
 /**
  * @method setTiles
- * @param {unsigned int*}
+ * @param {int*}
  */
 setTiles : function () {},
 
@@ -7948,7 +7948,7 @@ setMapTileSize : function () {},
 
 /**
  * @method getLayerOrientation
- * @return A value converted from C/C++ "unsigned int"
+ * @return A value converted from C/C++ "int"
  */
 getLayerOrientation : function () {},
 

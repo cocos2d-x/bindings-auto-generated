@@ -62847,8 +62847,8 @@ int lua_cocos2dx_TMXTilesetInfo_rectForGID(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        int arg0;
+        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
         cocos2d::Rect ret = cobj->rectForGID(arg0);
@@ -63488,7 +63488,7 @@ int lua_cocos2dx_TMXMapInfo_getParentGID(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getParentGID();
+        int ret = cobj->getParentGID();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -63620,8 +63620,8 @@ int lua_cocos2dx_TMXMapInfo_setParentGID(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        int arg0;
+        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
         cobj->setParentGID(arg0);
@@ -64570,7 +64570,7 @@ int lua_cocos2dx_TMXLayer_getTileGIDAt(lua_State* tolua_S)
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getTileGIDAt(arg0);
+        int ret = cobj->getTileGIDAt(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -64582,7 +64582,7 @@ int lua_cocos2dx_TMXLayer_getTileGIDAt(lua_State* tolua_S)
         #pragma warning NO CONVERSION TO NATIVE FOR ccTMXTileFlags_*;
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getTileGIDAt(arg0, arg1);
+        int ret = cobj->getTileGIDAt(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -64668,8 +64668,8 @@ int lua_cocos2dx_TMXLayer_setLayerOrientation(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int arg0;
-        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+        int arg0;
+        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
         cobj->setLayerOrientation(arg0);
@@ -64754,8 +64754,8 @@ int lua_cocos2dx_TMXLayer_setTiles(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned int* arg0;
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned int*;
+        int* arg0;
+        #pragma warning NO CONVERSION TO NATIVE FOR int*;
         if(!ok)
             return 0;
         cobj->setTiles(arg0);
@@ -64887,7 +64887,7 @@ int lua_cocos2dx_TMXLayer_getLayerOrientation(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned int ret = cobj->getLayerOrientation();
+        int ret = cobj->getLayerOrientation();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -65173,8 +65173,8 @@ int lua_cocos2dx_TMXLayer_setTileGID(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 3) {
-            unsigned int arg0;
-            ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+            int arg0;
+            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
 
             if (!ok) { break; }
             cocos2d::Point arg1;
@@ -65192,8 +65192,8 @@ int lua_cocos2dx_TMXLayer_setTileGID(lua_State* tolua_S)
     ok  = true;
     do{
         if (argc == 2) {
-            unsigned int arg0;
-            ok &= luaval_to_uint32(tolua_S, 2,&arg0);
+            int arg0;
+            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
 
             if (!ok) { break; }
             cocos2d::Point arg1;
