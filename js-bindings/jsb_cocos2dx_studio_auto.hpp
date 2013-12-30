@@ -157,7 +157,6 @@ JSBool js_cocos2dx_studio_BatchNode_constructor(JSContext *cx, uint32_t argc, js
 void js_cocos2dx_studio_BatchNode_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_studio_BatchNode(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_studio_BatchNode_setPopGroupCommand(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_studio_BatchNode_create(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocostudio_ArmatureAnimation_class;

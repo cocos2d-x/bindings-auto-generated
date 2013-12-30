@@ -559,12 +559,6 @@ Bone : function () {},
 ccs.BatchNode = {
 
 /**
- * @method setPopGroupCommand
- * @param {bool}
- */
-setPopGroupCommand : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocostudio::BatchNode*"
  */
