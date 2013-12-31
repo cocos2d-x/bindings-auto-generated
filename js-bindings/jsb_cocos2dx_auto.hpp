@@ -2181,7 +2181,6 @@ void js_cocos2dx_RenderTexture_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_RenderTexture(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_RenderTexture_clearStencil(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_RenderTexture_listenToForeground(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_RenderTexture_getClearDepth(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_RenderTexture_getClearStencil(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_RenderTexture_end(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2198,7 +2197,6 @@ JSBool js_cocos2dx_RenderTexture_endToLua(JSContext *cx, uint32_t argc, jsval *v
 JSBool js_cocos2dx_RenderTexture_beginWithClear(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_RenderTexture_clearDepth(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_RenderTexture_getClearColor(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_RenderTexture_listenToBackground(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_RenderTexture_clear(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_RenderTexture_getClearFlags(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_RenderTexture_newImage(JSContext *cx, uint32_t argc, jsval *vp);

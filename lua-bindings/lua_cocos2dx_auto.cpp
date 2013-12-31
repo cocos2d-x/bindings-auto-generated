@@ -48146,59 +48146,6 @@ int lua_cocos2dx_RenderTexture_clearStencil(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_RenderTexture_listenToForeground(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::RenderTexture* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"RenderTexture",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_listenToForeground'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Object* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        if(!ok)
-            return 0;
-        cobj->listenToForeground(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "listenToForeground",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_RenderTexture_listenToForeground'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_RenderTexture_getClearDepth(lua_State* tolua_S)
 {
     int argc = 0;
@@ -49002,59 +48949,6 @@ int lua_cocos2dx_RenderTexture_getClearColor(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_RenderTexture_listenToBackground(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::RenderTexture* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"RenderTexture",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::RenderTexture*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_RenderTexture_listenToBackground'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Object* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Object",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        if(!ok)
-            return 0;
-        cobj->listenToBackground(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "listenToBackground",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_RenderTexture_listenToBackground'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_RenderTexture_clear(lua_State* tolua_S)
 {
     int argc = 0;
@@ -49553,7 +49447,6 @@ int lua_register_cocos2dx_RenderTexture(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"RenderTexture");
         tolua_function(tolua_S,"clearStencil",lua_cocos2dx_RenderTexture_clearStencil);
-        tolua_function(tolua_S,"listenToForeground",lua_cocos2dx_RenderTexture_listenToForeground);
         tolua_function(tolua_S,"getClearDepth",lua_cocos2dx_RenderTexture_getClearDepth);
         tolua_function(tolua_S,"getClearStencil",lua_cocos2dx_RenderTexture_getClearStencil);
         tolua_function(tolua_S,"end",lua_cocos2dx_RenderTexture_end);
@@ -49570,7 +49463,6 @@ int lua_register_cocos2dx_RenderTexture(lua_State* tolua_S)
         tolua_function(tolua_S,"beginWithClear",lua_cocos2dx_RenderTexture_beginWithClear);
         tolua_function(tolua_S,"clearDepth",lua_cocos2dx_RenderTexture_clearDepth);
         tolua_function(tolua_S,"getClearColor",lua_cocos2dx_RenderTexture_getClearColor);
-        tolua_function(tolua_S,"listenToBackground",lua_cocos2dx_RenderTexture_listenToBackground);
         tolua_function(tolua_S,"clear",lua_cocos2dx_RenderTexture_clear);
         tolua_function(tolua_S,"getClearFlags",lua_cocos2dx_RenderTexture_getClearFlags);
         tolua_function(tolua_S,"newImage",lua_cocos2dx_RenderTexture_newImage);

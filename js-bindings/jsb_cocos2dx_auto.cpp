@@ -31388,33 +31388,6 @@ JSBool js_cocos2dx_RenderTexture_clearStencil(JSContext *cx, uint32_t argc, jsva
 	JS_ReportError(cx, "js_cocos2dx_RenderTexture_clearStencil : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_RenderTexture_listenToForeground(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::RenderTexture* cobj = (cocos2d::RenderTexture *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_RenderTexture_listenToForeground : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Object* arg0;
-		do {
-			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (cocos2d::Object*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_RenderTexture_listenToForeground : Error processing arguments");
-		cobj->listenToForeground(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_RenderTexture_listenToForeground : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_RenderTexture_getClearDepth(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -31805,33 +31778,6 @@ JSBool js_cocos2dx_RenderTexture_getClearColor(JSContext *cx, uint32_t argc, jsv
 	JS_ReportError(cx, "js_cocos2dx_RenderTexture_getClearColor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_RenderTexture_listenToBackground(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::RenderTexture* cobj = (cocos2d::RenderTexture *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_RenderTexture_listenToBackground : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Object* arg0;
-		do {
-			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (cocos2d::Object*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_RenderTexture_listenToBackground : Error processing arguments");
-		cobj->listenToBackground(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_RenderTexture_listenToBackground : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_RenderTexture_clear(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -32131,7 +32077,6 @@ void js_register_cocos2dx_RenderTexture(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("clearStencil", js_cocos2dx_RenderTexture_clearStencil, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("listenToForeground", js_cocos2dx_RenderTexture_listenToForeground, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getClearDepth", js_cocos2dx_RenderTexture_getClearDepth, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getClearStencil", js_cocos2dx_RenderTexture_getClearStencil, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("end", js_cocos2dx_RenderTexture_end, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -32148,7 +32093,6 @@ void js_register_cocos2dx_RenderTexture(JSContext *cx, JSObject *global) {
 		JS_FN("beginWithClear", js_cocos2dx_RenderTexture_beginWithClear, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("clearDepth", js_cocos2dx_RenderTexture_clearDepth, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getClearColor", js_cocos2dx_RenderTexture_getClearColor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("listenToBackground", js_cocos2dx_RenderTexture_listenToBackground, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("clear", js_cocos2dx_RenderTexture_clear, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getClearFlags", js_cocos2dx_RenderTexture_getClearFlags, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("newImage", js_cocos2dx_RenderTexture_newImage, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

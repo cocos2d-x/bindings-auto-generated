@@ -6239,12 +6239,6 @@ cc.RenderTexture = {
 clearStencil : function () {},
 
 /**
- * @method listenToForeground
- * @param {cocos2d::Object*}
- */
-listenToForeground : function () {},
-
-/**
  * @method getClearDepth
  * @return A value converted from C/C++ "float"
  */
@@ -6324,12 +6318,6 @@ clearDepth : function () {},
  * @return A value converted from C/C++ "const cocos2d::Color4F&"
  */
 getClearColor : function () {},
-
-/**
- * @method listenToBackground
- * @param {cocos2d::Object*}
- */
-listenToBackground : function () {},
 
 /**
  * @method clear
