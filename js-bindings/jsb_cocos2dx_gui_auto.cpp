@@ -3213,15 +3213,15 @@ void js_register_cocos2dx_gui_ImageView(JSContext *cx, JSObject *global) {
 	}
 }
 
-JSClass  *jsb_cocos2d_gui_Label_class;
-JSObject *jsb_cocos2d_gui_Label_prototype;
+JSClass  *jsb_cocos2d_gui_Text_class;
+JSObject *jsb_cocos2d_gui_Text_prototype;
 
-JSBool js_cocos2dx_gui_Label_getStringLength(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_getStringLength(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_getStringLength : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_getStringLength : Invalid Native Object");
 	if (argc == 0) {
 		unsigned long ret = cobj->getStringLength();
 		jsval jsret;
@@ -3230,55 +3230,55 @@ JSBool js_cocos2dx_gui_Label_getStringLength(JSContext *cx, uint32_t argc, jsval
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_getStringLength : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_getStringLength : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_setFontName(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_setFontName(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_setFontName : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_setFontName : Invalid Native Object");
 	if (argc == 1) {
 		std::string arg0;
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Label_setFontName : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Text_setFontName : Error processing arguments");
 		cobj->setFontName(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_setFontName : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_setFontName : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_setTouchScaleChangeEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_setTouchScaleChangeEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_setTouchScaleChangeEnabled : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_setTouchScaleChangeEnabled : Invalid Native Object");
 	if (argc == 1) {
 		JSBool arg0;
 		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Label_setTouchScaleChangeEnabled : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Text_setTouchScaleChangeEnabled : Error processing arguments");
 		cobj->setTouchScaleChangeEnabled(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_setTouchScaleChangeEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_setTouchScaleChangeEnabled : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_getStringValue(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_getStringValue(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_getStringValue : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_getStringValue : Invalid Native Object");
 	if (argc == 0) {
 		const std::string& ret = cobj->getStringValue();
 		jsval jsret;
@@ -3287,75 +3287,75 @@ JSBool js_cocos2dx_gui_Label_getStringValue(JSContext *cx, uint32_t argc, jsval 
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_getStringValue : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_getStringValue : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_setText(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_setText(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_setText : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_setText : Invalid Native Object");
 	if (argc == 1) {
 		std::string arg0;
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Label_setText : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Text_setText : Error processing arguments");
 		cobj->setText(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_setText : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_setText : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_setTextVerticalAlignment(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_setTextVerticalAlignment(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_setTextVerticalAlignment : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_setTextVerticalAlignment : Invalid Native Object");
 	if (argc == 1) {
 		cocos2d::TextVAlignment arg0;
 		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Label_setTextVerticalAlignment : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Text_setTextVerticalAlignment : Error processing arguments");
 		cobj->setTextVerticalAlignment(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_setTextVerticalAlignment : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_setTextVerticalAlignment : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_setFontSize(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_setFontSize(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_setFontSize : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_setFontSize : Invalid Native Object");
 	if (argc == 1) {
 		int arg0;
 		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Label_setFontSize : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Text_setFontSize : Error processing arguments");
 		cobj->setFontSize(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_setFontSize : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_setFontSize : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_isTouchScaleChangeEnabled(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_isTouchScaleChangeEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_isTouchScaleChangeEnabled : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_isTouchScaleChangeEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isTouchScaleChangeEnabled();
 		jsval jsret;
@@ -3364,57 +3364,57 @@ JSBool js_cocos2dx_gui_Label_isTouchScaleChangeEnabled(JSContext *cx, uint32_t a
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_isTouchScaleChangeEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_isTouchScaleChangeEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_setTextHorizontalAlignment(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_setTextHorizontalAlignment(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_setTextHorizontalAlignment : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_setTextHorizontalAlignment : Invalid Native Object");
 	if (argc == 1) {
 		cocos2d::TextHAlignment arg0;
 		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Label_setTextHorizontalAlignment : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Text_setTextHorizontalAlignment : Error processing arguments");
 		cobj->setTextHorizontalAlignment(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_setTextHorizontalAlignment : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_setTextHorizontalAlignment : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_setTextAreaSize(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_setTextAreaSize(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Label* cobj = (cocos2d::gui::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Label_setTextAreaSize : Invalid Native Object");
+	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_setTextAreaSize : Invalid Native Object");
 	if (argc == 1) {
 		cocos2d::Size arg0;
 		ok &= jsval_to_ccsize(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Label_setTextAreaSize : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Text_setTextAreaSize : Error processing arguments");
 		cobj->setTextAreaSize(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_setTextAreaSize : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_setTextAreaSize : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Label_create(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		cocos2d::gui::Label* ret = cocos2d::gui::Label::create();
+		cocos2d::gui::Text* ret = cocos2d::gui::Text::create();
 		jsval jsret;
 		do {
 		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Label>(cx, (cocos2d::gui::Label*)ret);
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Text>(cx, (cocos2d::gui::Text*)ret);
 			jsret = OBJECT_TO_JSVAL(proxy->obj);
 		} else {
 			jsret = JSVAL_NULL;
@@ -3423,19 +3423,19 @@ JSBool js_cocos2dx_gui_Label_create(JSContext *cx, uint32_t argc, jsval *vp)
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_create : wrong number of arguments");
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_create : wrong number of arguments");
 	return JS_FALSE;
 }
 
-JSBool js_cocos2dx_gui_Label_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Text_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		cocos2d::gui::Label* cobj = new cocos2d::gui::Label();
+		cocos2d::gui::Text* cobj = new cocos2d::gui::Text();
 		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
-		TypeTest<cocos2d::gui::Label> t;
+		TypeTest<cocos2d::gui::Text> t;
 		js_type_class_t *typeClass = nullptr;
 		std::string typeName = t.s_name();
 		auto typeMapIter = _js_global_type_map.find(typeName);
@@ -3446,95 +3446,95 @@ JSBool js_cocos2dx_gui_Label_constructor(JSContext *cx, uint32_t argc, jsval *vp
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
 		js_proxy_t* p = jsb_new_proxy(cobj, obj);
-		JS_AddNamedObjectRoot(cx, &p->obj, "cocos2d::gui::Label");
+		JS_AddNamedObjectRoot(cx, &p->obj, "cocos2d::gui::Text");
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Label_constructor : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_Text_constructor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 
 
 extern JSObject *jsb_cocos2d_gui_Widget_prototype;
 
-void js_cocos2d_gui_Label_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (Label)", obj);
+void js_cocos2d_gui_Text_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (Text)", obj);
 }
 
-void js_register_cocos2dx_gui_Label(JSContext *cx, JSObject *global) {
-	jsb_cocos2d_gui_Label_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_cocos2d_gui_Label_class->name = "Label";
-	jsb_cocos2d_gui_Label_class->addProperty = JS_PropertyStub;
-	jsb_cocos2d_gui_Label_class->delProperty = JS_DeletePropertyStub;
-	jsb_cocos2d_gui_Label_class->getProperty = JS_PropertyStub;
-	jsb_cocos2d_gui_Label_class->setProperty = JS_StrictPropertyStub;
-	jsb_cocos2d_gui_Label_class->enumerate = JS_EnumerateStub;
-	jsb_cocos2d_gui_Label_class->resolve = JS_ResolveStub;
-	jsb_cocos2d_gui_Label_class->convert = JS_ConvertStub;
-	jsb_cocos2d_gui_Label_class->finalize = js_cocos2d_gui_Label_finalize;
-	jsb_cocos2d_gui_Label_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+void js_register_cocos2dx_gui_Text(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_gui_Text_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_gui_Text_class->name = "Text";
+	jsb_cocos2d_gui_Text_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_gui_Text_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_gui_Text_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_gui_Text_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_gui_Text_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_gui_Text_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_gui_Text_class->convert = JS_ConvertStub;
+	jsb_cocos2d_gui_Text_class->finalize = js_cocos2d_gui_Text_finalize;
+	jsb_cocos2d_gui_Text_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("getStringLength", js_cocos2dx_gui_Label_getStringLength, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setFontName", js_cocos2dx_gui_Label_setFontName, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setTouchScaleChangeEnabled", js_cocos2dx_gui_Label_setTouchScaleChangeEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getStringValue", js_cocos2dx_gui_Label_getStringValue, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setText", js_cocos2dx_gui_Label_setText, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setTextVerticalAlignment", js_cocos2dx_gui_Label_setTextVerticalAlignment, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setFontSize", js_cocos2dx_gui_Label_setFontSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isTouchScaleChangeEnabled", js_cocos2dx_gui_Label_isTouchScaleChangeEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setTextHorizontalAlignment", js_cocos2dx_gui_Label_setTextHorizontalAlignment, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setTextAreaSize", js_cocos2dx_gui_Label_setTextAreaSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getStringLength", js_cocos2dx_gui_Text_getStringLength, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setFontName", js_cocos2dx_gui_Text_setFontName, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setTouchScaleChangeEnabled", js_cocos2dx_gui_Text_setTouchScaleChangeEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getStringValue", js_cocos2dx_gui_Text_getStringValue, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setText", js_cocos2dx_gui_Text_setText, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setTextVerticalAlignment", js_cocos2dx_gui_Text_setTextVerticalAlignment, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setFontSize", js_cocos2dx_gui_Text_setFontSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isTouchScaleChangeEnabled", js_cocos2dx_gui_Text_isTouchScaleChangeEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setTextHorizontalAlignment", js_cocos2dx_gui_Text_setTextHorizontalAlignment, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setTextAreaSize", js_cocos2dx_gui_Text_setTextAreaSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
 	static JSFunctionSpec st_funcs[] = {
-		JS_FN("create", js_cocos2dx_gui_Label_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("create", js_cocos2dx_gui_Text_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
 
-	jsb_cocos2d_gui_Label_prototype = JS_InitClass(
+	jsb_cocos2d_gui_Text_prototype = JS_InitClass(
 		cx, global,
 		jsb_cocos2d_gui_Widget_prototype,
-		jsb_cocos2d_gui_Label_class,
-		js_cocos2dx_gui_Label_constructor, 0, // constructor
+		jsb_cocos2d_gui_Text_class,
+		js_cocos2dx_gui_Text_constructor, 0, // constructor
 		properties,
 		funcs,
 		NULL, // no static properties
 		st_funcs);
 	// make the class enumerable in the registered namespace
 	JSBool found;
-	JS_SetPropertyAttributes(cx, global, "Label", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+	JS_SetPropertyAttributes(cx, global, "Text", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
 
 	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::gui::Label> t;
+	TypeTest<cocos2d::gui::Text> t;
 	js_type_class_t *p;
 	std::string typeName = t.s_name();
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_cocos2d_gui_Label_class;
-		p->proto = jsb_cocos2d_gui_Label_prototype;
+		p->jsclass = jsb_cocos2d_gui_Text_class;
+		p->proto = jsb_cocos2d_gui_Text_prototype;
 		p->parentProto = jsb_cocos2d_gui_Widget_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
 }
 
-JSClass  *jsb_cocos2d_gui_LabelAtlas_class;
-JSObject *jsb_cocos2d_gui_LabelAtlas_prototype;
+JSClass  *jsb_cocos2d_gui_TextAtlas_class;
+JSObject *jsb_cocos2d_gui_TextAtlas_prototype;
 
-JSBool js_cocos2dx_gui_LabelAtlas_setProperty(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextAtlas_setProperty(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::LabelAtlas* cobj = (cocos2d::gui::LabelAtlas *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LabelAtlas_setProperty : Invalid Native Object");
+	cocos2d::gui::TextAtlas* cobj = (cocos2d::gui::TextAtlas *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextAtlas_setProperty : Invalid Native Object");
 	if (argc == 5) {
 		std::string arg0;
 		std::string arg1;
@@ -3546,21 +3546,21 @@ JSBool js_cocos2dx_gui_LabelAtlas_setProperty(JSContext *cx, uint32_t argc, jsva
 		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
 		ok &= jsval_to_std_string(cx, argv[4], &arg4);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_LabelAtlas_setProperty : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_TextAtlas_setProperty : Error processing arguments");
 		cobj->setProperty(arg0, arg1, arg2, arg3, arg4);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelAtlas_setProperty : wrong number of arguments: %d, was expecting %d", argc, 5);
+	JS_ReportError(cx, "js_cocos2dx_gui_TextAtlas_setProperty : wrong number of arguments: %d, was expecting %d", argc, 5);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_LabelAtlas_getStringValue(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextAtlas_getStringValue(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::LabelAtlas* cobj = (cocos2d::gui::LabelAtlas *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LabelAtlas_getStringValue : Invalid Native Object");
+	cocos2d::gui::TextAtlas* cobj = (cocos2d::gui::TextAtlas *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextAtlas_getStringValue : Invalid Native Object");
 	if (argc == 0) {
 		const std::string& ret = cobj->getStringValue();
 		jsval jsret;
@@ -3569,37 +3569,37 @@ JSBool js_cocos2dx_gui_LabelAtlas_getStringValue(JSContext *cx, uint32_t argc, j
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelAtlas_getStringValue : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_TextAtlas_getStringValue : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_LabelAtlas_setStringValue(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextAtlas_setStringValue(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::LabelAtlas* cobj = (cocos2d::gui::LabelAtlas *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LabelAtlas_setStringValue : Invalid Native Object");
+	cocos2d::gui::TextAtlas* cobj = (cocos2d::gui::TextAtlas *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextAtlas_setStringValue : Invalid Native Object");
 	if (argc == 1) {
 		std::string arg0;
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_LabelAtlas_setStringValue : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_TextAtlas_setStringValue : Error processing arguments");
 		cobj->setStringValue(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelAtlas_setStringValue : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_TextAtlas_setStringValue : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_LabelAtlas_create(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextAtlas_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		cocos2d::gui::LabelAtlas* ret = cocos2d::gui::LabelAtlas::create();
+		cocos2d::gui::TextAtlas* ret = cocos2d::gui::TextAtlas::create();
 		jsval jsret;
 		do {
 		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::LabelAtlas>(cx, (cocos2d::gui::LabelAtlas*)ret);
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::TextAtlas>(cx, (cocos2d::gui::TextAtlas*)ret);
 			jsret = OBJECT_TO_JSVAL(proxy->obj);
 		} else {
 			jsret = JSVAL_NULL;
@@ -3608,19 +3608,19 @@ JSBool js_cocos2dx_gui_LabelAtlas_create(JSContext *cx, uint32_t argc, jsval *vp
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelAtlas_create : wrong number of arguments");
+	JS_ReportError(cx, "js_cocos2dx_gui_TextAtlas_create : wrong number of arguments");
 	return JS_FALSE;
 }
 
-JSBool js_cocos2dx_gui_LabelAtlas_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextAtlas_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		cocos2d::gui::LabelAtlas* cobj = new cocos2d::gui::LabelAtlas();
+		cocos2d::gui::TextAtlas* cobj = new cocos2d::gui::TextAtlas();
 		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
-		TypeTest<cocos2d::gui::LabelAtlas> t;
+		TypeTest<cocos2d::gui::TextAtlas> t;
 		js_type_class_t *typeClass = nullptr;
 		std::string typeName = t.s_name();
 		auto typeMapIter = _js_global_type_map.find(typeName);
@@ -3631,72 +3631,72 @@ JSBool js_cocos2dx_gui_LabelAtlas_constructor(JSContext *cx, uint32_t argc, jsva
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
 		js_proxy_t* p = jsb_new_proxy(cobj, obj);
-		JS_AddNamedObjectRoot(cx, &p->obj, "cocos2d::gui::LabelAtlas");
+		JS_AddNamedObjectRoot(cx, &p->obj, "cocos2d::gui::TextAtlas");
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelAtlas_constructor : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_TextAtlas_constructor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 
 
 extern JSObject *jsb_cocos2d_gui_Widget_prototype;
 
-void js_cocos2d_gui_LabelAtlas_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (LabelAtlas)", obj);
+void js_cocos2d_gui_TextAtlas_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (TextAtlas)", obj);
 }
 
-void js_register_cocos2dx_gui_LabelAtlas(JSContext *cx, JSObject *global) {
-	jsb_cocos2d_gui_LabelAtlas_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_cocos2d_gui_LabelAtlas_class->name = "LabelAtlas";
-	jsb_cocos2d_gui_LabelAtlas_class->addProperty = JS_PropertyStub;
-	jsb_cocos2d_gui_LabelAtlas_class->delProperty = JS_DeletePropertyStub;
-	jsb_cocos2d_gui_LabelAtlas_class->getProperty = JS_PropertyStub;
-	jsb_cocos2d_gui_LabelAtlas_class->setProperty = JS_StrictPropertyStub;
-	jsb_cocos2d_gui_LabelAtlas_class->enumerate = JS_EnumerateStub;
-	jsb_cocos2d_gui_LabelAtlas_class->resolve = JS_ResolveStub;
-	jsb_cocos2d_gui_LabelAtlas_class->convert = JS_ConvertStub;
-	jsb_cocos2d_gui_LabelAtlas_class->finalize = js_cocos2d_gui_LabelAtlas_finalize;
-	jsb_cocos2d_gui_LabelAtlas_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+void js_register_cocos2dx_gui_TextAtlas(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_gui_TextAtlas_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_gui_TextAtlas_class->name = "TextAtlas";
+	jsb_cocos2d_gui_TextAtlas_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_gui_TextAtlas_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_gui_TextAtlas_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_gui_TextAtlas_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_gui_TextAtlas_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_gui_TextAtlas_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_gui_TextAtlas_class->convert = JS_ConvertStub;
+	jsb_cocos2d_gui_TextAtlas_class->finalize = js_cocos2d_gui_TextAtlas_finalize;
+	jsb_cocos2d_gui_TextAtlas_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("setProperty", js_cocos2dx_gui_LabelAtlas_setProperty, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getStringValue", js_cocos2dx_gui_LabelAtlas_getStringValue, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setStringValue", js_cocos2dx_gui_LabelAtlas_setStringValue, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setProperty", js_cocos2dx_gui_TextAtlas_setProperty, 5, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getStringValue", js_cocos2dx_gui_TextAtlas_getStringValue, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setStringValue", js_cocos2dx_gui_TextAtlas_setStringValue, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
 	static JSFunctionSpec st_funcs[] = {
-		JS_FN("create", js_cocos2dx_gui_LabelAtlas_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("create", js_cocos2dx_gui_TextAtlas_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
 
-	jsb_cocos2d_gui_LabelAtlas_prototype = JS_InitClass(
+	jsb_cocos2d_gui_TextAtlas_prototype = JS_InitClass(
 		cx, global,
 		jsb_cocos2d_gui_Widget_prototype,
-		jsb_cocos2d_gui_LabelAtlas_class,
-		js_cocos2dx_gui_LabelAtlas_constructor, 0, // constructor
+		jsb_cocos2d_gui_TextAtlas_class,
+		js_cocos2dx_gui_TextAtlas_constructor, 0, // constructor
 		properties,
 		funcs,
 		NULL, // no static properties
 		st_funcs);
 	// make the class enumerable in the registered namespace
 	JSBool found;
-	JS_SetPropertyAttributes(cx, global, "LabelAtlas", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+	JS_SetPropertyAttributes(cx, global, "TextAtlas", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
 
 	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::gui::LabelAtlas> t;
+	TypeTest<cocos2d::gui::TextAtlas> t;
 	js_type_class_t *p;
 	std::string typeName = t.s_name();
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_cocos2d_gui_LabelAtlas_class;
-		p->proto = jsb_cocos2d_gui_LabelAtlas_prototype;
+		p->jsclass = jsb_cocos2d_gui_TextAtlas_class;
+		p->proto = jsb_cocos2d_gui_TextAtlas_prototype;
 		p->parentProto = jsb_cocos2d_gui_Widget_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
@@ -6164,35 +6164,35 @@ void js_register_cocos2dx_gui_TextField(JSContext *cx, JSObject *global) {
 	}
 }
 
-JSClass  *jsb_cocos2d_gui_LabelBMFont_class;
-JSObject *jsb_cocos2d_gui_LabelBMFont_prototype;
+JSClass  *jsb_cocos2d_gui_TextBMFont_class;
+JSObject *jsb_cocos2d_gui_TextBMFont_prototype;
 
-JSBool js_cocos2dx_gui_LabelBMFont_setFntFile(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextBMFont_setFntFile(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::LabelBMFont* cobj = (cocos2d::gui::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LabelBMFont_setFntFile : Invalid Native Object");
+	cocos2d::gui::TextBMFont* cobj = (cocos2d::gui::TextBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextBMFont_setFntFile : Invalid Native Object");
 	if (argc == 1) {
 		const char* arg0;
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_LabelBMFont_setFntFile : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_TextBMFont_setFntFile : Error processing arguments");
 		cobj->setFntFile(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelBMFont_setFntFile : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_TextBMFont_setFntFile : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_LabelBMFont_getStringValue(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextBMFont_getStringValue(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::LabelBMFont* cobj = (cocos2d::gui::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LabelBMFont_getStringValue : Invalid Native Object");
+	cocos2d::gui::TextBMFont* cobj = (cocos2d::gui::TextBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextBMFont_getStringValue : Invalid Native Object");
 	if (argc == 0) {
 		const char* ret = cobj->getStringValue();
 		jsval jsret;
@@ -6201,37 +6201,37 @@ JSBool js_cocos2dx_gui_LabelBMFont_getStringValue(JSContext *cx, uint32_t argc, 
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelBMFont_getStringValue : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_TextBMFont_getStringValue : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_LabelBMFont_setText(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextBMFont_setText(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::LabelBMFont* cobj = (cocos2d::gui::LabelBMFont *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LabelBMFont_setText : Invalid Native Object");
+	cocos2d::gui::TextBMFont* cobj = (cocos2d::gui::TextBMFont *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextBMFont_setText : Invalid Native Object");
 	if (argc == 1) {
 		const char* arg0;
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_LabelBMFont_setText : Error processing arguments");
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_TextBMFont_setText : Error processing arguments");
 		cobj->setText(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelBMFont_setText : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_TextBMFont_setText : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_LabelBMFont_create(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextBMFont_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		cocos2d::gui::LabelBMFont* ret = cocos2d::gui::LabelBMFont::create();
+		cocos2d::gui::TextBMFont* ret = cocos2d::gui::TextBMFont::create();
 		jsval jsret;
 		do {
 		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::LabelBMFont>(cx, (cocos2d::gui::LabelBMFont*)ret);
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::TextBMFont>(cx, (cocos2d::gui::TextBMFont*)ret);
 			jsret = OBJECT_TO_JSVAL(proxy->obj);
 		} else {
 			jsret = JSVAL_NULL;
@@ -6240,19 +6240,19 @@ JSBool js_cocos2dx_gui_LabelBMFont_create(JSContext *cx, uint32_t argc, jsval *v
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelBMFont_create : wrong number of arguments");
+	JS_ReportError(cx, "js_cocos2dx_gui_TextBMFont_create : wrong number of arguments");
 	return JS_FALSE;
 }
 
-JSBool js_cocos2dx_gui_LabelBMFont_constructor(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_TextBMFont_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		cocos2d::gui::LabelBMFont* cobj = new cocos2d::gui::LabelBMFont();
+		cocos2d::gui::TextBMFont* cobj = new cocos2d::gui::TextBMFont();
 		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
-		TypeTest<cocos2d::gui::LabelBMFont> t;
+		TypeTest<cocos2d::gui::TextBMFont> t;
 		js_type_class_t *typeClass = nullptr;
 		std::string typeName = t.s_name();
 		auto typeMapIter = _js_global_type_map.find(typeName);
@@ -6263,72 +6263,72 @@ JSBool js_cocos2dx_gui_LabelBMFont_constructor(JSContext *cx, uint32_t argc, jsv
 		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
 		// link the native object with the javascript object
 		js_proxy_t* p = jsb_new_proxy(cobj, obj);
-		JS_AddNamedObjectRoot(cx, &p->obj, "cocos2d::gui::LabelBMFont");
+		JS_AddNamedObjectRoot(cx, &p->obj, "cocos2d::gui::TextBMFont");
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_LabelBMFont_constructor : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_TextBMFont_constructor : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 
 
 extern JSObject *jsb_cocos2d_gui_Widget_prototype;
 
-void js_cocos2d_gui_LabelBMFont_finalize(JSFreeOp *fop, JSObject *obj) {
-    CCLOGINFO("jsbindings: finalizing JS object %p (LabelBMFont)", obj);
+void js_cocos2d_gui_TextBMFont_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (TextBMFont)", obj);
 }
 
-void js_register_cocos2dx_gui_LabelBMFont(JSContext *cx, JSObject *global) {
-	jsb_cocos2d_gui_LabelBMFont_class = (JSClass *)calloc(1, sizeof(JSClass));
-	jsb_cocos2d_gui_LabelBMFont_class->name = "LabelBMFont";
-	jsb_cocos2d_gui_LabelBMFont_class->addProperty = JS_PropertyStub;
-	jsb_cocos2d_gui_LabelBMFont_class->delProperty = JS_DeletePropertyStub;
-	jsb_cocos2d_gui_LabelBMFont_class->getProperty = JS_PropertyStub;
-	jsb_cocos2d_gui_LabelBMFont_class->setProperty = JS_StrictPropertyStub;
-	jsb_cocos2d_gui_LabelBMFont_class->enumerate = JS_EnumerateStub;
-	jsb_cocos2d_gui_LabelBMFont_class->resolve = JS_ResolveStub;
-	jsb_cocos2d_gui_LabelBMFont_class->convert = JS_ConvertStub;
-	jsb_cocos2d_gui_LabelBMFont_class->finalize = js_cocos2d_gui_LabelBMFont_finalize;
-	jsb_cocos2d_gui_LabelBMFont_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+void js_register_cocos2dx_gui_TextBMFont(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_gui_TextBMFont_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_gui_TextBMFont_class->name = "TextBMFont";
+	jsb_cocos2d_gui_TextBMFont_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_gui_TextBMFont_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_gui_TextBMFont_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_gui_TextBMFont_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_gui_TextBMFont_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_gui_TextBMFont_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_gui_TextBMFont_class->convert = JS_ConvertStub;
+	jsb_cocos2d_gui_TextBMFont_class->finalize = js_cocos2d_gui_TextBMFont_finalize;
+	jsb_cocos2d_gui_TextBMFont_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("setFntFile", js_cocos2dx_gui_LabelBMFont_setFntFile, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getStringValue", js_cocos2dx_gui_LabelBMFont_getStringValue, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setText", js_cocos2dx_gui_LabelBMFont_setText, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setFntFile", js_cocos2dx_gui_TextBMFont_setFntFile, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getStringValue", js_cocos2dx_gui_TextBMFont_getStringValue, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setText", js_cocos2dx_gui_TextBMFont_setText, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
 	static JSFunctionSpec st_funcs[] = {
-		JS_FN("create", js_cocos2dx_gui_LabelBMFont_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("create", js_cocos2dx_gui_TextBMFont_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
 
-	jsb_cocos2d_gui_LabelBMFont_prototype = JS_InitClass(
+	jsb_cocos2d_gui_TextBMFont_prototype = JS_InitClass(
 		cx, global,
 		jsb_cocos2d_gui_Widget_prototype,
-		jsb_cocos2d_gui_LabelBMFont_class,
-		js_cocos2dx_gui_LabelBMFont_constructor, 0, // constructor
+		jsb_cocos2d_gui_TextBMFont_class,
+		js_cocos2dx_gui_TextBMFont_constructor, 0, // constructor
 		properties,
 		funcs,
 		NULL, // no static properties
 		st_funcs);
 	// make the class enumerable in the registered namespace
 	JSBool found;
-	JS_SetPropertyAttributes(cx, global, "LabelBMFont", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+	JS_SetPropertyAttributes(cx, global, "TextBMFont", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
 
 	// add the proto and JSClass to the type->js info hash table
-	TypeTest<cocos2d::gui::LabelBMFont> t;
+	TypeTest<cocos2d::gui::TextBMFont> t;
 	js_type_class_t *p;
 	std::string typeName = t.s_name();
 	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
 	{
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
-		p->jsclass = jsb_cocos2d_gui_LabelBMFont_class;
-		p->proto = jsb_cocos2d_gui_LabelBMFont_prototype;
+		p->jsclass = jsb_cocos2d_gui_TextBMFont_class;
+		p->proto = jsb_cocos2d_gui_TextBMFont_prototype;
 		p->parentProto = jsb_cocos2d_gui_Widget_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
@@ -6701,21 +6701,21 @@ void register_all_cocos2dx_gui(JSContext* cx, JSObject* obj) {
 	obj = ns;
 
 	js_register_cocos2dx_gui_Widget(cx, obj);
-	js_register_cocos2dx_gui_CheckBox(cx, obj);
 	js_register_cocos2dx_gui_Layout(cx, obj);
-	js_register_cocos2dx_gui_ScrollView(cx, obj);
-	js_register_cocos2dx_gui_ListView(cx, obj);
+	js_register_cocos2dx_gui_PageView(cx, obj);
+	js_register_cocos2dx_gui_CheckBox(cx, obj);
+	js_register_cocos2dx_gui_Text(cx, obj);
 	js_register_cocos2dx_gui_Button(cx, obj);
 	js_register_cocos2dx_gui_LayoutParameter(cx, obj);
 	js_register_cocos2dx_gui_LinearLayoutParameter(cx, obj);
-	js_register_cocos2dx_gui_PageView(cx, obj);
-	js_register_cocos2dx_gui_Label(cx, obj);
+	js_register_cocos2dx_gui_TextBMFont(cx, obj);
+	js_register_cocos2dx_gui_ScrollView(cx, obj);
 	js_register_cocos2dx_gui_LoadingBar(cx, obj);
 	js_register_cocos2dx_gui_Slider(cx, obj);
 	js_register_cocos2dx_gui_RelativeLayoutParameter(cx, obj);
-	js_register_cocos2dx_gui_LabelAtlas(cx, obj);
 	js_register_cocos2dx_gui_ImageView(cx, obj);
+	js_register_cocos2dx_gui_TextAtlas(cx, obj);
 	js_register_cocos2dx_gui_TextField(cx, obj);
-	js_register_cocos2dx_gui_LabelBMFont(cx, obj);
+	js_register_cocos2dx_gui_ListView(cx, obj);
 }
 

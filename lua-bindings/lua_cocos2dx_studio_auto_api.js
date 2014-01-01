@@ -806,9 +806,9 @@ ImageView : function () {},
 };
 
 /**
- * @class Label
+ * @class Text
  */
-ccs.Label = {
+ccs.Text = {
 
 /**
  * @method getStringLength
@@ -872,22 +872,22 @@ setTextAreaSize : function () {},
 
 /**
  * @method create
- * @return A value converted from C/C++ "cocos2d::gui::Label*"
+ * @return A value converted from C/C++ "cocos2d::gui::Text*"
  */
 create : function () {},
 
 /**
- * @method Label
+ * @method Text
  * @constructor
  */
-Label : function () {},
+Text : function () {},
 
 };
 
 /**
- * @class LabelAtlas
+ * @class TextAtlas
  */
-ccs.LabelAtlas = {
+ccs.TextAtlas = {
 
 /**
  * @method setProperty
@@ -913,15 +913,15 @@ setStringValue : function () {},
 
 /**
  * @method create
- * @return A value converted from C/C++ "cocos2d::gui::LabelAtlas*"
+ * @return A value converted from C/C++ "cocos2d::gui::TextAtlas*"
  */
 create : function () {},
 
 /**
- * @method LabelAtlas
+ * @method TextAtlas
  * @constructor
  */
-LabelAtlas : function () {},
+TextAtlas : function () {},
 
 };
 
@@ -1572,9 +1572,9 @@ TextField : function () {},
 };
 
 /**
- * @class LabelBMFont
+ * @class TextBMFont
  */
-ccs.LabelBMFont = {
+ccs.TextBMFont = {
 
 /**
  * @method setFntFile
@@ -1596,15 +1596,15 @@ setText : function () {},
 
 /**
  * @method create
- * @return A value converted from C/C++ "cocos2d::gui::LabelBMFont*"
+ * @return A value converted from C/C++ "cocos2d::gui::TextBMFont*"
  */
 create : function () {},
 
 /**
- * @method LabelBMFont
+ * @method TextBMFont
  * @constructor
  */
-LabelBMFont : function () {},
+TextBMFont : function () {},
 
 };
 

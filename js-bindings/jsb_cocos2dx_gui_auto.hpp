@@ -191,38 +191,38 @@ JSBool js_cocos2dx_gui_ImageView_loadTexture(JSContext *cx, uint32_t argc, jsval
 JSBool js_cocos2dx_gui_ImageView_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_ImageView_ImageView(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_cocos2d_gui_Label_class;
-extern JSObject *jsb_cocos2d_gui_Label_prototype;
+extern JSClass  *jsb_cocos2d_gui_Text_class;
+extern JSObject *jsb_cocos2d_gui_Text_prototype;
 
-JSBool js_cocos2dx_gui_Label_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_gui_Label_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_gui_Label(JSContext *cx, JSObject *global);
+JSBool js_cocos2dx_gui_Text_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_gui_Text_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_gui_Text(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_gui(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_gui_Label_getStringLength(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_setFontName(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_setTouchScaleChangeEnabled(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_getStringValue(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_setText(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_setTextVerticalAlignment(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_setFontSize(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_isTouchScaleChangeEnabled(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_setTextHorizontalAlignment(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_setTextAreaSize(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_create(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_Label_Label(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_getStringLength(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_setFontName(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_setTouchScaleChangeEnabled(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_getStringValue(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_setText(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_setTextVerticalAlignment(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_setFontSize(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_isTouchScaleChangeEnabled(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_setTextHorizontalAlignment(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_setTextAreaSize(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_create(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Text_Text(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_cocos2d_gui_LabelAtlas_class;
-extern JSObject *jsb_cocos2d_gui_LabelAtlas_prototype;
+extern JSClass  *jsb_cocos2d_gui_TextAtlas_class;
+extern JSObject *jsb_cocos2d_gui_TextAtlas_prototype;
 
-JSBool js_cocos2dx_gui_LabelAtlas_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_gui_LabelAtlas_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_gui_LabelAtlas(JSContext *cx, JSObject *global);
+JSBool js_cocos2dx_gui_TextAtlas_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_gui_TextAtlas_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_gui_TextAtlas(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_gui(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_gui_LabelAtlas_setProperty(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_LabelAtlas_getStringValue(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_LabelAtlas_setStringValue(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_LabelAtlas_create(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_LabelAtlas_LabelAtlas(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextAtlas_setProperty(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextAtlas_getStringValue(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextAtlas_setStringValue(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextAtlas_create(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextAtlas_TextAtlas(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_gui_LoadingBar_class;
 extern JSObject *jsb_cocos2d_gui_LoadingBar_prototype;
@@ -364,18 +364,18 @@ JSBool js_cocos2dx_gui_TextField_setDeleteBackward(JSContext *cx, uint32_t argc,
 JSBool js_cocos2dx_gui_TextField_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_TextField_TextField(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_cocos2d_gui_LabelBMFont_class;
-extern JSObject *jsb_cocos2d_gui_LabelBMFont_prototype;
+extern JSClass  *jsb_cocos2d_gui_TextBMFont_class;
+extern JSObject *jsb_cocos2d_gui_TextBMFont_prototype;
 
-JSBool js_cocos2dx_gui_LabelBMFont_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_gui_LabelBMFont_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_gui_LabelBMFont(JSContext *cx, JSObject *global);
+JSBool js_cocos2dx_gui_TextBMFont_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_gui_TextBMFont_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_gui_TextBMFont(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_gui(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_gui_LabelBMFont_setFntFile(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_LabelBMFont_getStringValue(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_LabelBMFont_setText(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_LabelBMFont_create(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_gui_LabelBMFont_LabelBMFont(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextBMFont_setFntFile(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextBMFont_getStringValue(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextBMFont_setText(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextBMFont_create(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_TextBMFont_TextBMFont(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_gui_PageView_class;
 extern JSObject *jsb_cocos2d_gui_PageView_prototype;
