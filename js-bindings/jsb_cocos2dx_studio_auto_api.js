@@ -289,17 +289,24 @@ init : function () {},
 getContentSize : function () {},
 
 /**
- * @method changeDisplayByName
- * @param {const std::string&}
- * @param {bool}
- */
-changeDisplayByName : function () {},
-
-/**
  * @method getBoundingBox
  * @return A value converted from C/C++ "cocos2d::Rect"
  */
 getBoundingBox : function () {},
+
+/**
+ * @method changeDisplayWithIndex
+ * @param {int}
+ * @param {bool}
+ */
+changeDisplayWithIndex : function () {},
+
+/**
+ * @method changeDisplayWithName
+ * @param {const std::string&}
+ * @param {bool}
+ */
+changeDisplayWithName : function () {},
 
 /**
  * @method isForceChangeDisplay
@@ -324,13 +331,6 @@ getAnchorPoint : function () {},
  * @return A value converted from C/C++ "const cocos2d::Vector<cocostudio::DecorativeDisplay *>&"
  */
 getDecorativeDisplayList : function () {},
-
-/**
- * @method changeDisplayByIndex
- * @param {int}
- * @param {bool}
- */
-changeDisplayByIndex : function () {},
 
 /**
  * @method isVisible
@@ -453,11 +453,10 @@ removeDisplay : function () {},
 setBoneData : function () {},
 
 /**
- * @method changeDisplayByName
- * @param {const std::string&}
- * @param {bool}
+ * @method setParentBone
+ * @param {cocostudio::Bone*}
  */
-changeDisplayByName : function () {},
+setParentBone : function () {},
 
 /**
  * @method setIgnoreMovementBoneData
@@ -484,16 +483,24 @@ removeFromParent : function () {},
 getColliderDetector : function () {},
 
 /**
- * @method setParentBone
- * @param {cocostudio::Bone*}
- */
-setParentBone : function () {},
-
-/**
  * @method getChildArmature
  * @return A value converted from C/C++ "cocostudio::Armature*"
  */
 getChildArmature : function () {},
+
+/**
+ * @method changeDisplayWithIndex
+ * @param {int}
+ * @param {bool}
+ */
+changeDisplayWithIndex : function () {},
+
+/**
+ * @method changeDisplayWithName
+ * @param {const std::string&}
+ * @param {bool}
+ */
+changeDisplayWithName : function () {},
 
 /**
  * @method setArmature
@@ -537,13 +544,6 @@ getDisplayManager : function () {},
  * @return A value converted from C/C++ "cocostudio::Armature*"
  */
 getArmature : function () {},
-
-/**
- * @method changeDisplayByIndex
- * @param {int}
- * @param {bool}
- */
-changeDisplayByIndex : function () {},
 
 /**
  * @method Bone

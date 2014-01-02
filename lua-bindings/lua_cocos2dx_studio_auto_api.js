@@ -2233,11 +2233,10 @@ removeDisplay : function () {},
 setBoneData : function () {},
 
 /**
- * @method changeDisplayByName
- * @param {const std::string&}
- * @param {bool}
+ * @method setParentBone
+ * @param {cocostudio::Bone*}
  */
-changeDisplayByName : function () {},
+setParentBone : function () {},
 
 /**
  * @method setName
@@ -2258,10 +2257,10 @@ removeFromParent : function () {},
 getColliderDetector : function () {},
 
 /**
- * @method setParentBone
- * @param {cocostudio::Bone*}
+ * @method getChildArmature
+ * @return A value converted from C/C++ "cocostudio::Armature*"
  */
-setParentBone : function () {},
+getChildArmature : function () {},
 
 /**
  * @method getTweenData
@@ -2270,10 +2269,18 @@ setParentBone : function () {},
 getTweenData : function () {},
 
 /**
- * @method getChildArmature
- * @return A value converted from C/C++ "cocostudio::Armature*"
+ * @method changeDisplayWithIndex
+ * @param {int}
+ * @param {bool}
  */
-getChildArmature : function () {},
+changeDisplayWithIndex : function () {},
+
+/**
+ * @method changeDisplayWithName
+ * @param {const std::string&}
+ * @param {bool}
+ */
+changeDisplayWithName : function () {},
 
 /**
  * @method setArmature
@@ -2317,13 +2324,6 @@ getDisplayManager : function () {},
  * @return A value converted from C/C++ "cocostudio::Armature*"
  */
 getArmature : function () {},
-
-/**
- * @method changeDisplayByIndex
- * @param {int}
- * @param {bool}
- */
-changeDisplayByIndex : function () {},
 
 /**
  * @method getBoneData
