@@ -7489,15 +7489,22 @@ cc.TextureCache = {
 dumpCachedTextureInfo : function () {},
 
 /**
+ * @method removeTextureForKey
+ * @param {const std::string&}
+ */
+removeTextureForKey : function () {},
+
+/**
  * @method removeAllTextures
  */
 removeAllTextures : function () {},
 
 /**
- * @method removeTextureForKey
+ * @method addImageAsync
  * @param {const std::string&}
+ * @param {std::function<void (cocos2d::Texture2D *)>}
  */
-removeTextureForKey : function () {},
+addImageAsync : function () {},
 
 /**
  * @method getDescription
