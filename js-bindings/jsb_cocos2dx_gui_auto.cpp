@@ -581,23 +581,6 @@ JSBool js_cocos2dx_gui_Widget_setSizePercent(JSContext *cx, uint32_t argc, jsval
 	JS_ReportError(cx, "js_cocos2dx_gui_Widget_setSizePercent : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Widget_isFlipX(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Widget* cobj = (cocos2d::gui::Widget *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isFlipX : Invalid Native Object");
-	if (argc == 0) {
-		JSBool ret = cobj->isFlipX();
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_Widget_isFlipX : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_gui_Widget_setActionTag(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -746,21 +729,6 @@ JSBool js_cocos2dx_gui_Widget_isIgnoreContentAdaptWithSize(JSContext *cx, uint32
 	JS_ReportError(cx, "js_cocos2dx_gui_Widget_isIgnoreContentAdaptWithSize : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Widget_updateSizeAndPosition(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Widget* cobj = (cocos2d::gui::Widget *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_updateSizeAndPosition : Invalid Native Object");
-	if (argc == 0) {
-		cobj->updateSizeAndPosition();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_Widget_updateSizeAndPosition : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_gui_Widget_getBottomInParent(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -822,28 +790,6 @@ JSBool js_cocos2dx_gui_Widget_getLayoutParameter(JSContext *cx, uint32_t argc, j
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_gui_Widget_getLayoutParameter : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_gui_Widget_hitTest(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::gui::Widget* cobj = (cocos2d::gui::Widget *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_hitTest : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Point arg0;
-		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Widget_hitTest : Error processing arguments");
-		JSBool ret = cobj->hitTest(arg0);
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_gui_Widget_hitTest : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_gui_Widget_getPositionType(JSContext *cx, uint32_t argc, jsval *vp)
@@ -924,6 +870,23 @@ JSBool js_cocos2dx_gui_Widget_isEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_gui_Widget_isEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_gui_Widget_isFlipX(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::gui::Widget* cobj = (cocos2d::gui::Widget *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isFlipX : Invalid Native Object");
+	if (argc == 0) {
+		JSBool ret = cobj->isFlipX();
+		jsval jsret;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_gui_Widget_isFlipX : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_gui_Widget_isFlipY(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1273,24 +1236,36 @@ JSBool js_cocos2dx_gui_Widget_getSizePercent(JSContext *cx, uint32_t argc, jsval
 	JS_ReportError(cx, "js_cocos2dx_gui_Widget_getSizePercent : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Widget_setPosition(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Widget_getTopInParent(JSContext *cx, uint32_t argc, jsval *vp)
 {
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::gui::Widget* cobj = (cocos2d::gui::Widget *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_setPosition : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::Point arg0;
-		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Widget_setPosition : Error processing arguments");
-		cobj->setPosition(arg0);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getTopInParent : Invalid Native Object");
+	if (argc == 0) {
+		double ret = cobj->getTopInParent();
+		jsval jsret;
+		jsret = DOUBLE_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_gui_Widget_getTopInParent : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_gui_Widget_updateSizeAndPosition(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::gui::Widget* cobj = (cocos2d::gui::Widget *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_updateSizeAndPosition : Invalid Native Object");
+	if (argc == 0) {
+		cobj->updateSizeAndPosition();
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Widget_setPosition : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_gui_Widget_updateSizeAndPosition : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_gui_Widget_isUpdateEnabled(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1415,21 +1390,26 @@ JSBool js_cocos2dx_gui_Widget_getPositionPercent(JSContext *cx, uint32_t argc, j
 	JS_ReportError(cx, "js_cocos2dx_gui_Widget_getPositionPercent : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_gui_Widget_getTopInParent(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_gui_Widget_hitTest(JSContext *cx, uint32_t argc, jsval *vp)
 {
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::gui::Widget* cobj = (cocos2d::gui::Widget *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getTopInParent : Invalid Native Object");
-	if (argc == 0) {
-		double ret = cobj->getTopInParent();
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_hitTest : Invalid Native Object");
+	if (argc == 1) {
+		cocos2d::Point arg0;
+		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Widget_hitTest : Error processing arguments");
+		JSBool ret = cobj->hitTest(arg0);
 		jsval jsret;
-		jsret = DOUBLE_TO_JSVAL(ret);
+		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_gui_Widget_getTopInParent : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_gui_Widget_hitTest : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_gui_Widget_isFocused(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1614,7 +1594,6 @@ void js_register_cocos2dx_gui_Widget(JSContext *cx, JSObject *global) {
 	static JSFunctionSpec funcs[] = {
 		JS_FN("getVirtualRenderer", js_cocos2dx_gui_Widget_getVirtualRenderer, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSizePercent", js_cocos2dx_gui_Widget_setSizePercent, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("isFlipX", js_cocos2dx_gui_Widget_isFlipX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setActionTag", js_cocos2dx_gui_Widget_setActionTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getLeftInParent", js_cocos2dx_gui_Widget_getLeftInParent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setUpdateEnabled", js_cocos2dx_gui_Widget_setUpdateEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -1623,15 +1602,14 @@ void js_register_cocos2dx_gui_Widget(JSContext *cx, JSObject *global) {
 		JS_FN("setPositionType", js_cocos2dx_gui_Widget_setPositionType, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getName", js_cocos2dx_gui_Widget_getName, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isIgnoreContentAdaptWithSize", js_cocos2dx_gui_Widget_isIgnoreContentAdaptWithSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("updateSizeAndPosition", js_cocos2dx_gui_Widget_updateSizeAndPosition, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getBottomInParent", js_cocos2dx_gui_Widget_getBottomInParent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getActionTag", js_cocos2dx_gui_Widget_getActionTag, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getLayoutParameter", js_cocos2dx_gui_Widget_getLayoutParameter, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("hitTest", js_cocos2dx_gui_Widget_hitTest, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPositionType", js_cocos2dx_gui_Widget_getPositionType, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getWidgetType", js_cocos2dx_gui_Widget_getWidgetType, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getChildByName", js_cocos2dx_gui_Widget_getChildByName, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isEnabled", js_cocos2dx_gui_Widget_isEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("isFlipX", js_cocos2dx_gui_Widget_isFlipX, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isFlipY", js_cocos2dx_gui_Widget_isFlipY, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isTouchEnabled", js_cocos2dx_gui_Widget_isTouchEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getContentSize", js_cocos2dx_gui_Widget_getContentSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -1650,7 +1628,8 @@ void js_register_cocos2dx_gui_Widget(JSContext *cx, JSObject *global) {
 		JS_FN("isBright", js_cocos2dx_gui_Widget_isBright, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("clippingParentAreaContainPoint", js_cocos2dx_gui_Widget_clippingParentAreaContainPoint, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getSizePercent", js_cocos2dx_gui_Widget_getSizePercent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setPosition", js_cocos2dx_gui_Widget_setPosition, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getTopInParent", js_cocos2dx_gui_Widget_getTopInParent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateSizeAndPosition", js_cocos2dx_gui_Widget_updateSizeAndPosition, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isUpdateEnabled", js_cocos2dx_gui_Widget_isUpdateEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getSize", js_cocos2dx_gui_Widget_getSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getRightInParent", js_cocos2dx_gui_Widget_getRightInParent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -1658,7 +1637,7 @@ void js_register_cocos2dx_gui_Widget(JSContext *cx, JSObject *global) {
 		JS_FN("ignoreContentAdaptWithSize", js_cocos2dx_gui_Widget_ignoreContentAdaptWithSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getWorldPosition", js_cocos2dx_gui_Widget_getWorldPosition, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getPositionPercent", js_cocos2dx_gui_Widget_getPositionPercent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getTopInParent", js_cocos2dx_gui_Widget_getTopInParent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("hitTest", js_cocos2dx_gui_Widget_hitTest, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isFocused", js_cocos2dx_gui_Widget_isFocused, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSizeType", js_cocos2dx_gui_Widget_setSizeType, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("checkChildInfo", js_cocos2dx_gui_Widget_checkChildInfo, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -6690,11 +6669,11 @@ void register_all_cocos2dx_gui(JSContext* cx, JSObject* obj) {
 	// first, try to get the ns
 	JS::RootedValue nsval(cx);
 	JSObject *ns;
-	JS_GetProperty(cx, obj, "ccs", &nsval);
+	JS_GetProperty(cx, obj, "ccui", &nsval);
 	if (nsval == JSVAL_VOID) {
 		ns = JS_NewObject(cx, NULL, NULL, NULL);
 		nsval = OBJECT_TO_JSVAL(ns);
-		JS_SetProperty(cx, obj, "ccs", nsval);
+		JS_SetProperty(cx, obj, "ccui", nsval);
 	} else {
 		JS_ValueToObject(cx, nsval, &ns);
 	}

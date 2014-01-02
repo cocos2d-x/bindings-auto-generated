@@ -132,12 +132,6 @@ getVirtualRenderer : function () {},
 setSizePercent : function () {},
 
 /**
- * @method isFlipX
- * @return A value converted from C/C++ "bool"
- */
-isFlipX : function () {},
-
-/**
  * @method setActionTag
  * @param {int}
  */
@@ -186,11 +180,6 @@ getName : function () {},
 isIgnoreContentAdaptWithSize : function () {},
 
 /**
- * @method updateSizeAndPosition
- */
-updateSizeAndPosition : function () {},
-
-/**
  * @method getBottomInParent
  * @return A value converted from C/C++ "float"
  */
@@ -208,13 +197,6 @@ getActionTag : function () {},
  * @param {cocos2d::gui::LayoutParameterType}
  */
 getLayoutParameter : function () {},
-
-/**
- * @method hitTest
- * @return A value converted from C/C++ "bool"
- * @param {const cocos2d::Point&}
- */
-hitTest : function () {},
 
 /**
  * @method getPositionType
@@ -240,6 +222,12 @@ getChildByName : function () {},
  * @return A value converted from C/C++ "bool"
  */
 isEnabled : function () {},
+
+/**
+ * @method isFlipX
+ * @return A value converted from C/C++ "bool"
+ */
+isFlipX : function () {},
 
 /**
  * @method isFlipY
@@ -350,10 +338,15 @@ clippingParentAreaContainPoint : function () {},
 getSizePercent : function () {},
 
 /**
- * @method setPosition
- * @param {const cocos2d::Point&}
+ * @method getTopInParent
+ * @return A value converted from C/C++ "float"
  */
-setPosition : function () {},
+getTopInParent : function () {},
+
+/**
+ * @method updateSizeAndPosition
+ */
+updateSizeAndPosition : function () {},
 
 /**
  * @method isUpdateEnabled
@@ -398,10 +391,11 @@ getWorldPosition : function () {},
 getPositionPercent : function () {},
 
 /**
- * @method getTopInParent
- * @return A value converted from C/C++ "float"
+ * @method hitTest
+ * @return A value converted from C/C++ "bool"
+ * @param {const cocos2d::Point&}
  */
-getTopInParent : function () {},
+hitTest : function () {},
 
 /**
  * @method isFocused
