@@ -1,12 +1,12 @@
 /**
  * @module cocos2dx_gui
  */
-var ccs = ccs || {};
+var ccui = ccui || {};
 
 /**
  * @class LayoutParameter
  */
-ccs.LayoutParameter = {
+ccui.LayoutParameter = {
 
 /**
  * @method getLayoutType
@@ -31,7 +31,7 @@ LayoutParameter : function () {},
 /**
  * @class LinearLayoutParameter
  */
-ccs.LinearLayoutParameter = {
+ccui.LinearLayoutParameter = {
 
 /**
  * @method setGravity
@@ -62,7 +62,7 @@ LinearLayoutParameter : function () {},
 /**
  * @class RelativeLayoutParameter
  */
-ccs.RelativeLayoutParameter = {
+ccui.RelativeLayoutParameter = {
 
 /**
  * @method setAlign
@@ -117,7 +117,7 @@ RelativeLayoutParameter : function () {},
 /**
  * @class Widget
  */
-ccs.Widget = {
+ccui.Widget = {
 
 /**
  * @method getVirtualRenderer
@@ -130,12 +130,6 @@ getVirtualRenderer : function () {},
  * @param {const cocos2d::Point&}
  */
 setSizePercent : function () {},
-
-/**
- * @method isFlipX
- * @return A value converted from C/C++ "bool"
- */
-isFlipX : function () {},
 
 /**
  * @method setActionTag
@@ -186,11 +180,6 @@ getName : function () {},
 isIgnoreContentAdaptWithSize : function () {},
 
 /**
- * @method updateSizeAndPosition
- */
-updateSizeAndPosition : function () {},
-
-/**
  * @method getBottomInParent
  * @return A value converted from C/C++ "float"
  */
@@ -208,13 +197,6 @@ getActionTag : function () {},
  * @param {cocos2d::gui::LayoutParameterType}
  */
 getLayoutParameter : function () {},
-
-/**
- * @method hitTest
- * @return A value converted from C/C++ "bool"
- * @param {const cocos2d::Point&}
- */
-hitTest : function () {},
 
 /**
  * @method getPositionType
@@ -240,6 +222,12 @@ getChildByName : function () {},
  * @return A value converted from C/C++ "bool"
  */
 isEnabled : function () {},
+
+/**
+ * @method isFlipX
+ * @return A value converted from C/C++ "bool"
+ */
+isFlipX : function () {},
 
 /**
  * @method isFlipY
@@ -350,10 +338,15 @@ clippingParentAreaContainPoint : function () {},
 getSizePercent : function () {},
 
 /**
- * @method setPosition
- * @param {const cocos2d::Point&}
+ * @method getTopInParent
+ * @return A value converted from C/C++ "float"
  */
-setPosition : function () {},
+getTopInParent : function () {},
+
+/**
+ * @method updateSizeAndPosition
+ */
+updateSizeAndPosition : function () {},
 
 /**
  * @method isUpdateEnabled
@@ -398,10 +391,11 @@ getWorldPosition : function () {},
 getPositionPercent : function () {},
 
 /**
- * @method getTopInParent
- * @return A value converted from C/C++ "float"
+ * @method hitTest
+ * @return A value converted from C/C++ "bool"
+ * @param {const cocos2d::Point&}
  */
-getTopInParent : function () {},
+hitTest : function () {},
 
 /**
  * @method isFocused
@@ -452,7 +446,7 @@ Widget : function () {},
 /**
  * @class Layout
  */
-ccs.Layout = {
+ccui.Layout = {
 
 /**
  * @method setBackGroundColorVector
@@ -554,7 +548,7 @@ Layout : function () {},
 /**
  * @class Button
  */
-ccs.Button = {
+ccui.Button = {
 
 /**
  * @method getTitleText
@@ -687,7 +681,7 @@ Button : function () {},
 /**
  * @class CheckBox
  */
-ccs.CheckBox = {
+ccui.CheckBox = {
 
 /**
  * @method getSelectedState
@@ -764,7 +758,7 @@ CheckBox : function () {},
 /**
  * @class ImageView
  */
-ccs.ImageView = {
+ccui.ImageView = {
 
 /**
  * @method setTextureRect
@@ -808,7 +802,7 @@ ImageView : function () {},
 /**
  * @class Text
  */
-ccs.Text = {
+ccui.Text = {
 
 /**
  * @method getStringLength
@@ -887,7 +881,7 @@ Text : function () {},
 /**
  * @class TextAtlas
  */
-ccs.TextAtlas = {
+ccui.TextAtlas = {
 
 /**
  * @method setProperty
@@ -928,7 +922,7 @@ TextAtlas : function () {},
 /**
  * @class LoadingBar
  */
-ccs.LoadingBar = {
+ccui.LoadingBar = {
 
 /**
  * @method setPercent
@@ -990,7 +984,7 @@ LoadingBar : function () {},
 /**
  * @class ScrollView
  */
-ccs.ScrollView = {
+ccui.ScrollView = {
 
 /**
  * @method scrollToTop
@@ -1201,7 +1195,7 @@ ScrollView : function () {},
 /**
  * @class ListView
  */
-ccs.ListView = {
+ccui.ListView = {
 
 /**
  * @method getIndex
@@ -1309,7 +1303,7 @@ ListView : function () {},
 /**
  * @class Slider
  */
-ccs.Slider = {
+ccui.Slider = {
 
 /**
  * @method setPercent
@@ -1408,7 +1402,7 @@ Slider : function () {},
 /**
  * @class TextField
  */
-ccs.TextField = {
+ccui.TextField = {
 
 /**
  * @method setAttachWithIME
@@ -1574,7 +1568,7 @@ TextField : function () {},
 /**
  * @class TextBMFont
  */
-ccs.TextBMFont = {
+ccui.TextBMFont = {
 
 /**
  * @method setFntFile
@@ -1611,7 +1605,7 @@ TextBMFont : function () {},
 /**
  * @class PageView
  */
-ccs.PageView = {
+ccui.PageView = {
 
 /**
  * @method getCurPageIndex
