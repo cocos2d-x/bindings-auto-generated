@@ -7500,13 +7500,6 @@ removeTextureForKey : function () {},
 removeAllTextures : function () {},
 
 /**
- * @method addImageAsync
- * @param {const std::string&}
- * @param {std::function<void (cocos2d::Texture2D *)>}
- */
-addImageAsync : function () {},
-
-/**
  * @method getDescription
  * @return A value converted from C/C++ "std::string"
  */
