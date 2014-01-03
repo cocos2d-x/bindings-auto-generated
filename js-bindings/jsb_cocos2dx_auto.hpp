@@ -2205,6 +2205,18 @@ JSBool js_cocos2dx_RenderTexture_initWithWidthAndHeight(JSContext *cx, uint32_t 
 JSBool js_cocos2dx_RenderTexture_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_RenderTexture_RenderTexture(JSContext *cx, uint32_t argc, jsval *vp);
 
+extern JSClass  *jsb_cocos2d_NodeGrid_class;
+extern JSObject *jsb_cocos2d_NodeGrid_prototype;
+
+JSBool js_cocos2dx_NodeGrid_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_NodeGrid_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_NodeGrid(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_NodeGrid_setTarget(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NodeGrid_getGrid(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NodeGrid_setGrid(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_NodeGrid_create(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_cocos2d_ParticleBatchNode_class;
 extern JSObject *jsb_cocos2d_ParticleBatchNode_prototype;
 

@@ -6053,6 +6053,31 @@ RenderTexture : function () {},
 };
 
 /**
+ * @class NodeGrid
+ */
+cc.NodeGrid = {
+
+/**
+ * @method setTarget
+ * @param {cocos2d::Node*}
+ */
+setTarget : function () {},
+
+/**
+ * @method setGrid
+ * @param {cocos2d::GridBase*}
+ */
+setGrid : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::NodeGrid*"
+ */
+create : function () {},
+
+};
+
+/**
  * @class ParticleBatchNode
  */
 cc.ParticleBatchNode = {
