@@ -49476,6 +49476,271 @@ int lua_register_cocos2dx_RenderTexture(lua_State* tolua_S)
     return 1;
 }
 
+int lua_cocos2dx_NodeGrid_setTarget(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::NodeGrid* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"NodeGrid",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::NodeGrid*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeGrid_setTarget'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::Node* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cobj->setTarget(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setTarget",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeGrid_setTarget'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_NodeGrid_getGrid(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::NodeGrid* cobj = NULL;
+    bool ok  = true;
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"NodeGrid",0,&tolua_err)) goto tolua_lerror;
+#endif
+    cobj = (cocos2d::NodeGrid*)tolua_tousertype(tolua_S,1,0);
+#if COCOS2D_DEBUG >= 1
+    if (!cobj)
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeGrid_getGrid'", NULL);
+        return 0;
+    }
+#endif
+    argc = lua_gettop(tolua_S)-1;
+    do{
+        if (argc == 0) {
+            const cocos2d::GridBase* ret = cobj->getGrid();
+            do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "GridBase";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+            return 1;
+        }
+    }while(0);
+    ok  = true;
+    do{
+        if (argc == 0) {
+            cocos2d::GridBase* ret = cobj->getGrid();
+            do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "GridBase";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+            return 1;
+        }
+    }while(0);
+    ok  = true;
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getGrid",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeGrid_getGrid'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_NodeGrid_setGrid(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::NodeGrid* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"NodeGrid",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::NodeGrid*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_NodeGrid_setGrid'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::GridBase* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"GridBase",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::GridBase*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cobj->setGrid(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setGrid",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeGrid_setGrid'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_NodeGrid_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"NodeGrid",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 0)
+    {
+        if(!ok)
+            return 0;
+        cocos2d::NodeGrid* ret = cocos2d::NodeGrid::create();
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "NodeGrid";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::NodeGrid*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_NodeGrid_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_NodeGrid_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (NodeGrid)");
+    return 0;
+}
+
+int lua_register_cocos2dx_NodeGrid(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"NodeGrid");
+    tolua_cclass(tolua_S,"NodeGrid","NodeGrid","Node",NULL);
+
+    tolua_beginmodule(tolua_S,"NodeGrid");
+        tolua_function(tolua_S,"setTarget",lua_cocos2dx_NodeGrid_setTarget);
+        tolua_function(tolua_S,"getGrid",lua_cocos2dx_NodeGrid_getGrid);
+        tolua_function(tolua_S,"setGrid",lua_cocos2dx_NodeGrid_setGrid);
+        tolua_function(tolua_S,"create", lua_cocos2dx_NodeGrid_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::NodeGrid).name();
+    g_luaType[typeName] = "NodeGrid";
+    return 1;
+}
+
 int lua_cocos2dx_ParticleBatchNode_setTexture(lua_State* tolua_S)
 {
     int argc = 0;
@@ -69375,6 +69640,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_TransitionJumpZoom(tolua_S);
 	lua_register_cocos2dx_Touch(tolua_S);
 	lua_register_cocos2dx_AnimationFrame(tolua_S);
+	lua_register_cocos2dx_NodeGrid(tolua_S);
 	lua_register_cocos2dx_TMXLayerInfo(tolua_S);
 	lua_register_cocos2dx_EaseBounceIn(tolua_S);
 	lua_register_cocos2dx_GridBase(tolua_S);
