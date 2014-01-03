@@ -32133,6 +32133,194 @@ void js_register_cocos2dx_RenderTexture(JSContext *cx, JSObject *global) {
 	}
 }
 
+JSClass  *jsb_cocos2d_NodeGrid_class;
+JSObject *jsb_cocos2d_NodeGrid_prototype;
+
+JSBool js_cocos2dx_NodeGrid_setTarget(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::NodeGrid* cobj = (cocos2d::NodeGrid *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeGrid_setTarget : Invalid Native Object");
+	if (argc == 1) {
+		cocos2d::Node* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::Node*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeGrid_setTarget : Error processing arguments");
+		cobj->setTarget(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_NodeGrid_setTarget : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_NodeGrid_getGrid(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+
+	JSObject *obj = NULL;
+	cocos2d::NodeGrid* cobj = NULL;
+	obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cobj = (cocos2d::NodeGrid *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeGrid_getGrid : Invalid Native Object");
+	do {
+		if (argc == 0) {
+			const cocos2d::GridBase* ret = cobj->getGrid();
+			jsval jsret;
+			do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::GridBase>(cx, (cocos2d::GridBase*)ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	do {
+		if (argc == 0) {
+			cocos2d::GridBase* ret = cobj->getGrid();
+			jsval jsret;
+			do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::GridBase>(cx, (cocos2d::GridBase*)ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	JS_ReportError(cx, "js_cocos2dx_NodeGrid_getGrid : wrong number of arguments");
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_NodeGrid_setGrid(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::NodeGrid* cobj = (cocos2d::NodeGrid *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeGrid_setGrid : Invalid Native Object");
+	if (argc == 1) {
+		cocos2d::GridBase* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::GridBase*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeGrid_setGrid : Error processing arguments");
+		cobj->setGrid(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_NodeGrid_setGrid : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_NodeGrid_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	if (argc == 0) {
+		cocos2d::NodeGrid* ret = cocos2d::NodeGrid::create();
+		jsval jsret;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::NodeGrid>(cx, (cocos2d::NodeGrid*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "js_cocos2dx_NodeGrid_create : wrong number of arguments");
+	return JS_FALSE;
+}
+
+
+extern JSObject *jsb_cocos2d_Node_prototype;
+
+void js_cocos2d_NodeGrid_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (NodeGrid)", obj);
+}
+
+void js_register_cocos2dx_NodeGrid(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_NodeGrid_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_NodeGrid_class->name = "NodeGrid";
+	jsb_cocos2d_NodeGrid_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_NodeGrid_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_NodeGrid_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_NodeGrid_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_NodeGrid_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_NodeGrid_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_NodeGrid_class->convert = JS_ConvertStub;
+	jsb_cocos2d_NodeGrid_class->finalize = js_cocos2d_NodeGrid_finalize;
+	jsb_cocos2d_NodeGrid_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+		JS_FN("setTarget", js_cocos2dx_NodeGrid_setTarget, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getGrid", js_cocos2dx_NodeGrid_getGrid, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setGrid", js_cocos2dx_NodeGrid_setGrid, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_NodeGrid_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_NodeGrid_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_Node_prototype,
+		jsb_cocos2d_NodeGrid_class,
+		dummy_constructor<cocos2d::NodeGrid>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+	JSBool found;
+	JS_SetPropertyAttributes(cx, global, "NodeGrid", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::NodeGrid> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_NodeGrid_class;
+		p->proto = jsb_cocos2d_NodeGrid_prototype;
+		p->parentProto = jsb_cocos2d_Node_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
 JSClass  *jsb_cocos2d_ParticleBatchNode_class;
 JSObject *jsb_cocos2d_ParticleBatchNode_prototype;
 
@@ -42673,6 +42861,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_TransitionJumpZoom(cx, obj);
 	js_register_cocos2dx_Touch(cx, obj);
 	js_register_cocos2dx_AnimationFrame(cx, obj);
+	js_register_cocos2dx_NodeGrid(cx, obj);
 	js_register_cocos2dx_TMXLayerInfo(cx, obj);
 	js_register_cocos2dx_TMXTilesetInfo(cx, obj);
 	js_register_cocos2dx_GridBase(cx, obj);
