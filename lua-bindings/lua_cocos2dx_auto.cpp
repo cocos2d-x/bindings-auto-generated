@@ -49794,53 +49794,6 @@ int lua_cocos2dx_ParticleBatchNode_setTexture(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_ParticleBatchNode_initWithFile(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::ParticleBatchNode* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ParticleBatchNode",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_initWithFile'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        std::string arg0;
-        int arg1;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-        if(!ok)
-            return 0;
-        bool ret = cobj->initWithFile(arg0, arg1);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithFile",argc, 2);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ParticleBatchNode_initWithFile'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_ParticleBatchNode_disableParticle(lua_State* tolua_S)
 {
     int argc = 0;
@@ -49881,48 +49834,6 @@ int lua_cocos2dx_ParticleBatchNode_disableParticle(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ParticleBatchNode_disableParticle'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_ParticleBatchNode_visit(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::ParticleBatchNode* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ParticleBatchNode",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_visit'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cobj->visit();
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "visit",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ParticleBatchNode_visit'.",&tolua_err);
 #endif
 
     return 0;
@@ -50205,7 +50116,7 @@ int lua_cocos2dx_ParticleBatchNode_insertChild(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_ParticleBatchNode_initWithTexture(lua_State* tolua_S)
+int lua_cocos2dx_ParticleBatchNode_visit(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::ParticleBatchNode* cobj = nullptr;
@@ -50224,39 +50135,25 @@ int lua_cocos2dx_ParticleBatchNode_initWithTexture(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_initWithTexture'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ParticleBatchNode_visit'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
+    if (argc == 0) 
     {
-        cocos2d::Texture2D* arg0;
-        int arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
-        bool ret = cobj->initWithTexture(arg0, arg1);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
+        cobj->visit();
+        return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initWithTexture",argc, 2);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "visit",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ParticleBatchNode_initWithTexture'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ParticleBatchNode_visit'.",&tolua_err);
 #endif
 
     return 0;
@@ -50495,48 +50392,6 @@ int lua_cocos2dx_ParticleBatchNode_createWithTexture(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_ParticleBatchNode_constructor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::ParticleBatchNode* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cobj = new cocos2d::ParticleBatchNode();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleBatchNode");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ParticleBatchNode");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ParticleBatchNode",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ParticleBatchNode_constructor'.",&tolua_err);
-#endif
-
-    return 0;
-}
-
 static int lua_cocos2dx_ParticleBatchNode_finalize(lua_State* tolua_S)
 {
     printf("luabindings: finalizing LUA object (ParticleBatchNode)");
@@ -50550,17 +50405,14 @@ int lua_register_cocos2dx_ParticleBatchNode(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"ParticleBatchNode");
         tolua_function(tolua_S,"setTexture",lua_cocos2dx_ParticleBatchNode_setTexture);
-        tolua_function(tolua_S,"initWithFile",lua_cocos2dx_ParticleBatchNode_initWithFile);
         tolua_function(tolua_S,"disableParticle",lua_cocos2dx_ParticleBatchNode_disableParticle);
-        tolua_function(tolua_S,"visit",lua_cocos2dx_ParticleBatchNode_visit);
         tolua_function(tolua_S,"getTexture",lua_cocos2dx_ParticleBatchNode_getTexture);
         tolua_function(tolua_S,"setTextureAtlas",lua_cocos2dx_ParticleBatchNode_setTextureAtlas);
         tolua_function(tolua_S,"removeAllChildrenWithCleanup",lua_cocos2dx_ParticleBatchNode_removeAllChildrenWithCleanup);
         tolua_function(tolua_S,"getTextureAtlas",lua_cocos2dx_ParticleBatchNode_getTextureAtlas);
         tolua_function(tolua_S,"insertChild",lua_cocos2dx_ParticleBatchNode_insertChild);
-        tolua_function(tolua_S,"initWithTexture",lua_cocos2dx_ParticleBatchNode_initWithTexture);
+        tolua_function(tolua_S,"visit",lua_cocos2dx_ParticleBatchNode_visit);
         tolua_function(tolua_S,"removeChildAtIndex",lua_cocos2dx_ParticleBatchNode_removeChildAtIndex);
-        tolua_function(tolua_S,"new",lua_cocos2dx_ParticleBatchNode_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_ParticleBatchNode_create);
         tolua_function(tolua_S,"createWithTexture", lua_cocos2dx_ParticleBatchNode_createWithTexture);
     tolua_endmodule(tolua_S);

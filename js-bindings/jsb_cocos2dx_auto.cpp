@@ -32351,30 +32351,6 @@ JSBool js_cocos2dx_ParticleBatchNode_setTexture(JSContext *cx, uint32_t argc, js
 	JS_ReportError(cx, "js_cocos2dx_ParticleBatchNode_setTexture : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_ParticleBatchNode_initWithFile(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::ParticleBatchNode* cobj = (cocos2d::ParticleBatchNode *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ParticleBatchNode_initWithFile : Invalid Native Object");
-	if (argc == 2) {
-		std::string arg0;
-		int arg1;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ParticleBatchNode_initWithFile : Error processing arguments");
-		JSBool ret = cobj->initWithFile(arg0, arg1);
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_ParticleBatchNode_initWithFile : wrong number of arguments: %d, was expecting %d", argc, 2);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_ParticleBatchNode_disableParticle(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -32393,21 +32369,6 @@ JSBool js_cocos2dx_ParticleBatchNode_disableParticle(JSContext *cx, uint32_t arg
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_ParticleBatchNode_disableParticle : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_ParticleBatchNode_visit(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::ParticleBatchNode* cobj = (cocos2d::ParticleBatchNode *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ParticleBatchNode_visit : Invalid Native Object");
-	if (argc == 0) {
-		cobj->visit();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_ParticleBatchNode_visit : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_ParticleBatchNode_getTexture(JSContext *cx, uint32_t argc, jsval *vp)
@@ -32534,35 +32495,19 @@ JSBool js_cocos2dx_ParticleBatchNode_insertChild(JSContext *cx, uint32_t argc, j
 	JS_ReportError(cx, "js_cocos2dx_ParticleBatchNode_insertChild : wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_ParticleBatchNode_initWithTexture(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_ParticleBatchNode_visit(JSContext *cx, uint32_t argc, jsval *vp)
 {
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::ParticleBatchNode* cobj = (cocos2d::ParticleBatchNode *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ParticleBatchNode_initWithTexture : Invalid Native Object");
-	if (argc == 2) {
-		cocos2d::Texture2D* arg0;
-		int arg1;
-		do {
-			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ParticleBatchNode_initWithTexture : Error processing arguments");
-		JSBool ret = cobj->initWithTexture(arg0, arg1);
-		jsval jsret;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ParticleBatchNode_visit : Invalid Native Object");
+	if (argc == 0) {
+		cobj->visit();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_ParticleBatchNode_initWithTexture : wrong number of arguments: %d, was expecting %d", argc, 2);
+	JS_ReportError(cx, "js_cocos2dx_ParticleBatchNode_visit : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_ParticleBatchNode_removeChildAtIndex(JSContext *cx, uint32_t argc, jsval *vp)
@@ -32689,33 +32634,6 @@ JSBool js_cocos2dx_ParticleBatchNode_createWithTexture(JSContext *cx, uint32_t a
 	return JS_FALSE;
 }
 
-JSBool js_cocos2dx_ParticleBatchNode_constructor(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	if (argc == 0) {
-		cocos2d::ParticleBatchNode* cobj = new cocos2d::ParticleBatchNode();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
-		if (_ccobj) {
-			_ccobj->autorelease();
-		}
-		TypeTest<cocos2d::ParticleBatchNode> t;
-		js_type_class_t *typeClass = nullptr;
-		std::string typeName = t.s_name();
-		auto typeMapIter = _js_global_type_map.find(typeName);
-		CCASSERT(typeMapIter != _js_global_type_map.end(), "Can't find the class type!");
-		typeClass = typeMapIter->second;
-		CCASSERT(typeClass, "The value is null.");
-		JSObject *obj = JS_NewObject(cx, typeClass->jsclass, typeClass->proto, typeClass->parentProto);
-		JS_SET_RVAL(cx, vp, OBJECT_TO_JSVAL(obj));
-		// link the native object with the javascript object
-		js_proxy_t* p = jsb_new_proxy(cobj, obj);
-		JS_AddNamedObjectRoot(cx, &p->obj, "cocos2d::ParticleBatchNode");
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_ParticleBatchNode_constructor : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
-
 
 extern JSObject *jsb_cocos2d_Node_prototype;
 
@@ -32742,15 +32660,13 @@ void js_register_cocos2dx_ParticleBatchNode(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("setTexture", js_cocos2dx_ParticleBatchNode_setTexture, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("initWithFile", js_cocos2dx_ParticleBatchNode_initWithFile, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("disableParticle", js_cocos2dx_ParticleBatchNode_disableParticle, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("visit", js_cocos2dx_ParticleBatchNode_visit, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTexture", js_cocos2dx_ParticleBatchNode_getTexture, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setTextureAtlas", js_cocos2dx_ParticleBatchNode_setTextureAtlas, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeAllChildrenWithCleanup", js_cocos2dx_ParticleBatchNode_removeAllChildrenWithCleanup, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTextureAtlas", js_cocos2dx_ParticleBatchNode_getTextureAtlas, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("insertChild", js_cocos2dx_ParticleBatchNode_insertChild, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("initWithTexture", js_cocos2dx_ParticleBatchNode_initWithTexture, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("visit", js_cocos2dx_ParticleBatchNode_visit, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeChildAtIndex", js_cocos2dx_ParticleBatchNode_removeChildAtIndex, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
@@ -32765,7 +32681,7 @@ void js_register_cocos2dx_ParticleBatchNode(JSContext *cx, JSObject *global) {
 		cx, global,
 		jsb_cocos2d_Node_prototype,
 		jsb_cocos2d_ParticleBatchNode_class,
-		js_cocos2dx_ParticleBatchNode_constructor, 0, // constructor
+		dummy_constructor<cocos2d::ParticleBatchNode>, 0, // no constructor
 		properties,
 		funcs,
 		NULL, // no static properties

@@ -6089,23 +6089,10 @@ cc.ParticleBatchNode = {
 setTexture : function () {},
 
 /**
- * @method initWithFile
- * @return A value converted from C/C++ "bool"
- * @param {const std::string&}
- * @param {int}
- */
-initWithFile : function () {},
-
-/**
  * @method disableParticle
  * @param {int}
  */
 disableParticle : function () {},
-
-/**
- * @method visit
- */
-visit : function () {},
 
 /**
  * @method getTexture
@@ -6139,12 +6126,9 @@ getTextureAtlas : function () {},
 insertChild : function () {},
 
 /**
- * @method initWithTexture
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Texture2D*}
- * @param {int}
+ * @method visit
  */
-initWithTexture : function () {},
+visit : function () {},
 
 /**
  * @method removeChildAtIndex
@@ -6168,12 +6152,6 @@ create : function () {},
  * @param {int}
  */
 createWithTexture : function () {},
-
-/**
- * @method ParticleBatchNode
- * @constructor
- */
-ParticleBatchNode : function () {},
 
 };
 
