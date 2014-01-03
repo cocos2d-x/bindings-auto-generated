@@ -1,5 +1,5 @@
-#ifndef __cocos2dx_studio_h__
-#define __cocos2dx_studio_h__
+#ifndef __cocos2dx_gui_h__
+#define __cocos2dx_gui_h__
 
 #ifdef __cplusplus
 extern "C" {
@@ -9,7 +9,7 @@ extern "C" {
 }
 #endif
 
-int register_all_cocos2dx_studio(lua_State* tolua_S);
+int register_all_cocos2dx_gui(lua_State* tolua_S);
 
 
 
@@ -282,26 +282,4 @@ int register_all_cocos2dx_studio(lua_State* tolua_S);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#endif // __cocos2dx_studio_h__
+#endif // __cocos2dx_gui_h__
