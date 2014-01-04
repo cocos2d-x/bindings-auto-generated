@@ -241,6 +241,61 @@ ccs.ColliderFilter = {
 };
 
 /**
+ * @class ColliderBody
+ */
+ccs.ColliderBody = {
+
+};
+
+/**
+ * @class ColliderDetector
+ */
+ccs.ColliderDetector = {
+
+/**
+ * @method getBone
+ * @return A value converted from C/C++ "cocostudio::Bone*"
+ */
+getBone : function () {},
+
+/**
+ * @method getActive
+ * @return A value converted from C/C++ "bool"
+ */
+getActive : function () {},
+
+/**
+ * @method getColliderBodyList
+ * @return A value converted from C/C++ "const cocos2d::Vector<cocostudio::ColliderBody *>&"
+ */
+getColliderBodyList : function () {},
+
+/**
+ * @method updateTransform
+ * @param {kmMat4&}
+ */
+updateTransform : function () {},
+
+/**
+ * @method removeAll
+ */
+removeAll : function () {},
+
+/**
+ * @method setActive
+ * @param {bool}
+ */
+setActive : function () {},
+
+/**
+ * @method setBone
+ * @param {cocostudio::Bone*}
+ */
+setBone : function () {},
+
+};
+
+/**
  * @class DisplayManager
  */
 ccs.DisplayManager = {

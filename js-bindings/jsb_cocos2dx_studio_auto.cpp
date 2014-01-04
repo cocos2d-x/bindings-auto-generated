@@ -1178,6 +1178,368 @@ void js_register_cocos2dx_studio_ColliderFilter(JSContext *cx, JSObject *global)
 	}
 }
 
+JSClass  *jsb_cocostudio_ColliderBody_class;
+JSObject *jsb_cocostudio_ColliderBody_prototype;
+
+
+
+void js_cocostudio_ColliderBody_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (ColliderBody)", obj);
+}
+
+void js_register_cocos2dx_studio_ColliderBody(JSContext *cx, JSObject *global) {
+	jsb_cocostudio_ColliderBody_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ColliderBody_class->name = "ColliderBody";
+	jsb_cocostudio_ColliderBody_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ColliderBody_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ColliderBody_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ColliderBody_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ColliderBody_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ColliderBody_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ColliderBody_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ColliderBody_class->finalize = js_cocostudio_ColliderBody_finalize;
+	jsb_cocostudio_ColliderBody_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	JSFunctionSpec *funcs = NULL;
+
+	JSFunctionSpec *st_funcs = NULL;
+
+	jsb_cocostudio_ColliderBody_prototype = JS_InitClass(
+		cx, global,
+		NULL, // parent proto
+		jsb_cocostudio_ColliderBody_class,
+		empty_constructor, 0,
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+	JSBool found;
+	JS_SetPropertyAttributes(cx, global, "ColliderBody", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocostudio::ColliderBody> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocostudio_ColliderBody_class;
+		p->proto = jsb_cocostudio_ColliderBody_prototype;
+		p->parentProto = NULL;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocostudio_ColliderDetector_class;
+JSObject *jsb_cocostudio_ColliderDetector_prototype;
+
+JSBool js_cocos2dx_studio_ColliderDetector_getBone(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ColliderDetector* cobj = (cocostudio::ColliderDetector *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_getBone : Invalid Native Object");
+	if (argc == 0) {
+		cocostudio::Bone* ret = cobj->getBone();
+		jsval jsret;
+		do {
+			if (ret) {
+				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Bone>(cx, (cocostudio::Bone*)ret);
+				jsret = OBJECT_TO_JSVAL(proxy->obj);
+			} else {
+				jsret = JSVAL_NULL;
+			}
+		} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ColliderDetector_getBone : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ColliderDetector_getActive(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ColliderDetector* cobj = (cocostudio::ColliderDetector *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_getActive : Invalid Native Object");
+	if (argc == 0) {
+		JSBool ret = cobj->getActive();
+		jsval jsret;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ColliderDetector_getActive : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ColliderDetector_getColliderBodyList(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ColliderDetector* cobj = (cocostudio::ColliderDetector *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_getColliderBodyList : Invalid Native Object");
+	if (argc == 0) {
+		const cocos2d::Vector<cocostudio::ColliderBody *>& ret = cobj->getColliderBodyList();
+		jsval jsret;
+		jsret = ccvector_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ColliderDetector_getColliderBodyList : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ColliderDetector_updateTransform(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ColliderDetector* cobj = (cocostudio::ColliderDetector *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_updateTransform : Invalid Native Object");
+	if (argc == 1) {
+		kmMat4 arg0;
+		#pragma warning NO CONVERSION TO NATIVE FOR kmMat4;
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_updateTransform : Error processing arguments");
+		cobj->updateTransform(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ColliderDetector_updateTransform : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ColliderDetector_removeAll(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ColliderDetector* cobj = (cocostudio::ColliderDetector *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_removeAll : Invalid Native Object");
+	if (argc == 0) {
+		cobj->removeAll();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ColliderDetector_removeAll : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ColliderDetector_init(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+
+	JSObject *obj = NULL;
+	cocostudio::ColliderDetector* cobj = NULL;
+	obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cobj = (cocostudio::ColliderDetector *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_init : Invalid Native Object");
+	do {
+		if (argc == 1) {
+			cocostudio::Bone* arg0;
+			do {
+				if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+				js_proxy_t *proxy;
+				JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+				proxy = jsb_get_js_proxy(tmpObj);
+				arg0 = (cocostudio::Bone*)(proxy ? proxy->ptr : NULL);
+				JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+			} while (0);
+			if (!ok) { ok = JS_TRUE; break; }
+			JSBool ret = cobj->init(arg0);
+			jsval jsret;
+			jsret = BOOLEAN_TO_JSVAL(ret);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	do {
+		if (argc == 0) {
+			JSBool ret = cobj->init();
+			jsval jsret;
+			jsret = BOOLEAN_TO_JSVAL(ret);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ColliderDetector_init : wrong number of arguments");
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ColliderDetector_setActive(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ColliderDetector* cobj = (cocostudio::ColliderDetector *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_setActive : Invalid Native Object");
+	if (argc == 1) {
+		JSBool arg0;
+		ok &= JS_ValueToBoolean(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_setActive : Error processing arguments");
+		cobj->setActive(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ColliderDetector_setActive : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ColliderDetector_setBone(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocostudio::ColliderDetector* cobj = (cocostudio::ColliderDetector *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_setBone : Invalid Native Object");
+	if (argc == 1) {
+		cocostudio::Bone* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocostudio::Bone*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_setBone : Error processing arguments");
+		cobj->setBone(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_studio_ColliderDetector_setBone : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_studio_ColliderDetector_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	
+	do {
+		if (argc == 1) {
+			cocostudio::Bone* arg0;
+			do {
+				if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+				js_proxy_t *proxy;
+				JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+				proxy = jsb_get_js_proxy(tmpObj);
+				arg0 = (cocostudio::Bone*)(proxy ? proxy->ptr : NULL);
+				JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+			} while (0);
+			if (!ok) { ok = JS_TRUE; break; }
+			cocostudio::ColliderDetector* ret = cocostudio::ColliderDetector::create(arg0);
+			jsval jsret;
+			do {
+				if (ret) {
+					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ColliderDetector>(cx, (cocostudio::ColliderDetector*)ret);
+					jsret = OBJECT_TO_JSVAL(proxy->obj);
+				} else {
+					jsret = JSVAL_NULL;
+				}
+			} while (0);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while (0);
+	
+	do {
+		if (argc == 0) {
+			cocostudio::ColliderDetector* ret = cocostudio::ColliderDetector::create();
+			jsval jsret;
+			do {
+				if (ret) {
+					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ColliderDetector>(cx, (cocostudio::ColliderDetector*)ret);
+					jsret = OBJECT_TO_JSVAL(proxy->obj);
+				} else {
+					jsret = JSVAL_NULL;
+				}
+			} while (0);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while (0);
+	JS_ReportError(cx, "js_cocos2dx_studio_ColliderDetector_create : wrong number of arguments");
+	return JS_FALSE;
+}
+
+
+void js_cocostudio_ColliderDetector_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (ColliderDetector)", obj);
+}
+
+void js_register_cocos2dx_studio_ColliderDetector(JSContext *cx, JSObject *global) {
+	jsb_cocostudio_ColliderDetector_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocostudio_ColliderDetector_class->name = "ColliderDetector";
+	jsb_cocostudio_ColliderDetector_class->addProperty = JS_PropertyStub;
+	jsb_cocostudio_ColliderDetector_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocostudio_ColliderDetector_class->getProperty = JS_PropertyStub;
+	jsb_cocostudio_ColliderDetector_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocostudio_ColliderDetector_class->enumerate = JS_EnumerateStub;
+	jsb_cocostudio_ColliderDetector_class->resolve = JS_ResolveStub;
+	jsb_cocostudio_ColliderDetector_class->convert = JS_ConvertStub;
+	jsb_cocostudio_ColliderDetector_class->finalize = js_cocostudio_ColliderDetector_finalize;
+	jsb_cocostudio_ColliderDetector_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+		JS_FN("getBone", js_cocos2dx_studio_ColliderDetector_getBone, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getActive", js_cocos2dx_studio_ColliderDetector_getActive, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getColliderBodyList", js_cocos2dx_studio_ColliderDetector_getColliderBodyList, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateTransform", js_cocos2dx_studio_ColliderDetector_updateTransform, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("removeAll", js_cocos2dx_studio_ColliderDetector_removeAll, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("init", js_cocos2dx_studio_ColliderDetector_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setActive", js_cocos2dx_studio_ColliderDetector_setActive, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setBone", js_cocos2dx_studio_ColliderDetector_setBone, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_studio_ColliderDetector_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocostudio_ColliderDetector_prototype = JS_InitClass(
+		cx, global,
+		NULL, // parent proto
+		jsb_cocostudio_ColliderDetector_class,
+		empty_constructor, 0,
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+	JSBool found;
+	JS_SetPropertyAttributes(cx, global, "ColliderDetector", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocostudio::ColliderDetector> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocostudio_ColliderDetector_class;
+		p->proto = jsb_cocostudio_ColliderDetector_prototype;
+		p->parentProto = NULL;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
 JSClass  *jsb_cocostudio_DisplayManager_class;
 JSObject *jsb_cocostudio_DisplayManager_prototype;
 
@@ -6708,21 +7070,23 @@ void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj) {
 	}
 	obj = ns;
 
+	js_register_cocos2dx_studio_ColliderBody(cx, obj);
 	js_register_cocos2dx_studio_Tween(cx, obj);
 	js_register_cocos2dx_studio_SceneReader(cx, obj);
 	js_register_cocos2dx_studio_ComAudio(cx, obj);
 	js_register_cocos2dx_studio_ArmatureDataManager(cx, obj);
 	js_register_cocos2dx_studio_InputDelegate(cx, obj);
 	js_register_cocos2dx_studio_ComController(cx, obj);
-	js_register_cocos2dx_studio_Bone(cx, obj);
+	js_register_cocos2dx_studio_ColliderDetector(cx, obj);
 	js_register_cocos2dx_studio_BatchNode(cx, obj);
 	js_register_cocos2dx_studio_ActionObject(cx, obj);
+	js_register_cocos2dx_studio_ComRender(cx, obj);
 	js_register_cocos2dx_studio_DisplayManager(cx, obj);
 	js_register_cocos2dx_studio_GUIReader(cx, obj);
 	js_register_cocos2dx_studio_ArmatureAnimation(cx, obj);
 	js_register_cocos2dx_studio_Armature(cx, obj);
 	js_register_cocos2dx_studio_ActionManagerEx(cx, obj);
-	js_register_cocos2dx_studio_ComRender(cx, obj);
+	js_register_cocos2dx_studio_Bone(cx, obj);
 	js_register_cocos2dx_studio_ComAttribute(cx, obj);
 	js_register_cocos2dx_studio_ColliderFilter(cx, obj);
 	js_register_cocos2dx_studio_Skin(cx, obj);

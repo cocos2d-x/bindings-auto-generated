@@ -6064,12 +6064,6 @@ cc.NodeGrid = {
 setTarget : function () {},
 
 /**
- * @method setGrid
- * @param {cocos2d::GridBase*}
- */
-setGrid : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::NodeGrid*"
  */
