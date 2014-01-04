@@ -2214,7 +2214,6 @@ void js_register_cocos2dx_NodeGrid(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_NodeGrid_setTarget(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_NodeGrid_getGrid(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_NodeGrid_setGrid(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_NodeGrid_create(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_ParticleBatchNode_class;

@@ -80,6 +80,31 @@ void js_cocos2dx_studio_ColliderFilter_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_studio_ColliderFilter(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 
+extern JSClass  *jsb_cocostudio_ColliderBody_class;
+extern JSObject *jsb_cocostudio_ColliderBody_prototype;
+
+JSBool js_cocos2dx_studio_ColliderBody_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_studio_ColliderBody_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_studio_ColliderBody(JSContext *cx, JSObject *global);
+void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
+
+extern JSClass  *jsb_cocostudio_ColliderDetector_class;
+extern JSObject *jsb_cocostudio_ColliderDetector_prototype;
+
+JSBool js_cocos2dx_studio_ColliderDetector_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_studio_ColliderDetector_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_studio_ColliderDetector(JSContext *cx, JSObject *global);
+void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_studio_ColliderDetector_getBone(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ColliderDetector_getActive(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ColliderDetector_getColliderBodyList(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ColliderDetector_updateTransform(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ColliderDetector_removeAll(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ColliderDetector_init(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ColliderDetector_setActive(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ColliderDetector_setBone(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_studio_ColliderDetector_create(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_cocostudio_DisplayManager_class;
 extern JSObject *jsb_cocostudio_DisplayManager_prototype;
 

@@ -32211,33 +32211,6 @@ JSBool js_cocos2dx_NodeGrid_getGrid(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_NodeGrid_getGrid : wrong number of arguments");
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_NodeGrid_setGrid(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::NodeGrid* cobj = (cocos2d::NodeGrid *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_NodeGrid_setGrid : Invalid Native Object");
-	if (argc == 1) {
-		cocos2d::GridBase* arg0;
-		do {
-			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
-			js_proxy_t *proxy;
-			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
-			proxy = jsb_get_js_proxy(tmpObj);
-			arg0 = (cocos2d::GridBase*)(proxy ? proxy->ptr : NULL);
-			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
-		} while (0);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_NodeGrid_setGrid : Error processing arguments");
-		cobj->setGrid(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_NodeGrid_setGrid : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_NodeGrid_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
@@ -32285,7 +32258,6 @@ void js_register_cocos2dx_NodeGrid(JSContext *cx, JSObject *global) {
 	static JSFunctionSpec funcs[] = {
 		JS_FN("setTarget", js_cocos2dx_NodeGrid_setTarget, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getGrid", js_cocos2dx_NodeGrid_getGrid, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setGrid", js_cocos2dx_NodeGrid_setGrid, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
