@@ -30242,17 +30242,6 @@ int lua_cocos2dx_Sprite_setSpriteFrame(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 1) {
-            std::string arg0;
-            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-
-            if (!ok) { break; }
-            cobj->setSpriteFrame(arg0);
-            return 0;
-        }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 1) {
             cocos2d::SpriteFrame* arg0;
             do {
 				if (!luaval_is_usertype(tolua_S,2,"SpriteFrame",0)){
@@ -30264,6 +30253,17 @@ int lua_cocos2dx_Sprite_setSpriteFrame(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
+
+            if (!ok) { break; }
+            cobj->setSpriteFrame(arg0);
+            return 0;
+        }
+    }while(0);
+    ok  = true;
+    do{
+        if (argc == 1) {
+            std::string arg0;
+            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             cobj->setSpriteFrame(arg0);

@@ -19706,17 +19706,6 @@ JSBool js_cocos2dx_Sprite_setSpriteFrame(JSContext *cx, uint32_t argc, jsval *vp
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Sprite_setSpriteFrame : Invalid Native Object");
 	do {
 		if (argc == 1) {
-			std::string arg0;
-			ok &= jsval_to_std_string(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->setSpriteFrame(arg0);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	do {
-		if (argc == 1) {
 			cocos2d::SpriteFrame* arg0;
 			do {
 				if (!argv[0].isObject()) { ok = JS_FALSE; break; }
@@ -19726,6 +19715,17 @@ JSBool js_cocos2dx_Sprite_setSpriteFrame(JSContext *cx, uint32_t argc, jsval *vp
 				arg0 = (cocos2d::SpriteFrame*)(proxy ? proxy->ptr : NULL);
 				JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
 			} while (0);
+			if (!ok) { ok = JS_TRUE; break; }
+			cobj->setSpriteFrame(arg0);
+			JS_SET_RVAL(cx, vp, JSVAL_VOID);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	do {
+		if (argc == 1) {
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cobj->setSpriteFrame(arg0);
 			JS_SET_RVAL(cx, vp, JSVAL_VOID);
