@@ -138,16 +138,23 @@ setSizePercent : function () {},
 setActionTag : function () {},
 
 /**
- * @method getLeftInParent
- * @return A value converted from C/C++ "float"
+ * @method getNodeByTag
+ * @return A value converted from C/C++ "cocos2d::Node*"
+ * @param {int}
  */
-getLeftInParent : function () {},
+getNodeByTag : function () {},
 
 /**
  * @method setUpdateEnabled
  * @param {bool}
  */
 setUpdateEnabled : function () {},
+
+/**
+ * @method isFlipY
+ * @return A value converted from C/C++ "bool"
+ */
+isFlipY : function () {},
 
 /**
  * @method getTouchEndPos
@@ -160,6 +167,12 @@ getTouchEndPos : function () {},
  * @param {const cocos2d::Point&}
  */
 setPositionPercent : function () {},
+
+/**
+ * @method getNodes
+ * @return A value converted from C/C++ "cocos2d::Vector<cocos2d::Node *>&"
+ */
+getNodes : function () {},
 
 /**
  * @method setPositionType
@@ -178,6 +191,11 @@ getName : function () {},
  * @return A value converted from C/C++ "bool"
  */
 isIgnoreContentAdaptWithSize : function () {},
+
+/**
+ * @method updateSizeAndPosition
+ */
+updateSizeAndPosition : function () {},
 
 /**
  * @method getBottomInParent
@@ -205,10 +223,10 @@ getLayoutParameter : function () {},
 getPositionType : function () {},
 
 /**
- * @method getWidgetType
- * @return A value converted from C/C++ "cocos2d::gui::WidgetType"
+ * @method setName
+ * @param {const char*}
  */
-getWidgetType : function () {},
+setName : function () {},
 
 /**
  * @method getChildByName
@@ -230,10 +248,10 @@ isEnabled : function () {},
 isFlipX : function () {},
 
 /**
- * @method isFlipY
- * @return A value converted from C/C++ "bool"
+ * @method removeNodeByTag
+ * @param {int}
  */
-isFlipY : function () {},
+removeNodeByTag : function () {},
 
 /**
  * @method isTouchEnabled
@@ -295,12 +313,6 @@ setEnabled : function () {},
 setBrightStyle : function () {},
 
 /**
- * @method setName
- * @param {const char*}
- */
-setName : function () {},
-
-/**
  * @method setLayoutParameter
  * @param {cocos2d::gui::LayoutParameter*}
  */
@@ -317,6 +329,18 @@ setFlipY : function () {},
  * @param {bool}
  */
 setFlipX : function () {},
+
+/**
+ * @method getLeftInParent
+ * @return A value converted from C/C++ "float"
+ */
+getLeftInParent : function () {},
+
+/**
+ * @method ignoreContentAdaptWithSize
+ * @param {bool}
+ */
+ignoreContentAdaptWithSize : function () {},
 
 /**
  * @method isBright
@@ -344,9 +368,10 @@ getSizePercent : function () {},
 getTopInParent : function () {},
 
 /**
- * @method updateSizeAndPosition
+ * @method getWidgetType
+ * @return A value converted from C/C++ "cocos2d::gui::WidgetType"
  */
-updateSizeAndPosition : function () {},
+getWidgetType : function () {},
 
 /**
  * @method isUpdateEnabled
@@ -373,10 +398,15 @@ getRightInParent : function () {},
 getSizeType : function () {},
 
 /**
- * @method ignoreContentAdaptWithSize
- * @param {bool}
+ * @method removeNode
+ * @param {cocos2d::Node*}
  */
-ignoreContentAdaptWithSize : function () {},
+removeNode : function () {},
+
+/**
+ * @method removeAllNodes
+ */
+removeAllNodes : function () {},
 
 /**
  * @method getWorldPosition
