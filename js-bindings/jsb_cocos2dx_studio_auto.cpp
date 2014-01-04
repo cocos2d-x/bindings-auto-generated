@@ -6846,21 +6846,21 @@ JSBool js_cocos2dx_studio_GUIReader_getVersionInteger(JSContext *cx, uint32_t ar
 	JS_ReportError(cx, "js_cocos2dx_studio_GUIReader_getVersionInteger : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_studio_GUIReader_purgeGUIReader(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_studio_GUIReader_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		cocostudio::GUIReader::purgeGUIReader();
+		cocostudio::GUIReader::destroyInstance();
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
-	JS_ReportError(cx, "js_cocos2dx_studio_GUIReader_purgeGUIReader : wrong number of arguments");
+	JS_ReportError(cx, "js_cocos2dx_studio_GUIReader_destroyInstance : wrong number of arguments");
 	return JS_FALSE;
 }
 
-JSBool js_cocos2dx_studio_GUIReader_shareReader(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_studio_GUIReader_getInstance(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
-		cocostudio::GUIReader* ret = cocostudio::GUIReader::shareReader();
+		cocostudio::GUIReader* ret = cocostudio::GUIReader::getInstance();
 		jsval jsret;
 		do {
 		if (ret) {
@@ -6873,7 +6873,7 @@ JSBool js_cocos2dx_studio_GUIReader_shareReader(JSContext *cx, uint32_t argc, js
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-	JS_ReportError(cx, "js_cocos2dx_studio_GUIReader_shareReader : wrong number of arguments");
+	JS_ReportError(cx, "js_cocos2dx_studio_GUIReader_getInstance : wrong number of arguments");
 	return JS_FALSE;
 }
 
@@ -6907,8 +6907,8 @@ void js_register_cocos2dx_studio_GUIReader(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec st_funcs[] = {
-		JS_FN("purge", js_cocos2dx_studio_GUIReader_purgeGUIReader, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getInstance", js_cocos2dx_studio_GUIReader_shareReader, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("destroyInstance", js_cocos2dx_studio_GUIReader_destroyInstance, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getInstance", js_cocos2dx_studio_GUIReader_getInstance, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
 
@@ -6942,21 +6942,6 @@ void js_register_cocos2dx_studio_GUIReader(JSContext *cx, JSObject *global) {
 JSClass  *jsb_cocostudio_SceneReader_class;
 JSObject *jsb_cocostudio_SceneReader_prototype;
 
-JSBool js_cocos2dx_studio_SceneReader_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocostudio::SceneReader* cobj = (cocostudio::SceneReader *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_SceneReader_destroyInstance : Invalid Native Object");
-	if (argc == 0) {
-		cobj->destroyInstance();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_studio_SceneReader_destroyInstance : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_studio_SceneReader_createNodeWithSceneFile(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -7015,6 +7000,17 @@ JSBool js_cocos2dx_studio_SceneReader_getNodeByTag(JSContext *cx, uint32_t argc,
 	JS_ReportError(cx, "js_cocos2dx_studio_SceneReader_getNodeByTag : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_studio_SceneReader_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	if (argc == 0) {
+		cocostudio::SceneReader::destroyInstance();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "js_cocos2dx_studio_SceneReader_destroyInstance : wrong number of arguments");
+	return JS_FALSE;
+}
+
 JSBool js_cocos2dx_studio_SceneReader_sceneReaderVersion(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
@@ -7072,13 +7068,13 @@ void js_register_cocos2dx_studio_SceneReader(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("destroyInstance", js_cocos2dx_studio_SceneReader_destroyInstance, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("createNodeWithSceneFile", js_cocos2dx_studio_SceneReader_createNodeWithSceneFile, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getNodeByTag", js_cocos2dx_studio_SceneReader_getNodeByTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
 	static JSFunctionSpec st_funcs[] = {
+		JS_FN("destroyInstance", js_cocos2dx_studio_SceneReader_destroyInstance, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("sceneReaderVersion", js_cocos2dx_studio_SceneReader_sceneReaderVersion, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getInstance", js_cocos2dx_studio_SceneReader_getInstance, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END

@@ -1723,15 +1723,15 @@ widgetFromJsonFile : function () {},
 getVersionInteger : function () {},
 
 /**
- * @method purgeGUIReader
+ * @method destroyInstance
  */
-purgeGUIReader : function () {},
+destroyInstance : function () {},
 
 /**
- * @method shareReader
+ * @method getInstance
  * @return A value converted from C/C++ "cocostudio::GUIReader*"
  */
-shareReader : function () {},
+getInstance : function () {},
 
 };
 
@@ -1739,11 +1739,6 @@ shareReader : function () {},
  * @class SceneReader
  */
 ccs.SceneReader = {
-
-/**
- * @method destroyInstance
- */
-destroyInstance : function () {},
 
 /**
  * @method setTarget
@@ -1764,6 +1759,11 @@ createNodeWithSceneFile : function () {},
  * @param {int}
  */
 getNodeByTag : function () {},
+
+/**
+ * @method destroyInstance
+ */
+destroyInstance : function () {},
 
 /**
  * @method sceneReaderVersion
