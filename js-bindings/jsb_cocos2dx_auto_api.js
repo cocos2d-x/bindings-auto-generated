@@ -4535,6 +4535,11 @@ getCharAtStringPosition : function () {},
 getStringLenght : function () {},
 
 /**
+ * @method onDraw
+ */
+onDraw : function () {},
+
+/**
  * @method getKerningForCharsPair
  * @return A value converted from C/C++ "int"
  * @param {unsigned short}

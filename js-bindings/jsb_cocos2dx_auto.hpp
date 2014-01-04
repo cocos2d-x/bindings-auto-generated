@@ -1573,6 +1573,7 @@ JSBool js_cocos2dx_Label_setLineBreakWithoutSpace(JSContext *cx, uint32_t argc, 
 JSBool js_cocos2dx_Label_getStringNumLines(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getCharAtStringPosition(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getStringLenght(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Label_onDraw(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getKerningForCharsPair(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_setLabelContentSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_assignNewUTF8String(JSContext *cx, uint32_t argc, jsval *vp);
