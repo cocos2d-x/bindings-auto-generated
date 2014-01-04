@@ -4290,10 +4290,10 @@ SpriteBatchNode : function () {},
 cc.LabelBMFont = {
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
+ * @method setLineBreakWithoutSpace
+ * @param {bool}
  */
-setAnchorPoint : function () {},
+setLineBreakWithoutSpace : function () {},
 
 /**
  * @method setScaleY
@@ -4323,12 +4323,6 @@ createFontChars : function () {},
  * @return A value converted from C/C++ "const std::string&"
  */
 getString : function () {},
-
-/**
- * @method setLineBreakWithoutSpace
- * @param {bool}
- */
-setLineBreakWithoutSpace : function () {},
 
 /**
  * @method initWithString

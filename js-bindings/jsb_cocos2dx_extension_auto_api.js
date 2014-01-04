@@ -1482,12 +1482,6 @@ TableView : function () {},
 cc.EditBox = {
 
 /**
- * @method setAnchorPoint
- * @param {const cocos2d::Point&}
- */
-setAnchorPoint : function () {},
-
-/**
  * @method getText
  * @return A value converted from C/C++ "const char*"
  */
@@ -1563,12 +1557,6 @@ initWithSizeAndBackgroundSprite : function () {},
 setPlaceHolder : function () {},
 
 /**
- * @method setPosition
- * @param {const cocos2d::Point&}
- */
-setPosition : function () {},
-
-/**
  * @method setReturnType
  * @param {cocos2d::extension::EditBox::KeyboardReturnType}
  */
@@ -1599,23 +1587,11 @@ setText : function () {},
 setMaxLength : function () {},
 
 /**
- * @method setContentSize
- * @param {const cocos2d::Size&}
- */
-setContentSize : function () {},
-
-/**
  * @method setFont
  * @param {const char*}
  * @param {int}
  */
 setFont : function () {},
-
-/**
- * @method setVisible
- * @param {bool}
- */
-setVisible : function () {},
 
 /**
  * @method create

@@ -34473,7 +34473,7 @@ int lua_register_cocos2dx_SpriteBatchNode(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_LabelBMFont_setAnchorPoint(lua_State* tolua_S)
+int lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::LabelBMFont* cobj = nullptr;
@@ -34492,7 +34492,7 @@ int lua_cocos2dx_LabelBMFont_setAnchorPoint(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setAnchorPoint'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace'", NULL);
         return 0;
     }
 #endif
@@ -34500,19 +34500,19 @@ int lua_cocos2dx_LabelBMFont_setAnchorPoint(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        cocos2d::Point arg0;
-        ok &= luaval_to_point(tolua_S, 2, &arg0);
+        bool arg0;
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        cobj->setAnchorPoint(arg0);
+        cobj->setLineBreakWithoutSpace(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAnchorPoint",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setLineBreakWithoutSpace",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setAnchorPoint'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace'.",&tolua_err);
 #endif
 
     return 0;
@@ -34729,50 +34729,6 @@ int lua_cocos2dx_LabelBMFont_getString(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_getString'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelBMFont* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LabelBMFont",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::LabelBMFont*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setLineBreakWithoutSpace(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setLineBreakWithoutSpace",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace'.",&tolua_err);
 #endif
 
     return 0;
@@ -35618,13 +35574,12 @@ int lua_register_cocos2dx_LabelBMFont(lua_State* tolua_S)
     tolua_cclass(tolua_S,"LabelBMFont","LabelBMFont","SpriteBatchNode",NULL);
 
     tolua_beginmodule(tolua_S,"LabelBMFont");
-        tolua_function(tolua_S,"setAnchorPoint",lua_cocos2dx_LabelBMFont_setAnchorPoint);
+        tolua_function(tolua_S,"setLineBreakWithoutSpace",lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace);
         tolua_function(tolua_S,"setScaleY",lua_cocos2dx_LabelBMFont_setScaleY);
         tolua_function(tolua_S,"setScaleX",lua_cocos2dx_LabelBMFont_setScaleX);
         tolua_function(tolua_S,"isOpacityModifyRGB",lua_cocos2dx_LabelBMFont_isOpacityModifyRGB);
         tolua_function(tolua_S,"createFontChars",lua_cocos2dx_LabelBMFont_createFontChars);
         tolua_function(tolua_S,"getString",lua_cocos2dx_LabelBMFont_getString);
-        tolua_function(tolua_S,"setLineBreakWithoutSpace",lua_cocos2dx_LabelBMFont_setLineBreakWithoutSpace);
         tolua_function(tolua_S,"setString",lua_cocos2dx_LabelBMFont_setString);
         tolua_function(tolua_S,"initWithString",lua_cocos2dx_LabelBMFont_initWithString);
         tolua_function(tolua_S,"setCString",lua_cocos2dx_LabelBMFont_setCString);

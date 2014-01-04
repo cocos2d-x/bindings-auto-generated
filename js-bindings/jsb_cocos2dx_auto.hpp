@@ -1524,13 +1524,12 @@ JSBool js_cocos2dx_LabelBMFont_constructor(JSContext *cx, uint32_t argc, jsval *
 void js_cocos2dx_LabelBMFont_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_LabelBMFont(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_LabelBMFont_setAnchorPoint(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelBMFont_setScaleY(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelBMFont_setScaleX(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelBMFont_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelBMFont_createFontChars(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelBMFont_getString(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelBMFont_setString(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelBMFont_initWithString(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelBMFont_setCString(JSContext *cx, uint32_t argc, jsval *vp);
