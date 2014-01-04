@@ -1747,7 +1747,7 @@ destroyInstance : function () {},
 
 /**
  * @method setTarget
- * @param {std::function<void (cocos2d::Object *, void *)>}
+ * @param {const std::function<void (cocos2d::Object *, void *)>&}
  */
 setTarget : function () {},
 

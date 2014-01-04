@@ -6957,54 +6957,6 @@ JSBool js_cocos2dx_studio_SceneReader_destroyInstance(JSContext *cx, uint32_t ar
 	JS_ReportError(cx, "js_cocos2dx_studio_SceneReader_destroyInstance : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_studio_SceneReader_setTarget(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocostudio::SceneReader* cobj = (cocostudio::SceneReader *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_SceneReader_setTarget : Invalid Native Object");
-	if (argc == 1) {
-		std::function<void (cocos2d::Object *, void *)> arg0;
-		do {
-			std::shared_ptr<JSFunctionWrapper> func(new JSFunctionWrapper(cx, JS_THIS_OBJECT(cx, vp), argv[0]));
-			auto lambda = [=](Object* larg0, void* larg1) -> void {
-				jsval largv[2];
-				do {
-					if (larg0) {
-						js_proxy_t *proxy = js_get_or_create_proxy<Object>(cx, (Object*)larg0);
-						largv[0] = OBJECT_TO_JSVAL(proxy->obj);
-					} else {
-						largv[0] = JSVAL_NULL;
-					}
-				} while (0);
-				do {
-					if (larg1) {
-						js_proxy_t *proxy = js_get_or_create_proxy<void>(cx, (void*)larg1);
-						largv[1] = OBJECT_TO_JSVAL(proxy->obj);
-					} else {
-						largv[1] = JSVAL_NULL;
-					}
-				} while (0);
-				jsval rval;
-				JSBool ok = func->invoke(2, &largv[0], rval);
-				if (!ok && JS_IsExceptionPending(cx)) {
-					JS_ReportPendingException(cx);
-				}
-			};
-			arg0 = lambda;
-		} while(0)
-		;
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_SceneReader_setTarget : Error processing arguments");
-		cobj->setTarget(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_studio_SceneReader_setTarget : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_studio_SceneReader_createNodeWithSceneFile(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -7121,7 +7073,6 @@ void js_register_cocos2dx_studio_SceneReader(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("destroyInstance", js_cocos2dx_studio_SceneReader_destroyInstance, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setTarget", js_cocos2dx_studio_SceneReader_setTarget, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("createNodeWithSceneFile", js_cocos2dx_studio_SceneReader_createNodeWithSceneFile, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getNodeByTag", js_cocos2dx_studio_SceneReader_getNodeByTag, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
