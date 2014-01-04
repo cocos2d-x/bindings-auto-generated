@@ -1454,6 +1454,13 @@ getBool : function () {},
 setInt : function () {},
 
 /**
+ * @method parse
+ * @return A value converted from C/C++ "bool"
+ * @param {const std::string&}
+ */
+parse : function () {},
+
+/**
  * @method getInt
  * @return A value converted from C/C++ "int"
  * @param {const std::string&}
@@ -1675,6 +1682,12 @@ ComController : function () {},
 ccs.ComRender = {
 
 /**
+ * @method setNode
+ * @param {cocos2d::Node*}
+ */
+setNode : function () {},
+
+/**
  * @method getNode
  * @return A value converted from C/C++ "cocos2d::Node*"
  */
@@ -1728,9 +1741,20 @@ shareReader : function () {},
 ccs.SceneReader = {
 
 /**
+ * @method destroyInstance
+ */
+destroyInstance : function () {},
+
+/**
+ * @method setTarget
+ * @param {std::function<void (cocos2d::Object *, void *)>}
+ */
+setTarget : function () {},
+
+/**
  * @method createNodeWithSceneFile
  * @return A value converted from C/C++ "cocos2d::Node*"
- * @param {const char*}
+ * @param {const std::string&}
  */
 createNodeWithSceneFile : function () {},
 
@@ -1740,11 +1764,6 @@ createNodeWithSceneFile : function () {},
  * @param {int}
  */
 getNodeByTag : function () {},
-
-/**
- * @method destroyInstance
- */
-destroyInstance : function () {},
 
 /**
  * @method sceneReaderVersion
