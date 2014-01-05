@@ -41846,8 +41846,10 @@ JSBool js_cocos2dx_Component_serialize(JSContext *cx, uint32_t argc, jsval *vp)
 		void* arg0;
 		#pragma warning NO CONVERSION TO NATIVE FOR void*;
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Component_serialize : Error processing arguments");
-		cobj->serialize(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		JSBool ret = cobj->serialize(arg0);
+		jsval jsret;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
 

@@ -1128,12 +1128,6 @@ parse : function () {},
 getInt : function () {},
 
 /**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
-
-/**
  * @method setBool
  * @param {const std::string&}
  * @param {bool}
@@ -1145,6 +1139,12 @@ setBool : function () {},
  * @return A value converted from C/C++ "cocostudio::ComAttribute*"
  */
 create : function () {},
+
+/**
+ * @method createInstance
+ * @return A value converted from C/C++ "cocos2d::Object*"
+ */
+createInstance : function () {},
 
 };
 
@@ -1194,12 +1194,6 @@ setBackgroundMusicVolume : function () {},
 end : function () {},
 
 /**
- * @method isEnabled
- * @return A value converted from C/C++ "bool"
- */
-isEnabled : function () {},
-
-/**
  * @method pauseBackgroundMusic
  */
 pauseBackgroundMusic : function () {},
@@ -1211,27 +1205,20 @@ pauseBackgroundMusic : function () {},
 isBackgroundMusicPlaying : function () {},
 
 /**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
-
-/**
  * @method isLoop
  * @return A value converted from C/C++ "bool"
  */
 isLoop : function () {},
 
 /**
+ * @method resumeAllEffects
+ */
+resumeAllEffects : function () {},
+
+/**
  * @method pauseAllEffects
  */
 pauseAllEffects : function () {},
-
-/**
- * @method setEnabled
- * @param {bool}
- */
-setEnabled : function () {},
 
 /**
  * @method preloadBackgroundMusic
@@ -1240,9 +1227,10 @@ setEnabled : function () {},
 preloadBackgroundMusic : function () {},
 
 /**
- * @method resumeAllEffects
+ * @method preloadEffect
+ * @param {const char*}
  */
-resumeAllEffects : function () {},
+preloadEffect : function () {},
 
 /**
  * @method setLoop
@@ -1260,12 +1248,6 @@ unloadEffect : function () {},
  * @method rewindBackgroundMusic
  */
 rewindBackgroundMusic : function () {},
-
-/**
- * @method preloadEffect
- * @param {const char*}
- */
-preloadEffect : function () {},
 
 /**
  * @method pauseEffect
@@ -1307,6 +1289,12 @@ resumeEffect : function () {},
  * @return A value converted from C/C++ "cocostudio::ComAudio*"
  */
 create : function () {},
+
+/**
+ * @method createInstance
+ * @return A value converted from C/C++ "cocos2d::Object*"
+ */
+createInstance : function () {},
 
 };
 
@@ -1383,16 +1371,16 @@ setTouchMode : function () {},
 ccs.ComController = {
 
 /**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
-
-/**
  * @method create
  * @return A value converted from C/C++ "cocostudio::ComController*"
  */
 create : function () {},
+
+/**
+ * @method createInstance
+ * @return A value converted from C/C++ "cocos2d::Object*"
+ */
+createInstance : function () {},
 
 /**
  * @method ComController
@@ -1420,12 +1408,10 @@ setNode : function () {},
 getNode : function () {},
 
 /**
- * @method create
- * @return A value converted from C/C++ "cocostudio::ComRender*"
- * @param {cocos2d::Node*}
- * @param {const char*}
+ * @method createInstance
+ * @return A value converted from C/C++ "cocos2d::Object*"
  */
-create : function () {},
+createInstance : function () {},
 
 };
 

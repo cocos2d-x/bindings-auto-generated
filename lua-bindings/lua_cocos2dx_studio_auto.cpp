@@ -11857,49 +11857,6 @@ int lua_cocos2dx_studio_ComAttribute_getInt(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_studio_ComAttribute_init(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComAttribute* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAttribute_init'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->init();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_init'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_studio_ComAttribute_setBool(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11997,6 +11954,57 @@ int lua_cocos2dx_studio_ComAttribute_create(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_studio_ComAttribute_createInstance(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 0)
+    {
+        if(!ok)
+            return 0;
+        cocos2d::Object* ret = cocostudio::ComAttribute::createInstance();
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Object";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createInstance",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAttribute_createInstance'.",&tolua_err);
+#endif
+    return 0;
+}
 static int lua_cocos2dx_studio_ComAttribute_finalize(lua_State* tolua_S)
 {
     printf("luabindings: finalizing LUA object (ComAttribute)");
@@ -12017,9 +12025,9 @@ int lua_register_cocos2dx_studio_ComAttribute(lua_State* tolua_S)
         tolua_function(tolua_S,"setInt",lua_cocos2dx_studio_ComAttribute_setInt);
         tolua_function(tolua_S,"parse",lua_cocos2dx_studio_ComAttribute_parse);
         tolua_function(tolua_S,"getInt",lua_cocos2dx_studio_ComAttribute_getInt);
-        tolua_function(tolua_S,"init",lua_cocos2dx_studio_ComAttribute_init);
         tolua_function(tolua_S,"setBool",lua_cocos2dx_studio_ComAttribute_setBool);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ComAttribute_create);
+        tolua_function(tolua_S,"createInstance", lua_cocos2dx_studio_ComAttribute_createInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ComAttribute).name();
     g_luaType[typeName] = "ComAttribute";
@@ -12327,49 +12335,6 @@ int lua_cocos2dx_studio_ComAudio_end(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_studio_ComAudio_isEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComAudio* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAudio_isEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isEnabled",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_isEnabled'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_studio_ComAudio_stopBackgroundMusic(lua_State* tolua_S)
 {
     int argc = 0;
@@ -12503,49 +12468,6 @@ int lua_cocos2dx_studio_ComAudio_isBackgroundMusicPlaying(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_studio_ComAudio_init(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComAudio* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAudio_init'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->init();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_init'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_studio_ComAudio_isLoop(lua_State* tolua_S)
 {
     int argc = 0;
@@ -12589,6 +12511,48 @@ int lua_cocos2dx_studio_ComAudio_isLoop(lua_State* tolua_S)
 
     return 0;
 }
+int lua_cocos2dx_studio_ComAudio_resumeAllEffects(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocostudio::ComAudio* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAudio_resumeAllEffects'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cobj->resumeAllEffects();
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "resumeAllEffects",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_resumeAllEffects'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_cocos2dx_studio_ComAudio_pauseAllEffects(lua_State* tolua_S)
 {
     int argc = 0;
@@ -12627,50 +12591,6 @@ int lua_cocos2dx_studio_ComAudio_pauseAllEffects(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_pauseAllEffects'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_studio_ComAudio_setEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComAudio* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAudio_setEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setEnabled(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setEnabled",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_setEnabled'.",&tolua_err);
 #endif
 
     return 0;
@@ -12848,7 +12768,7 @@ int lua_cocos2dx_studio_ComAudio_playEffect(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_studio_ComAudio_resumeAllEffects(lua_State* tolua_S)
+int lua_cocos2dx_studio_ComAudio_preloadEffect(lua_State* tolua_S)
 {
     int argc = 0;
     cocostudio::ComAudio* cobj = nullptr;
@@ -12867,25 +12787,27 @@ int lua_cocos2dx_studio_ComAudio_resumeAllEffects(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAudio_resumeAllEffects'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAudio_preloadEffect'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 1) 
     {
+        const char* arg0;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
-        cobj->resumeAllEffects();
+        cobj->preloadEffect(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "resumeAllEffects",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "preloadEffect",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_resumeAllEffects'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_preloadEffect'.",&tolua_err);
 #endif
 
     return 0;
@@ -13016,50 +12938,6 @@ int lua_cocos2dx_studio_ComAudio_rewindBackgroundMusic(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_rewindBackgroundMusic'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_studio_ComAudio_preloadEffect(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComAudio* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComAudio_preloadEffect'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
-        if(!ok)
-            return 0;
-        cobj->preloadEffect(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "preloadEffect",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_preloadEffect'.",&tolua_err);
 #endif
 
     return 0;
@@ -13376,6 +13254,57 @@ int lua_cocos2dx_studio_ComAudio_create(lua_State* tolua_S)
 #endif
     return 0;
 }
+int lua_cocos2dx_studio_ComAudio_createInstance(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 0)
+    {
+        if(!ok)
+            return 0;
+        cocos2d::Object* ret = cocostudio::ComAudio::createInstance();
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Object";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createInstance",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComAudio_createInstance'.",&tolua_err);
+#endif
+    return 0;
+}
 static int lua_cocos2dx_studio_ComAudio_finalize(lua_State* tolua_S)
 {
     printf("luabindings: finalizing LUA object (ComAudio)");
@@ -13395,22 +13324,19 @@ int lua_register_cocos2dx_studio_ComAudio(lua_State* tolua_S)
         tolua_function(tolua_S,"willPlayBackgroundMusic",lua_cocos2dx_studio_ComAudio_willPlayBackgroundMusic);
         tolua_function(tolua_S,"setBackgroundMusicVolume",lua_cocos2dx_studio_ComAudio_setBackgroundMusicVolume);
         tolua_function(tolua_S,"end",lua_cocos2dx_studio_ComAudio_end);
-        tolua_function(tolua_S,"isEnabled",lua_cocos2dx_studio_ComAudio_isEnabled);
         tolua_function(tolua_S,"stopBackgroundMusic",lua_cocos2dx_studio_ComAudio_stopBackgroundMusic);
         tolua_function(tolua_S,"pauseBackgroundMusic",lua_cocos2dx_studio_ComAudio_pauseBackgroundMusic);
         tolua_function(tolua_S,"isBackgroundMusicPlaying",lua_cocos2dx_studio_ComAudio_isBackgroundMusicPlaying);
-        tolua_function(tolua_S,"init",lua_cocos2dx_studio_ComAudio_init);
         tolua_function(tolua_S,"isLoop",lua_cocos2dx_studio_ComAudio_isLoop);
+        tolua_function(tolua_S,"resumeAllEffects",lua_cocos2dx_studio_ComAudio_resumeAllEffects);
         tolua_function(tolua_S,"pauseAllEffects",lua_cocos2dx_studio_ComAudio_pauseAllEffects);
-        tolua_function(tolua_S,"setEnabled",lua_cocos2dx_studio_ComAudio_setEnabled);
         tolua_function(tolua_S,"preloadBackgroundMusic",lua_cocos2dx_studio_ComAudio_preloadBackgroundMusic);
         tolua_function(tolua_S,"playBackgroundMusic",lua_cocos2dx_studio_ComAudio_playBackgroundMusic);
         tolua_function(tolua_S,"playEffect",lua_cocos2dx_studio_ComAudio_playEffect);
-        tolua_function(tolua_S,"resumeAllEffects",lua_cocos2dx_studio_ComAudio_resumeAllEffects);
+        tolua_function(tolua_S,"preloadEffect",lua_cocos2dx_studio_ComAudio_preloadEffect);
         tolua_function(tolua_S,"setLoop",lua_cocos2dx_studio_ComAudio_setLoop);
         tolua_function(tolua_S,"unloadEffect",lua_cocos2dx_studio_ComAudio_unloadEffect);
         tolua_function(tolua_S,"rewindBackgroundMusic",lua_cocos2dx_studio_ComAudio_rewindBackgroundMusic);
-        tolua_function(tolua_S,"preloadEffect",lua_cocos2dx_studio_ComAudio_preloadEffect);
         tolua_function(tolua_S,"pauseEffect",lua_cocos2dx_studio_ComAudio_pauseEffect);
         tolua_function(tolua_S,"resumeBackgroundMusic",lua_cocos2dx_studio_ComAudio_resumeBackgroundMusic);
         tolua_function(tolua_S,"setFile",lua_cocos2dx_studio_ComAudio_setFile);
@@ -13418,55 +13344,13 @@ int lua_register_cocos2dx_studio_ComAudio(lua_State* tolua_S)
         tolua_function(tolua_S,"getFile",lua_cocos2dx_studio_ComAudio_getFile);
         tolua_function(tolua_S,"resumeEffect",lua_cocos2dx_studio_ComAudio_resumeEffect);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ComAudio_create);
+        tolua_function(tolua_S,"createInstance", lua_cocos2dx_studio_ComAudio_createInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ComAudio).name();
     g_luaType[typeName] = "ComAudio";
     return 1;
 }
 
-int lua_cocos2dx_studio_ComController_init(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocostudio::ComController* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComController",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocostudio::ComController*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_studio_ComController_init'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->init();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComController_init'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_studio_ComController_create(lua_State* tolua_S)
 {
     int argc = 0;
@@ -13515,6 +13399,57 @@ int lua_cocos2dx_studio_ComController_create(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComController_create'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_studio_ComController_createInstance(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"ComController",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 0)
+    {
+        if(!ok)
+            return 0;
+        cocos2d::Object* ret = cocostudio::ComController::createInstance();
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Object";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createInstance",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComController_createInstance'.",&tolua_err);
 #endif
     return 0;
 }
@@ -13572,9 +13507,8 @@ int lua_register_cocos2dx_studio_ComController(lua_State* tolua_S)
     tolua_cclass(tolua_S,"ComController","ComController","Component",NULL);
 
     tolua_beginmodule(tolua_S,"ComController");
-        tolua_function(tolua_S,"init",lua_cocos2dx_studio_ComController_init);
-        tolua_function(tolua_S,"new",lua_cocos2dx_studio_ComController_constructor);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ComController_create);
+        tolua_function(tolua_S,"createInstance", lua_cocos2dx_studio_ComController_createInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ComController).name();
     g_luaType[typeName] = "ComController";
@@ -13701,7 +13635,6 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
 {
     int argc = 0;
     bool ok  = true;
-
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
@@ -13710,13 +13643,14 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
     if (!tolua_isusertable(tolua_S,1,"ComRender",0,&tolua_err)) goto tolua_lerror;
 #endif
 
-    argc = lua_gettop(tolua_S) - 1;
+    argc = lua_gettop(tolua_S)-1;
 
-    if (argc == 2)
+    do 
     {
-        cocos2d::Node* arg0;
-        const char* arg1;
-        do {
+        if (argc == 2)
+        {
+            cocos2d::Node* arg0;
+            do {
 				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
 					ok = false;
 					break;
@@ -13726,11 +13660,12 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
-        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
-        if(!ok)
-            return 0;
-        cocostudio::ComRender* ret = cocostudio::ComRender::create(arg0, arg1);
-        do {
+            if (!ok) { break; }
+            const char* arg1;
+            std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+            if (!ok) { break; }
+            cocostudio::ComRender* ret = cocostudio::ComRender::create(arg0, arg1);
+            do {
 			if (NULL != ret){
 				std::string hashName = typeid(*ret).name();
 				auto iter = g_luaType.find(hashName);
@@ -13751,13 +13686,96 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
 				lua_pushnil(tolua_S);
 			}
 		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
+            return 1;
+        }
+    } while (0);
+    ok  = true;
+    do 
+    {
+        if (argc == 0)
+        {
+            cocostudio::ComRender* ret = cocostudio::ComRender::create();
+            do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "ComRender";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComRender*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+            return 1;
+        }
+    } while (0);
+    ok  = true;
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d", "create",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComRender_create'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_studio_ComRender_createInstance(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"ComRender",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 0)
+    {
+        if(!ok)
+            return 0;
+        cocos2d::Object* ret = cocostudio::ComRender::createInstance();
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Object";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createInstance",argc, 0);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_studio_ComRender_createInstance'.",&tolua_err);
 #endif
     return 0;
 }
@@ -13776,6 +13794,7 @@ int lua_register_cocos2dx_studio_ComRender(lua_State* tolua_S)
         tolua_function(tolua_S,"setNode",lua_cocos2dx_studio_ComRender_setNode);
         tolua_function(tolua_S,"getNode",lua_cocos2dx_studio_ComRender_getNode);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ComRender_create);
+        tolua_function(tolua_S,"createInstance", lua_cocos2dx_studio_ComRender_createInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ComRender).name();
     g_luaType[typeName] = "ComRender";
