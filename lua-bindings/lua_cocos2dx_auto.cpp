@@ -62750,7 +62750,7 @@ int lua_cocos2dx_TMXLayerInfo_getProperties(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::ValueMap ret = cobj->getProperties();
+        cocos2d::ValueMap& ret = cobj->getProperties();
         ccvaluemap_to_luaval(tolua_S, ret);
         return 1;
     }

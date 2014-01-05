@@ -7642,7 +7642,7 @@ setProperties : function () {},
 
 /**
  * @method getProperties
- * @return A value converted from C/C++ "cocos2d::ValueMap"
+ * @return A value converted from C/C++ "cocos2d::ValueMap&"
  */
 getProperties : function () {},
 

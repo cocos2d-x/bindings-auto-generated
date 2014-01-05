@@ -39022,7 +39022,7 @@ JSBool js_cocos2dx_TMXLayerInfo_getProperties(JSContext *cx, uint32_t argc, jsva
 	cocos2d::TMXLayerInfo* cobj = (cocos2d::TMXLayerInfo *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXLayerInfo_getProperties : Invalid Native Object");
 	if (argc == 0) {
-		cocos2d::ValueMap ret = cobj->getProperties();
+		cocos2d::ValueMap& ret = cobj->getProperties();
 		jsval jsret;
 		jsret = ccvaluemap_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
