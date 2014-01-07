@@ -1371,6 +1371,12 @@ getIdx : function () {},
 setIdx : function () {},
 
 /**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::extension::TableViewCell*"
+ */
+create : function () {},
+
+/**
  * @method TableViewCell
  * @constructor
  */
