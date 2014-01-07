@@ -37215,16 +37215,18 @@ JSBool js_cocos2dx_AnimationCache_addAnimationsWithDictionary(JSContext *cx, uin
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::AnimationCache* cobj = (cocos2d::AnimationCache *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_AnimationCache_addAnimationsWithDictionary : Invalid Native Object");
-	if (argc == 1) {
+	if (argc == 2) {
 		cocos2d::ValueMap arg0;
+		std::string arg1;
 		ok &= jsval_to_ccvaluemap(cx, argv[0], &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_AnimationCache_addAnimationsWithDictionary : Error processing arguments");
-		cobj->addAnimationsWithDictionary(arg0);
+		cobj->addAnimationsWithDictionary(arg0, arg1);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_AnimationCache_addAnimationsWithDictionary : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_AnimationCache_addAnimationsWithDictionary : wrong number of arguments: %d, was expecting %d", argc, 2);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_AnimationCache_removeAnimation(JSContext *cx, uint32_t argc, jsval *vp)
@@ -37352,7 +37354,7 @@ void js_register_cocos2dx_AnimationCache(JSContext *cx, JSObject *global) {
 		JS_FN("getAnimation", js_cocos2dx_AnimationCache_getAnimation, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addAnimation", js_cocos2dx_AnimationCache_addAnimation, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("init", js_cocos2dx_AnimationCache_init, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("addAnimationsWithDictionary", js_cocos2dx_AnimationCache_addAnimationsWithDictionary, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("addAnimationsWithDictionary", js_cocos2dx_AnimationCache_addAnimationsWithDictionary, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("removeAnimation", js_cocos2dx_AnimationCache_removeAnimation, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("addAnimations", js_cocos2dx_AnimationCache_addAnimationsWithFile, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
