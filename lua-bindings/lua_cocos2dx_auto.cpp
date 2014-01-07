@@ -59824,16 +59824,18 @@ int lua_cocos2dx_AnimationCache_addAnimationsWithDictionary(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 2) 
     {
         cocos2d::ValueMap arg0;
+        std::string arg1;
         ok &= luaval_to_ccvaluemap(tolua_S, 2, &arg0);
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
-        cobj->addAnimationsWithDictionary(arg0);
+        cobj->addAnimationsWithDictionary(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addAnimationsWithDictionary",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addAnimationsWithDictionary",argc, 2);
     return 0;
 
 #if COCOS2D_DEBUG >= 1

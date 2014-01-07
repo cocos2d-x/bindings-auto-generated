@@ -7804,6 +7804,7 @@ init : function () {},
 /**
  * @method addAnimationsWithDictionary
  * @param {const cocos2d::ValueMap&}
+ * @param {const std::string&}
  */
 addAnimationsWithDictionary : function () {},
 
