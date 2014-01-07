@@ -12,9 +12,10 @@ JSBool js_cocos2dx_spine_Skeleton_constructor(JSContext *cx, uint32_t argc, jsva
 void js_cocos2dx_spine_Skeleton_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_spine_Skeleton(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_spine(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_spine_Skeleton_setSlotsToSetupPose(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_spine_Skeleton_setBlendFunc(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_spine_Skeleton_setToSetupPose(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_spine_Skeleton_setBlendFunc(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_spine_Skeleton_onDraw(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_spine_Skeleton_setSlotsToSetupPose(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_spine_Skeleton_getAttachment(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_spine_Skeleton_setAttachment(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_spine_Skeleton_getBlendFunc(JSContext *cx, uint32_t argc, jsval *vp);

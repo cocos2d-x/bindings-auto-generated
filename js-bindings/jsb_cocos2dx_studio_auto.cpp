@@ -4814,6 +4814,15 @@ void js_cocostudio_Armature_finalize(JSFreeOp *fop, JSObject *obj) {
     CCLOGINFO("jsbindings: finalizing JS object %p (Armature)", obj);
 }
 
+static JSBool js_cocostudio_Armature_ctor(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+    cocostudio::Armature *nobj = cocostudio::Armature::create();
+    js_proxy_t* p = jsb_new_proxy(nobj, obj);
+    JS_AddNamedObjectRoot(cx, &p->obj, "cocostudio::Armature");
+    JS_SET_RVAL(cx, vp, JSVAL_VOID);
+    return JS_TRUE;
+}
 void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
 	jsb_cocostudio_Armature_class = (JSClass *)calloc(1, sizeof(JSClass));
 	jsb_cocostudio_Armature_class->name = "Armature";
@@ -4854,6 +4863,7 @@ void js_register_cocos2dx_studio_Armature(JSContext *cx, JSObject *global) {
 		JS_FN("getVersion", js_cocos2dx_studio_Armature_getVersion, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getAnimation", js_cocos2dx_studio_Armature_getAnimation, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getBoneDic", js_cocos2dx_studio_Armature_getBoneDic, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FN("ctor", js_cocostudio_Armature_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 

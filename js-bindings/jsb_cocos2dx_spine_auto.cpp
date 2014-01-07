@@ -34,19 +34,19 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 JSClass  *jsb_spine_Skeleton_class;
 JSObject *jsb_spine_Skeleton_prototype;
 
-JSBool js_cocos2dx_spine_Skeleton_setSlotsToSetupPose(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_spine_Skeleton_setToSetupPose(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	spine::Skeleton* cobj = (spine::Skeleton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_spine_Skeleton_setSlotsToSetupPose : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_spine_Skeleton_setToSetupPose : Invalid Native Object");
 	if (argc == 0) {
-		cobj->setSlotsToSetupPose();
+		cobj->setToSetupPose();
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_setSlotsToSetupPose : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_setToSetupPose : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_spine_Skeleton_setBlendFunc(JSContext *cx, uint32_t argc, jsval *vp)
@@ -69,19 +69,34 @@ JSBool js_cocos2dx_spine_Skeleton_setBlendFunc(JSContext *cx, uint32_t argc, jsv
 	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_setBlendFunc : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_spine_Skeleton_setToSetupPose(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_spine_Skeleton_onDraw(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	spine::Skeleton* cobj = (spine::Skeleton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_spine_Skeleton_setToSetupPose : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_spine_Skeleton_onDraw : Invalid Native Object");
 	if (argc == 0) {
-		cobj->setToSetupPose();
+		cobj->onDraw();
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_setToSetupPose : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_onDraw : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_spine_Skeleton_setSlotsToSetupPose(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	spine::Skeleton* cobj = (spine::Skeleton *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_spine_Skeleton_setSlotsToSetupPose : Invalid Native Object");
+	if (argc == 0) {
+		cobj->setSlotsToSetupPose();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_setSlotsToSetupPose : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_spine_Skeleton_getAttachment(JSContext *cx, uint32_t argc, jsval *vp)
@@ -547,9 +562,10 @@ void js_register_cocos2dx_spine_Skeleton(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("setSlotsToSetupPose", js_cocos2dx_spine_Skeleton_setSlotsToSetupPose, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setBlendFunc", js_cocos2dx_spine_Skeleton_setBlendFunc, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setToSetupPose", js_cocos2dx_spine_Skeleton_setToSetupPose, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setBlendFunc", js_cocos2dx_spine_Skeleton_setBlendFunc, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("onDraw", js_cocos2dx_spine_Skeleton_onDraw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setSlotsToSetupPose", js_cocos2dx_spine_Skeleton_setSlotsToSetupPose, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getAttachment", js_cocos2dx_spine_Skeleton_getAttachment, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAttachment", js_cocos2dx_spine_Skeleton_setAttachment, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getBlendFunc", js_cocos2dx_spine_Skeleton_getBlendFunc, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

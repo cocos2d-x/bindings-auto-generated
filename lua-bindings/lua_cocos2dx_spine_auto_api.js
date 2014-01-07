@@ -9,9 +9,9 @@ var sp = sp || {};
 sp.Skeleton = {
 
 /**
- * @method setSlotsToSetupPose
+ * @method setToSetupPose
  */
-setSlotsToSetupPose : function () {},
+setToSetupPose : function () {},
 
 /**
  * @method setBlendFunc
@@ -20,9 +20,14 @@ setSlotsToSetupPose : function () {},
 setBlendFunc : function () {},
 
 /**
- * @method setToSetupPose
+ * @method onDraw
  */
-setToSetupPose : function () {},
+onDraw : function () {},
+
+/**
+ * @method setSlotsToSetupPose
+ */
+setSlotsToSetupPose : function () {},
 
 /**
  * @method getBlendFunc
