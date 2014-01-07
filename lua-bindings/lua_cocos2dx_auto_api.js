@@ -7329,58 +7329,6 @@ cc.EventListenerCustom = {
 };
 
 /**
- * @class EventListenerPhysicsContact
- */
-cc.EventListenerPhysicsContact = {
-
-};
-
-/**
- * @class EventListenerPhysicsContactWithBodies
- */
-cc.EventListenerPhysicsContactWithBodies = {
-
-/**
- * @method hitTest
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::PhysicsShape*}
- * @param {cocos2d::PhysicsShape*}
- */
-hitTest : function () {},
-
-};
-
-/**
- * @class EventListenerPhysicsContactWithShapes
- */
-cc.EventListenerPhysicsContactWithShapes = {
-
-/**
- * @method hitTest
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::PhysicsShape*}
- * @param {cocos2d::PhysicsShape*}
- */
-hitTest : function () {},
-
-};
-
-/**
- * @class EventListenerPhysicsContactWithGroup
- */
-cc.EventListenerPhysicsContactWithGroup = {
-
-/**
- * @method hitTest
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::PhysicsShape*}
- * @param {cocos2d::PhysicsShape*}
- */
-hitTest : function () {},
-
-};
-
-/**
  * @class FileUtils
  */
 cc.FileUtils = {
