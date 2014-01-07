@@ -42,7 +42,7 @@ JSBool js_cocos2dx_gui_LayoutParameter_getLayoutType(JSContext *cx, uint32_t arg
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LayoutParameter_getLayoutType : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getLayoutType();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -55,7 +55,7 @@ JSBool js_cocos2dx_gui_LayoutParameter_create(JSContext *cx, uint32_t argc, jsva
 {
 	if (argc == 0) {
 		cocos2d::gui::LayoutParameter* ret = cocos2d::gui::LayoutParameter::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::LayoutParameter>(cx, (cocos2d::gui::LayoutParameter*)ret);
@@ -189,7 +189,7 @@ JSBool js_cocos2dx_gui_LinearLayoutParameter_getGravity(JSContext *cx, uint32_t 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LinearLayoutParameter_getGravity : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getGravity();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -202,7 +202,7 @@ JSBool js_cocos2dx_gui_LinearLayoutParameter_create(JSContext *cx, uint32_t argc
 {
 	if (argc == 0) {
 		cocos2d::gui::LinearLayoutParameter* ret = cocos2d::gui::LinearLayoutParameter::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::LinearLayoutParameter>(cx, (cocos2d::gui::LinearLayoutParameter*)ret);
@@ -358,7 +358,7 @@ JSBool js_cocos2dx_gui_RelativeLayoutParameter_getRelativeName(JSContext *cx, ui
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_RelativeLayoutParameter_getRelativeName : Invalid Native Object");
 	if (argc == 0) {
 		const char* ret = cobj->getRelativeName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = c_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -375,7 +375,7 @@ JSBool js_cocos2dx_gui_RelativeLayoutParameter_getRelativeToWidgetName(JSContext
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_RelativeLayoutParameter_getRelativeToWidgetName : Invalid Native Object");
 	if (argc == 0) {
 		const char* ret = cobj->getRelativeToWidgetName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = c_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -412,7 +412,7 @@ JSBool js_cocos2dx_gui_RelativeLayoutParameter_getAlign(JSContext *cx, uint32_t 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_RelativeLayoutParameter_getAlign : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getAlign();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -425,7 +425,7 @@ JSBool js_cocos2dx_gui_RelativeLayoutParameter_create(JSContext *cx, uint32_t ar
 {
 	if (argc == 0) {
 		cocos2d::gui::RelativeLayoutParameter* ret = cocos2d::gui::RelativeLayoutParameter::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::RelativeLayoutParameter>(cx, (cocos2d::gui::RelativeLayoutParameter*)ret);
@@ -545,7 +545,7 @@ JSBool js_cocos2dx_gui_Widget_getVirtualRenderer(JSContext *cx, uint32_t argc, j
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getVirtualRenderer : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Node* ret = cobj->getVirtualRenderer();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, (cocos2d::Node*)ret);
@@ -614,7 +614,7 @@ JSBool js_cocos2dx_gui_Widget_getNodeByTag(JSContext *cx, uint32_t argc, jsval *
 		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getNodeByTag : Error processing arguments");
 		cocos2d::Node* ret = cobj->getNodeByTag(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, (cocos2d::Node*)ret);
@@ -658,7 +658,7 @@ JSBool js_cocos2dx_gui_Widget_isFlipY(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isFlipY : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isFlipY();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -675,7 +675,7 @@ JSBool js_cocos2dx_gui_Widget_getTouchEndPos(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getTouchEndPos : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Point& ret = cobj->getTouchEndPos();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccpoint_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -712,7 +712,7 @@ JSBool js_cocos2dx_gui_Widget_getNodes(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getNodes : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocos2d::Node *>& ret = cobj->getNodes();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -749,7 +749,7 @@ JSBool js_cocos2dx_gui_Widget_getName(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getName : Invalid Native Object");
 	if (argc == 0) {
 		const char* ret = cobj->getName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = c_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -766,7 +766,7 @@ JSBool js_cocos2dx_gui_Widget_isIgnoreContentAdaptWithSize(JSContext *cx, uint32
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isIgnoreContentAdaptWithSize : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isIgnoreContentAdaptWithSize();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -798,7 +798,7 @@ JSBool js_cocos2dx_gui_Widget_getBottomInParent(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getBottomInParent : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getBottomInParent();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -815,7 +815,7 @@ JSBool js_cocos2dx_gui_Widget_getActionTag(JSContext *cx, uint32_t argc, jsval *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getActionTag : Invalid Native Object");
 	if (argc == 0) {
 		int ret = cobj->getActionTag();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -837,7 +837,7 @@ JSBool js_cocos2dx_gui_Widget_getLayoutParameter(JSContext *cx, uint32_t argc, j
 		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getLayoutParameter : Error processing arguments");
 		cocos2d::gui::LayoutParameter* ret = cobj->getLayoutParameter(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::LayoutParameter>(cx, (cocos2d::gui::LayoutParameter*)ret);
@@ -861,7 +861,7 @@ JSBool js_cocos2dx_gui_Widget_getPositionType(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getPositionType : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getPositionType();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -903,7 +903,7 @@ JSBool js_cocos2dx_gui_Widget_getChildByName(JSContext *cx, uint32_t argc, jsval
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getChildByName : Error processing arguments");
 		cocos2d::gui::Widget* ret = cobj->getChildByName(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
@@ -927,7 +927,7 @@ JSBool js_cocos2dx_gui_Widget_isEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -944,7 +944,7 @@ JSBool js_cocos2dx_gui_Widget_isFlipX(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isFlipX : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isFlipX();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -981,7 +981,7 @@ JSBool js_cocos2dx_gui_Widget_isTouchEnabled(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isTouchEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isTouchEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -998,7 +998,7 @@ JSBool js_cocos2dx_gui_Widget_getContentSize(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getContentSize : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Size& ret = cobj->getContentSize();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccsize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1015,7 +1015,7 @@ JSBool js_cocos2dx_gui_Widget_getTouchStartPos(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getTouchStartPos : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Point& ret = cobj->getTouchStartPos();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccpoint_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1087,7 +1087,7 @@ JSBool js_cocos2dx_gui_Widget_clone(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_clone : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::gui::Widget* ret = cobj->clone();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
@@ -1111,7 +1111,7 @@ JSBool js_cocos2dx_gui_Widget_getTouchMovePos(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getTouchMovePos : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Point& ret = cobj->getTouchMovePos();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccpoint_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1312,7 +1312,7 @@ JSBool js_cocos2dx_gui_Widget_getLeftInParent(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getLeftInParent : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getLeftInParent();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1349,7 +1349,7 @@ JSBool js_cocos2dx_gui_Widget_isBright(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isBright : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isBright();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1371,7 +1371,7 @@ JSBool js_cocos2dx_gui_Widget_clippingParentAreaContainPoint(JSContext *cx, uint
 		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Widget_clippingParentAreaContainPoint : Error processing arguments");
 		JSBool ret = cobj->clippingParentAreaContainPoint(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1388,7 +1388,7 @@ JSBool js_cocos2dx_gui_Widget_getSizePercent(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getSizePercent : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Point& ret = cobj->getSizePercent();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccpoint_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1405,7 +1405,7 @@ JSBool js_cocos2dx_gui_Widget_getTopInParent(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getTopInParent : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getTopInParent();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1422,7 +1422,7 @@ JSBool js_cocos2dx_gui_Widget_getWidgetType(JSContext *cx, uint32_t argc, jsval 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getWidgetType : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getWidgetType();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1439,7 +1439,7 @@ JSBool js_cocos2dx_gui_Widget_isUpdateEnabled(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isUpdateEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isUpdateEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1456,7 +1456,7 @@ JSBool js_cocos2dx_gui_Widget_getSize(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getSize : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Size& ret = cobj->getSize();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccsize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1473,7 +1473,7 @@ JSBool js_cocos2dx_gui_Widget_getRightInParent(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getRightInParent : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getRightInParent();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1490,7 +1490,7 @@ JSBool js_cocos2dx_gui_Widget_getSizeType(JSContext *cx, uint32_t argc, jsval *v
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getSizeType : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getSizeType();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1549,7 +1549,7 @@ JSBool js_cocos2dx_gui_Widget_getWorldPosition(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getWorldPosition : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Point ret = cobj->getWorldPosition();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccpoint_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1566,7 +1566,7 @@ JSBool js_cocos2dx_gui_Widget_getPositionPercent(JSContext *cx, uint32_t argc, j
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_getPositionPercent : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Point& ret = cobj->getPositionPercent();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccpoint_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1588,7 +1588,7 @@ JSBool js_cocos2dx_gui_Widget_hitTest(JSContext *cx, uint32_t argc, jsval *vp)
 		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Widget_hitTest : Error processing arguments");
 		JSBool ret = cobj->hitTest(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1605,7 +1605,7 @@ JSBool js_cocos2dx_gui_Widget_isFocused(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Widget_isFocused : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isFocused();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1709,7 +1709,7 @@ JSBool js_cocos2dx_gui_Widget_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Widget* ret = cocos2d::gui::Widget::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
@@ -1900,7 +1900,7 @@ JSBool js_cocos2dx_gui_Layout_getBackGroundImageTextureSize(JSContext *cx, uint3
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Layout_getBackGroundImageTextureSize : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Size& ret = cobj->getBackGroundImageTextureSize();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccsize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1917,7 +1917,7 @@ JSBool js_cocos2dx_gui_Layout_getLayoutType(JSContext *cx, uint32_t argc, jsval 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Layout_getLayoutType : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getLayoutType();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2058,7 +2058,7 @@ JSBool js_cocos2dx_gui_Layout_isClippingEnabled(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Layout_isClippingEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isClippingEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2186,7 +2186,7 @@ JSBool js_cocos2dx_gui_Layout_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Layout* ret = cocos2d::gui::Layout::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Layout>(cx, (cocos2d::gui::Layout*)ret);
@@ -2315,7 +2315,7 @@ JSBool js_cocos2dx_gui_Button_getTitleText(JSContext *cx, uint32_t argc, jsval *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Button_getTitleText : Invalid Native Object");
 	if (argc == 0) {
 		const std::string& ret = cobj->getTitleText();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2492,7 +2492,7 @@ JSBool js_cocos2dx_gui_Button_getTitleColor(JSContext *cx, uint32_t argc, jsval 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Button_getTitleColor : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Color3B& ret = cobj->getTitleColor();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = cccolor3b_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2539,7 +2539,7 @@ JSBool js_cocos2dx_gui_Button_getTitleFontName(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Button_getTitleFontName : Invalid Native Object");
 	if (argc == 0) {
 		const char* ret = cobj->getTitleFontName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = c_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2654,7 +2654,7 @@ JSBool js_cocos2dx_gui_Button_getTitleFontSize(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Button_getTitleFontSize : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getTitleFontSize();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2707,7 +2707,7 @@ JSBool js_cocos2dx_gui_Button_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Button* ret = cocos2d::gui::Button::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Button>(cx, (cocos2d::gui::Button*)ret);
@@ -2839,7 +2839,7 @@ JSBool js_cocos2dx_gui_CheckBox_getSelectedState(JSContext *cx, uint32_t argc, j
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_CheckBox_getSelectedState : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->getSelectedState();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3068,7 +3068,7 @@ JSBool js_cocos2dx_gui_CheckBox_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::CheckBox* ret = cocos2d::gui::CheckBox::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::CheckBox>(cx, (cocos2d::gui::CheckBox*)ret);
@@ -3276,7 +3276,7 @@ JSBool js_cocos2dx_gui_ImageView_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::ImageView* ret = cocos2d::gui::ImageView::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::ImageView>(cx, (cocos2d::gui::ImageView*)ret);
@@ -3394,7 +3394,7 @@ JSBool js_cocos2dx_gui_Text_getStringLength(JSContext *cx, uint32_t argc, jsval 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_getStringLength : Invalid Native Object");
 	if (argc == 0) {
 		unsigned long ret = cobj->getStringLength();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ulong_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3451,7 +3451,7 @@ JSBool js_cocos2dx_gui_Text_getStringValue(JSContext *cx, uint32_t argc, jsval *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_getStringValue : Invalid Native Object");
 	if (argc == 0) {
 		const std::string& ret = cobj->getStringValue();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3528,7 +3528,7 @@ JSBool js_cocos2dx_gui_Text_isTouchScaleChangeEnabled(JSContext *cx, uint32_t ar
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_isTouchScaleChangeEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isTouchScaleChangeEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3581,7 +3581,7 @@ JSBool js_cocos2dx_gui_Text_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Text* ret = cocos2d::gui::Text::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Text>(cx, (cocos2d::gui::Text*)ret);
@@ -3733,7 +3733,7 @@ JSBool js_cocos2dx_gui_TextAtlas_getStringValue(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextAtlas_getStringValue : Invalid Native Object");
 	if (argc == 0) {
 		const std::string& ret = cobj->getStringValue();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3766,7 +3766,7 @@ JSBool js_cocos2dx_gui_TextAtlas_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::TextAtlas* ret = cocos2d::gui::TextAtlas::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::TextAtlas>(cx, (cocos2d::gui::TextAtlas*)ret);
@@ -3993,7 +3993,7 @@ JSBool js_cocos2dx_gui_LoadingBar_getDirection(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LoadingBar_getDirection : Invalid Native Object");
 	if (argc == 0) {
 		int ret = cobj->getDirection();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4010,7 +4010,7 @@ JSBool js_cocos2dx_gui_LoadingBar_getPercent(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_LoadingBar_getPercent : Invalid Native Object");
 	if (argc == 0) {
 		int ret = cobj->getPercent();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4023,7 +4023,7 @@ JSBool js_cocos2dx_gui_LoadingBar_create(JSContext *cx, uint32_t argc, jsval *vp
 {
 	if (argc == 0) {
 		cocos2d::gui::LoadingBar* ret = cocos2d::gui::LoadingBar::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::LoadingBar>(cx, (cocos2d::gui::LoadingBar*)ret);
@@ -4190,7 +4190,7 @@ JSBool js_cocos2dx_gui_ScrollView_isInertiaScrollEnabled(JSContext *cx, uint32_t
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ScrollView_isInertiaScrollEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isInertiaScrollEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4231,7 +4231,7 @@ JSBool js_cocos2dx_gui_ScrollView_getDirection(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ScrollView_getDirection : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getDirection();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4270,7 +4270,7 @@ JSBool js_cocos2dx_gui_ScrollView_getInnerContainer(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ScrollView_getInnerContainer : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::gui::Layout* ret = cobj->getInnerContainer();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Layout>(cx, (cocos2d::gui::Layout*)ret);
@@ -4401,7 +4401,7 @@ JSBool js_cocos2dx_gui_ScrollView_getInnerContainerSize(JSContext *cx, uint32_t 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ScrollView_getInnerContainerSize : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Size& ret = cobj->getInnerContainerSize();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccsize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4418,7 +4418,7 @@ JSBool js_cocos2dx_gui_ScrollView_isBounceEnabled(JSContext *cx, uint32_t argc, 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ScrollView_isBounceEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isBounceEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4740,7 +4740,7 @@ JSBool js_cocos2dx_gui_ScrollView_create(JSContext *cx, uint32_t argc, jsval *vp
 {
 	if (argc == 0) {
 		cocos2d::gui::ScrollView* ret = cocos2d::gui::ScrollView::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::ScrollView>(cx, (cocos2d::gui::ScrollView*)ret);
@@ -4897,7 +4897,7 @@ JSBool js_cocos2dx_gui_ListView_getIndex(JSContext *cx, uint32_t argc, jsval *vp
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_ListView_getIndex : Error processing arguments");
 		ssize_t ret = cobj->getIndex(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ssize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4976,7 +4976,7 @@ JSBool js_cocos2dx_gui_ListView_getItems(JSContext *cx, uint32_t argc, jsval *vp
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ListView_getItems : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocos2d::gui::Widget *>& ret = cobj->getItems();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5013,7 +5013,7 @@ JSBool js_cocos2dx_gui_ListView_getCurSelectedIndex(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_ListView_getCurSelectedIndex : Invalid Native Object");
 	if (argc == 0) {
 		ssize_t ret = cobj->getCurSelectedIndex();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ssize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5090,7 +5090,7 @@ JSBool js_cocos2dx_gui_ListView_getItem(JSContext *cx, uint32_t argc, jsval *vp)
 		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_ListView_getItem : Error processing arguments");
 		cocos2d::gui::Widget* ret = cobj->getItem(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
@@ -5196,7 +5196,7 @@ JSBool js_cocos2dx_gui_ListView_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::ListView* ret = cocos2d::gui::ListView::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::ListView>(cx, (cocos2d::gui::ListView*)ret);
@@ -5613,7 +5613,7 @@ JSBool js_cocos2dx_gui_Slider_getPercent(JSContext *cx, uint32_t argc, jsval *vp
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Slider_getPercent : Invalid Native Object");
 	if (argc == 0) {
 		int ret = cobj->getPercent();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5626,7 +5626,7 @@ JSBool js_cocos2dx_gui_Slider_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Slider* ret = cocos2d::gui::Slider::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Slider>(cx, (cocos2d::gui::Slider*)ret);
@@ -5772,7 +5772,7 @@ JSBool js_cocos2dx_gui_TextField_getStringValue(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextField_getStringValue : Invalid Native Object");
 	if (argc == 0) {
 		const std::string& ret = cobj->getStringValue();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5789,7 +5789,7 @@ JSBool js_cocos2dx_gui_TextField_getDeleteBackward(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextField_getDeleteBackward : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->getDeleteBackward();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5806,7 +5806,7 @@ JSBool js_cocos2dx_gui_TextField_getAttachWithIME(JSContext *cx, uint32_t argc, 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextField_getAttachWithIME : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->getAttachWithIME();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5843,7 +5843,7 @@ JSBool js_cocos2dx_gui_TextField_getInsertText(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextField_getInsertText : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->getInsertText();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5875,7 +5875,7 @@ JSBool js_cocos2dx_gui_TextField_getDetachWithIME(JSContext *cx, uint32_t argc, 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextField_getDetachWithIME : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->getDetachWithIME();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5892,7 +5892,7 @@ JSBool js_cocos2dx_gui_TextField_init(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextField_init : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->init();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5979,7 +5979,7 @@ JSBool js_cocos2dx_gui_TextField_isPasswordEnabled(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextField_isPasswordEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isPasswordEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6056,7 +6056,7 @@ JSBool js_cocos2dx_gui_TextField_getMaxLength(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextField_getMaxLength : Invalid Native Object");
 	if (argc == 0) {
 		int ret = cobj->getMaxLength();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6073,7 +6073,7 @@ JSBool js_cocos2dx_gui_TextField_isMaxLengthEnabled(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextField_isMaxLengthEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isMaxLengthEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6206,7 +6206,7 @@ JSBool js_cocos2dx_gui_TextField_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::TextField* ret = cocos2d::gui::TextField::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::TextField>(cx, (cocos2d::gui::TextField*)ret);
@@ -6365,7 +6365,7 @@ JSBool js_cocos2dx_gui_TextBMFont_getStringValue(JSContext *cx, uint32_t argc, j
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_TextBMFont_getStringValue : Invalid Native Object");
 	if (argc == 0) {
 		const char* ret = cobj->getStringValue();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = c_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6398,7 +6398,7 @@ JSBool js_cocos2dx_gui_TextBMFont_create(JSContext *cx, uint32_t argc, jsval *vp
 {
 	if (argc == 0) {
 		cocos2d::gui::TextBMFont* ret = cocos2d::gui::TextBMFont::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::TextBMFont>(cx, (cocos2d::gui::TextBMFont*)ret);
@@ -6515,7 +6515,7 @@ JSBool js_cocos2dx_gui_PageView_getCurPageIndex(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_PageView_getCurPageIndex : Invalid Native Object");
 	if (argc == 0) {
 		ssize_t ret = cobj->getCurPageIndex();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ssize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6568,7 +6568,7 @@ JSBool js_cocos2dx_gui_PageView_getPage(JSContext *cx, uint32_t argc, jsval *vp)
 		ok &= jsval_to_ssize(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_PageView_getPage : Error processing arguments");
 		cocos2d::gui::Layout* ret = cobj->getPage(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Layout>(cx, (cocos2d::gui::Layout*)ret);
@@ -6688,7 +6688,7 @@ JSBool js_cocos2dx_gui_PageView_getPages(JSContext *cx, uint32_t argc, jsval *vp
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_PageView_getPages : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocos2d::gui::Layout *>& ret = cobj->getPages();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6743,7 +6743,7 @@ JSBool js_cocos2dx_gui_PageView_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::PageView* ret = cocos2d::gui::PageView::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::PageView>(cx, (cocos2d::gui::PageView*)ret);
@@ -6877,7 +6877,7 @@ JSBool js_cocos2dx_gui_Helper_seekActionWidgetByActionTag(JSContext *cx, uint32_
 		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Helper_seekActionWidgetByActionTag : Error processing arguments");
 		cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekActionWidgetByActionTag(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
@@ -6911,7 +6911,7 @@ JSBool js_cocos2dx_gui_Helper_seekWidgetByTag(JSContext *cx, uint32_t argc, jsva
 		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Helper_seekWidgetByTag : Error processing arguments");
 		cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByTag(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
@@ -6945,7 +6945,7 @@ JSBool js_cocos2dx_gui_Helper_seekWidgetByRelativeName(JSContext *cx, uint32_t a
 		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Helper_seekWidgetByRelativeName : Error processing arguments");
 		cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByRelativeName(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
@@ -6979,7 +6979,7 @@ JSBool js_cocos2dx_gui_Helper_seekWidgetByName(JSContext *cx, uint32_t argc, jsv
 		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Helper_seekWidgetByName : Error processing arguments");
 		cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByName(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
