@@ -401,5 +401,17 @@ JSBool js_cocos2dx_gui_PageView_removeAllPages(JSContext *cx, uint32_t argc, jsv
 JSBool js_cocos2dx_gui_PageView_addPage(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_PageView_create(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_gui_PageView_PageView(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_cocos2d_gui_Helper_class;
+extern JSObject *jsb_cocos2d_gui_Helper_prototype;
+
+JSBool js_cocos2dx_gui_Helper_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_gui_Helper_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_gui_Helper(JSContext *cx, JSObject *global);
+void register_all_cocos2dx_gui(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_gui_Helper_seekActionWidgetByActionTag(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Helper_seekWidgetByTag(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Helper_seekWidgetByRelativeName(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_gui_Helper_seekWidgetByName(JSContext *cx, uint32_t argc, jsval *vp);
 #endif
 

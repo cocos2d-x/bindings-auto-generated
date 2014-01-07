@@ -6856,6 +6856,203 @@ void js_register_cocos2dx_gui_PageView(JSContext *cx, JSObject *global) {
 	}
 }
 
+JSClass  *jsb_cocos2d_gui_Helper_class;
+JSObject *jsb_cocos2d_gui_Helper_prototype;
+
+JSBool js_cocos2dx_gui_Helper_seekActionWidgetByActionTag(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	if (argc == 2) {
+		cocos2d::gui::Widget* arg0;
+		int arg1;
+		do {
+			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::gui::Widget*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Helper_seekActionWidgetByActionTag : Error processing arguments");
+		cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekActionWidgetByActionTag(arg0, arg1);
+		jsval jsret;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "js_cocos2dx_gui_Helper_seekActionWidgetByActionTag : wrong number of arguments");
+	return JS_FALSE;
+}
+
+JSBool js_cocos2dx_gui_Helper_seekWidgetByTag(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	if (argc == 2) {
+		cocos2d::gui::Widget* arg0;
+		int arg1;
+		do {
+			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::gui::Widget*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Helper_seekWidgetByTag : Error processing arguments");
+		cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByTag(arg0, arg1);
+		jsval jsret;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "js_cocos2dx_gui_Helper_seekWidgetByTag : wrong number of arguments");
+	return JS_FALSE;
+}
+
+JSBool js_cocos2dx_gui_Helper_seekWidgetByRelativeName(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	if (argc == 2) {
+		cocos2d::gui::Widget* arg0;
+		const char* arg1;
+		do {
+			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::gui::Widget*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
+		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Helper_seekWidgetByRelativeName : Error processing arguments");
+		cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByRelativeName(arg0, arg1);
+		jsval jsret;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "js_cocos2dx_gui_Helper_seekWidgetByRelativeName : wrong number of arguments");
+	return JS_FALSE;
+}
+
+JSBool js_cocos2dx_gui_Helper_seekWidgetByName(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	if (argc == 2) {
+		cocos2d::gui::Widget* arg0;
+		const char* arg1;
+		do {
+			if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::gui::Widget*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+		} while (0);
+		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_gui_Helper_seekWidgetByName : Error processing arguments");
+		cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByName(arg0, arg1);
+		jsval jsret;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+	JS_ReportError(cx, "js_cocos2dx_gui_Helper_seekWidgetByName : wrong number of arguments");
+	return JS_FALSE;
+}
+
+
+
+void js_cocos2d_gui_Helper_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (Helper)", obj);
+}
+
+void js_register_cocos2dx_gui_Helper(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_gui_Helper_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_gui_Helper_class->name = "Helper";
+	jsb_cocos2d_gui_Helper_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_gui_Helper_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_gui_Helper_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_gui_Helper_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_gui_Helper_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_gui_Helper_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_gui_Helper_class->convert = JS_ConvertStub;
+	jsb_cocos2d_gui_Helper_class->finalize = js_cocos2d_gui_Helper_finalize;
+	jsb_cocos2d_gui_Helper_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	JSPropertySpec *properties = NULL;
+
+	JSFunctionSpec *funcs = NULL;
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("seekActionWidgetByActionTag", js_cocos2dx_gui_Helper_seekActionWidgetByActionTag, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("seekWidgetByTag", js_cocos2dx_gui_Helper_seekWidgetByTag, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("seekWidgetByRelativeName", js_cocos2dx_gui_Helper_seekWidgetByRelativeName, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("seekWidgetByName", js_cocos2dx_gui_Helper_seekWidgetByName, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_gui_Helper_prototype = JS_InitClass(
+		cx, global,
+		NULL, // parent proto
+		jsb_cocos2d_gui_Helper_class,
+		empty_constructor, 0,
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+	JSBool found;
+	JS_SetPropertyAttributes(cx, global, "Helper", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::gui::Helper> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_gui_Helper_class;
+		p->proto = jsb_cocos2d_gui_Helper_prototype;
+		p->parentProto = NULL;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
 void register_all_cocos2dx_gui(JSContext* cx, JSObject* obj) {
 	// first, try to get the ns
 	JS::RootedValue nsval(cx);
@@ -6874,6 +7071,7 @@ void register_all_cocos2dx_gui(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_gui_Layout(cx, obj);
 	js_register_cocos2dx_gui_PageView(cx, obj);
 	js_register_cocos2dx_gui_CheckBox(cx, obj);
+	js_register_cocos2dx_gui_Helper(cx, obj);
 	js_register_cocos2dx_gui_Text(cx, obj);
 	js_register_cocos2dx_gui_Button(cx, obj);
 	js_register_cocos2dx_gui_LayoutParameter(cx, obj);

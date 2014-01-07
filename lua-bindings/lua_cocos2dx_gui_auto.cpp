@@ -12657,6 +12657,284 @@ int lua_register_cocos2dx_gui_PageView(lua_State* tolua_S)
     g_luaType[typeName] = "PageView";
     return 1;
 }
+
+int lua_cocos2dx_gui_Helper_seekActionWidgetByActionTag(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"Helper",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 2)
+    {
+        cocos2d::gui::Widget* arg0;
+        int arg1;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        if(!ok)
+            return 0;
+        cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekActionWidgetByActionTag(arg0, arg1);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Widget";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "seekActionWidgetByActionTag",argc, 2);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_Helper_seekActionWidgetByActionTag'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_gui_Helper_seekWidgetByTag(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"Helper",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 2)
+    {
+        cocos2d::gui::Widget* arg0;
+        int arg1;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        if(!ok)
+            return 0;
+        cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByTag(arg0, arg1);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Widget";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "seekWidgetByTag",argc, 2);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_Helper_seekWidgetByTag'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_gui_Helper_seekWidgetByRelativeName(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"Helper",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 2)
+    {
+        cocos2d::gui::Widget* arg0;
+        const char* arg1;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        if(!ok)
+            return 0;
+        cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByRelativeName(arg0, arg1);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Widget";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "seekWidgetByRelativeName",argc, 2);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_Helper_seekWidgetByRelativeName'.",&tolua_err);
+#endif
+    return 0;
+}
+int lua_cocos2dx_gui_Helper_seekWidgetByName(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"Helper",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 2)
+    {
+        cocos2d::gui::Widget* arg0;
+        const char* arg1;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+        if(!ok)
+            return 0;
+        cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByName(arg0, arg1);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "Widget";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "seekWidgetByName",argc, 2);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_Helper_seekWidgetByName'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_gui_Helper_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (Helper)");
+    return 0;
+}
+
+int lua_register_cocos2dx_gui_Helper(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"Helper");
+    tolua_cclass(tolua_S,"Helper","Helper","",NULL);
+
+    tolua_beginmodule(tolua_S,"Helper");
+        tolua_function(tolua_S,"seekActionWidgetByActionTag", lua_cocos2dx_gui_Helper_seekActionWidgetByActionTag);
+        tolua_function(tolua_S,"seekWidgetByTag", lua_cocos2dx_gui_Helper_seekWidgetByTag);
+        tolua_function(tolua_S,"seekWidgetByRelativeName", lua_cocos2dx_gui_Helper_seekWidgetByRelativeName);
+        tolua_function(tolua_S,"seekWidgetByName", lua_cocos2dx_gui_Helper_seekWidgetByName);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::gui::Helper).name();
+    g_luaType[typeName] = "Helper";
+    return 1;
+}
 TOLUA_API int register_all_cocos2dx_gui(lua_State* tolua_S)
 {
 	tolua_open(tolua_S);
@@ -12668,6 +12946,7 @@ TOLUA_API int register_all_cocos2dx_gui(lua_State* tolua_S)
 	lua_register_cocos2dx_gui_Layout(tolua_S);
 	lua_register_cocos2dx_gui_PageView(tolua_S);
 	lua_register_cocos2dx_gui_CheckBox(tolua_S);
+	lua_register_cocos2dx_gui_Helper(tolua_S);
 	lua_register_cocos2dx_gui_Text(tolua_S);
 	lua_register_cocos2dx_gui_Button(tolua_S);
 	lua_register_cocos2dx_gui_LayoutParameter(tolua_S);
