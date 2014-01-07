@@ -3393,9 +3393,9 @@ JSBool js_cocos2dx_gui_Text_getStringLength(JSContext *cx, uint32_t argc, jsval 
 	cocos2d::gui::Text* cobj = (cocos2d::gui::Text *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_gui_Text_getStringLength : Invalid Native Object");
 	if (argc == 0) {
-		unsigned long ret = cobj->getStringLength();
+		ssize_t ret = cobj->getStringLength();
 		jsval jsret = JSVAL_NULL;
-		jsret = ulong_to_jsval(cx, ret);
+		jsret = ssize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}

@@ -8301,7 +8301,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_getMovementCount(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        long ret = cobj->getMovementCount();
+        ssize_t ret = cobj->getMovementCount();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }

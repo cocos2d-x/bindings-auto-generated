@@ -836,7 +836,7 @@ ccui.Text = {
 
 /**
  * @method getStringLength
- * @return A value converted from C/C++ "size_t"
+ * @return A value converted from C/C++ "ssize_t"
  */
 getStringLength : function () {},
 

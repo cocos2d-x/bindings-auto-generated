@@ -1359,28 +1359,16 @@ cc.TableViewCell = {
 reset : function () {},
 
 /**
- * @method setIdx
- * @param {long}
- */
-setIdx : function () {},
-
-/**
- * @method setObjectID
- * @param {long}
- */
-setObjectID : function () {},
-
-/**
- * @method getObjectID
- * @return A value converted from C/C++ "long"
- */
-getObjectID : function () {},
-
-/**
  * @method getIdx
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  */
 getIdx : function () {},
+
+/**
+ * @method setIdx
+ * @param {ssize_t}
+ */
+setIdx : function () {},
 
 /**
  * @method TableViewCell
