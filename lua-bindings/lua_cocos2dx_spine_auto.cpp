@@ -5,7 +5,7 @@
 
 
 
-int lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose(lua_State* tolua_S)
+int lua_cocos2dx_spine_Skeleton_setToSetupPose(lua_State* tolua_S)
 {
     int argc = 0;
     spine::Skeleton* cobj = nullptr;
@@ -24,7 +24,7 @@ int lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_spine_Skeleton_setToSetupPose'", NULL);
         return 0;
     }
 #endif
@@ -34,15 +34,15 @@ int lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cobj->setSlotsToSetupPose();
+        cobj->setToSetupPose();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setSlotsToSetupPose",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setToSetupPose",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_spine_Skeleton_setToSetupPose'.",&tolua_err);
 #endif
 
     return 0;
@@ -91,7 +91,7 @@ int lua_cocos2dx_spine_Skeleton_setBlendFunc(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_spine_Skeleton_setToSetupPose(lua_State* tolua_S)
+int lua_cocos2dx_spine_Skeleton_onDraw(lua_State* tolua_S)
 {
     int argc = 0;
     spine::Skeleton* cobj = nullptr;
@@ -110,7 +110,7 @@ int lua_cocos2dx_spine_Skeleton_setToSetupPose(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_spine_Skeleton_setToSetupPose'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_spine_Skeleton_onDraw'", NULL);
         return 0;
     }
 #endif
@@ -120,15 +120,57 @@ int lua_cocos2dx_spine_Skeleton_setToSetupPose(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cobj->setToSetupPose();
+        cobj->onDraw();
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setToSetupPose",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "onDraw",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_spine_Skeleton_setToSetupPose'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_spine_Skeleton_onDraw'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose(lua_State* tolua_S)
+{
+    int argc = 0;
+    spine::Skeleton* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Skeleton",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (spine::Skeleton*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cobj->setSlotsToSetupPose();
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setSlotsToSetupPose",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose'.",&tolua_err);
 #endif
 
     return 0;
@@ -275,9 +317,10 @@ int lua_register_cocos2dx_spine_Skeleton(lua_State* tolua_S)
     tolua_cclass(tolua_S,"Skeleton","Skeleton","Node",NULL);
 
     tolua_beginmodule(tolua_S,"Skeleton");
-        tolua_function(tolua_S,"setSlotsToSetupPose",lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose);
-        tolua_function(tolua_S,"setBlendFunc",lua_cocos2dx_spine_Skeleton_setBlendFunc);
         tolua_function(tolua_S,"setToSetupPose",lua_cocos2dx_spine_Skeleton_setToSetupPose);
+        tolua_function(tolua_S,"setBlendFunc",lua_cocos2dx_spine_Skeleton_setBlendFunc);
+        tolua_function(tolua_S,"onDraw",lua_cocos2dx_spine_Skeleton_onDraw);
+        tolua_function(tolua_S,"setSlotsToSetupPose",lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose);
         tolua_function(tolua_S,"getBlendFunc",lua_cocos2dx_spine_Skeleton_getBlendFunc);
         tolua_function(tolua_S,"setSkin",lua_cocos2dx_spine_Skeleton_setSkin);
         tolua_function(tolua_S,"setBonesToSetupPose",lua_cocos2dx_spine_Skeleton_setBonesToSetupPose);
