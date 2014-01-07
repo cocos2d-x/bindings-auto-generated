@@ -6244,7 +6244,7 @@ int lua_cocos2dx_gui_Text_getStringLength(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned long ret = cobj->getStringLength();
+        ssize_t ret = cobj->getStringLength();
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }

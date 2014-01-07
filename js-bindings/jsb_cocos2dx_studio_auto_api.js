@@ -718,7 +718,7 @@ playWithNames : function () {},
 
 /**
  * @method getMovementCount
- * @return A value converted from C/C++ "long"
+ * @return A value converted from C/C++ "ssize_t"
  */
 getMovementCount : function () {},
 
