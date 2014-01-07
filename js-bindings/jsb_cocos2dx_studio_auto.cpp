@@ -117,7 +117,7 @@ JSBool js_cocos2dx_studio_ActionObject_getTotalTime(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ActionObject_getTotalTime : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getTotalTime();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -134,7 +134,7 @@ JSBool js_cocos2dx_studio_ActionObject_getName(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ActionObject_getName : Invalid Native Object");
 	if (argc == 0) {
 		const char* ret = cobj->getName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = c_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -206,7 +206,7 @@ JSBool js_cocos2dx_studio_ActionObject_getCurrentTime(JSContext *cx, uint32_t ar
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ActionObject_getCurrentTime : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getCurrentTime();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -250,7 +250,7 @@ JSBool js_cocos2dx_studio_ActionObject_getLoop(JSContext *cx, uint32_t argc, jsv
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ActionObject_getLoop : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->getLoop();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -294,7 +294,7 @@ JSBool js_cocos2dx_studio_ActionObject_getUnitTime(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ActionObject_getUnitTime : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getUnitTime();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -311,7 +311,7 @@ JSBool js_cocos2dx_studio_ActionObject_isPlaying(JSContext *cx, uint32_t argc, j
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ActionObject_isPlaying : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isPlaying();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -513,7 +513,7 @@ JSBool js_cocos2dx_studio_ActionManagerEx_playActionByName(JSContext *cx, uint32
 			} while (0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocostudio::ActionObject* ret = cobj->playActionByName(arg0, arg1, arg2);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ActionObject>(cx, (cocostudio::ActionObject*)ret);
@@ -536,7 +536,7 @@ JSBool js_cocos2dx_studio_ActionManagerEx_playActionByName(JSContext *cx, uint32
 			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
 			if (!ok) { ok = JS_TRUE; break; }
 			cocostudio::ActionObject* ret = cobj->playActionByName(arg0, arg1);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ActionObject>(cx, (cocostudio::ActionObject*)ret);
@@ -568,7 +568,7 @@ JSBool js_cocos2dx_studio_ActionManagerEx_getActionByName(JSContext *cx, uint32_
 		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ActionManagerEx_getActionByName : Error processing arguments");
 		cocostudio::ActionObject* ret = cobj->getActionByName(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ActionObject>(cx, (cocostudio::ActionObject*)ret);
@@ -614,7 +614,7 @@ JSBool js_cocos2dx_studio_ActionManagerEx_getInstance(JSContext *cx, uint32_t ar
 {
 	if (argc == 0) {
 		cocostudio::ActionManagerEx* ret = cocostudio::ActionManagerEx::getInstance();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ActionManagerEx>(cx, (cocostudio::ActionManagerEx*)ret);
@@ -704,7 +704,7 @@ JSBool js_cocos2dx_studio_BaseData_getColor(JSContext *cx, uint32_t argc, jsval 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_BaseData_getColor : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Color4B ret = cobj->getColor();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = cccolor4b_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -737,7 +737,7 @@ JSBool js_cocos2dx_studio_BaseData_create(JSContext *cx, uint32_t argc, jsval *v
 {
 	if (argc == 0) {
 		cocostudio::BaseData* ret = cocostudio::BaseData::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::BaseData>(cx, (cocostudio::BaseData*)ret);
@@ -852,7 +852,7 @@ JSBool js_cocos2dx_studio_Tween_getAnimation(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Tween_getAnimation : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::ArmatureAnimation* ret = cobj->getAnimation();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ArmatureAnimation>(cx, (cocostudio::ArmatureAnimation*)ret);
@@ -963,7 +963,7 @@ JSBool js_cocos2dx_studio_Tween_init(JSContext *cx, uint32_t argc, jsval *vp)
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Tween_init : Error processing arguments");
 		JSBool ret = cobj->init(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1015,7 +1015,7 @@ JSBool js_cocos2dx_studio_Tween_create(JSContext *cx, uint32_t argc, jsval *vp)
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Tween_create : Error processing arguments");
 		cocostudio::Tween* ret = cocostudio::Tween::create(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Tween>(cx, (cocostudio::Tween*)ret);
@@ -1246,7 +1246,7 @@ JSBool js_cocos2dx_studio_ColliderDetector_getBone(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_getBone : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::Bone* ret = cobj->getBone();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Bone>(cx, (cocostudio::Bone*)ret);
@@ -1270,7 +1270,7 @@ JSBool js_cocos2dx_studio_ColliderDetector_getActive(JSContext *cx, uint32_t arg
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_getActive : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->getActive();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1287,7 +1287,7 @@ JSBool js_cocos2dx_studio_ColliderDetector_getColliderBodyList(JSContext *cx, ui
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ColliderDetector_getColliderBodyList : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Vector<cocostudio::ColliderBody *>& ret = cobj->getColliderBodyList();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1355,7 +1355,7 @@ JSBool js_cocos2dx_studio_ColliderDetector_init(JSContext *cx, uint32_t argc, js
 			} while (0);
 			if (!ok) { ok = JS_TRUE; break; }
 			JSBool ret = cobj->init(arg0);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = BOOLEAN_TO_JSVAL(ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -1365,7 +1365,7 @@ JSBool js_cocos2dx_studio_ColliderDetector_init(JSContext *cx, uint32_t argc, js
 	do {
 		if (argc == 0) {
 			JSBool ret = cobj->init();
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = BOOLEAN_TO_JSVAL(ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -1440,7 +1440,7 @@ JSBool js_cocos2dx_studio_ColliderDetector_create(JSContext *cx, uint32_t argc, 
 			} while (0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocostudio::ColliderDetector* ret = cocostudio::ColliderDetector::create(arg0);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ColliderDetector>(cx, (cocostudio::ColliderDetector*)ret);
@@ -1457,7 +1457,7 @@ JSBool js_cocos2dx_studio_ColliderDetector_create(JSContext *cx, uint32_t argc, 
 	do {
 		if (argc == 0) {
 			cocostudio::ColliderDetector* ret = cocostudio::ColliderDetector::create();
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ColliderDetector>(cx, (cocostudio::ColliderDetector*)ret);
@@ -1551,7 +1551,7 @@ JSBool js_cocos2dx_studio_DisplayManager_getDisplayRenderNode(JSContext *cx, uin
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_getDisplayRenderNode : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Node* ret = cobj->getDisplayRenderNode();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, (cocos2d::Node*)ret);
@@ -1575,7 +1575,7 @@ JSBool js_cocos2dx_studio_DisplayManager_getAnchorPointInPoints(JSContext *cx, u
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_getAnchorPointInPoints : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Point ret = cobj->getAnchorPointInPoints();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccpoint_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1592,7 +1592,7 @@ JSBool js_cocos2dx_studio_DisplayManager_getDisplayRenderNodeType(JSContext *cx,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_getDisplayRenderNodeType : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getDisplayRenderNodeType();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1661,7 +1661,7 @@ JSBool js_cocos2dx_studio_DisplayManager_init(JSContext *cx, uint32_t argc, jsva
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_init : Error processing arguments");
 		JSBool ret = cobj->init(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1678,7 +1678,7 @@ JSBool js_cocos2dx_studio_DisplayManager_getContentSize(JSContext *cx, uint32_t 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_getContentSize : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Size ret = cobj->getContentSize();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccsize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1695,7 +1695,7 @@ JSBool js_cocos2dx_studio_DisplayManager_getBoundingBox(JSContext *cx, uint32_t 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_getBoundingBox : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Rect ret = cobj->getBoundingBox();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccrect_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1780,7 +1780,7 @@ JSBool js_cocos2dx_studio_DisplayManager_containPoint(JSContext *cx, uint32_t ar
 			ok &= JS_ValueToNumber(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			JSBool ret = cobj->containPoint(arg0, arg1);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = BOOLEAN_TO_JSVAL(ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -1793,7 +1793,7 @@ JSBool js_cocos2dx_studio_DisplayManager_containPoint(JSContext *cx, uint32_t ar
 			ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			JSBool ret = cobj->containPoint(arg0);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = BOOLEAN_TO_JSVAL(ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -1855,7 +1855,7 @@ JSBool js_cocos2dx_studio_DisplayManager_isForceChangeDisplay(JSContext *cx, uin
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_isForceChangeDisplay : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isForceChangeDisplay();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1872,7 +1872,7 @@ JSBool js_cocos2dx_studio_DisplayManager_getCurrentDisplayIndex(JSContext *cx, u
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_getCurrentDisplayIndex : Invalid Native Object");
 	if (argc == 0) {
 		int ret = cobj->getCurrentDisplayIndex();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1889,7 +1889,7 @@ JSBool js_cocos2dx_studio_DisplayManager_getAnchorPoint(JSContext *cx, uint32_t 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_getAnchorPoint : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Point ret = cobj->getAnchorPoint();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccpoint_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1906,7 +1906,7 @@ JSBool js_cocos2dx_studio_DisplayManager_getDecorativeDisplayList(JSContext *cx,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_getDecorativeDisplayList : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Vector<cocostudio::DecorativeDisplay *>& ret = cobj->getDecorativeDisplayList();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1923,7 +1923,7 @@ JSBool js_cocos2dx_studio_DisplayManager_isVisible(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_isVisible : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isVisible();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1968,7 +1968,7 @@ JSBool js_cocos2dx_studio_DisplayManager_create(JSContext *cx, uint32_t argc, js
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_DisplayManager_create : Error processing arguments");
 		cocostudio::DisplayManager* ret = cocostudio::DisplayManager::create(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::DisplayManager>(cx, (cocostudio::DisplayManager*)ret);
@@ -2099,7 +2099,7 @@ JSBool js_cocos2dx_studio_Bone_isTransformDirty(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_isTransformDirty : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isTransformDirty();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2116,7 +2116,7 @@ JSBool js_cocos2dx_studio_Bone_isIgnoreMovementBoneData(JSContext *cx, uint32_t 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_isIgnoreMovementBoneData : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isIgnoreMovementBoneData();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2148,7 +2148,7 @@ JSBool js_cocos2dx_studio_Bone_getDisplayRenderNode(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getDisplayRenderNode : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Node* ret = cobj->getDisplayRenderNode();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, (cocos2d::Node*)ret);
@@ -2172,7 +2172,7 @@ JSBool js_cocos2dx_studio_Bone_isBlendDirty(JSContext *cx, uint32_t argc, jsval 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_isBlendDirty : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isBlendDirty();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2216,7 +2216,7 @@ JSBool js_cocos2dx_studio_Bone_getWorldInfo(JSContext *cx, uint32_t argc, jsval 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getWorldInfo : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::BaseData* ret = cobj->getWorldInfo();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::BaseData>(cx, (cocostudio::BaseData*)ret);
@@ -2240,7 +2240,7 @@ JSBool js_cocos2dx_studio_Bone_getTween(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getTween : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::Tween* ret = cobj->getTween();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Tween>(cx, (cocostudio::Tween*)ret);
@@ -2264,7 +2264,7 @@ JSBool js_cocos2dx_studio_Bone_getParentBone(JSContext *cx, uint32_t argc, jsval
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getParentBone : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::Bone* ret = cobj->getParentBone();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Bone>(cx, (cocostudio::Bone*)ret);
@@ -2303,7 +2303,7 @@ JSBool js_cocos2dx_studio_Bone_getName(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getName : Invalid Native Object");
 	if (argc == 0) {
 		const std::string ret = cobj->getName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2340,7 +2340,7 @@ JSBool js_cocos2dx_studio_Bone_getDisplayRenderNodeType(JSContext *cx, uint32_t 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getDisplayRenderNodeType : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getDisplayRenderNodeType();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2413,7 +2413,7 @@ JSBool js_cocos2dx_studio_Bone_init(JSContext *cx, uint32_t argc, jsval *vp)
 			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			JSBool ret = cobj->init(arg0);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = BOOLEAN_TO_JSVAL(ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -2423,7 +2423,7 @@ JSBool js_cocos2dx_studio_Bone_init(JSContext *cx, uint32_t argc, jsval *vp)
 	do {
 		if (argc == 0) {
 			JSBool ret = cobj->init();
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = BOOLEAN_TO_JSVAL(ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -2584,7 +2584,7 @@ JSBool js_cocos2dx_studio_Bone_getColliderDetector(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getColliderDetector : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::ColliderDetector* ret = cobj->getColliderDetector();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ColliderDetector>(cx, (cocostudio::ColliderDetector*)ret);
@@ -2608,7 +2608,7 @@ JSBool js_cocos2dx_studio_Bone_getChildArmature(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getChildArmature : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::Armature* ret = cobj->getChildArmature();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Armature>(cx, (cocostudio::Armature*)ret);
@@ -2779,7 +2779,7 @@ JSBool js_cocos2dx_studio_Bone_getNodeToArmatureTransform(JSContext *cx, uint32_
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getNodeToArmatureTransform : Invalid Native Object");
 	if (argc == 0) {
 		kmMat4 ret = cobj->getNodeToArmatureTransform();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		#pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -2796,7 +2796,7 @@ JSBool js_cocos2dx_studio_Bone_getDisplayManager(JSContext *cx, uint32_t argc, j
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getDisplayManager : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::DisplayManager* ret = cobj->getDisplayManager();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::DisplayManager>(cx, (cocostudio::DisplayManager*)ret);
@@ -2820,7 +2820,7 @@ JSBool js_cocos2dx_studio_Bone_getArmature(JSContext *cx, uint32_t argc, jsval *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Bone_getArmature : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::Armature* ret = cobj->getArmature();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Armature>(cx, (cocostudio::Armature*)ret);
@@ -2847,7 +2847,7 @@ JSBool js_cocos2dx_studio_Bone_create(JSContext *cx, uint32_t argc, jsval *vp)
 			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocostudio::Bone* ret = cocostudio::Bone::create(arg0);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Bone>(cx, (cocostudio::Bone*)ret);
@@ -2864,7 +2864,7 @@ JSBool js_cocos2dx_studio_Bone_create(JSContext *cx, uint32_t argc, jsval *vp)
 	do {
 		if (argc == 0) {
 			cocostudio::Bone* ret = cocostudio::Bone::create();
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Bone>(cx, (cocostudio::Bone*)ret);
@@ -3006,7 +3006,7 @@ JSBool js_cocos2dx_studio_BatchNode_create(JSContext *cx, uint32_t argc, jsval *
 {
 	if (argc == 0) {
 		cocostudio::BatchNode* ret = cocostudio::BatchNode::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::BatchNode>(cx, (cocostudio::BatchNode*)ret);
@@ -3091,7 +3091,7 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_getSpeedScale(JSContext *cx, uint32_
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_getSpeedScale : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getSpeedScale();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3155,7 +3155,7 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_init(JSContext *cx, uint32_t argc, j
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_init : Error processing arguments");
 		JSBool ret = cobj->init(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3368,7 +3368,7 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID(JSContext *cx, 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID : Invalid Native Object");
 	if (argc == 0) {
 		std::string ret = cobj->getCurrentMovementID();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3447,7 +3447,7 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_getMovementCount(JSContext *cx, uint
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_getMovementCount : Invalid Native Object");
 	if (argc == 0) {
 		long ret = cobj->getMovementCount();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = long_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3472,7 +3472,7 @@ JSBool js_cocos2dx_studio_ArmatureAnimation_create(JSContext *cx, uint32_t argc,
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureAnimation_create : Error processing arguments");
 		cocostudio::ArmatureAnimation* ret = cocostudio::ArmatureAnimation::create(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ArmatureAnimation>(cx, (cocostudio::ArmatureAnimation*)ret);
@@ -3600,7 +3600,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getAnimationDatas(JSContext *cx, u
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_getAnimationDatas : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Map<std::string, cocostudio::AnimationData *>& ret = cobj->getAnimationDatas();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccmap_string_key_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3752,7 +3752,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getTextureData(JSContext *cx, uint
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_getTextureData : Error processing arguments");
 		cocostudio::TextureData* ret = cobj->getTextureData(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::TextureData>(cx, (cocostudio::TextureData*)ret);
@@ -3781,7 +3781,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getArmatureData(JSContext *cx, uin
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_getArmatureData : Error processing arguments");
 		cocostudio::ArmatureData* ret = cobj->getArmatureData(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ArmatureData>(cx, (cocostudio::ArmatureData*)ret);
@@ -3810,7 +3810,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getAnimationData(JSContext *cx, ui
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_getAnimationData : Error processing arguments");
 		cocostudio::AnimationData* ret = cobj->getAnimationData(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::AnimationData>(cx, (cocostudio::AnimationData*)ret);
@@ -3882,7 +3882,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_init(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_init : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->init();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -3919,7 +3919,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getArmatureDatas(JSContext *cx, ui
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_getArmatureDatas : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Map<std::string, cocostudio::ArmatureData *>& ret = cobj->getArmatureDatas();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccmap_string_key_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4004,7 +4004,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_isAutoLoadSpriteFile(JSContext *cx
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ArmatureDataManager_isAutoLoadSpriteFile : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isAutoLoadSpriteFile();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4062,7 +4062,7 @@ JSBool js_cocos2dx_studio_ArmatureDataManager_getInstance(JSContext *cx, uint32_
 {
 	if (argc == 0) {
 		cocostudio::ArmatureDataManager* ret = cocostudio::ArmatureDataManager::getInstance();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ArmatureDataManager>(cx, (cocostudio::ArmatureDataManager*)ret);
@@ -4170,7 +4170,7 @@ JSBool js_cocos2dx_studio_Armature_getBone(JSContext *cx, uint32_t argc, jsval *
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getBone : Error processing arguments");
 		cocostudio::Bone* ret = cobj->getBone(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Bone>(cx, (cocostudio::Bone*)ret);
@@ -4257,7 +4257,7 @@ JSBool js_cocos2dx_studio_Armature_getBoneAtPoint(JSContext *cx, uint32_t argc, 
 		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getBoneAtPoint : Error processing arguments");
 		cocostudio::Bone* ret = cobj->getBoneAtPoint(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Bone>(cx, (cocostudio::Bone*)ret);
@@ -4281,7 +4281,7 @@ JSBool js_cocos2dx_studio_Armature_getArmatureTransformDirty(JSContext *cx, uint
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getArmatureTransformDirty : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->getArmatureTransformDirty();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4333,7 +4333,7 @@ JSBool js_cocos2dx_studio_Armature_getParentBone(JSContext *cx, uint32_t argc, j
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getParentBone : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::Bone* ret = cobj->getParentBone();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Bone>(cx, (cocostudio::Bone*)ret);
@@ -4413,7 +4413,7 @@ JSBool js_cocos2dx_studio_Armature_getBatchNode(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getBatchNode : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::BatchNode* ret = cobj->getBatchNode();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::BatchNode>(cx, (cocostudio::BatchNode*)ret);
@@ -4437,7 +4437,7 @@ JSBool js_cocos2dx_studio_Armature_getName(JSContext *cx, uint32_t argc, jsval *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getName : Invalid Native Object");
 	if (argc == 0) {
 		const std::string& ret = cobj->getName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4463,7 +4463,7 @@ JSBool js_cocos2dx_studio_Armature_init(JSContext *cx, uint32_t argc, jsval *vp)
 			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			JSBool ret = cobj->init(arg0);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = BOOLEAN_TO_JSVAL(ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -4473,7 +4473,7 @@ JSBool js_cocos2dx_studio_Armature_init(JSContext *cx, uint32_t argc, jsval *vp)
 	do {
 		if (argc == 0) {
 			JSBool ret = cobj->init();
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = BOOLEAN_TO_JSVAL(ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -4496,7 +4496,7 @@ JSBool js_cocos2dx_studio_Armature_init(JSContext *cx, uint32_t argc, jsval *vp)
 			} while (0);
 			if (!ok) { ok = JS_TRUE; break; }
 			JSBool ret = cobj->init(arg0, arg1);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = BOOLEAN_TO_JSVAL(ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -4632,7 +4632,7 @@ JSBool js_cocos2dx_studio_Armature_getArmatureData(JSContext *cx, uint32_t argc,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getArmatureData : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::ArmatureData* ret = cobj->getArmatureData();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ArmatureData>(cx, (cocostudio::ArmatureData*)ret);
@@ -4656,7 +4656,7 @@ JSBool js_cocos2dx_studio_Armature_getVersion(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getVersion : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getVersion();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4673,7 +4673,7 @@ JSBool js_cocos2dx_studio_Armature_getAnimation(JSContext *cx, uint32_t argc, js
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getAnimation : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::ArmatureAnimation* ret = cobj->getAnimation();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ArmatureAnimation>(cx, (cocostudio::ArmatureAnimation*)ret);
@@ -4697,7 +4697,7 @@ JSBool js_cocos2dx_studio_Armature_getBoneDic(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Armature_getBoneDic : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Map<std::string, cocostudio::Bone *>& ret = cobj->getBoneDic();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccmap_string_key_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4717,7 +4717,7 @@ JSBool js_cocos2dx_studio_Armature_create(JSContext *cx, uint32_t argc, jsval *v
 			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocostudio::Armature* ret = cocostudio::Armature::create(arg0);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Armature>(cx, (cocostudio::Armature*)ret);
@@ -4734,7 +4734,7 @@ JSBool js_cocos2dx_studio_Armature_create(JSContext *cx, uint32_t argc, jsval *v
 	do {
 		if (argc == 0) {
 			cocostudio::Armature* ret = cocostudio::Armature::create();
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Armature>(cx, (cocostudio::Armature*)ret);
@@ -4764,7 +4764,7 @@ JSBool js_cocos2dx_studio_Armature_create(JSContext *cx, uint32_t argc, jsval *v
 			} while (0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocostudio::Armature* ret = cocostudio::Armature::create(arg0, arg1);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Armature>(cx, (cocostudio::Armature*)ret);
@@ -4900,7 +4900,7 @@ JSBool js_cocos2dx_studio_Skin_getBone(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Skin_getBone : Invalid Native Object");
 	if (argc == 0) {
 		cocostudio::Bone* ret = cobj->getBone();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Bone>(cx, (cocostudio::Bone*)ret);
@@ -4924,7 +4924,7 @@ JSBool js_cocos2dx_studio_Skin_getNodeToWorldTransformAR(JSContext *cx, uint32_t
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Skin_getNodeToWorldTransformAR : Invalid Native Object");
 	if (argc == 0) {
 		kmMat4 ret = cobj->getNodeToWorldTransformAR();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		#pragma warning NO CONVERSION FROM NATIVE FOR kmMat4;
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4946,7 +4946,7 @@ JSBool js_cocos2dx_studio_Skin_initWithFile(JSContext *cx, uint32_t argc, jsval 
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Skin_initWithFile : Error processing arguments");
 		JSBool ret = cobj->initWithFile(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -4963,7 +4963,7 @@ JSBool js_cocos2dx_studio_Skin_getDisplayName(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_Skin_getDisplayName : Invalid Native Object");
 	if (argc == 0) {
 		const std::string& ret = cobj->getDisplayName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5000,7 +5000,7 @@ JSBool js_cocos2dx_studio_Skin_initWithSpriteFrameName(JSContext *cx, uint32_t a
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Skin_initWithSpriteFrameName : Error processing arguments");
 		JSBool ret = cobj->initWithSpriteFrameName(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5047,7 +5047,7 @@ JSBool js_cocos2dx_studio_Skin_create(JSContext *cx, uint32_t argc, jsval *vp)
 			ok &= jsval_to_std_string(cx, argv[0], &arg0);
 			if (!ok) { ok = JS_TRUE; break; }
 			cocostudio::Skin* ret = cocostudio::Skin::create(arg0);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Skin>(cx, (cocostudio::Skin*)ret);
@@ -5064,7 +5064,7 @@ JSBool js_cocos2dx_studio_Skin_create(JSContext *cx, uint32_t argc, jsval *vp)
 	do {
 		if (argc == 0) {
 			cocostudio::Skin* ret = cocostudio::Skin::create();
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Skin>(cx, (cocostudio::Skin*)ret);
@@ -5089,7 +5089,7 @@ JSBool js_cocos2dx_studio_Skin_createWithSpriteFrameName(JSContext *cx, uint32_t
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_Skin_createWithSpriteFrameName : Error processing arguments");
 		cocostudio::Skin* ret = cocostudio::Skin::createWithSpriteFrameName(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::Skin>(cx, (cocostudio::Skin*)ret);
@@ -5216,7 +5216,7 @@ JSBool js_cocos2dx_studio_ComAttribute_getFloat(JSContext *cx, uint32_t argc, js
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ComAttribute_getFloat : Error processing arguments");
 		double ret = cobj->getFloat(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5228,7 +5228,7 @@ JSBool js_cocos2dx_studio_ComAttribute_getFloat(JSContext *cx, uint32_t argc, js
 		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ComAttribute_getFloat : Error processing arguments");
 		double ret = cobj->getFloat(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5250,7 +5250,7 @@ JSBool js_cocos2dx_studio_ComAttribute_getString(JSContext *cx, uint32_t argc, j
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ComAttribute_getString : Error processing arguments");
 		std::string ret = cobj->getString(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5262,7 +5262,7 @@ JSBool js_cocos2dx_studio_ComAttribute_getString(JSContext *cx, uint32_t argc, j
 		ok &= jsval_to_std_string(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ComAttribute_getString : Error processing arguments");
 		std::string ret = cobj->getString(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5328,7 +5328,7 @@ JSBool js_cocos2dx_studio_ComAttribute_getBool(JSContext *cx, uint32_t argc, jsv
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ComAttribute_getBool : Error processing arguments");
 		JSBool ret = cobj->getBool(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5340,7 +5340,7 @@ JSBool js_cocos2dx_studio_ComAttribute_getBool(JSContext *cx, uint32_t argc, jsv
 		ok &= JS_ValueToBoolean(cx, argv[1], &arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ComAttribute_getBool : Error processing arguments");
 		JSBool ret = cobj->getBool(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5384,7 +5384,7 @@ JSBool js_cocos2dx_studio_ComAttribute_parse(JSContext *cx, uint32_t argc, jsval
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ComAttribute_parse : Error processing arguments");
 		JSBool ret = cobj->parse(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5406,7 +5406,7 @@ JSBool js_cocos2dx_studio_ComAttribute_getInt(JSContext *cx, uint32_t argc, jsva
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ComAttribute_getInt : Error processing arguments");
 		int ret = cobj->getInt(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5418,7 +5418,7 @@ JSBool js_cocos2dx_studio_ComAttribute_getInt(JSContext *cx, uint32_t argc, jsva
 		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_ComAttribute_getInt : Error processing arguments");
 		int ret = cobj->getInt(arg0, arg1);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5453,7 +5453,7 @@ JSBool js_cocos2dx_studio_ComAttribute_create(JSContext *cx, uint32_t argc, jsva
 {
 	if (argc == 0) {
 		cocostudio::ComAttribute* ret = cocostudio::ComAttribute::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ComAttribute>(cx, (cocostudio::ComAttribute*)ret);
@@ -5473,7 +5473,7 @@ JSBool js_cocos2dx_studio_ComAttribute_createInstance(JSContext *cx, uint32_t ar
 {
 	if (argc == 0) {
 		cocos2d::Object* ret = cocostudio::ComAttribute::createInstance();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, (cocos2d::Object*)ret);
@@ -5585,7 +5585,7 @@ JSBool js_cocos2dx_studio_ComAudio_getEffectsVolume(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ComAudio_getEffectsVolume : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getEffectsVolume();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5622,7 +5622,7 @@ JSBool js_cocos2dx_studio_ComAudio_getBackgroundMusicVolume(JSContext *cx, uint3
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ComAudio_getBackgroundMusicVolume : Invalid Native Object");
 	if (argc == 0) {
 		double ret = cobj->getBackgroundMusicVolume();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5639,7 +5639,7 @@ JSBool js_cocos2dx_studio_ComAudio_willPlayBackgroundMusic(JSContext *cx, uint32
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ComAudio_willPlayBackgroundMusic : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->willPlayBackgroundMusic();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5739,7 +5739,7 @@ JSBool js_cocos2dx_studio_ComAudio_isBackgroundMusicPlaying(JSContext *cx, uint3
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ComAudio_isBackgroundMusicPlaying : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isBackgroundMusicPlaying();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5756,7 +5756,7 @@ JSBool js_cocos2dx_studio_ComAudio_isLoop(JSContext *cx, uint32_t argc, jsval *v
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ComAudio_isLoop : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isLoop();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -5879,7 +5879,7 @@ JSBool js_cocos2dx_studio_ComAudio_playEffect(JSContext *cx, uint32_t argc, jsva
 			std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 			if (!ok) { ok = JS_TRUE; break; }
 			unsigned int ret = cobj->playEffect(arg0);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = uint32_to_jsval(cx, ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -5895,7 +5895,7 @@ JSBool js_cocos2dx_studio_ComAudio_playEffect(JSContext *cx, uint32_t argc, jsva
 			ok &= JS_ValueToBoolean(cx, argv[1], &arg1);
 			if (!ok) { ok = JS_TRUE; break; }
 			unsigned int ret = cobj->playEffect(arg0, arg1);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = uint32_to_jsval(cx, ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -5905,7 +5905,7 @@ JSBool js_cocos2dx_studio_ComAudio_playEffect(JSContext *cx, uint32_t argc, jsva
 	do {
 		if (argc == 0) {
 			unsigned int ret = cobj->playEffect();
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			jsret = uint32_to_jsval(cx, ret);
 			JS_SET_RVAL(cx, vp, jsret);
 			return JS_TRUE;
@@ -6073,7 +6073,7 @@ JSBool js_cocos2dx_studio_ComAudio_getFile(JSContext *cx, uint32_t argc, jsval *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ComAudio_getFile : Invalid Native Object");
 	if (argc == 0) {
 		const char* ret = cobj->getFile();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = c_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6106,7 +6106,7 @@ JSBool js_cocos2dx_studio_ComAudio_create(JSContext *cx, uint32_t argc, jsval *v
 {
 	if (argc == 0) {
 		cocostudio::ComAudio* ret = cocostudio::ComAudio::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ComAudio>(cx, (cocostudio::ComAudio*)ret);
@@ -6126,7 +6126,7 @@ JSBool js_cocos2dx_studio_ComAudio_createInstance(JSContext *cx, uint32_t argc, 
 {
 	if (argc == 0) {
 		cocos2d::Object* ret = cocostudio::ComAudio::createInstance();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, (cocos2d::Object*)ret);
@@ -6240,7 +6240,7 @@ JSBool js_cocos2dx_studio_InputDelegate_isAccelerometerEnabled(JSContext *cx, ui
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_InputDelegate_isAccelerometerEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isAccelerometerEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6277,7 +6277,7 @@ JSBool js_cocos2dx_studio_InputDelegate_getTouchMode(JSContext *cx, uint32_t arg
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_InputDelegate_getTouchMode : Invalid Native Object");
 	if (argc == 0) {
 		int ret = (int)cobj->getTouchMode();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6314,7 +6314,7 @@ JSBool js_cocos2dx_studio_InputDelegate_isKeypadEnabled(JSContext *cx, uint32_t 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_InputDelegate_isKeypadEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isKeypadEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6331,7 +6331,7 @@ JSBool js_cocos2dx_studio_InputDelegate_isTouchEnabled(JSContext *cx, uint32_t a
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_InputDelegate_isTouchEnabled : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->isTouchEnabled();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6368,7 +6368,7 @@ JSBool js_cocos2dx_studio_InputDelegate_getTouchPriority(JSContext *cx, uint32_t
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_InputDelegate_getTouchPriority : Invalid Native Object");
 	if (argc == 0) {
 		int ret = cobj->getTouchPriority();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6490,7 +6490,7 @@ JSBool js_cocos2dx_studio_ComController_create(JSContext *cx, uint32_t argc, jsv
 {
 	if (argc == 0) {
 		cocostudio::ComController* ret = cocostudio::ComController::create();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ComController>(cx, (cocostudio::ComController*)ret);
@@ -6510,7 +6510,7 @@ JSBool js_cocos2dx_studio_ComController_createInstance(JSContext *cx, uint32_t a
 {
 	if (argc == 0) {
 		cocos2d::Object* ret = cocostudio::ComController::createInstance();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, (cocos2d::Object*)ret);
@@ -6648,7 +6648,7 @@ JSBool js_cocos2dx_studio_ComRender_getNode(JSContext *cx, uint32_t argc, jsval 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_studio_ComRender_getNode : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Node* ret = cobj->getNode();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, (cocos2d::Node*)ret);
@@ -6685,7 +6685,7 @@ JSBool js_cocos2dx_studio_ComRender_create(JSContext *cx, uint32_t argc, jsval *
 			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
 			if (!ok) { ok = JS_TRUE; break; }
 			cocostudio::ComRender* ret = cocostudio::ComRender::create(arg0, arg1);
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ComRender>(cx, (cocostudio::ComRender*)ret);
@@ -6702,7 +6702,7 @@ JSBool js_cocos2dx_studio_ComRender_create(JSContext *cx, uint32_t argc, jsval *
 	do {
 		if (argc == 0) {
 			cocostudio::ComRender* ret = cocostudio::ComRender::create();
-			jsval jsret;
+			jsval jsret = JSVAL_NULL;
 			do {
 				if (ret) {
 					js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::ComRender>(cx, (cocostudio::ComRender*)ret);
@@ -6722,7 +6722,7 @@ JSBool js_cocos2dx_studio_ComRender_createInstance(JSContext *cx, uint32_t argc,
 {
 	if (argc == 0) {
 		cocos2d::Object* ret = cocostudio::ComRender::createInstance();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, (cocos2d::Object*)ret);
@@ -6817,7 +6817,7 @@ JSBool js_cocos2dx_studio_GUIReader_widgetFromJsonFile(JSContext *cx, uint32_t a
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_GUIReader_widgetFromJsonFile : Error processing arguments");
 		cocos2d::gui::Widget* ret = cobj->widgetFromJsonFile(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::gui::Widget>(cx, (cocos2d::gui::Widget*)ret);
@@ -6846,7 +6846,7 @@ JSBool js_cocos2dx_studio_GUIReader_getVersionInteger(JSContext *cx, uint32_t ar
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_GUIReader_getVersionInteger : Error processing arguments");
 		int ret = cobj->getVersionInteger(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -6870,7 +6870,7 @@ JSBool js_cocos2dx_studio_GUIReader_getInstance(JSContext *cx, uint32_t argc, js
 {
 	if (argc == 0) {
 		cocostudio::GUIReader* ret = cocostudio::GUIReader::getInstance();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::GUIReader>(cx, (cocostudio::GUIReader*)ret);
@@ -6964,7 +6964,7 @@ JSBool js_cocos2dx_studio_SceneReader_createNodeWithSceneFile(JSContext *cx, uin
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_SceneReader_createNodeWithSceneFile : Error processing arguments");
 		cocos2d::Node* ret = cobj->createNodeWithSceneFile(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, (cocos2d::Node*)ret);
@@ -6993,7 +6993,7 @@ JSBool js_cocos2dx_studio_SceneReader_getNodeByTag(JSContext *cx, uint32_t argc,
 		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_studio_SceneReader_getNodeByTag : Error processing arguments");
 		cocos2d::Node* ret = cobj->getNodeByTag(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, (cocos2d::Node*)ret);
@@ -7024,7 +7024,7 @@ JSBool js_cocos2dx_studio_SceneReader_sceneReaderVersion(JSContext *cx, uint32_t
 {
 	if (argc == 0) {
 		const char* ret = cocostudio::SceneReader::sceneReaderVersion();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = c_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -7037,7 +7037,7 @@ JSBool js_cocos2dx_studio_SceneReader_getInstance(JSContext *cx, uint32_t argc, 
 {
 	if (argc == 0) {
 		cocostudio::SceneReader* ret = cocostudio::SceneReader::getInstance();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
 			js_proxy_t *proxy = js_get_or_create_proxy<cocostudio::SceneReader>(cx, (cocostudio::SceneReader*)ret);

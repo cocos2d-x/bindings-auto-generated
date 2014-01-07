@@ -98,7 +98,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getDocumentCallbackNames(JSContex
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getDocumentCallbackNames : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::ValueVector& ret = cobj->getDocumentCallbackNames();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvaluevector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -127,7 +127,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_actionForSoundChannel(JSContext *
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_actionForSoundChannel : Error processing arguments");
 		cocos2d::Object* ret = cobj->actionForSoundChannel(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, (cocos2d::Object*)ret);
@@ -182,7 +182,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getDocumentOutletNodes(JSContext 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getDocumentOutletNodes : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocos2d::Node *>& ret = cobj->getDocumentOutletNodes();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -199,7 +199,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getLastCompletedSequenceName(JSCo
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getLastCompletedSequenceName : Invalid Native Object");
 	if (argc == 0) {
 		std::string ret = cobj->getLastCompletedSequenceName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -285,7 +285,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getSequences(JSContext *cx, uint3
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getSequences : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocosbuilder::CCBSequence *>& ret = cobj->getSequences();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -302,7 +302,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getRootContainerSize(JSContext *c
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getRootContainerSize : Invalid Native Object");
 	if (argc == 0) {
 		const cocos2d::Size& ret = cobj->getRootContainerSize();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccsize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -389,7 +389,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getContainerSize(JSContext *cx, u
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getContainerSize : Error processing arguments");
 		const cocos2d::Size& ret = cobj->getContainerSize(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccsize_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -418,7 +418,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_actionForCallbackChannel(JSContex
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_actionForCallbackChannel : Error processing arguments");
 		cocos2d::Object* ret = cobj->actionForCallbackChannel(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Object>(cx, (cocos2d::Object*)ret);
@@ -442,7 +442,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getDocumentOutletNames(JSContext 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getDocumentOutletNames : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::ValueVector& ret = cobj->getDocumentOutletNames();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvaluevector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -479,7 +479,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_init(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_init : Invalid Native Object");
 	if (argc == 0) {
 		JSBool ret = cobj->init();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -496,7 +496,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getKeyframeCallbacks(JSContext *c
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getKeyframeCallbacks : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::ValueVector& ret = cobj->getKeyframeCallbacks();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvaluevector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -513,7 +513,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getDocumentCallbackControlEvents(
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getDocumentCallbackControlEvents : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::ValueVector& ret = cobj->getDocumentCallbackControlEvents();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvaluevector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -572,7 +572,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getRunningSequenceName(JSContext 
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getRunningSequenceName : Invalid Native Object");
 	if (argc == 0) {
 		const char* ret = cobj->getRunningSequenceName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = c_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -589,7 +589,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getAutoPlaySequenceId(JSContext *
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getAutoPlaySequenceId : Invalid Native Object");
 	if (argc == 0) {
 		int ret = cobj->getAutoPlaySequenceId();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -626,7 +626,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getRootNode(JSContext *cx, uint32
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getRootNode : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Node* ret = cobj->getRootNode();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Node>(cx, (cocos2d::Node*)ret);
@@ -709,7 +709,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getSequenceDuration(JSContext *cx
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getSequenceDuration : Error processing arguments");
 		double ret = cobj->getSequenceDuration(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = DOUBLE_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -753,7 +753,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getDelegate(JSContext *cx, uint32
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getDelegate : Invalid Native Object");
 	if (argc == 0) {
 		cocosbuilder::CCBAnimationManagerDelegate* ret = cobj->getDelegate();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocosbuilder::CCBAnimationManagerDelegate>(cx, (cocosbuilder::CCBAnimationManagerDelegate*)ret);
@@ -802,7 +802,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getSequenceId(JSContext *cx, uint
 		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getSequenceId : Error processing arguments");
 		int ret = cobj->getSequenceId(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = int32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -848,7 +848,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getDocumentCallbackNodes(JSContex
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getDocumentCallbackNodes : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocos2d::Node *>& ret = cobj->getDocumentCallbackNodes();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -900,7 +900,7 @@ JSBool js_cocos2dx_builder_CCBAnimationManager_getDocumentControllerName(JSConte
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBAnimationManager_getDocumentControllerName : Invalid Native Object");
 	if (argc == 0) {
 		std::string ret = cobj->getDocumentControllerName();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1042,7 +1042,7 @@ JSBool js_cocos2dx_builder_CCBReader_getAnimationManager(JSContext *cx, uint32_t
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getAnimationManager : Invalid Native Object");
 	if (argc == 0) {
 		cocosbuilder::CCBAnimationManager* ret = cobj->getAnimationManager();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		do {
 			if (ret) {
 				js_proxy_t *proxy = js_get_or_create_proxy<cocosbuilder::CCBAnimationManager>(cx, (cocosbuilder::CCBAnimationManager*)ret);
@@ -1113,7 +1113,7 @@ JSBool js_cocos2dx_builder_CCBReader_getOwnerCallbackNames(JSContext *cx, uint32
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getOwnerCallbackNames : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::ValueVector ret = cobj->getOwnerCallbackNames();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvaluevector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1197,7 +1197,7 @@ JSBool js_cocos2dx_builder_CCBReader_getOwnerCallbackNodes(JSContext *cx, uint32
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getOwnerCallbackNodes : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocos2d::Node *>& ret = cobj->getOwnerCallbackNodes();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1226,7 +1226,7 @@ JSBool js_cocos2dx_builder_CCBReader_readSoundKeyframesForSeq(JSContext *cx, uin
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_readSoundKeyframesForSeq : Error processing arguments");
 		JSBool ret = cobj->readSoundKeyframesForSeq(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1243,7 +1243,7 @@ JSBool js_cocos2dx_builder_CCBReader_getCCBRootPath(JSContext *cx, uint32_t argc
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getCCBRootPath : Invalid Native Object");
 	if (argc == 0) {
 		const std::string& ret = cobj->getCCBRootPath();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1260,7 +1260,7 @@ JSBool js_cocos2dx_builder_CCBReader_getOwnerCallbackControlEvents(JSContext *cx
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getOwnerCallbackControlEvents : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::ValueVector& ret = cobj->getOwnerCallbackControlEvents();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvaluevector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1277,7 +1277,7 @@ JSBool js_cocos2dx_builder_CCBReader_getOwnerOutletNodes(JSContext *cx, uint32_t
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getOwnerOutletNodes : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocos2d::Node *>& ret = cobj->getOwnerOutletNodes();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1294,7 +1294,7 @@ JSBool js_cocos2dx_builder_CCBReader_readUTF8(JSContext *cx, uint32_t argc, jsva
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_readUTF8 : Invalid Native Object");
 	if (argc == 0) {
 		std::string ret = cobj->readUTF8();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = std_string_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1331,7 +1331,7 @@ JSBool js_cocos2dx_builder_CCBReader_getOwnerOutletNames(JSContext *cx, uint32_t
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getOwnerOutletNames : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::ValueVector ret = cobj->getOwnerOutletNames();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvaluevector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1360,7 +1360,7 @@ JSBool js_cocos2dx_builder_CCBReader_readCallbackKeyframesForSeq(JSContext *cx, 
 		} while (0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_readCallbackKeyframesForSeq : Error processing arguments");
 		JSBool ret = cobj->readCallbackKeyframesForSeq(arg0);
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = BOOLEAN_TO_JSVAL(ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1377,7 +1377,7 @@ JSBool js_cocos2dx_builder_CCBReader_getAnimationManagersForNodes(JSContext *cx,
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getAnimationManagersForNodes : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocosbuilder::CCBAnimationManager *>& ret = cobj->getAnimationManagersForNodes();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
@@ -1394,7 +1394,7 @@ JSBool js_cocos2dx_builder_CCBReader_getNodesWithAnimationManagers(JSContext *cx
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_builder_CCBReader_getNodesWithAnimationManagers : Invalid Native Object");
 	if (argc == 0) {
 		cocos2d::Vector<cocos2d::Node *>& ret = cobj->getNodesWithAnimationManagers();
-		jsval jsret;
+		jsval jsret = JSVAL_NULL;
 		jsret = ccvector_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
