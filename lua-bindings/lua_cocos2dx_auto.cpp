@@ -26465,48 +26465,6 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_LabelAtlas_constructor(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::LabelAtlas* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cobj = new cocos2d::LabelAtlas();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LabelAtlas");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"LabelAtlas");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "LabelAtlas",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_LabelAtlas_constructor'.",&tolua_err);
-#endif
-
-    return 0;
-}
-
 static int lua_cocos2dx_LabelAtlas_finalize(lua_State* tolua_S)
 {
     printf("luabindings: finalizing LUA object (LabelAtlas)");
@@ -26523,7 +26481,6 @@ int lua_register_cocos2dx_LabelAtlas(lua_State* tolua_S)
         tolua_function(tolua_S,"initWithString",lua_cocos2dx_LabelAtlas_initWithString);
         tolua_function(tolua_S,"updateAtlasValues",lua_cocos2dx_LabelAtlas_updateAtlasValues);
         tolua_function(tolua_S,"getString",lua_cocos2dx_LabelAtlas_getString);
-        tolua_function(tolua_S,"new",lua_cocos2dx_LabelAtlas_constructor);
         tolua_function(tolua_S,"_create", lua_cocos2dx_LabelAtlas_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::LabelAtlas).name();

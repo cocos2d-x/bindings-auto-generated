@@ -3614,12 +3614,6 @@ updateAtlasValues : function () {},
  */
 getString : function () {},
 
-/**
- * @method LabelAtlas
- * @constructor
- */
-LabelAtlas : function () {},
-
 };
 
 /**

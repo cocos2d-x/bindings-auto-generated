@@ -1310,7 +1310,6 @@ JSBool js_cocos2dx_LabelAtlas_initWithString(JSContext *cx, uint32_t argc, jsval
 JSBool js_cocos2dx_LabelAtlas_updateAtlasValues(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelAtlas_getString(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_LabelAtlas_create(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_LabelAtlas_LabelAtlas(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_Director_class;
 extern JSObject *jsb_cocos2d_Director_prototype;
