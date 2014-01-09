@@ -201,7 +201,9 @@ JSBool js_cocos2dx_extension_ControlSlider_constructor(JSContext *cx, uint32_t a
 void js_cocos2dx_extension_ControlSlider_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_extension_ControlSlider(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_extension(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_extension_ControlSlider_getSelectedThumbSprite(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlSlider_locationFromTouch(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_extension_ControlSlider_setSelectedThumbSprite(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlSlider_setProgressSprite(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlSlider_getMaximumAllowedValue(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_extension_ControlSlider_getMinimumAllowedValue(JSContext *cx, uint32_t argc, jsval *vp);

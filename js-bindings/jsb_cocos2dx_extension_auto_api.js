@@ -845,11 +845,23 @@ ControlPotentiometer : function () {},
 cc.ControlSlider = {
 
 /**
+ * @method getSelectedThumbSprite
+ * @return A value converted from C/C++ "cocos2d::Sprite*"
+ */
+getSelectedThumbSprite : function () {},
+
+/**
  * @method locationFromTouch
  * @return A value converted from C/C++ "cocos2d::Point"
  * @param {cocos2d::Touch*}
  */
 locationFromTouch : function () {},
+
+/**
+ * @method setSelectedThumbSprite
+ * @param {cocos2d::Sprite*}
+ */
+setSelectedThumbSprite : function () {},
 
 /**
  * @method setProgressSprite
@@ -921,15 +933,6 @@ needsLayout : function () {},
  * @return A value converted from C/C++ "cocos2d::Sprite*"
  */
 getBackgroundSprite : function () {},
-
-/**
- * @method initWithSprites
- * @return A value converted from C/C++ "bool"
- * @param {cocos2d::Sprite*}
- * @param {cocos2d::Sprite*}
- * @param {cocos2d::Sprite*}
- */
-initWithSprites : function () {},
 
 /**
  * @method getMaximumValue
