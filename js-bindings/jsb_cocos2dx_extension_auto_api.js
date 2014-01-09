@@ -334,6 +334,12 @@ getHorizontalOrigin : function () {},
 needsLayout : function () {},
 
 /**
+ * @method getScaleRatio
+ * @return A value converted from C/C++ "float"
+ */
+getScaleRatio : function () {},
+
+/**
  * @method getTitleTTFForState
  * @return A value converted from C/C++ "const std::string&"
  * @param {cocos2d::extension::Control::State}
@@ -379,6 +385,12 @@ setBackgroundSpriteFrameForState : function () {},
  * @param {cocos2d::extension::Control::State}
  */
 setBackgroundSpriteForState : function () {},
+
+/**
+ * @method setScaleRatio
+ * @param {float}
+ */
+setScaleRatio : function () {},
 
 /**
  * @method setBackgroundSprite
