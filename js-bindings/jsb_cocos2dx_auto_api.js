@@ -3343,6 +3343,16 @@ create : function () {},
 cc.DrawNode = {
 
 /**
+ * @method drawQuadraticBezier
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Point&}
+ * @param {unsigned int}
+ * @param {const cocos2d::Color4F&}
+ */
+drawQuadraticBezier : function () {},
+
+/**
  * @method onDraw
  */
 onDraw : function () {},
@@ -3353,12 +3363,32 @@ onDraw : function () {},
 clear : function () {},
 
 /**
+ * @method drawTriangle
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Color4F&}
+ */
+drawTriangle : function () {},
+
+/**
  * @method drawDot
  * @param {const cocos2d::Point&}
  * @param {float}
  * @param {const cocos2d::Color4F&}
  */
 drawDot : function () {},
+
+/**
+ * @method drawCubicBezier
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Point&}
+ * @param {const cocos2d::Point&}
+ * @param {unsigned int}
+ * @param {const cocos2d::Color4F&}
+ */
+drawCubicBezier : function () {},
 
 /**
  * @method drawSegment
