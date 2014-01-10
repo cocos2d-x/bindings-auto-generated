@@ -960,50 +960,6 @@ int lua_cocos2dx_gui_Widget_getNodeByTag(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_gui_Widget_setUpdateEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::gui::Widget* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_Widget_setUpdateEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setUpdateEnabled(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setUpdateEnabled",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_Widget_setUpdateEnabled'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_gui_Widget_isFlipY(lua_State* tolua_S)
 {
     int argc = 0;
@@ -2782,49 +2738,6 @@ int lua_cocos2dx_gui_Widget_getWidgetType(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_gui_Widget_isUpdateEnabled(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::gui::Widget* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_Widget_isUpdateEnabled'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->isUpdateEnabled();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isUpdateEnabled",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_Widget_isUpdateEnabled'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_gui_Widget_getSize(lua_State* tolua_S)
 {
     int argc = 0;
@@ -3521,7 +3434,6 @@ int lua_register_cocos2dx_gui_Widget(lua_State* tolua_S)
         tolua_function(tolua_S,"setSizePercent",lua_cocos2dx_gui_Widget_setSizePercent);
         tolua_function(tolua_S,"setActionTag",lua_cocos2dx_gui_Widget_setActionTag);
         tolua_function(tolua_S,"getNodeByTag",lua_cocos2dx_gui_Widget_getNodeByTag);
-        tolua_function(tolua_S,"setUpdateEnabled",lua_cocos2dx_gui_Widget_setUpdateEnabled);
         tolua_function(tolua_S,"isFlipY",lua_cocos2dx_gui_Widget_isFlipY);
         tolua_function(tolua_S,"getTouchEndPos",lua_cocos2dx_gui_Widget_getTouchEndPos);
         tolua_function(tolua_S,"setPositionPercent",lua_cocos2dx_gui_Widget_setPositionPercent);
@@ -3560,7 +3472,6 @@ int lua_register_cocos2dx_gui_Widget(lua_State* tolua_S)
         tolua_function(tolua_S,"getSizePercent",lua_cocos2dx_gui_Widget_getSizePercent);
         tolua_function(tolua_S,"getTopInParent",lua_cocos2dx_gui_Widget_getTopInParent);
         tolua_function(tolua_S,"getWidgetType",lua_cocos2dx_gui_Widget_getWidgetType);
-        tolua_function(tolua_S,"isUpdateEnabled",lua_cocos2dx_gui_Widget_isUpdateEnabled);
         tolua_function(tolua_S,"getSize",lua_cocos2dx_gui_Widget_getSize);
         tolua_function(tolua_S,"getRightInParent",lua_cocos2dx_gui_Widget_getRightInParent);
         tolua_function(tolua_S,"getSizeType",lua_cocos2dx_gui_Widget_getSizeType);
@@ -3622,6 +3533,51 @@ int lua_cocos2dx_gui_Layout_setBackGroundColorVector(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_Layout_setBackGroundColorVector'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_gui_Layout_hitTest(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::gui::Layout* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_Layout_hitTest'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::Point arg0;
+        ok &= luaval_to_point(tolua_S, 2, &arg0);
+        if(!ok)
+            return 0;
+        bool ret = cobj->hitTest(arg0);
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "hitTest",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_Layout_hitTest'.",&tolua_err);
 #endif
 
     return 0;
@@ -4364,6 +4320,7 @@ int lua_register_cocos2dx_gui_Layout(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"Layout");
         tolua_function(tolua_S,"setBackGroundColorVector",lua_cocos2dx_gui_Layout_setBackGroundColorVector);
+        tolua_function(tolua_S,"hitTest",lua_cocos2dx_gui_Layout_hitTest);
         tolua_function(tolua_S,"getBackGroundImageTextureSize",lua_cocos2dx_gui_Layout_getBackGroundImageTextureSize);
         tolua_function(tolua_S,"getLayoutType",lua_cocos2dx_gui_Layout_getLayoutType);
         tolua_function(tolua_S,"setClippingType",lua_cocos2dx_gui_Layout_setClippingType);
@@ -10653,7 +10610,7 @@ int lua_cocos2dx_gui_TextField_getStringValue(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_gui_TextField_getDeleteBackward(lua_State* tolua_S)
+int lua_cocos2dx_gui_TextField_setPasswordStyleText(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::gui::TextField* cobj = nullptr;
@@ -10672,26 +10629,27 @@ int lua_cocos2dx_gui_TextField_getDeleteBackward(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_getDeleteBackward'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_setPasswordStyleText'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 1) 
     {
+        const char* arg0;
+        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
-        bool ret = cobj->getDeleteBackward();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
+        cobj->setPasswordStyleText(arg0);
+        return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDeleteBackward",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPasswordStyleText",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_getDeleteBackward'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_setPasswordStyleText'.",&tolua_err);
 #endif
 
     return 0;
@@ -10826,7 +10784,7 @@ int lua_cocos2dx_gui_TextField_getInsertText(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_gui_TextField_initRenderer(lua_State* tolua_S)
+int lua_cocos2dx_gui_TextField_setInsertText(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::gui::TextField* cobj = nullptr;
@@ -10845,25 +10803,27 @@ int lua_cocos2dx_gui_TextField_initRenderer(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_initRenderer'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_setInsertText'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
+    if (argc == 1) 
     {
+        bool arg0;
+        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        cobj->initRenderer();
+        cobj->setInsertText(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "initRenderer",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setInsertText",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_initRenderer'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_setInsertText'.",&tolua_err);
 #endif
 
     return 0;
@@ -10907,49 +10867,6 @@ int lua_cocos2dx_gui_TextField_getDetachWithIME(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_getDetachWithIME'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_gui_TextField_init(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::gui::TextField* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_init'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        bool ret = cobj->init();
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "init",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_init'.",&tolua_err);
 #endif
 
     return 0;
@@ -11126,7 +11043,7 @@ int lua_cocos2dx_gui_TextField_setMaxLengthEnabled(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_gui_TextField_isPasswordEnabled(lua_State* tolua_S)
+int lua_cocos2dx_gui_TextField_getDeleteBackward(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::gui::TextField* cobj = nullptr;
@@ -11145,7 +11062,7 @@ int lua_cocos2dx_gui_TextField_isPasswordEnabled(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_isPasswordEnabled'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_getDeleteBackward'", NULL);
         return 0;
     }
 #endif
@@ -11155,16 +11072,16 @@ int lua_cocos2dx_gui_TextField_isPasswordEnabled(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        bool ret = cobj->isPasswordEnabled();
+        bool ret = cobj->getDeleteBackward();
         tolua_pushboolean(tolua_S,(bool)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isPasswordEnabled",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDeleteBackward",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_isPasswordEnabled'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_getDeleteBackward'.",&tolua_err);
 #endif
 
     return 0;
@@ -11257,7 +11174,7 @@ int lua_cocos2dx_gui_TextField_setPlaceHolder(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_gui_TextField_setPasswordStyleText(lua_State* tolua_S)
+int lua_cocos2dx_gui_TextField_isPasswordEnabled(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::gui::TextField* cobj = nullptr;
@@ -11276,27 +11193,26 @@ int lua_cocos2dx_gui_TextField_setPasswordStyleText(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_setPasswordStyleText'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_isPasswordEnabled'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 0) 
     {
-        const char* arg0;
-        std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
-        cobj->setPasswordStyleText(arg0);
-        return 0;
+        bool ret = cobj->isPasswordEnabled();
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setPasswordStyleText",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "isPasswordEnabled",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_setPasswordStyleText'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_isPasswordEnabled'.",&tolua_err);
 #endif
 
     return 0;
@@ -11471,50 +11387,6 @@ int lua_cocos2dx_gui_TextField_setText(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_setText'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_gui_TextField_setInsertText(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::gui::TextField* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_gui_TextField_setInsertText'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        bool arg0;
-        ok &= luaval_to_boolean(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        cobj->setInsertText(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setInsertText",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_gui_TextField_setInsertText'.",&tolua_err);
 #endif
 
     return 0;
@@ -11758,26 +11630,24 @@ int lua_register_cocos2dx_gui_TextField(lua_State* tolua_S)
     tolua_beginmodule(tolua_S,"TextField");
         tolua_function(tolua_S,"setAttachWithIME",lua_cocos2dx_gui_TextField_setAttachWithIME);
         tolua_function(tolua_S,"getStringValue",lua_cocos2dx_gui_TextField_getStringValue);
-        tolua_function(tolua_S,"getDeleteBackward",lua_cocos2dx_gui_TextField_getDeleteBackward);
+        tolua_function(tolua_S,"setPasswordStyleText",lua_cocos2dx_gui_TextField_setPasswordStyleText);
         tolua_function(tolua_S,"getAttachWithIME",lua_cocos2dx_gui_TextField_getAttachWithIME);
         tolua_function(tolua_S,"setFontName",lua_cocos2dx_gui_TextField_setFontName);
         tolua_function(tolua_S,"getInsertText",lua_cocos2dx_gui_TextField_getInsertText);
-        tolua_function(tolua_S,"initRenderer",lua_cocos2dx_gui_TextField_initRenderer);
+        tolua_function(tolua_S,"setInsertText",lua_cocos2dx_gui_TextField_setInsertText);
         tolua_function(tolua_S,"getDetachWithIME",lua_cocos2dx_gui_TextField_getDetachWithIME);
-        tolua_function(tolua_S,"init",lua_cocos2dx_gui_TextField_init);
         tolua_function(tolua_S,"didNotSelectSelf",lua_cocos2dx_gui_TextField_didNotSelectSelf);
         tolua_function(tolua_S,"attachWithIME",lua_cocos2dx_gui_TextField_attachWithIME);
         tolua_function(tolua_S,"setPasswordEnabled",lua_cocos2dx_gui_TextField_setPasswordEnabled);
         tolua_function(tolua_S,"setMaxLengthEnabled",lua_cocos2dx_gui_TextField_setMaxLengthEnabled);
-        tolua_function(tolua_S,"isPasswordEnabled",lua_cocos2dx_gui_TextField_isPasswordEnabled);
+        tolua_function(tolua_S,"getDeleteBackward",lua_cocos2dx_gui_TextField_getDeleteBackward);
         tolua_function(tolua_S,"setFontSize",lua_cocos2dx_gui_TextField_setFontSize);
         tolua_function(tolua_S,"setPlaceHolder",lua_cocos2dx_gui_TextField_setPlaceHolder);
-        tolua_function(tolua_S,"setPasswordStyleText",lua_cocos2dx_gui_TextField_setPasswordStyleText);
+        tolua_function(tolua_S,"isPasswordEnabled",lua_cocos2dx_gui_TextField_isPasswordEnabled);
         tolua_function(tolua_S,"getMaxLength",lua_cocos2dx_gui_TextField_getMaxLength);
         tolua_function(tolua_S,"isMaxLengthEnabled",lua_cocos2dx_gui_TextField_isMaxLengthEnabled);
         tolua_function(tolua_S,"setDetachWithIME",lua_cocos2dx_gui_TextField_setDetachWithIME);
         tolua_function(tolua_S,"setText",lua_cocos2dx_gui_TextField_setText);
-        tolua_function(tolua_S,"setInsertText",lua_cocos2dx_gui_TextField_setInsertText);
         tolua_function(tolua_S,"setMaxLength",lua_cocos2dx_gui_TextField_setMaxLength);
         tolua_function(tolua_S,"setTouchSize",lua_cocos2dx_gui_TextField_setTouchSize);
         tolua_function(tolua_S,"setDeleteBackward",lua_cocos2dx_gui_TextField_setDeleteBackward);

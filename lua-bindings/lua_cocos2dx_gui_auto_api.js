@@ -145,12 +145,6 @@ setActionTag : function () {},
 getNodeByTag : function () {},
 
 /**
- * @method setUpdateEnabled
- * @param {bool}
- */
-setUpdateEnabled : function () {},
-
-/**
  * @method isFlipY
  * @return A value converted from C/C++ "bool"
  */
@@ -374,12 +368,6 @@ getTopInParent : function () {},
 getWidgetType : function () {},
 
 /**
- * @method isUpdateEnabled
- * @return A value converted from C/C++ "bool"
- */
-isUpdateEnabled : function () {},
-
-/**
  * @method getSize
  * @return A value converted from C/C++ "const cocos2d::Size&"
  */
@@ -483,6 +471,13 @@ ccui.Layout = {
  * @param {const cocos2d::Point&}
  */
 setBackGroundColorVector : function () {},
+
+/**
+ * @method hitTest
+ * @return A value converted from C/C++ "bool"
+ * @param {const cocos2d::Point&}
+ */
+hitTest : function () {},
 
 /**
  * @method getBackGroundImageTextureSize
@@ -1447,10 +1442,10 @@ setAttachWithIME : function () {},
 getStringValue : function () {},
 
 /**
- * @method getDeleteBackward
- * @return A value converted from C/C++ "bool"
+ * @method setPasswordStyleText
+ * @param {const char*}
  */
-getDeleteBackward : function () {},
+setPasswordStyleText : function () {},
 
 /**
  * @method getAttachWithIME
@@ -1471,21 +1466,16 @@ setFontName : function () {},
 getInsertText : function () {},
 
 /**
- * @method initRenderer
+ * @method setInsertText
+ * @param {bool}
  */
-initRenderer : function () {},
+setInsertText : function () {},
 
 /**
  * @method getDetachWithIME
  * @return A value converted from C/C++ "bool"
  */
 getDetachWithIME : function () {},
-
-/**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
 
 /**
  * @method didNotSelectSelf
@@ -1510,10 +1500,10 @@ setPasswordEnabled : function () {},
 setMaxLengthEnabled : function () {},
 
 /**
- * @method isPasswordEnabled
+ * @method getDeleteBackward
  * @return A value converted from C/C++ "bool"
  */
-isPasswordEnabled : function () {},
+getDeleteBackward : function () {},
 
 /**
  * @method setFontSize
@@ -1528,10 +1518,10 @@ setFontSize : function () {},
 setPlaceHolder : function () {},
 
 /**
- * @method setPasswordStyleText
- * @param {const char*}
+ * @method isPasswordEnabled
+ * @return A value converted from C/C++ "bool"
  */
-setPasswordStyleText : function () {},
+isPasswordEnabled : function () {},
 
 /**
  * @method getMaxLength
@@ -1556,12 +1546,6 @@ setDetachWithIME : function () {},
  * @param {const std::string&}
  */
 setText : function () {},
-
-/**
- * @method setInsertText
- * @param {bool}
- */
-setInsertText : function () {},
 
 /**
  * @method setMaxLength
