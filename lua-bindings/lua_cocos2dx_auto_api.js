@@ -3657,12 +3657,6 @@ cc.Director = {
 pause : function () {},
 
 /**
- * @method setNotificationNode
- * @param {cocos2d::Node*}
- */
-setNotificationNode : function () {},
-
-/**
  * @method setContentScaleFactor
  * @param {float}
  */
@@ -3857,6 +3851,12 @@ getTotalFrames : function () {},
  * @param {cocos2d::Scene*}
  */
 runWithScene : function () {},
+
+/**
+ * @method setNotificationNode
+ * @param {cocos2d::Node*}
+ */
+setNotificationNode : function () {},
 
 /**
  * @method drawScene

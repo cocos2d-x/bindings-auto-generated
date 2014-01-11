@@ -3442,12 +3442,6 @@ cc.Director = {
 pause : function () {},
 
 /**
- * @method setNotificationNode
- * @param {cocos2d::Node*}
- */
-setNotificationNode : function () {},
-
-/**
  * @method setContentScaleFactor
  * @param {float}
  */
@@ -3614,12 +3608,6 @@ resume : function () {},
 isNextDeltaTimeZero : function () {},
 
 /**
- * @method getDelegate
- * @return A value converted from C/C++ "cocos2d::DirectorDelegate*"
- */
-getDelegate : function () {},
-
-/**
  * @method setOpenGLView
  * @param {cocos2d::EGLView*}
  */
@@ -3650,10 +3638,10 @@ getTotalFrames : function () {},
 runWithScene : function () {},
 
 /**
- * @method setDelegate
- * @param {cocos2d::DirectorDelegate*}
+ * @method setNotificationNode
+ * @param {cocos2d::Node*}
  */
-setDelegate : function () {},
+setNotificationNode : function () {},
 
 /**
  * @method drawScene
