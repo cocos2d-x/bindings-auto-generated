@@ -3881,6 +3881,12 @@ isDisplayStats : function () {},
 setProjection : function () {},
 
 /**
+ * @method getConsole
+ * @return A value converted from C/C++ "cocos2d::Console*"
+ */
+getConsole : function () {},
+
+/**
  * @method getZEye
  * @return A value converted from C/C++ "float"
  */

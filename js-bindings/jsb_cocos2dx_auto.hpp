@@ -1363,6 +1363,7 @@ JSBool js_cocos2dx_Director_drawScene(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_popScene(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_isDisplayStats(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_setProjection(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Director_getConsole(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_getZEye(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_setNextDeltaTimeZero(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Director_getVisibleSize(JSContext *cx, uint32_t argc, jsval *vp);
