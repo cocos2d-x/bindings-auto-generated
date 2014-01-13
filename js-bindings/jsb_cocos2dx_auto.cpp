@@ -9195,6 +9195,139 @@ void js_register_cocos2dx_TargetedAction(JSContext *cx, JSObject *global) {
 JSClass  *jsb_cocos2d_ActionCamera_class;
 JSObject *jsb_cocos2d_ActionCamera_prototype;
 
+JSBool js_cocos2dx_ActionCamera_setEye(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+
+	JSObject *obj = NULL;
+	cocos2d::ActionCamera* cobj = NULL;
+	obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cobj = (cocos2d::ActionCamera *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ActionCamera_setEye : Invalid Native Object");
+	do {
+		if (argc == 3) {
+			double arg0;
+			ok &= JS_ValueToNumber(cx, argv[0], &arg0);
+			if (!ok) { ok = JS_TRUE; break; }
+			double arg1;
+			ok &= JS_ValueToNumber(cx, argv[1], &arg1);
+			if (!ok) { ok = JS_TRUE; break; }
+			double arg2;
+			ok &= JS_ValueToNumber(cx, argv[2], &arg2);
+			if (!ok) { ok = JS_TRUE; break; }
+			cobj->setEye(arg0, arg1, arg2);
+			JS_SET_RVAL(cx, vp, JSVAL_VOID);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	do {
+		if (argc == 1) {
+			kmVec3 arg0;
+			#pragma warning NO CONVERSION TO NATIVE FOR kmVec3;
+			if (!ok) { ok = JS_TRUE; break; }
+			cobj->setEye(arg0);
+			JS_SET_RVAL(cx, vp, JSVAL_VOID);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	JS_ReportError(cx, "js_cocos2dx_ActionCamera_setEye : wrong number of arguments");
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_ActionCamera_getEye(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::ActionCamera* cobj = (cocos2d::ActionCamera *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ActionCamera_getEye : Invalid Native Object");
+	if (argc == 0) {
+		const kmVec3& ret = cobj->getEye();
+		jsval jsret = JSVAL_NULL;
+		#pragma warning NO CONVERSION FROM NATIVE FOR kmVec3;
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_ActionCamera_getEye : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_ActionCamera_setUp(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::ActionCamera* cobj = (cocos2d::ActionCamera *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ActionCamera_setUp : Invalid Native Object");
+	if (argc == 1) {
+		kmVec3 arg0;
+		#pragma warning NO CONVERSION TO NATIVE FOR kmVec3;
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ActionCamera_setUp : Error processing arguments");
+		cobj->setUp(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_ActionCamera_setUp : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_ActionCamera_getCenter(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::ActionCamera* cobj = (cocos2d::ActionCamera *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ActionCamera_getCenter : Invalid Native Object");
+	if (argc == 0) {
+		const kmVec3& ret = cobj->getCenter();
+		jsval jsret = JSVAL_NULL;
+		#pragma warning NO CONVERSION FROM NATIVE FOR kmVec3;
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_ActionCamera_getCenter : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_ActionCamera_setCenter(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::ActionCamera* cobj = (cocos2d::ActionCamera *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ActionCamera_setCenter : Invalid Native Object");
+	if (argc == 1) {
+		kmVec3 arg0;
+		#pragma warning NO CONVERSION TO NATIVE FOR kmVec3;
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_ActionCamera_setCenter : Error processing arguments");
+		cobj->setCenter(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_ActionCamera_setCenter : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_ActionCamera_getUp(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::ActionCamera* cobj = (cocos2d::ActionCamera *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_ActionCamera_getUp : Invalid Native Object");
+	if (argc == 0) {
+		const kmVec3& ret = cobj->getUp();
+		jsval jsret = JSVAL_NULL;
+		#pragma warning NO CONVERSION FROM NATIVE FOR kmVec3;
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_ActionCamera_getUp : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_ActionCamera_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
@@ -9246,7 +9379,15 @@ void js_register_cocos2dx_ActionCamera(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+		JS_FN("setEye", js_cocos2dx_ActionCamera_setEye, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getEye", js_cocos2dx_ActionCamera_getEye, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setUp", js_cocos2dx_ActionCamera_setUp, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getCenter", js_cocos2dx_ActionCamera_getCenter, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setCenter", js_cocos2dx_ActionCamera_setCenter, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getUp", js_cocos2dx_ActionCamera_getUp, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 

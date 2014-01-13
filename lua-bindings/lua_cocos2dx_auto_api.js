@@ -2057,6 +2057,36 @@ create : function () {},
 cc.ActionCamera = {
 
 /**
+ * @method getEye
+ * @return A value converted from C/C++ "const kmVec3&"
+ */
+getEye : function () {},
+
+/**
+ * @method setUp
+ * @param {const kmVec3&}
+ */
+setUp : function () {},
+
+/**
+ * @method getCenter
+ * @return A value converted from C/C++ "const kmVec3&"
+ */
+getCenter : function () {},
+
+/**
+ * @method setCenter
+ * @param {const kmVec3&}
+ */
+setCenter : function () {},
+
+/**
+ * @method getUp
+ * @return A value converted from C/C++ "const kmVec3&"
+ */
+getUp : function () {},
+
+/**
  * @method ActionCamera
  * @constructor
  */

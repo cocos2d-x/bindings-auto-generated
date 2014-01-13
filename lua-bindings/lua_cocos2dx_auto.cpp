@@ -16546,6 +16546,283 @@ int lua_register_cocos2dx_TargetedAction(lua_State* tolua_S)
     return 1;
 }
 
+int lua_cocos2dx_ActionCamera_setEye(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::ActionCamera* cobj = NULL;
+    bool ok  = true;
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ActionCamera",0,&tolua_err)) goto tolua_lerror;
+#endif
+    cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
+#if COCOS2D_DEBUG >= 1
+    if (!cobj)
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_setEye'", NULL);
+        return 0;
+    }
+#endif
+    argc = lua_gettop(tolua_S)-1;
+    do{
+        if (argc == 3) {
+            double arg0;
+            ok &= luaval_to_number(tolua_S, 2,&arg0);
+
+            if (!ok) { break; }
+            double arg1;
+            ok &= luaval_to_number(tolua_S, 3,&arg1);
+
+            if (!ok) { break; }
+            double arg2;
+            ok &= luaval_to_number(tolua_S, 4,&arg2);
+
+            if (!ok) { break; }
+            cobj->setEye(arg0, arg1, arg2);
+            return 0;
+        }
+    }while(0);
+    ok  = true;
+    do{
+        if (argc == 1) {
+            kmVec3 arg0;
+            #pragma warning NO CONVERSION TO NATIVE FOR kmVec3;
+
+            if (!ok) { break; }
+            cobj->setEye(arg0);
+            return 0;
+        }
+    }while(0);
+    ok  = true;
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setEye",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ActionCamera_setEye'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_ActionCamera_getEye(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::ActionCamera* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ActionCamera",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_getEye'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        const kmVec3& ret = cobj->getEye();
+        #pragma warning NO CONVERSION FROM NATIVE FOR kmVec3;
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getEye",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ActionCamera_getEye'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_ActionCamera_setUp(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::ActionCamera* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ActionCamera",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_setUp'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        kmVec3 arg0;
+        #pragma warning NO CONVERSION TO NATIVE FOR kmVec3;
+        if(!ok)
+            return 0;
+        cobj->setUp(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setUp",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ActionCamera_setUp'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_ActionCamera_getCenter(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::ActionCamera* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ActionCamera",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_getCenter'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        const kmVec3& ret = cobj->getCenter();
+        #pragma warning NO CONVERSION FROM NATIVE FOR kmVec3;
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCenter",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ActionCamera_getCenter'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_ActionCamera_setCenter(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::ActionCamera* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ActionCamera",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_setCenter'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        kmVec3 arg0;
+        #pragma warning NO CONVERSION TO NATIVE FOR kmVec3;
+        if(!ok)
+            return 0;
+        cobj->setCenter(arg0);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setCenter",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ActionCamera_setCenter'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_ActionCamera_getUp(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::ActionCamera* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"ActionCamera",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::ActionCamera*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_ActionCamera_getUp'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        const kmVec3& ret = cobj->getUp();
+        #pragma warning NO CONVERSION FROM NATIVE FOR kmVec3;
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getUp",argc, 0);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_ActionCamera_getUp'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_cocos2dx_ActionCamera_constructor(lua_State* tolua_S)
 {
     int argc = 0;
@@ -16600,6 +16877,13 @@ int lua_register_cocos2dx_ActionCamera(lua_State* tolua_S)
     tolua_cclass(tolua_S,"ActionCamera","ActionCamera","ActionInterval",NULL);
 
     tolua_beginmodule(tolua_S,"ActionCamera");
+        tolua_function(tolua_S,"setEye",lua_cocos2dx_ActionCamera_setEye);
+        tolua_function(tolua_S,"getEye",lua_cocos2dx_ActionCamera_getEye);
+        tolua_function(tolua_S,"setUp",lua_cocos2dx_ActionCamera_setUp);
+        tolua_function(tolua_S,"getCenter",lua_cocos2dx_ActionCamera_getCenter);
+        tolua_function(tolua_S,"setCenter",lua_cocos2dx_ActionCamera_setCenter);
+        tolua_function(tolua_S,"getUp",lua_cocos2dx_ActionCamera_getUp);
+        tolua_function(tolua_S,"new",lua_cocos2dx_ActionCamera_constructor);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::ActionCamera).name();
     g_luaType[typeName] = "ActionCamera";

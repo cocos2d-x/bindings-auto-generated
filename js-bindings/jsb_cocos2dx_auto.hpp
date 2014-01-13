@@ -590,6 +590,12 @@ JSBool js_cocos2dx_ActionCamera_constructor(JSContext *cx, uint32_t argc, jsval 
 void js_cocos2dx_ActionCamera_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_ActionCamera(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_ActionCamera_setEye(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_ActionCamera_getEye(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_ActionCamera_setUp(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_ActionCamera_getCenter(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_ActionCamera_setCenter(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_ActionCamera_getUp(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_ActionCamera_ActionCamera(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_OrbitCamera_class;
