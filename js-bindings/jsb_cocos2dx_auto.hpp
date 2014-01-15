@@ -2491,7 +2491,6 @@ JSBool js_cocos2dx_FileUtils_getValueVectorFromFile(JSContext *cx, uint32_t argc
 JSBool js_cocos2dx_FileUtils_writeToFile(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_getValueMapFromFile(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_addSearchResolutionsOrder(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_FileUtils_getFullPathCache(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_addSearchPath(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_isFileExist(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_purgeCachedEntries(JSContext *cx, uint32_t argc, jsval *vp);

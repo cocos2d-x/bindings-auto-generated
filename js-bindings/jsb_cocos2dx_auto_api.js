@@ -7134,12 +7134,6 @@ getValueMapFromFile : function () {},
 addSearchResolutionsOrder : function () {},
 
 /**
- * @method getFullPathCache
- * @return A value converted from C/C++ "const std::unordered_map<std::basic_string<char>, std::basic_string<char>, std::hash<string>, std::equal_to<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::basic_string<char> > > >&"
- */
-getFullPathCache : function () {},
-
-/**
  * @method addSearchPath
  * @param {const std::string&}
  */
