@@ -7134,6 +7134,12 @@ getValueMapFromFile : function () {},
 addSearchResolutionsOrder : function () {},
 
 /**
+ * @method getFullPathCache
+ * @return A value converted from C/C++ "const std::unordered_map<std::basic_string<char>, std::basic_string<char>, std::hash<string>, std::equal_to<std::basic_string<char> >, std::allocator<std::pair<const std::basic_string<char>, std::basic_string<char> > > >&"
+ */
+getFullPathCache : function () {},
+
+/**
  * @method addSearchPath
  * @param {const std::string&}
  */
@@ -7529,11 +7535,6 @@ TextFieldTTF : function () {},
 cc.TextureCache = {
 
 /**
- * @method dumpCachedTextureInfo
- */
-dumpCachedTextureInfo : function () {},
-
-/**
  * @method removeTextureForKey
  * @param {const std::string&}
  */
@@ -7549,6 +7550,12 @@ removeAllTextures : function () {},
  * @return A value converted from C/C++ "std::string"
  */
 getDescription : function () {},
+
+/**
+ * @method getCachedTextureInfo
+ * @return A value converted from C/C++ "std::string"
+ */
+getCachedTextureInfo : function () {},
 
 /**
  * @method getTextureForKey
