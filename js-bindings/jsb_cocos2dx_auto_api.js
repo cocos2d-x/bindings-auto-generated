@@ -4524,6 +4524,16 @@ getScaleY : function () {},
 getScaleX : function () {},
 
 /**
+ * @method setString
+ * @return A value converted from C/C++ "bool"
+ * @param {const std::string&}
+ * @param {const cocos2d::TextHAlignment&}
+ * @param {float}
+ * @param {bool}
+ */
+setString : function () {},
+
+/**
  * @method getYOffsetForChar
  * @return A value converted from C/C++ "int"
  * @param {unsigned short}
@@ -4536,6 +4546,13 @@ getYOffsetForChar : function () {},
  * @param {int}
  */
 recordPlaceholderInfo : function () {},
+
+/**
+ * @method setBMFontFilePath
+ * @return A value converted from C/C++ "bool"
+ * @param {const std::string&}
+ */
+setBMFontFilePath : function () {},
 
 /**
  * @method getXOffsetForChar
@@ -4609,16 +4626,6 @@ assignNewUTF8String : function () {},
 getLetter : function () {},
 
 /**
- * @method setText
- * @return A value converted from C/C++ "bool"
- * @param {const std::string&}
- * @param {float}
- * @param {cocos2d::TextHAlignment}
- * @param {bool}
- */
-setText : function () {},
-
-/**
  * @method getUTF8String
  * @return A value converted from C/C++ "unsigned short*"
  */
@@ -4658,24 +4665,16 @@ getAdvanceForChar : function () {},
  * @return A value converted from C/C++ "cocos2d::Label*"
  * @param {const std::string&}
  * @param {const std::string&}
- * @param {cocos2d::TextHAlignment}
+ * @param {const cocos2d::TextHAlignment&}
  * @param {int}
  */
 createWithBMFont : function () {},
 
 /**
- * @method createWithTTF
+ * @method create
  * @return A value converted from C/C++ "cocos2d::Label*"
- * @param {const std::string&}
- * @param {const std::string&}
- * @param {int}
- * @param {int}
- * @param {cocos2d::TextHAlignment}
- * @param {cocos2d::GlyphCollection}
- * @param {const char*}
- * @param {bool}
  */
-createWithTTF : function () {},
+create : function () {},
 
 };
 

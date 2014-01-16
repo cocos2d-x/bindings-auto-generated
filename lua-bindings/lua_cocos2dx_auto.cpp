@@ -36578,49 +36578,80 @@ int lua_cocos2dx_Label_getScaleX(lua_State* tolua_S)
 int lua_cocos2dx_Label_setString(lua_State* tolua_S)
 {
     int argc = 0;
-    cocos2d::Label* cobj = NULL;
+    cocos2d::Label* cobj = nullptr;
     bool ok  = true;
+
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
     if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
 #endif
+
     cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
+
 #if COCOS2D_DEBUG >= 1
-    if (!cobj)
+    if (!cobj) 
     {
         tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setString'", NULL);
         return 0;
     }
 #endif
+
     argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
-            std::string arg0;
-            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-
-            if (!ok) { break; }
-            bool arg1;
-            ok &= luaval_to_boolean(tolua_S, 3,&arg1);
-
-            if (!ok) { break; }
-            cobj->setString(arg0, arg1);
+    if (argc == 1) 
+    {
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        if(!ok)
             return 0;
-        }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 1) {
-            std::string arg0;
-            ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-
-            if (!ok) { break; }
-            cobj->setString(arg0);
+        bool ret = cobj->setString(arg0);
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    if (argc == 2) 
+    {
+        std::string arg0;
+        cocos2d::TextHAlignment arg1;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        if(!ok)
             return 0;
-        }
-    }while(0);
-    ok  = true;
+        bool ret = cobj->setString(arg0, arg1);
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    if (argc == 3) 
+    {
+        std::string arg0;
+        cocos2d::TextHAlignment arg1;
+        double arg2;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        ok &= luaval_to_number(tolua_S, 4,&arg2);
+        if(!ok)
+            return 0;
+        bool ret = cobj->setString(arg0, arg1, arg2);
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    if (argc == 4) 
+    {
+        std::string arg0;
+        cocos2d::TextHAlignment arg1;
+        double arg2;
+        bool arg3;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+        ok &= luaval_to_number(tolua_S, 4,&arg2);
+        ok &= luaval_to_boolean(tolua_S, 5,&arg3);
+        if(!ok)
+            return 0;
+        bool ret = cobj->setString(arg0, arg1, arg2, arg3);
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setString",argc, 1);
     return 0;
 
@@ -36717,6 +36748,51 @@ int lua_cocos2dx_Label_recordPlaceholderInfo(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_recordPlaceholderInfo'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_Label_setBMFontFilePath(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::Label* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setBMFontFilePath'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        std::string arg0;
+        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+        if(!ok)
+            return 0;
+        bool ret = cobj->setBMFontFilePath(arg0);
+        tolua_pushboolean(tolua_S,(bool)ret);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBMFontFilePath",argc, 1);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_setBMFontFilePath'.",&tolua_err);
 #endif
 
     return 0;
@@ -37228,83 +37304,6 @@ int lua_cocos2dx_Label_getLetter(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_Label_setText(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setText'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        std::string arg0;
-        double arg1;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_number(tolua_S, 3,&arg1);
-        if(!ok)
-            return 0;
-        bool ret = cobj->setText(arg0, arg1);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    if (argc == 3) 
-    {
-        std::string arg0;
-        double arg1;
-        cocos2d::TextHAlignment arg2;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_number(tolua_S, 3,&arg1);
-        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        if(!ok)
-            return 0;
-        bool ret = cobj->setText(arg0, arg1, arg2);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    if (argc == 4) 
-    {
-        std::string arg0;
-        double arg1;
-        cocos2d::TextHAlignment arg2;
-        bool arg3;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_number(tolua_S, 3,&arg1);
-        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_boolean(tolua_S, 5,&arg3);
-        if(!ok)
-            return 0;
-        bool ret = cobj->setText(arg0, arg1, arg2, arg3);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setText",argc, 2);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_setText'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_Label_getUTF8String(lua_State* tolua_S)
 {
     int argc = 0;
@@ -37656,7 +37655,7 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
 #endif
     return 0;
 }
-int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
+int lua_cocos2dx_Label_create(lua_State* tolua_S)
 {
     int argc = 0;
     bool ok  = true;
@@ -37671,17 +37670,11 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
 
     argc = lua_gettop(tolua_S) - 1;
 
-    if (argc == 3)
+    if (argc == 0)
     {
-        std::string arg0;
-        std::string arg1;
-        int arg2;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
             return 0;
-        cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2);
+        cocos2d::Label* ret = cocos2d::Label::create();
         do {
 			if (NULL != ret){
 				std::string hashName = typeid(*ret).name();
@@ -37705,211 +37698,11 @@ int lua_cocos2dx_Label_createWithTTF(lua_State* tolua_S)
 		} while (0);
         return 1;
     }
-    if (argc == 4)
-    {
-        std::string arg0;
-        std::string arg1;
-        int arg2;
-        int arg3;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
-        if(!ok)
-            return 0;
-        cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    if (argc == 5)
-    {
-        std::string arg0;
-        std::string arg1;
-        int arg2;
-        int arg3;
-        cocos2d::TextHAlignment arg4;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
-        ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
-        if(!ok)
-            return 0;
-        cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    if (argc == 6)
-    {
-        std::string arg0;
-        std::string arg1;
-        int arg2;
-        int arg3;
-        cocos2d::TextHAlignment arg4;
-        cocos2d::GlyphCollection arg5;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
-        ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
-        ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
-        if(!ok)
-            return 0;
-        cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4, arg5);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    if (argc == 7)
-    {
-        std::string arg0;
-        std::string arg1;
-        int arg2;
-        int arg3;
-        cocos2d::TextHAlignment arg4;
-        cocos2d::GlyphCollection arg5;
-        const char* arg6;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
-        ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
-        ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
-        std::string arg6_tmp; ok &= luaval_to_std_string(tolua_S, 8, &arg6_tmp); arg6 = arg6_tmp.c_str();
-        if(!ok)
-            return 0;
-        cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    if (argc == 8)
-    {
-        std::string arg0;
-        std::string arg1;
-        int arg2;
-        int arg3;
-        cocos2d::TextHAlignment arg4;
-        cocos2d::GlyphCollection arg5;
-        const char* arg6;
-        bool arg7;
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
-        ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
-        ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
-        ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
-        ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
-        std::string arg6_tmp; ok &= luaval_to_std_string(tolua_S, 8, &arg6_tmp); arg6 = arg6_tmp.c_str();
-        ok &= luaval_to_boolean(tolua_S, 9,&arg7);
-        if(!ok)
-            return 0;
-        cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTTF",argc, 3);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
     return 0;
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_createWithTTF'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_create'.",&tolua_err);
 #endif
     return 0;
 }
@@ -37939,6 +37732,7 @@ int lua_register_cocos2dx_Label(lua_State* tolua_S)
         tolua_function(tolua_S,"setString",lua_cocos2dx_Label_setString);
         tolua_function(tolua_S,"getYOffsetForChar",lua_cocos2dx_Label_getYOffsetForChar);
         tolua_function(tolua_S,"recordPlaceholderInfo",lua_cocos2dx_Label_recordPlaceholderInfo);
+        tolua_function(tolua_S,"setBMFontFilePath",lua_cocos2dx_Label_setBMFontFilePath);
         tolua_function(tolua_S,"getXOffsetForChar",lua_cocos2dx_Label_getXOffsetForChar);
         tolua_function(tolua_S,"getLetterPosXLeft",lua_cocos2dx_Label_getLetterPosXLeft);
         tolua_function(tolua_S,"setLineBreakWithoutSpace",lua_cocos2dx_Label_setLineBreakWithoutSpace);
@@ -37950,14 +37744,13 @@ int lua_register_cocos2dx_Label(lua_State* tolua_S)
         tolua_function(tolua_S,"setLabelContentSize",lua_cocos2dx_Label_setLabelContentSize);
         tolua_function(tolua_S,"assignNewUTF8String",lua_cocos2dx_Label_assignNewUTF8String);
         tolua_function(tolua_S,"getLetter",lua_cocos2dx_Label_getLetter);
-        tolua_function(tolua_S,"setText",lua_cocos2dx_Label_setText);
         tolua_function(tolua_S,"getUTF8String",lua_cocos2dx_Label_getUTF8String);
         tolua_function(tolua_S,"getTextAlignment",lua_cocos2dx_Label_getTextAlignment);
         tolua_function(tolua_S,"recordLetterInfo",lua_cocos2dx_Label_recordLetterInfo);
         tolua_function(tolua_S,"setAlignment",lua_cocos2dx_Label_setAlignment);
         tolua_function(tolua_S,"getAdvanceForChar",lua_cocos2dx_Label_getAdvanceForChar);
         tolua_function(tolua_S,"createWithBMFont", lua_cocos2dx_Label_createWithBMFont);
-        tolua_function(tolua_S,"createWithTTF", lua_cocos2dx_Label_createWithTTF);
+        tolua_function(tolua_S,"create", lua_cocos2dx_Label_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::Label).name();
     g_luaType[typeName] = "Label";

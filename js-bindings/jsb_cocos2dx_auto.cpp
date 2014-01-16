@@ -23061,39 +23061,64 @@ JSBool js_cocos2dx_Label_setString(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	JSBool ok = JS_TRUE;
-
-	JSObject *obj = NULL;
-	cocos2d::Label* cobj = NULL;
-	obj = JS_THIS_OBJECT(cx, vp);
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
+	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_setString : Invalid Native Object");
-	do {
-		if (argc == 2) {
-			std::string arg0;
-			ok &= jsval_to_std_string(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			JSBool arg1;
-			ok &= JS_ValueToBoolean(cx, argv[1], &arg1);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->setString(arg0, arg1);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
+	if (argc == 1) {
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setString : Error processing arguments");
+		JSBool ret = cobj->setString(arg0);
+		jsval jsret = JSVAL_NULL;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+	if (argc == 2) {
+		std::string arg0;
+		cocos2d::TextHAlignment arg1;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setString : Error processing arguments");
+		JSBool ret = cobj->setString(arg0, arg1);
+		jsval jsret = JSVAL_NULL;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+	if (argc == 3) {
+		std::string arg0;
+		cocos2d::TextHAlignment arg1;
+		double arg2;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= JS_ValueToNumber(cx, argv[2], &arg2);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setString : Error processing arguments");
+		JSBool ret = cobj->setString(arg0, arg1, arg2);
+		jsval jsret = JSVAL_NULL;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+	if (argc == 4) {
+		std::string arg0;
+		cocos2d::TextHAlignment arg1;
+		double arg2;
+		JSBool arg3;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+		ok &= JS_ValueToNumber(cx, argv[2], &arg2);
+		ok &= JS_ValueToBoolean(cx, argv[3], &arg3);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setString : Error processing arguments");
+		JSBool ret = cobj->setString(arg0, arg1, arg2, arg3);
+		jsval jsret = JSVAL_NULL;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
 
-	do {
-		if (argc == 1) {
-			std::string arg0;
-			ok &= jsval_to_std_string(cx, argv[0], &arg0);
-			if (!ok) { ok = JS_TRUE; break; }
-			cobj->setString(arg0);
-			JS_SET_RVAL(cx, vp, JSVAL_VOID);
-			return JS_TRUE;
-		}
-	} while(0);
-
-	JS_ReportError(cx, "js_cocos2dx_Label_setString : wrong number of arguments");
+	JS_ReportError(cx, "js_cocos2dx_Label_setString : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Label_getYOffsetForChar(JSContext *cx, uint32_t argc, jsval *vp)
@@ -23138,6 +23163,28 @@ JSBool js_cocos2dx_Label_recordPlaceholderInfo(JSContext *cx, uint32_t argc, jsv
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_Label_recordPlaceholderInfo : wrong number of arguments: %d, was expecting %d", argc, 1);
+	return JS_FALSE;
+}
+JSBool js_cocos2dx_Label_setBMFontFilePath(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_setBMFontFilePath : Invalid Native Object");
+	if (argc == 1) {
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setBMFontFilePath : Error processing arguments");
+		JSBool ret = cobj->setBMFontFilePath(arg0);
+		jsval jsret = JSVAL_NULL;
+		jsret = BOOLEAN_TO_JSVAL(ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Label_setBMFontFilePath : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_Label_getXOffsetForChar(JSContext *cx, uint32_t argc, jsval *vp)
@@ -23368,60 +23415,6 @@ JSBool js_cocos2dx_Label_getLetter(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Label_getLetter : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Label_setText(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Label* cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_setText : Invalid Native Object");
-	if (argc == 2) {
-		std::string arg0;
-		double arg1;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setText : Error processing arguments");
-		JSBool ret = cobj->setText(arg0, arg1);
-		jsval jsret = JSVAL_NULL;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 3) {
-		std::string arg0;
-		double arg1;
-		cocos2d::TextHAlignment arg2;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setText : Error processing arguments");
-		JSBool ret = cobj->setText(arg0, arg1, arg2);
-		jsval jsret = JSVAL_NULL;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 4) {
-		std::string arg0;
-		double arg1;
-		cocos2d::TextHAlignment arg2;
-		JSBool arg3;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= JS_ValueToNumber(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		ok &= JS_ValueToBoolean(cx, argv[3], &arg3);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setText : Error processing arguments");
-		JSBool ret = cobj->setText(arg0, arg1, arg2, arg3);
-		jsval jsret = JSVAL_NULL;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Label_setText : wrong number of arguments: %d, was expecting %d", argc, 2);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Label_getUTF8String(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -23597,19 +23590,10 @@ JSBool js_cocos2dx_Label_createWithBMFont(JSContext *cx, uint32_t argc, jsval *v
 	return JS_FALSE;
 }
 
-JSBool js_cocos2dx_Label_createWithTTF(JSContext *cx, uint32_t argc, jsval *vp)
+JSBool js_cocos2dx_Label_create(JSContext *cx, uint32_t argc, jsval *vp)
 {
-	jsval *argv = JS_ARGV(cx, vp);
-	JSBool ok = JS_TRUE;
-	if (argc == 3) {
-		std::string arg0;
-		std::string arg1;
-		int arg2;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_std_string(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithTTF : Error processing arguments");
-		cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2);
+	if (argc == 0) {
+		cocos2d::Label* ret = cocos2d::Label::create();
 		jsval jsret = JSVAL_NULL;
 		do {
 		if (ret) {
@@ -23622,142 +23606,7 @@ JSBool js_cocos2dx_Label_createWithTTF(JSContext *cx, uint32_t argc, jsval *vp)
 		JS_SET_RVAL(cx, vp, jsret);
 		return JS_TRUE;
 	}
-	if (argc == 4) {
-		std::string arg0;
-		std::string arg1;
-		int arg2;
-		int arg3;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_std_string(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithTTF : Error processing arguments");
-		cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3);
-		jsval jsret = JSVAL_NULL;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Label>(cx, (cocos2d::Label*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 5) {
-		std::string arg0;
-		std::string arg1;
-		int arg2;
-		int arg3;
-		cocos2d::TextHAlignment arg4;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_std_string(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
-		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithTTF : Error processing arguments");
-		cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4);
-		jsval jsret = JSVAL_NULL;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Label>(cx, (cocos2d::Label*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 6) {
-		std::string arg0;
-		std::string arg1;
-		int arg2;
-		int arg3;
-		cocos2d::TextHAlignment arg4;
-		cocos2d::GlyphCollection arg5;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_std_string(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
-		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
-		ok &= jsval_to_int32(cx, argv[5], (int32_t *)&arg5);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithTTF : Error processing arguments");
-		cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4, arg5);
-		jsval jsret = JSVAL_NULL;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Label>(cx, (cocos2d::Label*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 7) {
-		std::string arg0;
-		std::string arg1;
-		int arg2;
-		int arg3;
-		cocos2d::TextHAlignment arg4;
-		cocos2d::GlyphCollection arg5;
-		const char* arg6;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_std_string(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
-		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
-		ok &= jsval_to_int32(cx, argv[5], (int32_t *)&arg5);
-		std::string arg6_tmp; ok &= jsval_to_std_string(cx, argv[6], &arg6_tmp); arg6 = arg6_tmp.c_str();
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithTTF : Error processing arguments");
-		cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-		jsval jsret = JSVAL_NULL;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Label>(cx, (cocos2d::Label*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 8) {
-		std::string arg0;
-		std::string arg1;
-		int arg2;
-		int arg3;
-		cocos2d::TextHAlignment arg4;
-		cocos2d::GlyphCollection arg5;
-		const char* arg6;
-		JSBool arg7;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_std_string(cx, argv[1], &arg1);
-		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
-		ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
-		ok &= jsval_to_int32(cx, argv[4], (int32_t *)&arg4);
-		ok &= jsval_to_int32(cx, argv[5], (int32_t *)&arg5);
-		std::string arg6_tmp; ok &= jsval_to_std_string(cx, argv[6], &arg6_tmp); arg6 = arg6_tmp.c_str();
-		ok &= JS_ValueToBoolean(cx, argv[7], &arg7);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_createWithTTF : Error processing arguments");
-		cocos2d::Label* ret = cocos2d::Label::createWithTTF(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
-		jsval jsret = JSVAL_NULL;
-		do {
-		if (ret) {
-			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Label>(cx, (cocos2d::Label*)ret);
-			jsret = OBJECT_TO_JSVAL(proxy->obj);
-		} else {
-			jsret = JSVAL_NULL;
-		}
-	} while (0);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	JS_ReportError(cx, "js_cocos2dx_Label_createWithTTF : wrong number of arguments");
+	JS_ReportError(cx, "js_cocos2dx_Label_create : wrong number of arguments");
 	return JS_FALSE;
 }
 
@@ -23800,6 +23649,7 @@ void js_register_cocos2dx_Label(JSContext *cx, JSObject *global) {
 		JS_FN("setString", js_cocos2dx_Label_setString, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getYOffsetForChar", js_cocos2dx_Label_getYOffsetForChar, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("recordPlaceholderInfo", js_cocos2dx_Label_recordPlaceholderInfo, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setBMFontFilePath", js_cocos2dx_Label_setBMFontFilePath, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getXOffsetForChar", js_cocos2dx_Label_getXOffsetForChar, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getLetterPosXLeft", js_cocos2dx_Label_getLetterPosXLeft, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setLineBreakWithoutSpace", js_cocos2dx_Label_setLineBreakWithoutSpace, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -23811,7 +23661,6 @@ void js_register_cocos2dx_Label(JSContext *cx, JSObject *global) {
 		JS_FN("setLabelContentSize", js_cocos2dx_Label_setLabelContentSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("assignNewUTF8String", js_cocos2dx_Label_assignNewUTF8String, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getLetter", js_cocos2dx_Label_getLetter, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setText", js_cocos2dx_Label_setText, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getUTF8String", js_cocos2dx_Label_getUTF8String, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getTextAlignment", js_cocos2dx_Label_getTextAlignment, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("recordLetterInfo", js_cocos2dx_Label_recordLetterInfo, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -23822,7 +23671,7 @@ void js_register_cocos2dx_Label(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("createWithBMFont", js_cocos2dx_Label_createWithBMFont, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("createWithTTF", js_cocos2dx_Label_createWithTTF, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("create", js_cocos2dx_Label_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
 

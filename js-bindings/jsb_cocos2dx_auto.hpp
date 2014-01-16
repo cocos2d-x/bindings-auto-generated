@@ -1573,6 +1573,7 @@ JSBool js_cocos2dx_Label_getScaleX(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_setString(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getYOffsetForChar(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_recordPlaceholderInfo(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Label_setBMFontFilePath(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getXOffsetForChar(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getLetterPosXLeft(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_setLineBreakWithoutSpace(JSContext *cx, uint32_t argc, jsval *vp);
@@ -1584,14 +1585,13 @@ JSBool js_cocos2dx_Label_getKerningForCharsPair(JSContext *cx, uint32_t argc, js
 JSBool js_cocos2dx_Label_setLabelContentSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_assignNewUTF8String(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getLetter(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Label_setText(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getUTF8String(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getTextAlignment(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_recordLetterInfo(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_setAlignment(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_getAdvanceForChar(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Label_createWithBMFont(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Label_createWithTTF(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Label_create(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_Layer_class;
 extern JSObject *jsb_cocos2d_Layer_prototype;
