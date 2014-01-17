@@ -23322,6 +23322,84 @@ JSBool js_cocos2dx_Label_onDraw(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Label_onDraw : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Label_setCharMap(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+
+	JSObject *obj = NULL;
+	cocos2d::Label* cobj = NULL;
+	obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cobj = (cocos2d::Label *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Label_setCharMap : Invalid Native Object");
+	do {
+		if (argc == 4) {
+			cocos2d::Texture2D* arg0;
+			do {
+				if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+				js_proxy_t *proxy;
+				JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+				proxy = jsb_get_js_proxy(tmpObj);
+				arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
+				JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+			} while (0);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg1;
+			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg2;
+			ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg3;
+			ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
+			if (!ok) { ok = JS_TRUE; break; }
+			JSBool ret = cobj->setCharMap(arg0, arg1, arg2, arg3);
+			jsval jsret = JSVAL_NULL;
+			jsret = BOOLEAN_TO_JSVAL(ret);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	do {
+		if (argc == 4) {
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg1;
+			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg2;
+			ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg3;
+			ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
+			if (!ok) { ok = JS_TRUE; break; }
+			JSBool ret = cobj->setCharMap(arg0, arg1, arg2, arg3);
+			jsval jsret = JSVAL_NULL;
+			jsret = BOOLEAN_TO_JSVAL(ret);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	do {
+		if (argc == 1) {
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
+			if (!ok) { ok = JS_TRUE; break; }
+			JSBool ret = cobj->setCharMap(arg0);
+			jsval jsret = JSVAL_NULL;
+			jsret = BOOLEAN_TO_JSVAL(ret);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	JS_ReportError(cx, "js_cocos2dx_Label_setCharMap : wrong number of arguments");
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_Label_getKerningForCharsPair(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -23610,6 +23688,98 @@ JSBool js_cocos2dx_Label_create(JSContext *cx, uint32_t argc, jsval *vp)
 	return JS_FALSE;
 }
 
+JSBool js_cocos2dx_Label_createWithCharMap(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
+	
+	do {
+		if (argc == 4) {
+			cocos2d::Texture2D* arg0;
+			do {
+				if (!argv[0].isObject()) { ok = JS_FALSE; break; }
+				js_proxy_t *proxy;
+				JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+				proxy = jsb_get_js_proxy(tmpObj);
+				arg0 = (cocos2d::Texture2D*)(proxy ? proxy->ptr : NULL);
+				JSB_PRECONDITION2( arg0, cx, JS_FALSE, "Invalid Native Object");
+			} while (0);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg1;
+			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg2;
+			ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg3;
+			ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
+			if (!ok) { ok = JS_TRUE; break; }
+			cocos2d::Label* ret = cocos2d::Label::createWithCharMap(arg0, arg1, arg2, arg3);
+			jsval jsret = JSVAL_NULL;
+			do {
+				if (ret) {
+					js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Label>(cx, (cocos2d::Label*)ret);
+					jsret = OBJECT_TO_JSVAL(proxy->obj);
+				} else {
+					jsret = JSVAL_NULL;
+				}
+			} while (0);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while (0);
+	
+	do {
+		if (argc == 4) {
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg1;
+			ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg2;
+			ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+			if (!ok) { ok = JS_TRUE; break; }
+			int arg3;
+			ok &= jsval_to_int32(cx, argv[3], (int32_t *)&arg3);
+			if (!ok) { ok = JS_TRUE; break; }
+			cocos2d::Label* ret = cocos2d::Label::createWithCharMap(arg0, arg1, arg2, arg3);
+			jsval jsret = JSVAL_NULL;
+			do {
+				if (ret) {
+					js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Label>(cx, (cocos2d::Label*)ret);
+					jsret = OBJECT_TO_JSVAL(proxy->obj);
+				} else {
+					jsret = JSVAL_NULL;
+				}
+			} while (0);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while (0);
+	
+	do {
+		if (argc == 1) {
+			std::string arg0;
+			ok &= jsval_to_std_string(cx, argv[0], &arg0);
+			if (!ok) { ok = JS_TRUE; break; }
+			cocos2d::Label* ret = cocos2d::Label::createWithCharMap(arg0);
+			jsval jsret = JSVAL_NULL;
+			do {
+				if (ret) {
+					js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::Label>(cx, (cocos2d::Label*)ret);
+					jsret = OBJECT_TO_JSVAL(proxy->obj);
+				} else {
+					jsret = JSVAL_NULL;
+				}
+			} while (0);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while (0);
+	JS_ReportError(cx, "js_cocos2dx_Label_createWithCharMap : wrong number of arguments");
+	return JS_FALSE;
+}
 
 extern JSObject *jsb_cocos2d_SpriteBatchNode_prototype;
 
@@ -23657,6 +23827,7 @@ void js_register_cocos2dx_Label(JSContext *cx, JSObject *global) {
 		JS_FN("getCharAtStringPosition", js_cocos2dx_Label_getCharAtStringPosition, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getStringLenght", js_cocos2dx_Label_getStringLenght, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("onDraw", js_cocos2dx_Label_onDraw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setCharMap", js_cocos2dx_Label_setCharMap, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getKerningForCharsPair", js_cocos2dx_Label_getKerningForCharsPair, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setLabelContentSize", js_cocos2dx_Label_setLabelContentSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("assignNewUTF8String", js_cocos2dx_Label_assignNewUTF8String, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -23672,6 +23843,7 @@ void js_register_cocos2dx_Label(JSContext *cx, JSObject *global) {
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("createWithBMFont", js_cocos2dx_Label_createWithBMFont, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("create", js_cocos2dx_Label_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("createWithCharMap", js_cocos2dx_Label_createWithCharMap, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FS_END
 	};
 
