@@ -15,8 +15,9 @@ int lua_cocos2dx_studio_ActionObject_setCurrentTime(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -33,6 +34,7 @@ int lua_cocos2dx_studio_ActionObject_setCurrentTime(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -59,8 +61,9 @@ int lua_cocos2dx_studio_ActionObject_pause(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -101,8 +104,9 @@ int lua_cocos2dx_studio_ActionObject_setName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -119,6 +123,7 @@ int lua_cocos2dx_studio_ActionObject_setName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -145,8 +150,9 @@ int lua_cocos2dx_studio_ActionObject_setUnitTime(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -163,6 +169,7 @@ int lua_cocos2dx_studio_ActionObject_setUnitTime(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -189,8 +196,9 @@ int lua_cocos2dx_studio_ActionObject_getTotalTime(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -232,8 +240,9 @@ int lua_cocos2dx_studio_ActionObject_getName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -275,8 +284,9 @@ int lua_cocos2dx_studio_ActionObject_stop(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -315,8 +325,9 @@ int lua_cocos2dx_studio_ActionObject_play(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -331,7 +342,7 @@ int lua_cocos2dx_studio_ActionObject_play(lua_State* tolua_S)
         if (argc == 1) {
             cocos2d::CallFunc* arg0;
             do {
-				if (!luaval_is_usertype(tolua_S,2,"CallFunc",0)){
+				if (!luaval_is_usertype(tolua_S,2,"cc.CallFunc",0)){
 					ok = false;
 					break;
 				}
@@ -374,8 +385,9 @@ int lua_cocos2dx_studio_ActionObject_getCurrentTime(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -417,8 +429,9 @@ int lua_cocos2dx_studio_ActionObject_removeActionNode(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -435,8 +448,9 @@ int lua_cocos2dx_studio_ActionObject_removeActionNode(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::ActionNode* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"ActionNode",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.ActionNode",0)){
 					ok = false;
 					break;
 				}
@@ -470,8 +484,9 @@ int lua_cocos2dx_studio_ActionObject_getLoop(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -513,8 +528,9 @@ int lua_cocos2dx_studio_ActionObject_addActionNode(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -531,8 +547,9 @@ int lua_cocos2dx_studio_ActionObject_addActionNode(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::ActionNode* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"ActionNode",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.ActionNode",0)){
 					ok = false;
 					break;
 				}
@@ -566,8 +583,9 @@ int lua_cocos2dx_studio_ActionObject_getUnitTime(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -609,8 +627,9 @@ int lua_cocos2dx_studio_ActionObject_isPlaying(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -652,8 +671,9 @@ int lua_cocos2dx_studio_ActionObject_updateToFrameByTime(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -670,6 +690,7 @@ int lua_cocos2dx_studio_ActionObject_updateToFrameByTime(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -696,8 +717,9 @@ int lua_cocos2dx_studio_ActionObject_setLoop(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -714,6 +736,7 @@ int lua_cocos2dx_studio_ActionObject_setLoop(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -740,8 +763,9 @@ int lua_cocos2dx_studio_ActionObject_simulationActionUpdate(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionObject",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionObject",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionObject*)tolua_tousertype(tolua_S,1,0);
@@ -758,6 +782,7 @@ int lua_cocos2dx_studio_ActionObject_simulationActionUpdate(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -785,6 +810,7 @@ int lua_cocos2dx_studio_ActionObject_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -797,11 +823,11 @@ int lua_cocos2dx_studio_ActionObject_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ActionObject");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.ActionObject");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ActionObject");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.ActionObject");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -824,8 +850,8 @@ static int lua_cocos2dx_studio_ActionObject_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ActionObject(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ActionObject");
-    tolua_cclass(tolua_S,"ActionObject","ActionObject","",NULL);
+    tolua_usertype(tolua_S,"ccs.ActionObject");
+    tolua_cclass(tolua_S,"ActionObject","ccs.ActionObject","",NULL);
 
     tolua_beginmodule(tolua_S,"ActionObject");
         tolua_function(tolua_S,"setCurrentTime",lua_cocos2dx_studio_ActionObject_setCurrentTime);
@@ -848,7 +874,8 @@ int lua_register_cocos2dx_studio_ActionObject(lua_State* tolua_S)
         tolua_function(tolua_S,"new",lua_cocos2dx_studio_ActionObject_constructor);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ActionObject).name();
-    g_luaType[typeName] = "ActionObject";
+    g_luaType[typeName] = "ccs.ActionObject";
+    g_typeCast["ActionObject"] = "ccs.ActionObject";
     return 1;
 }
 
@@ -860,8 +887,9 @@ int lua_cocos2dx_studio_ActionManagerEx_playActionByName(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::ActionManagerEx*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -884,7 +912,7 @@ int lua_cocos2dx_studio_ActionManagerEx_playActionByName(lua_State* tolua_S)
             if (!ok) { break; }
             cocos2d::CallFunc* arg2;
             do {
-				if (!luaval_is_usertype(tolua_S,4,"CallFunc",0)){
+				if (!luaval_is_usertype(tolua_S,4,"cc.CallFunc",0)){
 					ok = false;
 					break;
 				}
@@ -904,7 +932,7 @@ int lua_cocos2dx_studio_ActionManagerEx_playActionByName(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ActionObject";
+					className = "ccs.ActionObject";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionObject*)ret);
 				if (NULL != dynObject) {
@@ -940,7 +968,7 @@ int lua_cocos2dx_studio_ActionManagerEx_playActionByName(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ActionObject";
+					className = "ccs.ActionObject";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionObject*)ret);
 				if (NULL != dynObject) {
@@ -977,8 +1005,9 @@ int lua_cocos2dx_studio_ActionManagerEx_getActionByName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionManagerEx*)tolua_tousertype(tolua_S,1,0);
@@ -996,7 +1025,9 @@ int lua_cocos2dx_studio_ActionManagerEx_getActionByName(lua_State* tolua_S)
     {
         const char* arg0;
         const char* arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
@@ -1009,7 +1040,7 @@ int lua_cocos2dx_studio_ActionManagerEx_getActionByName(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ActionObject";
+					className = "ccs.ActionObject";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionObject*)ret);
 				if (NULL != dynObject) {
@@ -1044,8 +1075,9 @@ int lua_cocos2dx_studio_ActionManagerEx_releaseActions(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ActionManagerEx*)tolua_tousertype(tolua_S,1,0);
@@ -1086,7 +1118,7 @@ int lua_cocos2dx_studio_ActionManagerEx_destroyInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -1116,7 +1148,7 @@ int lua_cocos2dx_studio_ActionManagerEx_getInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ActionManagerEx",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -1134,7 +1166,7 @@ int lua_cocos2dx_studio_ActionManagerEx_getInstance(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ActionManagerEx";
+					className = "ccs.ActionManagerEx";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ActionManagerEx*)ret);
 				if (NULL != dynObject) {
@@ -1165,8 +1197,8 @@ static int lua_cocos2dx_studio_ActionManagerEx_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ActionManagerEx(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ActionManagerEx");
-    tolua_cclass(tolua_S,"ActionManagerEx","ActionManagerEx","",NULL);
+    tolua_usertype(tolua_S,"ccs.ActionManagerEx");
+    tolua_cclass(tolua_S,"ActionManagerEx","ccs.ActionManagerEx","",NULL);
 
     tolua_beginmodule(tolua_S,"ActionManagerEx");
         tolua_function(tolua_S,"playActionByName",lua_cocos2dx_studio_ActionManagerEx_playActionByName);
@@ -1176,7 +1208,8 @@ int lua_register_cocos2dx_studio_ActionManagerEx(lua_State* tolua_S)
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_studio_ActionManagerEx_getInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ActionManagerEx).name();
-    g_luaType[typeName] = "ActionManagerEx";
+    g_luaType[typeName] = "ccs.ActionManagerEx";
+    g_typeCast["ActionManagerEx"] = "ccs.ActionManagerEx";
     return 1;
 }
 
@@ -1190,8 +1223,9 @@ int lua_cocos2dx_studio_BaseData_getColor(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"BaseData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.BaseData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::BaseData*)tolua_tousertype(tolua_S,1,0);
@@ -1233,8 +1267,9 @@ int lua_cocos2dx_studio_BaseData_setColor(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"BaseData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.BaseData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::BaseData*)tolua_tousertype(tolua_S,1,0);
@@ -1251,6 +1286,7 @@ int lua_cocos2dx_studio_BaseData_setColor(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Color4B arg0;
+
         ok &=luaval_to_color4b(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -1277,7 +1313,7 @@ int lua_cocos2dx_studio_BaseData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"BaseData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.BaseData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -1295,7 +1331,7 @@ int lua_cocos2dx_studio_BaseData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "BaseData";
+					className = "ccs.BaseData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BaseData*)ret);
 				if (NULL != dynObject) {
@@ -1329,6 +1365,7 @@ int lua_cocos2dx_studio_BaseData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -1341,11 +1378,11 @@ int lua_cocos2dx_studio_BaseData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"BaseData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.BaseData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"BaseData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.BaseData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -1368,8 +1405,8 @@ static int lua_cocos2dx_studio_BaseData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_BaseData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"BaseData");
-    tolua_cclass(tolua_S,"BaseData","BaseData","",NULL);
+    tolua_usertype(tolua_S,"ccs.BaseData");
+    tolua_cclass(tolua_S,"BaseData","ccs.BaseData","",NULL);
 
     tolua_beginmodule(tolua_S,"BaseData");
         tolua_function(tolua_S,"getColor",lua_cocos2dx_studio_BaseData_getColor);
@@ -1378,7 +1415,8 @@ int lua_register_cocos2dx_studio_BaseData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_BaseData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::BaseData).name();
-    g_luaType[typeName] = "BaseData";
+    g_luaType[typeName] = "ccs.BaseData";
+    g_typeCast["BaseData"] = "ccs.BaseData";
     return 1;
 }
 
@@ -1392,8 +1430,9 @@ int lua_cocos2dx_studio_DisplayData_copy(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayData*)tolua_tousertype(tolua_S,1,0);
@@ -1410,8 +1449,9 @@ int lua_cocos2dx_studio_DisplayData_copy(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::DisplayData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"DisplayData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.DisplayData",0)){
 					ok = false;
 					break;
 				}
@@ -1445,7 +1485,7 @@ int lua_cocos2dx_studio_DisplayData_changeDisplayToTexture(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"DisplayData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.DisplayData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -1478,7 +1518,7 @@ int lua_cocos2dx_studio_DisplayData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"DisplayData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.DisplayData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -1496,7 +1536,7 @@ int lua_cocos2dx_studio_DisplayData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "DisplayData";
+					className = "ccs.DisplayData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayData*)ret);
 				if (NULL != dynObject) {
@@ -1530,6 +1570,7 @@ int lua_cocos2dx_studio_DisplayData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -1542,11 +1583,11 @@ int lua_cocos2dx_studio_DisplayData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"DisplayData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.DisplayData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"DisplayData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.DisplayData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -1569,8 +1610,8 @@ static int lua_cocos2dx_studio_DisplayData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_DisplayData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"DisplayData");
-    tolua_cclass(tolua_S,"DisplayData","DisplayData","",NULL);
+    tolua_usertype(tolua_S,"ccs.DisplayData");
+    tolua_cclass(tolua_S,"DisplayData","ccs.DisplayData","",NULL);
 
     tolua_beginmodule(tolua_S,"DisplayData");
         tolua_function(tolua_S,"copy",lua_cocos2dx_studio_DisplayData_copy);
@@ -1579,7 +1620,8 @@ int lua_register_cocos2dx_studio_DisplayData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_DisplayData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::DisplayData).name();
-    g_luaType[typeName] = "DisplayData";
+    g_luaType[typeName] = "ccs.DisplayData";
+    g_typeCast["DisplayData"] = "ccs.DisplayData";
     return 1;
 }
 
@@ -1593,8 +1635,9 @@ int lua_cocos2dx_studio_SpriteDisplayData_copy(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SpriteDisplayData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.SpriteDisplayData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::SpriteDisplayData*)tolua_tousertype(tolua_S,1,0);
@@ -1611,8 +1654,9 @@ int lua_cocos2dx_studio_SpriteDisplayData_copy(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::DisplayData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"DisplayData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.DisplayData",0)){
 					ok = false;
 					break;
 				}
@@ -1646,7 +1690,7 @@ int lua_cocos2dx_studio_SpriteDisplayData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"SpriteDisplayData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.SpriteDisplayData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -1664,7 +1708,7 @@ int lua_cocos2dx_studio_SpriteDisplayData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "SpriteDisplayData";
+					className = "ccs.SpriteDisplayData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::SpriteDisplayData*)ret);
 				if (NULL != dynObject) {
@@ -1698,6 +1742,7 @@ int lua_cocos2dx_studio_SpriteDisplayData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -1710,11 +1755,11 @@ int lua_cocos2dx_studio_SpriteDisplayData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"SpriteDisplayData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.SpriteDisplayData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"SpriteDisplayData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.SpriteDisplayData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -1737,8 +1782,8 @@ static int lua_cocos2dx_studio_SpriteDisplayData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_SpriteDisplayData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"SpriteDisplayData");
-    tolua_cclass(tolua_S,"SpriteDisplayData","SpriteDisplayData","DisplayData",NULL);
+    tolua_usertype(tolua_S,"ccs.SpriteDisplayData");
+    tolua_cclass(tolua_S,"SpriteDisplayData","ccs.SpriteDisplayData","ccs.DisplayData",NULL);
 
     tolua_beginmodule(tolua_S,"SpriteDisplayData");
         tolua_function(tolua_S,"copy",lua_cocos2dx_studio_SpriteDisplayData_copy);
@@ -1746,7 +1791,8 @@ int lua_register_cocos2dx_studio_SpriteDisplayData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_SpriteDisplayData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::SpriteDisplayData).name();
-    g_luaType[typeName] = "SpriteDisplayData";
+    g_luaType[typeName] = "ccs.SpriteDisplayData";
+    g_typeCast["SpriteDisplayData"] = "ccs.SpriteDisplayData";
     return 1;
 }
 
@@ -1760,7 +1806,7 @@ int lua_cocos2dx_studio_ArmatureDisplayData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ArmatureDisplayData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ArmatureDisplayData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -1778,7 +1824,7 @@ int lua_cocos2dx_studio_ArmatureDisplayData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ArmatureDisplayData";
+					className = "ccs.ArmatureDisplayData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureDisplayData*)ret);
 				if (NULL != dynObject) {
@@ -1812,6 +1858,7 @@ int lua_cocos2dx_studio_ArmatureDisplayData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -1824,11 +1871,11 @@ int lua_cocos2dx_studio_ArmatureDisplayData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ArmatureDisplayData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.ArmatureDisplayData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ArmatureDisplayData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.ArmatureDisplayData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -1851,14 +1898,15 @@ static int lua_cocos2dx_studio_ArmatureDisplayData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ArmatureDisplayData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ArmatureDisplayData");
-    tolua_cclass(tolua_S,"ArmatureDisplayData","ArmatureDisplayData","DisplayData",NULL);
+    tolua_usertype(tolua_S,"ccs.ArmatureDisplayData");
+    tolua_cclass(tolua_S,"ArmatureDisplayData","ccs.ArmatureDisplayData","ccs.DisplayData",NULL);
 
     tolua_beginmodule(tolua_S,"ArmatureDisplayData");
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ArmatureDisplayData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ArmatureDisplayData).name();
-    g_luaType[typeName] = "ArmatureDisplayData";
+    g_luaType[typeName] = "ccs.ArmatureDisplayData";
+    g_typeCast["ArmatureDisplayData"] = "ccs.ArmatureDisplayData";
     return 1;
 }
 
@@ -1872,7 +1920,7 @@ int lua_cocos2dx_studio_ParticleDisplayData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ParticleDisplayData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ParticleDisplayData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -1890,7 +1938,7 @@ int lua_cocos2dx_studio_ParticleDisplayData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ParticleDisplayData";
+					className = "ccs.ParticleDisplayData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ParticleDisplayData*)ret);
 				if (NULL != dynObject) {
@@ -1924,6 +1972,7 @@ int lua_cocos2dx_studio_ParticleDisplayData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -1936,11 +1985,11 @@ int lua_cocos2dx_studio_ParticleDisplayData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ParticleDisplayData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.ParticleDisplayData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ParticleDisplayData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.ParticleDisplayData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -1963,14 +2012,15 @@ static int lua_cocos2dx_studio_ParticleDisplayData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ParticleDisplayData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ParticleDisplayData");
-    tolua_cclass(tolua_S,"ParticleDisplayData","ParticleDisplayData","DisplayData",NULL);
+    tolua_usertype(tolua_S,"ccs.ParticleDisplayData");
+    tolua_cclass(tolua_S,"ParticleDisplayData","ccs.ParticleDisplayData","ccs.DisplayData",NULL);
 
     tolua_beginmodule(tolua_S,"ParticleDisplayData");
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ParticleDisplayData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ParticleDisplayData).name();
-    g_luaType[typeName] = "ParticleDisplayData";
+    g_luaType[typeName] = "ccs.ParticleDisplayData";
+    g_typeCast["ParticleDisplayData"] = "ccs.ParticleDisplayData";
     return 1;
 }
 
@@ -1984,8 +2034,9 @@ int lua_cocos2dx_studio_BoneData_getDisplayData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"BoneData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.BoneData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::BoneData*)tolua_tousertype(tolua_S,1,0);
@@ -2002,6 +2053,7 @@ int lua_cocos2dx_studio_BoneData_getDisplayData(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -2014,7 +2066,7 @@ int lua_cocos2dx_studio_BoneData_getDisplayData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "DisplayData";
+					className = "ccs.DisplayData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayData*)ret);
 				if (NULL != dynObject) {
@@ -2049,8 +2101,9 @@ int lua_cocos2dx_studio_BoneData_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"BoneData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.BoneData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::BoneData*)tolua_tousertype(tolua_S,1,0);
@@ -2092,8 +2145,9 @@ int lua_cocos2dx_studio_BoneData_addDisplayData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"BoneData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.BoneData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::BoneData*)tolua_tousertype(tolua_S,1,0);
@@ -2110,8 +2164,9 @@ int lua_cocos2dx_studio_BoneData_addDisplayData(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::DisplayData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"DisplayData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.DisplayData",0)){
 					ok = false;
 					break;
 				}
@@ -2145,7 +2200,7 @@ int lua_cocos2dx_studio_BoneData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"BoneData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.BoneData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -2163,7 +2218,7 @@ int lua_cocos2dx_studio_BoneData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "BoneData";
+					className = "ccs.BoneData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BoneData*)ret);
 				if (NULL != dynObject) {
@@ -2197,6 +2252,7 @@ int lua_cocos2dx_studio_BoneData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -2209,11 +2265,11 @@ int lua_cocos2dx_studio_BoneData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"BoneData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.BoneData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"BoneData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.BoneData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -2236,8 +2292,8 @@ static int lua_cocos2dx_studio_BoneData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_BoneData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"BoneData");
-    tolua_cclass(tolua_S,"BoneData","BoneData","BaseData",NULL);
+    tolua_usertype(tolua_S,"ccs.BoneData");
+    tolua_cclass(tolua_S,"BoneData","ccs.BoneData","ccs.BaseData",NULL);
 
     tolua_beginmodule(tolua_S,"BoneData");
         tolua_function(tolua_S,"getDisplayData",lua_cocos2dx_studio_BoneData_getDisplayData);
@@ -2247,7 +2303,8 @@ int lua_register_cocos2dx_studio_BoneData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_BoneData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::BoneData).name();
-    g_luaType[typeName] = "BoneData";
+    g_luaType[typeName] = "ccs.BoneData";
+    g_typeCast["BoneData"] = "ccs.BoneData";
     return 1;
 }
 
@@ -2261,8 +2318,9 @@ int lua_cocos2dx_studio_ArmatureData_addBoneData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureData*)tolua_tousertype(tolua_S,1,0);
@@ -2279,8 +2337,9 @@ int lua_cocos2dx_studio_ArmatureData_addBoneData(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::BoneData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"BoneData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.BoneData",0)){
 					ok = false;
 					break;
 				}
@@ -2314,8 +2373,9 @@ int lua_cocos2dx_studio_ArmatureData_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureData*)tolua_tousertype(tolua_S,1,0);
@@ -2357,8 +2417,9 @@ int lua_cocos2dx_studio_ArmatureData_getBoneData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureData*)tolua_tousertype(tolua_S,1,0);
@@ -2375,6 +2436,7 @@ int lua_cocos2dx_studio_ArmatureData_getBoneData(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -2387,7 +2449,7 @@ int lua_cocos2dx_studio_ArmatureData_getBoneData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "BoneData";
+					className = "ccs.BoneData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BoneData*)ret);
 				if (NULL != dynObject) {
@@ -2422,7 +2484,7 @@ int lua_cocos2dx_studio_ArmatureData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ArmatureData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ArmatureData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -2440,7 +2502,7 @@ int lua_cocos2dx_studio_ArmatureData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ArmatureData";
+					className = "ccs.ArmatureData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureData*)ret);
 				if (NULL != dynObject) {
@@ -2474,6 +2536,7 @@ int lua_cocos2dx_studio_ArmatureData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -2486,11 +2549,11 @@ int lua_cocos2dx_studio_ArmatureData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ArmatureData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.ArmatureData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ArmatureData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.ArmatureData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -2513,8 +2576,8 @@ static int lua_cocos2dx_studio_ArmatureData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ArmatureData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ArmatureData");
-    tolua_cclass(tolua_S,"ArmatureData","ArmatureData","",NULL);
+    tolua_usertype(tolua_S,"ccs.ArmatureData");
+    tolua_cclass(tolua_S,"ArmatureData","ccs.ArmatureData","",NULL);
 
     tolua_beginmodule(tolua_S,"ArmatureData");
         tolua_function(tolua_S,"addBoneData",lua_cocos2dx_studio_ArmatureData_addBoneData);
@@ -2524,7 +2587,8 @@ int lua_register_cocos2dx_studio_ArmatureData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ArmatureData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ArmatureData).name();
-    g_luaType[typeName] = "ArmatureData";
+    g_luaType[typeName] = "ccs.ArmatureData";
+    g_typeCast["ArmatureData"] = "ccs.ArmatureData";
     return 1;
 }
 
@@ -2538,8 +2602,9 @@ int lua_cocos2dx_studio_FrameData_copy(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"FrameData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.FrameData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::FrameData*)tolua_tousertype(tolua_S,1,0);
@@ -2556,8 +2621,9 @@ int lua_cocos2dx_studio_FrameData_copy(lua_State* tolua_S)
     if (argc == 1) 
     {
         const cocostudio::BaseData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"BaseData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.BaseData",0)){
 					ok = false;
 					break;
 				}
@@ -2591,7 +2657,7 @@ int lua_cocos2dx_studio_FrameData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"FrameData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.FrameData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -2609,7 +2675,7 @@ int lua_cocos2dx_studio_FrameData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "FrameData";
+					className = "ccs.FrameData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::FrameData*)ret);
 				if (NULL != dynObject) {
@@ -2643,6 +2709,7 @@ int lua_cocos2dx_studio_FrameData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -2655,11 +2722,11 @@ int lua_cocos2dx_studio_FrameData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"FrameData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.FrameData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"FrameData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.FrameData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -2682,8 +2749,8 @@ static int lua_cocos2dx_studio_FrameData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_FrameData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"FrameData");
-    tolua_cclass(tolua_S,"FrameData","FrameData","BaseData",NULL);
+    tolua_usertype(tolua_S,"ccs.FrameData");
+    tolua_cclass(tolua_S,"FrameData","ccs.FrameData","ccs.BaseData",NULL);
 
     tolua_beginmodule(tolua_S,"FrameData");
         tolua_function(tolua_S,"copy",lua_cocos2dx_studio_FrameData_copy);
@@ -2691,7 +2758,8 @@ int lua_register_cocos2dx_studio_FrameData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_FrameData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::FrameData).name();
-    g_luaType[typeName] = "FrameData";
+    g_luaType[typeName] = "ccs.FrameData";
+    g_typeCast["FrameData"] = "ccs.FrameData";
     return 1;
 }
 
@@ -2705,8 +2773,9 @@ int lua_cocos2dx_studio_MovementBoneData_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"MovementBoneData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.MovementBoneData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::MovementBoneData*)tolua_tousertype(tolua_S,1,0);
@@ -2748,8 +2817,9 @@ int lua_cocos2dx_studio_MovementBoneData_getFrameData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"MovementBoneData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.MovementBoneData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::MovementBoneData*)tolua_tousertype(tolua_S,1,0);
@@ -2766,6 +2836,7 @@ int lua_cocos2dx_studio_MovementBoneData_getFrameData(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -2778,7 +2849,7 @@ int lua_cocos2dx_studio_MovementBoneData_getFrameData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "FrameData";
+					className = "ccs.FrameData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::FrameData*)ret);
 				if (NULL != dynObject) {
@@ -2813,8 +2884,9 @@ int lua_cocos2dx_studio_MovementBoneData_addFrameData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"MovementBoneData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.MovementBoneData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::MovementBoneData*)tolua_tousertype(tolua_S,1,0);
@@ -2831,8 +2903,9 @@ int lua_cocos2dx_studio_MovementBoneData_addFrameData(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::FrameData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"FrameData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.FrameData",0)){
 					ok = false;
 					break;
 				}
@@ -2866,7 +2939,7 @@ int lua_cocos2dx_studio_MovementBoneData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"MovementBoneData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.MovementBoneData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -2884,7 +2957,7 @@ int lua_cocos2dx_studio_MovementBoneData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "MovementBoneData";
+					className = "ccs.MovementBoneData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementBoneData*)ret);
 				if (NULL != dynObject) {
@@ -2918,6 +2991,7 @@ int lua_cocos2dx_studio_MovementBoneData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -2930,11 +3004,11 @@ int lua_cocos2dx_studio_MovementBoneData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MovementBoneData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.MovementBoneData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"MovementBoneData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.MovementBoneData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -2957,8 +3031,8 @@ static int lua_cocos2dx_studio_MovementBoneData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_MovementBoneData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"MovementBoneData");
-    tolua_cclass(tolua_S,"MovementBoneData","MovementBoneData","",NULL);
+    tolua_usertype(tolua_S,"ccs.MovementBoneData");
+    tolua_cclass(tolua_S,"MovementBoneData","ccs.MovementBoneData","",NULL);
 
     tolua_beginmodule(tolua_S,"MovementBoneData");
         tolua_function(tolua_S,"init",lua_cocos2dx_studio_MovementBoneData_init);
@@ -2968,7 +3042,8 @@ int lua_register_cocos2dx_studio_MovementBoneData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_MovementBoneData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::MovementBoneData).name();
-    g_luaType[typeName] = "MovementBoneData";
+    g_luaType[typeName] = "ccs.MovementBoneData";
+    g_typeCast["MovementBoneData"] = "ccs.MovementBoneData";
     return 1;
 }
 
@@ -2982,8 +3057,9 @@ int lua_cocos2dx_studio_MovementData_getMovementBoneData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"MovementData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.MovementData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::MovementData*)tolua_tousertype(tolua_S,1,0);
@@ -3000,6 +3076,7 @@ int lua_cocos2dx_studio_MovementData_getMovementBoneData(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -3012,7 +3089,7 @@ int lua_cocos2dx_studio_MovementData_getMovementBoneData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "MovementBoneData";
+					className = "ccs.MovementBoneData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementBoneData*)ret);
 				if (NULL != dynObject) {
@@ -3047,8 +3124,9 @@ int lua_cocos2dx_studio_MovementData_addMovementBoneData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"MovementData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.MovementData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::MovementData*)tolua_tousertype(tolua_S,1,0);
@@ -3065,8 +3143,9 @@ int lua_cocos2dx_studio_MovementData_addMovementBoneData(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::MovementBoneData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"MovementBoneData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.MovementBoneData",0)){
 					ok = false;
 					break;
 				}
@@ -3100,7 +3179,7 @@ int lua_cocos2dx_studio_MovementData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"MovementData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.MovementData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -3118,7 +3197,7 @@ int lua_cocos2dx_studio_MovementData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "MovementData";
+					className = "ccs.MovementData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementData*)ret);
 				if (NULL != dynObject) {
@@ -3152,6 +3231,7 @@ int lua_cocos2dx_studio_MovementData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -3164,11 +3244,11 @@ int lua_cocos2dx_studio_MovementData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"MovementData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.MovementData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"MovementData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.MovementData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -3191,8 +3271,8 @@ static int lua_cocos2dx_studio_MovementData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_MovementData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"MovementData");
-    tolua_cclass(tolua_S,"MovementData","MovementData","",NULL);
+    tolua_usertype(tolua_S,"ccs.MovementData");
+    tolua_cclass(tolua_S,"MovementData","ccs.MovementData","",NULL);
 
     tolua_beginmodule(tolua_S,"MovementData");
         tolua_function(tolua_S,"getMovementBoneData",lua_cocos2dx_studio_MovementData_getMovementBoneData);
@@ -3201,7 +3281,8 @@ int lua_register_cocos2dx_studio_MovementData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_MovementData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::MovementData).name();
-    g_luaType[typeName] = "MovementData";
+    g_luaType[typeName] = "ccs.MovementData";
+    g_typeCast["MovementData"] = "ccs.MovementData";
     return 1;
 }
 
@@ -3215,8 +3296,9 @@ int lua_cocos2dx_studio_AnimationData_getMovement(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"AnimationData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.AnimationData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::AnimationData*)tolua_tousertype(tolua_S,1,0);
@@ -3233,6 +3315,7 @@ int lua_cocos2dx_studio_AnimationData_getMovement(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -3245,7 +3328,7 @@ int lua_cocos2dx_studio_AnimationData_getMovement(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "MovementData";
+					className = "ccs.MovementData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::MovementData*)ret);
 				if (NULL != dynObject) {
@@ -3280,8 +3363,9 @@ int lua_cocos2dx_studio_AnimationData_getMovementCount(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"AnimationData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.AnimationData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::AnimationData*)tolua_tousertype(tolua_S,1,0);
@@ -3323,8 +3407,9 @@ int lua_cocos2dx_studio_AnimationData_addMovement(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"AnimationData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.AnimationData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::AnimationData*)tolua_tousertype(tolua_S,1,0);
@@ -3341,8 +3426,9 @@ int lua_cocos2dx_studio_AnimationData_addMovement(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::MovementData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"MovementData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.MovementData",0)){
 					ok = false;
 					break;
 				}
@@ -3376,7 +3462,7 @@ int lua_cocos2dx_studio_AnimationData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"AnimationData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.AnimationData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -3394,7 +3480,7 @@ int lua_cocos2dx_studio_AnimationData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "AnimationData";
+					className = "ccs.AnimationData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::AnimationData*)ret);
 				if (NULL != dynObject) {
@@ -3428,6 +3514,7 @@ int lua_cocos2dx_studio_AnimationData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -3440,11 +3527,11 @@ int lua_cocos2dx_studio_AnimationData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"AnimationData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.AnimationData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"AnimationData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.AnimationData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -3467,8 +3554,8 @@ static int lua_cocos2dx_studio_AnimationData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_AnimationData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"AnimationData");
-    tolua_cclass(tolua_S,"AnimationData","AnimationData","",NULL);
+    tolua_usertype(tolua_S,"ccs.AnimationData");
+    tolua_cclass(tolua_S,"AnimationData","ccs.AnimationData","",NULL);
 
     tolua_beginmodule(tolua_S,"AnimationData");
         tolua_function(tolua_S,"getMovement",lua_cocos2dx_studio_AnimationData_getMovement);
@@ -3478,7 +3565,8 @@ int lua_register_cocos2dx_studio_AnimationData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_AnimationData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::AnimationData).name();
-    g_luaType[typeName] = "AnimationData";
+    g_luaType[typeName] = "ccs.AnimationData";
+    g_typeCast["AnimationData"] = "ccs.AnimationData";
     return 1;
 }
 
@@ -3492,8 +3580,9 @@ int lua_cocos2dx_studio_ContourData_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ContourData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ContourData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ContourData*)tolua_tousertype(tolua_S,1,0);
@@ -3535,8 +3624,9 @@ int lua_cocos2dx_studio_ContourData_addVertex(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ContourData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ContourData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ContourData*)tolua_tousertype(tolua_S,1,0);
@@ -3553,6 +3643,7 @@ int lua_cocos2dx_studio_ContourData_addVertex(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Point arg0;
+
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -3579,7 +3670,7 @@ int lua_cocos2dx_studio_ContourData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ContourData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ContourData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -3597,7 +3688,7 @@ int lua_cocos2dx_studio_ContourData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ContourData";
+					className = "ccs.ContourData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ContourData*)ret);
 				if (NULL != dynObject) {
@@ -3631,6 +3722,7 @@ int lua_cocos2dx_studio_ContourData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -3643,11 +3735,11 @@ int lua_cocos2dx_studio_ContourData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ContourData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.ContourData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ContourData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.ContourData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -3670,8 +3762,8 @@ static int lua_cocos2dx_studio_ContourData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ContourData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ContourData");
-    tolua_cclass(tolua_S,"ContourData","ContourData","",NULL);
+    tolua_usertype(tolua_S,"ccs.ContourData");
+    tolua_cclass(tolua_S,"ContourData","ccs.ContourData","",NULL);
 
     tolua_beginmodule(tolua_S,"ContourData");
         tolua_function(tolua_S,"init",lua_cocos2dx_studio_ContourData_init);
@@ -3680,7 +3772,8 @@ int lua_register_cocos2dx_studio_ContourData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ContourData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ContourData).name();
-    g_luaType[typeName] = "ContourData";
+    g_luaType[typeName] = "ccs.ContourData";
+    g_typeCast["ContourData"] = "ccs.ContourData";
     return 1;
 }
 
@@ -3694,8 +3787,9 @@ int lua_cocos2dx_studio_TextureData_getContourData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextureData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.TextureData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::TextureData*)tolua_tousertype(tolua_S,1,0);
@@ -3712,6 +3806,7 @@ int lua_cocos2dx_studio_TextureData_getContourData(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -3724,7 +3819,7 @@ int lua_cocos2dx_studio_TextureData_getContourData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ContourData";
+					className = "ccs.ContourData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ContourData*)ret);
 				if (NULL != dynObject) {
@@ -3759,8 +3854,9 @@ int lua_cocos2dx_studio_TextureData_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextureData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.TextureData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::TextureData*)tolua_tousertype(tolua_S,1,0);
@@ -3802,8 +3898,9 @@ int lua_cocos2dx_studio_TextureData_addContourData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextureData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.TextureData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::TextureData*)tolua_tousertype(tolua_S,1,0);
@@ -3820,8 +3917,9 @@ int lua_cocos2dx_studio_TextureData_addContourData(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::ContourData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"ContourData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.ContourData",0)){
 					ok = false;
 					break;
 				}
@@ -3855,7 +3953,7 @@ int lua_cocos2dx_studio_TextureData_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"TextureData",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.TextureData",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -3873,7 +3971,7 @@ int lua_cocos2dx_studio_TextureData_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "TextureData";
+					className = "ccs.TextureData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::TextureData*)ret);
 				if (NULL != dynObject) {
@@ -3907,6 +4005,7 @@ int lua_cocos2dx_studio_TextureData_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -3919,11 +4018,11 @@ int lua_cocos2dx_studio_TextureData_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TextureData");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.TextureData");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"TextureData");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.TextureData");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -3946,8 +4045,8 @@ static int lua_cocos2dx_studio_TextureData_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_TextureData(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"TextureData");
-    tolua_cclass(tolua_S,"TextureData","TextureData","",NULL);
+    tolua_usertype(tolua_S,"ccs.TextureData");
+    tolua_cclass(tolua_S,"TextureData","ccs.TextureData","",NULL);
 
     tolua_beginmodule(tolua_S,"TextureData");
         tolua_function(tolua_S,"getContourData",lua_cocos2dx_studio_TextureData_getContourData);
@@ -3957,7 +4056,8 @@ int lua_register_cocos2dx_studio_TextureData(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_TextureData_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::TextureData).name();
-    g_luaType[typeName] = "TextureData";
+    g_luaType[typeName] = "ccs.TextureData";
+    g_typeCast["TextureData"] = "ccs.TextureData";
     return 1;
 }
 
@@ -3971,8 +4071,9 @@ int lua_cocos2dx_studio_Tween_getAnimation(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Tween",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Tween",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Tween*)tolua_tousertype(tolua_S,1,0);
@@ -3999,7 +4100,7 @@ int lua_cocos2dx_studio_Tween_getAnimation(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ArmatureAnimation";
+					className = "ccs.ArmatureAnimation";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureAnimation*)ret);
 				if (NULL != dynObject) {
@@ -4034,8 +4135,9 @@ int lua_cocos2dx_studio_Tween_gotoAndPause(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Tween",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Tween",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Tween*)tolua_tousertype(tolua_S,1,0);
@@ -4052,6 +4154,7 @@ int lua_cocos2dx_studio_Tween_gotoAndPause(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -4078,8 +4181,9 @@ int lua_cocos2dx_studio_Tween_play(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Tween",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Tween",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Tween*)tolua_tousertype(tolua_S,1,0);
@@ -4100,8 +4204,9 @@ int lua_cocos2dx_studio_Tween_play(lua_State* tolua_S)
         int arg2;
         int arg3;
         int arg4;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"MovementBoneData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.MovementBoneData",0)){
 					ok = false;
 					break;
 				}
@@ -4110,9 +4215,13 @@ int lua_cocos2dx_studio_Tween_play(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
+
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
+
         ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
         if(!ok)
             return 0;
@@ -4139,8 +4248,9 @@ int lua_cocos2dx_studio_Tween_gotoAndPlay(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Tween",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Tween",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Tween*)tolua_tousertype(tolua_S,1,0);
@@ -4157,6 +4267,7 @@ int lua_cocos2dx_studio_Tween_gotoAndPlay(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -4183,8 +4294,9 @@ int lua_cocos2dx_studio_Tween_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Tween",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Tween",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Tween*)tolua_tousertype(tolua_S,1,0);
@@ -4201,8 +4313,9 @@ int lua_cocos2dx_studio_Tween_init(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::Bone* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -4237,8 +4350,9 @@ int lua_cocos2dx_studio_Tween_setAnimation(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Tween",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Tween",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Tween*)tolua_tousertype(tolua_S,1,0);
@@ -4255,8 +4369,9 @@ int lua_cocos2dx_studio_Tween_setAnimation(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::ArmatureAnimation* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"ArmatureAnimation",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.ArmatureAnimation",0)){
 					ok = false;
 					break;
 				}
@@ -4290,7 +4405,7 @@ int lua_cocos2dx_studio_Tween_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Tween",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.Tween",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -4299,7 +4414,7 @@ int lua_cocos2dx_studio_Tween_create(lua_State* tolua_S)
     {
         cocostudio::Bone* arg0;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -4319,7 +4434,7 @@ int lua_cocos2dx_studio_Tween_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Tween";
+					className = "ccs.Tween";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Tween*)ret);
 				if (NULL != dynObject) {
@@ -4353,6 +4468,7 @@ int lua_cocos2dx_studio_Tween_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -4365,11 +4481,11 @@ int lua_cocos2dx_studio_Tween_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Tween");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.Tween");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"Tween");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.Tween");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -4392,8 +4508,8 @@ static int lua_cocos2dx_studio_Tween_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_Tween(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Tween");
-    tolua_cclass(tolua_S,"Tween","Tween","",NULL);
+    tolua_usertype(tolua_S,"ccs.Tween");
+    tolua_cclass(tolua_S,"Tween","ccs.Tween","",NULL);
 
     tolua_beginmodule(tolua_S,"Tween");
         tolua_function(tolua_S,"getAnimation",lua_cocos2dx_studio_Tween_getAnimation);
@@ -4406,7 +4522,8 @@ int lua_register_cocos2dx_studio_Tween(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_Tween_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::Tween).name();
-    g_luaType[typeName] = "Tween";
+    g_luaType[typeName] = "ccs.Tween";
+    g_typeCast["Tween"] = "ccs.Tween";
     return 1;
 }
 
@@ -4420,8 +4537,9 @@ int lua_cocos2dx_studio_DisplayManager_getDisplayRenderNode(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4448,7 +4566,7 @@ int lua_cocos2dx_studio_DisplayManager_getDisplayRenderNode(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Node";
+					className = "cc.Node";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
@@ -4483,8 +4601,9 @@ int lua_cocos2dx_studio_DisplayManager_getAnchorPointInPoints(lua_State* tolua_S
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4526,8 +4645,9 @@ int lua_cocos2dx_studio_DisplayManager_getDisplayRenderNodeType(lua_State* tolua
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4569,8 +4689,9 @@ int lua_cocos2dx_studio_DisplayManager_removeDisplay(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4587,6 +4708,7 @@ int lua_cocos2dx_studio_DisplayManager_removeDisplay(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -4613,8 +4735,9 @@ int lua_cocos2dx_studio_DisplayManager_setForceChangeDisplay(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4631,6 +4754,7 @@ int lua_cocos2dx_studio_DisplayManager_setForceChangeDisplay(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -4657,8 +4781,9 @@ int lua_cocos2dx_studio_DisplayManager_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4675,8 +4800,9 @@ int lua_cocos2dx_studio_DisplayManager_init(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::Bone* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -4711,8 +4837,9 @@ int lua_cocos2dx_studio_DisplayManager_getContentSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4754,8 +4881,9 @@ int lua_cocos2dx_studio_DisplayManager_getBoundingBox(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4795,8 +4923,9 @@ int lua_cocos2dx_studio_DisplayManager_addDisplay(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -4811,7 +4940,7 @@ int lua_cocos2dx_studio_DisplayManager_addDisplay(lua_State* tolua_S)
         if (argc == 2) {
             cocos2d::Node* arg0;
             do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
 					ok = false;
 					break;
 				}
@@ -4835,7 +4964,7 @@ int lua_cocos2dx_studio_DisplayManager_addDisplay(lua_State* tolua_S)
         if (argc == 2) {
             cocostudio::DisplayData* arg0;
             do {
-				if (!luaval_is_usertype(tolua_S,2,"DisplayData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.DisplayData",0)){
 					ok = false;
 					break;
 				}
@@ -4873,8 +5002,9 @@ int lua_cocos2dx_studio_DisplayManager_containPoint(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -4933,8 +5063,9 @@ int lua_cocos2dx_studio_DisplayManager_changeDisplayWithIndex(lua_State* tolua_S
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4952,7 +5083,9 @@ int lua_cocos2dx_studio_DisplayManager_changeDisplayWithIndex(lua_State* tolua_S
     {
         int arg0;
         bool arg1;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -4979,8 +5112,9 @@ int lua_cocos2dx_studio_DisplayManager_changeDisplayWithName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -4998,7 +5132,9 @@ int lua_cocos2dx_studio_DisplayManager_changeDisplayWithName(lua_State* tolua_S)
     {
         std::string arg0;
         bool arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -5025,8 +5161,9 @@ int lua_cocos2dx_studio_DisplayManager_isForceChangeDisplay(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -5068,8 +5205,9 @@ int lua_cocos2dx_studio_DisplayManager_getCurrentDisplayIndex(lua_State* tolua_S
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -5111,8 +5249,9 @@ int lua_cocos2dx_studio_DisplayManager_getAnchorPoint(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -5154,8 +5293,9 @@ int lua_cocos2dx_studio_DisplayManager_getDecorativeDisplayList(lua_State* tolua
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -5197,8 +5337,9 @@ int lua_cocos2dx_studio_DisplayManager_isVisible(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -5240,8 +5381,9 @@ int lua_cocos2dx_studio_DisplayManager_setVisible(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::DisplayManager*)tolua_tousertype(tolua_S,1,0);
@@ -5258,6 +5400,7 @@ int lua_cocos2dx_studio_DisplayManager_setVisible(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -5284,7 +5427,7 @@ int lua_cocos2dx_studio_DisplayManager_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"DisplayManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.DisplayManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -5293,7 +5436,7 @@ int lua_cocos2dx_studio_DisplayManager_create(lua_State* tolua_S)
     {
         cocostudio::Bone* arg0;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -5313,7 +5456,7 @@ int lua_cocos2dx_studio_DisplayManager_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "DisplayManager";
+					className = "ccs.DisplayManager";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayManager*)ret);
 				if (NULL != dynObject) {
@@ -5347,6 +5490,7 @@ int lua_cocos2dx_studio_DisplayManager_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -5359,11 +5503,11 @@ int lua_cocos2dx_studio_DisplayManager_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"DisplayManager");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.DisplayManager");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"DisplayManager");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.DisplayManager");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -5386,8 +5530,8 @@ static int lua_cocos2dx_studio_DisplayManager_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_DisplayManager(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"DisplayManager");
-    tolua_cclass(tolua_S,"DisplayManager","DisplayManager","",NULL);
+    tolua_usertype(tolua_S,"ccs.DisplayManager");
+    tolua_cclass(tolua_S,"DisplayManager","ccs.DisplayManager","",NULL);
 
     tolua_beginmodule(tolua_S,"DisplayManager");
         tolua_function(tolua_S,"getDisplayRenderNode",lua_cocos2dx_studio_DisplayManager_getDisplayRenderNode);
@@ -5412,7 +5556,8 @@ int lua_register_cocos2dx_studio_DisplayManager(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_DisplayManager_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::DisplayManager).name();
-    g_luaType[typeName] = "DisplayManager";
+    g_luaType[typeName] = "ccs.DisplayManager";
+    g_typeCast["DisplayManager"] = "ccs.DisplayManager";
     return 1;
 }
 
@@ -5426,8 +5571,9 @@ int lua_cocos2dx_studio_Bone_isTransformDirty(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5469,8 +5615,9 @@ int lua_cocos2dx_studio_Bone_isIgnoreMovementBoneData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5512,8 +5659,9 @@ int lua_cocos2dx_studio_Bone_updateZOrder(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5554,8 +5702,9 @@ int lua_cocos2dx_studio_Bone_getDisplayRenderNode(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5582,7 +5731,7 @@ int lua_cocos2dx_studio_Bone_getDisplayRenderNode(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Node";
+					className = "cc.Node";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
@@ -5617,8 +5766,9 @@ int lua_cocos2dx_studio_Bone_isBlendDirty(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5660,8 +5810,9 @@ int lua_cocos2dx_studio_Bone_addChildBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5678,8 +5829,9 @@ int lua_cocos2dx_studio_Bone_addChildBone(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::Bone* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -5713,8 +5865,9 @@ int lua_cocos2dx_studio_Bone_getWorldInfo(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5741,7 +5894,7 @@ int lua_cocos2dx_studio_Bone_getWorldInfo(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "BaseData";
+					className = "ccs.BaseData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BaseData*)ret);
 				if (NULL != dynObject) {
@@ -5776,8 +5929,9 @@ int lua_cocos2dx_studio_Bone_getTween(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5804,7 +5958,7 @@ int lua_cocos2dx_studio_Bone_getTween(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Tween";
+					className = "ccs.Tween";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Tween*)ret);
 				if (NULL != dynObject) {
@@ -5839,8 +5993,9 @@ int lua_cocos2dx_studio_Bone_getParentBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5867,7 +6022,7 @@ int lua_cocos2dx_studio_Bone_getParentBone(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Bone";
+					className = "ccs.Bone";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
@@ -5902,8 +6057,9 @@ int lua_cocos2dx_studio_Bone_updateColor(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5944,8 +6100,9 @@ int lua_cocos2dx_studio_Bone_getName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -5987,8 +6144,9 @@ int lua_cocos2dx_studio_Bone_setTransformDirty(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6005,6 +6163,7 @@ int lua_cocos2dx_studio_Bone_setTransformDirty(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -6031,8 +6190,9 @@ int lua_cocos2dx_studio_Bone_getDisplayRenderNodeType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6074,8 +6234,9 @@ int lua_cocos2dx_studio_Bone_removeDisplay(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6092,6 +6253,7 @@ int lua_cocos2dx_studio_Bone_removeDisplay(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -6118,8 +6280,9 @@ int lua_cocos2dx_studio_Bone_setBoneData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6136,8 +6299,9 @@ int lua_cocos2dx_studio_Bone_setBoneData(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::BoneData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"BoneData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.BoneData",0)){
 					ok = false;
 					break;
 				}
@@ -6169,8 +6333,9 @@ int lua_cocos2dx_studio_Bone_init(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -6221,8 +6386,9 @@ int lua_cocos2dx_studio_Bone_setParentBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6239,8 +6405,9 @@ int lua_cocos2dx_studio_Bone_setParentBone(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::Bone* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -6272,8 +6439,9 @@ int lua_cocos2dx_studio_Bone_addDisplay(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -6288,7 +6456,7 @@ int lua_cocos2dx_studio_Bone_addDisplay(lua_State* tolua_S)
         if (argc == 2) {
             cocos2d::Node* arg0;
             do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
 					ok = false;
 					break;
 				}
@@ -6312,7 +6480,7 @@ int lua_cocos2dx_studio_Bone_addDisplay(lua_State* tolua_S)
         if (argc == 2) {
             cocostudio::DisplayData* arg0;
             do {
-				if (!luaval_is_usertype(tolua_S,2,"DisplayData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.DisplayData",0)){
 					ok = false;
 					break;
 				}
@@ -6352,8 +6520,9 @@ int lua_cocos2dx_studio_Bone_setName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6370,6 +6539,7 @@ int lua_cocos2dx_studio_Bone_setName(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -6396,8 +6566,9 @@ int lua_cocos2dx_studio_Bone_removeFromParent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6414,6 +6585,7 @@ int lua_cocos2dx_studio_Bone_removeFromParent(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -6440,8 +6612,9 @@ int lua_cocos2dx_studio_Bone_getColliderDetector(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6468,7 +6641,7 @@ int lua_cocos2dx_studio_Bone_getColliderDetector(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ColliderDetector";
+					className = "ccs.ColliderDetector";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ColliderDetector*)ret);
 				if (NULL != dynObject) {
@@ -6503,8 +6676,9 @@ int lua_cocos2dx_studio_Bone_getChildArmature(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6531,7 +6705,7 @@ int lua_cocos2dx_studio_Bone_getChildArmature(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Armature";
+					className = "ccs.Armature";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
@@ -6566,8 +6740,9 @@ int lua_cocos2dx_studio_Bone_getTweenData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6594,7 +6769,7 @@ int lua_cocos2dx_studio_Bone_getTweenData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "FrameData";
+					className = "ccs.FrameData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::FrameData*)ret);
 				if (NULL != dynObject) {
@@ -6629,8 +6804,9 @@ int lua_cocos2dx_studio_Bone_changeDisplayWithIndex(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6648,7 +6824,9 @@ int lua_cocos2dx_studio_Bone_changeDisplayWithIndex(lua_State* tolua_S)
     {
         int arg0;
         bool arg1;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -6675,8 +6853,9 @@ int lua_cocos2dx_studio_Bone_changeDisplayWithName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6694,7 +6873,9 @@ int lua_cocos2dx_studio_Bone_changeDisplayWithName(lua_State* tolua_S)
     {
         std::string arg0;
         bool arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -6721,8 +6902,9 @@ int lua_cocos2dx_studio_Bone_setArmature(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6739,8 +6921,9 @@ int lua_cocos2dx_studio_Bone_setArmature(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::Armature* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Armature",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Armature",0)){
 					ok = false;
 					break;
 				}
@@ -6774,8 +6957,9 @@ int lua_cocos2dx_studio_Bone_setBlendDirty(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6792,6 +6976,7 @@ int lua_cocos2dx_studio_Bone_setBlendDirty(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -6818,8 +7003,9 @@ int lua_cocos2dx_studio_Bone_removeChildBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6837,8 +7023,9 @@ int lua_cocos2dx_studio_Bone_removeChildBone(lua_State* tolua_S)
     {
         cocostudio::Bone* arg0;
         bool arg1;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -6847,6 +7034,7 @@ int lua_cocos2dx_studio_Bone_removeChildBone(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -6873,8 +7061,9 @@ int lua_cocos2dx_studio_Bone_setChildArmature(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6891,8 +7080,9 @@ int lua_cocos2dx_studio_Bone_setChildArmature(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::Armature* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Armature",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Armature",0)){
 					ok = false;
 					break;
 				}
@@ -6926,8 +7116,9 @@ int lua_cocos2dx_studio_Bone_getNodeToArmatureTransform(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6969,8 +7160,9 @@ int lua_cocos2dx_studio_Bone_getDisplayManager(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -6997,7 +7189,7 @@ int lua_cocos2dx_studio_Bone_getDisplayManager(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "DisplayManager";
+					className = "ccs.DisplayManager";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::DisplayManager*)ret);
 				if (NULL != dynObject) {
@@ -7032,8 +7224,9 @@ int lua_cocos2dx_studio_Bone_getArmature(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -7060,7 +7253,7 @@ int lua_cocos2dx_studio_Bone_getArmature(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Armature";
+					className = "ccs.Armature";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
@@ -7095,8 +7288,9 @@ int lua_cocos2dx_studio_Bone_getBoneData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Bone*)tolua_tousertype(tolua_S,1,0);
@@ -7123,7 +7317,7 @@ int lua_cocos2dx_studio_Bone_getBoneData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "BoneData";
+					className = "ccs.BoneData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BoneData*)ret);
 				if (NULL != dynObject) {
@@ -7157,7 +7351,7 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Bone",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.Bone",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S)-1;
@@ -7178,7 +7372,7 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Bone";
+					className = "ccs.Bone";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
@@ -7208,7 +7402,7 @@ int lua_cocos2dx_studio_Bone_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Bone";
+					className = "ccs.Bone";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
@@ -7244,6 +7438,7 @@ int lua_cocos2dx_studio_Bone_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -7256,11 +7451,11 @@ int lua_cocos2dx_studio_Bone_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Bone");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.Bone");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"Bone");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.Bone");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -7283,8 +7478,8 @@ static int lua_cocos2dx_studio_Bone_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_Bone(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Bone");
-    tolua_cclass(tolua_S,"Bone","Bone","Node",NULL);
+    tolua_usertype(tolua_S,"ccs.Bone");
+    tolua_cclass(tolua_S,"Bone","ccs.Bone","cc.Node",NULL);
 
     tolua_beginmodule(tolua_S,"Bone");
         tolua_function(tolua_S,"isTransformDirty",lua_cocos2dx_studio_Bone_isTransformDirty);
@@ -7324,7 +7519,8 @@ int lua_register_cocos2dx_studio_Bone(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_Bone_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::Bone).name();
-    g_luaType[typeName] = "Bone";
+    g_luaType[typeName] = "ccs.Bone";
+    g_typeCast["Bone"] = "ccs.Bone";
     return 1;
 }
 
@@ -7338,8 +7534,9 @@ int lua_cocos2dx_studio_BatchNode_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"BatchNode",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.BatchNode",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::BatchNode*)tolua_tousertype(tolua_S,1,0);
@@ -7381,7 +7578,7 @@ int lua_cocos2dx_studio_BatchNode_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"BatchNode",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.BatchNode",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -7399,7 +7596,7 @@ int lua_cocos2dx_studio_BatchNode_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "BatchNode";
+					className = "ccs.BatchNode";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BatchNode*)ret);
 				if (NULL != dynObject) {
@@ -7430,15 +7627,16 @@ static int lua_cocos2dx_studio_BatchNode_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_BatchNode(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"BatchNode");
-    tolua_cclass(tolua_S,"BatchNode","BatchNode","Node",NULL);
+    tolua_usertype(tolua_S,"ccs.BatchNode");
+    tolua_cclass(tolua_S,"BatchNode","ccs.BatchNode","cc.Node",NULL);
 
     tolua_beginmodule(tolua_S,"BatchNode");
         tolua_function(tolua_S,"init",lua_cocos2dx_studio_BatchNode_init);
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_BatchNode_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::BatchNode).name();
-    g_luaType[typeName] = "BatchNode";
+    g_luaType[typeName] = "ccs.BatchNode";
+    g_typeCast["BatchNode"] = "ccs.BatchNode";
     return 1;
 }
 
@@ -7452,8 +7650,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_getSpeedScale(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7495,8 +7694,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_pause(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7537,8 +7737,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_setSpeedScale(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7555,6 +7756,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_setSpeedScale(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -7581,8 +7783,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7599,8 +7802,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_init(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::Armature* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Armature",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Armature",0)){
 					ok = false;
 					break;
 				}
@@ -7635,8 +7839,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithIndexes(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7653,6 +7858,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithIndexes(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::vector<int> arg0;
+
         ok &= luaval_to_std_vector_int(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -7663,7 +7869,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithIndexes(lua_State* tolua_S)
     {
         std::vector<int> arg0;
         int arg1;
+
         ok &= luaval_to_std_vector_int(tolua_S, 2, &arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -7675,8 +7883,11 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithIndexes(lua_State* tolua_S)
         std::vector<int> arg0;
         int arg1;
         bool arg2;
+
         ok &= luaval_to_std_vector_int(tolua_S, 2, &arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -7703,8 +7914,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7721,6 +7933,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -7731,7 +7944,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
     {
         std::string arg0;
         int arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -7743,8 +7958,11 @@ int lua_cocos2dx_studio_ArmatureAnimation_play(lua_State* tolua_S)
         std::string arg0;
         int arg1;
         int arg2;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
             return 0;
@@ -7771,8 +7989,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_gotoAndPause(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7789,6 +8008,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_gotoAndPause(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -7815,8 +8035,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_resume(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7857,8 +8078,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_stop(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7899,8 +8121,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_update(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7917,6 +8140,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_update(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -7943,8 +8167,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_getAnimationData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -7971,7 +8196,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_getAnimationData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "AnimationData";
+					className = "ccs.AnimationData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::AnimationData*)ret);
 				if (NULL != dynObject) {
@@ -8006,8 +8231,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithIndex(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -8024,6 +8250,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithIndex(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -8034,7 +8261,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithIndex(lua_State* tolua_S)
     {
         int arg0;
         int arg1;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -8046,8 +8275,11 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithIndex(lua_State* tolua_S)
         int arg0;
         int arg1;
         int arg2;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
             return 0;
@@ -8074,8 +8306,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_getCurrentMovementID(lua_State* tolua_
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -8117,8 +8350,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_setAnimationData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -8135,8 +8369,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_setAnimationData(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::AnimationData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"AnimationData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.AnimationData",0)){
 					ok = false;
 					break;
 				}
@@ -8170,8 +8405,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_gotoAndPlay(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -8188,6 +8424,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_gotoAndPlay(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -8214,8 +8451,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithNames(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -8232,6 +8470,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithNames(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::vector<std::string> arg0;
+
         ok &= luaval_to_std_vector_string(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -8242,7 +8481,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithNames(lua_State* tolua_S)
     {
         std::vector<std::string> arg0;
         int arg1;
+
         ok &= luaval_to_std_vector_string(tolua_S, 2, &arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -8254,8 +8495,11 @@ int lua_cocos2dx_studio_ArmatureAnimation_playWithNames(lua_State* tolua_S)
         std::vector<std::string> arg0;
         int arg1;
         bool arg2;
+
         ok &= luaval_to_std_vector_string(tolua_S, 2, &arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -8282,8 +8526,9 @@ int lua_cocos2dx_studio_ArmatureAnimation_getMovementCount(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -8325,7 +8570,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ArmatureAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -8334,7 +8579,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_create(lua_State* tolua_S)
     {
         cocostudio::Armature* arg0;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Armature",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Armature",0)){
 					ok = false;
 					break;
 				}
@@ -8354,7 +8599,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ArmatureAnimation";
+					className = "ccs.ArmatureAnimation";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureAnimation*)ret);
 				if (NULL != dynObject) {
@@ -8388,6 +8633,7 @@ int lua_cocos2dx_studio_ArmatureAnimation_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -8400,11 +8646,11 @@ int lua_cocos2dx_studio_ArmatureAnimation_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ArmatureAnimation");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.ArmatureAnimation");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ArmatureAnimation");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.ArmatureAnimation");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -8427,8 +8673,8 @@ static int lua_cocos2dx_studio_ArmatureAnimation_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ArmatureAnimation(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ArmatureAnimation");
-    tolua_cclass(tolua_S,"ArmatureAnimation","ArmatureAnimation","",NULL);
+    tolua_usertype(tolua_S,"ccs.ArmatureAnimation");
+    tolua_cclass(tolua_S,"ArmatureAnimation","ccs.ArmatureAnimation","",NULL);
 
     tolua_beginmodule(tolua_S,"ArmatureAnimation");
         tolua_function(tolua_S,"getSpeedScale",lua_cocos2dx_studio_ArmatureAnimation_getSpeedScale);
@@ -8452,7 +8698,8 @@ int lua_register_cocos2dx_studio_ArmatureAnimation(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ArmatureAnimation_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ArmatureAnimation).name();
-    g_luaType[typeName] = "ArmatureAnimation";
+    g_luaType[typeName] = "ccs.ArmatureAnimation";
+    g_typeCast["ArmatureAnimation"] = "ccs.ArmatureAnimation";
     return 1;
 }
 
@@ -8466,8 +8713,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationDatas(lua_State* tolua_S
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -8509,8 +8757,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeAnimationData(lua_State* tolua
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -8527,6 +8776,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeAnimationData(lua_State* tolua
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -8553,8 +8803,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -8572,9 +8823,11 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
     {
         std::string arg0;
         cocostudio::ArmatureData* arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         do {
-				if (!luaval_is_usertype(tolua_S,3,"ArmatureData",0)){
+				if (!luaval_is_usertype(tolua_S,3,"ccs.ArmatureData",0)){
 					ok = false;
 					break;
 				}
@@ -8593,9 +8846,11 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
         std::string arg0;
         cocostudio::ArmatureData* arg1;
         std::string arg2;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         do {
-				if (!luaval_is_usertype(tolua_S,3,"ArmatureData",0)){
+				if (!luaval_is_usertype(tolua_S,3,"ccs.ArmatureData",0)){
 					ok = false;
 					break;
 				}
@@ -8604,6 +8859,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureData(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -8628,8 +8884,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addArmatureFileInfo(lua_State* tolua
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -8690,8 +8947,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureFileInfo(lua_State* to
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -8708,6 +8966,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureFileInfo(lua_State* to
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -8734,8 +8993,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureDatas(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -8777,8 +9037,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -8795,6 +9056,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureData(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -8807,7 +9069,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_getTextureData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "TextureData";
+					className = "ccs.TextureData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::TextureData*)ret);
 				if (NULL != dynObject) {
@@ -8842,8 +9104,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -8860,6 +9123,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureData(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -8872,7 +9136,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ArmatureData";
+					className = "ccs.ArmatureData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureData*)ret);
 				if (NULL != dynObject) {
@@ -8907,8 +9171,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -8925,6 +9190,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationData(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -8937,7 +9203,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_getAnimationData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "AnimationData";
+					className = "ccs.AnimationData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::AnimationData*)ret);
 				if (NULL != dynObject) {
@@ -8972,8 +9238,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -8991,9 +9258,11 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
     {
         std::string arg0;
         cocostudio::AnimationData* arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         do {
-				if (!luaval_is_usertype(tolua_S,3,"AnimationData",0)){
+				if (!luaval_is_usertype(tolua_S,3,"ccs.AnimationData",0)){
 					ok = false;
 					break;
 				}
@@ -9012,9 +9281,11 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
         std::string arg0;
         cocostudio::AnimationData* arg1;
         std::string arg2;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         do {
-				if (!luaval_is_usertype(tolua_S,3,"AnimationData",0)){
+				if (!luaval_is_usertype(tolua_S,3,"ccs.AnimationData",0)){
 					ok = false;
 					break;
 				}
@@ -9023,6 +9294,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addAnimationData(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -9049,8 +9321,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_init(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -9092,8 +9365,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureData(lua_State* tolua_
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -9110,6 +9384,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeArmatureData(lua_State* tolua_
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -9136,8 +9411,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_getArmatureDatas(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -9179,8 +9455,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeTextureData(lua_State* tolua_S
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -9197,6 +9474,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_removeTextureData(lua_State* tolua_S
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -9223,8 +9501,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -9242,9 +9521,11 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
     {
         std::string arg0;
         cocostudio::TextureData* arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         do {
-				if (!luaval_is_usertype(tolua_S,3,"TextureData",0)){
+				if (!luaval_is_usertype(tolua_S,3,"ccs.TextureData",0)){
 					ok = false;
 					break;
 				}
@@ -9263,9 +9544,11 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
         std::string arg0;
         cocostudio::TextureData* arg1;
         std::string arg2;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         do {
-				if (!luaval_is_usertype(tolua_S,3,"TextureData",0)){
+				if (!luaval_is_usertype(tolua_S,3,"ccs.TextureData",0)){
 					ok = false;
 					break;
 				}
@@ -9274,6 +9557,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_addTextureData(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -9300,8 +9584,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_isAutoLoadSpriteFile(lua_State* tolu
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -9343,8 +9628,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(lua_State* to
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ArmatureDataManager*)tolua_tousertype(tolua_S,1,0);
@@ -9362,7 +9648,9 @@ int lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(lua_State* to
     {
         std::string arg0;
         std::string arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -9374,8 +9662,11 @@ int lua_cocos2dx_studio_ArmatureDataManager_addSpriteFrameFromFile(lua_State* to
         std::string arg0;
         std::string arg1;
         std::string arg2;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
+
         ok &= luaval_to_std_string(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -9402,7 +9693,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_destroyInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -9432,7 +9723,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_getInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ArmatureDataManager",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -9450,7 +9741,7 @@ int lua_cocos2dx_studio_ArmatureDataManager_getInstance(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ArmatureDataManager";
+					className = "ccs.ArmatureDataManager";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureDataManager*)ret);
 				if (NULL != dynObject) {
@@ -9481,8 +9772,8 @@ static int lua_cocos2dx_studio_ArmatureDataManager_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ArmatureDataManager(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ArmatureDataManager");
-    tolua_cclass(tolua_S,"ArmatureDataManager","ArmatureDataManager","",NULL);
+    tolua_usertype(tolua_S,"ccs.ArmatureDataManager");
+    tolua_cclass(tolua_S,"ArmatureDataManager","ccs.ArmatureDataManager","",NULL);
 
     tolua_beginmodule(tolua_S,"ArmatureDataManager");
         tolua_function(tolua_S,"getAnimationDatas",lua_cocos2dx_studio_ArmatureDataManager_getAnimationDatas);
@@ -9506,7 +9797,8 @@ int lua_register_cocos2dx_studio_ArmatureDataManager(lua_State* tolua_S)
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_studio_ArmatureDataManager_getInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ArmatureDataManager).name();
-    g_luaType[typeName] = "ArmatureDataManager";
+    g_luaType[typeName] = "ccs.ArmatureDataManager";
+    g_typeCast["ArmatureDataManager"] = "ccs.ArmatureDataManager";
     return 1;
 }
 
@@ -9520,8 +9812,9 @@ int lua_cocos2dx_studio_Armature_getBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -9538,6 +9831,7 @@ int lua_cocos2dx_studio_Armature_getBone(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -9550,7 +9844,7 @@ int lua_cocos2dx_studio_Armature_getBone(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Bone";
+					className = "ccs.Bone";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
@@ -9585,8 +9879,9 @@ int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -9604,8 +9899,9 @@ int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
     {
         cocostudio::Bone* arg0;
         std::string arg1;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -9614,6 +9910,7 @@ int lua_cocos2dx_studio_Armature_changeBoneParent(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -9640,8 +9937,9 @@ int lua_cocos2dx_studio_Armature_setAnimation(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -9658,8 +9956,9 @@ int lua_cocos2dx_studio_Armature_setAnimation(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::ArmatureAnimation* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"ArmatureAnimation",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.ArmatureAnimation",0)){
 					ok = false;
 					break;
 				}
@@ -9693,8 +9992,9 @@ int lua_cocos2dx_studio_Armature_getBoneAtPoint(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -9712,7 +10012,9 @@ int lua_cocos2dx_studio_Armature_getBoneAtPoint(lua_State* tolua_S)
     {
         double arg0;
         double arg1;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -9725,7 +10027,7 @@ int lua_cocos2dx_studio_Armature_getBoneAtPoint(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Bone";
+					className = "ccs.Bone";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
@@ -9760,8 +10062,9 @@ int lua_cocos2dx_studio_Armature_getArmatureTransformDirty(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -9803,8 +10106,9 @@ int lua_cocos2dx_studio_Armature_setVersion(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -9821,6 +10125,7 @@ int lua_cocos2dx_studio_Armature_setVersion(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -9847,8 +10152,9 @@ int lua_cocos2dx_studio_Armature_updateOffsetPoint(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -9889,8 +10195,9 @@ int lua_cocos2dx_studio_Armature_getParentBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -9917,7 +10224,7 @@ int lua_cocos2dx_studio_Armature_getParentBone(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Bone";
+					className = "ccs.Bone";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
@@ -9952,8 +10259,9 @@ int lua_cocos2dx_studio_Armature_setArmatureData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -9970,8 +10278,9 @@ int lua_cocos2dx_studio_Armature_setArmatureData(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::ArmatureData* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"ArmatureData",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.ArmatureData",0)){
 					ok = false;
 					break;
 				}
@@ -10005,8 +10314,9 @@ int lua_cocos2dx_studio_Armature_removeBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10024,8 +10334,9 @@ int lua_cocos2dx_studio_Armature_removeBone(lua_State* tolua_S)
     {
         cocostudio::Bone* arg0;
         bool arg1;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -10034,6 +10345,7 @@ int lua_cocos2dx_studio_Armature_removeBone(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -10060,8 +10372,9 @@ int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10088,7 +10401,7 @@ int lua_cocos2dx_studio_Armature_getBatchNode(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "BatchNode";
+					className = "ccs.BatchNode";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::BatchNode*)ret);
 				if (NULL != dynObject) {
@@ -10123,8 +10436,9 @@ int lua_cocos2dx_studio_Armature_getName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10164,8 +10478,9 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -10204,7 +10519,7 @@ int lua_cocos2dx_studio_Armature_init(lua_State* tolua_S)
             if (!ok) { break; }
             cocostudio::Bone* arg1;
             do {
-				if (!luaval_is_usertype(tolua_S,3,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,3,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -10241,8 +10556,9 @@ int lua_cocos2dx_studio_Armature_setParentBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10259,8 +10575,9 @@ int lua_cocos2dx_studio_Armature_setParentBone(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::Bone* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -10294,8 +10611,9 @@ int lua_cocos2dx_studio_Armature_drawContour(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10336,8 +10654,9 @@ int lua_cocos2dx_studio_Armature_setBatchNode(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10354,8 +10673,9 @@ int lua_cocos2dx_studio_Armature_setBatchNode(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::BatchNode* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"BatchNode",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.BatchNode",0)){
 					ok = false;
 					break;
 				}
@@ -10389,8 +10709,9 @@ int lua_cocos2dx_studio_Armature_setName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10407,6 +10728,7 @@ int lua_cocos2dx_studio_Armature_setName(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -10433,8 +10755,9 @@ int lua_cocos2dx_studio_Armature_addBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10452,8 +10775,9 @@ int lua_cocos2dx_studio_Armature_addBone(lua_State* tolua_S)
     {
         cocostudio::Bone* arg0;
         std::string arg1;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -10462,6 +10786,7 @@ int lua_cocos2dx_studio_Armature_addBone(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -10488,8 +10813,9 @@ int lua_cocos2dx_studio_Armature_getArmatureData(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10516,7 +10842,7 @@ int lua_cocos2dx_studio_Armature_getArmatureData(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ArmatureData";
+					className = "ccs.ArmatureData";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureData*)ret);
 				if (NULL != dynObject) {
@@ -10551,8 +10877,9 @@ int lua_cocos2dx_studio_Armature_getVersion(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10594,8 +10921,9 @@ int lua_cocos2dx_studio_Armature_getAnimation(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10622,7 +10950,7 @@ int lua_cocos2dx_studio_Armature_getAnimation(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ArmatureAnimation";
+					className = "ccs.ArmatureAnimation";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ArmatureAnimation*)ret);
 				if (NULL != dynObject) {
@@ -10657,8 +10985,9 @@ int lua_cocos2dx_studio_Armature_getBoneDic(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Armature*)tolua_tousertype(tolua_S,1,0);
@@ -10699,7 +11028,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Armature",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.Armature",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S)-1;
@@ -10720,7 +11049,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Armature";
+					className = "ccs.Armature";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
@@ -10750,7 +11079,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Armature";
+					className = "ccs.Armature";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
@@ -10776,7 +11105,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
             if (!ok) { break; }
             cocostudio::Bone* arg1;
             do {
-				if (!luaval_is_usertype(tolua_S,3,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,3,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -10795,7 +11124,7 @@ int lua_cocos2dx_studio_Armature_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Armature";
+					className = "ccs.Armature";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Armature*)ret);
 				if (NULL != dynObject) {
@@ -10831,6 +11160,7 @@ int lua_cocos2dx_studio_Armature_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -10843,11 +11173,11 @@ int lua_cocos2dx_studio_Armature_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Armature");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.Armature");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"Armature");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.Armature");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -10870,8 +11200,8 @@ static int lua_cocos2dx_studio_Armature_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Armature");
-    tolua_cclass(tolua_S,"Armature","Armature","Node",NULL);
+    tolua_usertype(tolua_S,"ccs.Armature");
+    tolua_cclass(tolua_S,"Armature","ccs.Armature","cc.Node",NULL);
 
     tolua_beginmodule(tolua_S,"Armature");
         tolua_function(tolua_S,"getBone",lua_cocos2dx_studio_Armature_getBone);
@@ -10900,7 +11230,8 @@ int lua_register_cocos2dx_studio_Armature(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_Armature_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::Armature).name();
-    g_luaType[typeName] = "Armature";
+    g_luaType[typeName] = "ccs.Armature";
+    g_typeCast["Armature"] = "ccs.Armature";
     return 1;
 }
 
@@ -10914,8 +11245,9 @@ int lua_cocos2dx_studio_Skin_getBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skin",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Skin",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Skin*)tolua_tousertype(tolua_S,1,0);
@@ -10942,7 +11274,7 @@ int lua_cocos2dx_studio_Skin_getBone(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Bone";
+					className = "ccs.Bone";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Bone*)ret);
 				if (NULL != dynObject) {
@@ -10977,8 +11309,9 @@ int lua_cocos2dx_studio_Skin_getNodeToWorldTransformAR(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skin",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Skin",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Skin*)tolua_tousertype(tolua_S,1,0);
@@ -11020,8 +11353,9 @@ int lua_cocos2dx_studio_Skin_initWithFile(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skin",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Skin",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Skin*)tolua_tousertype(tolua_S,1,0);
@@ -11038,6 +11372,7 @@ int lua_cocos2dx_studio_Skin_initWithFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11065,8 +11400,9 @@ int lua_cocos2dx_studio_Skin_getDisplayName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skin",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Skin",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Skin*)tolua_tousertype(tolua_S,1,0);
@@ -11108,8 +11444,9 @@ int lua_cocos2dx_studio_Skin_updateArmatureTransform(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skin",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Skin",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Skin*)tolua_tousertype(tolua_S,1,0);
@@ -11150,8 +11487,9 @@ int lua_cocos2dx_studio_Skin_initWithSpriteFrameName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skin",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Skin",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Skin*)tolua_tousertype(tolua_S,1,0);
@@ -11168,6 +11506,7 @@ int lua_cocos2dx_studio_Skin_initWithSpriteFrameName(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11195,8 +11534,9 @@ int lua_cocos2dx_studio_Skin_setBone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skin",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.Skin",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::Skin*)tolua_tousertype(tolua_S,1,0);
@@ -11213,8 +11553,9 @@ int lua_cocos2dx_studio_Skin_setBone(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocostudio::Bone* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Bone",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccs.Bone",0)){
 					ok = false;
 					break;
 				}
@@ -11247,7 +11588,7 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Skin",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.Skin",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S)-1;
@@ -11268,7 +11609,7 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Skin";
+					className = "ccs.Skin";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Skin*)ret);
 				if (NULL != dynObject) {
@@ -11298,7 +11639,7 @@ int lua_cocos2dx_studio_Skin_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Skin";
+					className = "ccs.Skin";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Skin*)ret);
 				if (NULL != dynObject) {
@@ -11333,7 +11674,7 @@ int lua_cocos2dx_studio_Skin_createWithSpriteFrameName(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Skin",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.Skin",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -11353,7 +11694,7 @@ int lua_cocos2dx_studio_Skin_createWithSpriteFrameName(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Skin";
+					className = "ccs.Skin";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::Skin*)ret);
 				if (NULL != dynObject) {
@@ -11387,6 +11728,7 @@ int lua_cocos2dx_studio_Skin_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -11399,11 +11741,11 @@ int lua_cocos2dx_studio_Skin_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Skin");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.Skin");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"Skin");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.Skin");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -11426,8 +11768,8 @@ static int lua_cocos2dx_studio_Skin_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_Skin(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Skin");
-    tolua_cclass(tolua_S,"Skin","Skin","Sprite",NULL);
+    tolua_usertype(tolua_S,"ccs.Skin");
+    tolua_cclass(tolua_S,"Skin","ccs.Skin","cc.Sprite",NULL);
 
     tolua_beginmodule(tolua_S,"Skin");
         tolua_function(tolua_S,"getBone",lua_cocos2dx_studio_Skin_getBone);
@@ -11442,7 +11784,8 @@ int lua_register_cocos2dx_studio_Skin(lua_State* tolua_S)
         tolua_function(tolua_S,"createWithSpriteFrameName", lua_cocos2dx_studio_Skin_createWithSpriteFrameName);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::Skin).name();
-    g_luaType[typeName] = "Skin";
+    g_luaType[typeName] = "ccs.Skin";
+    g_typeCast["Skin"] = "ccs.Skin";
     return 1;
 }
 
@@ -11456,8 +11799,9 @@ int lua_cocos2dx_studio_ComAttribute_getFloat(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
@@ -11474,6 +11818,7 @@ int lua_cocos2dx_studio_ComAttribute_getFloat(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11485,7 +11830,9 @@ int lua_cocos2dx_studio_ComAttribute_getFloat(lua_State* tolua_S)
     {
         std::string arg0;
         double arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -11513,8 +11860,9 @@ int lua_cocos2dx_studio_ComAttribute_getString(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
@@ -11531,6 +11879,7 @@ int lua_cocos2dx_studio_ComAttribute_getString(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11542,7 +11891,9 @@ int lua_cocos2dx_studio_ComAttribute_getString(lua_State* tolua_S)
     {
         std::string arg0;
         std::string arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -11570,8 +11921,9 @@ int lua_cocos2dx_studio_ComAttribute_setFloat(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
@@ -11589,7 +11941,9 @@ int lua_cocos2dx_studio_ComAttribute_setFloat(lua_State* tolua_S)
     {
         std::string arg0;
         double arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -11616,8 +11970,9 @@ int lua_cocos2dx_studio_ComAttribute_setString(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
@@ -11635,7 +11990,9 @@ int lua_cocos2dx_studio_ComAttribute_setString(lua_State* tolua_S)
     {
         std::string arg0;
         std::string arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -11662,8 +12019,9 @@ int lua_cocos2dx_studio_ComAttribute_getBool(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
@@ -11680,6 +12038,7 @@ int lua_cocos2dx_studio_ComAttribute_getBool(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11691,7 +12050,9 @@ int lua_cocos2dx_studio_ComAttribute_getBool(lua_State* tolua_S)
     {
         std::string arg0;
         bool arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -11719,8 +12080,9 @@ int lua_cocos2dx_studio_ComAttribute_setInt(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
@@ -11738,7 +12100,9 @@ int lua_cocos2dx_studio_ComAttribute_setInt(lua_State* tolua_S)
     {
         std::string arg0;
         int arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -11765,8 +12129,9 @@ int lua_cocos2dx_studio_ComAttribute_parse(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
@@ -11783,6 +12148,7 @@ int lua_cocos2dx_studio_ComAttribute_parse(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11810,8 +12176,9 @@ int lua_cocos2dx_studio_ComAttribute_getInt(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
@@ -11828,6 +12195,7 @@ int lua_cocos2dx_studio_ComAttribute_getInt(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11839,7 +12207,9 @@ int lua_cocos2dx_studio_ComAttribute_getInt(lua_State* tolua_S)
     {
         std::string arg0;
         int arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -11867,8 +12237,9 @@ int lua_cocos2dx_studio_ComAttribute_setBool(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAttribute*)tolua_tousertype(tolua_S,1,0);
@@ -11886,7 +12257,9 @@ int lua_cocos2dx_studio_ComAttribute_setBool(lua_State* tolua_S)
     {
         std::string arg0;
         bool arg1;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -11913,7 +12286,7 @@ int lua_cocos2dx_studio_ComAttribute_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -11931,7 +12304,7 @@ int lua_cocos2dx_studio_ComAttribute_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ComAttribute";
+					className = "ccs.ComAttribute";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComAttribute*)ret);
 				if (NULL != dynObject) {
@@ -11964,7 +12337,7 @@ int lua_cocos2dx_studio_ComAttribute_createInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ComAttribute",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ComAttribute",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -11982,7 +12355,7 @@ int lua_cocos2dx_studio_ComAttribute_createInstance(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Object";
+					className = "cc.Object";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
 				if (NULL != dynObject) {
@@ -12013,8 +12386,8 @@ static int lua_cocos2dx_studio_ComAttribute_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ComAttribute(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ComAttribute");
-    tolua_cclass(tolua_S,"ComAttribute","ComAttribute","Component",NULL);
+    tolua_usertype(tolua_S,"ccs.ComAttribute");
+    tolua_cclass(tolua_S,"ComAttribute","ccs.ComAttribute","cc.Component",NULL);
 
     tolua_beginmodule(tolua_S,"ComAttribute");
         tolua_function(tolua_S,"getFloat",lua_cocos2dx_studio_ComAttribute_getFloat);
@@ -12030,7 +12403,8 @@ int lua_register_cocos2dx_studio_ComAttribute(lua_State* tolua_S)
         tolua_function(tolua_S,"createInstance", lua_cocos2dx_studio_ComAttribute_createInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ComAttribute).name();
-    g_luaType[typeName] = "ComAttribute";
+    g_luaType[typeName] = "ccs.ComAttribute";
+    g_typeCast["ComAttribute"] = "ccs.ComAttribute";
     return 1;
 }
 
@@ -12044,8 +12418,9 @@ int lua_cocos2dx_studio_ComAudio_stopAllEffects(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12086,8 +12461,9 @@ int lua_cocos2dx_studio_ComAudio_getEffectsVolume(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12129,8 +12505,9 @@ int lua_cocos2dx_studio_ComAudio_stopEffect(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12147,6 +12524,7 @@ int lua_cocos2dx_studio_ComAudio_stopEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         unsigned int arg0;
+
         ok &= luaval_to_uint32(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -12173,8 +12551,9 @@ int lua_cocos2dx_studio_ComAudio_getBackgroundMusicVolume(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12216,8 +12595,9 @@ int lua_cocos2dx_studio_ComAudio_willPlayBackgroundMusic(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12259,8 +12639,9 @@ int lua_cocos2dx_studio_ComAudio_setBackgroundMusicVolume(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12277,6 +12658,7 @@ int lua_cocos2dx_studio_ComAudio_setBackgroundMusicVolume(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -12303,8 +12685,9 @@ int lua_cocos2dx_studio_ComAudio_end(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12343,8 +12726,9 @@ int lua_cocos2dx_studio_ComAudio_stopBackgroundMusic(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -12393,8 +12777,9 @@ int lua_cocos2dx_studio_ComAudio_pauseBackgroundMusic(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12435,8 +12820,9 @@ int lua_cocos2dx_studio_ComAudio_isBackgroundMusicPlaying(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12478,8 +12864,9 @@ int lua_cocos2dx_studio_ComAudio_isLoop(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12521,8 +12908,9 @@ int lua_cocos2dx_studio_ComAudio_resumeAllEffects(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12563,8 +12951,9 @@ int lua_cocos2dx_studio_ComAudio_pauseAllEffects(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12605,8 +12994,9 @@ int lua_cocos2dx_studio_ComAudio_preloadBackgroundMusic(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12623,6 +13013,7 @@ int lua_cocos2dx_studio_ComAudio_preloadBackgroundMusic(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -12647,8 +13038,9 @@ int lua_cocos2dx_studio_ComAudio_playBackgroundMusic(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -12710,8 +13102,9 @@ int lua_cocos2dx_studio_ComAudio_playEffect(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -12778,8 +13171,9 @@ int lua_cocos2dx_studio_ComAudio_preloadEffect(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12796,6 +13190,7 @@ int lua_cocos2dx_studio_ComAudio_preloadEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -12822,8 +13217,9 @@ int lua_cocos2dx_studio_ComAudio_setLoop(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12840,6 +13236,7 @@ int lua_cocos2dx_studio_ComAudio_setLoop(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -12866,8 +13263,9 @@ int lua_cocos2dx_studio_ComAudio_unloadEffect(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12884,6 +13282,7 @@ int lua_cocos2dx_studio_ComAudio_unloadEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -12910,8 +13309,9 @@ int lua_cocos2dx_studio_ComAudio_rewindBackgroundMusic(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12952,8 +13352,9 @@ int lua_cocos2dx_studio_ComAudio_pauseEffect(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -12970,6 +13371,7 @@ int lua_cocos2dx_studio_ComAudio_pauseEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         unsigned int arg0;
+
         ok &= luaval_to_uint32(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -12996,8 +13398,9 @@ int lua_cocos2dx_studio_ComAudio_resumeBackgroundMusic(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -13038,8 +13441,9 @@ int lua_cocos2dx_studio_ComAudio_setFile(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -13056,6 +13460,7 @@ int lua_cocos2dx_studio_ComAudio_setFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -13082,8 +13487,9 @@ int lua_cocos2dx_studio_ComAudio_setEffectsVolume(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -13100,6 +13506,7 @@ int lua_cocos2dx_studio_ComAudio_setEffectsVolume(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -13126,8 +13533,9 @@ int lua_cocos2dx_studio_ComAudio_getFile(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -13169,8 +13577,9 @@ int lua_cocos2dx_studio_ComAudio_resumeEffect(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComAudio*)tolua_tousertype(tolua_S,1,0);
@@ -13187,6 +13596,7 @@ int lua_cocos2dx_studio_ComAudio_resumeEffect(lua_State* tolua_S)
     if (argc == 1) 
     {
         unsigned int arg0;
+
         ok &= luaval_to_uint32(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -13213,7 +13623,7 @@ int lua_cocos2dx_studio_ComAudio_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -13231,7 +13641,7 @@ int lua_cocos2dx_studio_ComAudio_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ComAudio";
+					className = "ccs.ComAudio";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComAudio*)ret);
 				if (NULL != dynObject) {
@@ -13264,7 +13674,7 @@ int lua_cocos2dx_studio_ComAudio_createInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ComAudio",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ComAudio",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -13282,7 +13692,7 @@ int lua_cocos2dx_studio_ComAudio_createInstance(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Object";
+					className = "cc.Object";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
 				if (NULL != dynObject) {
@@ -13313,8 +13723,8 @@ static int lua_cocos2dx_studio_ComAudio_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ComAudio(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ComAudio");
-    tolua_cclass(tolua_S,"ComAudio","ComAudio","Component",NULL);
+    tolua_usertype(tolua_S,"ccs.ComAudio");
+    tolua_cclass(tolua_S,"ComAudio","ccs.ComAudio","cc.Component",NULL);
 
     tolua_beginmodule(tolua_S,"ComAudio");
         tolua_function(tolua_S,"stopAllEffects",lua_cocos2dx_studio_ComAudio_stopAllEffects);
@@ -13347,7 +13757,8 @@ int lua_register_cocos2dx_studio_ComAudio(lua_State* tolua_S)
         tolua_function(tolua_S,"createInstance", lua_cocos2dx_studio_ComAudio_createInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ComAudio).name();
-    g_luaType[typeName] = "ComAudio";
+    g_luaType[typeName] = "ccs.ComAudio";
+    g_typeCast["ComAudio"] = "ccs.ComAudio";
     return 1;
 }
 
@@ -13361,7 +13772,7 @@ int lua_cocos2dx_studio_ComController_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ComController",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ComController",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -13379,7 +13790,7 @@ int lua_cocos2dx_studio_ComController_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ComController";
+					className = "ccs.ComController";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComController*)ret);
 				if (NULL != dynObject) {
@@ -13412,7 +13823,7 @@ int lua_cocos2dx_studio_ComController_createInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ComController",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ComController",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -13430,7 +13841,7 @@ int lua_cocos2dx_studio_ComController_createInstance(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Object";
+					className = "cc.Object";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
 				if (NULL != dynObject) {
@@ -13464,6 +13875,7 @@ int lua_cocos2dx_studio_ComController_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -13476,11 +13888,11 @@ int lua_cocos2dx_studio_ComController_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ComController");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.ComController");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ComController");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccs.ComController");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -13503,15 +13915,16 @@ static int lua_cocos2dx_studio_ComController_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ComController(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ComController");
-    tolua_cclass(tolua_S,"ComController","ComController","Component",NULL);
+    tolua_usertype(tolua_S,"ccs.ComController");
+    tolua_cclass(tolua_S,"ComController","ccs.ComController","cc.Component",NULL);
 
     tolua_beginmodule(tolua_S,"ComController");
         tolua_function(tolua_S,"create", lua_cocos2dx_studio_ComController_create);
         tolua_function(tolua_S,"createInstance", lua_cocos2dx_studio_ComController_createInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ComController).name();
-    g_luaType[typeName] = "ComController";
+    g_luaType[typeName] = "ccs.ComController";
+    g_typeCast["ComController"] = "ccs.ComController";
     return 1;
 }
 
@@ -13525,8 +13938,9 @@ int lua_cocos2dx_studio_ComRender_setNode(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComRender",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComRender",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComRender*)tolua_tousertype(tolua_S,1,0);
@@ -13543,8 +13957,9 @@ int lua_cocos2dx_studio_ComRender_setNode(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Node* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
 					ok = false;
 					break;
 				}
@@ -13578,8 +13993,9 @@ int lua_cocos2dx_studio_ComRender_getNode(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ComRender",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.ComRender",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::ComRender*)tolua_tousertype(tolua_S,1,0);
@@ -13606,7 +14022,7 @@ int lua_cocos2dx_studio_ComRender_getNode(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Node";
+					className = "cc.Node";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
@@ -13640,7 +14056,7 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ComRender",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ComRender",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S)-1;
@@ -13651,7 +14067,7 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
         {
             cocos2d::Node* arg0;
             do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
 					ok = false;
 					break;
 				}
@@ -13673,7 +14089,7 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ComRender";
+					className = "ccs.ComRender";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComRender*)ret);
 				if (NULL != dynObject) {
@@ -13703,7 +14119,7 @@ int lua_cocos2dx_studio_ComRender_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ComRender";
+					className = "ccs.ComRender";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::ComRender*)ret);
 				if (NULL != dynObject) {
@@ -13738,7 +14154,7 @@ int lua_cocos2dx_studio_ComRender_createInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ComRender",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.ComRender",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -13756,7 +14172,7 @@ int lua_cocos2dx_studio_ComRender_createInstance(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Object";
+					className = "cc.Object";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
 				if (NULL != dynObject) {
@@ -13787,8 +14203,8 @@ static int lua_cocos2dx_studio_ComRender_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_ComRender(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ComRender");
-    tolua_cclass(tolua_S,"ComRender","ComRender","Component",NULL);
+    tolua_usertype(tolua_S,"ccs.ComRender");
+    tolua_cclass(tolua_S,"ComRender","ccs.ComRender","cc.Component",NULL);
 
     tolua_beginmodule(tolua_S,"ComRender");
         tolua_function(tolua_S,"setNode",lua_cocos2dx_studio_ComRender_setNode);
@@ -13797,7 +14213,8 @@ int lua_register_cocos2dx_studio_ComRender(lua_State* tolua_S)
         tolua_function(tolua_S,"createInstance", lua_cocos2dx_studio_ComRender_createInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::ComRender).name();
-    g_luaType[typeName] = "ComRender";
+    g_luaType[typeName] = "ccs.ComRender";
+    g_typeCast["ComRender"] = "ccs.ComRender";
     return 1;
 }
 
@@ -13811,8 +14228,9 @@ int lua_cocos2dx_studio_GUIReader_widgetFromJsonFile(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"GUIReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.GUIReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::GUIReader*)tolua_tousertype(tolua_S,1,0);
@@ -13829,6 +14247,7 @@ int lua_cocos2dx_studio_GUIReader_widgetFromJsonFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -13841,7 +14260,7 @@ int lua_cocos2dx_studio_GUIReader_widgetFromJsonFile(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Widget";
+					className = "ccui.Widget";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
 				if (NULL != dynObject) {
@@ -13876,8 +14295,9 @@ int lua_cocos2dx_studio_GUIReader_getVersionInteger(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"GUIReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.GUIReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::GUIReader*)tolua_tousertype(tolua_S,1,0);
@@ -13894,6 +14314,7 @@ int lua_cocos2dx_studio_GUIReader_getVersionInteger(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -13921,7 +14342,7 @@ int lua_cocos2dx_studio_GUIReader_destroyInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"GUIReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.GUIReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -13951,7 +14372,7 @@ int lua_cocos2dx_studio_GUIReader_getInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"GUIReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.GUIReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -13969,7 +14390,7 @@ int lua_cocos2dx_studio_GUIReader_getInstance(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "GUIReader";
+					className = "ccs.GUIReader";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::GUIReader*)ret);
 				if (NULL != dynObject) {
@@ -14000,8 +14421,8 @@ static int lua_cocos2dx_studio_GUIReader_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_GUIReader(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"GUIReader");
-    tolua_cclass(tolua_S,"GUIReader","GUIReader","",NULL);
+    tolua_usertype(tolua_S,"ccs.GUIReader");
+    tolua_cclass(tolua_S,"GUIReader","ccs.GUIReader","",NULL);
 
     tolua_beginmodule(tolua_S,"GUIReader");
         tolua_function(tolua_S,"widgetFromJsonFile",lua_cocos2dx_studio_GUIReader_widgetFromJsonFile);
@@ -14010,7 +14431,8 @@ int lua_register_cocos2dx_studio_GUIReader(lua_State* tolua_S)
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_studio_GUIReader_getInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::GUIReader).name();
-    g_luaType[typeName] = "GUIReader";
+    g_luaType[typeName] = "ccs.GUIReader";
+    g_typeCast["GUIReader"] = "ccs.GUIReader";
     return 1;
 }
 
@@ -14024,8 +14446,9 @@ int lua_cocos2dx_studio_SceneReader_setTarget(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SceneReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.SceneReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::SceneReader*)tolua_tousertype(tolua_S,1,0);
@@ -14042,6 +14465,7 @@ int lua_cocos2dx_studio_SceneReader_setTarget(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::function<void (cocos2d::Object *, void *)> arg0;
+
         do {
 			// Lambda binding for lua is not supported.
 			assert(false);
@@ -14072,8 +14496,9 @@ int lua_cocos2dx_studio_SceneReader_createNodeWithSceneFile(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SceneReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.SceneReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::SceneReader*)tolua_tousertype(tolua_S,1,0);
@@ -14090,6 +14515,7 @@ int lua_cocos2dx_studio_SceneReader_createNodeWithSceneFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -14102,7 +14528,7 @@ int lua_cocos2dx_studio_SceneReader_createNodeWithSceneFile(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Node";
+					className = "cc.Node";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
@@ -14137,8 +14563,9 @@ int lua_cocos2dx_studio_SceneReader_getNodeByTag(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SceneReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccs.SceneReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocostudio::SceneReader*)tolua_tousertype(tolua_S,1,0);
@@ -14155,6 +14582,7 @@ int lua_cocos2dx_studio_SceneReader_getNodeByTag(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -14167,7 +14595,7 @@ int lua_cocos2dx_studio_SceneReader_getNodeByTag(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Node";
+					className = "cc.Node";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
@@ -14202,7 +14630,7 @@ int lua_cocos2dx_studio_SceneReader_destroyInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"SceneReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.SceneReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -14232,7 +14660,7 @@ int lua_cocos2dx_studio_SceneReader_sceneReaderVersion(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"SceneReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.SceneReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -14263,7 +14691,7 @@ int lua_cocos2dx_studio_SceneReader_getInstance(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"SceneReader",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccs.SceneReader",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -14281,7 +14709,7 @@ int lua_cocos2dx_studio_SceneReader_getInstance(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "SceneReader";
+					className = "ccs.SceneReader";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocostudio::SceneReader*)ret);
 				if (NULL != dynObject) {
@@ -14312,8 +14740,8 @@ static int lua_cocos2dx_studio_SceneReader_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_studio_SceneReader(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"SceneReader");
-    tolua_cclass(tolua_S,"SceneReader","SceneReader","",NULL);
+    tolua_usertype(tolua_S,"ccs.SceneReader");
+    tolua_cclass(tolua_S,"SceneReader","ccs.SceneReader","",NULL);
 
     tolua_beginmodule(tolua_S,"SceneReader");
         tolua_function(tolua_S,"setTarget",lua_cocos2dx_studio_SceneReader_setTarget);
@@ -14324,7 +14752,8 @@ int lua_register_cocos2dx_studio_SceneReader(lua_State* tolua_S)
         tolua_function(tolua_S,"getInstance", lua_cocos2dx_studio_SceneReader_getInstance);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocostudio::SceneReader).name();
-    g_luaType[typeName] = "SceneReader";
+    g_luaType[typeName] = "ccs.SceneReader";
+    g_typeCast["SceneReader"] = "ccs.SceneReader";
     return 1;
 }
 TOLUA_API int register_all_cocos2dx_studio(lua_State* tolua_S)

@@ -15,8 +15,9 @@ int lua_cocos2dx_spine_Skeleton_setToSetupPose(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skeleton",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.Skeleton",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::Skeleton*)tolua_tousertype(tolua_S,1,0);
@@ -57,8 +58,9 @@ int lua_cocos2dx_spine_Skeleton_setBlendFunc(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skeleton",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.Skeleton",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::Skeleton*)tolua_tousertype(tolua_S,1,0);
@@ -75,6 +77,7 @@ int lua_cocos2dx_spine_Skeleton_setBlendFunc(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::BlendFunc arg0;
+
         #pragma warning NO CONVERSION TO NATIVE FOR BlendFunc;
         if(!ok)
             return 0;
@@ -101,8 +104,9 @@ int lua_cocos2dx_spine_Skeleton_onDraw(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skeleton",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.Skeleton",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::Skeleton*)tolua_tousertype(tolua_S,1,0);
@@ -143,8 +147,9 @@ int lua_cocos2dx_spine_Skeleton_setSlotsToSetupPose(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skeleton",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.Skeleton",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::Skeleton*)tolua_tousertype(tolua_S,1,0);
@@ -185,8 +190,9 @@ int lua_cocos2dx_spine_Skeleton_getBlendFunc(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skeleton",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.Skeleton",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::Skeleton*)tolua_tousertype(tolua_S,1,0);
@@ -228,8 +234,9 @@ int lua_cocos2dx_spine_Skeleton_setSkin(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skeleton",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.Skeleton",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::Skeleton*)tolua_tousertype(tolua_S,1,0);
@@ -246,6 +253,7 @@ int lua_cocos2dx_spine_Skeleton_setSkin(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -273,8 +281,9 @@ int lua_cocos2dx_spine_Skeleton_setBonesToSetupPose(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Skeleton",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.Skeleton",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::Skeleton*)tolua_tousertype(tolua_S,1,0);
@@ -313,8 +322,8 @@ static int lua_cocos2dx_spine_Skeleton_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_spine_Skeleton(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Skeleton");
-    tolua_cclass(tolua_S,"Skeleton","Skeleton","Node",NULL);
+    tolua_usertype(tolua_S,"sp.Skeleton");
+    tolua_cclass(tolua_S,"Skeleton","sp.Skeleton","cc.Node",NULL);
 
     tolua_beginmodule(tolua_S,"Skeleton");
         tolua_function(tolua_S,"setToSetupPose",lua_cocos2dx_spine_Skeleton_setToSetupPose);
@@ -326,7 +335,8 @@ int lua_register_cocos2dx_spine_Skeleton(lua_State* tolua_S)
         tolua_function(tolua_S,"setBonesToSetupPose",lua_cocos2dx_spine_Skeleton_setBonesToSetupPose);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(spine::Skeleton).name();
-    g_luaType[typeName] = "Skeleton";
+    g_luaType[typeName] = "sp.Skeleton";
+    g_typeCast["Skeleton"] = "sp.Skeleton";
     return 1;
 }
 
@@ -340,8 +350,9 @@ int lua_cocos2dx_spine_SkeletonAnimation_addAnimation(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::SkeletonAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -360,8 +371,11 @@ int lua_cocos2dx_spine_SkeletonAnimation_addAnimation(lua_State* tolua_S)
         int arg0;
         const char* arg1;
         bool arg2;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -375,9 +389,13 @@ int lua_cocos2dx_spine_SkeletonAnimation_addAnimation(lua_State* tolua_S)
         const char* arg1;
         bool arg2;
         double arg3;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
+
         ok &= luaval_to_number(tolua_S, 5,&arg3);
         if(!ok)
             return 0;
@@ -405,8 +423,9 @@ int lua_cocos2dx_spine_SkeletonAnimation_getCurrent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::SkeletonAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -431,6 +450,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_getCurrent(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -458,8 +478,9 @@ int lua_cocos2dx_spine_SkeletonAnimation_setMix(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::SkeletonAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -478,8 +499,11 @@ int lua_cocos2dx_spine_SkeletonAnimation_setMix(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         double arg2;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -506,8 +530,9 @@ int lua_cocos2dx_spine_SkeletonAnimation_setAnimation(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::SkeletonAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -526,8 +551,11 @@ int lua_cocos2dx_spine_SkeletonAnimation_setAnimation(lua_State* tolua_S)
         int arg0;
         const char* arg1;
         bool arg2;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -555,8 +583,9 @@ int lua_cocos2dx_spine_SkeletonAnimation_clearTracks(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::SkeletonAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -597,8 +626,9 @@ int lua_cocos2dx_spine_SkeletonAnimation_clearTrack(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::SkeletonAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -622,6 +652,7 @@ int lua_cocos2dx_spine_SkeletonAnimation_clearTrack(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -648,8 +679,9 @@ int lua_cocos2dx_spine_SkeletonAnimation_onAnimationStateEvent(lua_State* tolua_
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"sp.SkeletonAnimation",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (spine::SkeletonAnimation*)tolua_tousertype(tolua_S,1,0);
@@ -669,9 +701,13 @@ int lua_cocos2dx_spine_SkeletonAnimation_onAnimationStateEvent(lua_State* tolua_
         spEventType arg1;
         spEvent* arg2;
         int arg3;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
+
         #pragma warning NO CONVERSION TO NATIVE FOR spEvent*;
+
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         if(!ok)
             return 0;
@@ -696,8 +732,8 @@ static int lua_cocos2dx_spine_SkeletonAnimation_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_spine_SkeletonAnimation(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"SkeletonAnimation");
-    tolua_cclass(tolua_S,"SkeletonAnimation","SkeletonAnimation","Skeleton",NULL);
+    tolua_usertype(tolua_S,"sp.SkeletonAnimation");
+    tolua_cclass(tolua_S,"SkeletonAnimation","sp.SkeletonAnimation","sp.Skeleton",NULL);
 
     tolua_beginmodule(tolua_S,"SkeletonAnimation");
         tolua_function(tolua_S,"addAnimation",lua_cocos2dx_spine_SkeletonAnimation_addAnimation);
@@ -709,7 +745,8 @@ int lua_register_cocos2dx_spine_SkeletonAnimation(lua_State* tolua_S)
         tolua_function(tolua_S,"onAnimationStateEvent",lua_cocos2dx_spine_SkeletonAnimation_onAnimationStateEvent);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(spine::SkeletonAnimation).name();
-    g_luaType[typeName] = "SkeletonAnimation";
+    g_luaType[typeName] = "sp.SkeletonAnimation";
+    g_typeCast["SkeletonAnimation"] = "sp.SkeletonAnimation";
     return 1;
 }
 TOLUA_API int register_all_cocos2dx_spine(lua_State* tolua_S)

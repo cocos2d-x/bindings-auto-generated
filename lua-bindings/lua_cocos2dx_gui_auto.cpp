@@ -15,8 +15,9 @@ int lua_cocos2dx_gui_LayoutParameter_getLayoutType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LayoutParameter*)tolua_tousertype(tolua_S,1,0);
@@ -58,7 +59,7 @@ int lua_cocos2dx_gui_LayoutParameter_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"LayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.LayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -76,7 +77,7 @@ int lua_cocos2dx_gui_LayoutParameter_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "LayoutParameter";
+					className = "ccui.LayoutParameter";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::LayoutParameter*)ret);
 				if (NULL != dynObject) {
@@ -110,6 +111,7 @@ int lua_cocos2dx_gui_LayoutParameter_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -122,11 +124,11 @@ int lua_cocos2dx_gui_LayoutParameter_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LayoutParameter");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.LayoutParameter");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"LayoutParameter");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.LayoutParameter");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -149,8 +151,8 @@ static int lua_cocos2dx_gui_LayoutParameter_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_LayoutParameter(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"LayoutParameter");
-    tolua_cclass(tolua_S,"LayoutParameter","LayoutParameter","",NULL);
+    tolua_usertype(tolua_S,"ccui.LayoutParameter");
+    tolua_cclass(tolua_S,"LayoutParameter","ccui.LayoutParameter","",NULL);
 
     tolua_beginmodule(tolua_S,"LayoutParameter");
         tolua_function(tolua_S,"getLayoutType",lua_cocos2dx_gui_LayoutParameter_getLayoutType);
@@ -158,7 +160,8 @@ int lua_register_cocos2dx_gui_LayoutParameter(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_LayoutParameter_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::LayoutParameter).name();
-    g_luaType[typeName] = "LayoutParameter";
+    g_luaType[typeName] = "ccui.LayoutParameter";
+    g_typeCast["LayoutParameter"] = "ccui.LayoutParameter";
     return 1;
 }
 
@@ -172,8 +175,9 @@ int lua_cocos2dx_gui_LinearLayoutParameter_setGravity(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LinearLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LinearLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LinearLayoutParameter*)tolua_tousertype(tolua_S,1,0);
@@ -190,6 +194,7 @@ int lua_cocos2dx_gui_LinearLayoutParameter_setGravity(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::LinearGravity arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -216,8 +221,9 @@ int lua_cocos2dx_gui_LinearLayoutParameter_getGravity(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LinearLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LinearLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LinearLayoutParameter*)tolua_tousertype(tolua_S,1,0);
@@ -259,7 +265,7 @@ int lua_cocos2dx_gui_LinearLayoutParameter_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"LinearLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.LinearLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -277,7 +283,7 @@ int lua_cocos2dx_gui_LinearLayoutParameter_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "LinearLayoutParameter";
+					className = "ccui.LinearLayoutParameter";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::LinearLayoutParameter*)ret);
 				if (NULL != dynObject) {
@@ -311,6 +317,7 @@ int lua_cocos2dx_gui_LinearLayoutParameter_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -323,11 +330,11 @@ int lua_cocos2dx_gui_LinearLayoutParameter_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LinearLayoutParameter");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.LinearLayoutParameter");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"LinearLayoutParameter");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.LinearLayoutParameter");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -350,8 +357,8 @@ static int lua_cocos2dx_gui_LinearLayoutParameter_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_LinearLayoutParameter(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"LinearLayoutParameter");
-    tolua_cclass(tolua_S,"LinearLayoutParameter","LinearLayoutParameter","LayoutParameter",NULL);
+    tolua_usertype(tolua_S,"ccui.LinearLayoutParameter");
+    tolua_cclass(tolua_S,"LinearLayoutParameter","ccui.LinearLayoutParameter","ccui.LayoutParameter",NULL);
 
     tolua_beginmodule(tolua_S,"LinearLayoutParameter");
         tolua_function(tolua_S,"setGravity",lua_cocos2dx_gui_LinearLayoutParameter_setGravity);
@@ -360,7 +367,8 @@ int lua_register_cocos2dx_gui_LinearLayoutParameter(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_LinearLayoutParameter_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::LinearLayoutParameter).name();
-    g_luaType[typeName] = "LinearLayoutParameter";
+    g_luaType[typeName] = "ccui.LinearLayoutParameter";
+    g_typeCast["LinearLayoutParameter"] = "ccui.LinearLayoutParameter";
     return 1;
 }
 
@@ -374,8 +382,9 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_setAlign(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::RelativeLayoutParameter*)tolua_tousertype(tolua_S,1,0);
@@ -392,6 +401,7 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_setAlign(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::RelativeAlign arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -418,8 +428,9 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_setRelativeToWidgetName(lua_State* 
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::RelativeLayoutParameter*)tolua_tousertype(tolua_S,1,0);
@@ -436,6 +447,7 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_setRelativeToWidgetName(lua_State* 
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -462,8 +474,9 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_getRelativeName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::RelativeLayoutParameter*)tolua_tousertype(tolua_S,1,0);
@@ -505,8 +518,9 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_getRelativeToWidgetName(lua_State* 
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::RelativeLayoutParameter*)tolua_tousertype(tolua_S,1,0);
@@ -548,8 +562,9 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_setRelativeName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::RelativeLayoutParameter*)tolua_tousertype(tolua_S,1,0);
@@ -566,6 +581,7 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_setRelativeName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -592,8 +608,9 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_getAlign(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::RelativeLayoutParameter*)tolua_tousertype(tolua_S,1,0);
@@ -635,7 +652,7 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.RelativeLayoutParameter",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -653,7 +670,7 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "RelativeLayoutParameter";
+					className = "ccui.RelativeLayoutParameter";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::RelativeLayoutParameter*)ret);
 				if (NULL != dynObject) {
@@ -687,6 +704,7 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -699,11 +717,11 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"RelativeLayoutParameter");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.RelativeLayoutParameter");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"RelativeLayoutParameter");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.RelativeLayoutParameter");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -726,8 +744,8 @@ static int lua_cocos2dx_gui_RelativeLayoutParameter_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_RelativeLayoutParameter(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"RelativeLayoutParameter");
-    tolua_cclass(tolua_S,"RelativeLayoutParameter","RelativeLayoutParameter","LayoutParameter",NULL);
+    tolua_usertype(tolua_S,"ccui.RelativeLayoutParameter");
+    tolua_cclass(tolua_S,"RelativeLayoutParameter","ccui.RelativeLayoutParameter","ccui.LayoutParameter",NULL);
 
     tolua_beginmodule(tolua_S,"RelativeLayoutParameter");
         tolua_function(tolua_S,"setAlign",lua_cocos2dx_gui_RelativeLayoutParameter_setAlign);
@@ -740,7 +758,8 @@ int lua_register_cocos2dx_gui_RelativeLayoutParameter(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_RelativeLayoutParameter_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::RelativeLayoutParameter).name();
-    g_luaType[typeName] = "RelativeLayoutParameter";
+    g_luaType[typeName] = "ccui.RelativeLayoutParameter";
+    g_typeCast["RelativeLayoutParameter"] = "ccui.RelativeLayoutParameter";
     return 1;
 }
 
@@ -754,8 +773,9 @@ int lua_cocos2dx_gui_Widget_getVirtualRenderer(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -782,7 +802,7 @@ int lua_cocos2dx_gui_Widget_getVirtualRenderer(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Node";
+					className = "cc.Node";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
@@ -817,8 +837,9 @@ int lua_cocos2dx_gui_Widget_setSizePercent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -835,6 +856,7 @@ int lua_cocos2dx_gui_Widget_setSizePercent(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Point arg0;
+
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -861,8 +883,9 @@ int lua_cocos2dx_gui_Widget_setActionTag(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -879,6 +902,7 @@ int lua_cocos2dx_gui_Widget_setActionTag(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -905,8 +929,9 @@ int lua_cocos2dx_gui_Widget_getNodeByTag(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -923,6 +948,7 @@ int lua_cocos2dx_gui_Widget_getNodeByTag(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -935,7 +961,7 @@ int lua_cocos2dx_gui_Widget_getNodeByTag(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Node";
+					className = "cc.Node";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
 				if (NULL != dynObject) {
@@ -970,8 +996,9 @@ int lua_cocos2dx_gui_Widget_isFlipY(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1013,8 +1040,9 @@ int lua_cocos2dx_gui_Widget_getTouchEndPos(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1056,8 +1084,9 @@ int lua_cocos2dx_gui_Widget_setPositionPercent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1074,6 +1103,7 @@ int lua_cocos2dx_gui_Widget_setPositionPercent(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Point arg0;
+
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -1100,8 +1130,9 @@ int lua_cocos2dx_gui_Widget_getNodes(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1143,8 +1174,9 @@ int lua_cocos2dx_gui_Widget_setPositionType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1161,6 +1193,7 @@ int lua_cocos2dx_gui_Widget_setPositionType(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::PositionType arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -1187,8 +1220,9 @@ int lua_cocos2dx_gui_Widget_getName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1230,8 +1264,9 @@ int lua_cocos2dx_gui_Widget_isIgnoreContentAdaptWithSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1273,8 +1308,9 @@ int lua_cocos2dx_gui_Widget_updateSizeAndPosition(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1315,8 +1351,9 @@ int lua_cocos2dx_gui_Widget_getBottomInParent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1358,8 +1395,9 @@ int lua_cocos2dx_gui_Widget_getActionTag(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1401,8 +1439,9 @@ int lua_cocos2dx_gui_Widget_getLayoutParameter(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1419,6 +1458,7 @@ int lua_cocos2dx_gui_Widget_getLayoutParameter(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::LayoutParameterType arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -1431,7 +1471,7 @@ int lua_cocos2dx_gui_Widget_getLayoutParameter(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "LayoutParameter";
+					className = "ccui.LayoutParameter";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::LayoutParameter*)ret);
 				if (NULL != dynObject) {
@@ -1466,8 +1506,9 @@ int lua_cocos2dx_gui_Widget_getPositionType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1509,8 +1550,9 @@ int lua_cocos2dx_gui_Widget_setName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1527,6 +1569,7 @@ int lua_cocos2dx_gui_Widget_setName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -1553,8 +1596,9 @@ int lua_cocos2dx_gui_Widget_getChildByName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1571,6 +1615,7 @@ int lua_cocos2dx_gui_Widget_getChildByName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -1583,7 +1628,7 @@ int lua_cocos2dx_gui_Widget_getChildByName(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Widget";
+					className = "ccui.Widget";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
 				if (NULL != dynObject) {
@@ -1618,8 +1663,9 @@ int lua_cocos2dx_gui_Widget_isEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1661,8 +1707,9 @@ int lua_cocos2dx_gui_Widget_isFlipX(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1704,8 +1751,9 @@ int lua_cocos2dx_gui_Widget_removeNodeByTag(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1722,6 +1770,7 @@ int lua_cocos2dx_gui_Widget_removeNodeByTag(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -1748,8 +1797,9 @@ int lua_cocos2dx_gui_Widget_isTouchEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1791,8 +1841,9 @@ int lua_cocos2dx_gui_Widget_getContentSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1834,8 +1885,9 @@ int lua_cocos2dx_gui_Widget_getTouchStartPos(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1877,8 +1929,9 @@ int lua_cocos2dx_gui_Widget_didNotSelectSelf(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1919,8 +1972,9 @@ int lua_cocos2dx_gui_Widget_setFocused(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1937,6 +1991,7 @@ int lua_cocos2dx_gui_Widget_setFocused(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -1963,8 +2018,9 @@ int lua_cocos2dx_gui_Widget_setTouchEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -1981,6 +2037,7 @@ int lua_cocos2dx_gui_Widget_setTouchEnabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -2007,8 +2064,9 @@ int lua_cocos2dx_gui_Widget_clone(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2035,7 +2093,7 @@ int lua_cocos2dx_gui_Widget_clone(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Widget";
+					className = "ccui.Widget";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
 				if (NULL != dynObject) {
@@ -2070,8 +2128,9 @@ int lua_cocos2dx_gui_Widget_getTouchMovePos(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2113,8 +2172,9 @@ int lua_cocos2dx_gui_Widget_setEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2131,6 +2191,7 @@ int lua_cocos2dx_gui_Widget_setEnabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -2157,8 +2218,9 @@ int lua_cocos2dx_gui_Widget_setBrightStyle(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2175,6 +2237,7 @@ int lua_cocos2dx_gui_Widget_setBrightStyle(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::BrightStyle arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -2199,8 +2262,9 @@ int lua_cocos2dx_gui_Widget_addNode(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -2215,7 +2279,7 @@ int lua_cocos2dx_gui_Widget_addNode(lua_State* tolua_S)
         if (argc == 2) {
             cocos2d::Node* arg0;
             do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
 					ok = false;
 					break;
 				}
@@ -2239,7 +2303,7 @@ int lua_cocos2dx_gui_Widget_addNode(lua_State* tolua_S)
         if (argc == 1) {
             cocos2d::Node* arg0;
             do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
 					ok = false;
 					break;
 				}
@@ -2259,7 +2323,7 @@ int lua_cocos2dx_gui_Widget_addNode(lua_State* tolua_S)
         if (argc == 3) {
             cocos2d::Node* arg0;
             do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
 					ok = false;
 					break;
 				}
@@ -2303,8 +2367,9 @@ int lua_cocos2dx_gui_Widget_setLayoutParameter(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2321,8 +2386,9 @@ int lua_cocos2dx_gui_Widget_setLayoutParameter(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::LayoutParameter* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"LayoutParameter",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.LayoutParameter",0)){
 					ok = false;
 					break;
 				}
@@ -2356,8 +2422,9 @@ int lua_cocos2dx_gui_Widget_setFlipY(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2374,6 +2441,7 @@ int lua_cocos2dx_gui_Widget_setFlipY(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -2400,8 +2468,9 @@ int lua_cocos2dx_gui_Widget_setFlipX(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2418,6 +2487,7 @@ int lua_cocos2dx_gui_Widget_setFlipX(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -2444,8 +2514,9 @@ int lua_cocos2dx_gui_Widget_getLeftInParent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2487,8 +2558,9 @@ int lua_cocos2dx_gui_Widget_ignoreContentAdaptWithSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2505,6 +2577,7 @@ int lua_cocos2dx_gui_Widget_ignoreContentAdaptWithSize(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -2531,8 +2604,9 @@ int lua_cocos2dx_gui_Widget_isBright(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2574,8 +2648,9 @@ int lua_cocos2dx_gui_Widget_clippingParentAreaContainPoint(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2592,6 +2667,7 @@ int lua_cocos2dx_gui_Widget_clippingParentAreaContainPoint(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Point arg0;
+
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -2619,8 +2695,9 @@ int lua_cocos2dx_gui_Widget_getSizePercent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2662,8 +2739,9 @@ int lua_cocos2dx_gui_Widget_getTopInParent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2705,8 +2783,9 @@ int lua_cocos2dx_gui_Widget_getWidgetType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2748,8 +2827,9 @@ int lua_cocos2dx_gui_Widget_getSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2791,8 +2871,9 @@ int lua_cocos2dx_gui_Widget_getRightInParent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2834,8 +2915,9 @@ int lua_cocos2dx_gui_Widget_getSizeType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2877,8 +2959,9 @@ int lua_cocos2dx_gui_Widget_removeNode(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2895,8 +2978,9 @@ int lua_cocos2dx_gui_Widget_removeNode(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Node* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Node",0)){
+				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
 					ok = false;
 					break;
 				}
@@ -2930,8 +3014,9 @@ int lua_cocos2dx_gui_Widget_removeAllNodes(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -2972,8 +3057,9 @@ int lua_cocos2dx_gui_Widget_getWorldPosition(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -3015,8 +3101,9 @@ int lua_cocos2dx_gui_Widget_getPositionPercent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -3058,8 +3145,9 @@ int lua_cocos2dx_gui_Widget_hitTest(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -3076,6 +3164,7 @@ int lua_cocos2dx_gui_Widget_hitTest(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Point arg0;
+
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -3103,8 +3192,9 @@ int lua_cocos2dx_gui_Widget_isFocused(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -3146,8 +3236,9 @@ int lua_cocos2dx_gui_Widget_setSizeType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -3164,6 +3255,7 @@ int lua_cocos2dx_gui_Widget_setSizeType(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::SizeType arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -3190,8 +3282,9 @@ int lua_cocos2dx_gui_Widget_checkChildInfo(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -3210,9 +3303,11 @@ int lua_cocos2dx_gui_Widget_checkChildInfo(lua_State* tolua_S)
         int arg0;
         cocos2d::gui::Widget* arg1;
         cocos2d::Point arg2;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+
         do {
-				if (!luaval_is_usertype(tolua_S,3,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,3,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -3221,6 +3316,7 @@ int lua_cocos2dx_gui_Widget_checkChildInfo(lua_State* tolua_S)
 					if (nullptr == arg1){
 						LUA_PRECONDITION( arg1, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_point(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
@@ -3247,8 +3343,9 @@ int lua_cocos2dx_gui_Widget_setSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -3265,6 +3362,7 @@ int lua_cocos2dx_gui_Widget_setSize(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Size arg0;
+
         ok &= luaval_to_size(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -3291,8 +3389,9 @@ int lua_cocos2dx_gui_Widget_setBright(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,1,0);
@@ -3309,6 +3408,7 @@ int lua_cocos2dx_gui_Widget_setBright(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -3335,7 +3435,7 @@ int lua_cocos2dx_gui_Widget_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Widget",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.Widget",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -3353,7 +3453,7 @@ int lua_cocos2dx_gui_Widget_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Widget";
+					className = "ccui.Widget";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
 				if (NULL != dynObject) {
@@ -3387,6 +3487,7 @@ int lua_cocos2dx_gui_Widget_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -3399,11 +3500,11 @@ int lua_cocos2dx_gui_Widget_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Widget");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Widget");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"Widget");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Widget");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -3426,8 +3527,8 @@ static int lua_cocos2dx_gui_Widget_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_Widget(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Widget");
-    tolua_cclass(tolua_S,"Widget","Widget","Node",NULL);
+    tolua_usertype(tolua_S,"ccui.Widget");
+    tolua_cclass(tolua_S,"Widget","ccui.Widget","cc.Node",NULL);
 
     tolua_beginmodule(tolua_S,"Widget");
         tolua_function(tolua_S,"getVirtualRenderer",lua_cocos2dx_gui_Widget_getVirtualRenderer);
@@ -3489,7 +3590,8 @@ int lua_register_cocos2dx_gui_Widget(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_Widget_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::Widget).name();
-    g_luaType[typeName] = "Widget";
+    g_luaType[typeName] = "ccui.Widget";
+    g_typeCast["Widget"] = "ccui.Widget";
     return 1;
 }
 
@@ -3503,8 +3605,9 @@ int lua_cocos2dx_gui_Layout_setBackGroundColorVector(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3521,6 +3624,7 @@ int lua_cocos2dx_gui_Layout_setBackGroundColorVector(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Point arg0;
+
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -3547,8 +3651,9 @@ int lua_cocos2dx_gui_Layout_hitTest(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3565,6 +3670,7 @@ int lua_cocos2dx_gui_Layout_hitTest(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Point arg0;
+
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -3592,8 +3698,9 @@ int lua_cocos2dx_gui_Layout_getBackGroundImageTextureSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3635,8 +3742,9 @@ int lua_cocos2dx_gui_Layout_getLayoutType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3678,8 +3786,9 @@ int lua_cocos2dx_gui_Layout_setClippingType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3696,6 +3805,7 @@ int lua_cocos2dx_gui_Layout_setClippingType(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::LayoutClippingType arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -3722,8 +3832,9 @@ int lua_cocos2dx_gui_Layout_setBackGroundColorType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3740,6 +3851,7 @@ int lua_cocos2dx_gui_Layout_setBackGroundColorType(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::LayoutBackGroundColorType arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -3766,8 +3878,9 @@ int lua_cocos2dx_gui_Layout_setBackGroundImage(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3784,6 +3897,7 @@ int lua_cocos2dx_gui_Layout_setBackGroundImage(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -3794,7 +3908,9 @@ int lua_cocos2dx_gui_Layout_setBackGroundImage(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -3819,8 +3935,9 @@ int lua_cocos2dx_gui_Layout_setBackGroundColor(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_Error tolua_err;
 #endif
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
 #if COCOS2D_DEBUG >= 1
@@ -3877,8 +3994,9 @@ int lua_cocos2dx_gui_Layout_requestDoLayout(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3919,8 +4037,9 @@ int lua_cocos2dx_gui_Layout_isClippingEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3962,8 +4081,9 @@ int lua_cocos2dx_gui_Layout_setBackGroundColorOpacity(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -3980,6 +4100,7 @@ int lua_cocos2dx_gui_Layout_setBackGroundColorOpacity(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -4006,8 +4127,9 @@ int lua_cocos2dx_gui_Layout_setBackGroundImageCapInsets(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -4024,6 +4146,7 @@ int lua_cocos2dx_gui_Layout_setBackGroundImageCapInsets(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -4050,8 +4173,9 @@ int lua_cocos2dx_gui_Layout_removeBackGroundImage(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -4092,8 +4216,9 @@ int lua_cocos2dx_gui_Layout_setBackGroundImageScale9Enabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -4110,6 +4235,7 @@ int lua_cocos2dx_gui_Layout_setBackGroundImageScale9Enabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -4136,8 +4262,9 @@ int lua_cocos2dx_gui_Layout_setClippingEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -4154,6 +4281,7 @@ int lua_cocos2dx_gui_Layout_setClippingEnabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -4180,8 +4308,9 @@ int lua_cocos2dx_gui_Layout_setLayoutType(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,1,0);
@@ -4198,6 +4327,7 @@ int lua_cocos2dx_gui_Layout_setLayoutType(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::LayoutType arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -4224,7 +4354,7 @@ int lua_cocos2dx_gui_Layout_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Layout",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.Layout",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -4242,7 +4372,7 @@ int lua_cocos2dx_gui_Layout_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Layout";
+					className = "ccui.Layout";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Layout*)ret);
 				if (NULL != dynObject) {
@@ -4276,6 +4406,7 @@ int lua_cocos2dx_gui_Layout_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -4288,11 +4419,11 @@ int lua_cocos2dx_gui_Layout_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Layout");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Layout");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"Layout");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Layout");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -4315,8 +4446,8 @@ static int lua_cocos2dx_gui_Layout_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_Layout(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Layout");
-    tolua_cclass(tolua_S,"Layout","Layout","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.Layout");
+    tolua_cclass(tolua_S,"Layout","ccui.Layout","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"Layout");
         tolua_function(tolua_S,"setBackGroundColorVector",lua_cocos2dx_gui_Layout_setBackGroundColorVector);
@@ -4339,7 +4470,8 @@ int lua_register_cocos2dx_gui_Layout(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_Layout_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::Layout).name();
-    g_luaType[typeName] = "Layout";
+    g_luaType[typeName] = "ccui.Layout";
+    g_typeCast["Layout"] = "ccui.Layout";
     return 1;
 }
 
@@ -4353,8 +4485,9 @@ int lua_cocos2dx_gui_Button_getTitleText(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4396,8 +4529,9 @@ int lua_cocos2dx_gui_Button_loadTextureNormal(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4414,6 +4548,7 @@ int lua_cocos2dx_gui_Button_loadTextureNormal(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -4424,7 +4559,9 @@ int lua_cocos2dx_gui_Button_loadTextureNormal(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -4451,8 +4588,9 @@ int lua_cocos2dx_gui_Button_setCapInsetsNormalRenderer(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4469,6 +4607,7 @@ int lua_cocos2dx_gui_Button_setCapInsetsNormalRenderer(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -4495,8 +4634,9 @@ int lua_cocos2dx_gui_Button_setCapInsetsPressedRenderer(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4513,6 +4653,7 @@ int lua_cocos2dx_gui_Button_setCapInsetsPressedRenderer(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -4539,8 +4680,9 @@ int lua_cocos2dx_gui_Button_loadTexturePressed(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4557,6 +4699,7 @@ int lua_cocos2dx_gui_Button_loadTexturePressed(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -4567,7 +4710,9 @@ int lua_cocos2dx_gui_Button_loadTexturePressed(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -4594,8 +4739,9 @@ int lua_cocos2dx_gui_Button_setTitleFontSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4612,6 +4758,7 @@ int lua_cocos2dx_gui_Button_setTitleFontSize(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -4638,8 +4785,9 @@ int lua_cocos2dx_gui_Button_setCapInsetsDisabledRenderer(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4656,6 +4804,7 @@ int lua_cocos2dx_gui_Button_setCapInsetsDisabledRenderer(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -4682,8 +4831,9 @@ int lua_cocos2dx_gui_Button_setTitleFontName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4700,6 +4850,7 @@ int lua_cocos2dx_gui_Button_setTitleFontName(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -4726,8 +4877,9 @@ int lua_cocos2dx_gui_Button_getTitleColor(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4769,8 +4921,9 @@ int lua_cocos2dx_gui_Button_loadTextureDisabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4787,6 +4940,7 @@ int lua_cocos2dx_gui_Button_loadTextureDisabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -4797,7 +4951,9 @@ int lua_cocos2dx_gui_Button_loadTextureDisabled(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -4824,8 +4980,9 @@ int lua_cocos2dx_gui_Button_getTitleFontName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4867,8 +5024,9 @@ int lua_cocos2dx_gui_Button_setPressedActionEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4885,6 +5043,7 @@ int lua_cocos2dx_gui_Button_setPressedActionEnabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -4911,8 +5070,9 @@ int lua_cocos2dx_gui_Button_setCapInsets(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4929,6 +5089,7 @@ int lua_cocos2dx_gui_Button_setCapInsets(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -4955,8 +5116,9 @@ int lua_cocos2dx_gui_Button_setScale9Enabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -4973,6 +5135,7 @@ int lua_cocos2dx_gui_Button_setScale9Enabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -4999,8 +5162,9 @@ int lua_cocos2dx_gui_Button_loadTextures(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -5019,8 +5183,11 @@ int lua_cocos2dx_gui_Button_loadTextures(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         const char* arg2;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
@@ -5033,9 +5200,13 @@ int lua_cocos2dx_gui_Button_loadTextures(lua_State* tolua_S)
         const char* arg1;
         const char* arg2;
         cocos2d::gui::TextureResType arg3;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         if(!ok)
             return 0;
@@ -5062,8 +5233,9 @@ int lua_cocos2dx_gui_Button_getTitleFontSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -5105,8 +5277,9 @@ int lua_cocos2dx_gui_Button_setTitleText(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -5123,6 +5296,7 @@ int lua_cocos2dx_gui_Button_setTitleText(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -5149,8 +5323,9 @@ int lua_cocos2dx_gui_Button_setTitleColor(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Button*)tolua_tousertype(tolua_S,1,0);
@@ -5167,6 +5342,7 @@ int lua_cocos2dx_gui_Button_setTitleColor(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Color3B arg0;
+
         ok &= luaval_to_color3b(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -5193,7 +5369,7 @@ int lua_cocos2dx_gui_Button_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Button",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.Button",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -5211,7 +5387,7 @@ int lua_cocos2dx_gui_Button_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Button";
+					className = "ccui.Button";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Button*)ret);
 				if (NULL != dynObject) {
@@ -5245,6 +5421,7 @@ int lua_cocos2dx_gui_Button_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -5257,11 +5434,11 @@ int lua_cocos2dx_gui_Button_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Button");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Button");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"Button");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Button");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -5284,8 +5461,8 @@ static int lua_cocos2dx_gui_Button_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_Button(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Button");
-    tolua_cclass(tolua_S,"Button","Button","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.Button");
+    tolua_cclass(tolua_S,"Button","ccui.Button","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"Button");
         tolua_function(tolua_S,"getTitleText",lua_cocos2dx_gui_Button_getTitleText);
@@ -5310,7 +5487,8 @@ int lua_register_cocos2dx_gui_Button(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_Button_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::Button).name();
-    g_luaType[typeName] = "Button";
+    g_luaType[typeName] = "ccui.Button";
+    g_typeCast["Button"] = "ccui.Button";
     return 1;
 }
 
@@ -5324,8 +5502,9 @@ int lua_cocos2dx_gui_CheckBox_getSelectedState(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"CheckBox",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.CheckBox",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::CheckBox*)tolua_tousertype(tolua_S,1,0);
@@ -5367,8 +5546,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureBackGroundSelected(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"CheckBox",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.CheckBox",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::CheckBox*)tolua_tousertype(tolua_S,1,0);
@@ -5385,6 +5565,7 @@ int lua_cocos2dx_gui_CheckBox_loadTextureBackGroundSelected(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -5395,7 +5576,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureBackGroundSelected(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -5422,8 +5605,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureBackGroundDisabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"CheckBox",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.CheckBox",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::CheckBox*)tolua_tousertype(tolua_S,1,0);
@@ -5440,6 +5624,7 @@ int lua_cocos2dx_gui_CheckBox_loadTextureBackGroundDisabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -5450,7 +5635,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureBackGroundDisabled(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -5477,8 +5664,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureFrontCross(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"CheckBox",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.CheckBox",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::CheckBox*)tolua_tousertype(tolua_S,1,0);
@@ -5495,6 +5683,7 @@ int lua_cocos2dx_gui_CheckBox_loadTextureFrontCross(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -5505,7 +5694,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureFrontCross(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -5532,8 +5723,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextures(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"CheckBox",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.CheckBox",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::CheckBox*)tolua_tousertype(tolua_S,1,0);
@@ -5554,10 +5746,15 @@ int lua_cocos2dx_gui_CheckBox_loadTextures(lua_State* tolua_S)
         const char* arg2;
         const char* arg3;
         const char* arg4;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+
         std::string arg3_tmp; ok &= luaval_to_std_string(tolua_S, 5, &arg3_tmp); arg3 = arg3_tmp.c_str();
+
         std::string arg4_tmp; ok &= luaval_to_std_string(tolua_S, 6, &arg4_tmp); arg4 = arg4_tmp.c_str();
         if(!ok)
             return 0;
@@ -5572,11 +5769,17 @@ int lua_cocos2dx_gui_CheckBox_loadTextures(lua_State* tolua_S)
         const char* arg3;
         const char* arg4;
         cocos2d::gui::TextureResType arg5;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+
         std::string arg3_tmp; ok &= luaval_to_std_string(tolua_S, 5, &arg3_tmp); arg3 = arg3_tmp.c_str();
+
         std::string arg4_tmp; ok &= luaval_to_std_string(tolua_S, 6, &arg4_tmp); arg4 = arg4_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
         if(!ok)
             return 0;
@@ -5603,8 +5806,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureBackGround(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"CheckBox",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.CheckBox",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::CheckBox*)tolua_tousertype(tolua_S,1,0);
@@ -5621,6 +5825,7 @@ int lua_cocos2dx_gui_CheckBox_loadTextureBackGround(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -5631,7 +5836,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureBackGround(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -5658,8 +5865,9 @@ int lua_cocos2dx_gui_CheckBox_setSelectedState(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"CheckBox",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.CheckBox",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::CheckBox*)tolua_tousertype(tolua_S,1,0);
@@ -5676,6 +5884,7 @@ int lua_cocos2dx_gui_CheckBox_setSelectedState(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -5702,8 +5911,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureFrontCrossDisabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"CheckBox",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.CheckBox",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::CheckBox*)tolua_tousertype(tolua_S,1,0);
@@ -5720,6 +5930,7 @@ int lua_cocos2dx_gui_CheckBox_loadTextureFrontCrossDisabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -5730,7 +5941,9 @@ int lua_cocos2dx_gui_CheckBox_loadTextureFrontCrossDisabled(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -5757,7 +5970,7 @@ int lua_cocos2dx_gui_CheckBox_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"CheckBox",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.CheckBox",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -5775,7 +5988,7 @@ int lua_cocos2dx_gui_CheckBox_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "CheckBox";
+					className = "ccui.CheckBox";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::CheckBox*)ret);
 				if (NULL != dynObject) {
@@ -5809,6 +6022,7 @@ int lua_cocos2dx_gui_CheckBox_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -5821,11 +6035,11 @@ int lua_cocos2dx_gui_CheckBox_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"CheckBox");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.CheckBox");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"CheckBox");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.CheckBox");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -5848,8 +6062,8 @@ static int lua_cocos2dx_gui_CheckBox_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_CheckBox(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"CheckBox");
-    tolua_cclass(tolua_S,"CheckBox","CheckBox","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.CheckBox");
+    tolua_cclass(tolua_S,"CheckBox","ccui.CheckBox","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"CheckBox");
         tolua_function(tolua_S,"getSelectedState",lua_cocos2dx_gui_CheckBox_getSelectedState);
@@ -5864,7 +6078,8 @@ int lua_register_cocos2dx_gui_CheckBox(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_CheckBox_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::CheckBox).name();
-    g_luaType[typeName] = "CheckBox";
+    g_luaType[typeName] = "ccui.CheckBox";
+    g_typeCast["CheckBox"] = "ccui.CheckBox";
     return 1;
 }
 
@@ -5878,8 +6093,9 @@ int lua_cocos2dx_gui_ImageView_setTextureRect(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ImageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ImageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ImageView*)tolua_tousertype(tolua_S,1,0);
@@ -5896,6 +6112,7 @@ int lua_cocos2dx_gui_ImageView_setTextureRect(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -5922,8 +6139,9 @@ int lua_cocos2dx_gui_ImageView_setCapInsets(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ImageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ImageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ImageView*)tolua_tousertype(tolua_S,1,0);
@@ -5940,6 +6158,7 @@ int lua_cocos2dx_gui_ImageView_setCapInsets(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -5966,8 +6185,9 @@ int lua_cocos2dx_gui_ImageView_setScale9Enabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ImageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ImageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ImageView*)tolua_tousertype(tolua_S,1,0);
@@ -5984,6 +6204,7 @@ int lua_cocos2dx_gui_ImageView_setScale9Enabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -6010,8 +6231,9 @@ int lua_cocos2dx_gui_ImageView_loadTexture(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ImageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ImageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ImageView*)tolua_tousertype(tolua_S,1,0);
@@ -6028,6 +6250,7 @@ int lua_cocos2dx_gui_ImageView_loadTexture(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -6038,7 +6261,9 @@ int lua_cocos2dx_gui_ImageView_loadTexture(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -6065,7 +6290,7 @@ int lua_cocos2dx_gui_ImageView_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ImageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.ImageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -6083,7 +6308,7 @@ int lua_cocos2dx_gui_ImageView_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ImageView";
+					className = "ccui.ImageView";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::ImageView*)ret);
 				if (NULL != dynObject) {
@@ -6117,6 +6342,7 @@ int lua_cocos2dx_gui_ImageView_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -6129,11 +6355,11 @@ int lua_cocos2dx_gui_ImageView_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ImageView");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.ImageView");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ImageView");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.ImageView");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -6156,8 +6382,8 @@ static int lua_cocos2dx_gui_ImageView_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_ImageView(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ImageView");
-    tolua_cclass(tolua_S,"ImageView","ImageView","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.ImageView");
+    tolua_cclass(tolua_S,"ImageView","ccui.ImageView","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"ImageView");
         tolua_function(tolua_S,"setTextureRect",lua_cocos2dx_gui_ImageView_setTextureRect);
@@ -6168,7 +6394,8 @@ int lua_register_cocos2dx_gui_ImageView(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_ImageView_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::ImageView).name();
-    g_luaType[typeName] = "ImageView";
+    g_luaType[typeName] = "ccui.ImageView";
+    g_typeCast["ImageView"] = "ccui.ImageView";
     return 1;
 }
 
@@ -6182,8 +6409,9 @@ int lua_cocos2dx_gui_Text_getStringLength(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6225,8 +6453,9 @@ int lua_cocos2dx_gui_Text_setFontName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6243,6 +6472,7 @@ int lua_cocos2dx_gui_Text_setFontName(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -6269,8 +6499,9 @@ int lua_cocos2dx_gui_Text_setTouchScaleChangeEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6287,6 +6518,7 @@ int lua_cocos2dx_gui_Text_setTouchScaleChangeEnabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -6313,8 +6545,9 @@ int lua_cocos2dx_gui_Text_getStringValue(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6356,8 +6589,9 @@ int lua_cocos2dx_gui_Text_setText(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6374,6 +6608,7 @@ int lua_cocos2dx_gui_Text_setText(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -6400,8 +6635,9 @@ int lua_cocos2dx_gui_Text_setTextVerticalAlignment(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6418,6 +6654,7 @@ int lua_cocos2dx_gui_Text_setTextVerticalAlignment(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::TextVAlignment arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -6444,8 +6681,9 @@ int lua_cocos2dx_gui_Text_setFontSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6462,6 +6700,7 @@ int lua_cocos2dx_gui_Text_setFontSize(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -6488,8 +6727,9 @@ int lua_cocos2dx_gui_Text_isTouchScaleChangeEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6531,8 +6771,9 @@ int lua_cocos2dx_gui_Text_setTextHorizontalAlignment(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6549,6 +6790,7 @@ int lua_cocos2dx_gui_Text_setTextHorizontalAlignment(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::TextHAlignment arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -6575,8 +6817,9 @@ int lua_cocos2dx_gui_Text_setTextAreaSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Text*)tolua_tousertype(tolua_S,1,0);
@@ -6593,6 +6836,7 @@ int lua_cocos2dx_gui_Text_setTextAreaSize(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Size arg0;
+
         ok &= luaval_to_size(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -6619,7 +6863,7 @@ int lua_cocos2dx_gui_Text_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Text",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.Text",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -6637,7 +6881,7 @@ int lua_cocos2dx_gui_Text_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Text";
+					className = "ccui.Text";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Text*)ret);
 				if (NULL != dynObject) {
@@ -6671,6 +6915,7 @@ int lua_cocos2dx_gui_Text_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -6683,11 +6928,11 @@ int lua_cocos2dx_gui_Text_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Text");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Text");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"Text");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Text");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -6710,8 +6955,8 @@ static int lua_cocos2dx_gui_Text_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_Text(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Text");
-    tolua_cclass(tolua_S,"Text","Text","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.Text");
+    tolua_cclass(tolua_S,"Text","ccui.Text","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"Text");
         tolua_function(tolua_S,"getStringLength",lua_cocos2dx_gui_Text_getStringLength);
@@ -6728,7 +6973,8 @@ int lua_register_cocos2dx_gui_Text(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_Text_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::Text).name();
-    g_luaType[typeName] = "Text";
+    g_luaType[typeName] = "ccui.Text";
+    g_typeCast["Text"] = "ccui.Text";
     return 1;
 }
 
@@ -6742,8 +6988,9 @@ int lua_cocos2dx_gui_TextAtlas_setProperty(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextAtlas",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextAtlas",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextAtlas*)tolua_tousertype(tolua_S,1,0);
@@ -6764,10 +7011,15 @@ int lua_cocos2dx_gui_TextAtlas_setProperty(lua_State* tolua_S)
         int arg2;
         int arg3;
         std::string arg4;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
+
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
+
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
+
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
+
         ok &= luaval_to_std_string(tolua_S, 6,&arg4);
         if(!ok)
             return 0;
@@ -6794,8 +7046,9 @@ int lua_cocos2dx_gui_TextAtlas_getStringValue(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextAtlas",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextAtlas",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextAtlas*)tolua_tousertype(tolua_S,1,0);
@@ -6837,8 +7090,9 @@ int lua_cocos2dx_gui_TextAtlas_setStringValue(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextAtlas",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextAtlas",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextAtlas*)tolua_tousertype(tolua_S,1,0);
@@ -6855,6 +7109,7 @@ int lua_cocos2dx_gui_TextAtlas_setStringValue(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -6881,7 +7136,7 @@ int lua_cocos2dx_gui_TextAtlas_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"TextAtlas",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.TextAtlas",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -6899,7 +7154,7 @@ int lua_cocos2dx_gui_TextAtlas_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "TextAtlas";
+					className = "ccui.TextAtlas";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::TextAtlas*)ret);
 				if (NULL != dynObject) {
@@ -6933,6 +7188,7 @@ int lua_cocos2dx_gui_TextAtlas_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -6945,11 +7201,11 @@ int lua_cocos2dx_gui_TextAtlas_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TextAtlas");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.TextAtlas");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"TextAtlas");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.TextAtlas");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -6972,8 +7228,8 @@ static int lua_cocos2dx_gui_TextAtlas_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_TextAtlas(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"TextAtlas");
-    tolua_cclass(tolua_S,"TextAtlas","TextAtlas","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.TextAtlas");
+    tolua_cclass(tolua_S,"TextAtlas","ccui.TextAtlas","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"TextAtlas");
         tolua_function(tolua_S,"setProperty",lua_cocos2dx_gui_TextAtlas_setProperty);
@@ -6983,7 +7239,8 @@ int lua_register_cocos2dx_gui_TextAtlas(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_TextAtlas_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::TextAtlas).name();
-    g_luaType[typeName] = "TextAtlas";
+    g_luaType[typeName] = "ccui.TextAtlas";
+    g_typeCast["TextAtlas"] = "ccui.TextAtlas";
     return 1;
 }
 
@@ -6997,8 +7254,9 @@ int lua_cocos2dx_gui_LoadingBar_setPercent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LoadingBar",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LoadingBar",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LoadingBar*)tolua_tousertype(tolua_S,1,0);
@@ -7015,6 +7273,7 @@ int lua_cocos2dx_gui_LoadingBar_setPercent(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -7041,8 +7300,9 @@ int lua_cocos2dx_gui_LoadingBar_loadTexture(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LoadingBar",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LoadingBar",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LoadingBar*)tolua_tousertype(tolua_S,1,0);
@@ -7059,6 +7319,7 @@ int lua_cocos2dx_gui_LoadingBar_loadTexture(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -7069,7 +7330,9 @@ int lua_cocos2dx_gui_LoadingBar_loadTexture(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -7096,8 +7359,9 @@ int lua_cocos2dx_gui_LoadingBar_setDirection(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LoadingBar",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LoadingBar",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LoadingBar*)tolua_tousertype(tolua_S,1,0);
@@ -7114,6 +7378,7 @@ int lua_cocos2dx_gui_LoadingBar_setDirection(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::LoadingBarType arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -7140,8 +7405,9 @@ int lua_cocos2dx_gui_LoadingBar_setScale9Enabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LoadingBar",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LoadingBar",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LoadingBar*)tolua_tousertype(tolua_S,1,0);
@@ -7158,6 +7424,7 @@ int lua_cocos2dx_gui_LoadingBar_setScale9Enabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -7184,8 +7451,9 @@ int lua_cocos2dx_gui_LoadingBar_setCapInsets(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LoadingBar",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LoadingBar",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LoadingBar*)tolua_tousertype(tolua_S,1,0);
@@ -7202,6 +7470,7 @@ int lua_cocos2dx_gui_LoadingBar_setCapInsets(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -7228,8 +7497,9 @@ int lua_cocos2dx_gui_LoadingBar_getDirection(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LoadingBar",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LoadingBar",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LoadingBar*)tolua_tousertype(tolua_S,1,0);
@@ -7271,8 +7541,9 @@ int lua_cocos2dx_gui_LoadingBar_getPercent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"LoadingBar",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.LoadingBar",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::LoadingBar*)tolua_tousertype(tolua_S,1,0);
@@ -7314,7 +7585,7 @@ int lua_cocos2dx_gui_LoadingBar_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"LoadingBar",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.LoadingBar",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -7332,7 +7603,7 @@ int lua_cocos2dx_gui_LoadingBar_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "LoadingBar";
+					className = "ccui.LoadingBar";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::LoadingBar*)ret);
 				if (NULL != dynObject) {
@@ -7366,6 +7637,7 @@ int lua_cocos2dx_gui_LoadingBar_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -7378,11 +7650,11 @@ int lua_cocos2dx_gui_LoadingBar_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"LoadingBar");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.LoadingBar");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"LoadingBar");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.LoadingBar");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -7405,8 +7677,8 @@ static int lua_cocos2dx_gui_LoadingBar_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_LoadingBar(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"LoadingBar");
-    tolua_cclass(tolua_S,"LoadingBar","LoadingBar","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.LoadingBar");
+    tolua_cclass(tolua_S,"LoadingBar","ccui.LoadingBar","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"LoadingBar");
         tolua_function(tolua_S,"setPercent",lua_cocos2dx_gui_LoadingBar_setPercent);
@@ -7420,7 +7692,8 @@ int lua_register_cocos2dx_gui_LoadingBar(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_LoadingBar_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::LoadingBar).name();
-    g_luaType[typeName] = "LoadingBar";
+    g_luaType[typeName] = "ccui.LoadingBar";
+    g_typeCast["LoadingBar"] = "ccui.LoadingBar";
     return 1;
 }
 
@@ -7434,8 +7707,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToTop(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7453,7 +7727,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToTop(lua_State* tolua_S)
     {
         double arg0;
         bool arg1;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -7480,8 +7756,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToPercentHorizontal(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7500,8 +7777,11 @@ int lua_cocos2dx_gui_ScrollView_scrollToPercentHorizontal(lua_State* tolua_S)
         double arg0;
         double arg1;
         bool arg2;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_number(tolua_S, 3,&arg1);
+
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -7528,8 +7808,9 @@ int lua_cocos2dx_gui_ScrollView_isInertiaScrollEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7571,8 +7852,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToPercentBothDirection(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7591,8 +7873,11 @@ int lua_cocos2dx_gui_ScrollView_scrollToPercentBothDirection(lua_State* tolua_S)
         cocos2d::Point arg0;
         double arg1;
         bool arg2;
+
         ok &= luaval_to_point(tolua_S, 2, &arg0);
+
         ok &= luaval_to_number(tolua_S, 3,&arg1);
+
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -7619,8 +7904,9 @@ int lua_cocos2dx_gui_ScrollView_getDirection(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7662,8 +7948,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToBottomLeft(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7681,7 +7968,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToBottomLeft(lua_State* tolua_S)
     {
         double arg0;
         bool arg1;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -7708,8 +7997,9 @@ int lua_cocos2dx_gui_ScrollView_getInnerContainer(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7736,7 +8026,7 @@ int lua_cocos2dx_gui_ScrollView_getInnerContainer(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Layout";
+					className = "ccui.Layout";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Layout*)ret);
 				if (NULL != dynObject) {
@@ -7771,8 +8061,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToBottom(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7813,8 +8104,9 @@ int lua_cocos2dx_gui_ScrollView_setDirection(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7831,6 +8123,7 @@ int lua_cocos2dx_gui_ScrollView_setDirection(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::SCROLLVIEW_DIR arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -7857,8 +8150,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToTopLeft(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7876,7 +8170,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToTopLeft(lua_State* tolua_S)
     {
         double arg0;
         bool arg1;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -7903,8 +8199,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToTopRight(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7945,8 +8242,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToBottomLeft(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -7987,8 +8285,9 @@ int lua_cocos2dx_gui_ScrollView_setInnerContainerSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8005,6 +8304,7 @@ int lua_cocos2dx_gui_ScrollView_setInnerContainerSize(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Size arg0;
+
         ok &= luaval_to_size(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -8031,8 +8331,9 @@ int lua_cocos2dx_gui_ScrollView_getInnerContainerSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8074,8 +8375,9 @@ int lua_cocos2dx_gui_ScrollView_isBounceEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8117,8 +8419,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToPercentVertical(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8135,6 +8438,7 @@ int lua_cocos2dx_gui_ScrollView_jumpToPercentVertical(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -8161,8 +8465,9 @@ int lua_cocos2dx_gui_ScrollView_setInertiaScrollEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8179,6 +8484,7 @@ int lua_cocos2dx_gui_ScrollView_setInertiaScrollEnabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -8205,8 +8511,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToTopLeft(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8247,8 +8554,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToPercentHorizontal(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8265,6 +8573,7 @@ int lua_cocos2dx_gui_ScrollView_jumpToPercentHorizontal(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -8291,8 +8600,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToBottomRight(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8333,8 +8643,9 @@ int lua_cocos2dx_gui_ScrollView_setBounceEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8351,6 +8662,7 @@ int lua_cocos2dx_gui_ScrollView_setBounceEnabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -8377,8 +8689,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToTop(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8419,8 +8732,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToLeft(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8438,7 +8752,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToLeft(lua_State* tolua_S)
     {
         double arg0;
         bool arg1;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -8465,8 +8781,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToPercentBothDirection(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8483,6 +8800,7 @@ int lua_cocos2dx_gui_ScrollView_jumpToPercentBothDirection(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Point arg0;
+
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -8509,8 +8827,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToPercentVertical(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8529,8 +8848,11 @@ int lua_cocos2dx_gui_ScrollView_scrollToPercentVertical(lua_State* tolua_S)
         double arg0;
         double arg1;
         bool arg2;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_number(tolua_S, 3,&arg1);
+
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -8557,8 +8879,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToBottom(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8576,7 +8899,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToBottom(lua_State* tolua_S)
     {
         double arg0;
         bool arg1;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -8603,8 +8928,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToBottomRight(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8622,7 +8948,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToBottomRight(lua_State* tolua_S)
     {
         double arg0;
         bool arg1;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -8649,8 +8977,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToLeft(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8691,8 +9020,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToRight(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8710,7 +9040,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToRight(lua_State* tolua_S)
     {
         double arg0;
         bool arg1;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -8737,8 +9069,9 @@ int lua_cocos2dx_gui_ScrollView_jumpToRight(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8779,8 +9112,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToTopRight(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ScrollView*)tolua_tousertype(tolua_S,1,0);
@@ -8798,7 +9132,9 @@ int lua_cocos2dx_gui_ScrollView_scrollToTopRight(lua_State* tolua_S)
     {
         double arg0;
         bool arg1;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
+
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
@@ -8825,7 +9161,7 @@ int lua_cocos2dx_gui_ScrollView_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ScrollView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.ScrollView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -8843,7 +9179,7 @@ int lua_cocos2dx_gui_ScrollView_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ScrollView";
+					className = "ccui.ScrollView";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::ScrollView*)ret);
 				if (NULL != dynObject) {
@@ -8877,6 +9213,7 @@ int lua_cocos2dx_gui_ScrollView_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -8889,11 +9226,11 @@ int lua_cocos2dx_gui_ScrollView_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ScrollView");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.ScrollView");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ScrollView");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.ScrollView");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -8916,8 +9253,8 @@ static int lua_cocos2dx_gui_ScrollView_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_ScrollView(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ScrollView");
-    tolua_cclass(tolua_S,"ScrollView","ScrollView","Layout",NULL);
+    tolua_usertype(tolua_S,"ccui.ScrollView");
+    tolua_cclass(tolua_S,"ScrollView","ccui.ScrollView","ccui.Layout",NULL);
 
     tolua_beginmodule(tolua_S,"ScrollView");
         tolua_function(tolua_S,"scrollToTop",lua_cocos2dx_gui_ScrollView_scrollToTop);
@@ -8955,7 +9292,8 @@ int lua_register_cocos2dx_gui_ScrollView(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_ScrollView_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::ScrollView).name();
-    g_luaType[typeName] = "ScrollView";
+    g_luaType[typeName] = "ccui.ScrollView";
+    g_typeCast["ScrollView"] = "ccui.ScrollView";
     return 1;
 }
 
@@ -8969,8 +9307,9 @@ int lua_cocos2dx_gui_ListView_getIndex(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -8987,8 +9326,9 @@ int lua_cocos2dx_gui_ListView_getIndex(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::Widget* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -9023,8 +9363,9 @@ int lua_cocos2dx_gui_ListView_removeAllItems(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9065,8 +9406,9 @@ int lua_cocos2dx_gui_ListView_setGravity(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9083,6 +9425,7 @@ int lua_cocos2dx_gui_ListView_setGravity(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::ListViewGravity arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -9109,8 +9452,9 @@ int lua_cocos2dx_gui_ListView_pushBackCustomItem(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9127,8 +9471,9 @@ int lua_cocos2dx_gui_ListView_pushBackCustomItem(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::Widget* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -9162,8 +9507,9 @@ int lua_cocos2dx_gui_ListView_getItems(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9205,8 +9551,9 @@ int lua_cocos2dx_gui_ListView_removeItem(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9223,6 +9570,7 @@ int lua_cocos2dx_gui_ListView_removeItem(lua_State* tolua_S)
     if (argc == 1) 
     {
         ssize_t arg0;
+
         ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -9249,8 +9597,9 @@ int lua_cocos2dx_gui_ListView_getCurSelectedIndex(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9292,8 +9641,9 @@ int lua_cocos2dx_gui_ListView_insertDefaultItem(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9310,6 +9660,7 @@ int lua_cocos2dx_gui_ListView_insertDefaultItem(lua_State* tolua_S)
     if (argc == 1) 
     {
         ssize_t arg0;
+
         ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -9336,8 +9687,9 @@ int lua_cocos2dx_gui_ListView_setItemsMargin(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9354,6 +9706,7 @@ int lua_cocos2dx_gui_ListView_setItemsMargin(lua_State* tolua_S)
     if (argc == 1) 
     {
         double arg0;
+
         ok &= luaval_to_number(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -9380,8 +9733,9 @@ int lua_cocos2dx_gui_ListView_removeLastItem(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9422,8 +9776,9 @@ int lua_cocos2dx_gui_ListView_getItem(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9440,6 +9795,7 @@ int lua_cocos2dx_gui_ListView_getItem(lua_State* tolua_S)
     if (argc == 1) 
     {
         ssize_t arg0;
+
         ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -9452,7 +9808,7 @@ int lua_cocos2dx_gui_ListView_getItem(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Widget";
+					className = "ccui.Widget";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
 				if (NULL != dynObject) {
@@ -9487,8 +9843,9 @@ int lua_cocos2dx_gui_ListView_setItemModel(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9505,8 +9862,9 @@ int lua_cocos2dx_gui_ListView_setItemModel(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::Widget* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -9540,8 +9898,9 @@ int lua_cocos2dx_gui_ListView_requestRefreshView(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9582,8 +9941,9 @@ int lua_cocos2dx_gui_ListView_pushBackDefaultItem(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9624,8 +9984,9 @@ int lua_cocos2dx_gui_ListView_insertCustomItem(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::ListView*)tolua_tousertype(tolua_S,1,0);
@@ -9643,8 +10004,9 @@ int lua_cocos2dx_gui_ListView_insertCustomItem(lua_State* tolua_S)
     {
         cocos2d::gui::Widget* arg0;
         ssize_t arg1;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -9653,6 +10015,7 @@ int lua_cocos2dx_gui_ListView_insertCustomItem(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_ssize(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
@@ -9679,7 +10042,7 @@ int lua_cocos2dx_gui_ListView_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"ListView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.ListView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -9697,7 +10060,7 @@ int lua_cocos2dx_gui_ListView_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "ListView";
+					className = "ccui.ListView";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::ListView*)ret);
 				if (NULL != dynObject) {
@@ -9731,6 +10094,7 @@ int lua_cocos2dx_gui_ListView_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -9743,11 +10107,11 @@ int lua_cocos2dx_gui_ListView_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ListView");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.ListView");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ListView");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.ListView");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -9770,8 +10134,8 @@ static int lua_cocos2dx_gui_ListView_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_ListView(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"ListView");
-    tolua_cclass(tolua_S,"ListView","ListView","ScrollView",NULL);
+    tolua_usertype(tolua_S,"ccui.ListView");
+    tolua_cclass(tolua_S,"ListView","ccui.ListView","ccui.ScrollView",NULL);
 
     tolua_beginmodule(tolua_S,"ListView");
         tolua_function(tolua_S,"getIndex",lua_cocos2dx_gui_ListView_getIndex);
@@ -9793,7 +10157,8 @@ int lua_register_cocos2dx_gui_ListView(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_ListView_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::ListView).name();
-    g_luaType[typeName] = "ListView";
+    g_luaType[typeName] = "ccui.ListView";
+    g_typeCast["ListView"] = "ccui.ListView";
     return 1;
 }
 
@@ -9807,8 +10172,9 @@ int lua_cocos2dx_gui_Slider_setPercent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -9825,6 +10191,7 @@ int lua_cocos2dx_gui_Slider_setPercent(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -9851,8 +10218,9 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTextureNormal(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -9869,6 +10237,7 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTextureNormal(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -9879,7 +10248,9 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTextureNormal(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -9906,8 +10277,9 @@ int lua_cocos2dx_gui_Slider_loadBarTexture(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -9924,6 +10296,7 @@ int lua_cocos2dx_gui_Slider_loadBarTexture(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -9934,7 +10307,9 @@ int lua_cocos2dx_gui_Slider_loadBarTexture(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -9961,8 +10336,9 @@ int lua_cocos2dx_gui_Slider_loadProgressBarTexture(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -9979,6 +10355,7 @@ int lua_cocos2dx_gui_Slider_loadProgressBarTexture(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -9989,7 +10366,9 @@ int lua_cocos2dx_gui_Slider_loadProgressBarTexture(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -10016,8 +10395,9 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTextures(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -10036,8 +10416,11 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTextures(lua_State* tolua_S)
         const char* arg0;
         const char* arg1;
         const char* arg2;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
         if(!ok)
             return 0;
@@ -10050,9 +10433,13 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTextures(lua_State* tolua_S)
         const char* arg1;
         const char* arg2;
         cocos2d::gui::TextureResType arg3;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
+
         std::string arg2_tmp; ok &= luaval_to_std_string(tolua_S, 4, &arg2_tmp); arg2 = arg2_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
         if(!ok)
             return 0;
@@ -10079,8 +10466,9 @@ int lua_cocos2dx_gui_Slider_setCapInsetProgressBarRebderer(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -10097,6 +10485,7 @@ int lua_cocos2dx_gui_Slider_setCapInsetProgressBarRebderer(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -10123,8 +10512,9 @@ int lua_cocos2dx_gui_Slider_setCapInsetsBarRenderer(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -10141,6 +10531,7 @@ int lua_cocos2dx_gui_Slider_setCapInsetsBarRenderer(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -10167,8 +10558,9 @@ int lua_cocos2dx_gui_Slider_setScale9Enabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -10185,6 +10577,7 @@ int lua_cocos2dx_gui_Slider_setScale9Enabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -10211,8 +10604,9 @@ int lua_cocos2dx_gui_Slider_setCapInsets(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -10229,6 +10623,7 @@ int lua_cocos2dx_gui_Slider_setCapInsets(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Rect arg0;
+
         ok &= luaval_to_rect(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -10255,8 +10650,9 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTexturePressed(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -10273,6 +10669,7 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTexturePressed(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -10283,7 +10680,9 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTexturePressed(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -10310,8 +10709,9 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTextureDisabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -10328,6 +10728,7 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTextureDisabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -10338,7 +10739,9 @@ int lua_cocos2dx_gui_Slider_loadSlidBallTextureDisabled(lua_State* tolua_S)
     {
         const char* arg0;
         cocos2d::gui::TextureResType arg1;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -10365,8 +10768,9 @@ int lua_cocos2dx_gui_Slider_getPercent(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::Slider*)tolua_tousertype(tolua_S,1,0);
@@ -10408,7 +10812,7 @@ int lua_cocos2dx_gui_Slider_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Slider",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.Slider",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -10426,7 +10830,7 @@ int lua_cocos2dx_gui_Slider_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Slider";
+					className = "ccui.Slider";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Slider*)ret);
 				if (NULL != dynObject) {
@@ -10460,6 +10864,7 @@ int lua_cocos2dx_gui_Slider_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -10472,11 +10877,11 @@ int lua_cocos2dx_gui_Slider_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"Slider");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Slider");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"Slider");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Slider");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -10499,8 +10904,8 @@ static int lua_cocos2dx_gui_Slider_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_Slider(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Slider");
-    tolua_cclass(tolua_S,"Slider","Slider","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.Slider");
+    tolua_cclass(tolua_S,"Slider","ccui.Slider","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"Slider");
         tolua_function(tolua_S,"setPercent",lua_cocos2dx_gui_Slider_setPercent);
@@ -10519,7 +10924,8 @@ int lua_register_cocos2dx_gui_Slider(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_Slider_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::Slider).name();
-    g_luaType[typeName] = "Slider";
+    g_luaType[typeName] = "ccui.Slider";
+    g_typeCast["Slider"] = "ccui.Slider";
     return 1;
 }
 
@@ -10533,8 +10939,9 @@ int lua_cocos2dx_gui_TextField_setAttachWithIME(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10551,6 +10958,7 @@ int lua_cocos2dx_gui_TextField_setAttachWithIME(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -10577,8 +10985,9 @@ int lua_cocos2dx_gui_TextField_getStringValue(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10620,8 +11029,9 @@ int lua_cocos2dx_gui_TextField_setPasswordStyleText(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10638,6 +11048,7 @@ int lua_cocos2dx_gui_TextField_setPasswordStyleText(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -10664,8 +11075,9 @@ int lua_cocos2dx_gui_TextField_getAttachWithIME(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10707,8 +11119,9 @@ int lua_cocos2dx_gui_TextField_setFontName(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10725,6 +11138,7 @@ int lua_cocos2dx_gui_TextField_setFontName(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -10751,8 +11165,9 @@ int lua_cocos2dx_gui_TextField_getInsertText(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10794,8 +11209,9 @@ int lua_cocos2dx_gui_TextField_setInsertText(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10812,6 +11228,7 @@ int lua_cocos2dx_gui_TextField_setInsertText(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -10838,8 +11255,9 @@ int lua_cocos2dx_gui_TextField_getDetachWithIME(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10881,8 +11299,9 @@ int lua_cocos2dx_gui_TextField_didNotSelectSelf(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10923,8 +11342,9 @@ int lua_cocos2dx_gui_TextField_attachWithIME(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10965,8 +11385,9 @@ int lua_cocos2dx_gui_TextField_setPasswordEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -10983,6 +11404,7 @@ int lua_cocos2dx_gui_TextField_setPasswordEnabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11009,8 +11431,9 @@ int lua_cocos2dx_gui_TextField_setMaxLengthEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11027,6 +11450,7 @@ int lua_cocos2dx_gui_TextField_setMaxLengthEnabled(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11053,8 +11477,9 @@ int lua_cocos2dx_gui_TextField_getDeleteBackward(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11096,8 +11521,9 @@ int lua_cocos2dx_gui_TextField_setFontSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11114,6 +11540,7 @@ int lua_cocos2dx_gui_TextField_setFontSize(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -11140,8 +11567,9 @@ int lua_cocos2dx_gui_TextField_setPlaceHolder(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11158,6 +11586,7 @@ int lua_cocos2dx_gui_TextField_setPlaceHolder(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11184,8 +11613,9 @@ int lua_cocos2dx_gui_TextField_isPasswordEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11227,8 +11657,9 @@ int lua_cocos2dx_gui_TextField_getMaxLength(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11270,8 +11701,9 @@ int lua_cocos2dx_gui_TextField_isMaxLengthEnabled(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11313,8 +11745,9 @@ int lua_cocos2dx_gui_TextField_setDetachWithIME(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11331,6 +11764,7 @@ int lua_cocos2dx_gui_TextField_setDetachWithIME(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11357,8 +11791,9 @@ int lua_cocos2dx_gui_TextField_setText(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11375,6 +11810,7 @@ int lua_cocos2dx_gui_TextField_setText(lua_State* tolua_S)
     if (argc == 1) 
     {
         std::string arg0;
+
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11401,8 +11837,9 @@ int lua_cocos2dx_gui_TextField_setMaxLength(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11419,6 +11856,7 @@ int lua_cocos2dx_gui_TextField_setMaxLength(lua_State* tolua_S)
     if (argc == 1) 
     {
         int arg0;
+
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
@@ -11445,8 +11883,9 @@ int lua_cocos2dx_gui_TextField_setTouchSize(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11463,6 +11902,7 @@ int lua_cocos2dx_gui_TextField_setTouchSize(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::Size arg0;
+
         ok &= luaval_to_size(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -11489,8 +11929,9 @@ int lua_cocos2dx_gui_TextField_setDeleteBackward(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextField*)tolua_tousertype(tolua_S,1,0);
@@ -11507,6 +11948,7 @@ int lua_cocos2dx_gui_TextField_setDeleteBackward(lua_State* tolua_S)
     if (argc == 1) 
     {
         bool arg0;
+
         ok &= luaval_to_boolean(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
@@ -11533,7 +11975,7 @@ int lua_cocos2dx_gui_TextField_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"TextField",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.TextField",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -11551,7 +11993,7 @@ int lua_cocos2dx_gui_TextField_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "TextField";
+					className = "ccui.TextField";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::TextField*)ret);
 				if (NULL != dynObject) {
@@ -11585,6 +12027,7 @@ int lua_cocos2dx_gui_TextField_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -11597,11 +12040,11 @@ int lua_cocos2dx_gui_TextField_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TextField");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.TextField");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"TextField");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.TextField");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -11624,8 +12067,8 @@ static int lua_cocos2dx_gui_TextField_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_TextField(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"TextField");
-    tolua_cclass(tolua_S,"TextField","TextField","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.TextField");
+    tolua_cclass(tolua_S,"TextField","ccui.TextField","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"TextField");
         tolua_function(tolua_S,"setAttachWithIME",lua_cocos2dx_gui_TextField_setAttachWithIME);
@@ -11655,7 +12098,8 @@ int lua_register_cocos2dx_gui_TextField(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_TextField_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::TextField).name();
-    g_luaType[typeName] = "TextField";
+    g_luaType[typeName] = "ccui.TextField";
+    g_typeCast["TextField"] = "ccui.TextField";
     return 1;
 }
 
@@ -11669,8 +12113,9 @@ int lua_cocos2dx_gui_TextBMFont_setFntFile(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextBMFont",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextBMFont",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextBMFont*)tolua_tousertype(tolua_S,1,0);
@@ -11687,6 +12132,7 @@ int lua_cocos2dx_gui_TextBMFont_setFntFile(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -11713,8 +12159,9 @@ int lua_cocos2dx_gui_TextBMFont_getStringValue(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextBMFont",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextBMFont",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextBMFont*)tolua_tousertype(tolua_S,1,0);
@@ -11756,8 +12203,9 @@ int lua_cocos2dx_gui_TextBMFont_setText(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"TextBMFont",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.TextBMFont",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::TextBMFont*)tolua_tousertype(tolua_S,1,0);
@@ -11774,6 +12222,7 @@ int lua_cocos2dx_gui_TextBMFont_setText(lua_State* tolua_S)
     if (argc == 1) 
     {
         const char* arg0;
+
         std::string arg0_tmp; ok &= luaval_to_std_string(tolua_S, 2, &arg0_tmp); arg0 = arg0_tmp.c_str();
         if(!ok)
             return 0;
@@ -11800,7 +12249,7 @@ int lua_cocos2dx_gui_TextBMFont_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"TextBMFont",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.TextBMFont",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -11818,7 +12267,7 @@ int lua_cocos2dx_gui_TextBMFont_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "TextBMFont";
+					className = "ccui.TextBMFont";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::TextBMFont*)ret);
 				if (NULL != dynObject) {
@@ -11852,6 +12301,7 @@ int lua_cocos2dx_gui_TextBMFont_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -11864,11 +12314,11 @@ int lua_cocos2dx_gui_TextBMFont_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"TextBMFont");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.TextBMFont");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"TextBMFont");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.TextBMFont");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -11891,8 +12341,8 @@ static int lua_cocos2dx_gui_TextBMFont_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_TextBMFont(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"TextBMFont");
-    tolua_cclass(tolua_S,"TextBMFont","TextBMFont","Widget",NULL);
+    tolua_usertype(tolua_S,"ccui.TextBMFont");
+    tolua_cclass(tolua_S,"TextBMFont","ccui.TextBMFont","ccui.Widget",NULL);
 
     tolua_beginmodule(tolua_S,"TextBMFont");
         tolua_function(tolua_S,"setFntFile",lua_cocos2dx_gui_TextBMFont_setFntFile);
@@ -11902,7 +12352,8 @@ int lua_register_cocos2dx_gui_TextBMFont(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_TextBMFont_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::TextBMFont).name();
-    g_luaType[typeName] = "TextBMFont";
+    g_luaType[typeName] = "ccui.TextBMFont";
+    g_typeCast["TextBMFont"] = "ccui.TextBMFont";
     return 1;
 }
 
@@ -11916,8 +12367,9 @@ int lua_cocos2dx_gui_PageView_getCurPageIndex(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -11959,8 +12411,9 @@ int lua_cocos2dx_gui_PageView_addWidgetToPage(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -11979,8 +12432,9 @@ int lua_cocos2dx_gui_PageView_addWidgetToPage(lua_State* tolua_S)
         cocos2d::gui::Widget* arg0;
         ssize_t arg1;
         bool arg2;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -11989,7 +12443,9 @@ int lua_cocos2dx_gui_PageView_addWidgetToPage(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_ssize(tolua_S, 3, &arg1);
+
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -12016,8 +12472,9 @@ int lua_cocos2dx_gui_PageView_getPage(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -12034,6 +12491,7 @@ int lua_cocos2dx_gui_PageView_getPage(lua_State* tolua_S)
     if (argc == 1) 
     {
         ssize_t arg0;
+
         ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -12046,7 +12504,7 @@ int lua_cocos2dx_gui_PageView_getPage(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Layout";
+					className = "ccui.Layout";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Layout*)ret);
 				if (NULL != dynObject) {
@@ -12081,8 +12539,9 @@ int lua_cocos2dx_gui_PageView_removePage(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -12099,8 +12558,9 @@ int lua_cocos2dx_gui_PageView_removePage(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::Layout* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Layout",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Layout",0)){
 					ok = false;
 					break;
 				}
@@ -12134,8 +12594,9 @@ int lua_cocos2dx_gui_PageView_insertPage(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -12153,8 +12614,9 @@ int lua_cocos2dx_gui_PageView_insertPage(lua_State* tolua_S)
     {
         cocos2d::gui::Layout* arg0;
         int arg1;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Layout",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Layout",0)){
 					ok = false;
 					break;
 				}
@@ -12163,6 +12625,7 @@ int lua_cocos2dx_gui_PageView_insertPage(lua_State* tolua_S)
 					if (nullptr == arg0){
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
+
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
@@ -12189,8 +12652,9 @@ int lua_cocos2dx_gui_PageView_scrollToPage(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -12207,6 +12671,7 @@ int lua_cocos2dx_gui_PageView_scrollToPage(lua_State* tolua_S)
     if (argc == 1) 
     {
         ssize_t arg0;
+
         ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -12233,8 +12698,9 @@ int lua_cocos2dx_gui_PageView_removePageAtIndex(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -12251,6 +12717,7 @@ int lua_cocos2dx_gui_PageView_removePageAtIndex(lua_State* tolua_S)
     if (argc == 1) 
     {
         ssize_t arg0;
+
         ok &= luaval_to_ssize(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
@@ -12277,8 +12744,9 @@ int lua_cocos2dx_gui_PageView_getPages(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -12320,8 +12788,9 @@ int lua_cocos2dx_gui_PageView_removeAllPages(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -12362,8 +12831,9 @@ int lua_cocos2dx_gui_PageView_addPage(lua_State* tolua_S)
     tolua_Error tolua_err;
 #endif
 
+
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertype(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     cobj = (cocos2d::gui::PageView*)tolua_tousertype(tolua_S,1,0);
@@ -12380,8 +12850,9 @@ int lua_cocos2dx_gui_PageView_addPage(lua_State* tolua_S)
     if (argc == 1) 
     {
         cocos2d::gui::Layout* arg0;
+
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Layout",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Layout",0)){
 					ok = false;
 					break;
 				}
@@ -12415,7 +12886,7 @@ int lua_cocos2dx_gui_PageView_create(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"PageView",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.PageView",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -12433,7 +12904,7 @@ int lua_cocos2dx_gui_PageView_create(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "PageView";
+					className = "ccui.PageView";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::PageView*)ret);
 				if (NULL != dynObject) {
@@ -12467,6 +12938,7 @@ int lua_cocos2dx_gui_PageView_constructor(lua_State* tolua_S)
 #endif
 
 
+
     argc = lua_gettop(tolua_S)-1;
     if (argc == 0) 
     {
@@ -12479,11 +12951,11 @@ int lua_cocos2dx_gui_PageView_constructor(lua_State* tolua_S)
             dynObject->autorelease();
             int ID =  (int)dynObject->_ID ;
             int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"PageView");
+            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.PageView");
         }
         else
         {
-            tolua_pushusertype(tolua_S,(void*)cobj,"PageView");
+            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.PageView");
             tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         }
         return 1;
@@ -12506,8 +12978,8 @@ static int lua_cocos2dx_gui_PageView_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_PageView(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"PageView");
-    tolua_cclass(tolua_S,"PageView","PageView","Layout",NULL);
+    tolua_usertype(tolua_S,"ccui.PageView");
+    tolua_cclass(tolua_S,"PageView","ccui.PageView","ccui.Layout",NULL);
 
     tolua_beginmodule(tolua_S,"PageView");
         tolua_function(tolua_S,"getCurPageIndex",lua_cocos2dx_gui_PageView_getCurPageIndex);
@@ -12524,7 +12996,8 @@ int lua_register_cocos2dx_gui_PageView(lua_State* tolua_S)
         tolua_function(tolua_S,"create", lua_cocos2dx_gui_PageView_create);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::PageView).name();
-    g_luaType[typeName] = "PageView";
+    g_luaType[typeName] = "ccui.PageView";
+    g_typeCast["PageView"] = "ccui.PageView";
     return 1;
 }
 
@@ -12538,7 +13011,7 @@ int lua_cocos2dx_gui_Helper_seekActionWidgetByActionTag(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Helper",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.Helper",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -12548,7 +13021,7 @@ int lua_cocos2dx_gui_Helper_seekActionWidgetByActionTag(lua_State* tolua_S)
         cocos2d::gui::Widget* arg0;
         int arg1;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -12569,7 +13042,7 @@ int lua_cocos2dx_gui_Helper_seekActionWidgetByActionTag(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Widget";
+					className = "ccui.Widget";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
 				if (NULL != dynObject) {
@@ -12602,7 +13075,7 @@ int lua_cocos2dx_gui_Helper_seekWidgetByTag(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Helper",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.Helper",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -12612,7 +13085,7 @@ int lua_cocos2dx_gui_Helper_seekWidgetByTag(lua_State* tolua_S)
         cocos2d::gui::Widget* arg0;
         int arg1;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -12633,7 +13106,7 @@ int lua_cocos2dx_gui_Helper_seekWidgetByTag(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Widget";
+					className = "ccui.Widget";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
 				if (NULL != dynObject) {
@@ -12666,7 +13139,7 @@ int lua_cocos2dx_gui_Helper_seekWidgetByRelativeName(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Helper",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.Helper",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -12676,7 +13149,7 @@ int lua_cocos2dx_gui_Helper_seekWidgetByRelativeName(lua_State* tolua_S)
         cocos2d::gui::Widget* arg0;
         const char* arg1;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -12697,7 +13170,7 @@ int lua_cocos2dx_gui_Helper_seekWidgetByRelativeName(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Widget";
+					className = "ccui.Widget";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
 				if (NULL != dynObject) {
@@ -12730,7 +13203,7 @@ int lua_cocos2dx_gui_Helper_seekWidgetByName(lua_State* tolua_S)
 #endif
 
 #if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertable(tolua_S,1,"Helper",0,&tolua_err)) goto tolua_lerror;
+    if (!tolua_isusertable(tolua_S,1,"ccui.Helper",0,&tolua_err)) goto tolua_lerror;
 #endif
 
     argc = lua_gettop(tolua_S) - 1;
@@ -12740,7 +13213,7 @@ int lua_cocos2dx_gui_Helper_seekWidgetByName(lua_State* tolua_S)
         cocos2d::gui::Widget* arg0;
         const char* arg1;
         do {
-				if (!luaval_is_usertype(tolua_S,2,"Widget",0)){
+				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
 					ok = false;
 					break;
 				}
@@ -12761,7 +13234,7 @@ int lua_cocos2dx_gui_Helper_seekWidgetByName(lua_State* tolua_S)
 				if(iter != g_luaType.end()){
 					className = iter->second.c_str();
 				} else {
-					className = "Widget";
+					className = "ccui.Widget";
 				}
 				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
 				if (NULL != dynObject) {
@@ -12792,8 +13265,8 @@ static int lua_cocos2dx_gui_Helper_finalize(lua_State* tolua_S)
 
 int lua_register_cocos2dx_gui_Helper(lua_State* tolua_S)
 {
-    tolua_usertype(tolua_S,"Helper");
-    tolua_cclass(tolua_S,"Helper","Helper","",NULL);
+    tolua_usertype(tolua_S,"ccui.Helper");
+    tolua_cclass(tolua_S,"Helper","ccui.Helper","",NULL);
 
     tolua_beginmodule(tolua_S,"Helper");
         tolua_function(tolua_S,"seekActionWidgetByActionTag", lua_cocos2dx_gui_Helper_seekActionWidgetByActionTag);
@@ -12802,7 +13275,8 @@ int lua_register_cocos2dx_gui_Helper(lua_State* tolua_S)
         tolua_function(tolua_S,"seekWidgetByName", lua_cocos2dx_gui_Helper_seekWidgetByName);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::gui::Helper).name();
-    g_luaType[typeName] = "Helper";
+    g_luaType[typeName] = "ccui.Helper";
+    g_typeCast["Helper"] = "ccui.Helper";
     return 1;
 }
 TOLUA_API int register_all_cocos2dx_gui(lua_State* tolua_S)
