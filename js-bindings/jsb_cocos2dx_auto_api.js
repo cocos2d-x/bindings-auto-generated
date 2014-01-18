@@ -631,12 +631,6 @@ updateDisplayedOpacity : function () {},
 setRotation : function () {},
 
 /**
- * @method setZOrder
- * @param {int}
- */
-setZOrder : function () {},
-
-/**
  * @method setScaleY
  * @param {float}
  */
@@ -660,10 +654,10 @@ getColor : function () {},
 removeAllComponents : function () {},
 
 /**
- * @method getOpacity
- * @return A value converted from C/C++ "GLubyte"
+ * @method _setLocalZOrder
+ * @param {int}
  */
-getOpacity : function () {},
+_setLocalZOrder : function () {},
 
 /**
  * @method getTag
@@ -720,6 +714,12 @@ setSkewX : function () {},
  * @param {float}
  */
 setSkewY : function () {},
+
+/**
+ * @method getOpacity
+ * @return A value converted from C/C++ "GLubyte"
+ */
+getOpacity : function () {},
 
 /**
  * @method convertTouchToNodeSpace
@@ -879,12 +879,6 @@ setShaderProgram : function () {},
 getRotation : function () {},
 
 /**
- * @method getZOrder
- * @return A value converted from C/C++ "int"
- */
-getZOrder : function () {},
-
-/**
  * @method getAnchorPointInPoints
  * @return A value converted from C/C++ "const cocos2d::Point&"
  */
@@ -963,6 +957,12 @@ setRotationY : function () {},
 getDisplayedOpacity : function () {},
 
 /**
+ * @method getLocalZOrder
+ * @return A value converted from C/C++ "int"
+ */
+getLocalZOrder : function () {},
+
+/**
  * @method getParentToNodeAffineTransform
  * @return A value converted from C/C++ "cocos2d::AffineTransform"
  */
@@ -1030,10 +1030,10 @@ getParentToNodeTransform : function () {},
 getVertexZ : function () {},
 
 /**
- * @method _setZOrder
- * @param {int}
+ * @method setGlobalZOrder
+ * @param {float}
  */
-_setZOrder : function () {},
+setGlobalZOrder : function () {},
 
 /**
  * @method getChildByTag
@@ -1059,6 +1059,12 @@ getScaleY : function () {},
  * @return A value converted from C/C++ "float"
  */
 getScaleX : function () {},
+
+/**
+ * @method setLocalZOrder
+ * @param {int}
+ */
+setLocalZOrder : function () {},
 
 /**
  * @method getWorldToNodeAffineTransform
@@ -1113,6 +1119,12 @@ updatePhysicsTransform : function () {},
  * @param {cocos2d::EventDispatcher*}
  */
 setEventDispatcher : function () {},
+
+/**
+ * @method getGlobalZOrder
+ * @return A value converted from C/C++ "float"
+ */
+getGlobalZOrder : function () {},
 
 /**
  * @method draw
