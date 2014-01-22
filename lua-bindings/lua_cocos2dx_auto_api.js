@@ -5995,11 +5995,6 @@ alignItemsVertically : function () {},
 isEnabled : function () {},
 
 /**
- * @method alignItemsHorizontally
- */
-alignItemsHorizontally : function () {},
-
-/**
  * @method alignItemsHorizontallyWithPadding
  * @param {float}
  */
@@ -6010,6 +6005,11 @@ alignItemsHorizontallyWithPadding : function () {},
  * @param {float}
  */
 alignItemsVerticallyWithPadding : function () {},
+
+/**
+ * @method alignItemsHorizontally
+ */
+alignItemsHorizontally : function () {},
 
 };
 
@@ -7565,57 +7565,26 @@ cc.EGLViewProtocol = {
 setFrameSize : function () {},
 
 /**
+ * @method swapBuffers
+ */
+swapBuffers : function () {},
+
+/**
  * @method getViewPortRect
  * @return A value converted from C/C++ "const cocos2d::Rect&"
  */
 getViewPortRect : function () {},
 
 /**
- * @method handleTouchesMove
- * @param {int}
- * @param {int*}
- * @param {float*}
- * @param {float*}
- */
-handleTouchesMove : function () {},
-
-/**
- * @method setIMEKeyboardState
- * @param {bool}
- */
-setIMEKeyboardState : function () {},
-
-/**
- * @method setScissorInPoints
- * @param {float}
- * @param {float}
- * @param {float}
- * @param {float}
- */
-setScissorInPoints : function () {},
-
-/**
- * @method getViewName
- * @return A value converted from C/C++ "const std::string&"
- */
-getViewName : function () {},
-
-/**
- * @method isOpenGLReady
- * @return A value converted from C/C++ "bool"
- */
-isOpenGLReady : function () {},
-
-/**
- * @method getScissorRect
- * @return A value converted from C/C++ "cocos2d::Rect"
- */
-getScissorRect : function () {},
-
-/**
  * @method end
  */
 end : function () {},
+
+/**
+ * @method setViewName
+ * @param {const std::string&}
+ */
+setViewName : function () {},
 
 /**
  * @method getScaleY
@@ -7636,67 +7605,10 @@ getScaleX : function () {},
 getVisibleOrigin : function () {},
 
 /**
- * @method getFrameSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
+ * @method getViewName
+ * @return A value converted from C/C++ "const std::string&"
  */
-getFrameSize : function () {},
-
-/**
- * @method getDesignResolutionSize
- * @return A value converted from C/C++ "const cocos2d::Size&"
- */
-getDesignResolutionSize : function () {},
-
-/**
- * @method pollInputEvents
- */
-pollInputEvents : function () {},
-
-/**
- * @method swapBuffers
- */
-swapBuffers : function () {},
-
-/**
- * @method setDesignResolutionSize
- * @param {float}
- * @param {float}
- * @param {ResolutionPolicy}
- */
-setDesignResolutionSize : function () {},
-
-/**
- * @method handleTouchesBegin
- * @param {int}
- * @param {int*}
- * @param {float*}
- * @param {float*}
- */
-handleTouchesBegin : function () {},
-
-/**
- * @method setViewPortInPoints
- * @param {float}
- * @param {float}
- * @param {float}
- * @param {float}
- */
-setViewPortInPoints : function () {},
-
-/**
- * @method handleTouchesCancel
- * @param {int}
- * @param {int*}
- * @param {float*}
- * @param {float*}
- */
-handleTouchesCancel : function () {},
-
-/**
- * @method setViewName
- * @param {const std::string&}
- */
-setViewName : function () {},
+getViewName : function () {},
 
 /**
  * @method getVisibleSize
@@ -7711,13 +7623,65 @@ getVisibleSize : function () {},
 isScissorEnabled : function () {},
 
 /**
- * @method handleTouchesEnd
- * @param {int}
- * @param {int*}
- * @param {float*}
- * @param {float*}
+ * @method setIMEKeyboardState
+ * @param {bool}
  */
-handleTouchesEnd : function () {},
+setIMEKeyboardState : function () {},
+
+/**
+ * @method setDesignResolutionSize
+ * @param {float}
+ * @param {float}
+ * @param {ResolutionPolicy}
+ */
+setDesignResolutionSize : function () {},
+
+/**
+ * @method getDesignResolutionSize
+ * @return A value converted from C/C++ "const cocos2d::Size&"
+ */
+getDesignResolutionSize : function () {},
+
+/**
+ * @method setViewPortInPoints
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ */
+setViewPortInPoints : function () {},
+
+/**
+ * @method setScissorInPoints
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ */
+setScissorInPoints : function () {},
+
+/**
+ * @method getFrameSize
+ * @return A value converted from C/C++ "const cocos2d::Size&"
+ */
+getFrameSize : function () {},
+
+/**
+ * @method getScissorRect
+ * @return A value converted from C/C++ "cocos2d::Rect"
+ */
+getScissorRect : function () {},
+
+/**
+ * @method isOpenGLReady
+ * @return A value converted from C/C++ "bool"
+ */
+isOpenGLReady : function () {},
+
+/**
+ * @method pollInputEvents
+ */
+pollInputEvents : function () {},
 
 };
 

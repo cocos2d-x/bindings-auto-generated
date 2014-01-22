@@ -2127,9 +2127,9 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_Menu_setEnabled(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Menu_alignItemsVertically(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Menu_isEnabled(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Menu_alignItemsHorizontally(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Menu_alignItemsHorizontallyWithPadding(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Menu_alignItemsVerticallyWithPadding(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Menu_alignItemsHorizontally(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_ClippingNode_class;
 extern JSObject *jsb_cocos2d_ClippingNode_prototype;
@@ -2524,8 +2524,8 @@ void js_cocos2dx_EGLViewProtocol_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_EGLViewProtocol(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 JSBool js_cocos2dx_EGLViewProtocol_getVisibleOrigin(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_EGLViewProtocol_setDesignResolutionSize(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_EGLViewProtocol_getVisibleSize(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_EGLViewProtocol_setDesignResolutionSize(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_EGLView_class;
 extern JSObject *jsb_cocos2d_EGLView_prototype;

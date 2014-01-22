@@ -5787,11 +5787,6 @@ alignItemsVertically : function () {},
 isEnabled : function () {},
 
 /**
- * @method alignItemsHorizontally
- */
-alignItemsHorizontally : function () {},
-
-/**
  * @method alignItemsHorizontallyWithPadding
  * @param {float}
  */
@@ -5802,6 +5797,11 @@ alignItemsHorizontallyWithPadding : function () {},
  * @param {float}
  */
 alignItemsVerticallyWithPadding : function () {},
+
+/**
+ * @method alignItemsHorizontally
+ */
+alignItemsHorizontally : function () {},
 
 };
 
@@ -7237,18 +7237,18 @@ cc.EGLViewProtocol = {
 getVisibleOrigin : function () {},
 
 /**
+ * @method getVisibleSize
+ * @return A value converted from C/C++ "cocos2d::Size"
+ */
+getVisibleSize : function () {},
+
+/**
  * @method setDesignResolutionSize
  * @param {float}
  * @param {float}
  * @param {ResolutionPolicy}
  */
 setDesignResolutionSize : function () {},
-
-/**
- * @method getVisibleSize
- * @return A value converted from C/C++ "cocos2d::Size"
- */
-getVisibleSize : function () {},
 
 };
 

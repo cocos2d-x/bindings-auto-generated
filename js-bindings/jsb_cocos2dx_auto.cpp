@@ -30577,21 +30577,6 @@ JSBool js_cocos2dx_Menu_isEnabled(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_Menu_isEnabled : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
-JSBool js_cocos2dx_Menu_alignItemsHorizontally(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::Menu* cobj = (cocos2d::Menu *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Menu_alignItemsHorizontally : Invalid Native Object");
-	if (argc == 0) {
-		cobj->alignItemsHorizontally();
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_Menu_alignItemsHorizontally : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return JS_FALSE;
-}
 JSBool js_cocos2dx_Menu_alignItemsHorizontallyWithPadding(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -30632,6 +30617,21 @@ JSBool js_cocos2dx_Menu_alignItemsVerticallyWithPadding(JSContext *cx, uint32_t 
 	JS_ReportError(cx, "js_cocos2dx_Menu_alignItemsVerticallyWithPadding : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_Menu_alignItemsHorizontally(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::Menu* cobj = (cocos2d::Menu *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_Menu_alignItemsHorizontally : Invalid Native Object");
+	if (argc == 0) {
+		cobj->alignItemsHorizontally();
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_Menu_alignItemsHorizontally : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 
 extern JSObject *jsb_cocos2d_Layer_prototype;
 
@@ -30660,9 +30660,9 @@ void js_register_cocos2dx_Menu(JSContext *cx, JSObject *global) {
 		JS_FN("setEnabled", js_cocos2dx_Menu_setEnabled, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("alignItemsVertically", js_cocos2dx_Menu_alignItemsVertically, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("isEnabled", js_cocos2dx_Menu_isEnabled, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("alignItemsHorizontally", js_cocos2dx_Menu_alignItemsHorizontally, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("alignItemsHorizontallyWithPadding", js_cocos2dx_Menu_alignItemsHorizontallyWithPadding, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("alignItemsVerticallyWithPadding", js_cocos2dx_Menu_alignItemsVerticallyWithPadding, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("alignItemsHorizontally", js_cocos2dx_Menu_alignItemsHorizontally, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -36944,6 +36944,23 @@ JSBool js_cocos2dx_EGLViewProtocol_getVisibleOrigin(JSContext *cx, uint32_t argc
 	JS_ReportError(cx, "js_cocos2dx_EGLViewProtocol_getVisibleOrigin : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
+JSBool js_cocos2dx_EGLViewProtocol_getVisibleSize(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::EGLViewProtocol* cobj = (cocos2d::EGLViewProtocol *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_EGLViewProtocol_getVisibleSize : Invalid Native Object");
+	if (argc == 0) {
+		cocos2d::Size ret = cobj->getVisibleSize();
+		jsval jsret = JSVAL_NULL;
+		jsret = ccsize_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return JS_TRUE;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_EGLViewProtocol_getVisibleSize : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return JS_FALSE;
+}
 JSBool js_cocos2dx_EGLViewProtocol_setDesignResolutionSize(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -36966,23 +36983,6 @@ JSBool js_cocos2dx_EGLViewProtocol_setDesignResolutionSize(JSContext *cx, uint32
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_EGLViewProtocol_setDesignResolutionSize : wrong number of arguments: %d, was expecting %d", argc, 3);
-	return JS_FALSE;
-}
-JSBool js_cocos2dx_EGLViewProtocol_getVisibleSize(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::EGLViewProtocol* cobj = (cocos2d::EGLViewProtocol *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_EGLViewProtocol_getVisibleSize : Invalid Native Object");
-	if (argc == 0) {
-		cocos2d::Size ret = cobj->getVisibleSize();
-		jsval jsret = JSVAL_NULL;
-		jsret = ccsize_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_EGLViewProtocol_getVisibleSize : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return JS_FALSE;
 }
 
@@ -37010,8 +37010,8 @@ void js_register_cocos2dx_EGLViewProtocol(JSContext *cx, JSObject *global) {
 
 	static JSFunctionSpec funcs[] = {
 		JS_FN("getVisibleOrigin", js_cocos2dx_EGLViewProtocol_getVisibleOrigin, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setDesignResolutionSize", js_cocos2dx_EGLViewProtocol_setDesignResolutionSize, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getVisibleSize", js_cocos2dx_EGLViewProtocol_getVisibleSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setDesignResolutionSize", js_cocos2dx_EGLViewProtocol_setDesignResolutionSize, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
