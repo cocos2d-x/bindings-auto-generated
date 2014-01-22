@@ -4473,6 +4473,19 @@ cc.Label = {
 getString : function () {},
 
 /**
+ * @method getTextAlignment
+ * @return A value converted from C/C++ "cocos2d::TextHAlignment"
+ */
+getTextAlignment : function () {},
+
+/**
+ * @method getXOffsetForChar
+ * @return A value converted from C/C++ "int"
+ * @param {unsigned short}
+ */
+getXOffsetForChar : function () {},
+
+/**
  * @method setLabelEffect
  * @param {cocos2d::LabelEffect}
  * @param {const cocos2d::Color3B&}
@@ -4553,13 +4566,6 @@ setString : function () {},
 getYOffsetForChar : function () {},
 
 /**
- * @method recordPlaceholderInfo
- * @return A value converted from C/C++ "bool"
- * @param {int}
- */
-recordPlaceholderInfo : function () {},
-
-/**
  * @method setBMFontFilePath
  * @return A value converted from C/C++ "bool"
  * @param {const std::string&}
@@ -4567,11 +4573,11 @@ recordPlaceholderInfo : function () {},
 setBMFontFilePath : function () {},
 
 /**
- * @method getXOffsetForChar
- * @return A value converted from C/C++ "int"
- * @param {unsigned short}
+ * @method recordPlaceholderInfo
+ * @return A value converted from C/C++ "bool"
+ * @param {int}
  */
-getXOffsetForChar : function () {},
+recordPlaceholderInfo : function () {},
 
 /**
  * @method getLetterPosXLeft
@@ -4611,14 +4617,6 @@ getStringLenght : function () {},
 onDraw : function () {},
 
 /**
- * @method getKerningForCharsPair
- * @return A value converted from C/C++ "int"
- * @param {unsigned short}
- * @param {unsigned short}
- */
-getKerningForCharsPair : function () {},
-
-/**
  * @method setLabelContentSize
  * @param {const cocos2d::Size&}
  */
@@ -4644,10 +4642,11 @@ getLetter : function () {},
 getUTF8String : function () {},
 
 /**
- * @method getTextAlignment
- * @return A value converted from C/C++ "cocos2d::TextHAlignment"
+ * @method getKerningInString
+ * @return A value converted from C/C++ "int"
+ * @param {int}
  */
-getTextAlignment : function () {},
+getKerningInString : function () {},
 
 /**
  * @method recordLetterInfo
