@@ -37207,7 +37207,7 @@ int lua_cocos2dx_Label_getString(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_Label_getTextAlignment(lua_State* tolua_S)
+int lua_cocos2dx_Label_assignNewUTF16String(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Label* cobj = nullptr;
@@ -37227,51 +37227,7 @@ int lua_cocos2dx_Label_getTextAlignment(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getTextAlignment'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        int ret = (int)cobj->getTextAlignment();
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextAlignment",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getTextAlignment'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Label_getXOffsetForChar(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getXOffsetForChar'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_assignNewUTF16String'", NULL);
         return 0;
     }
 #endif
@@ -37279,21 +37235,20 @@ int lua_cocos2dx_Label_getXOffsetForChar(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        unsigned short arg0;
+        unsigned short* arg0;
 
-        ok &= luaval_to_ushort(tolua_S, 2, &arg0);
+        #pragma warning NO CONVERSION TO NATIVE FOR unsigned short*;
         if(!ok)
             return 0;
-        int ret = cobj->getXOffsetForChar(arg0);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
+        cobj->assignNewUTF16String(arg0);
+        return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getXOffsetForChar",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "assignNewUTF16String",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getXOffsetForChar'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_assignNewUTF16String'.",&tolua_err);
 #endif
 
     return 0;
@@ -37347,53 +37302,6 @@ int lua_cocos2dx_Label_setLabelEffect(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_Label_getLetterPosXRight(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getLetterPosXRight'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        int arg0;
-
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
-        if(!ok)
-            return 0;
-        double ret = cobj->getLetterPosXRight(arg0);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLetterPosXRight",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getLetterPosXRight'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_Label_getCommonLineHeight(lua_State* tolua_S)
 {
     int argc = 0;
@@ -37434,50 +37342,6 @@ int lua_cocos2dx_Label_getCommonLineHeight(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getCommonLineHeight'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Label_getLabelContentSize(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getLabelContentSize'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 0) 
-    {
-        if(!ok)
-            return 0;
-        cocos2d::Size ret = cobj->getLabelContentSize();
-        size_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLabelContentSize",argc, 0);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getLabelContentSize'.",&tolua_err);
 #endif
 
     return 0;
@@ -37612,53 +37476,6 @@ int lua_cocos2dx_Label_getMaxLineWidth(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getMaxLineWidth'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Label_getRectForChar(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getRectForChar'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        unsigned short arg0;
-
-        ok &= luaval_to_ushort(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cocos2d::Rect ret = cobj->getRectForChar(arg0);
-        rect_to_luaval(tolua_S, ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRectForChar",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getRectForChar'.",&tolua_err);
 #endif
 
     return 0;
@@ -37849,7 +37666,7 @@ int lua_cocos2dx_Label_setString(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_Label_getYOffsetForChar(lua_State* tolua_S)
+int lua_cocos2dx_Label_getKernings(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Label* cobj = nullptr;
@@ -37869,29 +37686,26 @@ int lua_cocos2dx_Label_getYOffsetForChar(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getYOffsetForChar'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getKernings'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 0) 
     {
-        unsigned short arg0;
-
-        ok &= luaval_to_ushort(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
-        int ret = cobj->getYOffsetForChar(arg0);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        int* ret = cobj->getKernings();
+        #pragma warning NO CONVERSION FROM NATIVE FOR int*;
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getYOffsetForChar",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getKernings",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getYOffsetForChar'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getKernings'.",&tolua_err);
 #endif
 
     return 0;
@@ -37990,7 +37804,7 @@ int lua_cocos2dx_Label_recordPlaceholderInfo(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_Label_getLetterPosXLeft(lua_State* tolua_S)
+int lua_cocos2dx_Label_getFontAtlas(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Label* cobj = nullptr;
@@ -38010,29 +37824,46 @@ int lua_cocos2dx_Label_getLetterPosXLeft(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getLetterPosXLeft'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getFontAtlas'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 0) 
     {
-        int arg0;
-
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
-        double ret = cobj->getLetterPosXLeft(arg0);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        cocos2d::FontAtlas* ret = cobj->getFontAtlas();
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.FontAtlas";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FontAtlas*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLetterPosXLeft",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFontAtlas",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getLetterPosXLeft'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getFontAtlas'.",&tolua_err);
 #endif
 
     return 0;
@@ -38127,7 +37958,7 @@ int lua_cocos2dx_Label_getStringNumLines(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_Label_getCharAtStringPosition(lua_State* tolua_S)
+int lua_cocos2dx_Label_getUTF16String(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Label* cobj = nullptr;
@@ -38147,29 +37978,26 @@ int lua_cocos2dx_Label_getCharAtStringPosition(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getCharAtStringPosition'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getUTF16String'", NULL);
         return 0;
     }
 #endif
 
     argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
+    if (argc == 0) 
     {
-        int arg0;
-
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
-        unsigned short ret = cobj->getCharAtStringPosition(arg0);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
+        unsigned short* ret = cobj->getUTF16String();
+        #pragma warning NO CONVERSION FROM NATIVE FOR unsigned short*;
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCharAtStringPosition",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getUTF16String",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getCharAtStringPosition'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getUTF16String'.",&tolua_err);
 #endif
 
     return 0;
@@ -38361,98 +38189,6 @@ int lua_cocos2dx_Label_setCharMap(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_Label_setLabelContentSize(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setLabelContentSize'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::Size arg0;
-
-        ok &= luaval_to_size(tolua_S, 2, &arg0);
-        if(!ok)
-            return 0;
-        cobj->setLabelContentSize(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setLabelContentSize",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_setLabelContentSize'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Label_assignNewUTF8String(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_assignNewUTF8String'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        unsigned short* arg0;
-
-        #pragma warning NO CONVERSION TO NATIVE FOR unsigned short*;
-        if(!ok)
-            return 0;
-        cobj->assignNewUTF8String(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "assignNewUTF8String",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_assignNewUTF8String'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_Label_getLetter(lua_State* tolua_S)
 {
     int argc = 0;
@@ -38520,7 +38256,7 @@ int lua_cocos2dx_Label_getLetter(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_Label_getUTF8String(lua_State* tolua_S)
+int lua_cocos2dx_Label_getTextAlignment(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Label* cobj = nullptr;
@@ -38540,7 +38276,7 @@ int lua_cocos2dx_Label_getUTF8String(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getUTF8String'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getTextAlignment'", NULL);
         return 0;
     }
 #endif
@@ -38550,21 +38286,21 @@ int lua_cocos2dx_Label_getUTF8String(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        unsigned short* ret = cobj->getUTF8String();
-        #pragma warning NO CONVERSION FROM NATIVE FOR unsigned short*;
+        int ret = (int)cobj->getTextAlignment();
+        tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getUTF8String",argc, 0);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextAlignment",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getUTF8String'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getTextAlignment'.",&tolua_err);
 #endif
 
     return 0;
 }
-int lua_cocos2dx_Label_getKerningInString(lua_State* tolua_S)
+int lua_cocos2dx_Label_setAlignment(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::Label* cobj = nullptr;
@@ -38584,7 +38320,7 @@ int lua_cocos2dx_Label_getKerningInString(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getKerningInString'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setAlignment'", NULL);
         return 0;
     }
 #endif
@@ -38592,21 +38328,20 @@ int lua_cocos2dx_Label_getKerningInString(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
+        cocos2d::TextHAlignment arg0;
 
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
         if(!ok)
             return 0;
-        int ret = cobj->getKerningInString(arg0);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
+        cobj->setAlignment(arg0);
+        return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getKerningInString",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAlignment",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getKerningInString'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_setAlignment'.",&tolua_err);
 #endif
 
     return 0;
@@ -38660,102 +38395,6 @@ int lua_cocos2dx_Label_recordLetterInfo(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
     tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_recordLetterInfo'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Label_setAlignment(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_setAlignment'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        cocos2d::TextHAlignment arg0;
-
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
-        if(!ok)
-            return 0;
-        cobj->setAlignment(arg0);
-        return 0;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setAlignment",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_setAlignment'.",&tolua_err);
-#endif
-
-    return 0;
-}
-int lua_cocos2dx_Label_getAdvanceForChar(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::Label* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.Label",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::Label*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_Label_getAdvanceForChar'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 2) 
-    {
-        unsigned short arg0;
-        int arg1;
-
-        ok &= luaval_to_ushort(tolua_S, 2, &arg0);
-
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-        if(!ok)
-            return 0;
-        int ret = cobj->getAdvanceForChar(arg0, arg1);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAdvanceForChar",argc, 2);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_Label_getAdvanceForChar'.",&tolua_err);
 #endif
 
     return 0;
@@ -39097,37 +38736,29 @@ int lua_register_cocos2dx_Label(lua_State* tolua_S)
 
     tolua_beginmodule(tolua_S,"Label");
         tolua_function(tolua_S,"getString",lua_cocos2dx_Label_getString);
-        tolua_function(tolua_S,"getTextAlignment",lua_cocos2dx_Label_getTextAlignment);
-        tolua_function(tolua_S,"getXOffsetForChar",lua_cocos2dx_Label_getXOffsetForChar);
+        tolua_function(tolua_S,"assignNewUTF16String",lua_cocos2dx_Label_assignNewUTF16String);
         tolua_function(tolua_S,"setLabelEffect",lua_cocos2dx_Label_setLabelEffect);
-        tolua_function(tolua_S,"getLetterPosXRight",lua_cocos2dx_Label_getLetterPosXRight);
         tolua_function(tolua_S,"getCommonLineHeight",lua_cocos2dx_Label_getCommonLineHeight);
-        tolua_function(tolua_S,"getLabelContentSize",lua_cocos2dx_Label_getLabelContentSize);
         tolua_function(tolua_S,"breakLineWithoutSpace",lua_cocos2dx_Label_breakLineWithoutSpace);
         tolua_function(tolua_S,"setWidth",lua_cocos2dx_Label_setWidth);
         tolua_function(tolua_S,"getMaxLineWidth",lua_cocos2dx_Label_getMaxLineWidth);
-        tolua_function(tolua_S,"getRectForChar",lua_cocos2dx_Label_getRectForChar);
         tolua_function(tolua_S,"getScaleY",lua_cocos2dx_Label_getScaleY);
         tolua_function(tolua_S,"getScaleX",lua_cocos2dx_Label_getScaleX);
         tolua_function(tolua_S,"setString",lua_cocos2dx_Label_setString);
-        tolua_function(tolua_S,"getYOffsetForChar",lua_cocos2dx_Label_getYOffsetForChar);
+        tolua_function(tolua_S,"getKernings",lua_cocos2dx_Label_getKernings);
         tolua_function(tolua_S,"setBMFontFilePath",lua_cocos2dx_Label_setBMFontFilePath);
         tolua_function(tolua_S,"recordPlaceholderInfo",lua_cocos2dx_Label_recordPlaceholderInfo);
-        tolua_function(tolua_S,"getLetterPosXLeft",lua_cocos2dx_Label_getLetterPosXLeft);
+        tolua_function(tolua_S,"getFontAtlas",lua_cocos2dx_Label_getFontAtlas);
         tolua_function(tolua_S,"setLineBreakWithoutSpace",lua_cocos2dx_Label_setLineBreakWithoutSpace);
         tolua_function(tolua_S,"getStringNumLines",lua_cocos2dx_Label_getStringNumLines);
-        tolua_function(tolua_S,"getCharAtStringPosition",lua_cocos2dx_Label_getCharAtStringPosition);
+        tolua_function(tolua_S,"getUTF16String",lua_cocos2dx_Label_getUTF16String);
         tolua_function(tolua_S,"getStringLenght",lua_cocos2dx_Label_getStringLenght);
         tolua_function(tolua_S,"onDraw",lua_cocos2dx_Label_onDraw);
         tolua_function(tolua_S,"setCharMap",lua_cocos2dx_Label_setCharMap);
-        tolua_function(tolua_S,"setLabelContentSize",lua_cocos2dx_Label_setLabelContentSize);
-        tolua_function(tolua_S,"assignNewUTF8String",lua_cocos2dx_Label_assignNewUTF8String);
         tolua_function(tolua_S,"getLetter",lua_cocos2dx_Label_getLetter);
-        tolua_function(tolua_S,"getUTF8String",lua_cocos2dx_Label_getUTF8String);
-        tolua_function(tolua_S,"getKerningInString",lua_cocos2dx_Label_getKerningInString);
-        tolua_function(tolua_S,"recordLetterInfo",lua_cocos2dx_Label_recordLetterInfo);
+        tolua_function(tolua_S,"getTextAlignment",lua_cocos2dx_Label_getTextAlignment);
         tolua_function(tolua_S,"setAlignment",lua_cocos2dx_Label_setAlignment);
-        tolua_function(tolua_S,"getAdvanceForChar",lua_cocos2dx_Label_getAdvanceForChar);
+        tolua_function(tolua_S,"recordLetterInfo",lua_cocos2dx_Label_recordLetterInfo);
         tolua_function(tolua_S,"createWithBMFont", lua_cocos2dx_Label_createWithBMFont);
         tolua_function(tolua_S,"create", lua_cocos2dx_Label_create);
         tolua_function(tolua_S,"createWithCharMap", lua_cocos2dx_Label_createWithCharMap);

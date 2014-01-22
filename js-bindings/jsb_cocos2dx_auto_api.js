@@ -4473,17 +4473,10 @@ cc.Label = {
 getString : function () {},
 
 /**
- * @method getTextAlignment
- * @return A value converted from C/C++ "cocos2d::TextHAlignment"
+ * @method assignNewUTF16String
+ * @param {unsigned short*}
  */
-getTextAlignment : function () {},
-
-/**
- * @method getXOffsetForChar
- * @return A value converted from C/C++ "int"
- * @param {unsigned short}
- */
-getXOffsetForChar : function () {},
+assignNewUTF16String : function () {},
 
 /**
  * @method setLabelEffect
@@ -4493,23 +4486,10 @@ getXOffsetForChar : function () {},
 setLabelEffect : function () {},
 
 /**
- * @method getLetterPosXRight
- * @return A value converted from C/C++ "float"
- * @param {int}
- */
-getLetterPosXRight : function () {},
-
-/**
  * @method getCommonLineHeight
  * @return A value converted from C/C++ "int"
  */
 getCommonLineHeight : function () {},
-
-/**
- * @method getLabelContentSize
- * @return A value converted from C/C++ "cocos2d::Size"
- */
-getLabelContentSize : function () {},
 
 /**
  * @method breakLineWithoutSpace
@@ -4528,13 +4508,6 @@ setWidth : function () {},
  * @return A value converted from C/C++ "float"
  */
 getMaxLineWidth : function () {},
-
-/**
- * @method getRectForChar
- * @return A value converted from C/C++ "cocos2d::Rect"
- * @param {unsigned short}
- */
-getRectForChar : function () {},
 
 /**
  * @method getScaleY
@@ -4559,11 +4532,10 @@ getScaleX : function () {},
 setString : function () {},
 
 /**
- * @method getYOffsetForChar
- * @return A value converted from C/C++ "int"
- * @param {unsigned short}
+ * @method getKernings
+ * @return A value converted from C/C++ "int*"
  */
-getYOffsetForChar : function () {},
+getKernings : function () {},
 
 /**
  * @method setBMFontFilePath
@@ -4580,11 +4552,10 @@ setBMFontFilePath : function () {},
 recordPlaceholderInfo : function () {},
 
 /**
- * @method getLetterPosXLeft
- * @return A value converted from C/C++ "float"
- * @param {int}
+ * @method getFontAtlas
+ * @return A value converted from C/C++ "cocos2d::FontAtlas*"
  */
-getLetterPosXLeft : function () {},
+getFontAtlas : function () {},
 
 /**
  * @method setLineBreakWithoutSpace
@@ -4599,11 +4570,10 @@ setLineBreakWithoutSpace : function () {},
 getStringNumLines : function () {},
 
 /**
- * @method getCharAtStringPosition
- * @return A value converted from C/C++ "unsigned short"
- * @param {int}
+ * @method getUTF16String
+ * @return A value converted from C/C++ "unsigned short*"
  */
-getCharAtStringPosition : function () {},
+getUTF16String : function () {},
 
 /**
  * @method getStringLenght
@@ -4617,18 +4587,6 @@ getStringLenght : function () {},
 onDraw : function () {},
 
 /**
- * @method setLabelContentSize
- * @param {const cocos2d::Size&}
- */
-setLabelContentSize : function () {},
-
-/**
- * @method assignNewUTF8String
- * @param {unsigned short*}
- */
-assignNewUTF8String : function () {},
-
-/**
  * @method getLetter
  * @return A value converted from C/C++ "cocos2d::Sprite*"
  * @param {int}
@@ -4636,17 +4594,16 @@ assignNewUTF8String : function () {},
 getLetter : function () {},
 
 /**
- * @method getUTF8String
- * @return A value converted from C/C++ "unsigned short*"
+ * @method getTextAlignment
+ * @return A value converted from C/C++ "cocos2d::TextHAlignment"
  */
-getUTF8String : function () {},
+getTextAlignment : function () {},
 
 /**
- * @method getKerningInString
- * @return A value converted from C/C++ "int"
- * @param {int}
+ * @method setAlignment
+ * @param {cocos2d::TextHAlignment}
  */
-getKerningInString : function () {},
+setAlignment : function () {},
 
 /**
  * @method recordLetterInfo
@@ -4656,20 +4613,6 @@ getKerningInString : function () {},
  * @param {int}
  */
 recordLetterInfo : function () {},
-
-/**
- * @method setAlignment
- * @param {cocos2d::TextHAlignment}
- */
-setAlignment : function () {},
-
-/**
- * @method getAdvanceForChar
- * @return A value converted from C/C++ "int"
- * @param {unsigned short}
- * @param {int}
- */
-getAdvanceForChar : function () {},
 
 /**
  * @method createWithBMFont
