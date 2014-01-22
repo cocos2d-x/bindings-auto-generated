@@ -9,10 +9,10 @@ var cc = cc || {};
 cc.Object = {
 
 /**
- * @method isSingleReference
- * @return A value converted from C/C++ "bool"
+ * @method getReferenceCount
+ * @return A value converted from C/C++ "unsigned int"
  */
-isSingleReference : function () {},
+getReferenceCount : function () {},
 
 /**
  * @method release
@@ -23,12 +23,6 @@ release : function () {},
  * @method retain
  */
 retain : function () {},
-
-/**
- * @method retainCount
- * @return A value converted from C/C++ "unsigned int"
- */
-retainCount : function () {},
 
 /**
  * @method Object
