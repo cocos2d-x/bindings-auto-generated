@@ -879,6 +879,12 @@ setShaderProgram : function () {},
 getRotation : function () {},
 
 /**
+ * @method getLocalZOrder
+ * @return A value converted from C/C++ "int"
+ */
+getLocalZOrder : function () {},
+
+/**
  * @method getAnchorPointInPoints
  * @return A value converted from C/C++ "const cocos2d::Point&"
  */
@@ -955,12 +961,6 @@ setRotationY : function () {},
  * @return A value converted from C/C++ "GLubyte"
  */
 getDisplayedOpacity : function () {},
-
-/**
- * @method getLocalZOrder
- * @return A value converted from C/C++ "int"
- */
-getLocalZOrder : function () {},
 
 /**
  * @method getParentToNodeAffineTransform
@@ -7113,27 +7113,24 @@ purgeCachedEntries : function () {},
 fullPathFromRelativeFile : function () {},
 
 /**
- * @method setPopupNotify
- * @param {bool}
- */
-setPopupNotify : function () {},
-
-/**
- * @method getWritablePath
- * @return A value converted from C/C++ "std::string"
- */
-getWritablePath : function () {},
-
-/**
- * @method destroyInstance
- */
-destroyInstance : function () {},
-
-/**
  * @method getInstance
  * @return A value converted from C/C++ "cocos2d::FileUtils*"
  */
 getInstance : function () {},
+
+};
+
+/**
+ * @class SAXParser
+ */
+cc.SAXParser = {
+
+/**
+ * @method init
+ * @return A value converted from C/C++ "bool"
+ * @param {const char*}
+ */
+init : function () {},
 
 };
 

@@ -207,6 +207,7 @@ JSBool js_cocos2dx_Node_addComponent(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_visit(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setShaderProgram(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getRotation(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_getLocalZOrder(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getAnchorPointInPoints(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_runAction(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_transform(JSContext *cx, uint32_t argc, jsval *vp);
@@ -221,7 +222,6 @@ JSBool js_cocos2dx_Node_setRotationX(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setRotationY(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setAdditionalTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Node_getLocalZOrder(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getScheduler(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getParentToNodeAffineTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getOrderOfArrival(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2491,10 +2491,16 @@ JSBool js_cocos2dx_FileUtils_addSearchPath(JSContext *cx, uint32_t argc, jsval *
 JSBool js_cocos2dx_FileUtils_isFileExist(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_purgeCachedEntries(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_fullPathFromRelativeFile(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_FileUtils_setPopupNotify(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_FileUtils_getWritablePath(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_FileUtils_destroyInstance(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_FileUtils_getInstance(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_cocos2d_SAXParser_class;
+extern JSObject *jsb_cocos2d_SAXParser_prototype;
+
+JSBool js_cocos2dx_SAXParser_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_SAXParser_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_SAXParser(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+JSBool js_cocos2dx_SAXParser_init(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_Application_class;
 extern JSObject *jsb_cocos2d_Application_prototype;
