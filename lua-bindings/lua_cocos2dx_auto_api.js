@@ -4738,11 +4738,7 @@ getScaleX : function () {},
 
 /**
  * @method setString
- * @return A value converted from C/C++ "bool"
  * @param {const std::string&}
- * @param {const cocos2d::TextHAlignment&}
- * @param {float}
- * @param {bool}
  */
 setString : function () {},
 

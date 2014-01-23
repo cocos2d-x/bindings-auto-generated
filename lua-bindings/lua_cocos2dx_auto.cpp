@@ -37601,60 +37601,8 @@ int lua_cocos2dx_Label_setString(lua_State* tolua_S)
         ok &= luaval_to_std_string(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        bool ret = cobj->setString(arg0);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    if (argc == 2) 
-    {
-        std::string arg0;
-        cocos2d::TextHAlignment arg1;
-
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-        if(!ok)
-            return 0;
-        bool ret = cobj->setString(arg0, arg1);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    if (argc == 3) 
-    {
-        std::string arg0;
-        cocos2d::TextHAlignment arg1;
-        double arg2;
-
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-
-        ok &= luaval_to_number(tolua_S, 4,&arg2);
-        if(!ok)
-            return 0;
-        bool ret = cobj->setString(arg0, arg1, arg2);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
-    }
-    if (argc == 4) 
-    {
-        std::string arg0;
-        cocos2d::TextHAlignment arg1;
-        double arg2;
-        bool arg3;
-
-        ok &= luaval_to_std_string(tolua_S, 2,&arg0);
-
-        ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-
-        ok &= luaval_to_number(tolua_S, 4,&arg2);
-
-        ok &= luaval_to_boolean(tolua_S, 5,&arg3);
-        if(!ok)
-            return 0;
-        bool ret = cobj->setString(arg0, arg1, arg2, arg3);
-        tolua_pushboolean(tolua_S,(bool)ret);
-        return 1;
+        cobj->setString(arg0);
+        return 0;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setString",argc, 1);
     return 0;

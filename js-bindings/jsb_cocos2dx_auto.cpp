@@ -23067,52 +23067,8 @@ JSBool js_cocos2dx_Label_setString(JSContext *cx, uint32_t argc, jsval *vp)
 		std::string arg0;
 		ok &= jsval_to_std_string(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setString : Error processing arguments");
-		JSBool ret = cobj->setString(arg0);
-		jsval jsret = JSVAL_NULL;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 2) {
-		std::string arg0;
-		cocos2d::TextHAlignment arg1;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setString : Error processing arguments");
-		JSBool ret = cobj->setString(arg0, arg1);
-		jsval jsret = JSVAL_NULL;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 3) {
-		std::string arg0;
-		cocos2d::TextHAlignment arg1;
-		double arg2;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-		ok &= JS_ValueToNumber(cx, argv[2], &arg2);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setString : Error processing arguments");
-		JSBool ret = cobj->setString(arg0, arg1, arg2);
-		jsval jsret = JSVAL_NULL;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
-	if (argc == 4) {
-		std::string arg0;
-		cocos2d::TextHAlignment arg1;
-		double arg2;
-		JSBool arg3;
-		ok &= jsval_to_std_string(cx, argv[0], &arg0);
-		ok &= jsval_to_int32(cx, argv[1], (int32_t *)&arg1);
-		ok &= JS_ValueToNumber(cx, argv[2], &arg2);
-		ok &= JS_ValueToBoolean(cx, argv[3], &arg3);
-		JSB_PRECONDITION2(ok, cx, JS_FALSE, "js_cocos2dx_Label_setString : Error processing arguments");
-		JSBool ret = cobj->setString(arg0, arg1, arg2, arg3);
-		jsval jsret = JSVAL_NULL;
-		jsret = BOOLEAN_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
+		cobj->setString(arg0);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
 		return JS_TRUE;
 	}
 
