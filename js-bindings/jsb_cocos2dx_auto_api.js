@@ -7796,7 +7796,7 @@ setCurrentString : function () {},
 
 /**
  * @method setProperties
- * @param {cocos2d::ValueMap}
+ * @param {const cocos2d::ValueMap&}
  */
 setProperties : function () {},
 
@@ -7835,12 +7835,6 @@ getMapSize : function () {},
  * @param {const cocos2d::Vector<cocos2d::TMXTilesetInfo *>&}
  */
 setTilesets : function () {},
-
-/**
- * @method getProperties
- * @return A value converted from C/C++ "cocos2d::ValueMap"
- */
-getProperties : function () {},
 
 /**
  * @method getCurrentString

@@ -39893,19 +39893,36 @@ JSBool js_cocos2dx_TMXMapInfo_setTilesets(JSContext *cx, uint32_t argc, jsval *v
 }
 JSBool js_cocos2dx_TMXMapInfo_getProperties(JSContext *cx, uint32_t argc, jsval *vp)
 {
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::TMXMapInfo* cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_getProperties : Invalid Native Object");
-	if (argc == 0) {
-		cocos2d::ValueMap ret = cobj->getProperties();
-		jsval jsret = JSVAL_NULL;
-		jsret = ccvaluemap_to_jsval(cx, ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return JS_TRUE;
-	}
+	jsval *argv = JS_ARGV(cx, vp);
+	JSBool ok = JS_TRUE;
 
-	JS_ReportError(cx, "js_cocos2dx_TMXMapInfo_getProperties : wrong number of arguments: %d, was expecting %d", argc, 0);
+	JSObject *obj = NULL;
+	cocos2d::TMXMapInfo* cobj = NULL;
+	obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cobj = (cocos2d::TMXMapInfo *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, JS_FALSE, "js_cocos2dx_TMXMapInfo_getProperties : Invalid Native Object");
+	do {
+		if (argc == 0) {
+			cocos2d::ValueMap& ret = cobj->getProperties();
+			jsval jsret = JSVAL_NULL;
+			jsret = ccvaluemap_to_jsval(cx, ret);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	do {
+		if (argc == 0) {
+			const cocos2d::ValueMap& ret = cobj->getProperties();
+			jsval jsret = JSVAL_NULL;
+			jsret = ccvaluemap_to_jsval(cx, ret);
+			JS_SET_RVAL(cx, vp, jsret);
+			return JS_TRUE;
+		}
+	} while(0);
+
+	JS_ReportError(cx, "js_cocos2dx_TMXMapInfo_getProperties : wrong number of arguments");
 	return JS_FALSE;
 }
 JSBool js_cocos2dx_TMXMapInfo_getCurrentString(JSContext *cx, uint32_t argc, jsval *vp)
