@@ -631,6 +631,12 @@ updateDisplayedOpacity : function () {},
 setRotation : function () {},
 
 /**
+ * @method setLocalZOrder
+ * @param {int}
+ */
+setLocalZOrder : function () {},
+
+/**
  * @method setScaleY
  * @param {float}
  */
@@ -1059,12 +1065,6 @@ getScaleY : function () {},
  * @return A value converted from C/C++ "float"
  */
 getScaleX : function () {},
-
-/**
- * @method setLocalZOrder
- * @param {int}
- */
-setLocalZOrder : function () {},
 
 /**
  * @method getWorldToNodeAffineTransform

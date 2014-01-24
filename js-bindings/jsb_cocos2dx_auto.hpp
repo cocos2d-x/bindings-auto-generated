@@ -165,6 +165,7 @@ JSBool js_cocos2dx_Node_convertToWorldSpaceAR(JSContext *cx, uint32_t argc, jsva
 JSBool js_cocos2dx_Node_isIgnoreAnchorPointForPosition(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_updateDisplayedOpacity(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setRotation(JSContext *cx, uint32_t argc, jsval *vp);
+JSBool js_cocos2dx_Node_setLocalZOrder(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setScaleY(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setScaleX(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getColor(JSContext *cx, uint32_t argc, jsval *vp);
@@ -242,7 +243,6 @@ JSBool js_cocos2dx_Node_getChildByTag(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setOrderOfArrival(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getScaleY(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getScaleX(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_Node_setLocalZOrder(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_getWorldToNodeAffineTransform(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setCascadeColorEnabled(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Node_setOpacity(JSContext *cx, uint32_t argc, jsval *vp);
