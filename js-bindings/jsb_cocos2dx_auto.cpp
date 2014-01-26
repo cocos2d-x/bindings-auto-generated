@@ -5298,7 +5298,9 @@ void js_register_cocos2dx___NodeRGBA(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -6782,7 +6784,9 @@ void js_register_cocos2dx_Sequence(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -7141,7 +7145,9 @@ void js_register_cocos2dx_Spawn(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -7256,7 +7262,9 @@ void js_register_cocos2dx_RotateTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_RotateTo_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -7374,7 +7382,9 @@ void js_register_cocos2dx_RotateBy(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_RotateBy_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -7463,7 +7473,9 @@ void js_register_cocos2dx_MoveBy(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_MoveBy_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -7552,7 +7564,9 @@ void js_register_cocos2dx_MoveTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_MoveTo_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -7643,7 +7657,9 @@ void js_register_cocos2dx_SkewTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_SkewTo_create, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -7734,7 +7750,9 @@ void js_register_cocos2dx_SkewBy(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_SkewBy_create, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -7827,7 +7845,9 @@ void js_register_cocos2dx_JumpBy(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_JumpBy_create, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -7920,7 +7940,9 @@ void js_register_cocos2dx_JumpTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_JumpTo_create, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -7982,7 +8004,9 @@ void js_register_cocos2dx_BezierBy(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -8041,7 +8065,9 @@ void js_register_cocos2dx_BezierTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -8156,7 +8182,9 @@ void js_register_cocos2dx_ScaleTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ScaleTo_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -8274,7 +8302,9 @@ void js_register_cocos2dx_ScaleBy(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ScaleBy_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -8363,7 +8393,9 @@ void js_register_cocos2dx_Blink(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_Blink_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -8450,7 +8482,9 @@ void js_register_cocos2dx_FadeIn(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_FadeIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -8537,7 +8571,9 @@ void js_register_cocos2dx_FadeOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_FadeOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -8626,7 +8662,9 @@ void js_register_cocos2dx_FadeTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_FadeTo_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -8719,7 +8757,9 @@ void js_register_cocos2dx_TintTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TintTo_create, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -8812,7 +8852,9 @@ void js_register_cocos2dx_TintBy(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TintBy_create, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -8899,7 +8941,9 @@ void js_register_cocos2dx_DelayTime(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_DelayTime_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -10343,7 +10387,9 @@ void js_register_cocos2dx_EaseIn(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseIn_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -10439,7 +10485,9 @@ void js_register_cocos2dx_EaseOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseOut_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -10535,7 +10583,9 @@ void js_register_cocos2dx_EaseInOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseInOut_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -10629,7 +10679,9 @@ void js_register_cocos2dx_EaseExponentialIn(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseExponentialIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -10723,7 +10775,9 @@ void js_register_cocos2dx_EaseExponentialOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseExponentialOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -10817,7 +10871,9 @@ void js_register_cocos2dx_EaseExponentialInOut(JSContext *cx, JSObject *global) 
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseExponentialInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -10911,7 +10967,9 @@ void js_register_cocos2dx_EaseSineIn(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseSineIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -11005,7 +11063,9 @@ void js_register_cocos2dx_EaseSineOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseSineOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -11099,7 +11159,9 @@ void js_register_cocos2dx_EaseSineInOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseSineInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -11325,7 +11387,9 @@ void js_register_cocos2dx_EaseElasticIn(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseElasticIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -11451,7 +11515,9 @@ void js_register_cocos2dx_EaseElasticOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseElasticOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -11577,7 +11643,9 @@ void js_register_cocos2dx_EaseElasticInOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseElasticInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -11755,7 +11823,9 @@ void js_register_cocos2dx_EaseBounceIn(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseBounceIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -11849,7 +11919,9 @@ void js_register_cocos2dx_EaseBounceOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseBounceOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -11943,7 +12015,9 @@ void js_register_cocos2dx_EaseBounceInOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseBounceInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12037,7 +12111,9 @@ void js_register_cocos2dx_EaseBackIn(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseBackIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12131,7 +12207,9 @@ void js_register_cocos2dx_EaseBackOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseBackOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12225,7 +12303,9 @@ void js_register_cocos2dx_EaseBackInOut(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_EaseBackInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12287,7 +12367,9 @@ void js_register_cocos2dx_ActionInstant(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -12366,7 +12448,9 @@ void js_register_cocos2dx_Show(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_Show_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12448,7 +12532,9 @@ void js_register_cocos2dx_Hide(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_Hide_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12530,7 +12616,9 @@ void js_register_cocos2dx_ToggleVisibility(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ToggleVisibility_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12631,7 +12719,9 @@ void js_register_cocos2dx_RemoveSelf(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_RemoveSelf_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12718,7 +12808,9 @@ void js_register_cocos2dx_FlipX(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_FlipX_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12805,7 +12897,9 @@ void js_register_cocos2dx_FlipY(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_FlipY_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -12892,7 +12986,9 @@ void js_register_cocos2dx_Place(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_Place_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -13362,7 +13458,9 @@ void js_register_cocos2dx_StopGrid(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_StopGrid_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -13449,7 +13547,9 @@ void js_register_cocos2dx_ReuseGrid(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ReuseGrid_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -13709,7 +13809,9 @@ void js_register_cocos2dx_FlipX3D(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_FlipX3D_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -13823,7 +13925,9 @@ void js_register_cocos2dx_FlipY3D(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_FlipY3D_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -14353,7 +14457,9 @@ void js_register_cocos2dx_Shaky3D(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_Shaky3D_create, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -15087,7 +15193,9 @@ void js_register_cocos2dx_PageTurn3D(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_PageTurn3D_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -15176,7 +15284,9 @@ void js_register_cocos2dx_ProgressTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ProgressTo_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -15267,7 +15377,9 @@ void js_register_cocos2dx_ProgressFromTo(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ProgressFromTo_create, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -15360,7 +15472,9 @@ void js_register_cocos2dx_ShakyTiles3D(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ShakyTiles3D_create, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -15453,7 +15567,9 @@ void js_register_cocos2dx_ShatteredTiles3D(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ShatteredTiles3D_create, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -15885,7 +16001,9 @@ void js_register_cocos2dx_FadeOutBLTiles(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_FadeOutBLTiles_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -16088,7 +16206,9 @@ void js_register_cocos2dx_FadeOutDownTiles(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_FadeOutDownTiles_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -16708,7 +16828,9 @@ void js_register_cocos2dx_SplitRows(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_SplitRows_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -16797,7 +16919,9 @@ void js_register_cocos2dx_SplitCols(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_SplitCols_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -17178,7 +17302,9 @@ void js_register_cocos2dx_CardinalSplineBy(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -19936,7 +20062,9 @@ void js_register_cocos2dx_Grid3D(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_Grid3D_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -20085,7 +20213,9 @@ void js_register_cocos2dx_TiledGrid3D(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TiledGrid3D_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -23947,7 +24077,10 @@ void js_register_cocos2dx_Layer(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FN("ctor", js_cocos2d_Layer_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_Layer_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -24029,7 +24162,9 @@ void js_register_cocos2dx___LayerRGBA(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx___LayerRGBA_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -25301,7 +25436,9 @@ void js_register_cocos2dx_TransitionSceneOriented(JSContext *cx, JSObject *globa
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionSceneOriented_create, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -25397,7 +25534,9 @@ void js_register_cocos2dx_TransitionRotoZoom(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionRotoZoom_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -25493,7 +25632,9 @@ void js_register_cocos2dx_TransitionJumpZoom(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionJumpZoom_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -25749,7 +25890,9 @@ void js_register_cocos2dx_TransitionMoveInR(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionMoveInR_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -25845,7 +25988,9 @@ void js_register_cocos2dx_TransitionMoveInT(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionMoveInT_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -25941,7 +26086,9 @@ void js_register_cocos2dx_TransitionMoveInB(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionMoveInB_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -26737,7 +26884,9 @@ void js_register_cocos2dx_TransitionFlipX(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionFlipX_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -26869,7 +27018,9 @@ void js_register_cocos2dx_TransitionFlipY(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionFlipY_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -27001,7 +27152,9 @@ void js_register_cocos2dx_TransitionFlipAngular(JSContext *cx, JSObject *global)
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionFlipAngular_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -27133,7 +27286,9 @@ void js_register_cocos2dx_TransitionZoomFlipX(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionZoomFlipX_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -27265,7 +27420,9 @@ void js_register_cocos2dx_TransitionZoomFlipY(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionZoomFlipY_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -27397,7 +27554,9 @@ void js_register_cocos2dx_TransitionZoomFlipAngular(JSContext *cx, JSObject *glo
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionZoomFlipAngular_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -27529,7 +27688,9 @@ void js_register_cocos2dx_TransitionFade(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionFade_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -27625,7 +27786,9 @@ void js_register_cocos2dx_TransitionCrossFade(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionCrossFade_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -28016,7 +28179,9 @@ void js_register_cocos2dx_TransitionSplitRows(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionSplitRows_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -28277,7 +28442,9 @@ void js_register_cocos2dx_TransitionFadeBL(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionFadeBL_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -28373,7 +28540,9 @@ void js_register_cocos2dx_TransitionFadeUp(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionFadeUp_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -28469,7 +28638,9 @@ void js_register_cocos2dx_TransitionFadeDown(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionFadeDown_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -28783,7 +28954,9 @@ void js_register_cocos2dx_TransitionProgress(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionProgress_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -28879,7 +29052,9 @@ void js_register_cocos2dx_TransitionProgressRadialCCW(JSContext *cx, JSObject *g
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionProgressRadialCCW_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -28975,7 +29150,9 @@ void js_register_cocos2dx_TransitionProgressRadialCW(JSContext *cx, JSObject *gl
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionProgressRadialCW_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -29071,7 +29248,9 @@ void js_register_cocos2dx_TransitionProgressHorizontal(JSContext *cx, JSObject *
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionProgressHorizontal_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -29167,7 +29346,9 @@ void js_register_cocos2dx_TransitionProgressVertical(JSContext *cx, JSObject *gl
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionProgressVertical_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -29263,7 +29444,9 @@ void js_register_cocos2dx_TransitionProgressInOut(JSContext *cx, JSObject *globa
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionProgressInOut_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -29359,7 +29542,9 @@ void js_register_cocos2dx_TransitionProgressOutIn(JSContext *cx, JSObject *globa
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_TransitionProgressOutIn_create, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -29779,7 +29964,9 @@ void js_register_cocos2dx_MenuItemAtlasFont(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -35368,7 +35555,9 @@ void js_register_cocos2dx_ParticleFire(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleFire_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -35476,7 +35665,9 @@ void js_register_cocos2dx_ParticleFireworks(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleFireworks_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -35584,7 +35775,9 @@ void js_register_cocos2dx_ParticleSun(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleSun_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -35692,7 +35885,9 @@ void js_register_cocos2dx_ParticleGalaxy(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleGalaxy_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -35800,7 +35995,9 @@ void js_register_cocos2dx_ParticleFlower(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleFlower_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -35908,7 +36105,9 @@ void js_register_cocos2dx_ParticleMeteor(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleMeteor_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -36016,7 +36215,9 @@ void js_register_cocos2dx_ParticleSpiral(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleSpiral_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -36124,7 +36325,9 @@ void js_register_cocos2dx_ParticleExplosion(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleExplosion_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -36232,7 +36435,9 @@ void js_register_cocos2dx_ParticleSmoke(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleSmoke_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -36340,7 +36545,9 @@ void js_register_cocos2dx_ParticleSnow(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleSnow_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -36448,7 +36655,9 @@ void js_register_cocos2dx_ParticleRain(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_ParticleRain_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),

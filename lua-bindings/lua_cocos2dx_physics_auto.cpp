@@ -216,7 +216,7 @@ int lua_cocos2dx_physics_PhysicsShape_getMaterial(lua_State* tolua_S)
         if(!ok)
             return 0;
         const cocos2d::PhysicsMaterial& ret = cobj->getMaterial();
-        #pragma warning NO CONVERSION FROM NATIVE FOR PhysicsMaterial;
+        physics_material_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getMaterial",argc, 0);
@@ -1108,7 +1108,7 @@ int lua_cocos2dx_physics_PhysicsShape_setMaterial(lua_State* tolua_S)
     {
         cocos2d::PhysicsMaterial arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
         cobj->setMaterial(arg0);
@@ -1468,7 +1468,7 @@ int lua_cocos2dx_physics_PhysicsShapeCircle_create(lua_State* tolua_S)
         double arg0;
         cocos2d::PhysicsMaterial arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::PhysicsShapeCircle* ret = cocos2d::PhysicsShapeCircle::create(arg0, arg1);
@@ -1501,7 +1501,7 @@ int lua_cocos2dx_physics_PhysicsShapeCircle_create(lua_State* tolua_S)
         cocos2d::PhysicsMaterial arg1;
         cocos2d::Point arg2;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         ok &= luaval_to_point(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
@@ -1736,7 +1736,7 @@ int lua_cocos2dx_physics_PhysicsShapeBox_create(lua_State* tolua_S)
         cocos2d::Size arg0;
         cocos2d::PhysicsMaterial arg1;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::PhysicsShapeBox* ret = cocos2d::PhysicsShapeBox::create(arg0, arg1);
@@ -1769,7 +1769,7 @@ int lua_cocos2dx_physics_PhysicsShapeBox_create(lua_State* tolua_S)
         cocos2d::PhysicsMaterial arg1;
         cocos2d::Point arg2;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         ok &= luaval_to_point(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
@@ -2029,7 +2029,7 @@ int lua_cocos2dx_physics_PhysicsShapePolygon_create(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
         cocos2d::PhysicsShapePolygon* ret = cocos2d::PhysicsShapePolygon::create(arg0, arg1, arg2);
@@ -2073,7 +2073,7 @@ int lua_cocos2dx_physics_PhysicsShapePolygon_create(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         ok &= luaval_to_point(tolua_S, 5, &arg3);
         if(!ok)
             return 0;
@@ -2389,7 +2389,7 @@ int lua_cocos2dx_physics_PhysicsShapeEdgeSegment_create(lua_State* tolua_S)
         cocos2d::PhysicsMaterial arg2;
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         ok &= luaval_to_point(tolua_S, 3, &arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
         cocos2d::PhysicsShapeEdgeSegment* ret = cocos2d::PhysicsShapeEdgeSegment::create(arg0, arg1, arg2);
@@ -2424,7 +2424,7 @@ int lua_cocos2dx_physics_PhysicsShapeEdgeSegment_create(lua_State* tolua_S)
         double arg3;
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         ok &= luaval_to_point(tolua_S, 3, &arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         ok &= luaval_to_number(tolua_S, 5,&arg3);
         if(!ok)
             return 0;
@@ -2532,7 +2532,7 @@ int lua_cocos2dx_physics_PhysicsShapeEdgeBox_create(lua_State* tolua_S)
         cocos2d::Size arg0;
         cocos2d::PhysicsMaterial arg1;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::PhysicsShapeEdgeBox* ret = cocos2d::PhysicsShapeEdgeBox::create(arg0, arg1);
@@ -2565,7 +2565,7 @@ int lua_cocos2dx_physics_PhysicsShapeEdgeBox_create(lua_State* tolua_S)
         cocos2d::PhysicsMaterial arg1;
         double arg2;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -2600,7 +2600,7 @@ int lua_cocos2dx_physics_PhysicsShapeEdgeBox_create(lua_State* tolua_S)
         double arg2;
         cocos2d::Point arg3;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         ok &= luaval_to_point(tolua_S, 5, &arg3);
         if(!ok)
@@ -2729,7 +2729,7 @@ int lua_cocos2dx_physics_PhysicsShapeEdgePolygon_create(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
         cocos2d::PhysicsShapeEdgePolygon* ret = cocos2d::PhysicsShapeEdgePolygon::create(arg0, arg1, arg2);
@@ -2773,7 +2773,7 @@ int lua_cocos2dx_physics_PhysicsShapeEdgePolygon_create(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         ok &= luaval_to_number(tolua_S, 5,&arg3);
         if(!ok)
             return 0;
@@ -2901,7 +2901,7 @@ int lua_cocos2dx_physics_PhysicsShapeEdgeChain_create(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
         cocos2d::PhysicsShapeEdgeChain* ret = cocos2d::PhysicsShapeEdgeChain::create(arg0, arg1, arg2);
@@ -2945,7 +2945,7 @@ int lua_cocos2dx_physics_PhysicsShapeEdgeChain_create(lua_State* tolua_S)
 						LUA_PRECONDITION( arg0, "Invalid Native Object");
 			}}} while (0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         ok &= luaval_to_number(tolua_S, 5,&arg3);
         if(!ok)
             return 0;
@@ -5818,7 +5818,7 @@ int lua_cocos2dx_physics_PhysicsBody_createBox(lua_State* tolua_S)
         cocos2d::Size arg0;
         cocos2d::PhysicsMaterial arg1;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::PhysicsBody* ret = cocos2d::PhysicsBody::createBox(arg0, arg1);
@@ -5851,7 +5851,7 @@ int lua_cocos2dx_physics_PhysicsBody_createBox(lua_State* tolua_S)
         cocos2d::PhysicsMaterial arg1;
         cocos2d::Point arg2;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         ok &= luaval_to_point(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
@@ -5941,7 +5941,7 @@ int lua_cocos2dx_physics_PhysicsBody_createEdgeSegment(lua_State* tolua_S)
         cocos2d::PhysicsMaterial arg2;
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         ok &= luaval_to_point(tolua_S, 3, &arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
         cocos2d::PhysicsBody* ret = cocos2d::PhysicsBody::createEdgeSegment(arg0, arg1, arg2);
@@ -5976,7 +5976,7 @@ int lua_cocos2dx_physics_PhysicsBody_createEdgeSegment(lua_State* tolua_S)
         double arg3;
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         ok &= luaval_to_point(tolua_S, 3, &arg1);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 4, &arg2);
         ok &= luaval_to_number(tolua_S, 5,&arg3);
         if(!ok)
             return 0;
@@ -6183,7 +6183,7 @@ int lua_cocos2dx_physics_PhysicsBody_createEdgeBox(lua_State* tolua_S)
         cocos2d::Size arg0;
         cocos2d::PhysicsMaterial arg1;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::PhysicsBody* ret = cocos2d::PhysicsBody::createEdgeBox(arg0, arg1);
@@ -6216,7 +6216,7 @@ int lua_cocos2dx_physics_PhysicsBody_createEdgeBox(lua_State* tolua_S)
         cocos2d::PhysicsMaterial arg1;
         double arg2;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
@@ -6251,7 +6251,7 @@ int lua_cocos2dx_physics_PhysicsBody_createEdgeBox(lua_State* tolua_S)
         double arg2;
         cocos2d::Point arg3;
         ok &= luaval_to_size(tolua_S, 2, &arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         ok &= luaval_to_point(tolua_S, 5, &arg3);
         if(!ok)
@@ -6338,7 +6338,7 @@ int lua_cocos2dx_physics_PhysicsBody_createCircle(lua_State* tolua_S)
         double arg0;
         cocos2d::PhysicsMaterial arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::PhysicsBody* ret = cocos2d::PhysicsBody::createCircle(arg0, arg1);
@@ -6371,7 +6371,7 @@ int lua_cocos2dx_physics_PhysicsBody_createCircle(lua_State* tolua_S)
         cocos2d::PhysicsMaterial arg1;
         cocos2d::Point arg2;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        #pragma warning NO CONVERSION TO NATIVE FOR PhysicsMaterial;
+        ok &= luaval_to_physics_material(tolua_S, 3, &arg1);
         ok &= luaval_to_point(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
@@ -7422,7 +7422,7 @@ int lua_cocos2dx_physics_PhysicsContact_getContactData(lua_State* tolua_S)
         if(!ok)
             return 0;
         const cocos2d::PhysicsContactData* ret = cobj->getContactData();
-        #pragma warning NO CONVERSION FROM NATIVE FOR PhysicsContactData*;
+        physics_contactdata_to_luaval(tolua_S, ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getContactData",argc, 0);

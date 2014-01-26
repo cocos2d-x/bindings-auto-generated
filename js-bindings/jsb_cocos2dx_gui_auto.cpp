@@ -6991,7 +6991,9 @@ void js_register_cocos2dx_gui_Helper(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("seekActionWidgetByActionTag", js_cocos2dx_gui_Helper_seekActionWidgetByActionTag, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
