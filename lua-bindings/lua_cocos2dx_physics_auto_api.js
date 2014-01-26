@@ -229,6 +229,12 @@ calculateMoment : function () {},
 cc.PhysicsShapeBox = {
 
 /**
+ * @method getPointsCount
+ * @return A value converted from C/C++ "int"
+ */
+getPointsCount : function () {},
+
+/**
  * @method getSize
  * @return A value converted from C/C++ "cocos2d::Size"
  */
@@ -265,6 +271,12 @@ calculateMoment : function () {},
  * @class PhysicsShapePolygon
  */
 cc.PhysicsShapePolygon = {
+
+/**
+ * @method getPointsCount
+ * @return A value converted from C/C++ "int"
+ */
+getPointsCount : function () {},
 
 /**
  * @method getPoint
@@ -338,6 +350,12 @@ create : function () {},
 cc.PhysicsShapeEdgeBox = {
 
 /**
+ * @method getPointsCount
+ * @return A value converted from C/C++ "int"
+ */
+getPointsCount : function () {},
+
+/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::PhysicsShapeEdgeBox*"
  * @param {const cocos2d::Size&}
@@ -355,6 +373,12 @@ create : function () {},
 cc.PhysicsShapeEdgePolygon = {
 
 /**
+ * @method getPointsCount
+ * @return A value converted from C/C++ "int"
+ */
+getPointsCount : function () {},
+
+/**
  * @method create
  * @return A value converted from C/C++ "cocos2d::PhysicsShapeEdgePolygon*"
  * @param {const cocos2d::Point*}
@@ -370,6 +394,12 @@ create : function () {},
  * @class PhysicsShapeEdgeChain
  */
 cc.PhysicsShapeEdgeChain = {
+
+/**
+ * @method getPointsCount
+ * @return A value converted from C/C++ "int"
+ */
+getPointsCount : function () {},
 
 /**
  * @method create
@@ -892,18 +922,6 @@ getShapeA : function () {},
  * @return A value converted from C/C++ "cocos2d::PhysicsShape*"
  */
 getShapeB : function () {},
-
-/**
- * @method getData
- * @return A value converted from C/C++ "void*"
- */
-getData : function () {},
-
-/**
- * @method setData
- * @param {void*}
- */
-setData : function () {},
 
 };
 
