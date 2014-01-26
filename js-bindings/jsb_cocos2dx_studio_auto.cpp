@@ -1159,7 +1159,9 @@ void js_register_cocos2dx_studio_ColliderFilter(JSContext *cx, JSObject *global)
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -1217,7 +1219,9 @@ void js_register_cocos2dx_studio_ColliderBody(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	JSFunctionSpec *st_funcs = NULL;
 
@@ -3063,7 +3067,9 @@ void js_register_cocos2dx_studio_BatchNode(JSContext *cx, JSObject *global) {
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_studio_BatchNode_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
@@ -6621,7 +6627,10 @@ void js_register_cocos2dx_studio_ComController(JSContext *cx, JSObject *global) 
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
-	JSFunctionSpec *funcs = NULL;
+	static JSFunctionSpec funcs[] = {
+        JS_FN("ctor", js_cocostudio_ComController_ctor, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+	};
 
 	static JSFunctionSpec st_funcs[] = {
 		JS_FN("create", js_cocos2dx_studio_ComController_create, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
