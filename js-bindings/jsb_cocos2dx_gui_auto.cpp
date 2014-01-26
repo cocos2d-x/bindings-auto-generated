@@ -31,6 +31,11 @@ static JSBool empty_constructor(JSContext *cx, uint32_t argc, jsval *vp) {
 	return JS_FALSE;
 }
 
+static JSBool js_is_native_obj(JSContext *cx, JS::HandleObject obj, JS::HandleId id, JS::MutableHandleValue vp)
+{
+	vp.set(BOOLEAN_TO_JSVAL(JS_TRUE));
+	return JS_TRUE;	
+}
 JSClass  *jsb_cocos2d_gui_LayoutParameter_class;
 JSObject *jsb_cocos2d_gui_LayoutParameter_prototype;
 
@@ -118,6 +123,7 @@ void js_register_cocos2dx_gui_LayoutParameter(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_LayoutParameter_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -266,6 +272,7 @@ void js_register_cocos2dx_gui_LinearLayoutParameter(JSContext *cx, JSObject *glo
 	jsb_cocos2d_gui_LinearLayoutParameter_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -489,6 +496,7 @@ void js_register_cocos2dx_gui_RelativeLayoutParameter(JSContext *cx, JSObject *g
 	jsb_cocos2d_gui_RelativeLayoutParameter_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -1736,6 +1744,7 @@ void js_register_cocos2dx_gui_Widget(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_Widget_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -2233,6 +2242,7 @@ void js_register_cocos2dx_gui_Layout(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_Layout_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -2755,6 +2765,7 @@ void js_register_cocos2dx_gui_Button(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_Button_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -3116,6 +3127,7 @@ void js_register_cocos2dx_gui_CheckBox(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_CheckBox_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -3324,6 +3336,7 @@ void js_register_cocos2dx_gui_ImageView(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_ImageView_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -3629,6 +3642,7 @@ void js_register_cocos2dx_gui_Text(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_Text_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -3814,6 +3828,7 @@ void js_register_cocos2dx_gui_TextAtlas(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_TextAtlas_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -4071,6 +4086,7 @@ void js_register_cocos2dx_gui_LoadingBar(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_LoadingBar_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -4788,6 +4804,7 @@ void js_register_cocos2dx_gui_ScrollView(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_ScrollView_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -5244,6 +5261,7 @@ void js_register_cocos2dx_gui_ListView(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_ListView_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -5674,6 +5692,7 @@ void js_register_cocos2dx_gui_Slider(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_Slider_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -6222,6 +6241,7 @@ void js_register_cocos2dx_gui_TextField(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_TextField_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -6412,6 +6432,7 @@ void js_register_cocos2dx_gui_TextBMFont(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_TextBMFont_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -6757,6 +6778,7 @@ void js_register_cocos2dx_gui_PageView(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_PageView_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
 	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
 		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
 	};
 
@@ -6964,7 +6986,10 @@ void js_register_cocos2dx_gui_Helper(JSContext *cx, JSObject *global) {
 	jsb_cocos2d_gui_Helper_class->finalize = js_cocos2d_gui_Helper_finalize;
 	jsb_cocos2d_gui_Helper_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
 
-	JSPropertySpec *properties = NULL;
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
 
 	JSFunctionSpec *funcs = NULL;
 
