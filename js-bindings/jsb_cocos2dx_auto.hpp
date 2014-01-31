@@ -2514,28 +2514,6 @@ JSBool js_cocos2dx_Application_setAnimationInterval(JSContext *cx, uint32_t argc
 JSBool js_cocos2dx_Application_getCurrentLanguage(JSContext *cx, uint32_t argc, jsval *vp);
 JSBool js_cocos2dx_Application_getInstance(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_cocos2d_EGLViewProtocol_class;
-extern JSObject *jsb_cocos2d_EGLViewProtocol_prototype;
-
-JSBool js_cocos2dx_EGLViewProtocol_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_EGLViewProtocol_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_EGLViewProtocol(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_EGLViewProtocol_getVisibleOrigin(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_EGLViewProtocol_getVisibleSize(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_EGLViewProtocol_setDesignResolutionSize(JSContext *cx, uint32_t argc, jsval *vp);
-
-extern JSClass  *jsb_cocos2d_EGLView_class;
-extern JSObject *jsb_cocos2d_EGLView_prototype;
-
-JSBool js_cocos2dx_EGLView_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_EGLView_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_EGLView(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-JSBool js_cocos2dx_EGLView_setIMEKeyboardState(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_EGLView_isOpenGLReady(JSContext *cx, uint32_t argc, jsval *vp);
-JSBool js_cocos2dx_EGLView_getInstance(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_cocos2d_ShaderCache_class;
 extern JSObject *jsb_cocos2d_ShaderCache_prototype;
 

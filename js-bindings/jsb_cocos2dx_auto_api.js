@@ -3651,7 +3651,7 @@ isNextDeltaTimeZero : function () {},
 
 /**
  * @method setOpenGLView
- * @param {cocos2d::EGLView*}
+ * @param {cocos2d::GLView*}
  */
 setOpenGLView : function () {},
 
@@ -7156,58 +7156,6 @@ getCurrentLanguage : function () {},
 /**
  * @method getInstance
  * @return A value converted from C/C++ "cocos2d::Application*"
- */
-getInstance : function () {},
-
-};
-
-/**
- * @class EGLViewProtocol
- */
-cc.EGLViewProtocol = {
-
-/**
- * @method getVisibleOrigin
- * @return A value converted from C/C++ "cocos2d::Point"
- */
-getVisibleOrigin : function () {},
-
-/**
- * @method getVisibleSize
- * @return A value converted from C/C++ "cocos2d::Size"
- */
-getVisibleSize : function () {},
-
-/**
- * @method setDesignResolutionSize
- * @param {float}
- * @param {float}
- * @param {ResolutionPolicy}
- */
-setDesignResolutionSize : function () {},
-
-};
-
-/**
- * @class EGLView
- */
-cc.EGLView = {
-
-/**
- * @method setIMEKeyboardState
- * @param {bool}
- */
-setIMEKeyboardState : function () {},
-
-/**
- * @method isOpenGLReady
- * @return A value converted from C/C++ "bool"
- */
-isOpenGLReady : function () {},
-
-/**
- * @method getInstance
- * @return A value converted from C/C++ "cocos2d::EGLView*"
  */
 getInstance : function () {},
 
