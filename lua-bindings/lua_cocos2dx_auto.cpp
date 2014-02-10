@@ -63138,7 +63138,7 @@ int lua_register_cocos2dx_TMXLayerInfo(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_TMXTilesetInfo_rectForGID(lua_State* tolua_S)
+int lua_cocos2dx_TMXTilesetInfo_getRectForGID(lua_State* tolua_S)
 {
     int argc = 0;
     cocos2d::TMXTilesetInfo* cobj = nullptr;
@@ -63158,7 +63158,7 @@ int lua_cocos2dx_TMXTilesetInfo_rectForGID(lua_State* tolua_S)
 #if COCOS2D_DEBUG >= 1
     if (!cobj) 
     {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTilesetInfo_rectForGID'", NULL);
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTilesetInfo_getRectForGID'", NULL);
         return 0;
     }
 #endif
@@ -63166,21 +63166,21 @@ int lua_cocos2dx_TMXTilesetInfo_rectForGID(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int arg0;
+        unsigned int arg0;
 
-        ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+        ok &= luaval_to_uint32(tolua_S, 2,&arg0);
         if(!ok)
             return 0;
-        cocos2d::Rect ret = cobj->rectForGID(arg0);
+        cocos2d::Rect ret = cobj->getRectForGID(arg0);
         rect_to_luaval(tolua_S, ret);
         return 1;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "rectForGID",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRectForGID",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
     tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TMXTilesetInfo_rectForGID'.",&tolua_err);
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TMXTilesetInfo_getRectForGID'.",&tolua_err);
 #endif
 
     return 0;
@@ -63240,7 +63240,7 @@ int lua_register_cocos2dx_TMXTilesetInfo(lua_State* tolua_S)
     tolua_cclass(tolua_S,"TMXTilesetInfo","cc.TMXTilesetInfo","cc.Object",NULL);
 
     tolua_beginmodule(tolua_S,"TMXTilesetInfo");
-        tolua_function(tolua_S,"rectForGID",lua_cocos2dx_TMXTilesetInfo_rectForGID);
+        tolua_function(tolua_S,"getRectForGID",lua_cocos2dx_TMXTilesetInfo_getRectForGID);
         tolua_function(tolua_S,"new",lua_cocos2dx_TMXTilesetInfo_constructor);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::TMXTilesetInfo).name();
@@ -64950,21 +64950,21 @@ int lua_cocos2dx_TMXLayer_getTileGIDAt(lua_State* tolua_S)
         ok &= luaval_to_point(tolua_S, 2, &arg0);
         if(!ok)
             return 0;
-        int ret = cobj->getTileGIDAt(arg0);
+        unsigned int ret = cobj->getTileGIDAt(arg0);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
     if (argc == 2) 
     {
         cocos2d::Point arg0;
-        cocos2d::ccTMXTileFlags_* arg1;
+        cocos2d::TMXTileFlags_* arg1;
 
         ok &= luaval_to_point(tolua_S, 2, &arg0);
 
-        #pragma warning NO CONVERSION TO NATIVE FOR ccTMXTileFlags_*;
+        #pragma warning NO CONVERSION TO NATIVE FOR TMXTileFlags_*;
         if(!ok)
             return 0;
-        int ret = cobj->getTileGIDAt(arg0, arg1);
+        unsigned int ret = cobj->getTileGIDAt(arg0, arg1);
         tolua_pushnumber(tolua_S,(lua_Number)ret);
         return 1;
     }
@@ -65142,9 +65142,9 @@ int lua_cocos2dx_TMXLayer_setTiles(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        int* arg0;
+        unsigned int* arg0;
 
-        #pragma warning NO CONVERSION TO NATIVE FOR int*;
+        #pragma warning NO CONVERSION TO NATIVE FOR unsigned int*;
         if(!ok)
             return 0;
         cobj->setTiles(arg0);
@@ -65578,15 +65578,15 @@ int lua_cocos2dx_TMXLayer_setTileGID(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     do{
         if (argc == 3) {
-            int arg0;
-            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+            unsigned int arg0;
+            ok &= luaval_to_uint32(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             cocos2d::Point arg1;
             ok &= luaval_to_point(tolua_S, 3, &arg1);
 
             if (!ok) { break; }
-            cocos2d::ccTMXTileFlags_ arg2;
+            cocos2d::TMXTileFlags_ arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
 
             if (!ok) { break; }
@@ -65597,8 +65597,8 @@ int lua_cocos2dx_TMXLayer_setTileGID(lua_State* tolua_S)
     ok  = true;
     do{
         if (argc == 2) {
-            int arg0;
-            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
+            unsigned int arg0;
+            ok &= luaval_to_uint32(tolua_S, 2,&arg0);
 
             if (!ok) { break; }
             cocos2d::Point arg1;

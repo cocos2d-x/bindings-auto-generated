@@ -39719,26 +39719,26 @@ void js_register_cocos2dx_TMXLayerInfo(JSContext *cx, JSObject *global) {
 JSClass  *jsb_cocos2d_TMXTilesetInfo_class;
 JSObject *jsb_cocos2d_TMXTilesetInfo_prototype;
 
-bool js_cocos2dx_TMXTilesetInfo_rectForGID(JSContext *cx, uint32_t argc, jsval *vp)
+bool js_cocos2dx_TMXTilesetInfo_getRectForGID(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
 	bool ok = true;
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
 	js_proxy_t *proxy = jsb_get_js_proxy(obj);
 	cocos2d::TMXTilesetInfo* cobj = (cocos2d::TMXTilesetInfo *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_TMXTilesetInfo_rectForGID : Invalid Native Object");
+	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_TMXTilesetInfo_getRectForGID : Invalid Native Object");
 	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_TMXTilesetInfo_rectForGID : Error processing arguments");
-		cocos2d::Rect ret = cobj->rectForGID(arg0);
+		unsigned int arg0;
+		ok &= jsval_to_uint32(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_TMXTilesetInfo_getRectForGID : Error processing arguments");
+		cocos2d::Rect ret = cobj->getRectForGID(arg0);
 		jsval jsret = JSVAL_NULL;
 		jsret = ccrect_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return true;
 	}
 
-	JS_ReportError(cx, "js_cocos2dx_TMXTilesetInfo_rectForGID : wrong number of arguments: %d, was expecting %d", argc, 1);
+	JS_ReportError(cx, "js_cocos2dx_TMXTilesetInfo_getRectForGID : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return false;
 }
 bool js_cocos2dx_TMXTilesetInfo_constructor(JSContext *cx, uint32_t argc, jsval *vp)
@@ -39793,7 +39793,7 @@ void js_register_cocos2dx_TMXTilesetInfo(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("rectForGID", js_cocos2dx_TMXTilesetInfo_rectForGID, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getRectForGID", js_cocos2dx_TMXTilesetInfo_getRectForGID, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -40694,21 +40694,21 @@ bool js_cocos2dx_TMXLayer_getTileGIDAt(JSContext *cx, uint32_t argc, jsval *vp)
 		cocos2d::Point arg0;
 		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
 		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_TMXLayer_getTileGIDAt : Error processing arguments");
-		int ret = cobj->getTileGIDAt(arg0);
+		unsigned int ret = cobj->getTileGIDAt(arg0);
 		jsval jsret = JSVAL_NULL;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = uint32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return true;
 	}
 	if (argc == 2) {
 		cocos2d::Point arg0;
-		cocos2d::ccTMXTileFlags_* arg1;
+		cocos2d::TMXTileFlags_* arg1;
 		ok &= jsval_to_ccpoint(cx, argv[0], &arg0);
-		#pragma warning NO CONVERSION TO NATIVE FOR ccTMXTileFlags_*;
+		#pragma warning NO CONVERSION TO NATIVE FOR TMXTileFlags_*;
 		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_TMXLayer_getTileGIDAt : Error processing arguments");
-		int ret = cobj->getTileGIDAt(arg0, arg1);
+		unsigned int ret = cobj->getTileGIDAt(arg0, arg1);
 		jsval jsret = JSVAL_NULL;
-		jsret = int32_to_jsval(cx, ret);
+		jsret = uint32_to_jsval(cx, ret);
 		JS_SET_RVAL(cx, vp, jsret);
 		return true;
 	}
@@ -40782,8 +40782,8 @@ bool js_cocos2dx_TMXLayer_setTiles(JSContext *cx, uint32_t argc, jsval *vp)
 	cocos2d::TMXLayer* cobj = (cocos2d::TMXLayer *)(proxy ? proxy->ptr : NULL);
 	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_TMXLayer_setTiles : Invalid Native Object");
 	if (argc == 1) {
-		int* arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR int*;
+		unsigned int* arg0;
+		#pragma warning NO CONVERSION TO NATIVE FOR unsigned int*;
 		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_TMXLayer_setTiles : Error processing arguments");
 		cobj->setTiles(arg0);
 		JS_SET_RVAL(cx, vp, JSVAL_VOID);
@@ -40982,13 +40982,13 @@ bool js_cocos2dx_TMXLayer_setTileGID(JSContext *cx, uint32_t argc, jsval *vp)
 	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_TMXLayer_setTileGID : Invalid Native Object");
 	do {
 		if (argc == 3) {
-			int arg0;
-			ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+			unsigned int arg0;
+			ok &= jsval_to_uint32(cx, argv[0], &arg0);
 			if (!ok) { ok = true; break; }
 			cocos2d::Point arg1;
 			ok &= jsval_to_ccpoint(cx, argv[1], &arg1);
 			if (!ok) { ok = true; break; }
-			cocos2d::ccTMXTileFlags_ arg2;
+			cocos2d::TMXTileFlags_ arg2;
 			ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
 			if (!ok) { ok = true; break; }
 			cobj->setTileGID(arg0, arg1, arg2);
@@ -40999,8 +40999,8 @@ bool js_cocos2dx_TMXLayer_setTileGID(JSContext *cx, uint32_t argc, jsval *vp)
 
 	do {
 		if (argc == 2) {
-			int arg0;
-			ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
+			unsigned int arg0;
+			ok &= jsval_to_uint32(cx, argv[0], &arg0);
 			if (!ok) { ok = true; break; }
 			cocos2d::Point arg1;
 			ok &= jsval_to_ccpoint(cx, argv[1], &arg1);
