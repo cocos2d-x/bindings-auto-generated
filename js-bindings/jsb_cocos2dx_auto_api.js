@@ -7604,11 +7604,11 @@ TMXLayerInfo : function () {},
 cc.TMXTilesetInfo = {
 
 /**
- * @method rectForGID
+ * @method getRectForGID
  * @return A value converted from C/C++ "cocos2d::Rect"
- * @param {int}
+ * @param {uint32_t}
  */
-rectForGID : function () {},
+getRectForGID : function () {},
 
 /**
  * @method TMXTilesetInfo
@@ -7826,9 +7826,9 @@ cc.TMXLayer = {
 
 /**
  * @method getTileGIDAt
- * @return A value converted from C/C++ "int"
+ * @return A value converted from C/C++ "uint32_t"
  * @param {const cocos2d::Point&}
- * @param {cocos2d::ccTMXTileFlags*}
+ * @param {cocos2d::TMXTileFlags*}
  */
 getTileGIDAt : function () {},
 
@@ -7852,7 +7852,7 @@ releaseMap : function () {},
 
 /**
  * @method setTiles
- * @param {int*}
+ * @param {uint32_t*}
  */
 setTiles : function () {},
 
