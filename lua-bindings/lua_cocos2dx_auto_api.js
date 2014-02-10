@@ -8358,13 +8358,6 @@ getMapSize : function () {},
 getProperties : function () {},
 
 /**
- * @method getPropertiesForGID
- * @return A value converted from C/C++ "cocos2d::Value"
- * @param {int}
- */
-getPropertiesForGID : function () {},
-
-/**
  * @method setTileSize
  * @param {const cocos2d::Size&}
  */
