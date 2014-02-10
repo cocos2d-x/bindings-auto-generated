@@ -7841,7 +7841,7 @@ static int lua_cocos2dx_physics_PhysicsContact_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_physics_PhysicsContact(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"cc.PhysicsContact");
-    tolua_cclass(tolua_S,"PhysicsContact","cc.PhysicsContact","cc.Event",NULL);
+    tolua_cclass(tolua_S,"PhysicsContact","cc.PhysicsContact","cc.EventCustom",NULL);
 
     tolua_beginmodule(tolua_S,"PhysicsContact");
         tolua_function(tolua_S,"getContactData",lua_cocos2dx_physics_PhysicsContact_getContactData);

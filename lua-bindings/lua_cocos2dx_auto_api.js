@@ -7332,6 +7332,38 @@ cc.EventListenerCustom = {
 };
 
 /**
+ * @class EventCustom
+ */
+cc.EventCustom = {
+
+/**
+ * @method getEventName
+ * @return A value converted from C/C++ "const std::string&"
+ */
+getEventName : function () {},
+
+/**
+ * @method setUserData
+ * @param {void*}
+ */
+setUserData : function () {},
+
+/**
+ * @method getUserData
+ * @return A value converted from C/C++ "void*"
+ */
+getUserData : function () {},
+
+/**
+ * @method EventCustom
+ * @constructor
+ * @param {const std::string&}
+ */
+EventCustom : function () {},
+
+};
+
+/**
  * @class FileUtils
  */
 cc.FileUtils = {
@@ -8553,38 +8585,6 @@ cc.EventAcceleration = {
  * @class EventListenerAcceleration
  */
 cc.EventListenerAcceleration = {
-
-};
-
-/**
- * @class EventCustom
- */
-cc.EventCustom = {
-
-/**
- * @method getEventName
- * @return A value converted from C/C++ "const std::string&"
- */
-getEventName : function () {},
-
-/**
- * @method setUserData
- * @param {void*}
- */
-setUserData : function () {},
-
-/**
- * @method getUserData
- * @return A value converted from C/C++ "void*"
- */
-getUserData : function () {},
-
-/**
- * @method EventCustom
- * @constructor
- * @param {const std::string&}
- */
-EventCustom : function () {},
 
 };
 
