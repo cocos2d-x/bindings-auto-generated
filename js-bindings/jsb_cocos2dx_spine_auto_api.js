@@ -90,28 +90,6 @@ findBone : function () {},
 sp.SkeletonAnimation = {
 
 /**
- * @method addAnimation
- * @return A value converted from C/C++ "spTrackEntry*"
- * @param {int}
- * @param {const char*}
- * @param {bool}
- * @param {float}
- */
-addAnimation : function () {},
-
-/**
- * @method getCurrent
- * @return A value converted from C/C++ "spTrackEntry*"
- */
-getCurrent : function () {},
-
-/**
- * @method setAnimationStateData
- * @param {spAnimationStateData*}
- */
-setAnimationStateData : function () {},
-
-/**
  * @method update
  * @param {float}
  */
@@ -124,15 +102,6 @@ update : function () {},
  * @param {float}
  */
 setMix : function () {},
-
-/**
- * @method setAnimation
- * @return A value converted from C/C++ "spTrackEntry*"
- * @param {int}
- * @param {const char*}
- * @param {bool}
- */
-setAnimation : function () {},
 
 /**
  * @method clearTracks

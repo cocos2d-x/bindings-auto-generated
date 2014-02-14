@@ -619,97 +619,6 @@ void js_register_cocos2dx_spine_Skeleton(JSContext *cx, JSObject *global) {
 JSClass  *jsb_spine_SkeletonAnimation_class;
 JSObject *jsb_spine_SkeletonAnimation_prototype;
 
-bool js_cocos2dx_spine_SkeletonAnimation_addAnimation(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	bool ok = true;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	spine::SkeletonAnimation* cobj = (spine::SkeletonAnimation *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_spine_SkeletonAnimation_addAnimation : Invalid Native Object");
-	if (argc == 3) {
-		int arg0;
-		const char* arg1;
-		bool arg2;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		ok &= JS_ValueToBoolean(cx, argv[2], &arg2);
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_spine_SkeletonAnimation_addAnimation : Error processing arguments");
-		spTrackEntry* ret = cobj->addAnimation(arg0, arg1, arg2);
-		jsval jsret = JSVAL_NULL;
-		#pragma warning NO CONVERSION FROM NATIVE FOR spTrackEntry*;
-		JS_SET_RVAL(cx, vp, jsret);
-		return true;
-	}
-	if (argc == 4) {
-		int arg0;
-		const char* arg1;
-		bool arg2;
-		double arg3;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		ok &= JS_ValueToBoolean(cx, argv[2], &arg2);
-		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[3]), &arg3);
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_spine_SkeletonAnimation_addAnimation : Error processing arguments");
-		spTrackEntry* ret = cobj->addAnimation(arg0, arg1, arg2, arg3);
-		jsval jsret = JSVAL_NULL;
-		#pragma warning NO CONVERSION FROM NATIVE FOR spTrackEntry*;
-		JS_SET_RVAL(cx, vp, jsret);
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_spine_SkeletonAnimation_addAnimation : wrong number of arguments: %d, was expecting %d", argc, 3);
-	return false;
-}
-bool js_cocos2dx_spine_SkeletonAnimation_getCurrent(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	bool ok = true;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	spine::SkeletonAnimation* cobj = (spine::SkeletonAnimation *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_spine_SkeletonAnimation_getCurrent : Invalid Native Object");
-	if (argc == 0) {
-		spTrackEntry* ret = cobj->getCurrent();
-		jsval jsret = JSVAL_NULL;
-		#pragma warning NO CONVERSION FROM NATIVE FOR spTrackEntry*;
-		JS_SET_RVAL(cx, vp, jsret);
-		return true;
-	}
-	if (argc == 1) {
-		int arg0;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_spine_SkeletonAnimation_getCurrent : Error processing arguments");
-		spTrackEntry* ret = cobj->getCurrent(arg0);
-		jsval jsret = JSVAL_NULL;
-		#pragma warning NO CONVERSION FROM NATIVE FOR spTrackEntry*;
-		JS_SET_RVAL(cx, vp, jsret);
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_spine_SkeletonAnimation_getCurrent : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return false;
-}
-bool js_cocos2dx_spine_SkeletonAnimation_setAnimationStateData(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	bool ok = true;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	spine::SkeletonAnimation* cobj = (spine::SkeletonAnimation *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_spine_SkeletonAnimation_setAnimationStateData : Invalid Native Object");
-	if (argc == 1) {
-		spAnimationStateData* arg0;
-		#pragma warning NO CONVERSION TO NATIVE FOR spAnimationStateData*;
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_spine_SkeletonAnimation_setAnimationStateData : Error processing arguments");
-		cobj->setAnimationStateData(arg0);
-		JS_SET_RVAL(cx, vp, JSVAL_VOID);
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_spine_SkeletonAnimation_setAnimationStateData : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return false;
-}
 bool js_cocos2dx_spine_SkeletonAnimation_update(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -752,32 +661,6 @@ bool js_cocos2dx_spine_SkeletonAnimation_setMix(JSContext *cx, uint32_t argc, js
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_spine_SkeletonAnimation_setMix : wrong number of arguments: %d, was expecting %d", argc, 3);
-	return false;
-}
-bool js_cocos2dx_spine_SkeletonAnimation_setAnimation(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	bool ok = true;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	spine::SkeletonAnimation* cobj = (spine::SkeletonAnimation *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_spine_SkeletonAnimation_setAnimation : Invalid Native Object");
-	if (argc == 3) {
-		int arg0;
-		const char* arg1;
-		bool arg2;
-		ok &= jsval_to_int32(cx, argv[0], (int32_t *)&arg0);
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		ok &= JS_ValueToBoolean(cx, argv[2], &arg2);
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_spine_SkeletonAnimation_setAnimation : Error processing arguments");
-		spTrackEntry* ret = cobj->setAnimation(arg0, arg1, arg2);
-		jsval jsret = JSVAL_NULL;
-		#pragma warning NO CONVERSION FROM NATIVE FOR spTrackEntry*;
-		JS_SET_RVAL(cx, vp, jsret);
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_spine_SkeletonAnimation_setAnimation : wrong number of arguments: %d, was expecting %d", argc, 3);
 	return false;
 }
 bool js_cocos2dx_spine_SkeletonAnimation_clearTracks(JSContext *cx, uint32_t argc, jsval *vp)
@@ -1123,12 +1006,8 @@ void js_register_cocos2dx_spine_SkeletonAnimation(JSContext *cx, JSObject *globa
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("addAnimation", js_cocos2dx_spine_SkeletonAnimation_addAnimation, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getCurrent", js_cocos2dx_spine_SkeletonAnimation_getCurrent, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setAnimationStateData", js_cocos2dx_spine_SkeletonAnimation_setAnimationStateData, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("update", js_cocos2dx_spine_SkeletonAnimation_update, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setMix", js_cocos2dx_spine_SkeletonAnimation_setMix, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("setAnimation", js_cocos2dx_spine_SkeletonAnimation_setAnimation, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("clearTracks", js_cocos2dx_spine_SkeletonAnimation_clearTracks, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("clearTrack", js_cocos2dx_spine_SkeletonAnimation_clearTrack, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("onAnimationStateEvent", js_cocos2dx_spine_SkeletonAnimation_onAnimationStateEvent, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
