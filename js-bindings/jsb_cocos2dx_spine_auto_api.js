@@ -30,14 +30,6 @@ onDraw : function () {},
 setSlotsToSetupPose : function () {},
 
 /**
- * @method getAttachment
- * @return A value converted from C/C++ "spAttachment*"
- * @param {const char*}
- * @param {const char*}
- */
-getAttachment : function () {},
-
-/**
  * @method setAttachment
  * @return A value converted from C/C++ "bool"
  * @param {const char*}
@@ -59,13 +51,6 @@ getBlendFunc : function () {},
 setSkin : function () {},
 
 /**
- * @method findSlot
- * @return A value converted from C/C++ "spSlot*"
- * @param {const char*}
- */
-findSlot : function () {},
-
-/**
  * @method updateWorldTransform
  */
 updateWorldTransform : function () {},
@@ -74,13 +59,6 @@ updateWorldTransform : function () {},
  * @method setBonesToSetupPose
  */
 setBonesToSetupPose : function () {},
-
-/**
- * @method findBone
- * @return A value converted from C/C++ "spBone*"
- * @param {const char*}
- */
-findBone : function () {},
 
 };
 

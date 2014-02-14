@@ -104,30 +104,6 @@ bool js_cocos2dx_spine_Skeleton_setSlotsToSetupPose(JSContext *cx, uint32_t argc
 	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_setSlotsToSetupPose : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return false;
 }
-bool js_cocos2dx_spine_Skeleton_getAttachment(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	bool ok = true;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	spine::Skeleton* cobj = (spine::Skeleton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_spine_Skeleton_getAttachment : Invalid Native Object");
-	if (argc == 2) {
-		const char* arg0;
-		const char* arg1;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_spine_Skeleton_getAttachment : Error processing arguments");
-		spAttachment* ret = cobj->getAttachment(arg0, arg1);
-		jsval jsret = JSVAL_NULL;
-		#pragma warning NO CONVERSION FROM NATIVE FOR spAttachment*;
-		JS_SET_RVAL(cx, vp, jsret);
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_getAttachment : wrong number of arguments: %d, was expecting %d", argc, 2);
-	return false;
-}
 bool js_cocos2dx_spine_Skeleton_setAttachment(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	jsval *argv = JS_ARGV(cx, vp);
@@ -191,28 +167,6 @@ bool js_cocos2dx_spine_Skeleton_setSkin(JSContext *cx, uint32_t argc, jsval *vp)
 	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_setSkin : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return false;
 }
-bool js_cocos2dx_spine_Skeleton_findSlot(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	bool ok = true;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	spine::Skeleton* cobj = (spine::Skeleton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_spine_Skeleton_findSlot : Invalid Native Object");
-	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_spine_Skeleton_findSlot : Error processing arguments");
-		spSlot* ret = cobj->findSlot(arg0);
-		jsval jsret = JSVAL_NULL;
-		#pragma warning NO CONVERSION FROM NATIVE FOR spSlot*;
-		JS_SET_RVAL(cx, vp, jsret);
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_findSlot : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return false;
-}
 bool js_cocos2dx_spine_Skeleton_updateWorldTransform(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -241,28 +195,6 @@ bool js_cocos2dx_spine_Skeleton_setBonesToSetupPose(JSContext *cx, uint32_t argc
 	}
 
 	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_setBonesToSetupPose : wrong number of arguments: %d, was expecting %d", argc, 0);
-	return false;
-}
-bool js_cocos2dx_spine_Skeleton_findBone(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	bool ok = true;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	spine::Skeleton* cobj = (spine::Skeleton *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_spine_Skeleton_findBone : Invalid Native Object");
-	if (argc == 1) {
-		const char* arg0;
-		std::string arg0_tmp; ok &= jsval_to_std_string(cx, argv[0], &arg0_tmp); arg0 = arg0_tmp.c_str();
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_spine_Skeleton_findBone : Error processing arguments");
-		spBone* ret = cobj->findBone(arg0);
-		jsval jsret = JSVAL_NULL;
-		#pragma warning NO CONVERSION FROM NATIVE FOR spBone*;
-		JS_SET_RVAL(cx, vp, jsret);
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_spine_Skeleton_findBone : wrong number of arguments: %d, was expecting %d", argc, 1);
 	return false;
 }
 bool js_cocos2dx_spine_Skeleton_createWithFile(JSContext *cx, uint32_t argc, jsval *vp)
@@ -572,14 +504,11 @@ void js_register_cocos2dx_spine_Skeleton(JSContext *cx, JSObject *global) {
 		JS_FN("setBlendFunc", js_cocos2dx_spine_Skeleton_setBlendFunc, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("onDraw", js_cocos2dx_spine_Skeleton_onDraw, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSlotsToSetupPose", js_cocos2dx_spine_Skeleton_setSlotsToSetupPose, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("getAttachment", js_cocos2dx_spine_Skeleton_getAttachment, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setAttachment", js_cocos2dx_spine_Skeleton_setAttachment, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getBlendFunc", js_cocos2dx_spine_Skeleton_getBlendFunc, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setSkin", js_cocos2dx_spine_Skeleton_setSkin, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("findSlot", js_cocos2dx_spine_Skeleton_findSlot, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("updateWorldTransform", js_cocos2dx_spine_Skeleton_updateWorldTransform, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("setBonesToSetupPose", js_cocos2dx_spine_Skeleton_setBonesToSetupPose, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
-		JS_FN("findBone", js_cocos2dx_spine_Skeleton_findBone, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 

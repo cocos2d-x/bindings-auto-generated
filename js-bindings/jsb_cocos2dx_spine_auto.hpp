@@ -16,14 +16,11 @@ bool js_cocos2dx_spine_Skeleton_setToSetupPose(JSContext *cx, uint32_t argc, jsv
 bool js_cocos2dx_spine_Skeleton_setBlendFunc(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_spine_Skeleton_onDraw(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_spine_Skeleton_setSlotsToSetupPose(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_spine_Skeleton_getAttachment(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_spine_Skeleton_setAttachment(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_spine_Skeleton_getBlendFunc(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_spine_Skeleton_setSkin(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_spine_Skeleton_findSlot(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_spine_Skeleton_updateWorldTransform(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_spine_Skeleton_setBonesToSetupPose(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_spine_Skeleton_findBone(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_spine_Skeleton_createWithFile(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_spine_Skeleton_Skeleton(JSContext *cx, uint32_t argc, jsval *vp);
 
