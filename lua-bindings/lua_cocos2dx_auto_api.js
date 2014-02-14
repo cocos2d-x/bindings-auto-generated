@@ -6141,10 +6141,12 @@ hasPremultipliedAlpha : function () {},
 getDataLen : function () {},
 
 /**
- * @method isCompressed
+ * @method saveToFile
  * @return A value converted from C/C++ "bool"
+ * @param {const std::string&}
+ * @param {bool}
  */
-isCompressed : function () {},
+saveToFile : function () {},
 
 /**
  * @method getBitPerPixel
@@ -6157,6 +6159,12 @@ getBitPerPixel : function () {},
  * @return A value converted from C/C++ "bool"
  */
 hasAlpha : function () {},
+
+/**
+ * @method isCompressed
+ * @return A value converted from C/C++ "bool"
+ */
+isCompressed : function () {},
 
 /**
  * @method getHeight
@@ -6188,14 +6196,6 @@ isPremultipliedAlpha : function () {},
  * @return A value converted from C/C++ "cocos2d::Image::Format"
  */
 getFileType : function () {},
-
-/**
- * @method saveToFile
- * @return A value converted from C/C++ "bool"
- * @param {const std::string&}
- * @param {bool}
- */
-saveToFile : function () {},
 
 /**
  * @method getNumberOfMipmaps
