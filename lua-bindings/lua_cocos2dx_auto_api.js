@@ -2437,13 +2437,6 @@ cc.EaseElasticInOut = {
  */
 cc.EaseBounce = {
 
-/**
- * @method bounceTime
- * @return A value converted from C/C++ "float"
- * @param {float}
- */
-bounceTime : function () {},
-
 };
 
 /**
@@ -2524,6 +2517,239 @@ cc.EaseBackInOut = {
 /**
  * @method create
  * @return A value converted from C/C++ "cocos2d::EaseBackInOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseBezierAction
+ */
+cc.EaseBezierAction = {
+
+/**
+ * @method setBezierParamer
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ */
+setBezierParamer : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseBezierAction*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseQuadraticActionIn
+ */
+cc.EaseQuadraticActionIn = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseQuadraticActionIn*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseQuadraticActionOut
+ */
+cc.EaseQuadraticActionOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseQuadraticActionOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseQuadraticActionInOut
+ */
+cc.EaseQuadraticActionInOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseQuadraticActionInOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseQuarticActionIn
+ */
+cc.EaseQuarticActionIn = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseQuarticActionIn*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseQuarticActionOut
+ */
+cc.EaseQuarticActionOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseQuarticActionOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseQuarticActionInOut
+ */
+cc.EaseQuarticActionInOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseQuarticActionInOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseQuinticActionIn
+ */
+cc.EaseQuinticActionIn = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseQuinticActionIn*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseQuinticActionOut
+ */
+cc.EaseQuinticActionOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseQuinticActionOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseQuinticActionInOut
+ */
+cc.EaseQuinticActionInOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseQuinticActionInOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseCircleActionIn
+ */
+cc.EaseCircleActionIn = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseCircleActionIn*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseCircleActionOut
+ */
+cc.EaseCircleActionOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseCircleActionOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseCircleActionInOut
+ */
+cc.EaseCircleActionInOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseCircleActionInOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseCubicActionIn
+ */
+cc.EaseCubicActionIn = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseCubicActionIn*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseCubicActionOut
+ */
+cc.EaseCubicActionOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseCubicActionOut*"
+ * @param {cocos2d::ActionInterval*}
+ */
+create : function () {},
+
+};
+
+/**
+ * @class EaseCubicActionInOut
+ */
+cc.EaseCubicActionInOut = {
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::EaseCubicActionInOut*"
  * @param {cocos2d::ActionInterval*}
  */
 create : function () {},

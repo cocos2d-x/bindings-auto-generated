@@ -19795,53 +19795,6 @@ int lua_register_cocos2dx_EaseElasticInOut(lua_State* tolua_S)
     return 1;
 }
 
-int lua_cocos2dx_EaseBounce_bounceTime(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::EaseBounce* cobj = nullptr;
-    bool ok  = true;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.EaseBounce",0,&tolua_err)) goto tolua_lerror;
-#endif
-
-    cobj = (cocos2d::EaseBounce*)tolua_tousertype(tolua_S,1,0);
-
-#if COCOS2D_DEBUG >= 1
-    if (!cobj) 
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EaseBounce_bounceTime'", NULL);
-        return 0;
-    }
-#endif
-
-    argc = lua_gettop(tolua_S)-1;
-    if (argc == 1) 
-    {
-        double arg0;
-
-        ok &= luaval_to_number(tolua_S, 2,&arg0);
-        if(!ok)
-            return 0;
-        double ret = cobj->bounceTime(arg0);
-        tolua_pushnumber(tolua_S,(lua_Number)ret);
-        return 1;
-    }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "bounceTime",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseBounce_bounceTime'.",&tolua_err);
-#endif
-
-    return 0;
-}
 static int lua_cocos2dx_EaseBounce_finalize(lua_State* tolua_S)
 {
     printf("luabindings: finalizing LUA object (EaseBounce)");
@@ -19854,7 +19807,6 @@ int lua_register_cocos2dx_EaseBounce(lua_State* tolua_S)
     tolua_cclass(tolua_S,"EaseBounce","cc.EaseBounce","cc.ActionEase",NULL);
 
     tolua_beginmodule(tolua_S,"EaseBounce");
-        tolua_function(tolua_S,"bounceTime",lua_cocos2dx_EaseBounce_bounceTime);
     tolua_endmodule(tolua_S);
     std::string typeName = typeid(cocos2d::EaseBounce).name();
     g_luaType[typeName] = "cc.EaseBounce";
@@ -20351,6 +20303,1374 @@ int lua_register_cocos2dx_EaseBackInOut(lua_State* tolua_S)
     std::string typeName = typeid(cocos2d::EaseBackInOut).name();
     g_luaType[typeName] = "cc.EaseBackInOut";
     g_typeCast["EaseBackInOut"] = "cc.EaseBackInOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseBezierAction_setBezierParamer(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::EaseBezierAction* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"cc.EaseBezierAction",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::EaseBezierAction*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_EaseBezierAction_setBezierParamer'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 4) 
+    {
+        double arg0;
+        double arg1;
+        double arg2;
+        double arg3;
+
+        ok &= luaval_to_number(tolua_S, 2,&arg0);
+
+        ok &= luaval_to_number(tolua_S, 3,&arg1);
+
+        ok &= luaval_to_number(tolua_S, 4,&arg2);
+
+        ok &= luaval_to_number(tolua_S, 5,&arg3);
+        if(!ok)
+            return 0;
+        cobj->setBezierParamer(arg0, arg1, arg2, arg3);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "setBezierParamer",argc, 4);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseBezierAction_setBezierParamer'.",&tolua_err);
+#endif
+
+    return 0;
+}
+int lua_cocos2dx_EaseBezierAction_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseBezierAction",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseBezierAction* ret = cocos2d::EaseBezierAction::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseBezierAction";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBezierAction*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseBezierAction_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseBezierAction_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseBezierAction)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseBezierAction(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseBezierAction");
+    tolua_cclass(tolua_S,"EaseBezierAction","cc.EaseBezierAction","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseBezierAction");
+        tolua_function(tolua_S,"setBezierParamer",lua_cocos2dx_EaseBezierAction_setBezierParamer);
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseBezierAction_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseBezierAction).name();
+    g_luaType[typeName] = "cc.EaseBezierAction";
+    g_typeCast["EaseBezierAction"] = "cc.EaseBezierAction";
+    return 1;
+}
+
+int lua_cocos2dx_EaseQuadraticActionIn_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseQuadraticActionIn",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseQuadraticActionIn* ret = cocos2d::EaseQuadraticActionIn::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseQuadraticActionIn";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuadraticActionIn*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseQuadraticActionIn_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseQuadraticActionIn_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseQuadraticActionIn)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseQuadraticActionIn(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseQuadraticActionIn");
+    tolua_cclass(tolua_S,"EaseQuadraticActionIn","cc.EaseQuadraticActionIn","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseQuadraticActionIn");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseQuadraticActionIn_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseQuadraticActionIn).name();
+    g_luaType[typeName] = "cc.EaseQuadraticActionIn";
+    g_typeCast["EaseQuadraticActionIn"] = "cc.EaseQuadraticActionIn";
+    return 1;
+}
+
+int lua_cocos2dx_EaseQuadraticActionOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseQuadraticActionOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseQuadraticActionOut* ret = cocos2d::EaseQuadraticActionOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseQuadraticActionOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuadraticActionOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseQuadraticActionOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseQuadraticActionOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseQuadraticActionOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseQuadraticActionOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseQuadraticActionOut");
+    tolua_cclass(tolua_S,"EaseQuadraticActionOut","cc.EaseQuadraticActionOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseQuadraticActionOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseQuadraticActionOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseQuadraticActionOut).name();
+    g_luaType[typeName] = "cc.EaseQuadraticActionOut";
+    g_typeCast["EaseQuadraticActionOut"] = "cc.EaseQuadraticActionOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseQuadraticActionInOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseQuadraticActionInOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseQuadraticActionInOut* ret = cocos2d::EaseQuadraticActionInOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseQuadraticActionInOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuadraticActionInOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseQuadraticActionInOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseQuadraticActionInOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseQuadraticActionInOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseQuadraticActionInOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseQuadraticActionInOut");
+    tolua_cclass(tolua_S,"EaseQuadraticActionInOut","cc.EaseQuadraticActionInOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseQuadraticActionInOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseQuadraticActionInOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseQuadraticActionInOut).name();
+    g_luaType[typeName] = "cc.EaseQuadraticActionInOut";
+    g_typeCast["EaseQuadraticActionInOut"] = "cc.EaseQuadraticActionInOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseQuarticActionIn_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseQuarticActionIn",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseQuarticActionIn* ret = cocos2d::EaseQuarticActionIn::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseQuarticActionIn";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuarticActionIn*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseQuarticActionIn_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseQuarticActionIn_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseQuarticActionIn)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseQuarticActionIn(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseQuarticActionIn");
+    tolua_cclass(tolua_S,"EaseQuarticActionIn","cc.EaseQuarticActionIn","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseQuarticActionIn");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseQuarticActionIn_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseQuarticActionIn).name();
+    g_luaType[typeName] = "cc.EaseQuarticActionIn";
+    g_typeCast["EaseQuarticActionIn"] = "cc.EaseQuarticActionIn";
+    return 1;
+}
+
+int lua_cocos2dx_EaseQuarticActionOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseQuarticActionOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseQuarticActionOut* ret = cocos2d::EaseQuarticActionOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseQuarticActionOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuarticActionOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseQuarticActionOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseQuarticActionOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseQuarticActionOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseQuarticActionOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseQuarticActionOut");
+    tolua_cclass(tolua_S,"EaseQuarticActionOut","cc.EaseQuarticActionOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseQuarticActionOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseQuarticActionOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseQuarticActionOut).name();
+    g_luaType[typeName] = "cc.EaseQuarticActionOut";
+    g_typeCast["EaseQuarticActionOut"] = "cc.EaseQuarticActionOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseQuarticActionInOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseQuarticActionInOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseQuarticActionInOut* ret = cocos2d::EaseQuarticActionInOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseQuarticActionInOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuarticActionInOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseQuarticActionInOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseQuarticActionInOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseQuarticActionInOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseQuarticActionInOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseQuarticActionInOut");
+    tolua_cclass(tolua_S,"EaseQuarticActionInOut","cc.EaseQuarticActionInOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseQuarticActionInOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseQuarticActionInOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseQuarticActionInOut).name();
+    g_luaType[typeName] = "cc.EaseQuarticActionInOut";
+    g_typeCast["EaseQuarticActionInOut"] = "cc.EaseQuarticActionInOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseQuinticActionIn_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseQuinticActionIn",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseQuinticActionIn* ret = cocos2d::EaseQuinticActionIn::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseQuinticActionIn";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuinticActionIn*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseQuinticActionIn_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseQuinticActionIn_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseQuinticActionIn)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseQuinticActionIn(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseQuinticActionIn");
+    tolua_cclass(tolua_S,"EaseQuinticActionIn","cc.EaseQuinticActionIn","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseQuinticActionIn");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseQuinticActionIn_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseQuinticActionIn).name();
+    g_luaType[typeName] = "cc.EaseQuinticActionIn";
+    g_typeCast["EaseQuinticActionIn"] = "cc.EaseQuinticActionIn";
+    return 1;
+}
+
+int lua_cocos2dx_EaseQuinticActionOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseQuinticActionOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseQuinticActionOut* ret = cocos2d::EaseQuinticActionOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseQuinticActionOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuinticActionOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseQuinticActionOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseQuinticActionOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseQuinticActionOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseQuinticActionOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseQuinticActionOut");
+    tolua_cclass(tolua_S,"EaseQuinticActionOut","cc.EaseQuinticActionOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseQuinticActionOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseQuinticActionOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseQuinticActionOut).name();
+    g_luaType[typeName] = "cc.EaseQuinticActionOut";
+    g_typeCast["EaseQuinticActionOut"] = "cc.EaseQuinticActionOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseQuinticActionInOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseQuinticActionInOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseQuinticActionInOut* ret = cocos2d::EaseQuinticActionInOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseQuinticActionInOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuinticActionInOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseQuinticActionInOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseQuinticActionInOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseQuinticActionInOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseQuinticActionInOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseQuinticActionInOut");
+    tolua_cclass(tolua_S,"EaseQuinticActionInOut","cc.EaseQuinticActionInOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseQuinticActionInOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseQuinticActionInOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseQuinticActionInOut).name();
+    g_luaType[typeName] = "cc.EaseQuinticActionInOut";
+    g_typeCast["EaseQuinticActionInOut"] = "cc.EaseQuinticActionInOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseCircleActionIn_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseCircleActionIn",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseCircleActionIn* ret = cocos2d::EaseCircleActionIn::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseCircleActionIn";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCircleActionIn*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseCircleActionIn_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseCircleActionIn_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseCircleActionIn)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseCircleActionIn(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseCircleActionIn");
+    tolua_cclass(tolua_S,"EaseCircleActionIn","cc.EaseCircleActionIn","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseCircleActionIn");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseCircleActionIn_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseCircleActionIn).name();
+    g_luaType[typeName] = "cc.EaseCircleActionIn";
+    g_typeCast["EaseCircleActionIn"] = "cc.EaseCircleActionIn";
+    return 1;
+}
+
+int lua_cocos2dx_EaseCircleActionOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseCircleActionOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseCircleActionOut* ret = cocos2d::EaseCircleActionOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseCircleActionOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCircleActionOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseCircleActionOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseCircleActionOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseCircleActionOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseCircleActionOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseCircleActionOut");
+    tolua_cclass(tolua_S,"EaseCircleActionOut","cc.EaseCircleActionOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseCircleActionOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseCircleActionOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseCircleActionOut).name();
+    g_luaType[typeName] = "cc.EaseCircleActionOut";
+    g_typeCast["EaseCircleActionOut"] = "cc.EaseCircleActionOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseCircleActionInOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseCircleActionInOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseCircleActionInOut* ret = cocos2d::EaseCircleActionInOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseCircleActionInOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCircleActionInOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseCircleActionInOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseCircleActionInOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseCircleActionInOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseCircleActionInOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseCircleActionInOut");
+    tolua_cclass(tolua_S,"EaseCircleActionInOut","cc.EaseCircleActionInOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseCircleActionInOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseCircleActionInOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseCircleActionInOut).name();
+    g_luaType[typeName] = "cc.EaseCircleActionInOut";
+    g_typeCast["EaseCircleActionInOut"] = "cc.EaseCircleActionInOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseCubicActionIn_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseCubicActionIn",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseCubicActionIn* ret = cocos2d::EaseCubicActionIn::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseCubicActionIn";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCubicActionIn*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseCubicActionIn_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseCubicActionIn_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseCubicActionIn)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseCubicActionIn(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseCubicActionIn");
+    tolua_cclass(tolua_S,"EaseCubicActionIn","cc.EaseCubicActionIn","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseCubicActionIn");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseCubicActionIn_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseCubicActionIn).name();
+    g_luaType[typeName] = "cc.EaseCubicActionIn";
+    g_typeCast["EaseCubicActionIn"] = "cc.EaseCubicActionIn";
+    return 1;
+}
+
+int lua_cocos2dx_EaseCubicActionOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseCubicActionOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseCubicActionOut* ret = cocos2d::EaseCubicActionOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseCubicActionOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCubicActionOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseCubicActionOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseCubicActionOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseCubicActionOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseCubicActionOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseCubicActionOut");
+    tolua_cclass(tolua_S,"EaseCubicActionOut","cc.EaseCubicActionOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseCubicActionOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseCubicActionOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseCubicActionOut).name();
+    g_luaType[typeName] = "cc.EaseCubicActionOut";
+    g_typeCast["EaseCubicActionOut"] = "cc.EaseCubicActionOut";
+    return 1;
+}
+
+int lua_cocos2dx_EaseCubicActionInOut_create(lua_State* tolua_S)
+{
+    int argc = 0;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertable(tolua_S,1,"cc.EaseCubicActionInOut",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    argc = lua_gettop(tolua_S) - 1;
+
+    if (argc == 1)
+    {
+        cocos2d::ActionInterval* arg0;
+        do {
+				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
+					ok = false;
+					break;
+				}
+				if (ok){
+					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
+					if (nullptr == arg0){
+						LUA_PRECONDITION( arg0, "Invalid Native Object");
+			}}} while (0);
+        if(!ok)
+            return 0;
+        cocos2d::EaseCubicActionInOut* ret = cocos2d::EaseCubicActionInOut::create(arg0);
+        do {
+			if (NULL != ret){
+				std::string hashName = typeid(*ret).name();
+				auto iter = g_luaType.find(hashName);
+				std::string className = "";
+				if(iter != g_luaType.end()){
+					className = iter->second.c_str();
+				} else {
+					className = "cc.EaseCubicActionInOut";
+				}
+				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCubicActionInOut*)ret);
+				if (NULL != dynObject) {
+					int ID = ret ? (int)(dynObject->_ID) : -1;
+					int* luaID = ret ? &(dynObject->_luaID) : NULL;
+					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
+				} else {
+					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
+			}} else {
+				lua_pushnil(tolua_S);
+			}
+		} while (0);
+        return 1;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
+    return 0;
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_EaseCubicActionInOut_create'.",&tolua_err);
+#endif
+    return 0;
+}
+static int lua_cocos2dx_EaseCubicActionInOut_finalize(lua_State* tolua_S)
+{
+    printf("luabindings: finalizing LUA object (EaseCubicActionInOut)");
+    return 0;
+}
+
+int lua_register_cocos2dx_EaseCubicActionInOut(lua_State* tolua_S)
+{
+    tolua_usertype(tolua_S,"cc.EaseCubicActionInOut");
+    tolua_cclass(tolua_S,"EaseCubicActionInOut","cc.EaseCubicActionInOut","cc.ActionEase",NULL);
+
+    tolua_beginmodule(tolua_S,"EaseCubicActionInOut");
+        tolua_function(tolua_S,"create", lua_cocos2dx_EaseCubicActionInOut_create);
+    tolua_endmodule(tolua_S);
+    std::string typeName = typeid(cocos2d::EaseCubicActionInOut).name();
+    g_luaType[typeName] = "cc.EaseCubicActionInOut";
+    g_typeCast["EaseCubicActionInOut"] = "cc.EaseCubicActionInOut";
     return 1;
 }
 
@@ -70478,22 +71798,23 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_MoveTo(tolua_S);
 	lua_register_cocos2dx_JumpBy(tolua_S);
 	lua_register_cocos2dx_EventListenerKeyboard(tolua_S);
-	lua_register_cocos2dx_TransitionRotoZoom(tolua_S);
+	lua_register_cocos2dx_SkewTo(tolua_S);
 	lua_register_cocos2dx_Director(tolua_S);
 	lua_register_cocos2dx_Texture2D(tolua_S);
 	lua_register_cocos2dx_ActionEase(tolua_S);
 	lua_register_cocos2dx_EaseElastic(tolua_S);
 	lua_register_cocos2dx_EaseElasticOut(tolua_S);
-	lua_register_cocos2dx_EaseBackOut(tolua_S);
+	lua_register_cocos2dx_EaseQuadraticActionInOut(tolua_S);
+	lua_register_cocos2dx_EaseQuarticActionInOut(tolua_S);
 	lua_register_cocos2dx_TransitionSceneOriented(tolua_S);
 	lua_register_cocos2dx_TransitionFlipX(tolua_S);
 	lua_register_cocos2dx_Event(tolua_S);
 	lua_register_cocos2dx_EventAcceleration(tolua_S);
-	lua_register_cocos2dx_Spawn(tolua_S);
+	lua_register_cocos2dx_StopGrid(tolua_S);
 	lua_register_cocos2dx_ParticleBatchNode(tolua_S);
 	lua_register_cocos2dx_SimpleAudioEngine(tolua_S);
-	lua_register_cocos2dx_SkewTo(tolua_S);
 	lua_register_cocos2dx_SkewBy(tolua_S);
+	lua_register_cocos2dx_EaseQuadraticActionOut(tolua_S);
 	lua_register_cocos2dx_TransitionProgress(tolua_S);
 	lua_register_cocos2dx_TransitionProgressVertical(tolua_S);
 	lua_register_cocos2dx_Layer(tolua_S);
@@ -70513,13 +71834,14 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_CallFunc(tolua_S);
 	lua_register_cocos2dx_EventMouse(tolua_S);
 	lua_register_cocos2dx_Waves3D(tolua_S);
+	lua_register_cocos2dx_EaseRateAction(tolua_S);
+	lua_register_cocos2dx_EaseOut(tolua_S);
 	lua_register_cocos2dx_ParticleFireworks(tolua_S);
 	lua_register_cocos2dx_MenuItem(tolua_S);
 	lua_register_cocos2dx_MenuItemSprite(tolua_S);
 	lua_register_cocos2dx_MenuItemImage(tolua_S);
 	lua_register_cocos2dx_ParticleFire(tolua_S);
 	lua_register_cocos2dx_TransitionZoomFlipAngular(tolua_S);
-	lua_register_cocos2dx_EaseRateAction(tolua_S);
 	lua_register_cocos2dx_EaseIn(tolua_S);
 	lua_register_cocos2dx_EaseExponentialInOut(tolua_S);
 	lua_register_cocos2dx_EaseBackInOut(tolua_S);
@@ -70530,16 +71852,17 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_DelayTime(tolua_S);
 	lua_register_cocos2dx_LabelAtlas(tolua_S);
 	lua_register_cocos2dx_LabelBMFont(tolua_S);
-	lua_register_cocos2dx_TransitionFadeTR(tolua_S);
-	lua_register_cocos2dx_TransitionFadeBL(tolua_S);
-	lua_register_cocos2dx_EaseElasticIn(tolua_S);
-	lua_register_cocos2dx_ParticleSpiral(tolua_S);
 	lua_register_cocos2dx_TiledGrid3DAction(tolua_S);
 	lua_register_cocos2dx_FadeOutTRTiles(tolua_S);
+	lua_register_cocos2dx_EaseElasticIn(tolua_S);
+	lua_register_cocos2dx_EaseCircleActionInOut(tolua_S);
+	lua_register_cocos2dx_ParticleSpiral(tolua_S);
 	lua_register_cocos2dx_FadeOutUpTiles(tolua_S);
 	lua_register_cocos2dx_FadeOutDownTiles(tolua_S);
+	lua_register_cocos2dx_EaseCubicActionIn(tolua_S);
 	lua_register_cocos2dx_TextureCache(tolua_S);
 	lua_register_cocos2dx_ActionTween(tolua_S);
+	lua_register_cocos2dx_TransitionFadeTR(tolua_S);
 	lua_register_cocos2dx_TransitionFadeDown(tolua_S);
 	lua_register_cocos2dx_ParticleSun(tolua_S);
 	lua_register_cocos2dx_TransitionProgressHorizontal(tolua_S);
@@ -70563,6 +71886,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_LabelTTF(tolua_S);
 	lua_register_cocos2dx_ClippingNode(tolua_S);
 	lua_register_cocos2dx_ParticleFlower(tolua_S);
+	lua_register_cocos2dx_EaseCircleActionIn(tolua_S);
 	lua_register_cocos2dx_ParticleSmoke(tolua_S);
 	lua_register_cocos2dx_Image(tolua_S);
 	lua_register_cocos2dx_LayerMultiplex(tolua_S);
@@ -70575,16 +71899,18 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_AnimationFrame(tolua_S);
 	lua_register_cocos2dx_NodeGrid(tolua_S);
 	lua_register_cocos2dx_TMXLayerInfo(tolua_S);
+	lua_register_cocos2dx_EaseSineIn(tolua_S);
 	lua_register_cocos2dx_EaseBounceIn(tolua_S);
 	lua_register_cocos2dx_GridBase(tolua_S);
 	lua_register_cocos2dx_TiledGrid3D(tolua_S);
-	lua_register_cocos2dx_ParticleGalaxy(tolua_S);
+	lua_register_cocos2dx_TransitionRotoZoom(tolua_S);
 	lua_register_cocos2dx_Twirl(tolua_S);
 	lua_register_cocos2dx_MenuItemLabel(tolua_S);
+	lua_register_cocos2dx_EaseQuinticActionIn(tolua_S);
 	lua_register_cocos2dx_LayerColor(tolua_S);
 	lua_register_cocos2dx_FadeOutBLTiles(tolua_S);
 	lua_register_cocos2dx_LayerGradient(tolua_S);
-	lua_register_cocos2dx_TargetedAction(tolua_S);
+	lua_register_cocos2dx_ToggleVisibility(tolua_S);
 	lua_register_cocos2dx_RepeatForever(tolua_S);
 	lua_register_cocos2dx_CardinalSplineTo(tolua_S);
 	lua_register_cocos2dx_CardinalSplineBy(tolua_S);
@@ -70592,7 +71918,8 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_TurnOffTiles(tolua_S);
 	lua_register_cocos2dx_TintTo(tolua_S);
 	lua_register_cocos2dx_CatmullRomTo(tolua_S);
-	lua_register_cocos2dx_ToggleVisibility(tolua_S);
+	lua_register_cocos2dx_TransitionFadeBL(tolua_S);
+	lua_register_cocos2dx_TargetedAction(tolua_S);
 	lua_register_cocos2dx_DrawNode(tolua_S);
 	lua_register_cocos2dx_TransitionTurnOffTiles(tolua_S);
 	lua_register_cocos2dx_RotateTo(tolua_S);
@@ -70602,23 +71929,29 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_TransitionPageTurn(tolua_S);
 	lua_register_cocos2dx_BezierBy(tolua_S);
 	lua_register_cocos2dx_BezierTo(tolua_S);
+	lua_register_cocos2dx_ParticleGalaxy(tolua_S);
 	lua_register_cocos2dx_Menu(tolua_S);
 	lua_register_cocos2dx_SpriteFrame(tolua_S);
 	lua_register_cocos2dx_ActionManager(tolua_S);
 	lua_register_cocos2dx_TransitionFade(tolua_S);
 	lua_register_cocos2dx_TransitionZoomFlipX(tolua_S);
 	lua_register_cocos2dx_EventListenerTouchAllAtOnce(tolua_S);
+	lua_register_cocos2dx_EaseQuinticActionInOut(tolua_S);
 	lua_register_cocos2dx_SpriteFrameCache(tolua_S);
 	lua_register_cocos2dx_TransitionCrossFade(tolua_S);
 	lua_register_cocos2dx_Ripple3D(tolua_S);
 	lua_register_cocos2dx_Lens3D(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInL(tolua_S);
-	lua_register_cocos2dx_TransitionSlideInT(tolua_S);
-	lua_register_cocos2dx_StopGrid(tolua_S);
+	lua_register_cocos2dx_EaseBackOut(tolua_S);
+	lua_register_cocos2dx_Spawn(tolua_S);
 	lua_register_cocos2dx_ShakyTiles3D(tolua_S);
 	lua_register_cocos2dx_PageTurn3D(tolua_S);
+	lua_register_cocos2dx_TransitionSlideInL(tolua_S);
+	lua_register_cocos2dx_TransitionSlideInT(tolua_S);
 	lua_register_cocos2dx_Grid3D(tolua_S);
+	lua_register_cocos2dx_EaseCircleActionOut(tolua_S);
 	lua_register_cocos2dx_TransitionProgressInOut(tolua_S);
+	lua_register_cocos2dx_EaseCubicActionInOut(tolua_S);
+	lua_register_cocos2dx_EaseQuarticActionOut(tolua_S);
 	lua_register_cocos2dx_EaseBackIn(tolua_S);
 	lua_register_cocos2dx_SplitRows(tolua_S);
 	lua_register_cocos2dx_Follow(tolua_S);
@@ -70626,6 +71959,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_ShuffleTiles(tolua_S);
 	lua_register_cocos2dx_ProgressTimer(tolua_S);
 	lua_register_cocos2dx_ParticleMeteor(tolua_S);
+	lua_register_cocos2dx_EaseQuarticActionIn(tolua_S);
 	lua_register_cocos2dx_EaseInOut(tolua_S);
 	lua_register_cocos2dx_TransitionZoomFlipY(tolua_S);
 	lua_register_cocos2dx_ScaleBy(tolua_S);
@@ -70634,16 +71968,18 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_TMXMapInfo(tolua_S);
 	lua_register_cocos2dx_EaseExponentialIn(tolua_S);
 	lua_register_cocos2dx_ReuseGrid(tolua_S);
+	lua_register_cocos2dx_EaseQuinticActionOut(tolua_S);
 	lua_register_cocos2dx_EventDispatcher(tolua_S);
 	lua_register_cocos2dx_MenuItemAtlasFont(tolua_S);
 	lua_register_cocos2dx_Liquid(tolua_S);
 	lua_register_cocos2dx_OrbitCamera(tolua_S);
 	lua_register_cocos2dx_EventCustom(tolua_S);
 	lua_register_cocos2dx_Component(tolua_S);
+	lua_register_cocos2dx_EaseCubicActionOut(tolua_S);
 	lua_register_cocos2dx_EventListenerTouchOneByOne(tolua_S);
 	lua_register_cocos2dx_ParticleRain(tolua_S);
 	lua_register_cocos2dx_Waves(tolua_S);
-	lua_register_cocos2dx_EaseOut(tolua_S);
+	lua_register_cocos2dx_EaseBezierAction(tolua_S);
 	lua_register_cocos2dx_MenuItemFont(tolua_S);
 	lua_register_cocos2dx_TransitionFadeUp(tolua_S);
 	lua_register_cocos2dx_EaseSineOut(tolua_S);
@@ -70665,7 +72001,7 @@ TOLUA_API int register_all_cocos2dx(lua_State* tolua_S)
 	lua_register_cocos2dx_ParallaxNode(tolua_S);
 	lua_register_cocos2dx_Scheduler(tolua_S);
 	lua_register_cocos2dx_UserDefault(tolua_S);
-	lua_register_cocos2dx_EaseSineIn(tolua_S);
+	lua_register_cocos2dx_EaseQuadraticActionIn(tolua_S);
 	lua_register_cocos2dx_WavesTiles3D(tolua_S);
 	lua_register_cocos2dx_TransitionSlideInB(tolua_S);
 	lua_register_cocos2dx_Speed(tolua_S);

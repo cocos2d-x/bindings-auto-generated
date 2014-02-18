@@ -11738,28 +11738,6 @@ void js_register_cocos2dx_EaseElasticInOut(JSContext *cx, JSObject *global) {
 JSClass  *jsb_cocos2d_EaseBounce_class;
 JSObject *jsb_cocos2d_EaseBounce_prototype;
 
-bool js_cocos2dx_EaseBounce_bounceTime(JSContext *cx, uint32_t argc, jsval *vp)
-{
-	jsval *argv = JS_ARGV(cx, vp);
-	bool ok = true;
-	JSObject *obj = JS_THIS_OBJECT(cx, vp);
-	js_proxy_t *proxy = jsb_get_js_proxy(obj);
-	cocos2d::EaseBounce* cobj = (cocos2d::EaseBounce *)(proxy ? proxy->ptr : NULL);
-	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_EaseBounce_bounceTime : Invalid Native Object");
-	if (argc == 1) {
-		double arg0;
-		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[0]), &arg0);
-		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseBounce_bounceTime : Error processing arguments");
-		double ret = cobj->bounceTime(arg0);
-		jsval jsret = JSVAL_NULL;
-		jsret = DOUBLE_TO_JSVAL(ret);
-		JS_SET_RVAL(cx, vp, jsret);
-		return true;
-	}
-
-	JS_ReportError(cx, "js_cocos2dx_EaseBounce_bounceTime : wrong number of arguments: %d, was expecting %d", argc, 1);
-	return false;
-}
 
 extern JSObject *jsb_cocos2d_ActionEase_prototype;
 
@@ -11786,7 +11764,6 @@ void js_register_cocos2dx_EaseBounce(JSContext *cx, JSObject *global) {
 	};
 
 	static JSFunctionSpec funcs[] = {
-		JS_FN("bounceTime", js_cocos2dx_EaseBounce_bounceTime, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
         JS_FS_END
 	};
 
@@ -12397,6 +12374,1585 @@ void js_register_cocos2dx_EaseBackInOut(JSContext *cx, JSObject *global) {
 		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
 		p->jsclass = jsb_cocos2d_EaseBackInOut_class;
 		p->proto = jsb_cocos2d_EaseBackInOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseBezierAction_class;
+JSObject *jsb_cocos2d_EaseBezierAction_prototype;
+
+bool js_cocos2dx_EaseBezierAction_setBezierParamer(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::EaseBezierAction* cobj = (cocos2d::EaseBezierAction *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_EaseBezierAction_setBezierParamer : Invalid Native Object");
+	if (argc == 4) {
+		double arg0;
+		double arg1;
+		double arg2;
+		double arg3;
+		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[0]), &arg0);
+		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[1]), &arg1);
+		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[2]), &arg2);
+		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[3]), &arg3);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseBezierAction_setBezierParamer : Error processing arguments");
+		cobj->setBezierParamer(arg0, arg1, arg2, arg3);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return true;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_EaseBezierAction_setBezierParamer : wrong number of arguments: %d, was expecting %d", argc, 4);
+	return false;
+}
+bool js_cocos2dx_EaseBezierAction_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseBezierAction_create : Error processing arguments");
+		cocos2d::EaseBezierAction* ret = cocos2d::EaseBezierAction::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseBezierAction>(cx, (cocos2d::EaseBezierAction*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseBezierAction_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseBezierAction_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseBezierAction)", obj);
+}
+
+void js_register_cocos2dx_EaseBezierAction(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseBezierAction_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseBezierAction_class->name = "EaseBezierAction";
+	jsb_cocos2d_EaseBezierAction_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseBezierAction_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseBezierAction_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseBezierAction_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseBezierAction_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseBezierAction_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseBezierAction_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseBezierAction_class->finalize = js_cocos2d_EaseBezierAction_finalize;
+	jsb_cocos2d_EaseBezierAction_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+		JS_FN("setBezierParamer", js_cocos2dx_EaseBezierAction_setBezierParamer, 4, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseBezierAction_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseBezierAction_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseBezierAction_class,
+		dummy_constructor<cocos2d::EaseBezierAction>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseBezierAction", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseBezierAction> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseBezierAction_class;
+		p->proto = jsb_cocos2d_EaseBezierAction_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseQuadraticActionIn_class;
+JSObject *jsb_cocos2d_EaseQuadraticActionIn_prototype;
+
+bool js_cocos2dx_EaseQuadraticActionIn_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseQuadraticActionIn_create : Error processing arguments");
+		cocos2d::EaseQuadraticActionIn* ret = cocos2d::EaseQuadraticActionIn::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseQuadraticActionIn>(cx, (cocos2d::EaseQuadraticActionIn*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseQuadraticActionIn_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseQuadraticActionIn_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseQuadraticActionIn)", obj);
+}
+
+void js_register_cocos2dx_EaseQuadraticActionIn(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseQuadraticActionIn_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseQuadraticActionIn_class->name = "EaseQuadraticActionIn";
+	jsb_cocos2d_EaseQuadraticActionIn_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuadraticActionIn_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseQuadraticActionIn_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuadraticActionIn_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseQuadraticActionIn_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseQuadraticActionIn_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseQuadraticActionIn_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseQuadraticActionIn_class->finalize = js_cocos2d_EaseQuadraticActionIn_finalize;
+	jsb_cocos2d_EaseQuadraticActionIn_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseQuadraticActionIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseQuadraticActionIn_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseQuadraticActionIn_class,
+		dummy_constructor<cocos2d::EaseQuadraticActionIn>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseQuadraticActionIn", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseQuadraticActionIn> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseQuadraticActionIn_class;
+		p->proto = jsb_cocos2d_EaseQuadraticActionIn_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseQuadraticActionOut_class;
+JSObject *jsb_cocos2d_EaseQuadraticActionOut_prototype;
+
+bool js_cocos2dx_EaseQuadraticActionOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseQuadraticActionOut_create : Error processing arguments");
+		cocos2d::EaseQuadraticActionOut* ret = cocos2d::EaseQuadraticActionOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseQuadraticActionOut>(cx, (cocos2d::EaseQuadraticActionOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseQuadraticActionOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseQuadraticActionOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseQuadraticActionOut)", obj);
+}
+
+void js_register_cocos2dx_EaseQuadraticActionOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseQuadraticActionOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseQuadraticActionOut_class->name = "EaseQuadraticActionOut";
+	jsb_cocos2d_EaseQuadraticActionOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuadraticActionOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseQuadraticActionOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuadraticActionOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseQuadraticActionOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseQuadraticActionOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseQuadraticActionOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseQuadraticActionOut_class->finalize = js_cocos2d_EaseQuadraticActionOut_finalize;
+	jsb_cocos2d_EaseQuadraticActionOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseQuadraticActionOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseQuadraticActionOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseQuadraticActionOut_class,
+		dummy_constructor<cocos2d::EaseQuadraticActionOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseQuadraticActionOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseQuadraticActionOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseQuadraticActionOut_class;
+		p->proto = jsb_cocos2d_EaseQuadraticActionOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseQuadraticActionInOut_class;
+JSObject *jsb_cocos2d_EaseQuadraticActionInOut_prototype;
+
+bool js_cocos2dx_EaseQuadraticActionInOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseQuadraticActionInOut_create : Error processing arguments");
+		cocos2d::EaseQuadraticActionInOut* ret = cocos2d::EaseQuadraticActionInOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseQuadraticActionInOut>(cx, (cocos2d::EaseQuadraticActionInOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseQuadraticActionInOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseQuadraticActionInOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseQuadraticActionInOut)", obj);
+}
+
+void js_register_cocos2dx_EaseQuadraticActionInOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseQuadraticActionInOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseQuadraticActionInOut_class->name = "EaseQuadraticActionInOut";
+	jsb_cocos2d_EaseQuadraticActionInOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuadraticActionInOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseQuadraticActionInOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuadraticActionInOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseQuadraticActionInOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseQuadraticActionInOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseQuadraticActionInOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseQuadraticActionInOut_class->finalize = js_cocos2d_EaseQuadraticActionInOut_finalize;
+	jsb_cocos2d_EaseQuadraticActionInOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseQuadraticActionInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseQuadraticActionInOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseQuadraticActionInOut_class,
+		dummy_constructor<cocos2d::EaseQuadraticActionInOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseQuadraticActionInOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseQuadraticActionInOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseQuadraticActionInOut_class;
+		p->proto = jsb_cocos2d_EaseQuadraticActionInOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseQuarticActionIn_class;
+JSObject *jsb_cocos2d_EaseQuarticActionIn_prototype;
+
+bool js_cocos2dx_EaseQuarticActionIn_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseQuarticActionIn_create : Error processing arguments");
+		cocos2d::EaseQuarticActionIn* ret = cocos2d::EaseQuarticActionIn::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseQuarticActionIn>(cx, (cocos2d::EaseQuarticActionIn*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseQuarticActionIn_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseQuarticActionIn_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseQuarticActionIn)", obj);
+}
+
+void js_register_cocos2dx_EaseQuarticActionIn(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseQuarticActionIn_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseQuarticActionIn_class->name = "EaseQuarticActionIn";
+	jsb_cocos2d_EaseQuarticActionIn_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuarticActionIn_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseQuarticActionIn_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuarticActionIn_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseQuarticActionIn_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseQuarticActionIn_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseQuarticActionIn_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseQuarticActionIn_class->finalize = js_cocos2d_EaseQuarticActionIn_finalize;
+	jsb_cocos2d_EaseQuarticActionIn_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseQuarticActionIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseQuarticActionIn_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseQuarticActionIn_class,
+		dummy_constructor<cocos2d::EaseQuarticActionIn>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseQuarticActionIn", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseQuarticActionIn> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseQuarticActionIn_class;
+		p->proto = jsb_cocos2d_EaseQuarticActionIn_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseQuarticActionOut_class;
+JSObject *jsb_cocos2d_EaseQuarticActionOut_prototype;
+
+bool js_cocos2dx_EaseQuarticActionOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseQuarticActionOut_create : Error processing arguments");
+		cocos2d::EaseQuarticActionOut* ret = cocos2d::EaseQuarticActionOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseQuarticActionOut>(cx, (cocos2d::EaseQuarticActionOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseQuarticActionOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseQuarticActionOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseQuarticActionOut)", obj);
+}
+
+void js_register_cocos2dx_EaseQuarticActionOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseQuarticActionOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseQuarticActionOut_class->name = "EaseQuarticActionOut";
+	jsb_cocos2d_EaseQuarticActionOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuarticActionOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseQuarticActionOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuarticActionOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseQuarticActionOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseQuarticActionOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseQuarticActionOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseQuarticActionOut_class->finalize = js_cocos2d_EaseQuarticActionOut_finalize;
+	jsb_cocos2d_EaseQuarticActionOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseQuarticActionOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseQuarticActionOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseQuarticActionOut_class,
+		dummy_constructor<cocos2d::EaseQuarticActionOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseQuarticActionOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseQuarticActionOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseQuarticActionOut_class;
+		p->proto = jsb_cocos2d_EaseQuarticActionOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseQuarticActionInOut_class;
+JSObject *jsb_cocos2d_EaseQuarticActionInOut_prototype;
+
+bool js_cocos2dx_EaseQuarticActionInOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseQuarticActionInOut_create : Error processing arguments");
+		cocos2d::EaseQuarticActionInOut* ret = cocos2d::EaseQuarticActionInOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseQuarticActionInOut>(cx, (cocos2d::EaseQuarticActionInOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseQuarticActionInOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseQuarticActionInOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseQuarticActionInOut)", obj);
+}
+
+void js_register_cocos2dx_EaseQuarticActionInOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseQuarticActionInOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseQuarticActionInOut_class->name = "EaseQuarticActionInOut";
+	jsb_cocos2d_EaseQuarticActionInOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuarticActionInOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseQuarticActionInOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuarticActionInOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseQuarticActionInOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseQuarticActionInOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseQuarticActionInOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseQuarticActionInOut_class->finalize = js_cocos2d_EaseQuarticActionInOut_finalize;
+	jsb_cocos2d_EaseQuarticActionInOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseQuarticActionInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseQuarticActionInOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseQuarticActionInOut_class,
+		dummy_constructor<cocos2d::EaseQuarticActionInOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseQuarticActionInOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseQuarticActionInOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseQuarticActionInOut_class;
+		p->proto = jsb_cocos2d_EaseQuarticActionInOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseQuinticActionIn_class;
+JSObject *jsb_cocos2d_EaseQuinticActionIn_prototype;
+
+bool js_cocos2dx_EaseQuinticActionIn_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseQuinticActionIn_create : Error processing arguments");
+		cocos2d::EaseQuinticActionIn* ret = cocos2d::EaseQuinticActionIn::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseQuinticActionIn>(cx, (cocos2d::EaseQuinticActionIn*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseQuinticActionIn_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseQuinticActionIn_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseQuinticActionIn)", obj);
+}
+
+void js_register_cocos2dx_EaseQuinticActionIn(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseQuinticActionIn_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseQuinticActionIn_class->name = "EaseQuinticActionIn";
+	jsb_cocos2d_EaseQuinticActionIn_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuinticActionIn_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseQuinticActionIn_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuinticActionIn_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseQuinticActionIn_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseQuinticActionIn_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseQuinticActionIn_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseQuinticActionIn_class->finalize = js_cocos2d_EaseQuinticActionIn_finalize;
+	jsb_cocos2d_EaseQuinticActionIn_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseQuinticActionIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseQuinticActionIn_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseQuinticActionIn_class,
+		dummy_constructor<cocos2d::EaseQuinticActionIn>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseQuinticActionIn", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseQuinticActionIn> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseQuinticActionIn_class;
+		p->proto = jsb_cocos2d_EaseQuinticActionIn_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseQuinticActionOut_class;
+JSObject *jsb_cocos2d_EaseQuinticActionOut_prototype;
+
+bool js_cocos2dx_EaseQuinticActionOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseQuinticActionOut_create : Error processing arguments");
+		cocos2d::EaseQuinticActionOut* ret = cocos2d::EaseQuinticActionOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseQuinticActionOut>(cx, (cocos2d::EaseQuinticActionOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseQuinticActionOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseQuinticActionOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseQuinticActionOut)", obj);
+}
+
+void js_register_cocos2dx_EaseQuinticActionOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseQuinticActionOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseQuinticActionOut_class->name = "EaseQuinticActionOut";
+	jsb_cocos2d_EaseQuinticActionOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuinticActionOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseQuinticActionOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuinticActionOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseQuinticActionOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseQuinticActionOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseQuinticActionOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseQuinticActionOut_class->finalize = js_cocos2d_EaseQuinticActionOut_finalize;
+	jsb_cocos2d_EaseQuinticActionOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseQuinticActionOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseQuinticActionOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseQuinticActionOut_class,
+		dummy_constructor<cocos2d::EaseQuinticActionOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseQuinticActionOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseQuinticActionOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseQuinticActionOut_class;
+		p->proto = jsb_cocos2d_EaseQuinticActionOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseQuinticActionInOut_class;
+JSObject *jsb_cocos2d_EaseQuinticActionInOut_prototype;
+
+bool js_cocos2dx_EaseQuinticActionInOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseQuinticActionInOut_create : Error processing arguments");
+		cocos2d::EaseQuinticActionInOut* ret = cocos2d::EaseQuinticActionInOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseQuinticActionInOut>(cx, (cocos2d::EaseQuinticActionInOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseQuinticActionInOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseQuinticActionInOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseQuinticActionInOut)", obj);
+}
+
+void js_register_cocos2dx_EaseQuinticActionInOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseQuinticActionInOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseQuinticActionInOut_class->name = "EaseQuinticActionInOut";
+	jsb_cocos2d_EaseQuinticActionInOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuinticActionInOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseQuinticActionInOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseQuinticActionInOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseQuinticActionInOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseQuinticActionInOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseQuinticActionInOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseQuinticActionInOut_class->finalize = js_cocos2d_EaseQuinticActionInOut_finalize;
+	jsb_cocos2d_EaseQuinticActionInOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseQuinticActionInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseQuinticActionInOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseQuinticActionInOut_class,
+		dummy_constructor<cocos2d::EaseQuinticActionInOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseQuinticActionInOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseQuinticActionInOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseQuinticActionInOut_class;
+		p->proto = jsb_cocos2d_EaseQuinticActionInOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseCircleActionIn_class;
+JSObject *jsb_cocos2d_EaseCircleActionIn_prototype;
+
+bool js_cocos2dx_EaseCircleActionIn_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseCircleActionIn_create : Error processing arguments");
+		cocos2d::EaseCircleActionIn* ret = cocos2d::EaseCircleActionIn::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseCircleActionIn>(cx, (cocos2d::EaseCircleActionIn*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseCircleActionIn_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseCircleActionIn_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseCircleActionIn)", obj);
+}
+
+void js_register_cocos2dx_EaseCircleActionIn(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseCircleActionIn_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseCircleActionIn_class->name = "EaseCircleActionIn";
+	jsb_cocos2d_EaseCircleActionIn_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCircleActionIn_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseCircleActionIn_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCircleActionIn_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseCircleActionIn_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseCircleActionIn_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseCircleActionIn_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseCircleActionIn_class->finalize = js_cocos2d_EaseCircleActionIn_finalize;
+	jsb_cocos2d_EaseCircleActionIn_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseCircleActionIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseCircleActionIn_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseCircleActionIn_class,
+		dummy_constructor<cocos2d::EaseCircleActionIn>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseCircleActionIn", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseCircleActionIn> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseCircleActionIn_class;
+		p->proto = jsb_cocos2d_EaseCircleActionIn_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseCircleActionOut_class;
+JSObject *jsb_cocos2d_EaseCircleActionOut_prototype;
+
+bool js_cocos2dx_EaseCircleActionOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseCircleActionOut_create : Error processing arguments");
+		cocos2d::EaseCircleActionOut* ret = cocos2d::EaseCircleActionOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseCircleActionOut>(cx, (cocos2d::EaseCircleActionOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseCircleActionOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseCircleActionOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseCircleActionOut)", obj);
+}
+
+void js_register_cocos2dx_EaseCircleActionOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseCircleActionOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseCircleActionOut_class->name = "EaseCircleActionOut";
+	jsb_cocos2d_EaseCircleActionOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCircleActionOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseCircleActionOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCircleActionOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseCircleActionOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseCircleActionOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseCircleActionOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseCircleActionOut_class->finalize = js_cocos2d_EaseCircleActionOut_finalize;
+	jsb_cocos2d_EaseCircleActionOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseCircleActionOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseCircleActionOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseCircleActionOut_class,
+		dummy_constructor<cocos2d::EaseCircleActionOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseCircleActionOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseCircleActionOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseCircleActionOut_class;
+		p->proto = jsb_cocos2d_EaseCircleActionOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseCircleActionInOut_class;
+JSObject *jsb_cocos2d_EaseCircleActionInOut_prototype;
+
+bool js_cocos2dx_EaseCircleActionInOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseCircleActionInOut_create : Error processing arguments");
+		cocos2d::EaseCircleActionInOut* ret = cocos2d::EaseCircleActionInOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseCircleActionInOut>(cx, (cocos2d::EaseCircleActionInOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseCircleActionInOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseCircleActionInOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseCircleActionInOut)", obj);
+}
+
+void js_register_cocos2dx_EaseCircleActionInOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseCircleActionInOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseCircleActionInOut_class->name = "EaseCircleActionInOut";
+	jsb_cocos2d_EaseCircleActionInOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCircleActionInOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseCircleActionInOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCircleActionInOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseCircleActionInOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseCircleActionInOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseCircleActionInOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseCircleActionInOut_class->finalize = js_cocos2d_EaseCircleActionInOut_finalize;
+	jsb_cocos2d_EaseCircleActionInOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseCircleActionInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseCircleActionInOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseCircleActionInOut_class,
+		dummy_constructor<cocos2d::EaseCircleActionInOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseCircleActionInOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseCircleActionInOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseCircleActionInOut_class;
+		p->proto = jsb_cocos2d_EaseCircleActionInOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseCubicActionIn_class;
+JSObject *jsb_cocos2d_EaseCubicActionIn_prototype;
+
+bool js_cocos2dx_EaseCubicActionIn_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseCubicActionIn_create : Error processing arguments");
+		cocos2d::EaseCubicActionIn* ret = cocos2d::EaseCubicActionIn::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseCubicActionIn>(cx, (cocos2d::EaseCubicActionIn*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseCubicActionIn_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseCubicActionIn_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseCubicActionIn)", obj);
+}
+
+void js_register_cocos2dx_EaseCubicActionIn(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseCubicActionIn_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseCubicActionIn_class->name = "EaseCubicActionIn";
+	jsb_cocos2d_EaseCubicActionIn_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCubicActionIn_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseCubicActionIn_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCubicActionIn_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseCubicActionIn_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseCubicActionIn_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseCubicActionIn_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseCubicActionIn_class->finalize = js_cocos2d_EaseCubicActionIn_finalize;
+	jsb_cocos2d_EaseCubicActionIn_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseCubicActionIn_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseCubicActionIn_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseCubicActionIn_class,
+		dummy_constructor<cocos2d::EaseCubicActionIn>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseCubicActionIn", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseCubicActionIn> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseCubicActionIn_class;
+		p->proto = jsb_cocos2d_EaseCubicActionIn_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseCubicActionOut_class;
+JSObject *jsb_cocos2d_EaseCubicActionOut_prototype;
+
+bool js_cocos2dx_EaseCubicActionOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseCubicActionOut_create : Error processing arguments");
+		cocos2d::EaseCubicActionOut* ret = cocos2d::EaseCubicActionOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseCubicActionOut>(cx, (cocos2d::EaseCubicActionOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseCubicActionOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseCubicActionOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseCubicActionOut)", obj);
+}
+
+void js_register_cocos2dx_EaseCubicActionOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseCubicActionOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseCubicActionOut_class->name = "EaseCubicActionOut";
+	jsb_cocos2d_EaseCubicActionOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCubicActionOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseCubicActionOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCubicActionOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseCubicActionOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseCubicActionOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseCubicActionOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseCubicActionOut_class->finalize = js_cocos2d_EaseCubicActionOut_finalize;
+	jsb_cocos2d_EaseCubicActionOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseCubicActionOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseCubicActionOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseCubicActionOut_class,
+		dummy_constructor<cocos2d::EaseCubicActionOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseCubicActionOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseCubicActionOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseCubicActionOut_class;
+		p->proto = jsb_cocos2d_EaseCubicActionOut_prototype;
+		p->parentProto = jsb_cocos2d_ActionEase_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_EaseCubicActionInOut_class;
+JSObject *jsb_cocos2d_EaseCubicActionInOut_prototype;
+
+bool js_cocos2dx_EaseCubicActionInOut_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		cocos2d::ActionInterval* arg0;
+		do {
+			if (!argv[0].isObject()) { ok = false; break; }
+			js_proxy_t *proxy;
+			JSObject *tmpObj = JSVAL_TO_OBJECT(argv[0]);
+			proxy = jsb_get_js_proxy(tmpObj);
+			arg0 = (cocos2d::ActionInterval*)(proxy ? proxy->ptr : NULL);
+			JSB_PRECONDITION2( arg0, cx, false, "Invalid Native Object");
+		} while (0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_EaseCubicActionInOut_create : Error processing arguments");
+		cocos2d::EaseCubicActionInOut* ret = cocos2d::EaseCubicActionInOut::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::EaseCubicActionInOut>(cx, (cocos2d::EaseCubicActionInOut*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_EaseCubicActionInOut_create : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_ActionEase_prototype;
+
+void js_cocos2d_EaseCubicActionInOut_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (EaseCubicActionInOut)", obj);
+}
+
+void js_register_cocos2dx_EaseCubicActionInOut(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_EaseCubicActionInOut_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_EaseCubicActionInOut_class->name = "EaseCubicActionInOut";
+	jsb_cocos2d_EaseCubicActionInOut_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCubicActionInOut_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_EaseCubicActionInOut_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_EaseCubicActionInOut_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_EaseCubicActionInOut_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_EaseCubicActionInOut_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_EaseCubicActionInOut_class->convert = JS_ConvertStub;
+	jsb_cocos2d_EaseCubicActionInOut_class->finalize = js_cocos2d_EaseCubicActionInOut_finalize;
+	jsb_cocos2d_EaseCubicActionInOut_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("create", js_cocos2dx_EaseCubicActionInOut_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_EaseCubicActionInOut_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_ActionEase_prototype,
+		jsb_cocos2d_EaseCubicActionInOut_class,
+		dummy_constructor<cocos2d::EaseCubicActionInOut>, 0, // no constructor
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "EaseCubicActionInOut", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::EaseCubicActionInOut> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_EaseCubicActionInOut_class;
+		p->proto = jsb_cocos2d_EaseCubicActionInOut_prototype;
 		p->parentProto = jsb_cocos2d_ActionEase_prototype;
 		_js_global_type_map.insert(std::make_pair(typeName, p));
 	}
@@ -43323,18 +44879,19 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_ActionEase(cx, obj);
 	js_register_cocos2dx_EaseBounce(cx, obj);
 	js_register_cocos2dx_EaseBounceIn(cx, obj);
-	js_register_cocos2dx_TransitionRotoZoom(cx, obj);
+	js_register_cocos2dx_SkewTo(cx, obj);
 	js_register_cocos2dx_Director(cx, obj);
 	js_register_cocos2dx_Texture2D(cx, obj);
 	js_register_cocos2dx_EaseElastic(cx, obj);
 	js_register_cocos2dx_EaseElasticOut(cx, obj);
-	js_register_cocos2dx_EaseBackOut(cx, obj);
+	js_register_cocos2dx_EaseQuadraticActionInOut(cx, obj);
+	js_register_cocos2dx_EaseQuarticActionInOut(cx, obj);
 	js_register_cocos2dx_TransitionSceneOriented(cx, obj);
 	js_register_cocos2dx_TransitionFlipX(cx, obj);
-	js_register_cocos2dx_Spawn(cx, obj);
+	js_register_cocos2dx_StopGrid(cx, obj);
 	js_register_cocos2dx_SimpleAudioEngine(cx, obj);
-	js_register_cocos2dx_SkewTo(cx, obj);
 	js_register_cocos2dx_SkewBy(cx, obj);
+	js_register_cocos2dx_EaseQuadraticActionOut(cx, obj);
 	js_register_cocos2dx_TransitionProgress(cx, obj);
 	js_register_cocos2dx_TransitionProgressVertical(cx, obj);
 	js_register_cocos2dx_TMXTiledMap(cx, obj);
@@ -43351,13 +44908,14 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_FadeOut(cx, obj);
 	js_register_cocos2dx_CallFunc(cx, obj);
 	js_register_cocos2dx_Waves3D(cx, obj);
+	js_register_cocos2dx_EaseRateAction(cx, obj);
+	js_register_cocos2dx_EaseOut(cx, obj);
 	js_register_cocos2dx_ParticleFireworks(cx, obj);
 	js_register_cocos2dx_MenuItem(cx, obj);
 	js_register_cocos2dx_MenuItemSprite(cx, obj);
 	js_register_cocos2dx_MenuItemImage(cx, obj);
 	js_register_cocos2dx_ParticleFire(cx, obj);
 	js_register_cocos2dx_TransitionZoomFlipAngular(cx, obj);
-	js_register_cocos2dx_EaseRateAction(cx, obj);
 	js_register_cocos2dx_EaseIn(cx, obj);
 	js_register_cocos2dx_EaseExponentialInOut(cx, obj);
 	js_register_cocos2dx_EaseBackInOut(cx, obj);
@@ -43368,16 +44926,17 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_DelayTime(cx, obj);
 	js_register_cocos2dx_LabelAtlas(cx, obj);
 	js_register_cocos2dx_LabelBMFont(cx, obj);
-	js_register_cocos2dx_TransitionFadeTR(cx, obj);
-	js_register_cocos2dx_TransitionFadeBL(cx, obj);
-	js_register_cocos2dx_EaseElasticIn(cx, obj);
-	js_register_cocos2dx_ParticleSpiral(cx, obj);
 	js_register_cocos2dx_TiledGrid3DAction(cx, obj);
 	js_register_cocos2dx_FadeOutTRTiles(cx, obj);
+	js_register_cocos2dx_EaseElasticIn(cx, obj);
+	js_register_cocos2dx_EaseCircleActionInOut(cx, obj);
+	js_register_cocos2dx_ParticleSpiral(cx, obj);
 	js_register_cocos2dx_FadeOutUpTiles(cx, obj);
 	js_register_cocos2dx_FadeOutDownTiles(cx, obj);
+	js_register_cocos2dx_EaseCubicActionIn(cx, obj);
 	js_register_cocos2dx_TextureCache(cx, obj);
 	js_register_cocos2dx_ActionTween(cx, obj);
+	js_register_cocos2dx_TransitionFadeTR(cx, obj);
 	js_register_cocos2dx_TransitionFadeDown(cx, obj);
 	js_register_cocos2dx_ParticleSun(cx, obj);
 	js_register_cocos2dx_TransitionProgressHorizontal(cx, obj);
@@ -43399,6 +44958,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_LabelTTF(cx, obj);
 	js_register_cocos2dx_ClippingNode(cx, obj);
 	js_register_cocos2dx_ParticleFlower(cx, obj);
+	js_register_cocos2dx_EaseCircleActionIn(cx, obj);
 	js_register_cocos2dx_ParticleSmoke(cx, obj);
 	js_register_cocos2dx_LayerMultiplex(cx, obj);
 	js_register_cocos2dx_Blink(cx, obj);
@@ -43411,12 +44971,14 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_AnimationFrame(cx, obj);
 	js_register_cocos2dx_NodeGrid(cx, obj);
 	js_register_cocos2dx_TMXLayerInfo(cx, obj);
+	js_register_cocos2dx_EaseSineIn(cx, obj);
 	js_register_cocos2dx_TMXTilesetInfo(cx, obj);
 	js_register_cocos2dx_GridBase(cx, obj);
 	js_register_cocos2dx_TiledGrid3D(cx, obj);
-	js_register_cocos2dx_ParticleGalaxy(cx, obj);
+	js_register_cocos2dx_TransitionRotoZoom(cx, obj);
 	js_register_cocos2dx_Twirl(cx, obj);
 	js_register_cocos2dx_MenuItemLabel(cx, obj);
+	js_register_cocos2dx_EaseQuinticActionIn(cx, obj);
 	js_register_cocos2dx_LayerColor(cx, obj);
 	js_register_cocos2dx_FadeOutBLTiles(cx, obj);
 	js_register_cocos2dx_LayerGradient(cx, obj);
@@ -43428,6 +44990,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_TurnOffTiles(cx, obj);
 	js_register_cocos2dx_TintTo(cx, obj);
 	js_register_cocos2dx_CatmullRomTo(cx, obj);
+	js_register_cocos2dx_TransitionFadeBL(cx, obj);
 	js_register_cocos2dx_ToggleVisibility(cx, obj);
 	js_register_cocos2dx_DrawNode(cx, obj);
 	js_register_cocos2dx_TransitionTurnOffTiles(cx, obj);
@@ -43438,21 +45001,27 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_TransitionPageTurn(cx, obj);
 	js_register_cocos2dx_BezierBy(cx, obj);
 	js_register_cocos2dx_BezierTo(cx, obj);
+	js_register_cocos2dx_ParticleGalaxy(cx, obj);
 	js_register_cocos2dx_Menu(cx, obj);
 	js_register_cocos2dx_SpriteFrame(cx, obj);
 	js_register_cocos2dx_ActionManager(cx, obj);
 	js_register_cocos2dx_TransitionFade(cx, obj);
 	js_register_cocos2dx_TransitionZoomFlipX(cx, obj);
+	js_register_cocos2dx_EaseQuinticActionInOut(cx, obj);
 	js_register_cocos2dx_SpriteFrameCache(cx, obj);
 	js_register_cocos2dx_TransitionCrossFade(cx, obj);
 	js_register_cocos2dx_Ripple3D(cx, obj);
-	js_register_cocos2dx_TransitionSlideInL(cx, obj);
-	js_register_cocos2dx_TransitionSlideInT(cx, obj);
-	js_register_cocos2dx_StopGrid(cx, obj);
+	js_register_cocos2dx_EaseBackOut(cx, obj);
+	js_register_cocos2dx_Spawn(cx, obj);
 	js_register_cocos2dx_ShakyTiles3D(cx, obj);
 	js_register_cocos2dx_PageTurn3D(cx, obj);
+	js_register_cocos2dx_TransitionSlideInL(cx, obj);
+	js_register_cocos2dx_TransitionSlideInT(cx, obj);
 	js_register_cocos2dx_Grid3D(cx, obj);
+	js_register_cocos2dx_EaseCircleActionOut(cx, obj);
 	js_register_cocos2dx_TransitionProgressInOut(cx, obj);
+	js_register_cocos2dx_EaseCubicActionInOut(cx, obj);
+	js_register_cocos2dx_EaseQuarticActionOut(cx, obj);
 	js_register_cocos2dx_EaseBackIn(cx, obj);
 	js_register_cocos2dx_SplitRows(cx, obj);
 	js_register_cocos2dx_Follow(cx, obj);
@@ -43460,6 +45029,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_ShuffleTiles(cx, obj);
 	js_register_cocos2dx_ProgressTimer(cx, obj);
 	js_register_cocos2dx_ParticleMeteor(cx, obj);
+	js_register_cocos2dx_EaseQuarticActionIn(cx, obj);
 	js_register_cocos2dx_EaseInOut(cx, obj);
 	js_register_cocos2dx_TransitionZoomFlipY(cx, obj);
 	js_register_cocos2dx_ScaleBy(cx, obj);
@@ -43468,15 +45038,17 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_TMXMapInfo(cx, obj);
 	js_register_cocos2dx_EaseExponentialIn(cx, obj);
 	js_register_cocos2dx_ReuseGrid(cx, obj);
+	js_register_cocos2dx_EaseQuinticActionOut(cx, obj);
 	js_register_cocos2dx_MenuItemAtlasFont(cx, obj);
 	js_register_cocos2dx_Liquid(cx, obj);
 	js_register_cocos2dx_OrbitCamera(cx, obj);
 	js_register_cocos2dx_ParticleBatchNode(cx, obj);
 	js_register_cocos2dx_Component(cx, obj);
+	js_register_cocos2dx_EaseCubicActionOut(cx, obj);
 	js_register_cocos2dx_TextFieldTTF(cx, obj);
 	js_register_cocos2dx_ParticleRain(cx, obj);
 	js_register_cocos2dx_Waves(cx, obj);
-	js_register_cocos2dx_EaseOut(cx, obj);
+	js_register_cocos2dx_EaseBezierAction(cx, obj);
 	js_register_cocos2dx_MenuItemFont(cx, obj);
 	js_register_cocos2dx_TransitionFadeUp(cx, obj);
 	js_register_cocos2dx_EaseSineOut(cx, obj);
@@ -43498,7 +45070,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx___NodeRGBA(cx, obj);
 	js_register_cocos2dx_ParallaxNode(cx, obj);
 	js_register_cocos2dx_Scheduler(cx, obj);
-	js_register_cocos2dx_EaseSineIn(cx, obj);
+	js_register_cocos2dx_EaseQuadraticActionIn(cx, obj);
 	js_register_cocos2dx_WavesTiles3D(cx, obj);
 	js_register_cocos2dx_TransitionSlideInB(cx, obj);
 	js_register_cocos2dx_Speed(cx, obj);
