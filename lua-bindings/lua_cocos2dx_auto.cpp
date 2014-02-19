@@ -58609,65 +58609,6 @@ int lua_cocos2dx_TMXTiledMap_getProperties(lua_State* tolua_S)
 
     return 0;
 }
-int lua_cocos2dx_TMXTiledMap_getPropertiesForGID(lua_State* tolua_S)
-{
-    int argc = 0;
-    cocos2d::TMXTiledMap* cobj = NULL;
-    bool ok  = true;
-#if COCOS2D_DEBUG >= 1
-    tolua_Error tolua_err;
-#endif
-
-#if COCOS2D_DEBUG >= 1
-    if (!tolua_isusertype(tolua_S,1,"cc.TMXTiledMap",0,&tolua_err)) goto tolua_lerror;
-#endif
-    cobj = (cocos2d::TMXTiledMap*)tolua_tousertype(tolua_S,1,0);
-#if COCOS2D_DEBUG >= 1
-    if (!cobj)
-    {
-        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_TMXTiledMap_getPropertiesForGID'", NULL);
-        return 0;
-    }
-#endif
-    argc = lua_gettop(tolua_S)-1;
-    do{
-        if (argc == 2) {
-            int arg0;
-            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
-
-            if (!ok) { break; }
-            cocos2d::Value** arg1;
-            ok &= luaval_to_object<cocos2d::Value>(tolua_S, 3, "cc.Value",&arg1);
-
-            if (!ok) { break; }
-            bool ret = cobj->getPropertiesForGID(arg0, arg1);
-            tolua_pushboolean(tolua_S,(bool)ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    do{
-        if (argc == 1) {
-            int arg0;
-            ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
-
-            if (!ok) { break; }
-            cocos2d::Value ret = cobj->getPropertiesForGID(arg0);
-            ccvalue_to_luaval(tolua_S, ret);
-            return 1;
-        }
-    }while(0);
-    ok  = true;
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPropertiesForGID",argc, 1);
-    return 0;
-
-#if COCOS2D_DEBUG >= 1
-    tolua_lerror:
-    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_TMXTiledMap_getPropertiesForGID'.",&tolua_err);
-#endif
-
-    return 0;
-}
 int lua_cocos2dx_TMXTiledMap_setTileSize(lua_State* tolua_S)
 {
     int argc = 0;
@@ -58985,7 +58926,6 @@ int lua_register_cocos2dx_TMXTiledMap(lua_State* tolua_S)
         tolua_function(tolua_S,"getTileSize",lua_cocos2dx_TMXTiledMap_getTileSize);
         tolua_function(tolua_S,"getMapSize",lua_cocos2dx_TMXTiledMap_getMapSize);
         tolua_function(tolua_S,"getProperties",lua_cocos2dx_TMXTiledMap_getProperties);
-        tolua_function(tolua_S,"getPropertiesForGID",lua_cocos2dx_TMXTiledMap_getPropertiesForGID);
         tolua_function(tolua_S,"setTileSize",lua_cocos2dx_TMXTiledMap_setTileSize);
         tolua_function(tolua_S,"setProperties",lua_cocos2dx_TMXTiledMap_setProperties);
         tolua_function(tolua_S,"getLayer",lua_cocos2dx_TMXTiledMap_getLayer);
