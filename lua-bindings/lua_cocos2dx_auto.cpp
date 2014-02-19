@@ -154,19 +154,10 @@ int lua_cocos2dx_Object_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Object();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Object");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Object");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Object");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Object",argc, 0);
@@ -232,16 +223,7 @@ int lua_cocos2dx_Action_startWithTarget(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->startWithTarget(arg0);
@@ -287,16 +269,7 @@ int lua_cocos2dx_Action_setOriginalTarget(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setOriginalTarget(arg0);
@@ -343,27 +316,7 @@ int lua_cocos2dx_Action_clone(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Action* ret = cobj->clone();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Action";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Action>(tolua_S, "cc.Action",(cocos2d::Action*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clone",argc, 0);
@@ -407,27 +360,7 @@ int lua_cocos2dx_Action_getOriginalTarget(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getOriginalTarget();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOriginalTarget",argc, 0);
@@ -560,27 +493,7 @@ int lua_cocos2dx_Action_getTarget(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getTarget();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTarget",argc, 0);
@@ -759,16 +672,7 @@ int lua_cocos2dx_Action_setTarget(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setTarget(arg0);
@@ -859,27 +763,7 @@ int lua_cocos2dx_Action_reverse(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Action* ret = cobj->reverse();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Action";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Action>(tolua_S, "cc.Action",(cocos2d::Action*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "reverse",argc, 0);
@@ -1065,16 +949,7 @@ int lua_cocos2dx_Speed_setInnerAction(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cobj->setInnerAction(arg0);
@@ -1167,27 +1042,7 @@ int lua_cocos2dx_Speed_getInnerAction(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->getInnerAction();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInnerAction",argc, 0);
@@ -1263,41 +1118,12 @@ int lua_cocos2dx_Speed_create(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
         double arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cocos2d::Speed* ret = cocos2d::Speed::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Speed";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Speed*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Speed>(tolua_S, "cc.Speed",(cocos2d::Speed*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -1440,81 +1266,23 @@ int lua_cocos2dx_Follow_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::Node* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cocos2d::Follow* ret = cocos2d::Follow::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Follow";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Follow*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Follow>(tolua_S, "cc.Follow",(cocos2d::Follow*)ret);
         return 1;
     }
     if (argc == 2)
     {
         cocos2d::Node* arg0;
         cocos2d::Rect arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         ok &= luaval_to_rect(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::Follow* ret = cocos2d::Follow::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Follow";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Follow*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Follow>(tolua_S, "cc.Follow",(cocos2d::Follow*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -2597,19 +2365,10 @@ int lua_cocos2dx_GLProgram_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::GLProgram();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.GLProgram");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.GLProgram");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.GLProgram");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "GLProgram",argc, 0);
@@ -3085,19 +2844,10 @@ int lua_cocos2dx_Touch_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Touch();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Touch");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Touch");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Touch");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Touch",argc, 0);
@@ -3258,27 +3008,7 @@ int lua_cocos2dx_Event_getCurrentTarget(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getCurrentTarget();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getCurrentTarget",argc, 0);
@@ -3465,19 +3195,10 @@ int lua_cocos2dx_EventTouch_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::EventTouch();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventTouch");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.EventTouch");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventTouch");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "EventTouch",argc, 0);
@@ -3536,19 +3257,10 @@ int lua_cocos2dx_EventKeyboard_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::EventKeyboard(arg0, arg1);
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventKeyboard");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.EventKeyboard");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventKeyboard");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "EventKeyboard",argc, 2);
@@ -3611,27 +3323,7 @@ int lua_cocos2dx_Texture2D_getShaderProgram(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::GLProgram* ret = cobj->getShaderProgram();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GLProgram";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GLProgram*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::GLProgram>(tolua_S, "cc.GLProgram",(cocos2d::GLProgram*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getShaderProgram",argc, 0);
@@ -3756,16 +3448,7 @@ int lua_cocos2dx_Texture2D_initWithImage(lua_State* tolua_S)
     do{
         if (argc == 2) {
             cocos2d::Image* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Image",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Image*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Image>(tolua_S, 2, "cc.Image",&arg0);
 
             if (!ok) { break; }
             cocos2d::Texture2D::PixelFormat arg1;
@@ -3781,16 +3464,7 @@ int lua_cocos2dx_Texture2D_initWithImage(lua_State* tolua_S)
     do{
         if (argc == 1) {
             cocos2d::Image* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Image",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Image*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Image>(tolua_S, 2, "cc.Image",&arg0);
 
             if (!ok) { break; }
             bool ret = cobj->initWithImage(arg0);
@@ -3839,16 +3513,7 @@ int lua_cocos2dx_Texture2D_setShaderProgram(lua_State* tolua_S)
     {
         cocos2d::GLProgram* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.GLProgram",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::GLProgram>(tolua_S, 2, "cc.GLProgram",&arg0);
         if(!ok)
             return 0;
         cobj->setShaderProgram(arg0);
@@ -4991,19 +4656,10 @@ int lua_cocos2dx_Texture2D_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Texture2D();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Texture2D");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Texture2D");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Texture2D");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Texture2D",argc, 0);
@@ -5095,27 +4751,7 @@ int lua_cocos2dx_EventListener_clone(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::EventListener* ret = cobj->clone();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EventListener";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EventListener*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EventListener>(tolua_S, "cc.EventListener",(cocos2d::EventListener*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clone",argc, 0);
@@ -5270,27 +4906,9 @@ int lua_cocos2dx_EventDispatcher_addEventListenerWithSceneGraphPriority(lua_Stat
         cocos2d::EventListener* arg0;
         cocos2d::Node* arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.EventListener",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::EventListener*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::EventListener>(tolua_S, 2, "cc.EventListener",&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Node*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 3, "cc.Node",&arg1);
         if(!ok)
             return 0;
         cobj->addEventListenerWithSceneGraphPriority(arg0, arg1);
@@ -5337,16 +4955,7 @@ int lua_cocos2dx_EventDispatcher_addEventListenerWithFixedPriority(lua_State* to
         cocos2d::EventListener* arg0;
         int arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.EventListener",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::EventListener*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::EventListener>(tolua_S, 2, "cc.EventListener",&arg0);
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
@@ -5394,16 +5003,7 @@ int lua_cocos2dx_EventDispatcher_removeEventListener(lua_State* tolua_S)
     {
         cocos2d::EventListener* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.EventListener",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::EventListener*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::EventListener>(tolua_S, 2, "cc.EventListener",&arg0);
         if(!ok)
             return 0;
         cobj->removeEventListener(arg0);
@@ -5545,16 +5145,7 @@ int lua_cocos2dx_EventDispatcher_setPriority(lua_State* tolua_S)
         cocos2d::EventListener* arg0;
         int arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.EventListener",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::EventListener*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::EventListener>(tolua_S, 2, "cc.EventListener",&arg0);
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
@@ -5613,27 +5204,7 @@ int lua_cocos2dx_EventDispatcher_addCustomEventListener(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::EventListenerCustom* ret = cobj->addCustomEventListener(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EventListenerCustom";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EventListenerCustom*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EventListenerCustom>(tolua_S, "cc.EventListenerCustom",(cocos2d::EventListenerCustom*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "addCustomEventListener",argc, 2);
@@ -5676,16 +5247,7 @@ int lua_cocos2dx_EventDispatcher_dispatchEvent(lua_State* tolua_S)
     {
         cocos2d::Event* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Event",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Event*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Event>(tolua_S, 2, "cc.Event",&arg0);
         if(!ok)
             return 0;
         cobj->dispatchEvent(arg0);
@@ -5852,19 +5414,10 @@ int lua_cocos2dx_EventDispatcher_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::EventDispatcher();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventDispatcher");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.EventDispatcher");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventDispatcher");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "EventDispatcher",argc, 0);
@@ -5933,16 +5486,7 @@ int lua_cocos2dx_Node_addChild(lua_State* tolua_S)
     do{
         if (argc == 2) {
             cocos2d::Node* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
 
             if (!ok) { break; }
             int arg1;
@@ -5957,16 +5501,7 @@ int lua_cocos2dx_Node_addChild(lua_State* tolua_S)
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
 
             if (!ok) { break; }
             cobj->addChild(arg0);
@@ -5977,16 +5512,7 @@ int lua_cocos2dx_Node_addChild(lua_State* tolua_S)
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
 
             if (!ok) { break; }
             int arg1;
@@ -6089,16 +5615,7 @@ int lua_cocos2dx_Node_setPhysicsBody(lua_State* tolua_S)
     {
         cocos2d::PhysicsBody* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.PhysicsBody",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::PhysicsBody*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::PhysicsBody>(tolua_S, 2, "cc.PhysicsBody",&arg0);
         if(!ok)
             return 0;
         cobj->setPhysicsBody(arg0);
@@ -6138,27 +5655,7 @@ int lua_cocos2dx_Node_getShaderProgram(lua_State* tolua_S)
     do{
         if (argc == 0) {
             const cocos2d::GLProgram* ret = cobj->getShaderProgram();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GLProgram";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GLProgram*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::GLProgram>(tolua_S, "cc.GLProgram",(cocos2d::GLProgram*)ret);
             return 1;
         }
     }while(0);
@@ -6166,27 +5663,7 @@ int lua_cocos2dx_Node_getShaderProgram(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::GLProgram* ret = cobj->getShaderProgram();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GLProgram";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GLProgram*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::GLProgram>(tolua_S, "cc.GLProgram",(cocos2d::GLProgram*)ret);
             return 1;
         }
     }while(0);
@@ -6997,16 +6474,7 @@ int lua_cocos2dx_Node_removeChild(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->removeChild(arg0);
@@ -7017,16 +6485,7 @@ int lua_cocos2dx_Node_removeChild(lua_State* tolua_S)
         cocos2d::Node* arg0;
         bool arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
 
         ok &= luaval_to_boolean(tolua_S, 3,&arg1);
         if(!ok)
@@ -7122,27 +6581,7 @@ int lua_cocos2dx_Node_getScene(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Scene* ret = cobj->getScene();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Scene";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scene*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Scene>(tolua_S, "cc.Scene",(cocos2d::Scene*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getScene",argc, 0);
@@ -7186,27 +6625,7 @@ int lua_cocos2dx_Node_getEventDispatcher(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::EventDispatcher* ret = cobj->getEventDispatcher();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EventDispatcher";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EventDispatcher*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EventDispatcher>(tolua_S, "cc.EventDispatcher",(cocos2d::EventDispatcher*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getEventDispatcher",argc, 0);
@@ -7385,16 +6804,7 @@ int lua_cocos2dx_Node_convertTouchToNodeSpace(lua_State* tolua_S)
     {
         cocos2d::Touch* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Touch",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Touch*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Touch>(tolua_S, 2, "cc.Touch",&arg0);
         if(!ok)
             return 0;
         cocos2d::Point ret = cobj->convertTouchToNodeSpace(arg0);
@@ -7666,16 +7076,7 @@ int lua_cocos2dx_Node_setParent(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setParent(arg0);
@@ -7809,27 +7210,7 @@ int lua_cocos2dx_Node_getPhysicsBody(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::PhysicsBody* ret = cobj->getPhysicsBody();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.PhysicsBody";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::PhysicsBody*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::PhysicsBody>(tolua_S, "cc.PhysicsBody",(cocos2d::PhysicsBody*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPhysicsBody",argc, 0);
@@ -7976,16 +7357,7 @@ int lua_cocos2dx_Node_reorderChild(lua_State* tolua_S)
         cocos2d::Node* arg0;
         int arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
@@ -8529,16 +7901,7 @@ int lua_cocos2dx_Node_addComponent(lua_State* tolua_S)
     {
         cocos2d::Component* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Component",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Component*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Component>(tolua_S, 2, "cc.Component",&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->addComponent(arg0);
@@ -8628,16 +7991,7 @@ int lua_cocos2dx_Node_setShaderProgram(lua_State* tolua_S)
     {
         cocos2d::GLProgram* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.GLProgram",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::GLProgram>(tolua_S, 2, "cc.GLProgram",&arg0);
         if(!ok)
             return 0;
         cobj->setShaderProgram(arg0);
@@ -8771,40 +8125,11 @@ int lua_cocos2dx_Node_runAction(lua_State* tolua_S)
     {
         cocos2d::Action* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Action",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Action*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Action>(tolua_S, 2, "cc.Action",&arg0);
         if(!ok)
             return 0;
         cocos2d::Action* ret = cobj->runAction(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Action";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Action>(tolua_S, "cc.Action",(cocos2d::Action*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "runAction",argc, 1);
@@ -8936,16 +8261,7 @@ int lua_cocos2dx_Node_setScheduler(lua_State* tolua_S)
     {
         cocos2d::Scheduler* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Scheduler",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Scheduler*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scheduler>(tolua_S, 2, "cc.Scheduler",&arg0);
         if(!ok)
             return 0;
         cobj->setScheduler(arg0);
@@ -9170,27 +8486,7 @@ int lua_cocos2dx_Node_getActionByTag(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Action* ret = cobj->getActionByTag(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Action";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Action>(tolua_S, "cc.Action",(cocos2d::Action*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getActionByTag",argc, 1);
@@ -9460,27 +8756,7 @@ int lua_cocos2dx_Node_getScheduler(lua_State* tolua_S)
     do{
         if (argc == 0) {
             const cocos2d::Scheduler* ret = cobj->getScheduler();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Scheduler";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scheduler*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Scheduler>(tolua_S, "cc.Scheduler",(cocos2d::Scheduler*)ret);
             return 1;
         }
     }while(0);
@@ -9488,27 +8764,7 @@ int lua_cocos2dx_Node_getScheduler(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::Scheduler* ret = cobj->getScheduler();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Scheduler";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scheduler*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Scheduler>(tolua_S, "cc.Scheduler",(cocos2d::Scheduler*)ret);
             return 1;
         }
     }while(0);
@@ -9641,16 +8897,7 @@ int lua_cocos2dx_Node_setActionManager(lua_State* tolua_S)
     {
         cocos2d::ActionManager* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionManager",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionManager>(tolua_S, 2, "cc.ActionManager",&arg0);
         if(!ok)
             return 0;
         cobj->setActionManager(arg0);
@@ -9734,27 +8981,7 @@ int lua_cocos2dx_Node_getParent(lua_State* tolua_S)
     do{
         if (argc == 0) {
             const cocos2d::Node* ret = cobj->getParent();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
             return 1;
         }
     }while(0);
@@ -9762,27 +8989,7 @@ int lua_cocos2dx_Node_getParent(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::Node* ret = cobj->getParent();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
             return 1;
         }
     }while(0);
@@ -10261,27 +9468,7 @@ int lua_cocos2dx_Node_getChildByTag(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getChildByTag(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getChildByTag",argc, 1);
@@ -10687,27 +9874,7 @@ int lua_cocos2dx_Node_getComponent(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Component* ret = cobj->getComponent(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Component";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Component*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Component>(tolua_S, "cc.Component",(cocos2d::Component*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getComponent",argc, 1);
@@ -10882,16 +10049,7 @@ int lua_cocos2dx_Node_setEventDispatcher(lua_State* tolua_S)
     {
         cocos2d::EventDispatcher* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.EventDispatcher",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::EventDispatcher*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::EventDispatcher>(tolua_S, 2, "cc.EventDispatcher",&arg0);
         if(!ok)
             return 0;
         cobj->setEventDispatcher(arg0);
@@ -11067,16 +10225,7 @@ int lua_cocos2dx_Node_setUserObject(lua_State* tolua_S)
     {
         cocos2d::Object* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Object",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Object>(tolua_S, 2, "cc.Object",&arg0);
         if(!ok)
             return 0;
         cobj->setUserObject(arg0);
@@ -11171,16 +10320,7 @@ int lua_cocos2dx_Node_convertTouchToNodeSpaceAR(lua_State* tolua_S)
     {
         cocos2d::Touch* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Touch",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Touch*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Touch>(tolua_S, 2, "cc.Touch",&arg0);
         if(!ok)
             return 0;
         cocos2d::Point ret = cobj->convertTouchToNodeSpaceAR(arg0);
@@ -11585,16 +10725,7 @@ int lua_cocos2dx_Node_stopAction(lua_State* tolua_S)
     {
         cocos2d::Action* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Action",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Action*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Action>(tolua_S, 2, "cc.Action",&arg0);
         if(!ok)
             return 0;
         cobj->stopAction(arg0);
@@ -11634,27 +10765,7 @@ int lua_cocos2dx_Node_getActionManager(lua_State* tolua_S)
     do{
         if (argc == 0) {
             const cocos2d::ActionManager* ret = cobj->getActionManager();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionManager";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionManager*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ActionManager>(tolua_S, "cc.ActionManager",(cocos2d::ActionManager*)ret);
             return 1;
         }
     }while(0);
@@ -11662,27 +10773,7 @@ int lua_cocos2dx_Node_getActionManager(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::ActionManager* ret = cobj->getActionManager();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionManager";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionManager*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ActionManager>(tolua_S, "cc.ActionManager",(cocos2d::ActionManager*)ret);
             return 1;
         }
     }while(0);
@@ -11717,27 +10808,7 @@ int lua_cocos2dx_Node_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cocos2d::Node::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -11915,27 +10986,7 @@ int lua_cocos2dx_SpriteFrame_clone(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SpriteFrame* ret = cobj->clone();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteFrame>(tolua_S, "cc.SpriteFrame",(cocos2d::SpriteFrame*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clone",argc, 0);
@@ -12024,16 +11075,7 @@ int lua_cocos2dx_SpriteFrame_setTexture(lua_State* tolua_S)
     {
         cocos2d::Texture2D* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cobj->setTexture(arg0);
@@ -12073,16 +11115,7 @@ int lua_cocos2dx_SpriteFrame_initWithTexture(lua_State* tolua_S)
     do{
         if (argc == 5) {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
 
             if (!ok) { break; }
             cocos2d::Rect arg1;
@@ -12110,16 +11143,7 @@ int lua_cocos2dx_SpriteFrame_initWithTexture(lua_State* tolua_S)
     do{
         if (argc == 2) {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
 
             if (!ok) { break; }
             cocos2d::Rect arg1;
@@ -12219,27 +11243,7 @@ int lua_cocos2dx_SpriteFrame_getTexture(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Texture2D* ret = cobj->getTexture();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTexture",argc, 0);
@@ -12899,27 +11903,7 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
             ok &= luaval_to_size(tolua_S, 6, &arg4);
             if (!ok) { break; }
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::create(arg0, arg1, arg2, arg3, arg4);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::SpriteFrame>(tolua_S, "cc.SpriteFrame",(cocos2d::SpriteFrame*)ret);
             return 1;
         }
     } while (0);
@@ -12935,27 +11919,7 @@ int lua_cocos2dx_SpriteFrame_create(lua_State* tolua_S)
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
             if (!ok) { break; }
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::SpriteFrame>(tolua_S, "cc.SpriteFrame",(cocos2d::SpriteFrame*)ret);
             return 1;
         }
     } while (0);
@@ -12987,16 +11951,7 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
         if (argc == 5)
         {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
             if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -13011,27 +11966,7 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
             ok &= luaval_to_size(tolua_S, 6, &arg4);
             if (!ok) { break; }
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::createWithTexture(arg0, arg1, arg2, arg3, arg4);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::SpriteFrame>(tolua_S, "cc.SpriteFrame",(cocos2d::SpriteFrame*)ret);
             return 1;
         }
     } while (0);
@@ -13041,42 +11976,13 @@ int lua_cocos2dx_SpriteFrame_createWithTexture(lua_State* tolua_S)
         if (argc == 2)
         {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
             if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
             if (!ok) { break; }
             cocos2d::SpriteFrame* ret = cocos2d::SpriteFrame::createWithTexture(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::SpriteFrame>(tolua_S, "cc.SpriteFrame",(cocos2d::SpriteFrame*)ret);
             return 1;
         }
     } while (0);
@@ -13159,16 +12065,7 @@ int lua_cocos2dx_AnimationFrame_setSpriteFrame(lua_State* tolua_S)
     {
         cocos2d::SpriteFrame* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
         if(!ok)
             return 0;
         cobj->setSpriteFrame(arg0);
@@ -13308,27 +12205,7 @@ int lua_cocos2dx_AnimationFrame_clone(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::AnimationFrame* ret = cobj->clone();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.AnimationFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::AnimationFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::AnimationFrame>(tolua_S, "cc.AnimationFrame",(cocos2d::AnimationFrame*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clone",argc, 0);
@@ -13372,27 +12249,7 @@ int lua_cocos2dx_AnimationFrame_getSpriteFrame(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SpriteFrame* ret = cobj->getSpriteFrame();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteFrame>(tolua_S, "cc.SpriteFrame",(cocos2d::SpriteFrame*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSpriteFrame",argc, 0);
@@ -13515,42 +12372,13 @@ int lua_cocos2dx_AnimationFrame_create(lua_State* tolua_S)
         cocos2d::SpriteFrame* arg0;
         double arg1;
         cocos2d::ValueMap arg2;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         ok &= luaval_to_ccvaluemap(tolua_S, 4, &arg2);
         if(!ok)
             return 0;
         cocos2d::AnimationFrame* ret = cocos2d::AnimationFrame::create(arg0, arg1, arg2);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.AnimationFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::AnimationFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::AnimationFrame>(tolua_S, "cc.AnimationFrame",(cocos2d::AnimationFrame*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 3);
@@ -13662,16 +12490,7 @@ int lua_cocos2dx_Animation_addSpriteFrame(lua_State* tolua_S)
     {
         cocos2d::SpriteFrame* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
         if(!ok)
             return 0;
         cobj->addSpriteFrame(arg0);
@@ -13764,27 +12583,7 @@ int lua_cocos2dx_Animation_clone(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Animation* ret = cobj->clone();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animation";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Animation>(tolua_S, "cc.Animation",(cocos2d::Animation*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clone",argc, 0);
@@ -14232,16 +13031,7 @@ int lua_cocos2dx_Animation_addSpriteFrameWithTexture(lua_State* tolua_S)
         cocos2d::Texture2D* arg0;
         cocos2d::Rect arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
 
         ok &= luaval_to_rect(tolua_S, 3, &arg1);
         if(!ok)
@@ -14284,27 +13074,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::Animation* ret = cocos2d::Animation::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animation";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Animation>(tolua_S, "cc.Animation",(cocos2d::Animation*)ret);
             return 1;
         }
     } while (0);
@@ -14323,27 +13093,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
             ok &= luaval_to_uint32(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::Animation* ret = cocos2d::Animation::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animation";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Animation>(tolua_S, "cc.Animation",(cocos2d::Animation*)ret);
             return 1;
         }
     } while (0);
@@ -14353,27 +13103,7 @@ int lua_cocos2dx_Animation_create(lua_State* tolua_S)
         if (argc == 0)
         {
             cocos2d::Animation* ret = cocos2d::Animation::create();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animation";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Animation>(tolua_S, "cc.Animation",(cocos2d::Animation*)ret);
             return 1;
         }
     } while (0);
@@ -14408,27 +13138,7 @@ int lua_cocos2dx_Animation_createWithSpriteFrames(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Animation* ret = cocos2d::Animation::createWithSpriteFrames(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animation";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Animation>(tolua_S, "cc.Animation",(cocos2d::Animation*)ret);
         return 1;
     }
     if (argc == 2)
@@ -14440,27 +13150,7 @@ int lua_cocos2dx_Animation_createWithSpriteFrames(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Animation* ret = cocos2d::Animation::createWithSpriteFrames(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animation";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Animation>(tolua_S, "cc.Animation",(cocos2d::Animation*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithSpriteFrames",argc, 1);
@@ -14711,16 +13401,7 @@ int lua_cocos2dx_Repeat_setInnerAction(lua_State* tolua_S)
     {
         cocos2d::FiniteTimeAction* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.FiniteTimeAction",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::FiniteTimeAction*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::FiniteTimeAction>(tolua_S, 2, "cc.FiniteTimeAction",&arg0);
         if(!ok)
             return 0;
         cobj->setInnerAction(arg0);
@@ -14767,27 +13448,7 @@ int lua_cocos2dx_Repeat_getInnerAction(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FiniteTimeAction* ret = cobj->getInnerAction();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FiniteTimeAction";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FiniteTimeAction*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FiniteTimeAction>(tolua_S, "cc.FiniteTimeAction",(cocos2d::FiniteTimeAction*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInnerAction",argc, 0);
@@ -14819,41 +13480,12 @@ int lua_cocos2dx_Repeat_create(lua_State* tolua_S)
     {
         cocos2d::FiniteTimeAction* arg0;
         unsigned int arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.FiniteTimeAction",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::FiniteTimeAction*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::FiniteTimeAction>(tolua_S, 2, "cc.FiniteTimeAction",&arg0);
         ok &= luaval_to_uint32(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cocos2d::Repeat* ret = cocos2d::Repeat::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Repeat";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Repeat*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Repeat>(tolua_S, "cc.Repeat",(cocos2d::Repeat*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -14916,16 +13548,7 @@ int lua_cocos2dx_RepeatForever_setInnerAction(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cobj->setInnerAction(arg0);
@@ -14972,27 +13595,7 @@ int lua_cocos2dx_RepeatForever_getInnerAction(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->getInnerAction();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInnerAction",argc, 0);
@@ -15023,40 +13626,11 @@ int lua_cocos2dx_RepeatForever_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::RepeatForever* ret = cocos2d::RepeatForever::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RepeatForever";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RepeatForever*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::RepeatForever>(tolua_S, "cc.RepeatForever",(cocos2d::RepeatForever*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -15133,27 +13707,7 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::RotateTo* ret = cocos2d::RotateTo::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RotateTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::RotateTo>(tolua_S, "cc.RotateTo",(cocos2d::RotateTo*)ret);
             return 1;
         }
     } while (0);
@@ -15172,27 +13726,7 @@ int lua_cocos2dx_RotateTo_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::RotateTo* ret = cocos2d::RotateTo::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RotateTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::RotateTo>(tolua_S, "cc.RotateTo",(cocos2d::RotateTo*)ret);
             return 1;
         }
     } while (0);
@@ -15253,27 +13787,7 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::RotateBy* ret = cocos2d::RotateBy::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RotateBy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateBy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::RotateBy>(tolua_S, "cc.RotateBy",(cocos2d::RotateBy*)ret);
             return 1;
         }
     } while (0);
@@ -15289,27 +13803,7 @@ int lua_cocos2dx_RotateBy_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::RotateBy* ret = cocos2d::RotateBy::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RotateBy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RotateBy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::RotateBy>(tolua_S, "cc.RotateBy",(cocos2d::RotateBy*)ret);
             return 1;
         }
     } while (0);
@@ -15366,27 +13860,7 @@ int lua_cocos2dx_MoveBy_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::MoveBy* ret = cocos2d::MoveBy::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.MoveBy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MoveBy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::MoveBy>(tolua_S, "cc.MoveBy",(cocos2d::MoveBy*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -15441,27 +13915,7 @@ int lua_cocos2dx_MoveTo_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::MoveTo* ret = cocos2d::MoveTo::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.MoveTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MoveTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::MoveTo>(tolua_S, "cc.MoveTo",(cocos2d::MoveTo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -15518,27 +13972,7 @@ int lua_cocos2dx_SkewTo_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SkewTo* ret = cocos2d::SkewTo::create(arg0, arg1, arg2);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SkewTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SkewTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SkewTo>(tolua_S, "cc.SkewTo",(cocos2d::SkewTo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 3);
@@ -15595,27 +14029,7 @@ int lua_cocos2dx_SkewBy_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SkewBy* ret = cocos2d::SkewBy::create(arg0, arg1, arg2);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SkewBy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SkewBy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SkewBy>(tolua_S, "cc.SkewBy",(cocos2d::SkewBy*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 3);
@@ -15674,27 +14088,7 @@ int lua_cocos2dx_JumpBy_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::JumpBy* ret = cocos2d::JumpBy::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.JumpBy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpBy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::JumpBy>(tolua_S, "cc.JumpBy",(cocos2d::JumpBy*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -15753,27 +14147,7 @@ int lua_cocos2dx_JumpTo_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::JumpTo* ret = cocos2d::JumpTo::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.JumpTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::JumpTo>(tolua_S, "cc.JumpTo",(cocos2d::JumpTo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -15870,27 +14244,7 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::ScaleTo* ret = cocos2d::ScaleTo::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ScaleTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ScaleTo>(tolua_S, "cc.ScaleTo",(cocos2d::ScaleTo*)ret);
             return 1;
         }
     } while (0);
@@ -15906,27 +14260,7 @@ int lua_cocos2dx_ScaleTo_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::ScaleTo* ret = cocos2d::ScaleTo::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ScaleTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ScaleTo>(tolua_S, "cc.ScaleTo",(cocos2d::ScaleTo*)ret);
             return 1;
         }
     } while (0);
@@ -15987,27 +14321,7 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::ScaleBy* ret = cocos2d::ScaleBy::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ScaleBy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleBy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ScaleBy>(tolua_S, "cc.ScaleBy",(cocos2d::ScaleBy*)ret);
             return 1;
         }
     } while (0);
@@ -16023,27 +14337,7 @@ int lua_cocos2dx_ScaleBy_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::ScaleBy* ret = cocos2d::ScaleBy::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ScaleBy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ScaleBy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ScaleBy>(tolua_S, "cc.ScaleBy",(cocos2d::ScaleBy*)ret);
             return 1;
         }
     } while (0);
@@ -16100,27 +14394,7 @@ int lua_cocos2dx_Blink_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Blink* ret = cocos2d::Blink::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Blink";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Blink*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Blink>(tolua_S, "cc.Blink",(cocos2d::Blink*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -16173,27 +14447,7 @@ int lua_cocos2dx_FadeIn_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FadeIn* ret = cocos2d::FadeIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FadeIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FadeIn>(tolua_S, "cc.FadeIn",(cocos2d::FadeIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -16246,27 +14500,7 @@ int lua_cocos2dx_FadeOut_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FadeOut* ret = cocos2d::FadeOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FadeOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FadeOut>(tolua_S, "cc.FadeOut",(cocos2d::FadeOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -16321,27 +14555,7 @@ int lua_cocos2dx_FadeTo_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FadeTo* ret = cocos2d::FadeTo::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FadeTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FadeTo>(tolua_S, "cc.FadeTo",(cocos2d::FadeTo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -16400,27 +14614,7 @@ int lua_cocos2dx_TintTo_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TintTo* ret = cocos2d::TintTo::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TintTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TintTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TintTo>(tolua_S, "cc.TintTo",(cocos2d::TintTo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -16479,27 +14673,7 @@ int lua_cocos2dx_TintBy_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TintBy* ret = cocos2d::TintBy::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TintBy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TintBy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TintBy>(tolua_S, "cc.TintBy",(cocos2d::TintBy*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -16552,27 +14726,7 @@ int lua_cocos2dx_DelayTime_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::DelayTime* ret = cocos2d::DelayTime::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.DelayTime";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::DelayTime*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::DelayTime>(tolua_S, "cc.DelayTime",(cocos2d::DelayTime*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -16627,27 +14781,7 @@ int lua_cocos2dx_Animate_getAnimation(lua_State* tolua_S)
     do{
         if (argc == 0) {
             const cocos2d::Animation* ret = cobj->getAnimation();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animation";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Animation>(tolua_S, "cc.Animation",(cocos2d::Animation*)ret);
             return 1;
         }
     }while(0);
@@ -16655,27 +14789,7 @@ int lua_cocos2dx_Animate_getAnimation(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::Animation* ret = cobj->getAnimation();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animation";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Animation>(tolua_S, "cc.Animation",(cocos2d::Animation*)ret);
             return 1;
         }
     }while(0);
@@ -16720,16 +14834,7 @@ int lua_cocos2dx_Animate_setAnimation(lua_State* tolua_S)
     {
         cocos2d::Animation* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Animation",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Animation*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Animation>(tolua_S, 2, "cc.Animation",&arg0);
         if(!ok)
             return 0;
         cobj->setAnimation(arg0);
@@ -16763,40 +14868,11 @@ int lua_cocos2dx_Animate_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::Animation* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Animation",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Animation*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Animation>(tolua_S, 2, "cc.Animation",&arg0);
         if(!ok)
             return 0;
         cocos2d::Animate* ret = cocos2d::Animate::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animate";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animate*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Animate>(tolua_S, "cc.Animate",(cocos2d::Animate*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -16853,27 +14929,7 @@ int lua_cocos2dx_TargetedAction_getForcedTarget(lua_State* tolua_S)
     do{
         if (argc == 0) {
             const cocos2d::Node* ret = cobj->getForcedTarget();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
             return 1;
         }
     }while(0);
@@ -16881,27 +14937,7 @@ int lua_cocos2dx_TargetedAction_getForcedTarget(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::Node* ret = cobj->getForcedTarget();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
             return 1;
         }
     }while(0);
@@ -16946,16 +14982,7 @@ int lua_cocos2dx_TargetedAction_setForcedTarget(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setForcedTarget(arg0);
@@ -16990,50 +15017,12 @@ int lua_cocos2dx_TargetedAction_create(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
         cocos2d::FiniteTimeAction* arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.FiniteTimeAction",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::FiniteTimeAction*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
+        ok &= luaval_to_object<cocos2d::FiniteTimeAction>(tolua_S, 3, "cc.FiniteTimeAction",&arg1);
         if(!ok)
             return 0;
         cocos2d::TargetedAction* ret = cocos2d::TargetedAction::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TargetedAction";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TargetedAction*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TargetedAction>(tolua_S, "cc.TargetedAction",(cocos2d::TargetedAction*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -17369,19 +15358,10 @@ int lua_cocos2dx_ActionCamera_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ActionCamera();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.ActionCamera");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.ActionCamera");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.ActionCamera");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ActionCamera",argc, 0);
@@ -17571,27 +15551,7 @@ int lua_cocos2dx_OrbitCamera_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::OrbitCamera* ret = cocos2d::OrbitCamera::create(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.OrbitCamera";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::OrbitCamera*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::OrbitCamera>(tolua_S, "cc.OrbitCamera",(cocos2d::OrbitCamera*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 7);
@@ -17620,19 +15580,10 @@ int lua_cocos2dx_OrbitCamera_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::OrbitCamera();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.OrbitCamera");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.OrbitCamera");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.OrbitCamera");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "OrbitCamera",argc, 0);
@@ -17701,40 +15652,11 @@ int lua_cocos2dx_ActionManager_getActionByTag(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (const cocos2d::Node*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<const cocos2d::Node>(tolua_S, 3, "cc.Node",&arg1);
         if(!ok)
             return 0;
         cocos2d::Action* ret = cobj->getActionByTag(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Action";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Action*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Action>(tolua_S, "cc.Action",(cocos2d::Action*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getActionByTag",argc, 2);
@@ -17780,16 +15702,7 @@ int lua_cocos2dx_ActionManager_removeActionByTag(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Node*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 3, "cc.Node",&arg1);
         if(!ok)
             return 0;
         cobj->removeActionByTag(arg0, arg1);
@@ -17880,27 +15793,9 @@ int lua_cocos2dx_ActionManager_addAction(lua_State* tolua_S)
         cocos2d::Node* arg1;
         bool arg2;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Action",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Action*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Action>(tolua_S, 2, "cc.Action",&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Node*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 3, "cc.Node",&arg1);
 
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
@@ -17948,16 +15843,7 @@ int lua_cocos2dx_ActionManager_resumeTarget(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->resumeTarget(arg0);
@@ -18003,16 +15889,7 @@ int lua_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget(lua_State* tolu
     {
         const cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (const cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<const cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         ssize_t ret = cobj->getNumberOfRunningActionsInTarget(arg0);
@@ -18059,16 +15936,7 @@ int lua_cocos2dx_ActionManager_removeAllActionsFromTarget(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->removeAllActionsFromTarget(arg0);
@@ -18160,16 +16028,7 @@ int lua_cocos2dx_ActionManager_removeAction(lua_State* tolua_S)
     {
         cocos2d::Action* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Action",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Action*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Action>(tolua_S, 2, "cc.Action",&arg0);
         if(!ok)
             return 0;
         cobj->removeAction(arg0);
@@ -18215,16 +16074,7 @@ int lua_cocos2dx_ActionManager_pauseTarget(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->pauseTarget(arg0);
@@ -18302,19 +16152,10 @@ int lua_cocos2dx_ActionManager_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ActionManager();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.ActionManager");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.ActionManager");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.ActionManager");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ActionManager",argc, 0);
@@ -18389,27 +16230,7 @@ int lua_cocos2dx_ActionEase_getInnerAction(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->getInnerAction();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInnerAction",argc, 0);
@@ -18572,41 +16393,12 @@ int lua_cocos2dx_EaseIn_create(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
         double arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cocos2d::EaseIn* ret = cocos2d::EaseIn::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseIn>(tolua_S, "cc.EaseIn",(cocos2d::EaseIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -18656,41 +16448,12 @@ int lua_cocos2dx_EaseOut_create(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
         double arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cocos2d::EaseOut* ret = cocos2d::EaseOut::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseOut>(tolua_S, "cc.EaseOut",(cocos2d::EaseOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -18740,41 +16503,12 @@ int lua_cocos2dx_EaseInOut_create(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
         double arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         ok &= luaval_to_number(tolua_S, 3,&arg1);
         if(!ok)
             return 0;
         cocos2d::EaseInOut* ret = cocos2d::EaseInOut::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseInOut>(tolua_S, "cc.EaseInOut",(cocos2d::EaseInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -18823,40 +16557,11 @@ int lua_cocos2dx_EaseExponentialIn_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseExponentialIn* ret = cocos2d::EaseExponentialIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseExponentialIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseExponentialIn>(tolua_S, "cc.EaseExponentialIn",(cocos2d::EaseExponentialIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -18905,40 +16610,11 @@ int lua_cocos2dx_EaseExponentialOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseExponentialOut* ret = cocos2d::EaseExponentialOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseExponentialOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseExponentialOut>(tolua_S, "cc.EaseExponentialOut",(cocos2d::EaseExponentialOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -18987,40 +16663,11 @@ int lua_cocos2dx_EaseExponentialInOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseExponentialInOut* ret = cocos2d::EaseExponentialInOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseExponentialInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseExponentialInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseExponentialInOut>(tolua_S, "cc.EaseExponentialInOut",(cocos2d::EaseExponentialInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -19069,40 +16716,11 @@ int lua_cocos2dx_EaseSineIn_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseSineIn* ret = cocos2d::EaseSineIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseSineIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseSineIn>(tolua_S, "cc.EaseSineIn",(cocos2d::EaseSineIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -19151,40 +16769,11 @@ int lua_cocos2dx_EaseSineOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseSineOut* ret = cocos2d::EaseSineOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseSineOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseSineOut>(tolua_S, "cc.EaseSineOut",(cocos2d::EaseSineOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -19233,40 +16822,11 @@ int lua_cocos2dx_EaseSineInOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseSineInOut* ret = cocos2d::EaseSineInOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseSineInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseSineInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseSineInOut>(tolua_S, "cc.EaseSineInOut",(cocos2d::EaseSineInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -19427,39 +16987,10 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
         if (argc == 1)
         {
             cocos2d::ActionInterval* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
             if (!ok) { break; }
             cocos2d::EaseElasticIn* ret = cocos2d::EaseElasticIn::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseElasticIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::EaseElasticIn>(tolua_S, "cc.EaseElasticIn",(cocos2d::EaseElasticIn*)ret);
             return 1;
         }
     } while (0);
@@ -19469,42 +17000,13 @@ int lua_cocos2dx_EaseElasticIn_create(lua_State* tolua_S)
         if (argc == 2)
         {
             cocos2d::ActionInterval* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
             if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::EaseElasticIn* ret = cocos2d::EaseElasticIn::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseElasticIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::EaseElasticIn>(tolua_S, "cc.EaseElasticIn",(cocos2d::EaseElasticIn*)ret);
             return 1;
         }
     } while (0);
@@ -19556,39 +17058,10 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
         if (argc == 1)
         {
             cocos2d::ActionInterval* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
             if (!ok) { break; }
             cocos2d::EaseElasticOut* ret = cocos2d::EaseElasticOut::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseElasticOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::EaseElasticOut>(tolua_S, "cc.EaseElasticOut",(cocos2d::EaseElasticOut*)ret);
             return 1;
         }
     } while (0);
@@ -19598,42 +17071,13 @@ int lua_cocos2dx_EaseElasticOut_create(lua_State* tolua_S)
         if (argc == 2)
         {
             cocos2d::ActionInterval* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
             if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::EaseElasticOut* ret = cocos2d::EaseElasticOut::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseElasticOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::EaseElasticOut>(tolua_S, "cc.EaseElasticOut",(cocos2d::EaseElasticOut*)ret);
             return 1;
         }
     } while (0);
@@ -19685,39 +17129,10 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
         if (argc == 1)
         {
             cocos2d::ActionInterval* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
             if (!ok) { break; }
             cocos2d::EaseElasticInOut* ret = cocos2d::EaseElasticInOut::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseElasticInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::EaseElasticInOut>(tolua_S, "cc.EaseElasticInOut",(cocos2d::EaseElasticInOut*)ret);
             return 1;
         }
     } while (0);
@@ -19727,42 +17142,13 @@ int lua_cocos2dx_EaseElasticInOut_create(lua_State* tolua_S)
         if (argc == 2)
         {
             cocos2d::ActionInterval* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
             if (!ok) { break; }
             double arg1;
             ok &= luaval_to_number(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::EaseElasticInOut* ret = cocos2d::EaseElasticInOut::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseElasticInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseElasticInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::EaseElasticInOut>(tolua_S, "cc.EaseElasticInOut",(cocos2d::EaseElasticInOut*)ret);
             return 1;
         }
     } while (0);
@@ -19832,40 +17218,11 @@ int lua_cocos2dx_EaseBounceIn_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseBounceIn* ret = cocos2d::EaseBounceIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseBounceIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseBounceIn>(tolua_S, "cc.EaseBounceIn",(cocos2d::EaseBounceIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -19914,40 +17271,11 @@ int lua_cocos2dx_EaseBounceOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseBounceOut* ret = cocos2d::EaseBounceOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseBounceOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseBounceOut>(tolua_S, "cc.EaseBounceOut",(cocos2d::EaseBounceOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -19996,40 +17324,11 @@ int lua_cocos2dx_EaseBounceInOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseBounceInOut* ret = cocos2d::EaseBounceInOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseBounceInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBounceInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseBounceInOut>(tolua_S, "cc.EaseBounceInOut",(cocos2d::EaseBounceInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20078,40 +17377,11 @@ int lua_cocos2dx_EaseBackIn_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseBackIn* ret = cocos2d::EaseBackIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseBackIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseBackIn>(tolua_S, "cc.EaseBackIn",(cocos2d::EaseBackIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20160,40 +17430,11 @@ int lua_cocos2dx_EaseBackOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseBackOut* ret = cocos2d::EaseBackOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseBackOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseBackOut>(tolua_S, "cc.EaseBackOut",(cocos2d::EaseBackOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20242,40 +17483,11 @@ int lua_cocos2dx_EaseBackInOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseBackInOut* ret = cocos2d::EaseBackInOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseBackInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBackInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseBackInOut>(tolua_S, "cc.EaseBackInOut",(cocos2d::EaseBackInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20379,40 +17591,11 @@ int lua_cocos2dx_EaseBezierAction_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseBezierAction* ret = cocos2d::EaseBezierAction::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseBezierAction";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseBezierAction*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseBezierAction>(tolua_S, "cc.EaseBezierAction",(cocos2d::EaseBezierAction*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20462,40 +17645,11 @@ int lua_cocos2dx_EaseQuadraticActionIn_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseQuadraticActionIn* ret = cocos2d::EaseQuadraticActionIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseQuadraticActionIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuadraticActionIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseQuadraticActionIn>(tolua_S, "cc.EaseQuadraticActionIn",(cocos2d::EaseQuadraticActionIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20544,40 +17698,11 @@ int lua_cocos2dx_EaseQuadraticActionOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseQuadraticActionOut* ret = cocos2d::EaseQuadraticActionOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseQuadraticActionOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuadraticActionOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseQuadraticActionOut>(tolua_S, "cc.EaseQuadraticActionOut",(cocos2d::EaseQuadraticActionOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20626,40 +17751,11 @@ int lua_cocos2dx_EaseQuadraticActionInOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseQuadraticActionInOut* ret = cocos2d::EaseQuadraticActionInOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseQuadraticActionInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuadraticActionInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseQuadraticActionInOut>(tolua_S, "cc.EaseQuadraticActionInOut",(cocos2d::EaseQuadraticActionInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20708,40 +17804,11 @@ int lua_cocos2dx_EaseQuarticActionIn_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseQuarticActionIn* ret = cocos2d::EaseQuarticActionIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseQuarticActionIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuarticActionIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseQuarticActionIn>(tolua_S, "cc.EaseQuarticActionIn",(cocos2d::EaseQuarticActionIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20790,40 +17857,11 @@ int lua_cocos2dx_EaseQuarticActionOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseQuarticActionOut* ret = cocos2d::EaseQuarticActionOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseQuarticActionOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuarticActionOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseQuarticActionOut>(tolua_S, "cc.EaseQuarticActionOut",(cocos2d::EaseQuarticActionOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20872,40 +17910,11 @@ int lua_cocos2dx_EaseQuarticActionInOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseQuarticActionInOut* ret = cocos2d::EaseQuarticActionInOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseQuarticActionInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuarticActionInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseQuarticActionInOut>(tolua_S, "cc.EaseQuarticActionInOut",(cocos2d::EaseQuarticActionInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -20954,40 +17963,11 @@ int lua_cocos2dx_EaseQuinticActionIn_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseQuinticActionIn* ret = cocos2d::EaseQuinticActionIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseQuinticActionIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuinticActionIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseQuinticActionIn>(tolua_S, "cc.EaseQuinticActionIn",(cocos2d::EaseQuinticActionIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -21036,40 +18016,11 @@ int lua_cocos2dx_EaseQuinticActionOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseQuinticActionOut* ret = cocos2d::EaseQuinticActionOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseQuinticActionOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuinticActionOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseQuinticActionOut>(tolua_S, "cc.EaseQuinticActionOut",(cocos2d::EaseQuinticActionOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -21118,40 +18069,11 @@ int lua_cocos2dx_EaseQuinticActionInOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseQuinticActionInOut* ret = cocos2d::EaseQuinticActionInOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseQuinticActionInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseQuinticActionInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseQuinticActionInOut>(tolua_S, "cc.EaseQuinticActionInOut",(cocos2d::EaseQuinticActionInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -21200,40 +18122,11 @@ int lua_cocos2dx_EaseCircleActionIn_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseCircleActionIn* ret = cocos2d::EaseCircleActionIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseCircleActionIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCircleActionIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseCircleActionIn>(tolua_S, "cc.EaseCircleActionIn",(cocos2d::EaseCircleActionIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -21282,40 +18175,11 @@ int lua_cocos2dx_EaseCircleActionOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseCircleActionOut* ret = cocos2d::EaseCircleActionOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseCircleActionOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCircleActionOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseCircleActionOut>(tolua_S, "cc.EaseCircleActionOut",(cocos2d::EaseCircleActionOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -21364,40 +18228,11 @@ int lua_cocos2dx_EaseCircleActionInOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseCircleActionInOut* ret = cocos2d::EaseCircleActionInOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseCircleActionInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCircleActionInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseCircleActionInOut>(tolua_S, "cc.EaseCircleActionInOut",(cocos2d::EaseCircleActionInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -21446,40 +18281,11 @@ int lua_cocos2dx_EaseCubicActionIn_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseCubicActionIn* ret = cocos2d::EaseCubicActionIn::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseCubicActionIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCubicActionIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseCubicActionIn>(tolua_S, "cc.EaseCubicActionIn",(cocos2d::EaseCubicActionIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -21528,40 +18334,11 @@ int lua_cocos2dx_EaseCubicActionOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseCubicActionOut* ret = cocos2d::EaseCubicActionOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseCubicActionOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCubicActionOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseCubicActionOut>(tolua_S, "cc.EaseCubicActionOut",(cocos2d::EaseCubicActionOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -21610,40 +18387,11 @@ int lua_cocos2dx_EaseCubicActionInOut_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::ActionInterval* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::EaseCubicActionInOut* ret = cocos2d::EaseCubicActionInOut::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.EaseCubicActionInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::EaseCubicActionInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::EaseCubicActionInOut>(tolua_S, "cc.EaseCubicActionInOut",(cocos2d::EaseCubicActionInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -21713,27 +18461,7 @@ int lua_cocos2dx_Show_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Show* ret = cocos2d::Show::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Show";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Show*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Show>(tolua_S, "cc.Show",(cocos2d::Show*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -21784,27 +18512,7 @@ int lua_cocos2dx_Hide_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Hide* ret = cocos2d::Hide::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Hide";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Hide*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Hide>(tolua_S, "cc.Hide",(cocos2d::Hide*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -21855,27 +18563,7 @@ int lua_cocos2dx_ToggleVisibility_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ToggleVisibility* ret = cocos2d::ToggleVisibility::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ToggleVisibility";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ToggleVisibility*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ToggleVisibility>(tolua_S, "cc.ToggleVisibility",(cocos2d::ToggleVisibility*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -21926,27 +18614,7 @@ int lua_cocos2dx_RemoveSelf_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::RemoveSelf* ret = cocos2d::RemoveSelf::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RemoveSelf";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RemoveSelf*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::RemoveSelf>(tolua_S, "cc.RemoveSelf",(cocos2d::RemoveSelf*)ret);
         return 1;
     }
     if (argc == 1)
@@ -21956,27 +18624,7 @@ int lua_cocos2dx_RemoveSelf_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::RemoveSelf* ret = cocos2d::RemoveSelf::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RemoveSelf";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RemoveSelf*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::RemoveSelf>(tolua_S, "cc.RemoveSelf",(cocos2d::RemoveSelf*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -22029,27 +18677,7 @@ int lua_cocos2dx_FlipX_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FlipX* ret = cocos2d::FlipX::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FlipX";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipX*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FlipX>(tolua_S, "cc.FlipX",(cocos2d::FlipX*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -22102,27 +18730,7 @@ int lua_cocos2dx_FlipY_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FlipY* ret = cocos2d::FlipY::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FlipY";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipY*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FlipY>(tolua_S, "cc.FlipY",(cocos2d::FlipY*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -22175,27 +18783,7 @@ int lua_cocos2dx_Place_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Place* ret = cocos2d::Place::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Place";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Place*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Place>(tolua_S, "cc.Place",(cocos2d::Place*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -22300,27 +18888,7 @@ int lua_cocos2dx_CallFunc_getTargetCallback(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Object* ret = cobj->getTargetCallback();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Object";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Object*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Object>(tolua_S, "cc.Object",(cocos2d::Object*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTargetCallback",argc, 0);
@@ -22363,16 +18931,7 @@ int lua_cocos2dx_CallFunc_setTargetCallback(lua_State* tolua_S)
     {
         cocos2d::Object* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Object",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Object*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Object>(tolua_S, 2, "cc.Object",&arg0);
         if(!ok)
             return 0;
         cobj->setTargetCallback(arg0);
@@ -22441,27 +19000,7 @@ int lua_cocos2dx_GridAction_getGrid(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::GridBase* ret = cobj->getGrid();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GridBase";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::GridBase>(tolua_S, "cc.GridBase",(cocos2d::GridBase*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getGrid",argc, 0);
@@ -22525,27 +19064,7 @@ int lua_cocos2dx_Grid3DAction_getGrid(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::GridBase* ret = cobj->getGrid();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GridBase";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::GridBase>(tolua_S, "cc.GridBase",(cocos2d::GridBase*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getGrid",argc, 0);
@@ -22609,27 +19128,7 @@ int lua_cocos2dx_TiledGrid3DAction_getGrid(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::GridBase* ret = cobj->getGrid();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GridBase";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::GridBase>(tolua_S, "cc.GridBase",(cocos2d::GridBase*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getGrid",argc, 0);
@@ -22682,27 +19181,7 @@ int lua_cocos2dx_StopGrid_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::StopGrid* ret = cocos2d::StopGrid::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.StopGrid";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::StopGrid*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::StopGrid>(tolua_S, "cc.StopGrid",(cocos2d::StopGrid*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -22755,27 +19234,7 @@ int lua_cocos2dx_ReuseGrid_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ReuseGrid* ret = cocos2d::ReuseGrid::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ReuseGrid";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ReuseGrid*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ReuseGrid>(tolua_S, "cc.ReuseGrid",(cocos2d::ReuseGrid*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -23014,27 +19473,7 @@ int lua_cocos2dx_Waves3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Waves3D* ret = cocos2d::Waves3D::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Waves3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Waves3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Waves3D>(tolua_S, "cc.Waves3D",(cocos2d::Waves3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -23091,27 +19530,7 @@ int lua_cocos2dx_FlipX3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FlipX3D* ret = cocos2d::FlipX3D::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FlipX3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipX3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FlipX3D>(tolua_S, "cc.FlipX3D",(cocos2d::FlipX3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -23164,27 +19583,7 @@ int lua_cocos2dx_FlipY3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FlipY3D* ret = cocos2d::FlipY3D::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FlipY3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FlipY3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FlipY3D>(tolua_S, "cc.FlipY3D",(cocos2d::FlipY3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -23213,19 +19612,10 @@ int lua_cocos2dx_FlipY3D_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::FlipY3D();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.FlipY3D");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.FlipY3D");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.FlipY3D");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "FlipY3D",argc, 0);
@@ -23512,27 +19902,7 @@ int lua_cocos2dx_Lens3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Lens3D* ret = cocos2d::Lens3D::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Lens3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Lens3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Lens3D>(tolua_S, "cc.Lens3D",(cocos2d::Lens3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -23870,27 +20240,7 @@ int lua_cocos2dx_Ripple3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Ripple3D* ret = cocos2d::Ripple3D::create(arg0, arg1, arg2, arg3, arg4, arg5);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Ripple3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Ripple3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Ripple3D>(tolua_S, "cc.Ripple3D",(cocos2d::Ripple3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 6);
@@ -23955,27 +20305,7 @@ int lua_cocos2dx_Shaky3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Shaky3D* ret = cocos2d::Shaky3D::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Shaky3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Shaky3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Shaky3D>(tolua_S, "cc.Shaky3D",(cocos2d::Shaky3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -24004,19 +20334,10 @@ int lua_cocos2dx_Shaky3D_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Shaky3D();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Shaky3D");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Shaky3D");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Shaky3D");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Shaky3D",argc, 0);
@@ -24257,27 +20578,7 @@ int lua_cocos2dx_Liquid_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Liquid* ret = cocos2d::Liquid::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Liquid";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Liquid*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Liquid>(tolua_S, "cc.Liquid",(cocos2d::Liquid*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -24306,19 +20607,10 @@ int lua_cocos2dx_Liquid_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Liquid();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Liquid");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Liquid");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Liquid");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Liquid",argc, 0);
@@ -24568,27 +20860,7 @@ int lua_cocos2dx_Waves_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Waves* ret = cocos2d::Waves::create(arg0, arg1, arg2, arg3, arg4, arg5);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Waves";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Waves*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Waves>(tolua_S, "cc.Waves",(cocos2d::Waves*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 6);
@@ -24617,19 +20889,10 @@ int lua_cocos2dx_Waves_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Waves();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Waves");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Waves");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Waves");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Waves",argc, 0);
@@ -24967,27 +21230,7 @@ int lua_cocos2dx_Twirl_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Twirl* ret = cocos2d::Twirl::create(arg0, arg1, arg2, arg3, arg4);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Twirl";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Twirl*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Twirl>(tolua_S, "cc.Twirl",(cocos2d::Twirl*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 5);
@@ -25016,19 +21259,10 @@ int lua_cocos2dx_Twirl_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Twirl();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Twirl");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Twirl");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Twirl");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Twirl",argc, 0);
@@ -25092,27 +21326,7 @@ int lua_cocos2dx_PageTurn3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::PageTurn3D* ret = cocos2d::PageTurn3D::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.PageTurn3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::PageTurn3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::PageTurn3D>(tolua_S, "cc.PageTurn3D",(cocos2d::PageTurn3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -25167,27 +21381,7 @@ int lua_cocos2dx_ProgressTo_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ProgressTo* ret = cocos2d::ProgressTo::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ProgressTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ProgressTo>(tolua_S, "cc.ProgressTo",(cocos2d::ProgressTo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -25244,27 +21438,7 @@ int lua_cocos2dx_ProgressFromTo_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ProgressFromTo* ret = cocos2d::ProgressFromTo::create(arg0, arg1, arg2);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ProgressFromTo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressFromTo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ProgressFromTo>(tolua_S, "cc.ProgressFromTo",(cocos2d::ProgressFromTo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 3);
@@ -25323,27 +21497,7 @@ int lua_cocos2dx_ShakyTiles3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ShakyTiles3D* ret = cocos2d::ShakyTiles3D::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ShakyTiles3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShakyTiles3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ShakyTiles3D>(tolua_S, "cc.ShakyTiles3D",(cocos2d::ShakyTiles3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -25402,27 +21556,7 @@ int lua_cocos2dx_ShatteredTiles3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ShatteredTiles3D* ret = cocos2d::ShatteredTiles3D::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ShatteredTiles3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShatteredTiles3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ShatteredTiles3D>(tolua_S, "cc.ShatteredTiles3D",(cocos2d::ShatteredTiles3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -25624,27 +21758,7 @@ int lua_cocos2dx_ShuffleTiles_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ShuffleTiles* ret = cocos2d::ShuffleTiles::create(arg0, arg1, arg2);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ShuffleTiles";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShuffleTiles*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ShuffleTiles>(tolua_S, "cc.ShuffleTiles",(cocos2d::ShuffleTiles*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 3);
@@ -25893,27 +22007,7 @@ int lua_cocos2dx_FadeOutTRTiles_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FadeOutTRTiles* ret = cocos2d::FadeOutTRTiles::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FadeOutTRTiles";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutTRTiles*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FadeOutTRTiles>(tolua_S, "cc.FadeOutTRTiles",(cocos2d::FadeOutTRTiles*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -25972,27 +22066,7 @@ int lua_cocos2dx_FadeOutBLTiles_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FadeOutBLTiles* ret = cocos2d::FadeOutBLTiles::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FadeOutBLTiles";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutBLTiles*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FadeOutBLTiles>(tolua_S, "cc.FadeOutBLTiles",(cocos2d::FadeOutBLTiles*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -26096,27 +22170,7 @@ int lua_cocos2dx_FadeOutUpTiles_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FadeOutUpTiles* ret = cocos2d::FadeOutUpTiles::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FadeOutUpTiles";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutUpTiles*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FadeOutUpTiles>(tolua_S, "cc.FadeOutUpTiles",(cocos2d::FadeOutUpTiles*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -26172,27 +22226,7 @@ int lua_cocos2dx_FadeOutDownTiles_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FadeOutDownTiles* ret = cocos2d::FadeOutDownTiles::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FadeOutDownTiles";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FadeOutDownTiles*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FadeOutDownTiles>(tolua_S, "cc.FadeOutDownTiles",(cocos2d::FadeOutDownTiles*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -26392,27 +22426,7 @@ int lua_cocos2dx_TurnOffTiles_create(lua_State* tolua_S)
             ok &= luaval_to_uint32(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::TurnOffTiles* ret = cocos2d::TurnOffTiles::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TurnOffTiles";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TurnOffTiles*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TurnOffTiles>(tolua_S, "cc.TurnOffTiles",(cocos2d::TurnOffTiles*)ret);
             return 1;
         }
     } while (0);
@@ -26428,27 +22442,7 @@ int lua_cocos2dx_TurnOffTiles_create(lua_State* tolua_S)
             ok &= luaval_to_size(tolua_S, 3, &arg1);
             if (!ok) { break; }
             cocos2d::TurnOffTiles* ret = cocos2d::TurnOffTiles::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TurnOffTiles";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TurnOffTiles*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TurnOffTiles>(tolua_S, "cc.TurnOffTiles",(cocos2d::TurnOffTiles*)ret);
             return 1;
         }
     } while (0);
@@ -26692,27 +22686,7 @@ int lua_cocos2dx_WavesTiles3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::WavesTiles3D* ret = cocos2d::WavesTiles3D::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.WavesTiles3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::WavesTiles3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::WavesTiles3D>(tolua_S, "cc.WavesTiles3D",(cocos2d::WavesTiles3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -26955,27 +22929,7 @@ int lua_cocos2dx_JumpTiles3D_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::JumpTiles3D* ret = cocos2d::JumpTiles3D::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.JumpTiles3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::JumpTiles3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::JumpTiles3D>(tolua_S, "cc.JumpTiles3D",(cocos2d::JumpTiles3D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -27034,27 +22988,7 @@ int lua_cocos2dx_SplitRows_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SplitRows* ret = cocos2d::SplitRows::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SplitRows";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SplitRows*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SplitRows>(tolua_S, "cc.SplitRows",(cocos2d::SplitRows*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -27109,27 +23043,7 @@ int lua_cocos2dx_SplitCols_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SplitCols* ret = cocos2d::SplitCols::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SplitCols";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SplitCols*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SplitCols>(tolua_S, "cc.SplitCols",(cocos2d::SplitCols*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -27244,27 +23158,7 @@ int lua_cocos2dx_ActionTween_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionTween* ret = cocos2d::ActionTween::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionTween";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionTween*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionTween>(tolua_S, "cc.ActionTween",(cocos2d::ActionTween*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -27327,27 +23221,7 @@ int lua_cocos2dx_CardinalSplineTo_getPoints(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::PointArray* ret = cobj->getPoints();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.PointArray";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::PointArray*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::PointArray>(tolua_S, "cc.PointArray",(cocos2d::PointArray*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPoints",argc, 0);
@@ -27440,16 +23314,7 @@ int lua_cocos2dx_CardinalSplineTo_initWithDuration(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.PointArray",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::PointArray*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::PointArray>(tolua_S, 3, "cc.PointArray",&arg1);
 
         ok &= luaval_to_number(tolua_S, 4,&arg2);
         if(!ok)
@@ -27486,19 +23351,10 @@ int lua_cocos2dx_CardinalSplineTo_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::CardinalSplineTo();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.CardinalSplineTo");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.CardinalSplineTo");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.CardinalSplineTo");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "CardinalSplineTo",argc, 0);
@@ -27552,19 +23408,10 @@ int lua_cocos2dx_CardinalSplineBy_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::CardinalSplineBy();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.CardinalSplineBy");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.CardinalSplineBy");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.CardinalSplineBy");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "CardinalSplineBy",argc, 0);
@@ -27629,16 +23476,7 @@ int lua_cocos2dx_CatmullRomTo_initWithDuration(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.PointArray",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::PointArray*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::PointArray>(tolua_S, 3, "cc.PointArray",&arg1);
         if(!ok)
             return 0;
         bool ret = cobj->initWithDuration(arg0, arg1);
@@ -27708,16 +23546,7 @@ int lua_cocos2dx_CatmullRomBy_initWithDuration(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.PointArray",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::PointArray*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::PointArray>(tolua_S, 3, "cc.PointArray",&arg1);
         if(!ok)
             return 0;
         bool ret = cobj->initWithDuration(arg0, arg1);
@@ -27828,27 +23657,7 @@ int lua_cocos2dx_AtlasNode_getTexture(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Texture2D* ret = cobj->getTexture();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTexture",argc, 0);
@@ -27891,16 +23700,7 @@ int lua_cocos2dx_AtlasNode_setTextureAtlas(lua_State* tolua_S)
     {
         cocos2d::TextureAtlas* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.TextureAtlas",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::TextureAtlas*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::TextureAtlas>(tolua_S, 2, "cc.TextureAtlas",&arg0);
         if(!ok)
             return 0;
         cobj->setTextureAtlas(arg0);
@@ -27947,27 +23747,7 @@ int lua_cocos2dx_AtlasNode_getTextureAtlas(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TextureAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TextureAtlas>(tolua_S, "cc.TextureAtlas",(cocos2d::TextureAtlas*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureAtlas",argc, 0);
@@ -28054,16 +23834,7 @@ int lua_cocos2dx_AtlasNode_setTexture(lua_State* tolua_S)
     {
         cocos2d::Texture2D* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cobj->setTexture(arg0);
@@ -28153,27 +23924,7 @@ int lua_cocos2dx_AtlasNode_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::AtlasNode* ret = cocos2d::AtlasNode::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.AtlasNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::AtlasNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::AtlasNode>(tolua_S, "cc.AtlasNode",(cocos2d::AtlasNode*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -28598,27 +24349,7 @@ int lua_cocos2dx_DrawNode_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::DrawNode* ret = cocos2d::DrawNode::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.DrawNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::DrawNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::DrawNode>(tolua_S, "cc.DrawNode",(cocos2d::DrawNode*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -28774,16 +24505,7 @@ int lua_cocos2dx_LabelAtlas_initWithString(lua_State* tolua_S)
 
             if (!ok) { break; }
             cocos2d::Texture2D* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 3, "cc.Texture2D",&arg1);
 
             if (!ok) { break; }
             int arg2;
@@ -28935,27 +24657,7 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
             if (!ok) { break; }
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1, arg2, arg3, arg4);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelAtlas>(tolua_S, "cc.LabelAtlas",(cocos2d::LabelAtlas*)ret);
             return 1;
         }
     } while (0);
@@ -28965,27 +24667,7 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
         if (argc == 0)
         {
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelAtlas>(tolua_S, "cc.LabelAtlas",(cocos2d::LabelAtlas*)ret);
             return 1;
         }
     } while (0);
@@ -29001,27 +24683,7 @@ int lua_cocos2dx_LabelAtlas_create(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::LabelAtlas* ret = cocos2d::LabelAtlas::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelAtlas>(tolua_S, "cc.LabelAtlas",(cocos2d::LabelAtlas*)ret);
             return 1;
         }
     } while (0);
@@ -29352,16 +25014,7 @@ int lua_cocos2dx_Director_setActionManager(lua_State* tolua_S)
     {
         cocos2d::ActionManager* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionManager",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionManager*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionManager>(tolua_S, 2, "cc.ActionManager",&arg0);
         if(!ok)
             return 0;
         cobj->setActionManager(arg0);
@@ -29497,27 +25150,7 @@ int lua_cocos2dx_Director_getNotificationNode(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getNotificationNode();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNotificationNode",argc, 0);
@@ -29605,27 +25238,7 @@ int lua_cocos2dx_Director_getTextureCache(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TextureCache* ret = cobj->getTextureCache();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TextureCache";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureCache*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TextureCache>(tolua_S, "cc.TextureCache",(cocos2d::TextureCache*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureCache",argc, 0);
@@ -30067,16 +25680,7 @@ int lua_cocos2dx_Director_setScheduler(lua_State* tolua_S)
     {
         cocos2d::Scheduler* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Scheduler",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Scheduler*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scheduler>(tolua_S, 2, "cc.Scheduler",&arg0);
         if(!ok)
             return 0;
         cobj->setScheduler(arg0);
@@ -30166,27 +25770,7 @@ int lua_cocos2dx_Director_getRunningScene(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Scene* ret = cobj->getRunningScene();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Scene";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scene*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Scene>(tolua_S, "cc.Scene",(cocos2d::Scene*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getRunningScene",argc, 0);
@@ -30491,16 +26075,7 @@ int lua_cocos2dx_Director_setOpenGLView(lua_State* tolua_S)
     {
         cocos2d::GLView* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.GLView",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::GLView*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::GLView>(tolua_S, 2, "cc.GLView",&arg0);
         if(!ok)
             return 0;
         cobj->setOpenGLView(arg0);
@@ -30680,16 +26255,7 @@ int lua_cocos2dx_Director_runWithScene(lua_State* tolua_S)
     {
         cocos2d::Scene* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Scene*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 2, "cc.Scene",&arg0);
         if(!ok)
             return 0;
         cobj->runWithScene(arg0);
@@ -30735,16 +26301,7 @@ int lua_cocos2dx_Director_setNotificationNode(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setNotificationNode(arg0);
@@ -30967,27 +26524,7 @@ int lua_cocos2dx_Director_getConsole(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Console* ret = cobj->getConsole();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Console";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Console*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Console>(tolua_S, "cc.Console",(cocos2d::Console*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getConsole",argc, 0);
@@ -31165,27 +26702,7 @@ int lua_cocos2dx_Director_getScheduler(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Scheduler* ret = cobj->getScheduler();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Scheduler";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scheduler*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Scheduler>(tolua_S, "cc.Scheduler",(cocos2d::Scheduler*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getScheduler",argc, 0);
@@ -31228,16 +26745,7 @@ int lua_cocos2dx_Director_pushScene(lua_State* tolua_S)
     {
         cocos2d::Scene* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Scene*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 2, "cc.Scene",&arg0);
         if(!ok)
             return 0;
         cobj->pushScene(arg0);
@@ -31417,16 +26925,7 @@ int lua_cocos2dx_Director_replaceScene(lua_State* tolua_S)
     {
         cocos2d::Scene* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Scene*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 2, "cc.Scene",&arg0);
         if(!ok)
             return 0;
         cobj->replaceScene(arg0);
@@ -31519,27 +27018,7 @@ int lua_cocos2dx_Director_getActionManager(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionManager* ret = cobj->getActionManager();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionManager";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionManager*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionManager>(tolua_S, "cc.ActionManager",(cocos2d::ActionManager*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getActionManager",argc, 0);
@@ -31572,27 +27051,7 @@ int lua_cocos2dx_Director_getInstance(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Director* ret = cocos2d::Director::getInstance();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Director";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Director*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Director>(tolua_S, "cc.Director",(cocos2d::Director*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);
@@ -31794,16 +27253,7 @@ int lua_cocos2dx_GridBase_afterDraw(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->afterDraw(arg0);
@@ -32302,16 +27752,7 @@ int lua_cocos2dx_GridBase_initWithSize(lua_State* tolua_S)
 
             if (!ok) { break; }
             cocos2d::Texture2D* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 3, "cc.Texture2D",&arg1);
 
             if (!ok) { break; }
             bool arg2;
@@ -32489,27 +27930,7 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
             ok &= luaval_to_size(tolua_S, 2, &arg0);
             if (!ok) { break; }
             cocos2d::GridBase* ret = cocos2d::GridBase::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GridBase";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::GridBase>(tolua_S, "cc.GridBase",(cocos2d::GridBase*)ret);
             return 1;
         }
     } while (0);
@@ -32522,42 +27943,13 @@ int lua_cocos2dx_GridBase_create(lua_State* tolua_S)
             ok &= luaval_to_size(tolua_S, 2, &arg0);
             if (!ok) { break; }
             cocos2d::Texture2D* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 3, "cc.Texture2D",&arg1);
             if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::GridBase* ret = cocos2d::GridBase::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GridBase";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::GridBase>(tolua_S, "cc.GridBase",(cocos2d::GridBase*)ret);
             return 1;
         }
     } while (0);
@@ -32629,27 +28021,7 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
             ok &= luaval_to_size(tolua_S, 2, &arg0);
             if (!ok) { break; }
             cocos2d::Grid3D* ret = cocos2d::Grid3D::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Grid3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Grid3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Grid3D>(tolua_S, "cc.Grid3D",(cocos2d::Grid3D*)ret);
             return 1;
         }
     } while (0);
@@ -32662,42 +28034,13 @@ int lua_cocos2dx_Grid3D_create(lua_State* tolua_S)
             ok &= luaval_to_size(tolua_S, 2, &arg0);
             if (!ok) { break; }
             cocos2d::Texture2D* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 3, "cc.Texture2D",&arg1);
             if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::Grid3D* ret = cocos2d::Grid3D::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Grid3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Grid3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Grid3D>(tolua_S, "cc.Grid3D",(cocos2d::Grid3D*)ret);
             return 1;
         }
     } while (0);
@@ -32728,19 +28071,10 @@ int lua_cocos2dx_Grid3D_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Grid3D();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Grid3D");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Grid3D");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Grid3D");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Grid3D",argc, 0);
@@ -32795,27 +28129,7 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
             ok &= luaval_to_size(tolua_S, 2, &arg0);
             if (!ok) { break; }
             cocos2d::TiledGrid3D* ret = cocos2d::TiledGrid3D::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TiledGrid3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TiledGrid3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TiledGrid3D>(tolua_S, "cc.TiledGrid3D",(cocos2d::TiledGrid3D*)ret);
             return 1;
         }
     } while (0);
@@ -32828,42 +28142,13 @@ int lua_cocos2dx_TiledGrid3D_create(lua_State* tolua_S)
             ok &= luaval_to_size(tolua_S, 2, &arg0);
             if (!ok) { break; }
             cocos2d::Texture2D* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 3, "cc.Texture2D",&arg1);
             if (!ok) { break; }
             bool arg2;
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::TiledGrid3D* ret = cocos2d::TiledGrid3D::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TiledGrid3D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TiledGrid3D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TiledGrid3D>(tolua_S, "cc.TiledGrid3D",(cocos2d::TiledGrid3D*)ret);
             return 1;
         }
     } while (0);
@@ -32894,19 +28179,10 @@ int lua_cocos2dx_TiledGrid3D_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TiledGrid3D();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TiledGrid3D");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TiledGrid3D");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TiledGrid3D");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TiledGrid3D",argc, 0);
@@ -32963,16 +28239,7 @@ int lua_cocos2dx_Sprite_setSpriteFrame(lua_State* tolua_S)
     do{
         if (argc == 1) {
             cocos2d::SpriteFrame* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
 
             if (!ok) { break; }
             cobj->setSpriteFrame(arg0);
@@ -33025,16 +28292,7 @@ int lua_cocos2dx_Sprite_setTexture(lua_State* tolua_S)
     do{
         if (argc == 1) {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
 
             if (!ok) { break; }
             cobj->setTexture(arg0);
@@ -33094,27 +28352,7 @@ int lua_cocos2dx_Sprite_getTexture(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Texture2D* ret = cobj->getTexture();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTexture",argc, 0);
@@ -33250,27 +28488,7 @@ int lua_cocos2dx_Sprite_getBatchNode(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cobj->getBatchNode();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteBatchNode>(tolua_S, "cc.SpriteBatchNode",(cocos2d::SpriteBatchNode*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBatchNode",argc, 0);
@@ -33550,16 +28768,7 @@ int lua_cocos2dx_Sprite_isFrameDisplayed(lua_State* tolua_S)
     {
         cocos2d::SpriteFrame* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
         if(!ok)
             return 0;
         bool ret = cobj->isFrameDisplayed(arg0);
@@ -33650,16 +28859,7 @@ int lua_cocos2dx_Sprite_setBatchNode(lua_State* tolua_S)
     {
         cocos2d::SpriteBatchNode* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteBatchNode",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteBatchNode*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteBatchNode>(tolua_S, 2, "cc.SpriteBatchNode",&arg0);
         if(!ok)
             return 0;
         cobj->setBatchNode(arg0);
@@ -33754,16 +28954,7 @@ int lua_cocos2dx_Sprite_setTextureAtlas(lua_State* tolua_S)
     {
         cocos2d::TextureAtlas* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.TextureAtlas",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::TextureAtlas*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::TextureAtlas>(tolua_S, 2, "cc.TextureAtlas",&arg0);
         if(!ok)
             return 0;
         cobj->setTextureAtlas(arg0);
@@ -33810,27 +29001,7 @@ int lua_cocos2dx_Sprite_getSpriteFrame(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SpriteFrame* ret = cobj->getSpriteFrame();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteFrame>(tolua_S, "cc.SpriteFrame",(cocos2d::SpriteFrame*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSpriteFrame",argc, 0);
@@ -34098,27 +29269,7 @@ int lua_cocos2dx_Sprite_getTextureAtlas(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TextureAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TextureAtlas>(tolua_S, "cc.TextureAtlas",(cocos2d::TextureAtlas*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureAtlas",argc, 0);
@@ -34287,27 +29438,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
             return 1;
         }
     } while (0);
@@ -34317,27 +29448,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
         if (argc == 0)
         {
             cocos2d::Sprite* ret = cocos2d::Sprite::create();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
             return 1;
         }
     } while (0);
@@ -34353,27 +29464,7 @@ int lua_cocos2dx_Sprite_create(lua_State* tolua_S)
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
             if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
             return 1;
         }
     } while (0);
@@ -34405,42 +29496,13 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
         if (argc == 2)
         {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
             if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
             if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::createWithTexture(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
             return 1;
         }
     } while (0);
@@ -34450,16 +29512,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
         if (argc == 3)
         {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
             if (!ok) { break; }
             cocos2d::Rect arg1;
             ok &= luaval_to_rect(tolua_S, 3, &arg1);
@@ -34468,27 +29521,7 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
             ok &= luaval_to_boolean(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::createWithTexture(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
             return 1;
         }
     } while (0);
@@ -34498,39 +29531,10 @@ int lua_cocos2dx_Sprite_createWithTexture(lua_State* tolua_S)
         if (argc == 1)
         {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
             if (!ok) { break; }
             cocos2d::Sprite* ret = cocos2d::Sprite::createWithTexture(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
             return 1;
         }
     } while (0);
@@ -34565,27 +29569,7 @@ int lua_cocos2dx_Sprite_createWithSpriteFrameName(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Sprite* ret = cocos2d::Sprite::createWithSpriteFrameName(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithSpriteFrameName",argc, 1);
@@ -34614,40 +29598,11 @@ int lua_cocos2dx_Sprite_createWithSpriteFrame(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::SpriteFrame* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
         if(!ok)
             return 0;
         cocos2d::Sprite* ret = cocos2d::Sprite::createWithSpriteFrame(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithSpriteFrame",argc, 1);
@@ -35877,27 +30832,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             ok &= luaval_to_int32(tolua_S, 6,(int *)&arg4);
             if (!ok) { break; }
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create(arg0, arg1, arg2, arg3, arg4);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelTTF";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelTTF>(tolua_S, "cc.LabelTTF",(cocos2d::LabelTTF*)ret);
             return 1;
         }
     } while (0);
@@ -35916,27 +30851,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelTTF";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelTTF>(tolua_S, "cc.LabelTTF",(cocos2d::LabelTTF*)ret);
             return 1;
         }
     } while (0);
@@ -35964,27 +30879,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
             ok &= luaval_to_int32(tolua_S, 7,(int *)&arg5);
             if (!ok) { break; }
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create(arg0, arg1, arg2, arg3, arg4, arg5);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelTTF";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelTTF>(tolua_S, "cc.LabelTTF",(cocos2d::LabelTTF*)ret);
             return 1;
         }
     } while (0);
@@ -35994,27 +30889,7 @@ int lua_cocos2dx_LabelTTF_create(lua_State* tolua_S)
         if (argc == 0)
         {
             cocos2d::LabelTTF* ret = cocos2d::LabelTTF::create();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelTTF";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelTTF>(tolua_S, "cc.LabelTTF",(cocos2d::LabelTTF*)ret);
             return 1;
         }
     } while (0);
@@ -36051,27 +30926,7 @@ int lua_cocos2dx_LabelTTF_createWithFontDefinition(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::LabelTTF* ret = cocos2d::LabelTTF::createWithFontDefinition(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelTTF";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelTTF*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::LabelTTF>(tolua_S, "cc.LabelTTF",(cocos2d::LabelTTF*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithFontDefinition",argc, 2);
@@ -36100,19 +30955,10 @@ int lua_cocos2dx_LabelTTF_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::LabelTTF();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.LabelTTF");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.LabelTTF");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.LabelTTF");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "LabelTTF",argc, 0);
@@ -36199,16 +31045,7 @@ int lua_cocos2dx_SpriteBatchNode_appendChild(lua_State* tolua_S)
     {
         cocos2d::Sprite* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Sprite",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Sprite*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0);
         if(!ok)
             return 0;
         cobj->appendChild(arg0);
@@ -36301,16 +31138,7 @@ int lua_cocos2dx_SpriteBatchNode_initWithTexture(lua_State* tolua_S)
         cocos2d::Texture2D* arg0;
         ssize_t arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
 
         ok &= luaval_to_ssize(tolua_S, 3, &arg1);
         if(!ok)
@@ -36359,16 +31187,7 @@ int lua_cocos2dx_SpriteBatchNode_lowestAtlasIndexInChild(lua_State* tolua_S)
     {
         cocos2d::Sprite* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Sprite",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Sprite*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0);
         if(!ok)
             return 0;
         ssize_t ret = cobj->lowestAtlasIndexInChild(arg0);
@@ -36416,16 +31235,7 @@ int lua_cocos2dx_SpriteBatchNode_atlasIndexForChild(lua_State* tolua_S)
         cocos2d::Sprite* arg0;
         int arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Sprite",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Sprite*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0);
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
@@ -36474,16 +31284,7 @@ int lua_cocos2dx_SpriteBatchNode_setTextureAtlas(lua_State* tolua_S)
     {
         cocos2d::TextureAtlas* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.TextureAtlas",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::TextureAtlas*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::TextureAtlas>(tolua_S, 2, "cc.TextureAtlas",&arg0);
         if(!ok)
             return 0;
         cobj->setTextureAtlas(arg0);
@@ -36530,16 +31331,7 @@ int lua_cocos2dx_SpriteBatchNode_rebuildIndexInOrder(lua_State* tolua_S)
         cocos2d::Sprite* arg0;
         ssize_t arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Sprite",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Sprite*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0);
 
         ok &= luaval_to_ssize(tolua_S, 3, &arg1);
         if(!ok)
@@ -36632,27 +31424,7 @@ int lua_cocos2dx_SpriteBatchNode_getTextureAtlas(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TextureAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TextureAtlas>(tolua_S, "cc.TextureAtlas",(cocos2d::TextureAtlas*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureAtlas",argc, 0);
@@ -36750,16 +31522,7 @@ int lua_cocos2dx_SpriteBatchNode_setTexture(lua_State* tolua_S)
     {
         cocos2d::Texture2D* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cobj->setTexture(arg0);
@@ -36806,27 +31569,7 @@ int lua_cocos2dx_SpriteBatchNode_getTexture(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Texture2D* ret = cobj->getTexture();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTexture",argc, 0);
@@ -36869,16 +31612,7 @@ int lua_cocos2dx_SpriteBatchNode_highestAtlasIndexInChild(lua_State* tolua_S)
     {
         cocos2d::Sprite* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Sprite",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Sprite*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0);
         if(!ok)
             return 0;
         ssize_t ret = cobj->highestAtlasIndexInChild(arg0);
@@ -37020,16 +31754,7 @@ int lua_cocos2dx_SpriteBatchNode_removeSpriteFromAtlas(lua_State* tolua_S)
     {
         cocos2d::Sprite* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Sprite",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Sprite*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0);
         if(!ok)
             return 0;
         cobj->removeSpriteFromAtlas(arg0);
@@ -37067,27 +31792,7 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteBatchNode>(tolua_S, "cc.SpriteBatchNode",(cocos2d::SpriteBatchNode*)ret);
         return 1;
     }
     if (argc == 2)
@@ -37099,27 +31804,7 @@ int lua_cocos2dx_SpriteBatchNode_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteBatchNode>(tolua_S, "cc.SpriteBatchNode",(cocos2d::SpriteBatchNode*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -37148,81 +31833,23 @@ int lua_cocos2dx_SpriteBatchNode_createWithTexture(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::createWithTexture(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteBatchNode>(tolua_S, "cc.SpriteBatchNode",(cocos2d::SpriteBatchNode*)ret);
         return 1;
     }
     if (argc == 2)
     {
         cocos2d::Texture2D* arg0;
         ssize_t arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         ok &= luaval_to_ssize(tolua_S, 3, &arg1);
         if(!ok)
             return 0;
         cocos2d::SpriteBatchNode* ret = cocos2d::SpriteBatchNode::createWithTexture(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteBatchNode>(tolua_S, "cc.SpriteBatchNode",(cocos2d::SpriteBatchNode*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTexture",argc, 1);
@@ -37251,19 +31878,10 @@ int lua_cocos2dx_SpriteBatchNode_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::SpriteBatchNode();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.SpriteBatchNode");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.SpriteBatchNode");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.SpriteBatchNode");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "SpriteBatchNode",argc, 0);
@@ -38218,27 +32836,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
             if (!ok) { break; }
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1, arg2, arg3);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelBMFont";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelBMFont>(tolua_S, "cc.LabelBMFont",(cocos2d::LabelBMFont*)ret);
             return 1;
         }
     } while (0);
@@ -38263,27 +32861,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             ok &= luaval_to_point(tolua_S, 6, &arg4);
             if (!ok) { break; }
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1, arg2, arg3, arg4);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelBMFont";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelBMFont>(tolua_S, "cc.LabelBMFont",(cocos2d::LabelBMFont*)ret);
             return 1;
         }
     } while (0);
@@ -38302,27 +32880,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelBMFont";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelBMFont>(tolua_S, "cc.LabelBMFont",(cocos2d::LabelBMFont*)ret);
             return 1;
         }
     } while (0);
@@ -38338,27 +32896,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 3,&arg1);
             if (!ok) { break; }
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelBMFont";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelBMFont>(tolua_S, "cc.LabelBMFont",(cocos2d::LabelBMFont*)ret);
             return 1;
         }
     } while (0);
@@ -38368,27 +32906,7 @@ int lua_cocos2dx_LabelBMFont_create(lua_State* tolua_S)
         if (argc == 0)
         {
             cocos2d::LabelBMFont* ret = cocos2d::LabelBMFont::create();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LabelBMFont";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LabelBMFont*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LabelBMFont>(tolua_S, "cc.LabelBMFont",(cocos2d::LabelBMFont*)ret);
             return 1;
         }
     } while (0);
@@ -38419,19 +32937,10 @@ int lua_cocos2dx_LabelBMFont_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::LabelBMFont();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.LabelBMFont");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.LabelBMFont");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.LabelBMFont");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "LabelBMFont",argc, 0);
@@ -39103,27 +33612,7 @@ int lua_cocos2dx_Label_getFontAtlas(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FontAtlas* ret = cobj->getFontAtlas();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FontAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FontAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FontAtlas>(tolua_S, "cc.FontAtlas",(cocos2d::FontAtlas*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getFontAtlas",argc, 0);
@@ -39381,16 +33870,7 @@ int lua_cocos2dx_Label_setCharMap(lua_State* tolua_S)
     do{
         if (argc == 4) {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
 
             if (!ok) { break; }
             int arg1;
@@ -39491,27 +33971,7 @@ int lua_cocos2dx_Label_getLetter(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Sprite* ret = cobj->getLetter(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLetter",argc, 1);
@@ -39691,27 +34151,7 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Label* ret = cocos2d::Label::createWithBMFont(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Label>(tolua_S, "cc.Label",(cocos2d::Label*)ret);
         return 1;
     }
     if (argc == 3)
@@ -39725,27 +34165,7 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Label* ret = cocos2d::Label::createWithBMFont(arg0, arg1, arg2);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Label>(tolua_S, "cc.Label",(cocos2d::Label*)ret);
         return 1;
     }
     if (argc == 4)
@@ -39761,27 +34181,7 @@ int lua_cocos2dx_Label_createWithBMFont(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Label* ret = cocos2d::Label::createWithBMFont(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Label>(tolua_S, "cc.Label",(cocos2d::Label*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithBMFont",argc, 2);
@@ -39812,27 +34212,7 @@ int lua_cocos2dx_Label_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Label* ret = cocos2d::Label::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Label>(tolua_S, "cc.Label",(cocos2d::Label*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -39862,16 +34242,7 @@ int lua_cocos2dx_Label_createWithCharMap(lua_State* tolua_S)
         if (argc == 4)
         {
             cocos2d::Texture2D* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
             if (!ok) { break; }
             int arg1;
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
@@ -39883,27 +34254,7 @@ int lua_cocos2dx_Label_createWithCharMap(lua_State* tolua_S)
             ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
             if (!ok) { break; }
             cocos2d::Label* ret = cocos2d::Label::createWithCharMap(arg0, arg1, arg2, arg3);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Label>(tolua_S, "cc.Label",(cocos2d::Label*)ret);
             return 1;
         }
     } while (0);
@@ -39925,27 +34276,7 @@ int lua_cocos2dx_Label_createWithCharMap(lua_State* tolua_S)
             ok &= luaval_to_int32(tolua_S, 5,(int *)&arg3);
             if (!ok) { break; }
             cocos2d::Label* ret = cocos2d::Label::createWithCharMap(arg0, arg1, arg2, arg3);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Label>(tolua_S, "cc.Label",(cocos2d::Label*)ret);
             return 1;
         }
     } while (0);
@@ -39958,27 +34289,7 @@ int lua_cocos2dx_Label_createWithCharMap(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Label* ret = cocos2d::Label::createWithCharMap(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Label";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Label*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Label>(tolua_S, "cc.Label",(cocos2d::Label*)ret);
             return 1;
         }
     } while (0);
@@ -40057,27 +34368,7 @@ int lua_cocos2dx_Layer_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Layer* ret = cocos2d::Layer::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Layer";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Layer*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Layer>(tolua_S, "cc.Layer",(cocos2d::Layer*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -40320,27 +34611,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 4,&arg2);
             if (!ok) { break; }
             cocos2d::LayerColor* ret = cocos2d::LayerColor::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LayerColor";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerColor*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LayerColor>(tolua_S, "cc.LayerColor",(cocos2d::LayerColor*)ret);
             return 1;
         }
     } while (0);
@@ -40350,27 +34621,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
         if (argc == 0)
         {
             cocos2d::LayerColor* ret = cocos2d::LayerColor::create();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LayerColor";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerColor*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LayerColor>(tolua_S, "cc.LayerColor",(cocos2d::LayerColor*)ret);
             return 1;
         }
     } while (0);
@@ -40383,27 +34634,7 @@ int lua_cocos2dx_LayerColor_create(lua_State* tolua_S)
             ok &=luaval_to_color4b(tolua_S, 2, &arg0);
             if (!ok) { break; }
             cocos2d::LayerColor* ret = cocos2d::LayerColor::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LayerColor";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerColor*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LayerColor>(tolua_S, "cc.LayerColor",(cocos2d::LayerColor*)ret);
             return 1;
         }
     } while (0);
@@ -41080,27 +35311,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
             ok &=luaval_to_color4b(tolua_S, 3, &arg1);
             if (!ok) { break; }
             cocos2d::LayerGradient* ret = cocos2d::LayerGradient::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LayerGradient";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerGradient*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LayerGradient>(tolua_S, "cc.LayerGradient",(cocos2d::LayerGradient*)ret);
             return 1;
         }
     } while (0);
@@ -41110,27 +35321,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
         if (argc == 0)
         {
             cocos2d::LayerGradient* ret = cocos2d::LayerGradient::create();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LayerGradient";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerGradient*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LayerGradient>(tolua_S, "cc.LayerGradient",(cocos2d::LayerGradient*)ret);
             return 1;
         }
     } while (0);
@@ -41149,27 +35340,7 @@ int lua_cocos2dx_LayerGradient_create(lua_State* tolua_S)
             ok &= luaval_to_point(tolua_S, 4, &arg2);
             if (!ok) { break; }
             cocos2d::LayerGradient* ret = cocos2d::LayerGradient::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.LayerGradient";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::LayerGradient*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::LayerGradient>(tolua_S, "cc.LayerGradient",(cocos2d::LayerGradient*)ret);
             return 1;
         }
     } while (0);
@@ -41291,16 +35462,7 @@ int lua_cocos2dx_LayerMultiplex_addLayer(lua_State* tolua_S)
     {
         cocos2d::Layer* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Layer",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Layer*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Layer>(tolua_S, 2, "cc.Layer",&arg0);
         if(!ok)
             return 0;
         cobj->addLayer(arg0);
@@ -41415,27 +35577,7 @@ int lua_cocos2dx_Scene_getPhysicsWorld(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::PhysicsWorld* ret = cobj->getPhysicsWorld();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.PhysicsWorld";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::PhysicsWorld*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::PhysicsWorld>(tolua_S, "cc.PhysicsWorld",(cocos2d::PhysicsWorld*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPhysicsWorld",argc, 0);
@@ -41468,27 +35610,7 @@ int lua_cocos2dx_Scene_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Scene* ret = cocos2d::Scene::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Scene";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scene*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Scene>(tolua_S, "cc.Scene",(cocos2d::Scene*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -41519,27 +35641,7 @@ int lua_cocos2dx_Scene_createWithPhysics(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Scene* ret = cocos2d::Scene::createWithPhysics();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Scene";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Scene*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Scene>(tolua_S, "cc.Scene",(cocos2d::Scene*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithPhysics",argc, 0);
@@ -41602,40 +35704,11 @@ int lua_cocos2dx_TransitionEaseScene_easeActionWithAction(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "easeActionWithAction",argc, 1);
@@ -41774,40 +35847,11 @@ int lua_cocos2dx_TransitionScene_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionScene* ret = cocos2d::TransitionScene::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionScene";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionScene*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionScene>(tolua_S, "cc.TransitionScene",(cocos2d::TransitionScene*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -41861,41 +35905,12 @@ int lua_cocos2dx_TransitionSceneOriented_create(lua_State* tolua_S)
         cocos2d::Scene* arg1;
         cocos2d::TransitionScene::Orientation arg2;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
         if(!ok)
             return 0;
         cocos2d::TransitionSceneOriented* ret = cocos2d::TransitionSceneOriented::create(arg0, arg1, arg2);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionSceneOriented";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSceneOriented*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionSceneOriented>(tolua_S, "cc.TransitionSceneOriented",(cocos2d::TransitionSceneOriented*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 3);
@@ -41946,40 +35961,11 @@ int lua_cocos2dx_TransitionRotoZoom_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionRotoZoom* ret = cocos2d::TransitionRotoZoom::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionRotoZoom";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionRotoZoom*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionRotoZoom>(tolua_S, "cc.TransitionRotoZoom",(cocos2d::TransitionRotoZoom*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -42030,40 +36016,11 @@ int lua_cocos2dx_TransitionJumpZoom_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionJumpZoom* ret = cocos2d::TransitionJumpZoom::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionJumpZoom";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionJumpZoom*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionJumpZoom>(tolua_S, "cc.TransitionJumpZoom",(cocos2d::TransitionJumpZoom*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -42125,27 +36082,7 @@ int lua_cocos2dx_TransitionMoveInL_action(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->action();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "action",argc, 0);
@@ -42188,40 +36125,11 @@ int lua_cocos2dx_TransitionMoveInL_easeActionWithAction(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "easeActionWithAction",argc, 1);
@@ -42254,40 +36162,11 @@ int lua_cocos2dx_TransitionMoveInL_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionMoveInL* ret = cocos2d::TransitionMoveInL::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionMoveInL";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionMoveInL*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionMoveInL>(tolua_S, "cc.TransitionMoveInL",(cocos2d::TransitionMoveInL*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -42340,40 +36219,11 @@ int lua_cocos2dx_TransitionMoveInR_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionMoveInR* ret = cocos2d::TransitionMoveInR::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionMoveInR";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionMoveInR*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionMoveInR>(tolua_S, "cc.TransitionMoveInR",(cocos2d::TransitionMoveInR*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -42424,40 +36274,11 @@ int lua_cocos2dx_TransitionMoveInT_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionMoveInT* ret = cocos2d::TransitionMoveInT::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionMoveInT";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionMoveInT*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionMoveInT>(tolua_S, "cc.TransitionMoveInT",(cocos2d::TransitionMoveInT*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -42508,40 +36329,11 @@ int lua_cocos2dx_TransitionMoveInB_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionMoveInB* ret = cocos2d::TransitionMoveInB::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionMoveInB";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionMoveInB*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionMoveInB>(tolua_S, "cc.TransitionMoveInB",(cocos2d::TransitionMoveInB*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -42603,27 +36395,7 @@ int lua_cocos2dx_TransitionSlideInL_action(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->action();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "action",argc, 0);
@@ -42666,40 +36438,11 @@ int lua_cocos2dx_TransitionSlideInL_easeActionWithAction(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "easeActionWithAction",argc, 1);
@@ -42732,40 +36475,11 @@ int lua_cocos2dx_TransitionSlideInL_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionSlideInL* ret = cocos2d::TransitionSlideInL::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionSlideInL";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSlideInL*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionSlideInL>(tolua_S, "cc.TransitionSlideInL",(cocos2d::TransitionSlideInL*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -42829,27 +36543,7 @@ int lua_cocos2dx_TransitionSlideInR_action(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->action();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "action",argc, 0);
@@ -42882,40 +36576,11 @@ int lua_cocos2dx_TransitionSlideInR_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionSlideInR* ret = cocos2d::TransitionSlideInR::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionSlideInR";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSlideInR*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionSlideInR>(tolua_S, "cc.TransitionSlideInR",(cocos2d::TransitionSlideInR*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -42978,27 +36643,7 @@ int lua_cocos2dx_TransitionSlideInB_action(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->action();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "action",argc, 0);
@@ -43031,40 +36676,11 @@ int lua_cocos2dx_TransitionSlideInB_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionSlideInB* ret = cocos2d::TransitionSlideInB::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionSlideInB";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSlideInB*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionSlideInB>(tolua_S, "cc.TransitionSlideInB",(cocos2d::TransitionSlideInB*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -43127,27 +36743,7 @@ int lua_cocos2dx_TransitionSlideInT_action(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->action();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "action",argc, 0);
@@ -43180,40 +36776,11 @@ int lua_cocos2dx_TransitionSlideInT_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionSlideInT* ret = cocos2d::TransitionSlideInT::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionSlideInT";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSlideInT*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionSlideInT>(tolua_S, "cc.TransitionSlideInT",(cocos2d::TransitionSlideInT*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -43275,40 +36842,11 @@ int lua_cocos2dx_TransitionShrinkGrow_easeActionWithAction(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "easeActionWithAction",argc, 1);
@@ -43341,40 +36879,11 @@ int lua_cocos2dx_TransitionShrinkGrow_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionShrinkGrow* ret = cocos2d::TransitionShrinkGrow::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionShrinkGrow";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionShrinkGrow*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionShrinkGrow>(tolua_S, "cc.TransitionShrinkGrow",(cocos2d::TransitionShrinkGrow*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -43428,39 +36937,10 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionFlipX* ret = cocos2d::TransitionFlipX::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFlipX";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipX*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionFlipX>(tolua_S, "cc.TransitionFlipX",(cocos2d::TransitionFlipX*)ret);
             return 1;
         }
     } while (0);
@@ -43473,42 +36953,13 @@ int lua_cocos2dx_TransitionFlipX_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
             if (!ok) { break; }
             cocos2d::TransitionFlipX* ret = cocos2d::TransitionFlipX::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFlipX";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipX*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionFlipX>(tolua_S, "cc.TransitionFlipX",(cocos2d::TransitionFlipX*)ret);
             return 1;
         }
     } while (0);
@@ -43563,39 +37014,10 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionFlipY* ret = cocos2d::TransitionFlipY::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFlipY";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipY*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionFlipY>(tolua_S, "cc.TransitionFlipY",(cocos2d::TransitionFlipY*)ret);
             return 1;
         }
     } while (0);
@@ -43608,42 +37030,13 @@ int lua_cocos2dx_TransitionFlipY_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
             if (!ok) { break; }
             cocos2d::TransitionFlipY* ret = cocos2d::TransitionFlipY::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFlipY";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipY*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionFlipY>(tolua_S, "cc.TransitionFlipY",(cocos2d::TransitionFlipY*)ret);
             return 1;
         }
     } while (0);
@@ -43698,39 +37091,10 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionFlipAngular* ret = cocos2d::TransitionFlipAngular::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFlipAngular";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipAngular*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionFlipAngular>(tolua_S, "cc.TransitionFlipAngular",(cocos2d::TransitionFlipAngular*)ret);
             return 1;
         }
     } while (0);
@@ -43743,42 +37107,13 @@ int lua_cocos2dx_TransitionFlipAngular_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
             if (!ok) { break; }
             cocos2d::TransitionFlipAngular* ret = cocos2d::TransitionFlipAngular::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFlipAngular";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFlipAngular*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionFlipAngular>(tolua_S, "cc.TransitionFlipAngular",(cocos2d::TransitionFlipAngular*)ret);
             return 1;
         }
     } while (0);
@@ -43833,39 +37168,10 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionZoomFlipX* ret = cocos2d::TransitionZoomFlipX::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionZoomFlipX";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipX*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionZoomFlipX>(tolua_S, "cc.TransitionZoomFlipX",(cocos2d::TransitionZoomFlipX*)ret);
             return 1;
         }
     } while (0);
@@ -43878,42 +37184,13 @@ int lua_cocos2dx_TransitionZoomFlipX_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
             if (!ok) { break; }
             cocos2d::TransitionZoomFlipX* ret = cocos2d::TransitionZoomFlipX::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionZoomFlipX";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipX*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionZoomFlipX>(tolua_S, "cc.TransitionZoomFlipX",(cocos2d::TransitionZoomFlipX*)ret);
             return 1;
         }
     } while (0);
@@ -43968,39 +37245,10 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionZoomFlipY* ret = cocos2d::TransitionZoomFlipY::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionZoomFlipY";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipY*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionZoomFlipY>(tolua_S, "cc.TransitionZoomFlipY",(cocos2d::TransitionZoomFlipY*)ret);
             return 1;
         }
     } while (0);
@@ -44013,42 +37261,13 @@ int lua_cocos2dx_TransitionZoomFlipY_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
             if (!ok) { break; }
             cocos2d::TransitionZoomFlipY* ret = cocos2d::TransitionZoomFlipY::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionZoomFlipY";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipY*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionZoomFlipY>(tolua_S, "cc.TransitionZoomFlipY",(cocos2d::TransitionZoomFlipY*)ret);
             return 1;
         }
     } while (0);
@@ -44103,39 +37322,10 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionZoomFlipAngular* ret = cocos2d::TransitionZoomFlipAngular::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionZoomFlipAngular";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipAngular*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionZoomFlipAngular>(tolua_S, "cc.TransitionZoomFlipAngular",(cocos2d::TransitionZoomFlipAngular*)ret);
             return 1;
         }
     } while (0);
@@ -44148,42 +37338,13 @@ int lua_cocos2dx_TransitionZoomFlipAngular_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionScene::Orientation arg2;
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
             if (!ok) { break; }
             cocos2d::TransitionZoomFlipAngular* ret = cocos2d::TransitionZoomFlipAngular::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionZoomFlipAngular";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionZoomFlipAngular*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionZoomFlipAngular>(tolua_S, "cc.TransitionZoomFlipAngular",(cocos2d::TransitionZoomFlipAngular*)ret);
             return 1;
         }
     } while (0);
@@ -44238,39 +37399,10 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::TransitionFade* ret = cocos2d::TransitionFade::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFade";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFade*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionFade>(tolua_S, "cc.TransitionFade",(cocos2d::TransitionFade*)ret);
             return 1;
         }
     } while (0);
@@ -44283,42 +37415,13 @@ int lua_cocos2dx_TransitionFade_create(lua_State* tolua_S)
             ok &= luaval_to_number(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::Scene* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
             if (!ok) { break; }
             cocos2d::Color3B arg2;
             ok &= luaval_to_color3b(tolua_S, 4, &arg2);
             if (!ok) { break; }
             cocos2d::TransitionFade* ret = cocos2d::TransitionFade::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFade";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFade*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::TransitionFade>(tolua_S, "cc.TransitionFade",(cocos2d::TransitionFade*)ret);
             return 1;
         }
     } while (0);
@@ -44371,40 +37474,11 @@ int lua_cocos2dx_TransitionCrossFade_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionCrossFade* ret = cocos2d::TransitionCrossFade::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionCrossFade";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionCrossFade*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionCrossFade>(tolua_S, "cc.TransitionCrossFade",(cocos2d::TransitionCrossFade*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -44465,40 +37539,11 @@ int lua_cocos2dx_TransitionTurnOffTiles_easeActionWithAction(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "easeActionWithAction",argc, 1);
@@ -44531,40 +37576,11 @@ int lua_cocos2dx_TransitionTurnOffTiles_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionTurnOffTiles* ret = cocos2d::TransitionTurnOffTiles::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionTurnOffTiles";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionTurnOffTiles*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionTurnOffTiles>(tolua_S, "cc.TransitionTurnOffTiles",(cocos2d::TransitionTurnOffTiles*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -44627,27 +37643,7 @@ int lua_cocos2dx_TransitionSplitCols_action(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->action();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "action",argc, 0);
@@ -44690,40 +37686,11 @@ int lua_cocos2dx_TransitionSplitCols_easeActionWithAction(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "easeActionWithAction",argc, 1);
@@ -44756,40 +37723,11 @@ int lua_cocos2dx_TransitionSplitCols_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionSplitCols* ret = cocos2d::TransitionSplitCols::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionSplitCols";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSplitCols*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionSplitCols>(tolua_S, "cc.TransitionSplitCols",(cocos2d::TransitionSplitCols*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -44842,40 +37780,11 @@ int lua_cocos2dx_TransitionSplitRows_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionSplitRows* ret = cocos2d::TransitionSplitRows::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionSplitRows";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionSplitRows*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionSplitRows>(tolua_S, "cc.TransitionSplitRows",(cocos2d::TransitionSplitRows*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -44936,40 +37845,11 @@ int lua_cocos2dx_TransitionFadeTR_easeActionWithAction(lua_State* tolua_S)
     {
         cocos2d::ActionInterval* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ActionInterval",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ActionInterval*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ActionInterval>(tolua_S, 2, "cc.ActionInterval",&arg0);
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->easeActionWithAction(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "easeActionWithAction",argc, 1);
@@ -45016,27 +37896,7 @@ int lua_cocos2dx_TransitionFadeTR_actionWithSize(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->actionWithSize(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "actionWithSize",argc, 1);
@@ -45069,40 +37929,11 @@ int lua_cocos2dx_TransitionFadeTR_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionFadeTR* ret = cocos2d::TransitionFadeTR::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFadeTR";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFadeTR*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionFadeTR>(tolua_S, "cc.TransitionFadeTR",(cocos2d::TransitionFadeTR*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -45155,40 +37986,11 @@ int lua_cocos2dx_TransitionFadeBL_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionFadeBL* ret = cocos2d::TransitionFadeBL::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFadeBL";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFadeBL*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionFadeBL>(tolua_S, "cc.TransitionFadeBL",(cocos2d::TransitionFadeBL*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -45239,40 +38041,11 @@ int lua_cocos2dx_TransitionFadeUp_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionFadeUp* ret = cocos2d::TransitionFadeUp::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFadeUp";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFadeUp*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionFadeUp>(tolua_S, "cc.TransitionFadeUp",(cocos2d::TransitionFadeUp*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -45323,40 +38096,11 @@ int lua_cocos2dx_TransitionFadeDown_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionFadeDown* ret = cocos2d::TransitionFadeDown::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionFadeDown";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionFadeDown*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionFadeDown>(tolua_S, "cc.TransitionFadeDown",(cocos2d::TransitionFadeDown*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -45421,27 +38165,7 @@ int lua_cocos2dx_TransitionPageTurn_actionWithSize(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ActionInterval* ret = cobj->actionWithSize(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ActionInterval";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ActionInterval*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ActionInterval>(tolua_S, "cc.ActionInterval",(cocos2d::ActionInterval*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "actionWithSize",argc, 1);
@@ -45488,16 +38212,7 @@ int lua_cocos2dx_TransitionPageTurn_initWithDuration(lua_State* tolua_S)
 
         ok &= luaval_to_number(tolua_S, 2,&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
 
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
@@ -45537,41 +38252,12 @@ int lua_cocos2dx_TransitionPageTurn_create(lua_State* tolua_S)
         cocos2d::Scene* arg1;
         bool arg2;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         ok &= luaval_to_boolean(tolua_S, 4,&arg2);
         if(!ok)
             return 0;
         cocos2d::TransitionPageTurn* ret = cocos2d::TransitionPageTurn::create(arg0, arg1, arg2);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionPageTurn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionPageTurn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionPageTurn>(tolua_S, "cc.TransitionPageTurn",(cocos2d::TransitionPageTurn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 3);
@@ -45600,19 +38286,10 @@ int lua_cocos2dx_TransitionPageTurn_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionPageTurn();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TransitionPageTurn");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TransitionPageTurn");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TransitionPageTurn");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TransitionPageTurn",argc, 0);
@@ -45668,40 +38345,11 @@ int lua_cocos2dx_TransitionProgress_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionProgress* ret = cocos2d::TransitionProgress::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionProgress";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgress*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionProgress>(tolua_S, "cc.TransitionProgress",(cocos2d::TransitionProgress*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -45730,19 +38378,10 @@ int lua_cocos2dx_TransitionProgress_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TransitionProgress();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TransitionProgress");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TransitionProgress");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TransitionProgress");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TransitionProgress",argc, 0);
@@ -45795,40 +38434,11 @@ int lua_cocos2dx_TransitionProgressRadialCCW_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionProgressRadialCCW* ret = cocos2d::TransitionProgressRadialCCW::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionProgressRadialCCW";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressRadialCCW*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionProgressRadialCCW>(tolua_S, "cc.TransitionProgressRadialCCW",(cocos2d::TransitionProgressRadialCCW*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -45879,40 +38489,11 @@ int lua_cocos2dx_TransitionProgressRadialCW_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionProgressRadialCW* ret = cocos2d::TransitionProgressRadialCW::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionProgressRadialCW";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressRadialCW*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionProgressRadialCW>(tolua_S, "cc.TransitionProgressRadialCW",(cocos2d::TransitionProgressRadialCW*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -45963,40 +38544,11 @@ int lua_cocos2dx_TransitionProgressHorizontal_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionProgressHorizontal* ret = cocos2d::TransitionProgressHorizontal::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionProgressHorizontal";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressHorizontal*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionProgressHorizontal>(tolua_S, "cc.TransitionProgressHorizontal",(cocos2d::TransitionProgressHorizontal*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -46047,40 +38599,11 @@ int lua_cocos2dx_TransitionProgressVertical_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionProgressVertical* ret = cocos2d::TransitionProgressVertical::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionProgressVertical";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressVertical*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionProgressVertical>(tolua_S, "cc.TransitionProgressVertical",(cocos2d::TransitionProgressVertical*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -46131,40 +38654,11 @@ int lua_cocos2dx_TransitionProgressInOut_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionProgressInOut* ret = cocos2d::TransitionProgressInOut::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionProgressInOut";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressInOut*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionProgressInOut>(tolua_S, "cc.TransitionProgressInOut",(cocos2d::TransitionProgressInOut*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -46215,40 +38709,11 @@ int lua_cocos2dx_TransitionProgressOutIn_create(lua_State* tolua_S)
         double arg0;
         cocos2d::Scene* arg1;
         ok &= luaval_to_number(tolua_S, 2,&arg0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Scene",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Scene*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Scene>(tolua_S, 3, "cc.Scene",&arg1);
         if(!ok)
             return 0;
         cocos2d::TransitionProgressOutIn* ret = cocos2d::TransitionProgressOutIn::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TransitionProgressOutIn";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TransitionProgressOutIn*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TransitionProgressOutIn>(tolua_S, "cc.TransitionProgressOutIn",(cocos2d::TransitionProgressOutIn*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 2);
@@ -46732,16 +39197,7 @@ int lua_cocos2dx_MenuItemLabel_setLabel(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setLabel(arg0);
@@ -46834,27 +39290,7 @@ int lua_cocos2dx_MenuItemLabel_getLabel(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getLabel();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLabel",argc, 0);
@@ -47362,16 +39798,7 @@ int lua_cocos2dx_MenuItemSprite_setNormalImage(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setNormalImage(arg0);
@@ -47417,16 +39844,7 @@ int lua_cocos2dx_MenuItemSprite_setDisabledImage(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setDisabledImage(arg0);
@@ -47472,16 +39890,7 @@ int lua_cocos2dx_MenuItemSprite_setSelectedImage(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setSelectedImage(arg0);
@@ -47528,27 +39937,7 @@ int lua_cocos2dx_MenuItemSprite_getDisabledImage(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getDisabledImage();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getDisabledImage",argc, 0);
@@ -47592,27 +39981,7 @@ int lua_cocos2dx_MenuItemSprite_getSelectedImage(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getSelectedImage();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSelectedImage",argc, 0);
@@ -47656,27 +40025,7 @@ int lua_cocos2dx_MenuItemSprite_getNormalImage(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getNormalImage();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNormalImage",argc, 0);
@@ -47790,16 +40139,7 @@ int lua_cocos2dx_MenuItemImage_setDisabledSpriteFrame(lua_State* tolua_S)
     {
         cocos2d::SpriteFrame* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
         if(!ok)
             return 0;
         cobj->setDisabledSpriteFrame(arg0);
@@ -47845,16 +40185,7 @@ int lua_cocos2dx_MenuItemImage_setSelectedSpriteFrame(lua_State* tolua_S)
     {
         cocos2d::SpriteFrame* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
         if(!ok)
             return 0;
         cobj->setSelectedSpriteFrame(arg0);
@@ -47900,16 +40231,7 @@ int lua_cocos2dx_MenuItemImage_setNormalSpriteFrame(lua_State* tolua_S)
     {
         cocos2d::SpriteFrame* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
         if(!ok)
             return 0;
         cobj->setNormalSpriteFrame(arg0);
@@ -48067,16 +40389,7 @@ int lua_cocos2dx_MenuItemToggle_addSubItem(lua_State* tolua_S)
     {
         cocos2d::MenuItem* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.MenuItem",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::MenuItem*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::MenuItem>(tolua_S, 2, "cc.MenuItem",&arg0);
         if(!ok)
             return 0;
         cobj->addSubItem(arg0);
@@ -48123,27 +40436,7 @@ int lua_cocos2dx_MenuItemToggle_getSelectedItem(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::MenuItem* ret = cobj->getSelectedItem();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.MenuItem";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MenuItem*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::MenuItem>(tolua_S, "cc.MenuItem",(cocos2d::MenuItem*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSelectedItem",argc, 0);
@@ -48639,16 +40932,7 @@ int lua_cocos2dx_ClippingNode_setStencil(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setStencil(arg0);
@@ -48739,27 +41023,7 @@ int lua_cocos2dx_ClippingNode_getStencil(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getStencil();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getStencil",argc, 0);
@@ -48837,39 +41101,10 @@ int lua_cocos2dx_ClippingNode_create(lua_State* tolua_S)
         if (argc == 1)
         {
             cocos2d::Node* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
             if (!ok) { break; }
             cocos2d::ClippingNode* ret = cocos2d::ClippingNode::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ClippingNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ClippingNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ClippingNode>(tolua_S, "cc.ClippingNode",(cocos2d::ClippingNode*)ret);
             return 1;
         }
     } while (0);
@@ -48879,27 +41114,7 @@ int lua_cocos2dx_ClippingNode_create(lua_State* tolua_S)
         if (argc == 0)
         {
             cocos2d::ClippingNode* ret = cocos2d::ClippingNode::create();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ClippingNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ClippingNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ClippingNode>(tolua_S, "cc.ClippingNode",(cocos2d::ClippingNode*)ret);
             return 1;
         }
     } while (0);
@@ -49011,16 +41226,7 @@ int lua_cocos2dx_MotionStreak_setTexture(lua_State* tolua_S)
     {
         cocos2d::Texture2D* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cobj->setTexture(arg0);
@@ -49067,27 +41273,7 @@ int lua_cocos2dx_MotionStreak_getTexture(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Texture2D* ret = cobj->getTexture();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTexture",argc, 0);
@@ -49357,39 +41543,10 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
             ok &= luaval_to_color3b(tolua_S, 5, &arg3);
             if (!ok) { break; }
             cocos2d::Texture2D* arg4;
-            do {
-				if (!luaval_is_usertype(tolua_S,6,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg4 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,6,0);
-					if (nullptr == arg4){
-						LUA_PRECONDITION( arg4, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 6, "cc.Texture2D",&arg4);
             if (!ok) { break; }
             cocos2d::MotionStreak* ret = cocos2d::MotionStreak::create(arg0, arg1, arg2, arg3, arg4);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.MotionStreak";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MotionStreak*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::MotionStreak>(tolua_S, "cc.MotionStreak",(cocos2d::MotionStreak*)ret);
             return 1;
         }
     } while (0);
@@ -49414,27 +41571,7 @@ int lua_cocos2dx_MotionStreak_create(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 6,&arg4);
             if (!ok) { break; }
             cocos2d::MotionStreak* ret = cocos2d::MotionStreak::create(arg0, arg1, arg2, arg3, arg4);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.MotionStreak";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::MotionStreak*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::MotionStreak>(tolua_S, "cc.MotionStreak",(cocos2d::MotionStreak*)ret);
             return 1;
         }
     } while (0);
@@ -49639,16 +41776,7 @@ int lua_cocos2dx_ProgressTimer_setSprite(lua_State* tolua_S)
     {
         cocos2d::Sprite* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Sprite",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Sprite*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0);
         if(!ok)
             return 0;
         cobj->setSprite(arg0);
@@ -49739,27 +41867,7 @@ int lua_cocos2dx_ProgressTimer_getSprite(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Sprite* ret = cobj->getSprite();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSprite",argc, 0);
@@ -50069,40 +42177,11 @@ int lua_cocos2dx_ProgressTimer_create(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::Sprite* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Sprite",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Sprite*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0);
         if(!ok)
             return 0;
         cocos2d::ProgressTimer* ret = cocos2d::ProgressTimer::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ProgressTimer";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ProgressTimer*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ProgressTimer>(tolua_S, "cc.ProgressTimer",(cocos2d::ProgressTimer*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -50843,19 +42922,10 @@ int lua_cocos2dx_Image_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Image();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Image");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Image");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Image");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Image",argc, 0);
@@ -51156,16 +43226,7 @@ int lua_cocos2dx_RenderTexture_setSprite(lua_State* tolua_S)
     {
         cocos2d::Sprite* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Sprite",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Sprite*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Sprite>(tolua_S, 2, "cc.Sprite",&arg0);
         if(!ok)
             return 0;
         cobj->setSprite(arg0);
@@ -51212,27 +43273,7 @@ int lua_cocos2dx_RenderTexture_getSprite(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Sprite* ret = cobj->getSprite();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSprite",argc, 0);
@@ -51904,27 +43945,7 @@ int lua_cocos2dx_RenderTexture_newImage(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Image* ret = cobj->newImage();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Image";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Image*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Image>(tolua_S, "cc.Image",(cocos2d::Image*)ret);
         return 1;
     }
     if (argc == 1) 
@@ -51935,27 +43956,7 @@ int lua_cocos2dx_RenderTexture_newImage(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Image* ret = cobj->newImage(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Image";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Image*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Image>(tolua_S, "cc.Image",(cocos2d::Image*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "newImage",argc, 0);
@@ -52117,27 +44118,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
             ok &= luaval_to_int32(tolua_S, 4,(int *)&arg2);
             if (!ok) { break; }
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1, arg2);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RenderTexture";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RenderTexture*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::RenderTexture>(tolua_S, "cc.RenderTexture",(cocos2d::RenderTexture*)ret);
             return 1;
         }
     } while (0);
@@ -52159,27 +44140,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
             ok &= luaval_to_uint32(tolua_S, 5,&arg3);
             if (!ok) { break; }
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1, arg2, arg3);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RenderTexture";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RenderTexture*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::RenderTexture>(tolua_S, "cc.RenderTexture",(cocos2d::RenderTexture*)ret);
             return 1;
         }
     } while (0);
@@ -52195,27 +44156,7 @@ int lua_cocos2dx_RenderTexture_create(lua_State* tolua_S)
             ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
             if (!ok) { break; }
             cocos2d::RenderTexture* ret = cocos2d::RenderTexture::create(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.RenderTexture";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::RenderTexture*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::RenderTexture>(tolua_S, "cc.RenderTexture",(cocos2d::RenderTexture*)ret);
             return 1;
         }
     } while (0);
@@ -52246,19 +44187,10 @@ int lua_cocos2dx_RenderTexture_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::RenderTexture();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.RenderTexture");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.RenderTexture");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.RenderTexture");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "RenderTexture",argc, 0);
@@ -52344,16 +44276,7 @@ int lua_cocos2dx_NodeGrid_setTarget(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setTarget(arg0);
@@ -52393,27 +44316,7 @@ int lua_cocos2dx_NodeGrid_getGrid(lua_State* tolua_S)
     do{
         if (argc == 0) {
             const cocos2d::GridBase* ret = cobj->getGrid();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GridBase";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::GridBase>(tolua_S, "cc.GridBase",(cocos2d::GridBase*)ret);
             return 1;
         }
     }while(0);
@@ -52421,27 +44324,7 @@ int lua_cocos2dx_NodeGrid_getGrid(lua_State* tolua_S)
     do{
         if (argc == 0) {
             cocos2d::GridBase* ret = cobj->getGrid();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GridBase";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GridBase*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::GridBase>(tolua_S, "cc.GridBase",(cocos2d::GridBase*)ret);
             return 1;
         }
     }while(0);
@@ -52486,16 +44369,7 @@ int lua_cocos2dx_NodeGrid_setGrid(lua_State* tolua_S)
     {
         cocos2d::GridBase* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.GridBase",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::GridBase*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::GridBase>(tolua_S, 2, "cc.GridBase",&arg0);
         if(!ok)
             return 0;
         cobj->setGrid(arg0);
@@ -52531,27 +44405,7 @@ int lua_cocos2dx_NodeGrid_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::NodeGrid* ret = cocos2d::NodeGrid::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.NodeGrid";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::NodeGrid*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::NodeGrid>(tolua_S, "cc.NodeGrid",(cocos2d::NodeGrid*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -52615,16 +44469,7 @@ int lua_cocos2dx_ParticleBatchNode_setTexture(lua_State* tolua_S)
     {
         cocos2d::Texture2D* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cobj->setTexture(arg0);
@@ -52717,27 +44562,7 @@ int lua_cocos2dx_ParticleBatchNode_getTexture(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Texture2D* ret = cobj->getTexture();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTexture",argc, 0);
@@ -52780,16 +44605,7 @@ int lua_cocos2dx_ParticleBatchNode_setTextureAtlas(lua_State* tolua_S)
     {
         cocos2d::TextureAtlas* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.TextureAtlas",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::TextureAtlas*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::TextureAtlas>(tolua_S, 2, "cc.TextureAtlas",&arg0);
         if(!ok)
             return 0;
         cobj->setTextureAtlas(arg0);
@@ -52882,27 +44698,7 @@ int lua_cocos2dx_ParticleBatchNode_getTextureAtlas(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TextureAtlas* ret = cobj->getTextureAtlas();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TextureAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TextureAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TextureAtlas>(tolua_S, "cc.TextureAtlas",(cocos2d::TextureAtlas*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureAtlas",argc, 0);
@@ -52946,16 +44742,7 @@ int lua_cocos2dx_ParticleBatchNode_insertChild(lua_State* tolua_S)
         cocos2d::ParticleSystem* arg0;
         int arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ParticleSystem",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ParticleSystem*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ParticleSystem>(tolua_S, 2, "cc.ParticleSystem",&arg0);
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
@@ -53087,27 +44874,7 @@ int lua_cocos2dx_ParticleBatchNode_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleBatchNode* ret = cocos2d::ParticleBatchNode::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleBatchNode>(tolua_S, "cc.ParticleBatchNode",(cocos2d::ParticleBatchNode*)ret);
         return 1;
     }
     if (argc == 2)
@@ -53119,27 +44886,7 @@ int lua_cocos2dx_ParticleBatchNode_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleBatchNode* ret = cocos2d::ParticleBatchNode::create(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleBatchNode>(tolua_S, "cc.ParticleBatchNode",(cocos2d::ParticleBatchNode*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -53168,81 +44915,23 @@ int lua_cocos2dx_ParticleBatchNode_createWithTexture(lua_State* tolua_S)
     if (argc == 1)
     {
         cocos2d::Texture2D* arg0;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cocos2d::ParticleBatchNode* ret = cocos2d::ParticleBatchNode::createWithTexture(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleBatchNode>(tolua_S, "cc.ParticleBatchNode",(cocos2d::ParticleBatchNode*)ret);
         return 1;
     }
     if (argc == 2)
     {
         cocos2d::Texture2D* arg0;
         int arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
         cocos2d::ParticleBatchNode* ret = cocos2d::ParticleBatchNode::createWithTexture(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleBatchNode>(tolua_S, "cc.ParticleBatchNode",(cocos2d::ParticleBatchNode*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTexture",argc, 1);
@@ -53358,27 +45047,7 @@ int lua_cocos2dx_ParticleSystem_getTexture(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Texture2D* ret = cobj->getTexture();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTexture",argc, 0);
@@ -53466,27 +45135,7 @@ int lua_cocos2dx_ParticleSystem_getBatchNode(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleBatchNode* ret = cobj->getBatchNode();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleBatchNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleBatchNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleBatchNode>(tolua_S, "cc.ParticleBatchNode",(cocos2d::ParticleBatchNode*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getBatchNode",argc, 0);
@@ -54611,16 +46260,7 @@ int lua_cocos2dx_ParticleSystem_setTexture(lua_State* tolua_S)
     {
         cocos2d::Texture2D* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cobj->setTexture(arg0);
@@ -56336,16 +47976,7 @@ int lua_cocos2dx_ParticleSystem_setBatchNode(lua_State* tolua_S)
     {
         cocos2d::ParticleBatchNode* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.ParticleBatchNode",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::ParticleBatchNode*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::ParticleBatchNode>(tolua_S, 2, "cc.ParticleBatchNode",&arg0);
         if(!ok)
             return 0;
         cobj->setBatchNode(arg0);
@@ -57860,27 +49491,7 @@ int lua_cocos2dx_ParticleSystem_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSystem* ret = cocos2d::ParticleSystem::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSystem";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystem*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSystem>(tolua_S, "cc.ParticleSystem",(cocos2d::ParticleSystem*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -57913,27 +49524,7 @@ int lua_cocos2dx_ParticleSystem_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSystem* ret = cocos2d::ParticleSystem::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSystem";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystem*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSystem>(tolua_S, "cc.ParticleSystem",(cocos2d::ParticleSystem*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -58095,16 +49686,7 @@ int lua_cocos2dx_ParticleSystemQuad_setDisplayFrame(lua_State* tolua_S)
     {
         cocos2d::SpriteFrame* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
         if(!ok)
             return 0;
         cobj->setDisplayFrame(arg0);
@@ -58151,16 +49733,7 @@ int lua_cocos2dx_ParticleSystemQuad_setTextureWithRect(lua_State* tolua_S)
         cocos2d::Texture2D* arg0;
         cocos2d::Rect arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
 
         ok &= luaval_to_rect(tolua_S, 3, &arg1);
         if(!ok)
@@ -58200,27 +49773,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
             ok &= luaval_to_std_string(tolua_S, 2,&arg0);
             if (!ok) { break; }
             cocos2d::ParticleSystemQuad* ret = cocos2d::ParticleSystemQuad::create(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSystemQuad";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystemQuad*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ParticleSystemQuad>(tolua_S, "cc.ParticleSystemQuad",(cocos2d::ParticleSystemQuad*)ret);
             return 1;
         }
     } while (0);
@@ -58230,27 +49783,7 @@ int lua_cocos2dx_ParticleSystemQuad_create(lua_State* tolua_S)
         if (argc == 0)
         {
             cocos2d::ParticleSystemQuad* ret = cocos2d::ParticleSystemQuad::create();
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSystemQuad";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystemQuad*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::ParticleSystemQuad>(tolua_S, "cc.ParticleSystemQuad",(cocos2d::ParticleSystemQuad*)ret);
             return 1;
         }
     } while (0);
@@ -58285,27 +49818,7 @@ int lua_cocos2dx_ParticleSystemQuad_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSystemQuad* ret = cocos2d::ParticleSystemQuad::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSystemQuad";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSystemQuad*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSystemQuad>(tolua_S, "cc.ParticleSystemQuad",(cocos2d::ParticleSystemQuad*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -58359,27 +49872,7 @@ int lua_cocos2dx_ParticleFire_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleFire* ret = cocos2d::ParticleFire::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleFire";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFire*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleFire>(tolua_S, "cc.ParticleFire",(cocos2d::ParticleFire*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -58412,27 +49905,7 @@ int lua_cocos2dx_ParticleFire_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleFire* ret = cocos2d::ParticleFire::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleFire";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFire*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleFire>(tolua_S, "cc.ParticleFire",(cocos2d::ParticleFire*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -58484,27 +49957,7 @@ int lua_cocos2dx_ParticleFireworks_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleFireworks* ret = cocos2d::ParticleFireworks::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleFireworks";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFireworks*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleFireworks>(tolua_S, "cc.ParticleFireworks",(cocos2d::ParticleFireworks*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -58537,27 +49990,7 @@ int lua_cocos2dx_ParticleFireworks_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleFireworks* ret = cocos2d::ParticleFireworks::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleFireworks";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFireworks*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleFireworks>(tolua_S, "cc.ParticleFireworks",(cocos2d::ParticleFireworks*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -58609,27 +50042,7 @@ int lua_cocos2dx_ParticleSun_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSun* ret = cocos2d::ParticleSun::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSun";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSun*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSun>(tolua_S, "cc.ParticleSun",(cocos2d::ParticleSun*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -58662,27 +50075,7 @@ int lua_cocos2dx_ParticleSun_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSun* ret = cocos2d::ParticleSun::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSun";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSun*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSun>(tolua_S, "cc.ParticleSun",(cocos2d::ParticleSun*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -58734,27 +50127,7 @@ int lua_cocos2dx_ParticleGalaxy_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleGalaxy* ret = cocos2d::ParticleGalaxy::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleGalaxy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleGalaxy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleGalaxy>(tolua_S, "cc.ParticleGalaxy",(cocos2d::ParticleGalaxy*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -58787,27 +50160,7 @@ int lua_cocos2dx_ParticleGalaxy_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleGalaxy* ret = cocos2d::ParticleGalaxy::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleGalaxy";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleGalaxy*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleGalaxy>(tolua_S, "cc.ParticleGalaxy",(cocos2d::ParticleGalaxy*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -58859,27 +50212,7 @@ int lua_cocos2dx_ParticleFlower_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleFlower* ret = cocos2d::ParticleFlower::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleFlower";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFlower*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleFlower>(tolua_S, "cc.ParticleFlower",(cocos2d::ParticleFlower*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -58912,27 +50245,7 @@ int lua_cocos2dx_ParticleFlower_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleFlower* ret = cocos2d::ParticleFlower::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleFlower";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleFlower*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleFlower>(tolua_S, "cc.ParticleFlower",(cocos2d::ParticleFlower*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -58984,27 +50297,7 @@ int lua_cocos2dx_ParticleMeteor_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleMeteor* ret = cocos2d::ParticleMeteor::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleMeteor";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleMeteor*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleMeteor>(tolua_S, "cc.ParticleMeteor",(cocos2d::ParticleMeteor*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -59037,27 +50330,7 @@ int lua_cocos2dx_ParticleMeteor_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleMeteor* ret = cocos2d::ParticleMeteor::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleMeteor";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleMeteor*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleMeteor>(tolua_S, "cc.ParticleMeteor",(cocos2d::ParticleMeteor*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -59109,27 +50382,7 @@ int lua_cocos2dx_ParticleSpiral_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSpiral* ret = cocos2d::ParticleSpiral::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSpiral";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSpiral*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSpiral>(tolua_S, "cc.ParticleSpiral",(cocos2d::ParticleSpiral*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -59162,27 +50415,7 @@ int lua_cocos2dx_ParticleSpiral_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSpiral* ret = cocos2d::ParticleSpiral::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSpiral";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSpiral*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSpiral>(tolua_S, "cc.ParticleSpiral",(cocos2d::ParticleSpiral*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -59234,27 +50467,7 @@ int lua_cocos2dx_ParticleExplosion_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleExplosion* ret = cocos2d::ParticleExplosion::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleExplosion";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleExplosion*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleExplosion>(tolua_S, "cc.ParticleExplosion",(cocos2d::ParticleExplosion*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -59287,27 +50500,7 @@ int lua_cocos2dx_ParticleExplosion_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleExplosion* ret = cocos2d::ParticleExplosion::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleExplosion";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleExplosion*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleExplosion>(tolua_S, "cc.ParticleExplosion",(cocos2d::ParticleExplosion*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -59359,27 +50552,7 @@ int lua_cocos2dx_ParticleSmoke_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSmoke* ret = cocos2d::ParticleSmoke::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSmoke";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSmoke*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSmoke>(tolua_S, "cc.ParticleSmoke",(cocos2d::ParticleSmoke*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -59412,27 +50585,7 @@ int lua_cocos2dx_ParticleSmoke_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSmoke* ret = cocos2d::ParticleSmoke::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSmoke";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSmoke*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSmoke>(tolua_S, "cc.ParticleSmoke",(cocos2d::ParticleSmoke*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -59484,27 +50637,7 @@ int lua_cocos2dx_ParticleSnow_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSnow* ret = cocos2d::ParticleSnow::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSnow";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSnow*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSnow>(tolua_S, "cc.ParticleSnow",(cocos2d::ParticleSnow*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -59537,27 +50670,7 @@ int lua_cocos2dx_ParticleSnow_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleSnow* ret = cocos2d::ParticleSnow::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleSnow";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleSnow*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleSnow>(tolua_S, "cc.ParticleSnow",(cocos2d::ParticleSnow*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -59609,27 +50722,7 @@ int lua_cocos2dx_ParticleRain_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleRain* ret = cocos2d::ParticleRain::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleRain";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleRain*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleRain>(tolua_S, "cc.ParticleRain",(cocos2d::ParticleRain*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -59662,27 +50755,7 @@ int lua_cocos2dx_ParticleRain_createWithTotalParticles(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParticleRain* ret = cocos2d::ParticleRain::createWithTotalParticles(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParticleRain";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParticleRain*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParticleRain>(tolua_S, "cc.ParticleRain",(cocos2d::ParticleRain*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithTotalParticles",argc, 1);
@@ -59888,19 +50961,10 @@ int lua_cocos2dx_EventCustom_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::EventCustom(arg0);
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventCustom");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.EventCustom");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventCustom");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "EventCustom",argc, 1);
@@ -60729,27 +51793,7 @@ int lua_cocos2dx_FileUtils_getInstance(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::FileUtils* ret = cocos2d::FileUtils::getInstance();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.FileUtils";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::FileUtils*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::FileUtils>(tolua_S, "cc.FileUtils",(cocos2d::FileUtils*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);
@@ -60951,27 +51995,7 @@ int lua_cocos2dx_Application_getInstance(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Application* ret = cocos2d::Application::getInstance();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Application";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Application*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Application>(tolua_S, "cc.Application",(cocos2d::Application*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);
@@ -61079,16 +52103,7 @@ int lua_cocos2dx_ShaderCache_addProgram(lua_State* tolua_S)
         cocos2d::GLProgram* arg0;
         std::string arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.GLProgram",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::GLProgram*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::GLProgram>(tolua_S, 2, "cc.GLProgram",&arg0);
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
@@ -61140,27 +52155,7 @@ int lua_cocos2dx_ShaderCache_getProgram(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::GLProgram* ret = cobj->getProgram(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.GLProgram";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::GLProgram*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::GLProgram>(tolua_S, "cc.GLProgram",(cocos2d::GLProgram*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getProgram",argc, 1);
@@ -61266,27 +52261,7 @@ int lua_cocos2dx_ShaderCache_getInstance(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ShaderCache* ret = cocos2d::ShaderCache::getInstance();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ShaderCache";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ShaderCache*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ShaderCache>(tolua_S, "cc.ShaderCache",(cocos2d::ShaderCache*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);
@@ -61315,19 +52290,10 @@ int lua_cocos2dx_ShaderCache_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::ShaderCache();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.ShaderCache");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.ShaderCache");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.ShaderCache");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ShaderCache",argc, 0);
@@ -61400,27 +52366,7 @@ int lua_cocos2dx_AnimationCache_getAnimation(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Animation* ret = cobj->getAnimation(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Animation";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Animation*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Animation>(tolua_S, "cc.Animation",(cocos2d::Animation*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getAnimation",argc, 1);
@@ -61464,16 +52410,7 @@ int lua_cocos2dx_AnimationCache_addAnimation(lua_State* tolua_S)
         cocos2d::Animation* arg0;
         std::string arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Animation",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Animation*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Animation>(tolua_S, 2, "cc.Animation",&arg0);
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
@@ -61726,27 +52663,7 @@ int lua_cocos2dx_AnimationCache_getInstance(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::AnimationCache* ret = cocos2d::AnimationCache::getInstance();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.AnimationCache";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::AnimationCache*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::AnimationCache>(tolua_S, "cc.AnimationCache",(cocos2d::AnimationCache*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);
@@ -61775,19 +52692,10 @@ int lua_cocos2dx_AnimationCache_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::AnimationCache();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.AnimationCache");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.AnimationCache");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.AnimationCache");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "AnimationCache",argc, 0);
@@ -61882,16 +52790,7 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFramesWithFile(lua_State* tolua_S)
 
             if (!ok) { break; }
             cocos2d::Texture2D* arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 3, "cc.Texture2D",&arg1);
 
             if (!ok) { break; }
             cobj->addSpriteFramesWithFile(arg0, arg1);
@@ -61940,16 +52839,7 @@ int lua_cocos2dx_SpriteFrameCache_addSpriteFrame(lua_State* tolua_S)
         cocos2d::SpriteFrame* arg0;
         std::string arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.SpriteFrame",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::SpriteFrame*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::SpriteFrame>(tolua_S, 2, "cc.SpriteFrame",&arg0);
 
         ok &= luaval_to_std_string(tolua_S, 3,&arg1);
         if(!ok)
@@ -62044,27 +52934,7 @@ int lua_cocos2dx_SpriteFrameCache_getSpriteFrameByName(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SpriteFrame* ret = cobj->getSpriteFrameByName(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteFrame";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrame*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteFrame>(tolua_S, "cc.SpriteFrame",(cocos2d::SpriteFrame*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getSpriteFrameByName",argc, 1);
@@ -62240,16 +53110,7 @@ int lua_cocos2dx_SpriteFrameCache_removeSpriteFramesFromTexture(lua_State* tolua
     {
         cocos2d::Texture2D* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cobj->removeSpriteFramesFromTexture(arg0);
@@ -62361,27 +53222,7 @@ int lua_cocos2dx_SpriteFrameCache_getInstance(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::SpriteFrameCache* ret = cocos2d::SpriteFrameCache::getInstance();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SpriteFrameCache";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::SpriteFrameCache*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::SpriteFrameCache>(tolua_S, "cc.SpriteFrameCache",(cocos2d::SpriteFrameCache*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);
@@ -63331,16 +54172,7 @@ int lua_cocos2dx_TextureCache_addImage(lua_State* tolua_S)
     do{
         if (argc == 2) {
             cocos2d::Image* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Image",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Image*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Image>(tolua_S, 2, "cc.Image",&arg0);
 
             if (!ok) { break; }
             std::string arg1;
@@ -63348,27 +54180,7 @@ int lua_cocos2dx_TextureCache_addImage(lua_State* tolua_S)
 
             if (!ok) { break; }
             cocos2d::Texture2D* ret = cobj->addImage(arg0, arg1);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
             return 1;
         }
     }while(0);
@@ -63380,27 +54192,7 @@ int lua_cocos2dx_TextureCache_addImage(lua_State* tolua_S)
 
             if (!ok) { break; }
             cocos2d::Texture2D* ret = cobj->addImage(arg0);
-            do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+            object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
             return 1;
         }
     }while(0);
@@ -63449,27 +54241,7 @@ int lua_cocos2dx_TextureCache_getTextureForKey(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Texture2D* ret = cobj->getTextureForKey(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Texture2D";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Texture2D*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Texture2D>(tolua_S, "cc.Texture2D",(cocos2d::Texture2D*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTextureForKey",argc, 1);
@@ -63555,16 +54327,7 @@ int lua_cocos2dx_TextureCache_removeTexture(lua_State* tolua_S)
     {
         cocos2d::Texture2D* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Texture2D",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Texture2D*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Texture2D>(tolua_S, 2, "cc.Texture2D",&arg0);
         if(!ok)
             return 0;
         cobj->removeTexture(arg0);
@@ -63641,19 +54404,10 @@ int lua_cocos2dx_TextureCache_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TextureCache();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TextureCache");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TextureCache");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TextureCache");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TextureCache",argc, 0);
@@ -63775,16 +54529,7 @@ int lua_cocos2dx_ParallaxNode_addChild(lua_State* tolua_S)
         cocos2d::Point arg2;
         cocos2d::Point arg3;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
 
@@ -63918,27 +54663,7 @@ int lua_cocos2dx_ParallaxNode_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::ParallaxNode* ret = cocos2d::ParallaxNode::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.ParallaxNode";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::ParallaxNode*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::ParallaxNode>(tolua_S, "cc.ParallaxNode",(cocos2d::ParallaxNode*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -64451,19 +55176,10 @@ int lua_cocos2dx_TMXObjectGroup_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXObjectGroup();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXObjectGroup");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TMXObjectGroup");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXObjectGroup");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TMXObjectGroup",argc, 0);
@@ -64614,19 +55330,10 @@ int lua_cocos2dx_TMXLayerInfo_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXLayerInfo();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXLayerInfo");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TMXLayerInfo");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXLayerInfo");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TMXLayerInfo",argc, 0);
@@ -64726,19 +55433,10 @@ int lua_cocos2dx_TMXTilesetInfo_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXTilesetInfo();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXTilesetInfo");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TMXTilesetInfo");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXTilesetInfo");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TMXTilesetInfo",argc, 0);
@@ -66257,27 +56955,7 @@ int lua_cocos2dx_TMXMapInfo_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TMXMapInfo* ret = cocos2d::TMXMapInfo::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TMXMapInfo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXMapInfo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TMXMapInfo>(tolua_S, "cc.TMXMapInfo",(cocos2d::TMXMapInfo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -66312,27 +56990,7 @@ int lua_cocos2dx_TMXMapInfo_createWithXML(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TMXMapInfo* ret = cocos2d::TMXMapInfo::createWithXML(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TMXMapInfo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXMapInfo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TMXMapInfo>(tolua_S, "cc.TMXMapInfo",(cocos2d::TMXMapInfo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithXML",argc, 2);
@@ -66361,19 +57019,10 @@ int lua_cocos2dx_TMXMapInfo_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXMapInfo();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXMapInfo");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TMXMapInfo");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXMapInfo");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TMXMapInfo",argc, 0);
@@ -66987,38 +57636,11 @@ int lua_cocos2dx_TMXLayer_initWithTilesetInfo(lua_State* tolua_S)
         cocos2d::TMXLayerInfo* arg1;
         cocos2d::TMXMapInfo* arg2;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.TMXTilesetInfo",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::TMXTilesetInfo*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::TMXTilesetInfo>(tolua_S, 2, "cc.TMXTilesetInfo",&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.TMXLayerInfo",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::TMXLayerInfo*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::TMXLayerInfo>(tolua_S, 3, "cc.TMXLayerInfo",&arg1);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,4,"cc.TMXMapInfo",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg2 = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,4,0);
-					if (nullptr == arg2){
-						LUA_PRECONDITION( arg2, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::TMXMapInfo>(tolua_S, 4, "cc.TMXMapInfo",&arg2);
         if(!ok)
             return 0;
         bool ret = cobj->initWithTilesetInfo(arg0, arg1, arg2);
@@ -67354,16 +57976,7 @@ int lua_cocos2dx_TMXLayer_setTileSet(lua_State* tolua_S)
     {
         cocos2d::TMXTilesetInfo* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.TMXTilesetInfo",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::TMXTilesetInfo*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::TMXTilesetInfo>(tolua_S, 2, "cc.TMXTilesetInfo",&arg0);
         if(!ok)
             return 0;
         cobj->setTileSet(arg0);
@@ -67410,27 +58023,7 @@ int lua_cocos2dx_TMXLayer_getTileSet(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TMXTilesetInfo* ret = cobj->getTileSet();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TMXTilesetInfo";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXTilesetInfo*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TMXTilesetInfo>(tolua_S, "cc.TMXTilesetInfo",(cocos2d::TMXTilesetInfo*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTileSet",argc, 0);
@@ -67524,27 +58117,7 @@ int lua_cocos2dx_TMXLayer_getTileAt(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Sprite* ret = cobj->getTileAt(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Sprite";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Sprite*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Sprite>(tolua_S, "cc.Sprite",(cocos2d::Sprite*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getTileAt",argc, 1);
@@ -67577,60 +58150,13 @@ int lua_cocos2dx_TMXLayer_create(lua_State* tolua_S)
         cocos2d::TMXTilesetInfo* arg0;
         cocos2d::TMXLayerInfo* arg1;
         cocos2d::TMXMapInfo* arg2;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.TMXTilesetInfo",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::TMXTilesetInfo*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.TMXLayerInfo",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::TMXLayerInfo*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
-        do {
-				if (!luaval_is_usertype(tolua_S,4,"cc.TMXMapInfo",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg2 = (cocos2d::TMXMapInfo*)tolua_tousertype(tolua_S,4,0);
-					if (nullptr == arg2){
-						LUA_PRECONDITION( arg2, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::TMXTilesetInfo>(tolua_S, 2, "cc.TMXTilesetInfo",&arg0);
+        ok &= luaval_to_object<cocos2d::TMXLayerInfo>(tolua_S, 3, "cc.TMXLayerInfo",&arg1);
+        ok &= luaval_to_object<cocos2d::TMXMapInfo>(tolua_S, 4, "cc.TMXMapInfo",&arg2);
         if(!ok)
             return 0;
         cocos2d::TMXLayer* ret = cocos2d::TMXLayer::create(arg0, arg1, arg2);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TMXLayer";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXLayer*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TMXLayer>(tolua_S, "cc.TMXLayer",(cocos2d::TMXLayer*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 3);
@@ -67659,19 +58185,10 @@ int lua_cocos2dx_TMXLayer_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TMXLayer();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXLayer");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TMXLayer");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TMXLayer");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TMXLayer",argc, 0);
@@ -67900,27 +58417,7 @@ int lua_cocos2dx_TMXTiledMap_getObjectGroup(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TMXObjectGroup* ret = cobj->getObjectGroup(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TMXObjectGroup";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXObjectGroup*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TMXObjectGroup>(tolua_S, "cc.TMXObjectGroup",(cocos2d::TMXObjectGroup*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getObjectGroup",argc, 1);
@@ -68140,16 +58637,7 @@ int lua_cocos2dx_TMXTiledMap_getPropertiesForGID(lua_State* tolua_S)
 
             if (!ok) { break; }
             cocos2d::Value** arg1;
-            do {
-				if (!luaval_is_usertype(tolua_S,3,"cc.Value",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::Value**)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Value>(tolua_S, 3, "cc.Value",&arg1);
 
             if (!ok) { break; }
             bool ret = cobj->getPropertiesForGID(arg0, arg1);
@@ -68306,27 +58794,7 @@ int lua_cocos2dx_TMXTiledMap_getLayer(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TMXLayer* ret = cobj->getLayer(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TMXLayer";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXLayer*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TMXLayer>(tolua_S, "cc.TMXLayer",(cocos2d::TMXLayer*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLayer",argc, 1);
@@ -68451,27 +58919,7 @@ int lua_cocos2dx_TMXTiledMap_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TMXTiledMap* ret = cocos2d::TMXTiledMap::create(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TMXTiledMap";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXTiledMap*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TMXTiledMap>(tolua_S, "cc.TMXTiledMap",(cocos2d::TMXTiledMap*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 1);
@@ -68506,27 +58954,7 @@ int lua_cocos2dx_TMXTiledMap_createWithXML(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TMXTiledMap* ret = cocos2d::TMXTiledMap::createWithXML(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TMXTiledMap";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TMXTiledMap*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TMXTiledMap>(tolua_S, "cc.TMXTiledMap",(cocos2d::TMXTiledMap*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createWithXML",argc, 2);
@@ -68885,27 +59313,7 @@ int lua_cocos2dx_TileMapAtlas_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::TileMapAtlas* ret = cocos2d::TileMapAtlas::create(arg0, arg1, arg2, arg3);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.TileMapAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::TileMapAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::TileMapAtlas>(tolua_S, "cc.TileMapAtlas",(cocos2d::TileMapAtlas*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 4);
@@ -68934,19 +59342,10 @@ int lua_cocos2dx_TileMapAtlas_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::TileMapAtlas();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TileMapAtlas");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.TileMapAtlas");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.TileMapAtlas");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TileMapAtlas",argc, 0);
@@ -69475,19 +59874,10 @@ int lua_cocos2dx_EventMouse_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::EventMouse(arg0);
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventMouse");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.EventMouse");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.EventMouse");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "EventMouse",argc, 1);
@@ -69833,19 +60223,10 @@ int lua_cocos2dx_Timer_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Timer();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Timer");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Timer");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Timer");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Timer",argc, 0);
@@ -70041,19 +60422,10 @@ int lua_cocos2dx_Scheduler_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::Scheduler();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Scheduler");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"cc.Scheduler");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"cc.Scheduler");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Scheduler",argc, 0);
@@ -70349,27 +60721,7 @@ int lua_cocos2dx_Component_getOwner(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getOwner();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getOwner",argc, 0);
@@ -70456,16 +60808,7 @@ int lua_cocos2dx_Component_setOwner(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->setOwner(arg0);
@@ -70545,27 +60888,7 @@ int lua_cocos2dx_Component_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Component* ret = cocos2d::Component::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Component";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Component*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Component>(tolua_S, "cc.Component",(cocos2d::Component*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -71690,27 +62013,7 @@ int lua_cocos2dx_SimpleAudioEngine_getInstance(lua_State* tolua_S)
         if(!ok)
             return 0;
         CocosDenshion::SimpleAudioEngine* ret = CocosDenshion::SimpleAudioEngine::getInstance();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.SimpleAudioEngine";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((CocosDenshion::SimpleAudioEngine*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<CocosDenshion::SimpleAudioEngine>(tolua_S, "cc.SimpleAudioEngine",(CocosDenshion::SimpleAudioEngine*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "getInstance",argc, 0);

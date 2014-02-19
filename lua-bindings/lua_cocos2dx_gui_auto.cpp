@@ -69,27 +69,7 @@ int lua_cocos2dx_gui_LayoutParameter_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::LayoutParameter* ret = cocos2d::gui::LayoutParameter::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.LayoutParameter";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::LayoutParameter*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::LayoutParameter>(tolua_S, "ccui.LayoutParameter",(cocos2d::gui::LayoutParameter*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -118,19 +98,10 @@ int lua_cocos2dx_gui_LayoutParameter_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::LayoutParameter();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.LayoutParameter");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.LayoutParameter");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.LayoutParameter");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "LayoutParameter",argc, 0);
@@ -275,27 +246,7 @@ int lua_cocos2dx_gui_LinearLayoutParameter_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::LinearLayoutParameter* ret = cocos2d::gui::LinearLayoutParameter::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.LinearLayoutParameter";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::LinearLayoutParameter*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::LinearLayoutParameter>(tolua_S, "ccui.LinearLayoutParameter",(cocos2d::gui::LinearLayoutParameter*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -324,19 +275,10 @@ int lua_cocos2dx_gui_LinearLayoutParameter_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::LinearLayoutParameter();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.LinearLayoutParameter");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.LinearLayoutParameter");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.LinearLayoutParameter");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "LinearLayoutParameter",argc, 0);
@@ -662,27 +604,7 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::RelativeLayoutParameter* ret = cocos2d::gui::RelativeLayoutParameter::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.RelativeLayoutParameter";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::RelativeLayoutParameter*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::RelativeLayoutParameter>(tolua_S, "ccui.RelativeLayoutParameter",(cocos2d::gui::RelativeLayoutParameter*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -711,19 +633,10 @@ int lua_cocos2dx_gui_RelativeLayoutParameter_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::RelativeLayoutParameter();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.RelativeLayoutParameter");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.RelativeLayoutParameter");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.RelativeLayoutParameter");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "RelativeLayoutParameter",argc, 0);
@@ -794,27 +707,7 @@ int lua_cocos2dx_gui_Widget_getVirtualRenderer(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getVirtualRenderer();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getVirtualRenderer",argc, 0);
@@ -953,27 +846,7 @@ int lua_cocos2dx_gui_Widget_getNodeByTag(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::Node* ret = cobj->getNodeByTag(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "cc.Node";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::Node*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::Node>(tolua_S, "cc.Node",(cocos2d::Node*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getNodeByTag",argc, 1);
@@ -1463,27 +1336,7 @@ int lua_cocos2dx_gui_Widget_getLayoutParameter(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::LayoutParameter* ret = cobj->getLayoutParameter(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.LayoutParameter";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::LayoutParameter*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::LayoutParameter>(tolua_S, "ccui.LayoutParameter",(cocos2d::gui::LayoutParameter*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getLayoutParameter",argc, 1);
@@ -1620,27 +1473,7 @@ int lua_cocos2dx_gui_Widget_getChildByName(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Widget* ret = cobj->getChildByName(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Widget";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Widget>(tolua_S, "ccui.Widget",(cocos2d::gui::Widget*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getChildByName",argc, 1);
@@ -2085,27 +1918,7 @@ int lua_cocos2dx_gui_Widget_clone(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Widget* ret = cobj->clone();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Widget";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Widget>(tolua_S, "ccui.Widget",(cocos2d::gui::Widget*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "clone",argc, 0);
@@ -2278,16 +2091,7 @@ int lua_cocos2dx_gui_Widget_addNode(lua_State* tolua_S)
     do{
         if (argc == 2) {
             cocos2d::Node* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
 
             if (!ok) { break; }
             int arg1;
@@ -2302,16 +2106,7 @@ int lua_cocos2dx_gui_Widget_addNode(lua_State* tolua_S)
     do{
         if (argc == 1) {
             cocos2d::Node* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
 
             if (!ok) { break; }
             cobj->addNode(arg0);
@@ -2322,16 +2117,7 @@ int lua_cocos2dx_gui_Widget_addNode(lua_State* tolua_S)
     do{
         if (argc == 3) {
             cocos2d::Node* arg0;
-            do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+            ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
 
             if (!ok) { break; }
             int arg1;
@@ -2387,16 +2173,7 @@ int lua_cocos2dx_gui_Widget_setLayoutParameter(lua_State* tolua_S)
     {
         cocos2d::gui::LayoutParameter* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.LayoutParameter",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::LayoutParameter*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::LayoutParameter>(tolua_S, 2, "ccui.LayoutParameter",&arg0);
         if(!ok)
             return 0;
         cobj->setLayoutParameter(arg0);
@@ -2979,16 +2756,7 @@ int lua_cocos2dx_gui_Widget_removeNode(lua_State* tolua_S)
     {
         cocos2d::Node* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"cc.Node",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::Node*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::Node>(tolua_S, 2, "cc.Node",&arg0);
         if(!ok)
             return 0;
         cobj->removeNode(arg0);
@@ -3306,16 +3074,7 @@ int lua_cocos2dx_gui_Widget_checkChildInfo(lua_State* tolua_S)
 
         ok &= luaval_to_int32(tolua_S, 2,(int *)&arg0);
 
-        do {
-				if (!luaval_is_usertype(tolua_S,3,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg1 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,3,0);
-					if (nullptr == arg1){
-						LUA_PRECONDITION( arg1, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 3, "ccui.Widget",&arg1);
 
         ok &= luaval_to_point(tolua_S, 4, &arg2);
         if(!ok)
@@ -3445,27 +3204,7 @@ int lua_cocos2dx_gui_Widget_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Widget* ret = cocos2d::gui::Widget::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Widget";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Widget>(tolua_S, "ccui.Widget",(cocos2d::gui::Widget*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -3494,19 +3233,10 @@ int lua_cocos2dx_gui_Widget_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::Widget();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Widget");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Widget");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Widget");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Widget",argc, 0);
@@ -4364,27 +4094,7 @@ int lua_cocos2dx_gui_Layout_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Layout* ret = cocos2d::gui::Layout::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Layout";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Layout*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Layout>(tolua_S, "ccui.Layout",(cocos2d::gui::Layout*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -4413,19 +4123,10 @@ int lua_cocos2dx_gui_Layout_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::Layout();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Layout");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Layout");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Layout");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Layout",argc, 0);
@@ -5379,27 +5080,7 @@ int lua_cocos2dx_gui_Button_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Button* ret = cocos2d::gui::Button::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Button";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Button*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Button>(tolua_S, "ccui.Button",(cocos2d::gui::Button*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -5428,19 +5109,10 @@ int lua_cocos2dx_gui_Button_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::Button();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Button");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Button");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Button");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Button",argc, 0);
@@ -5980,27 +5652,7 @@ int lua_cocos2dx_gui_CheckBox_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::CheckBox* ret = cocos2d::gui::CheckBox::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.CheckBox";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::CheckBox*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::CheckBox>(tolua_S, "ccui.CheckBox",(cocos2d::gui::CheckBox*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -6029,19 +5681,10 @@ int lua_cocos2dx_gui_CheckBox_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::CheckBox();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.CheckBox");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.CheckBox");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.CheckBox");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "CheckBox",argc, 0);
@@ -6300,27 +5943,7 @@ int lua_cocos2dx_gui_ImageView_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::ImageView* ret = cocos2d::gui::ImageView::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.ImageView";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::ImageView*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::ImageView>(tolua_S, "ccui.ImageView",(cocos2d::gui::ImageView*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -6349,19 +5972,10 @@ int lua_cocos2dx_gui_ImageView_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::ImageView();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.ImageView");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.ImageView");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.ImageView");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ImageView",argc, 0);
@@ -6873,27 +6487,7 @@ int lua_cocos2dx_gui_Text_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Text* ret = cocos2d::gui::Text::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Text";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Text*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Text>(tolua_S, "ccui.Text",(cocos2d::gui::Text*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -6922,19 +6516,10 @@ int lua_cocos2dx_gui_Text_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::Text();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Text");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Text");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Text");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Text",argc, 0);
@@ -7146,27 +6731,7 @@ int lua_cocos2dx_gui_TextAtlas_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::TextAtlas* ret = cocos2d::gui::TextAtlas::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.TextAtlas";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::TextAtlas*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::TextAtlas>(tolua_S, "ccui.TextAtlas",(cocos2d::gui::TextAtlas*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -7195,19 +6760,10 @@ int lua_cocos2dx_gui_TextAtlas_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::TextAtlas();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.TextAtlas");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.TextAtlas");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.TextAtlas");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TextAtlas",argc, 0);
@@ -7595,27 +7151,7 @@ int lua_cocos2dx_gui_LoadingBar_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::LoadingBar* ret = cocos2d::gui::LoadingBar::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.LoadingBar";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::LoadingBar*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::LoadingBar>(tolua_S, "ccui.LoadingBar",(cocos2d::gui::LoadingBar*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -7644,19 +7180,10 @@ int lua_cocos2dx_gui_LoadingBar_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::LoadingBar();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.LoadingBar");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.LoadingBar");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.LoadingBar");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "LoadingBar",argc, 0);
@@ -8018,27 +7545,7 @@ int lua_cocos2dx_gui_ScrollView_getInnerContainer(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Layout* ret = cobj->getInnerContainer();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Layout";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Layout*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Layout>(tolua_S, "ccui.Layout",(cocos2d::gui::Layout*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getInnerContainer",argc, 0);
@@ -9171,27 +8678,7 @@ int lua_cocos2dx_gui_ScrollView_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::ScrollView* ret = cocos2d::gui::ScrollView::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.ScrollView";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::ScrollView*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::ScrollView>(tolua_S, "ccui.ScrollView",(cocos2d::gui::ScrollView*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -9220,19 +8707,10 @@ int lua_cocos2dx_gui_ScrollView_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::ScrollView();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.ScrollView");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.ScrollView");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.ScrollView");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ScrollView",argc, 0);
@@ -9327,16 +8805,7 @@ int lua_cocos2dx_gui_ListView_getIndex(lua_State* tolua_S)
     {
         cocos2d::gui::Widget* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 2, "ccui.Widget",&arg0);
         if(!ok)
             return 0;
         ssize_t ret = cobj->getIndex(arg0);
@@ -9472,16 +8941,7 @@ int lua_cocos2dx_gui_ListView_pushBackCustomItem(lua_State* tolua_S)
     {
         cocos2d::gui::Widget* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 2, "ccui.Widget",&arg0);
         if(!ok)
             return 0;
         cobj->pushBackCustomItem(arg0);
@@ -9800,27 +9260,7 @@ int lua_cocos2dx_gui_ListView_getItem(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Widget* ret = cobj->getItem(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Widget";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Widget>(tolua_S, "ccui.Widget",(cocos2d::gui::Widget*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getItem",argc, 1);
@@ -9863,16 +9303,7 @@ int lua_cocos2dx_gui_ListView_setItemModel(lua_State* tolua_S)
     {
         cocos2d::gui::Widget* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 2, "ccui.Widget",&arg0);
         if(!ok)
             return 0;
         cobj->setItemModel(arg0);
@@ -10005,16 +9436,7 @@ int lua_cocos2dx_gui_ListView_insertCustomItem(lua_State* tolua_S)
         cocos2d::gui::Widget* arg0;
         ssize_t arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 2, "ccui.Widget",&arg0);
 
         ok &= luaval_to_ssize(tolua_S, 3, &arg1);
         if(!ok)
@@ -10052,27 +9474,7 @@ int lua_cocos2dx_gui_ListView_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::ListView* ret = cocos2d::gui::ListView::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.ListView";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::ListView*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::ListView>(tolua_S, "ccui.ListView",(cocos2d::gui::ListView*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -10101,19 +9503,10 @@ int lua_cocos2dx_gui_ListView_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::ListView();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.ListView");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.ListView");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.ListView");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ListView",argc, 0);
@@ -10822,27 +10215,7 @@ int lua_cocos2dx_gui_Slider_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Slider* ret = cocos2d::gui::Slider::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Slider";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Slider*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Slider>(tolua_S, "ccui.Slider",(cocos2d::gui::Slider*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -10871,19 +10244,10 @@ int lua_cocos2dx_gui_Slider_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::Slider();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Slider");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.Slider");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.Slider");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Slider",argc, 0);
@@ -11985,27 +11349,7 @@ int lua_cocos2dx_gui_TextField_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::TextField* ret = cocos2d::gui::TextField::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.TextField";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::TextField*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::TextField>(tolua_S, "ccui.TextField",(cocos2d::gui::TextField*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -12034,19 +11378,10 @@ int lua_cocos2dx_gui_TextField_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::TextField();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.TextField");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.TextField");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.TextField");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TextField",argc, 0);
@@ -12259,27 +11594,7 @@ int lua_cocos2dx_gui_TextBMFont_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::TextBMFont* ret = cocos2d::gui::TextBMFont::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.TextBMFont";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::TextBMFont*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::TextBMFont>(tolua_S, "ccui.TextBMFont",(cocos2d::gui::TextBMFont*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -12308,19 +11623,10 @@ int lua_cocos2dx_gui_TextBMFont_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::TextBMFont();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.TextBMFont");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.TextBMFont");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.TextBMFont");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "TextBMFont",argc, 0);
@@ -12433,16 +11739,7 @@ int lua_cocos2dx_gui_PageView_addWidgetToPage(lua_State* tolua_S)
         ssize_t arg1;
         bool arg2;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 2, "ccui.Widget",&arg0);
 
         ok &= luaval_to_ssize(tolua_S, 3, &arg1);
 
@@ -12496,27 +11793,7 @@ int lua_cocos2dx_gui_PageView_getPage(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::Layout* ret = cobj->getPage(arg0);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Layout";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Layout*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Layout>(tolua_S, "ccui.Layout",(cocos2d::gui::Layout*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "getPage",argc, 1);
@@ -12559,16 +11836,7 @@ int lua_cocos2dx_gui_PageView_removePage(lua_State* tolua_S)
     {
         cocos2d::gui::Layout* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Layout",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Layout>(tolua_S, 2, "ccui.Layout",&arg0);
         if(!ok)
             return 0;
         cobj->removePage(arg0);
@@ -12615,16 +11883,7 @@ int lua_cocos2dx_gui_PageView_insertPage(lua_State* tolua_S)
         cocos2d::gui::Layout* arg0;
         int arg1;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Layout",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Layout>(tolua_S, 2, "ccui.Layout",&arg0);
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
@@ -12851,16 +12110,7 @@ int lua_cocos2dx_gui_PageView_addPage(lua_State* tolua_S)
     {
         cocos2d::gui::Layout* arg0;
 
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Layout",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Layout*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Layout>(tolua_S, 2, "ccui.Layout",&arg0);
         if(!ok)
             return 0;
         cobj->addPage(arg0);
@@ -12896,27 +12146,7 @@ int lua_cocos2dx_gui_PageView_create(lua_State* tolua_S)
         if(!ok)
             return 0;
         cocos2d::gui::PageView* ret = cocos2d::gui::PageView::create();
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.PageView";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::PageView*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::PageView>(tolua_S, "ccui.PageView",(cocos2d::gui::PageView*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "create",argc, 0);
@@ -12945,19 +12175,10 @@ int lua_cocos2dx_gui_PageView_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocos2d::gui::PageView();
-        cocos2d::Object* dynObject = dynamic_cast<cocos2d::Object *>(cobj);
-        if (nullptr != dynObject) 
-        {
-            dynObject->autorelease();
-            int ID =  (int)dynObject->_ID ;
-            int* luaID =  &dynObject->_luaID ;
-            toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.PageView");
-        }
-        else
-        {
-            tolua_pushusertype(tolua_S,(void*)cobj,"ccui.PageView");
-            tolua_register_gc(tolua_S,lua_gettop(tolua_S));
-        }
+        cobj->autorelease();
+        int ID =  (int)cobj->_ID ;
+        int* luaID =  &cobj->_luaID ;
+        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccui.PageView");
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "PageView",argc, 0);
@@ -13020,41 +12241,12 @@ int lua_cocos2dx_gui_Helper_seekActionWidgetByActionTag(lua_State* tolua_S)
     {
         cocos2d::gui::Widget* arg0;
         int arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 2, "ccui.Widget",&arg0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
         cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekActionWidgetByActionTag(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Widget";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Widget>(tolua_S, "ccui.Widget",(cocos2d::gui::Widget*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "seekActionWidgetByActionTag",argc, 2);
@@ -13084,41 +12276,12 @@ int lua_cocos2dx_gui_Helper_seekWidgetByTag(lua_State* tolua_S)
     {
         cocos2d::gui::Widget* arg0;
         int arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 2, "ccui.Widget",&arg0);
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
             return 0;
         cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByTag(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Widget";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Widget>(tolua_S, "ccui.Widget",(cocos2d::gui::Widget*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "seekWidgetByTag",argc, 2);
@@ -13148,41 +12311,12 @@ int lua_cocos2dx_gui_Helper_seekWidgetByRelativeName(lua_State* tolua_S)
     {
         cocos2d::gui::Widget* arg0;
         const char* arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 2, "ccui.Widget",&arg0);
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByRelativeName(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Widget";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Widget>(tolua_S, "ccui.Widget",(cocos2d::gui::Widget*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "seekWidgetByRelativeName",argc, 2);
@@ -13212,41 +12346,12 @@ int lua_cocos2dx_gui_Helper_seekWidgetByName(lua_State* tolua_S)
     {
         cocos2d::gui::Widget* arg0;
         const char* arg1;
-        do {
-				if (!luaval_is_usertype(tolua_S,2,"ccui.Widget",0)){
-					ok = false;
-					break;
-				}
-				if (ok){
-					arg0 = (cocos2d::gui::Widget*)tolua_tousertype(tolua_S,2,0);
-					if (nullptr == arg0){
-						LUA_PRECONDITION( arg0, "Invalid Native Object");
-			}}} while (0);
+        ok &= luaval_to_object<cocos2d::gui::Widget>(tolua_S, 2, "ccui.Widget",&arg0);
         std::string arg1_tmp; ok &= luaval_to_std_string(tolua_S, 3, &arg1_tmp); arg1 = arg1_tmp.c_str();
         if(!ok)
             return 0;
         cocos2d::gui::Widget* ret = cocos2d::gui::Helper::seekWidgetByName(arg0, arg1);
-        do {
-			if (NULL != ret){
-				std::string hashName = typeid(*ret).name();
-				auto iter = g_luaType.find(hashName);
-				std::string className = "";
-				if(iter != g_luaType.end()){
-					className = iter->second.c_str();
-				} else {
-					className = "ccui.Widget";
-				}
-				cocos2d::Object *dynObject = dynamic_cast<cocos2d::Object *>((cocos2d::gui::Widget*)ret);
-				if (NULL != dynObject) {
-					int ID = ret ? (int)(dynObject->_ID) : -1;
-					int* luaID = ret ? &(dynObject->_luaID) : NULL;
-					toluafix_pushusertype_ccobject(tolua_S,ID, luaID, (void*)ret,className.c_str());
-				} else {
-					 tolua_pushusertype(tolua_S,(void*)ret,className.c_str());
-			}} else {
-				lua_pushnil(tolua_S);
-			}
-		} while (0);
+        object_to_luaval<cocos2d::gui::Widget>(tolua_S, "ccui.Widget",(cocos2d::gui::Widget*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "seekWidgetByName",argc, 2);
