@@ -4515,6 +4515,13 @@ increaseAtlasCapacity : function () {},
 getTextureAtlas : function () {},
 
 /**
+ * @method insertQuadFromSprite
+ * @param {cocos2d::Sprite*}
+ * @param {ssize_t}
+ */
+insertQuadFromSprite : function () {},
+
+/**
  * @method setTexture
  * @param {cocos2d::Texture2D*}
  */
