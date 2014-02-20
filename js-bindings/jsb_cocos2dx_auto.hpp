@@ -2650,6 +2650,28 @@ bool js_cocos2dx_Application_setAnimationInterval(JSContext *cx, uint32_t argc, 
 bool js_cocos2dx_Application_getCurrentLanguage(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Application_getInstance(JSContext *cx, uint32_t argc, jsval *vp);
 
+extern JSClass  *jsb_cocos2d_GLViewProtocol_class;
+extern JSObject *jsb_cocos2d_GLViewProtocol_prototype;
+
+bool js_cocos2dx_GLViewProtocol_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_GLViewProtocol_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_GLViewProtocol(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+bool js_cocos2dx_GLViewProtocol_getVisibleOrigin(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_GLViewProtocol_setDesignResolutionSize(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_GLViewProtocol_getVisibleSize(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_cocos2d_GLView_class;
+extern JSObject *jsb_cocos2d_GLView_prototype;
+
+bool js_cocos2dx_GLView_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_GLView_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_GLView(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+bool js_cocos2dx_GLView_createWithRect(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_GLView_create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_GLView_createWithFullScreen(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_cocos2d_ShaderCache_class;
 extern JSObject *jsb_cocos2d_ShaderCache_prototype;
 

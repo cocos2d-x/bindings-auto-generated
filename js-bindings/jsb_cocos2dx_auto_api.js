@@ -7337,6 +7337,63 @@ getInstance : function () {},
 };
 
 /**
+ * @class GLViewProtocol
+ */
+cc.GLViewProtocol = {
+
+/**
+ * @method getVisibleOrigin
+ * @return A value converted from C/C++ "cocos2d::Point"
+ */
+getVisibleOrigin : function () {},
+
+/**
+ * @method setDesignResolutionSize
+ * @param {float}
+ * @param {float}
+ * @param {ResolutionPolicy}
+ */
+setDesignResolutionSize : function () {},
+
+/**
+ * @method getVisibleSize
+ * @return A value converted from C/C++ "cocos2d::Size"
+ */
+getVisibleSize : function () {},
+
+};
+
+/**
+ * @class GLView
+ */
+cc.GLView = {
+
+/**
+ * @method createWithRect
+ * @return A value converted from C/C++ "cocos2d::GLView*"
+ * @param {const std::string&}
+ * @param {cocos2d::Rect}
+ * @param {float}
+ */
+createWithRect : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::GLView*"
+ * @param {const std::string&}
+ */
+create : function () {},
+
+/**
+ * @method createWithFullScreen
+ * @return A value converted from C/C++ "cocos2d::GLView*"
+ * @param {const std::string&}
+ */
+createWithFullScreen : function () {},
+
+};
+
+/**
  * @class ShaderCache
  */
 cc.ShaderCache = {

@@ -7717,6 +7717,193 @@ getInstance : function () {},
 };
 
 /**
+ * @class GLViewProtocol
+ */
+cc.GLViewProtocol = {
+
+/**
+ * @method setFrameSize
+ * @param {float}
+ * @param {float}
+ */
+setFrameSize : function () {},
+
+/**
+ * @method getViewPortRect
+ * @return A value converted from C/C++ "const cocos2d::Rect&"
+ */
+getViewPortRect : function () {},
+
+/**
+ * @method setIMEKeyboardState
+ * @param {bool}
+ */
+setIMEKeyboardState : function () {},
+
+/**
+ * @method setScissorInPoints
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ */
+setScissorInPoints : function () {},
+
+/**
+ * @method getViewName
+ * @return A value converted from C/C++ "const std::string&"
+ */
+getViewName : function () {},
+
+/**
+ * @method isOpenGLReady
+ * @return A value converted from C/C++ "bool"
+ */
+isOpenGLReady : function () {},
+
+/**
+ * @method end
+ */
+end : function () {},
+
+/**
+ * @method getScaleY
+ * @return A value converted from C/C++ "float"
+ */
+getScaleY : function () {},
+
+/**
+ * @method getScaleX
+ * @return A value converted from C/C++ "float"
+ */
+getScaleX : function () {},
+
+/**
+ * @method getVisibleOrigin
+ * @return A value converted from C/C++ "cocos2d::Point"
+ */
+getVisibleOrigin : function () {},
+
+/**
+ * @method getFrameSize
+ * @return A value converted from C/C++ "const cocos2d::Size&"
+ */
+getFrameSize : function () {},
+
+/**
+ * @method getDesignResolutionSize
+ * @return A value converted from C/C++ "const cocos2d::Size&"
+ */
+getDesignResolutionSize : function () {},
+
+/**
+ * @method pollInputEvents
+ */
+pollInputEvents : function () {},
+
+/**
+ * @method swapBuffers
+ */
+swapBuffers : function () {},
+
+/**
+ * @method setDesignResolutionSize
+ * @param {float}
+ * @param {float}
+ * @param {ResolutionPolicy}
+ */
+setDesignResolutionSize : function () {},
+
+/**
+ * @method getResolutionPolicy
+ * @return A value converted from C/C++ "ResolutionPolicy"
+ */
+getResolutionPolicy : function () {},
+
+/**
+ * @method setViewPortInPoints
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ * @param {float}
+ */
+setViewPortInPoints : function () {},
+
+/**
+ * @method getScissorRect
+ * @return A value converted from C/C++ "cocos2d::Rect"
+ */
+getScissorRect : function () {},
+
+/**
+ * @method setViewName
+ * @param {const std::string&}
+ */
+setViewName : function () {},
+
+/**
+ * @method getVisibleRect
+ * @return A value converted from C/C++ "cocos2d::Rect"
+ */
+getVisibleRect : function () {},
+
+/**
+ * @method getVisibleSize
+ * @return A value converted from C/C++ "cocos2d::Size"
+ */
+getVisibleSize : function () {},
+
+/**
+ * @method isScissorEnabled
+ * @return A value converted from C/C++ "bool"
+ */
+isScissorEnabled : function () {},
+
+};
+
+/**
+ * @class GLView
+ */
+cc.GLView = {
+
+/**
+ * @method setIMEKeyboardState
+ * @param {bool}
+ */
+setIMEKeyboardState : function () {},
+
+/**
+ * @method isOpenGLReady
+ * @return A value converted from C/C++ "bool"
+ */
+isOpenGLReady : function () {},
+
+/**
+ * @method createWithRect
+ * @return A value converted from C/C++ "cocos2d::GLView*"
+ * @param {const std::string&}
+ * @param {cocos2d::Rect}
+ * @param {float}
+ */
+createWithRect : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::GLView*"
+ * @param {const std::string&}
+ */
+create : function () {},
+
+/**
+ * @method createWithFullScreen
+ * @return A value converted from C/C++ "cocos2d::GLView*"
+ * @param {const std::string&}
+ */
+createWithFullScreen : function () {},
+
+};
+
+/**
  * @class ShaderCache
  */
 cc.ShaderCache = {
