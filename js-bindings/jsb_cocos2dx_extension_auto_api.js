@@ -650,7 +650,7 @@ setColor : function () {},
 
 /**
  * @method hueSliderValueChanged
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  * @param {cocos2d::extension::Control::EventType}
  */
 hueSliderValueChanged : function () {},
@@ -681,7 +681,7 @@ setcolourPicker : function () {},
 
 /**
  * @method colourSliderValueChanged
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  * @param {cocos2d::extension::Control::EventType}
  */
 colourSliderValueChanged : function () {},
@@ -1253,7 +1253,7 @@ initWithViewSize : function () {},
 
 /**
  * @method pause
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  */
 pause : function () {},
 
@@ -1308,7 +1308,7 @@ getContentOffset : function () {},
 
 /**
  * @method resume
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  */
 resume : function () {},
 

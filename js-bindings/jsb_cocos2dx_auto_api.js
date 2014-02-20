@@ -1138,7 +1138,7 @@ transformAncestors : function () {},
 
 /**
  * @method setUserObject
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  */
 setUserObject : function () {},
 
@@ -1978,6 +1978,12 @@ addAction : function () {},
 resumeTarget : function () {},
 
 /**
+ * @method update
+ * @param {float}
+ */
+update : function () {},
+
+/**
  * @method getNumberOfRunningActionsInTarget
  * @return A value converted from C/C++ "ssize_t"
  * @param {const cocos2d::Node*}
@@ -2658,18 +2664,6 @@ cc.CallFunc = {
  */
 execute : function () {},
 
-/**
- * @method getTargetCallback
- * @return A value converted from C/C++ "cocos2d::Object*"
- */
-getTargetCallback : function () {},
-
-/**
- * @method setTargetCallback
- * @param {cocos2d::Object*}
- */
-setTargetCallback : function () {},
-
 };
 
 /**
@@ -2804,12 +2798,6 @@ cc.FlipY3D = {
  * @param {float}
  */
 create : function () {},
-
-/**
- * @method FlipY3D
- * @constructor
- */
-FlipY3D : function () {},
 
 };
 
@@ -3934,12 +3922,6 @@ isDisplayStats : function () {},
 setProjection : function () {},
 
 /**
- * @method getConsole
- * @return A value converted from C/C++ "cocos2d::Console*"
- */
-getConsole : function () {},
-
-/**
  * @method getZEye
  * @return A value converted from C/C++ "float"
  */
@@ -4778,12 +4760,6 @@ setBMFontFilePath : function () {},
  * @return A value converted from C/C++ "int"
  */
 getCommonLineHeight : function () {},
-
-/**
- * @method getFontAtlas
- * @return A value converted from C/C++ "cocos2d::FontAtlas*"
- */
-getFontAtlas : function () {},
 
 /**
  * @method getString
@@ -7549,12 +7525,6 @@ cc.TextFieldTTF = {
 getCharCount : function () {},
 
 /**
- * @method getDelegate
- * @return A value converted from C/C++ "cocos2d::TextFieldDelegate*"
- */
-getDelegate : function () {},
-
-/**
  * @method setSecureTextEntry
  * @param {bool}
  */
@@ -7577,12 +7547,6 @@ setColorSpaceHolder : function () {},
  * @return A value converted from C/C++ "bool"
  */
 detachWithIME : function () {},
-
-/**
- * @method setDelegate
- * @param {cocos2d::TextFieldDelegate*}
- */
-setDelegate : function () {},
 
 /**
  * @method setPlaceHolder
@@ -8328,51 +8292,6 @@ TileMapAtlas : function () {},
 };
 
 /**
- * @class Timer
- */
-cc.Timer = {
-
-/**
- * @method getInterval
- * @return A value converted from C/C++ "float"
- */
-getInterval : function () {},
-
-/**
- * @method setInterval
- * @param {float}
- */
-setInterval : function () {},
-
-/**
- * @method initWithScriptHandler
- * @return A value converted from C/C++ "bool"
- * @param {int}
- * @param {float}
- */
-initWithScriptHandler : function () {},
-
-/**
- * @method update
- * @param {float}
- */
-update : function () {},
-
-/**
- * @method getScriptHandler
- * @return A value converted from C/C++ "int"
- */
-getScriptHandler : function () {},
-
-/**
- * @method Timer
- * @constructor
- */
-Timer : function () {},
-
-};
-
-/**
  * @class Scheduler
  */
 cc.Scheduler = {
@@ -8384,16 +8303,24 @@ cc.Scheduler = {
 setTimeScale : function () {},
 
 /**
- * @method performFunctionInCocosThread
- * @param {const std::function<void ()>&}
+ * @method isScheduled
+ * @return A value converted from C/C++ "bool"
+ * @param {void*}
+ * @param {long}
  */
-performFunctionInCocosThread : function () {},
+isScheduled : function () {},
 
 /**
  * @method getTimeScale
  * @return A value converted from C/C++ "float"
  */
 getTimeScale : function () {},
+
+/**
+ * @method performFunctionInCocosThread
+ * @param {const std::function<void ()>&}
+ */
+performFunctionInCocosThread : function () {},
 
 /**
  * @method Scheduler

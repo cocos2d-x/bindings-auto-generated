@@ -1315,7 +1315,7 @@ static int lua_cocos2dx_physics_PhysicsShape_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_physics_PhysicsShape(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"cc.PhysicsShape");
-    tolua_cclass(tolua_S,"PhysicsShape","cc.PhysicsShape","cc.Object",NULL);
+    tolua_cclass(tolua_S,"PhysicsShape","cc.PhysicsShape","cc.Ref",NULL);
 
     tolua_beginmodule(tolua_S,"PhysicsShape");
         tolua_function(tolua_S,"getFriction",lua_cocos2dx_physics_PhysicsShape_getFriction);
@@ -5597,7 +5597,7 @@ static int lua_cocos2dx_physics_PhysicsBody_finalize(lua_State* tolua_S)
 int lua_register_cocos2dx_physics_PhysicsBody(lua_State* tolua_S)
 {
     tolua_usertype(tolua_S,"cc.PhysicsBody");
-    tolua_cclass(tolua_S,"PhysicsBody","cc.PhysicsBody","cc.Object",NULL);
+    tolua_cclass(tolua_S,"PhysicsBody","cc.PhysicsBody","cc.Ref",NULL);
 
     tolua_beginmodule(tolua_S,"PhysicsBody");
         tolua_function(tolua_S,"isGravityEnabled",lua_cocos2dx_physics_PhysicsBody_isGravityEnabled);
@@ -11090,6 +11090,7 @@ TOLUA_API int register_all_cocos2dx_physics(lua_State* tolua_S)
 	lua_register_cocos2dx_physics_PhysicsShape(tolua_S);
 	lua_register_cocos2dx_physics_PhysicsShapeBox(tolua_S);
 	lua_register_cocos2dx_physics_PhysicsJointMotor(tolua_S);
+	lua_register_cocos2dx_physics_PhysicsJointRatchet(tolua_S);
 	lua_register_cocos2dx_physics_PhysicsJointDistance(tolua_S);
 	lua_register_cocos2dx_physics_PhysicsShapeCircle(tolua_S);
 	lua_register_cocos2dx_physics_PhysicsShapeEdgePolygon(tolua_S);
@@ -11107,7 +11108,6 @@ TOLUA_API int register_all_cocos2dx_physics(lua_State* tolua_S)
 	lua_register_cocos2dx_physics_PhysicsJointGroove(tolua_S);
 	lua_register_cocos2dx_physics_PhysicsShapeEdgeBox(tolua_S);
 	lua_register_cocos2dx_physics_PhysicsJointRotaryLimit(tolua_S);
-	lua_register_cocos2dx_physics_PhysicsJointRatchet(tolua_S);
 	lua_register_cocos2dx_physics_PhysicsJointSpring(tolua_S);
 	lua_register_cocos2dx_physics_EventListenerPhysicsContactWithShapes(tolua_S);
 

@@ -1483,7 +1483,7 @@ create : function () {},
 
 /**
  * @method createInstance
- * @return A value converted from C/C++ "cocos2d::Object*"
+ * @return A value converted from C/C++ "cocos2d::Ref*"
  */
 createInstance : function () {},
 
@@ -1633,7 +1633,7 @@ create : function () {},
 
 /**
  * @method createInstance
- * @return A value converted from C/C++ "cocos2d::Object*"
+ * @return A value converted from C/C++ "cocos2d::Ref*"
  */
 createInstance : function () {},
 
@@ -1652,7 +1652,7 @@ create : function () {},
 
 /**
  * @method createInstance
- * @return A value converted from C/C++ "cocos2d::Object*"
+ * @return A value converted from C/C++ "cocos2d::Ref*"
  */
 createInstance : function () {},
 
@@ -1683,7 +1683,7 @@ getNode : function () {},
 
 /**
  * @method createInstance
- * @return A value converted from C/C++ "cocos2d::Object*"
+ * @return A value converted from C/C++ "cocos2d::Ref*"
  */
 createInstance : function () {},
 
@@ -1728,7 +1728,7 @@ ccs.SceneReader = {
 
 /**
  * @method setTarget
- * @param {const std::function<void (cocos2d::Object *, void *)>&}
+ * @param {const std::function<void (cocos2d::Ref *, void *)>&}
  */
 setTarget : function () {},
 

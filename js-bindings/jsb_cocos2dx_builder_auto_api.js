@@ -29,7 +29,7 @@ getDocumentCallbackNames : function () {},
 
 /**
  * @method actionForSoundChannel
- * @return A value converted from C/C++ "cocos2d::Object*"
+ * @return A value converted from C/C++ "cocos2d::Sequence*"
  * @param {cocosbuilder::CCBSequenceProperty*}
  */
 actionForSoundChannel : function () {},
@@ -74,12 +74,6 @@ runAnimationsForSequenceNamedTweenDuration : function () {},
 addDocumentOutletName : function () {},
 
 /**
- * @method getSequences
- * @return A value converted from C/C++ "cocos2d::Vector<cocosbuilder::CCBSequence *>&"
- */
-getSequences : function () {},
-
-/**
  * @method getRootContainerSize
  * @return A value converted from C/C++ "const cocos2d::Size&"
  */
@@ -93,7 +87,7 @@ setDocumentControllerName : function () {},
 
 /**
  * @method setObject
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  * @param {cocos2d::Node*}
  * @param {const std::string&}
  */
@@ -108,7 +102,7 @@ getContainerSize : function () {},
 
 /**
  * @method actionForCallbackChannel
- * @return A value converted from C/C++ "cocos2d::Object*"
+ * @return A value converted from C/C++ "cocos2d::Sequence*"
  * @param {cocosbuilder::CCBSequenceProperty*}
  */
 actionForCallbackChannel : function () {},
@@ -204,12 +198,6 @@ getSequenceDuration : function () {},
  * @param {cocos2d::Node*}
  */
 addDocumentCallbackNode : function () {},
-
-/**
- * @method getDelegate
- * @return A value converted from C/C++ "cocosbuilder::CCBAnimationManagerDelegate*"
- */
-getDelegate : function () {},
 
 /**
  * @method runAnimationsForSequenceNamed

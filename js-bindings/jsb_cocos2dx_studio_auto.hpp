@@ -56,6 +56,31 @@ bool js_cocos2dx_studio_BaseData_setColor(JSContext *cx, uint32_t argc, jsval *v
 bool js_cocos2dx_studio_BaseData_create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_studio_BaseData_BaseData(JSContext *cx, uint32_t argc, jsval *vp);
 
+extern JSClass  *jsb_cocostudio_ProcessBase_class;
+extern JSObject *jsb_cocostudio_ProcessBase_prototype;
+
+bool js_cocos2dx_studio_ProcessBase_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_studio_ProcessBase_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_studio_ProcessBase(JSContext *cx, JSObject *global);
+void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
+bool js_cocos2dx_studio_ProcessBase_play(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_pause(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_getRawDuration(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_resume(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_setIsComplete(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_stop(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_update(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_getCurrentFrameIndex(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_isComplete(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_getCurrentPercent(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_setIsPause(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_getProcessScale(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_isPause(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_isPlaying(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_setProcessScale(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_setIsPlaying(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_studio_ProcessBase_ProcessBase(JSContext *cx, uint32_t argc, jsval *vp);
+
 extern JSClass  *jsb_cocostudio_Tween_class;
 extern JSObject *jsb_cocostudio_Tween_prototype;
 
@@ -302,7 +327,6 @@ bool js_cocos2dx_studio_ComAttribute_parse(JSContext *cx, uint32_t argc, jsval *
 bool js_cocos2dx_studio_ComAttribute_getInt(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_studio_ComAttribute_setBool(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_studio_ComAttribute_create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_studio_ComAttribute_createInstance(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocostudio_ComAudio_class;
 extern JSObject *jsb_cocostudio_ComAudio_prototype;
@@ -338,7 +362,6 @@ bool js_cocos2dx_studio_ComAudio_setEffectsVolume(JSContext *cx, uint32_t argc, 
 bool js_cocos2dx_studio_ComAudio_getFile(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_studio_ComAudio_resumeEffect(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_studio_ComAudio_create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_studio_ComAudio_createInstance(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocostudio_InputDelegate_class;
 extern JSObject *jsb_cocostudio_InputDelegate_prototype;
@@ -366,7 +389,6 @@ void js_cocos2dx_studio_ComController_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_studio_ComController(JSContext *cx, JSObject *global);
 void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 bool js_cocos2dx_studio_ComController_create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_studio_ComController_createInstance(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_studio_ComController_ComController(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocostudio_ComRender_class;
@@ -379,7 +401,6 @@ void register_all_cocos2dx_studio(JSContext* cx, JSObject* obj);
 bool js_cocos2dx_studio_ComRender_setNode(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_studio_ComRender_getNode(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_studio_ComRender_create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_studio_ComRender_createInstance(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocostudio_GUIReader_class;
 extern JSObject *jsb_cocostudio_GUIReader_prototype;

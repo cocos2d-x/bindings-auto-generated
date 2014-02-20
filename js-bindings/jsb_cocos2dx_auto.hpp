@@ -624,6 +624,7 @@ bool js_cocos2dx_ActionManager_removeActionByTag(JSContext *cx, uint32_t argc, j
 bool js_cocos2dx_ActionManager_removeAllActions(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_ActionManager_addAction(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_ActionManager_resumeTarget(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_ActionManager_update(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_ActionManager_getNumberOfRunningActionsInTarget(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_ActionManager_removeAllActionsFromTarget(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_ActionManager_resumeTargets(JSContext *cx, uint32_t argc, jsval *vp);
@@ -1055,8 +1056,6 @@ void js_cocos2dx_CallFunc_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_CallFunc(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 bool js_cocos2dx_CallFunc_execute(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_CallFunc_getTargetCallback(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_CallFunc_setTargetCallback(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_GridAction_class;
 extern JSObject *jsb_cocos2d_GridAction_prototype;
@@ -1133,7 +1132,6 @@ void js_cocos2dx_FlipY3D_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_FlipY3D(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 bool js_cocos2dx_FlipY3D_create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_FlipY3D_FlipY3D(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_Lens3D_class;
 extern JSObject *jsb_cocos2d_Lens3D_prototype;
@@ -1513,7 +1511,6 @@ bool js_cocos2dx_Director_drawScene(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Director_popScene(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Director_isDisplayStats(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Director_setProjection(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Director_getConsole(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Director_getZEye(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Director_setNextDeltaTimeZero(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Director_getVisibleSize(JSContext *cx, uint32_t argc, jsval *vp);
@@ -1720,7 +1717,6 @@ bool js_cocos2dx_Label_setLabelEffect(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Label_getMaxLineWidth(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Label_setBMFontFilePath(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Label_getCommonLineHeight(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Label_getFontAtlas(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Label_getString(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Label_breakLineWithoutSpace(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Label_setMaxLineWidth(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2713,13 +2709,11 @@ void js_cocos2dx_TextFieldTTF_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_TextFieldTTF(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 bool js_cocos2dx_TextFieldTTF_getCharCount(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_TextFieldTTF_getDelegate(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_TextFieldTTF_setSecureTextEntry(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_TextFieldTTF_getColorSpaceHolder(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_TextFieldTTF_initWithPlaceHolder(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_TextFieldTTF_setColorSpaceHolder(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_TextFieldTTF_detachWithIME(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_TextFieldTTF_setDelegate(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_TextFieldTTF_setPlaceHolder(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_TextFieldTTF_isSecureTextEntry(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_TextFieldTTF_getPlaceHolder(JSContext *cx, uint32_t argc, jsval *vp);
@@ -2913,20 +2907,6 @@ bool js_cocos2dx_TileMapAtlas_setTGAInfo(JSContext *cx, uint32_t argc, jsval *vp
 bool js_cocos2dx_TileMapAtlas_create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_TileMapAtlas_TileMapAtlas(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_cocos2d_Timer_class;
-extern JSObject *jsb_cocos2d_Timer_prototype;
-
-bool js_cocos2dx_Timer_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_Timer_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_Timer(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-bool js_cocos2dx_Timer_getInterval(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Timer_setInterval(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Timer_initWithScriptHandler(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Timer_update(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Timer_getScriptHandler(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Timer_Timer(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_cocos2d_Scheduler_class;
 extern JSObject *jsb_cocos2d_Scheduler_prototype;
 
@@ -2935,8 +2915,9 @@ void js_cocos2dx_Scheduler_finalize(JSContext *cx, JSObject *obj);
 void js_register_cocos2dx_Scheduler(JSContext *cx, JSObject *global);
 void register_all_cocos2dx(JSContext* cx, JSObject* obj);
 bool js_cocos2dx_Scheduler_setTimeScale(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_Scheduler_performFunctionInCocosThread(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_Scheduler_isScheduled(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Scheduler_getTimeScale(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_Scheduler_performFunctionInCocosThread(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Scheduler_Scheduler(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_Component_class;

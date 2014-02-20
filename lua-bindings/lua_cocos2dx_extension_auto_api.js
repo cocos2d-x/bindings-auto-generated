@@ -679,7 +679,7 @@ setColor : function () {},
 
 /**
  * @method hueSliderValueChanged
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  * @param {cocos2d::extension::Control::EventType}
  */
 hueSliderValueChanged : function () {},
@@ -710,7 +710,7 @@ setcolourPicker : function () {},
 
 /**
  * @method colourSliderValueChanged
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  * @param {cocos2d::extension::Control::EventType}
  */
 colourSliderValueChanged : function () {},
@@ -1289,7 +1289,7 @@ initWithViewSize : function () {},
 
 /**
  * @method pause
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  */
 pause : function () {},
 
@@ -1351,7 +1351,7 @@ getContentOffset : function () {},
 
 /**
  * @method resume
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  */
 resume : function () {},
 
@@ -1799,7 +1799,7 @@ getDocumentCallbackNames : function () {},
 
 /**
  * @method actionForSoundChannel
- * @return A value converted from C/C++ "cocos2d::Object*"
+ * @return A value converted from C/C++ "cocos2d::Sequence*"
  * @param {cocosbuilder::CCBSequenceProperty*}
  */
 actionForSoundChannel : function () {},
@@ -1863,7 +1863,7 @@ setDocumentControllerName : function () {},
 
 /**
  * @method setObject
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  * @param {cocos2d::Node*}
  * @param {const std::string&}
  */
@@ -1878,7 +1878,7 @@ getContainerSize : function () {},
 
 /**
  * @method actionForCallbackChannel
- * @return A value converted from C/C++ "cocos2d::Object*"
+ * @return A value converted from C/C++ "cocos2d::Sequence*"
  * @param {cocosbuilder::CCBSequenceProperty*}
  */
 actionForCallbackChannel : function () {},

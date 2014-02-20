@@ -5363,10 +5363,10 @@ int lua_cocos2dx_extension_ControlColourPicker_hueSliderValueChanged(lua_State* 
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        cocos2d::Object* arg0;
+        cocos2d::Ref* arg0;
         cocos2d::extension::Control::EventType arg1;
 
-        ok &= luaval_to_object<cocos2d::Object>(tolua_S, 2, "cc.Object",&arg0);
+        ok &= luaval_to_object<cocos2d::Ref>(tolua_S, 2, "cc.Ref",&arg0);
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
@@ -5592,10 +5592,10 @@ int lua_cocos2dx_extension_ControlColourPicker_colourSliderValueChanged(lua_Stat
     argc = lua_gettop(tolua_S)-1;
     if (argc == 2) 
     {
-        cocos2d::Object* arg0;
+        cocos2d::Ref* arg0;
         cocos2d::extension::Control::EventType arg1;
 
-        ok &= luaval_to_object<cocos2d::Object>(tolua_S, 2, "cc.Object",&arg0);
+        ok &= luaval_to_object<cocos2d::Ref>(tolua_S, 2, "cc.Ref",&arg0);
 
         ok &= luaval_to_int32(tolua_S, 3,(int *)&arg1);
         if(!ok)
@@ -10068,9 +10068,9 @@ int lua_cocos2dx_extension_ScrollView_pause(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        cocos2d::Object* arg0;
+        cocos2d::Ref* arg0;
 
-        ok &= luaval_to_object<cocos2d::Object>(tolua_S, 2, "cc.Object",&arg0);
+        ok &= luaval_to_object<cocos2d::Ref>(tolua_S, 2, "cc.Ref",&arg0);
         if(!ok)
             return 0;
         cobj->pause(arg0);
@@ -10534,9 +10534,9 @@ int lua_cocos2dx_extension_ScrollView_resume(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        cocos2d::Object* arg0;
+        cocos2d::Ref* arg0;
 
-        ok &= luaval_to_object<cocos2d::Object>(tolua_S, 2, "cc.Object",&arg0);
+        ok &= luaval_to_object<cocos2d::Ref>(tolua_S, 2, "cc.Ref",&arg0);
         if(!ok)
             return 0;
         cobj->resume(arg0);
@@ -13866,8 +13866,8 @@ int lua_cocos2dx_extension_CCBAnimationManager_actionForSoundChannel(lua_State* 
         ok &= luaval_to_object<cocosbuilder::CCBSequenceProperty>(tolua_S, 2, "cc.CCBSequenceProperty",&arg0);
         if(!ok)
             return 0;
-        cocos2d::Object* ret = cobj->actionForSoundChannel(arg0);
-        object_to_luaval<cocos2d::Object>(tolua_S, "cc.Object",(cocos2d::Object*)ret);
+        cocos2d::Sequence* ret = cobj->actionForSoundChannel(arg0);
+        object_to_luaval<cocos2d::Sequence>(tolua_S, "cc.Sequence",(cocos2d::Sequence*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "actionForSoundChannel",argc, 1);
@@ -14323,11 +14323,11 @@ int lua_cocos2dx_extension_CCBAnimationManager_setObject(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 3) 
     {
-        cocos2d::Object* arg0;
+        cocos2d::Ref* arg0;
         cocos2d::Node* arg1;
         std::string arg2;
 
-        ok &= luaval_to_object<cocos2d::Object>(tolua_S, 2, "cc.Object",&arg0);
+        ok &= luaval_to_object<cocos2d::Ref>(tolua_S, 2, "cc.Ref",&arg0);
 
         ok &= luaval_to_object<cocos2d::Node>(tolua_S, 3, "cc.Node",&arg1);
 
@@ -14427,8 +14427,8 @@ int lua_cocos2dx_extension_CCBAnimationManager_actionForCallbackChannel(lua_Stat
         ok &= luaval_to_object<cocosbuilder::CCBSequenceProperty>(tolua_S, 2, "cc.CCBSequenceProperty",&arg0);
         if(!ok)
             return 0;
-        cocos2d::Object* ret = cobj->actionForCallbackChannel(arg0);
-        object_to_luaval<cocos2d::Object>(tolua_S, "cc.Object",(cocos2d::Object*)ret);
+        cocos2d::Sequence* ret = cobj->actionForCallbackChannel(arg0);
+        object_to_luaval<cocos2d::Sequence>(tolua_S, "cc.Sequence",(cocos2d::Sequence*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "actionForCallbackChannel",argc, 1);

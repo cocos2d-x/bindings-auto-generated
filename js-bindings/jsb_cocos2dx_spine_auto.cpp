@@ -316,7 +316,7 @@ bool js_cocos2dx_spine_Skeleton_constructor(JSContext *cx, uint32_t argc, jsval 
 			#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*;
 			if (!ok) { ok = true; break; }
 			cobj = new spine::Skeleton(arg0, arg1);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -345,7 +345,7 @@ bool js_cocos2dx_spine_Skeleton_constructor(JSContext *cx, uint32_t argc, jsval 
 			ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[2]), &arg2);
 			if (!ok) { ok = true; break; }
 			cobj = new spine::Skeleton(arg0, arg1, arg2);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -368,7 +368,7 @@ bool js_cocos2dx_spine_Skeleton_constructor(JSContext *cx, uint32_t argc, jsval 
 			#pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*;
 			if (!ok) { ok = true; break; }
 			cobj = new spine::Skeleton(arg0);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -394,7 +394,7 @@ bool js_cocos2dx_spine_Skeleton_constructor(JSContext *cx, uint32_t argc, jsval 
 			ok &= JS_ValueToBoolean(cx, argv[1], &arg1);
 			if (!ok) { ok = true; break; }
 			cobj = new spine::Skeleton(arg0, arg1);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -420,7 +420,7 @@ bool js_cocos2dx_spine_Skeleton_constructor(JSContext *cx, uint32_t argc, jsval 
 			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
 			if (!ok) { ok = true; break; }
 			cobj = new spine::Skeleton(arg0, arg1);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -449,7 +449,7 @@ bool js_cocos2dx_spine_Skeleton_constructor(JSContext *cx, uint32_t argc, jsval 
 			ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[2]), &arg2);
 			if (!ok) { ok = true; break; }
 			cobj = new spine::Skeleton(arg0, arg1, arg2);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -777,7 +777,7 @@ bool js_cocos2dx_spine_SkeletonAnimation_constructor(JSContext *cx, uint32_t arg
 			#pragma warning NO CONVERSION TO NATIVE FOR spAtlas*;
 			if (!ok) { ok = true; break; }
 			cobj = new spine::SkeletonAnimation(arg0, arg1);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -806,7 +806,7 @@ bool js_cocos2dx_spine_SkeletonAnimation_constructor(JSContext *cx, uint32_t arg
 			ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[2]), &arg2);
 			if (!ok) { ok = true; break; }
 			cobj = new spine::SkeletonAnimation(arg0, arg1, arg2);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -829,7 +829,7 @@ bool js_cocos2dx_spine_SkeletonAnimation_constructor(JSContext *cx, uint32_t arg
 			#pragma warning NO CONVERSION TO NATIVE FOR spSkeletonData*;
 			if (!ok) { ok = true; break; }
 			cobj = new spine::SkeletonAnimation(arg0);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -855,7 +855,7 @@ bool js_cocos2dx_spine_SkeletonAnimation_constructor(JSContext *cx, uint32_t arg
 			std::string arg1_tmp; ok &= jsval_to_std_string(cx, argv[1], &arg1_tmp); arg1 = arg1_tmp.c_str();
 			if (!ok) { ok = true; break; }
 			cobj = new spine::SkeletonAnimation(arg0, arg1);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}
@@ -884,7 +884,7 @@ bool js_cocos2dx_spine_SkeletonAnimation_constructor(JSContext *cx, uint32_t arg
 			ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[2]), &arg2);
 			if (!ok) { ok = true; break; }
 			cobj = new spine::SkeletonAnimation(arg0, arg1, arg2);
-			cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+			cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 			if (_ccobj) {
 				_ccobj->autorelease();
 			}

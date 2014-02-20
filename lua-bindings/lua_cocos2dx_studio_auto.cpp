@@ -3696,10 +3696,8 @@ int lua_cocos2dx_studio_Tween_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocostudio::Tween();
-        cobj->autorelease();
-        int ID =  (int)cobj->_ID ;
-        int* luaID =  &cobj->_luaID ;
-        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.Tween");
+        tolua_pushusertype(tolua_S,(void*)cobj,"ccs.Tween");
+        tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "Tween",argc, 0);
@@ -7359,10 +7357,8 @@ int lua_cocos2dx_studio_ArmatureAnimation_constructor(lua_State* tolua_S)
         if(!ok)
             return 0;
         cobj = new cocostudio::ArmatureAnimation();
-        cobj->autorelease();
-        int ID =  (int)cobj->_ID ;
-        int* luaID =  &cobj->_luaID ;
-        toluafix_pushusertype_ccobject(tolua_S, ID, luaID, (void*)cobj,"ccs.ArmatureAnimation");
+        tolua_pushusertype(tolua_S,(void*)cobj,"ccs.ArmatureAnimation");
+        tolua_register_gc(tolua_S,lua_gettop(tolua_S));
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "ArmatureAnimation",argc, 0);
@@ -10534,8 +10530,8 @@ int lua_cocos2dx_studio_ComAttribute_createInstance(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Object* ret = cocostudio::ComAttribute::createInstance();
-        object_to_luaval<cocos2d::Object>(tolua_S, "cc.Object",(cocos2d::Object*)ret);
+        cocos2d::Ref* ret = cocostudio::ComAttribute::createInstance();
+        object_to_luaval<cocos2d::Ref>(tolua_S, "cc.Ref",(cocos2d::Ref*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createInstance",argc, 0);
@@ -11831,8 +11827,8 @@ int lua_cocos2dx_studio_ComAudio_createInstance(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Object* ret = cocostudio::ComAudio::createInstance();
-        object_to_luaval<cocos2d::Object>(tolua_S, "cc.Object",(cocos2d::Object*)ret);
+        cocos2d::Ref* ret = cocostudio::ComAudio::createInstance();
+        object_to_luaval<cocos2d::Ref>(tolua_S, "cc.Ref",(cocos2d::Ref*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createInstance",argc, 0);
@@ -11940,8 +11936,8 @@ int lua_cocos2dx_studio_ComController_createInstance(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Object* ret = cocostudio::ComController::createInstance();
-        object_to_luaval<cocos2d::Object>(tolua_S, "cc.Object",(cocos2d::Object*)ret);
+        cocos2d::Ref* ret = cocostudio::ComController::createInstance();
+        object_to_luaval<cocos2d::Ref>(tolua_S, "cc.Ref",(cocos2d::Ref*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createInstance",argc, 0);
@@ -12164,8 +12160,8 @@ int lua_cocos2dx_studio_ComRender_createInstance(lua_State* tolua_S)
     {
         if(!ok)
             return 0;
-        cocos2d::Object* ret = cocostudio::ComRender::createInstance();
-        object_to_luaval<cocos2d::Object>(tolua_S, "cc.Object",(cocos2d::Object*)ret);
+        cocos2d::Ref* ret = cocostudio::ComRender::createInstance();
+        object_to_luaval<cocos2d::Ref>(tolua_S, "cc.Ref",(cocos2d::Ref*)ret);
         return 1;
     }
     CCLOG("%s has wrong number of arguments: %d, was expecting %d\n ", "createInstance",argc, 0);
@@ -12405,7 +12401,7 @@ int lua_cocos2dx_studio_SceneReader_setTarget(lua_State* tolua_S)
     argc = lua_gettop(tolua_S)-1;
     if (argc == 1) 
     {
-        std::function<void (cocos2d::Object *, void *)> arg0;
+        std::function<void (cocos2d::Ref *, void *)> arg0;
 
         do {
 			// Lambda binding for lua is not supported.

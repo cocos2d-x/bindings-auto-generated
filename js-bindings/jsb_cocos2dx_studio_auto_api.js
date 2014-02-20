@@ -173,6 +173,115 @@ BaseData : function () {},
 };
 
 /**
+ * @class ProcessBase
+ */
+ccs.ProcessBase = {
+
+/**
+ * @method play
+ * @param {int}
+ * @param {int}
+ * @param {int}
+ * @param {int}
+ */
+play : function () {},
+
+/**
+ * @method pause
+ */
+pause : function () {},
+
+/**
+ * @method getRawDuration
+ * @return A value converted from C/C++ "int"
+ */
+getRawDuration : function () {},
+
+/**
+ * @method resume
+ */
+resume : function () {},
+
+/**
+ * @method setIsComplete
+ * @param {bool}
+ */
+setIsComplete : function () {},
+
+/**
+ * @method stop
+ */
+stop : function () {},
+
+/**
+ * @method update
+ * @param {float}
+ */
+update : function () {},
+
+/**
+ * @method getCurrentFrameIndex
+ * @return A value converted from C/C++ "int"
+ */
+getCurrentFrameIndex : function () {},
+
+/**
+ * @method isComplete
+ * @return A value converted from C/C++ "bool"
+ */
+isComplete : function () {},
+
+/**
+ * @method getCurrentPercent
+ * @return A value converted from C/C++ "float"
+ */
+getCurrentPercent : function () {},
+
+/**
+ * @method setIsPause
+ * @param {bool}
+ */
+setIsPause : function () {},
+
+/**
+ * @method getProcessScale
+ * @return A value converted from C/C++ "float"
+ */
+getProcessScale : function () {},
+
+/**
+ * @method isPause
+ * @return A value converted from C/C++ "bool"
+ */
+isPause : function () {},
+
+/**
+ * @method isPlaying
+ * @return A value converted from C/C++ "bool"
+ */
+isPlaying : function () {},
+
+/**
+ * @method setProcessScale
+ * @param {float}
+ */
+setProcessScale : function () {},
+
+/**
+ * @method setIsPlaying
+ * @param {bool}
+ */
+setIsPlaying : function () {},
+
+/**
+ * @method ProcessBase
+ * @constructor
+ */
+ProcessBase : function () {},
+
+};
+
+/**
  * @class Tween
  */
 ccs.Tween = {
@@ -1140,12 +1249,6 @@ setBool : function () {},
  */
 create : function () {},
 
-/**
- * @method createInstance
- * @return A value converted from C/C++ "cocos2d::Object*"
- */
-createInstance : function () {},
-
 };
 
 /**
@@ -1290,12 +1393,6 @@ resumeEffect : function () {},
  */
 create : function () {},
 
-/**
- * @method createInstance
- * @return A value converted from C/C++ "cocos2d::Object*"
- */
-createInstance : function () {},
-
 };
 
 /**
@@ -1377,12 +1474,6 @@ ccs.ComController = {
 create : function () {},
 
 /**
- * @method createInstance
- * @return A value converted from C/C++ "cocos2d::Object*"
- */
-createInstance : function () {},
-
-/**
  * @method ComController
  * @constructor
  */
@@ -1406,12 +1497,6 @@ setNode : function () {},
  * @return A value converted from C/C++ "cocos2d::Node*"
  */
 getNode : function () {},
-
-/**
- * @method createInstance
- * @return A value converted from C/C++ "cocos2d::Object*"
- */
-createInstance : function () {},
 
 };
 

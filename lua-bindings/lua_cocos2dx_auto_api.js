@@ -4,15 +4,9 @@
 var cc = cc || {};
 
 /**
- * @class Object
+ * @class Ref
  */
-cc.Object = {
-
-/**
- * @method getReferenceCount
- * @return A value converted from C/C++ "unsigned int"
- */
-getReferenceCount : function () {},
+cc.Ref = {
 
 /**
  * @method release
@@ -25,10 +19,16 @@ release : function () {},
 retain : function () {},
 
 /**
- * @method Object
+ * @method getReferenceCount
+ * @return A value converted from C/C++ "unsigned int"
+ */
+getReferenceCount : function () {},
+
+/**
+ * @method Ref
  * @constructor
  */
-Object : function () {},
+Ref : function () {},
 
 };
 
@@ -1346,7 +1346,7 @@ transformAncestors : function () {},
 
 /**
  * @method setUserObject
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  */
 setUserObject : function () {},
 
@@ -2187,6 +2187,12 @@ addAction : function () {},
 resumeTarget : function () {},
 
 /**
+ * @method update
+ * @param {float}
+ */
+update : function () {},
+
+/**
  * @method getNumberOfRunningActionsInTarget
  * @return A value converted from C/C++ "ssize_t"
  * @param {const cocos2d::Node*}
@@ -2869,13 +2875,13 @@ execute : function () {},
 
 /**
  * @method getTargetCallback
- * @return A value converted from C/C++ "cocos2d::Object*"
+ * @return A value converted from C/C++ "cocos2d::Ref*"
  */
 getTargetCallback : function () {},
 
 /**
  * @method setTargetCallback
- * @param {cocos2d::Object*}
+ * @param {cocos2d::Ref*}
  */
 setTargetCallback : function () {},
 
@@ -3013,12 +3019,6 @@ cc.FlipY3D = {
  * @param {float}
  */
 create : function () {},
-
-/**
- * @method FlipY3D
- * @constructor
- */
-FlipY3D : function () {},
 
 };
 
@@ -8798,6 +8798,18 @@ getInterval : function () {},
 setInterval : function () {},
 
 /**
+ * @method initWithTarget
+ * @return A value converted from C/C++ "bool"
+ * @param {const std::function<void (float)>&}
+ * @param {void*}
+ * @param {long}
+ * @param {float}
+ * @param {unsigned int}
+ * @param {float}
+ */
+initWithTarget : function () {},
+
+/**
  * @method initWithScriptHandler
  * @return A value converted from C/C++ "bool"
  * @param {int}
@@ -8812,10 +8824,32 @@ initWithScriptHandler : function () {},
 update : function () {},
 
 /**
+ * @method getKey
+ * @return A value converted from C/C++ "long"
+ */
+getKey : function () {},
+
+/**
+ * @method getCallback
+ * @return A value converted from C/C++ "const std::function<void (float)>&"
+ */
+getCallback : function () {},
+
+/**
  * @method getScriptHandler
  * @return A value converted from C/C++ "int"
  */
 getScriptHandler : function () {},
+
+/**
+ * @method create
+ * @return A value converted from C/C++ "cocos2d::Timer*"
+ * @param {const std::function<void (float)>&}
+ * @param {void*}
+ * @param {long}
+ * @param {float}
+ */
+create : function () {},
 
 /**
  * @method Timer
@@ -8837,16 +8871,24 @@ cc.Scheduler = {
 setTimeScale : function () {},
 
 /**
- * @method performFunctionInCocosThread
- * @param {const std::function<void ()>&}
+ * @method isScheduled
+ * @return A value converted from C/C++ "bool"
+ * @param {void*}
+ * @param {long}
  */
-performFunctionInCocosThread : function () {},
+isScheduled : function () {},
 
 /**
  * @method getTimeScale
  * @return A value converted from C/C++ "float"
  */
 getTimeScale : function () {},
+
+/**
+ * @method performFunctionInCocosThread
+ * @param {const std::function<void ()>&}
+ */
+performFunctionInCocosThread : function () {},
 
 /**
  * @method Scheduler

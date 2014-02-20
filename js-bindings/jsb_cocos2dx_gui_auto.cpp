@@ -80,7 +80,7 @@ bool js_cocos2dx_gui_LayoutParameter_constructor(JSContext *cx, uint32_t argc, j
 {
 	if (argc == 0) {
 		cocos2d::gui::LayoutParameter* cobj = new cocos2d::gui::LayoutParameter();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -229,7 +229,7 @@ bool js_cocos2dx_gui_LinearLayoutParameter_constructor(JSContext *cx, uint32_t a
 {
 	if (argc == 0) {
 		cocos2d::gui::LinearLayoutParameter* cobj = new cocos2d::gui::LinearLayoutParameter();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -454,7 +454,7 @@ bool js_cocos2dx_gui_RelativeLayoutParameter_constructor(JSContext *cx, uint32_t
 {
 	if (argc == 0) {
 		cocos2d::gui::RelativeLayoutParameter* cobj = new cocos2d::gui::RelativeLayoutParameter();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -1703,7 +1703,7 @@ bool js_cocos2dx_gui_Widget_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Widget* cobj = new cocos2d::gui::Widget();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -2202,7 +2202,7 @@ bool js_cocos2dx_gui_Layout_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Layout* cobj = new cocos2d::gui::Layout();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -2726,7 +2726,7 @@ bool js_cocos2dx_gui_Button_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Button* cobj = new cocos2d::gui::Button();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -3089,7 +3089,7 @@ bool js_cocos2dx_gui_CheckBox_constructor(JSContext *cx, uint32_t argc, jsval *v
 {
 	if (argc == 0) {
 		cocos2d::gui::CheckBox* cobj = new cocos2d::gui::CheckBox();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -3299,7 +3299,7 @@ bool js_cocos2dx_gui_ImageView_constructor(JSContext *cx, uint32_t argc, jsval *
 {
 	if (argc == 0) {
 		cocos2d::gui::ImageView* cobj = new cocos2d::gui::ImageView();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -3606,7 +3606,7 @@ bool js_cocos2dx_gui_Text_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Text* cobj = new cocos2d::gui::Text();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -3793,7 +3793,7 @@ bool js_cocos2dx_gui_TextAtlas_constructor(JSContext *cx, uint32_t argc, jsval *
 {
 	if (argc == 0) {
 		cocos2d::gui::TextAtlas* cobj = new cocos2d::gui::TextAtlas();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -4052,7 +4052,7 @@ bool js_cocos2dx_gui_LoadingBar_constructor(JSContext *cx, uint32_t argc, jsval 
 {
 	if (argc == 0) {
 		cocos2d::gui::LoadingBar* cobj = new cocos2d::gui::LoadingBar();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -4771,7 +4771,7 @@ bool js_cocos2dx_gui_ScrollView_constructor(JSContext *cx, uint32_t argc, jsval 
 {
 	if (argc == 0) {
 		cocos2d::gui::ScrollView* cobj = new cocos2d::gui::ScrollView();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -5229,7 +5229,7 @@ bool js_cocos2dx_gui_ListView_constructor(JSContext *cx, uint32_t argc, jsval *v
 {
 	if (argc == 0) {
 		cocos2d::gui::ListView* cobj = new cocos2d::gui::ListView();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -5661,7 +5661,7 @@ bool js_cocos2dx_gui_Slider_constructor(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	if (argc == 0) {
 		cocos2d::gui::Slider* cobj = new cocos2d::gui::Slider();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -6211,7 +6211,7 @@ bool js_cocos2dx_gui_TextField_constructor(JSContext *cx, uint32_t argc, jsval *
 {
 	if (argc == 0) {
 		cocos2d::gui::TextField* cobj = new cocos2d::gui::TextField();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -6403,7 +6403,7 @@ bool js_cocos2dx_gui_TextBMFont_constructor(JSContext *cx, uint32_t argc, jsval 
 {
 	if (argc == 0) {
 		cocos2d::gui::TextBMFont* cobj = new cocos2d::gui::TextBMFont();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
@@ -6750,7 +6750,7 @@ bool js_cocos2dx_gui_PageView_constructor(JSContext *cx, uint32_t argc, jsval *v
 {
 	if (argc == 0) {
 		cocos2d::gui::PageView* cobj = new cocos2d::gui::PageView();
-		cocos2d::Object *_ccobj = dynamic_cast<cocos2d::Object *>(cobj);
+		cocos2d::Ref *_ccobj = dynamic_cast<cocos2d::Ref *>(cobj);
 		if (_ccobj) {
 			_ccobj->autorelease();
 		}
