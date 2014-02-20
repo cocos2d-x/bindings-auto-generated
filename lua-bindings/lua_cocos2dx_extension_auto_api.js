@@ -1269,6 +1269,13 @@ getDirection : function () {},
 getContainer : function () {},
 
 /**
+ * @method updateTweenAction
+ * @param {float}
+ * @param {const std::string&}
+ */
+updateTweenAction : function () {},
+
+/**
  * @method getZoomScale
  * @return A value converted from C/C++ "float"
  */

@@ -6168,6 +6168,28 @@ bool js_cocos2dx_extension_ScrollView_getContainer(JSContext *cx, uint32_t argc,
 	JS_ReportError(cx, "js_cocos2dx_extension_ScrollView_getContainer : wrong number of arguments: %d, was expecting %d", argc, 0);
 	return false;
 }
+bool js_cocos2dx_extension_ScrollView_updateTweenAction(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::extension::ScrollView* cobj = (cocos2d::extension::ScrollView *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_extension_ScrollView_updateTweenAction : Invalid Native Object");
+	if (argc == 2) {
+		double arg0;
+		std::string arg1;
+		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[0]), &arg0);
+		ok &= jsval_to_std_string(cx, argv[1], &arg1);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_extension_ScrollView_updateTweenAction : Error processing arguments");
+		cobj->updateTweenAction(arg0, arg1);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return true;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_extension_ScrollView_updateTweenAction : wrong number of arguments: %d, was expecting %d", argc, 2);
+	return false;
+}
 bool js_cocos2dx_extension_ScrollView_getZoomScale(JSContext *cx, uint32_t argc, jsval *vp)
 {
 	JSObject *obj = JS_THIS_OBJECT(cx, vp);
@@ -6768,6 +6790,7 @@ void js_register_cocos2dx_extension_ScrollView(JSContext *cx, JSObject *global) 
 		JS_FN("setBounceable", js_cocos2dx_extension_ScrollView_setBounceable, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getDirection", js_cocos2dx_extension_ScrollView_getDirection, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getContainer", js_cocos2dx_extension_ScrollView_getContainer, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("updateTweenAction", js_cocos2dx_extension_ScrollView_updateTweenAction, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("getZoomScale", js_cocos2dx_extension_ScrollView_getZoomScale, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("updateInset", js_cocos2dx_extension_ScrollView_updateInset, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
 		JS_FN("initWithViewSize", js_cocos2dx_extension_ScrollView_initWithViewSize, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),

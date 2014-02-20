@@ -9892,6 +9892,55 @@ int lua_cocos2dx_extension_ScrollView_getContainer(lua_State* tolua_S)
 
     return 0;
 }
+int lua_cocos2dx_extension_ScrollView_updateTweenAction(lua_State* tolua_S)
+{
+    int argc = 0;
+    cocos2d::extension::ScrollView* cobj = nullptr;
+    bool ok  = true;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_Error tolua_err;
+#endif
+
+
+#if COCOS2D_DEBUG >= 1
+    if (!tolua_isusertype(tolua_S,1,"cc.ScrollView",0,&tolua_err)) goto tolua_lerror;
+#endif
+
+    cobj = (cocos2d::extension::ScrollView*)tolua_tousertype(tolua_S,1,0);
+
+#if COCOS2D_DEBUG >= 1
+    if (!cobj) 
+    {
+        tolua_error(tolua_S,"invalid 'cobj' in function 'lua_cocos2dx_extension_ScrollView_updateTweenAction'", NULL);
+        return 0;
+    }
+#endif
+
+    argc = lua_gettop(tolua_S)-1;
+    if (argc == 2) 
+    {
+        double arg0;
+        std::string arg1;
+
+        ok &= luaval_to_number(tolua_S, 2,&arg0);
+
+        ok &= luaval_to_std_string(tolua_S, 3,&arg1);
+        if(!ok)
+            return 0;
+        cobj->updateTweenAction(arg0, arg1);
+        return 0;
+    }
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "updateTweenAction",argc, 2);
+    return 0;
+
+#if COCOS2D_DEBUG >= 1
+    tolua_lerror:
+    tolua_error(tolua_S,"#ferror in function 'lua_cocos2dx_extension_ScrollView_updateTweenAction'.",&tolua_err);
+#endif
+
+    return 0;
+}
 int lua_cocos2dx_extension_ScrollView_getZoomScale(lua_State* tolua_S)
 {
     int argc = 0;
@@ -11138,6 +11187,7 @@ int lua_register_cocos2dx_extension_ScrollView(lua_State* tolua_S)
         tolua_function(tolua_S,"setBounceable",lua_cocos2dx_extension_ScrollView_setBounceable);
         tolua_function(tolua_S,"getDirection",lua_cocos2dx_extension_ScrollView_getDirection);
         tolua_function(tolua_S,"getContainer",lua_cocos2dx_extension_ScrollView_getContainer);
+        tolua_function(tolua_S,"updateTweenAction",lua_cocos2dx_extension_ScrollView_updateTweenAction);
         tolua_function(tolua_S,"getZoomScale",lua_cocos2dx_extension_ScrollView_getZoomScale);
         tolua_function(tolua_S,"updateInset",lua_cocos2dx_extension_ScrollView_updateInset);
         tolua_function(tolua_S,"initWithViewSize",lua_cocos2dx_extension_ScrollView_initWithViewSize);
@@ -16453,22 +16503,22 @@ TOLUA_API int register_all_cocos2dx_extension(lua_State* tolua_S)
 	tolua_beginmodule(tolua_S,"cc");
 
 	lua_register_cocos2dx_extension_Control(tolua_S);
+	lua_register_cocos2dx_extension_ControlHuePicker(tolua_S);
 	lua_register_cocos2dx_extension_TableViewCell(tolua_S);
 	lua_register_cocos2dx_extension_Scale9Sprite(tolua_S);
-	lua_register_cocos2dx_extension_ControlSwitch(tolua_S);
-	lua_register_cocos2dx_extension_ScrollView(tolua_S);
-	lua_register_cocos2dx_extension_TableView(tolua_S);
 	lua_register_cocos2dx_extension_AssetsManager(tolua_S);
-	lua_register_cocos2dx_extension_ControlButton(tolua_S);
-	lua_register_cocos2dx_extension_EditBox(tolua_S);
-	lua_register_cocos2dx_extension_ControlSlider(tolua_S);
-	lua_register_cocos2dx_extension_ControlStepper(tolua_S);
-	lua_register_cocos2dx_extension_CCBReader(tolua_S);
-	lua_register_cocos2dx_extension_ControlSaturationBrightnessPicker(tolua_S);
 	lua_register_cocos2dx_extension_ControlColourPicker(tolua_S);
-	lua_register_cocos2dx_extension_ControlPotentiometer(tolua_S);
 	lua_register_cocos2dx_extension_CCBAnimationManager(tolua_S);
-	lua_register_cocos2dx_extension_ControlHuePicker(tolua_S);
+	lua_register_cocos2dx_extension_ControlButton(tolua_S);
+	lua_register_cocos2dx_extension_ControlSlider(tolua_S);
+	lua_register_cocos2dx_extension_ControlSaturationBrightnessPicker(tolua_S);
+	lua_register_cocos2dx_extension_ScrollView(tolua_S);
+	lua_register_cocos2dx_extension_ControlPotentiometer(tolua_S);
+	lua_register_cocos2dx_extension_ControlStepper(tolua_S);
+	lua_register_cocos2dx_extension_TableView(tolua_S);
+	lua_register_cocos2dx_extension_EditBox(tolua_S);
+	lua_register_cocos2dx_extension_CCBReader(tolua_S);
+	lua_register_cocos2dx_extension_ControlSwitch(tolua_S);
 
 	tolua_endmodule(tolua_S);
 	return 1;
