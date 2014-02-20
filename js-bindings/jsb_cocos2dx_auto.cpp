@@ -38865,6 +38865,293 @@ void js_register_cocos2dx_Application(JSContext *cx, JSObject *global) {
 	}
 }
 
+JSClass  *jsb_cocos2d_GLViewProtocol_class;
+JSObject *jsb_cocos2d_GLViewProtocol_prototype;
+
+bool js_cocos2dx_GLViewProtocol_getVisibleOrigin(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::GLViewProtocol* cobj = (cocos2d::GLViewProtocol *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_GLViewProtocol_getVisibleOrigin : Invalid Native Object");
+	if (argc == 0) {
+		cocos2d::Point ret = cobj->getVisibleOrigin();
+		jsval jsret = JSVAL_NULL;
+		jsret = ccpoint_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_GLViewProtocol_getVisibleOrigin : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return false;
+}
+bool js_cocos2dx_GLViewProtocol_setDesignResolutionSize(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::GLViewProtocol* cobj = (cocos2d::GLViewProtocol *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_GLViewProtocol_setDesignResolutionSize : Invalid Native Object");
+	if (argc == 3) {
+		double arg0;
+		double arg1;
+		ResolutionPolicy arg2;
+		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[0]), &arg0);
+		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[1]), &arg1);
+		ok &= jsval_to_int32(cx, argv[2], (int32_t *)&arg2);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_GLViewProtocol_setDesignResolutionSize : Error processing arguments");
+		cobj->setDesignResolutionSize(arg0, arg1, arg2);
+		JS_SET_RVAL(cx, vp, JSVAL_VOID);
+		return true;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_GLViewProtocol_setDesignResolutionSize : wrong number of arguments: %d, was expecting %d", argc, 3);
+	return false;
+}
+bool js_cocos2dx_GLViewProtocol_getVisibleSize(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	JSObject *obj = JS_THIS_OBJECT(cx, vp);
+	js_proxy_t *proxy = jsb_get_js_proxy(obj);
+	cocos2d::GLViewProtocol* cobj = (cocos2d::GLViewProtocol *)(proxy ? proxy->ptr : NULL);
+	JSB_PRECONDITION2( cobj, cx, false, "js_cocos2dx_GLViewProtocol_getVisibleSize : Invalid Native Object");
+	if (argc == 0) {
+		cocos2d::Size ret = cobj->getVisibleSize();
+		jsval jsret = JSVAL_NULL;
+		jsret = ccsize_to_jsval(cx, ret);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+
+	JS_ReportError(cx, "js_cocos2dx_GLViewProtocol_getVisibleSize : wrong number of arguments: %d, was expecting %d", argc, 0);
+	return false;
+}
+
+
+void js_cocos2d_GLViewProtocol_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (GLViewProtocol)", obj);
+}
+
+void js_register_cocos2dx_GLViewProtocol(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_GLViewProtocol_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_GLViewProtocol_class->name = "GLViewProtocol";
+	jsb_cocos2d_GLViewProtocol_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_GLViewProtocol_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_GLViewProtocol_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_GLViewProtocol_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_GLViewProtocol_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_GLViewProtocol_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_GLViewProtocol_class->convert = JS_ConvertStub;
+	jsb_cocos2d_GLViewProtocol_class->finalize = js_cocos2d_GLViewProtocol_finalize;
+	jsb_cocos2d_GLViewProtocol_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+		JS_FN("getVisibleOrigin", js_cocos2dx_GLViewProtocol_getVisibleOrigin, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("setDesignResolutionSize", js_cocos2dx_GLViewProtocol_setDesignResolutionSize, 3, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("getVisibleSize", js_cocos2dx_GLViewProtocol_getVisibleSize, 0, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+        JS_FS_END
+	};
+
+	JSFunctionSpec *st_funcs = NULL;
+
+	jsb_cocos2d_GLViewProtocol_prototype = JS_InitClass(
+		cx, global,
+		NULL, // parent proto
+		jsb_cocos2d_GLViewProtocol_class,
+		empty_constructor, 0,
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "GLViewProtocol", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::GLViewProtocol> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_GLViewProtocol_class;
+		p->proto = jsb_cocos2d_GLViewProtocol_prototype;
+		p->parentProto = NULL;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
+JSClass  *jsb_cocos2d_GLView_class;
+JSObject *jsb_cocos2d_GLView_prototype;
+
+bool js_cocos2dx_GLView_createWithRect(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 2) {
+		std::string arg0;
+		cocos2d::Rect arg1;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_ccrect(cx, argv[1], &arg1);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_GLView_createWithRect : Error processing arguments");
+		cocos2d::GLView* ret = cocos2d::GLView::createWithRect(arg0, arg1);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::GLView>(cx, (cocos2d::GLView*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	if (argc == 3) {
+		std::string arg0;
+		cocos2d::Rect arg1;
+		double arg2;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		ok &= jsval_to_ccrect(cx, argv[1], &arg1);
+		ok &= JS::ToNumber( cx, JS::RootedValue(cx, argv[2]), &arg2);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_GLView_createWithRect : Error processing arguments");
+		cocos2d::GLView* ret = cocos2d::GLView::createWithRect(arg0, arg1, arg2);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::GLView>(cx, (cocos2d::GLView*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_GLView_createWithRect : wrong number of arguments");
+	return false;
+}
+
+bool js_cocos2dx_GLView_create(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_GLView_create : Error processing arguments");
+		cocos2d::GLView* ret = cocos2d::GLView::create(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::GLView>(cx, (cocos2d::GLView*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_GLView_create : wrong number of arguments");
+	return false;
+}
+
+bool js_cocos2dx_GLView_createWithFullScreen(JSContext *cx, uint32_t argc, jsval *vp)
+{
+	jsval *argv = JS_ARGV(cx, vp);
+	bool ok = true;
+	if (argc == 1) {
+		std::string arg0;
+		ok &= jsval_to_std_string(cx, argv[0], &arg0);
+		JSB_PRECONDITION2(ok, cx, false, "js_cocos2dx_GLView_createWithFullScreen : Error processing arguments");
+		cocos2d::GLView* ret = cocos2d::GLView::createWithFullScreen(arg0);
+		jsval jsret = JSVAL_NULL;
+		do {
+		if (ret) {
+			js_proxy_t *proxy = js_get_or_create_proxy<cocos2d::GLView>(cx, (cocos2d::GLView*)ret);
+			jsret = OBJECT_TO_JSVAL(proxy->obj);
+		} else {
+			jsret = JSVAL_NULL;
+		}
+	} while (0);
+		JS_SET_RVAL(cx, vp, jsret);
+		return true;
+	}
+	JS_ReportError(cx, "js_cocos2dx_GLView_createWithFullScreen : wrong number of arguments");
+	return false;
+}
+
+
+extern JSObject *jsb_cocos2d_GLViewProtocol_prototype;
+
+void js_cocos2d_GLView_finalize(JSFreeOp *fop, JSObject *obj) {
+    CCLOGINFO("jsbindings: finalizing JS object %p (GLView)", obj);
+}
+
+void js_register_cocos2dx_GLView(JSContext *cx, JSObject *global) {
+	jsb_cocos2d_GLView_class = (JSClass *)calloc(1, sizeof(JSClass));
+	jsb_cocos2d_GLView_class->name = "GLView";
+	jsb_cocos2d_GLView_class->addProperty = JS_PropertyStub;
+	jsb_cocos2d_GLView_class->delProperty = JS_DeletePropertyStub;
+	jsb_cocos2d_GLView_class->getProperty = JS_PropertyStub;
+	jsb_cocos2d_GLView_class->setProperty = JS_StrictPropertyStub;
+	jsb_cocos2d_GLView_class->enumerate = JS_EnumerateStub;
+	jsb_cocos2d_GLView_class->resolve = JS_ResolveStub;
+	jsb_cocos2d_GLView_class->convert = JS_ConvertStub;
+	jsb_cocos2d_GLView_class->finalize = js_cocos2d_GLView_finalize;
+	jsb_cocos2d_GLView_class->flags = JSCLASS_HAS_RESERVED_SLOTS(2);
+
+	static JSPropertySpec properties[] = {
+		{"__nativeObj", 0, JSPROP_ENUMERATE | JSPROP_PERMANENT, JSOP_WRAPPER(js_is_native_obj), JSOP_NULLWRAPPER},
+		{0, 0, 0, JSOP_NULLWRAPPER, JSOP_NULLWRAPPER}
+	};
+
+	static JSFunctionSpec funcs[] = {
+        JS_FS_END
+	};
+
+	static JSFunctionSpec st_funcs[] = {
+		JS_FN("createWithRect", js_cocos2dx_GLView_createWithRect, 2, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("create", js_cocos2dx_GLView_create, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FN("createWithFullScreen", js_cocos2dx_GLView_createWithFullScreen, 1, JSPROP_PERMANENT | JSPROP_ENUMERATE),
+		JS_FS_END
+	};
+
+	jsb_cocos2d_GLView_prototype = JS_InitClass(
+		cx, global,
+		jsb_cocos2d_GLViewProtocol_prototype,
+		jsb_cocos2d_GLView_class,
+		empty_constructor, 0,
+		properties,
+		funcs,
+		NULL, // no static properties
+		st_funcs);
+	// make the class enumerable in the registered namespace
+//	bool found;
+//FIXME: Removed in Firefox v27	
+//	JS_SetPropertyAttributes(cx, global, "GLView", JSPROP_ENUMERATE | JSPROP_READONLY, &found);
+
+	// add the proto and JSClass to the type->js info hash table
+	TypeTest<cocos2d::GLView> t;
+	js_type_class_t *p;
+	std::string typeName = t.s_name();
+	if (_js_global_type_map.find(typeName) == _js_global_type_map.end())
+	{
+		p = (js_type_class_t *)malloc(sizeof(js_type_class_t));
+		p->jsclass = jsb_cocos2d_GLView_class;
+		p->proto = jsb_cocos2d_GLView_prototype;
+		p->parentProto = jsb_cocos2d_GLViewProtocol_prototype;
+		_js_global_type_map.insert(std::make_pair(typeName, p));
+	}
+}
+
 JSClass  *jsb_cocos2d_ShaderCache_class;
 JSObject *jsb_cocos2d_ShaderCache_prototype;
 
@@ -44460,6 +44747,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx___LayerRGBA(cx, obj);
 	js_register_cocos2dx_AtlasNode(cx, obj);
 	js_register_cocos2dx_TileMapAtlas(cx, obj);
+	js_register_cocos2dx_GLViewProtocol(cx, obj);
 	js_register_cocos2dx_TransitionMoveInT(cx, obj);
 	js_register_cocos2dx_TransitionMoveInR(cx, obj);
 	js_register_cocos2dx_ParticleSystem(cx, obj);
@@ -44514,6 +44802,7 @@ void register_all_cocos2dx(JSContext* cx, JSObject* obj) {
 	js_register_cocos2dx_EaseIn(cx, obj);
 	js_register_cocos2dx_EaseExponentialInOut(cx, obj);
 	js_register_cocos2dx_EaseBackInOut(cx, obj);
+	js_register_cocos2dx_GLView(cx, obj);
 	js_register_cocos2dx_EaseExponentialOut(cx, obj);
 	js_register_cocos2dx_SpriteBatchNode(cx, obj);
 	js_register_cocos2dx_Label(cx, obj);
