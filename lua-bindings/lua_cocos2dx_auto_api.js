@@ -4724,6 +4724,13 @@ increaseAtlasCapacity : function () {},
 getTextureAtlas : function () {},
 
 /**
+ * @method insertQuadFromSprite
+ * @param {cocos2d::Sprite*}
+ * @param {ssize_t}
+ */
+insertQuadFromSprite : function () {},
+
+/**
  * @method setTexture
  * @param {cocos2d::Texture2D*}
  */
@@ -4908,47 +4915,23 @@ LabelBMFont : function () {},
 cc.Label = {
 
 /**
- * @method getString
- * @return A value converted from C/C++ "const std::string&"
+ * @method setLineBreakWithoutSpace
+ * @param {bool}
  */
-getString : function () {},
+setLineBreakWithoutSpace : function () {},
 
 /**
- * @method assignNewUTF16String
- * @param {unsigned short*}
- */
-assignNewUTF16String : function () {},
-
-/**
- * @method setLabelEffect
- * @param {cocos2d::LabelEffect}
- * @param {const cocos2d::Color3B&}
- */
-setLabelEffect : function () {},
-
-/**
- * @method getCommonLineHeight
+ * @method getStringNumLines
  * @return A value converted from C/C++ "int"
  */
-getCommonLineHeight : function () {},
+getStringNumLines : function () {},
 
 /**
- * @method breakLineWithoutSpace
- * @return A value converted from C/C++ "bool"
+ * @method getLetter
+ * @return A value converted from C/C++ "cocos2d::Sprite*"
+ * @param {int}
  */
-breakLineWithoutSpace : function () {},
-
-/**
- * @method setWidth
- * @param {float}
- */
-setWidth : function () {},
-
-/**
- * @method getMaxLineWidth
- * @return A value converted from C/C++ "float"
- */
-getMaxLineWidth : function () {},
+getLetter : function () {},
 
 /**
  * @method getScaleY
@@ -4963,16 +4946,40 @@ getScaleY : function () {},
 getScaleX : function () {},
 
 /**
+ * @method getStringLenght
+ * @return A value converted from C/C++ "int"
+ */
+getStringLenght : function () {},
+
+/**
+ * @method getTextAlignment
+ * @return A value converted from C/C++ "cocos2d::TextHAlignment"
+ */
+getTextAlignment : function () {},
+
+/**
  * @method setString
  * @param {const std::string&}
  */
 setString : function () {},
 
 /**
- * @method getKernings
- * @return A value converted from C/C++ "int*"
+ * @method onDraw
  */
-getKernings : function () {},
+onDraw : function () {},
+
+/**
+ * @method setLabelEffect
+ * @param {cocos2d::LabelEffect}
+ * @param {const cocos2d::Color3B&}
+ */
+setLabelEffect : function () {},
+
+/**
+ * @method getMaxLineWidth
+ * @return A value converted from C/C++ "float"
+ */
+getMaxLineWidth : function () {},
 
 /**
  * @method setBMFontFilePath
@@ -4982,11 +4989,10 @@ getKernings : function () {},
 setBMFontFilePath : function () {},
 
 /**
- * @method recordPlaceholderInfo
- * @return A value converted from C/C++ "bool"
- * @param {int}
+ * @method getCommonLineHeight
+ * @return A value converted from C/C++ "int"
  */
-recordPlaceholderInfo : function () {},
+getCommonLineHeight : function () {},
 
 /**
  * @method getFontAtlas
@@ -4995,61 +5001,28 @@ recordPlaceholderInfo : function () {},
 getFontAtlas : function () {},
 
 /**
- * @method setLineBreakWithoutSpace
- * @param {bool}
+ * @method getString
+ * @return A value converted from C/C++ "const std::string&"
  */
-setLineBreakWithoutSpace : function () {},
+getString : function () {},
 
 /**
- * @method getStringNumLines
- * @return A value converted from C/C++ "int"
+ * @method breakLineWithoutSpace
+ * @return A value converted from C/C++ "bool"
  */
-getStringNumLines : function () {},
+breakLineWithoutSpace : function () {},
 
 /**
- * @method getUTF16String
- * @return A value converted from C/C++ "unsigned short*"
+ * @method setMaxLineWidth
+ * @param {float}
  */
-getUTF16String : function () {},
-
-/**
- * @method getStringLenght
- * @return A value converted from C/C++ "int"
- */
-getStringLenght : function () {},
-
-/**
- * @method onDraw
- */
-onDraw : function () {},
-
-/**
- * @method getLetter
- * @return A value converted from C/C++ "cocos2d::Sprite*"
- * @param {int}
- */
-getLetter : function () {},
-
-/**
- * @method getTextAlignment
- * @return A value converted from C/C++ "cocos2d::TextHAlignment"
- */
-getTextAlignment : function () {},
+setMaxLineWidth : function () {},
 
 /**
  * @method setAlignment
  * @param {cocos2d::TextHAlignment}
  */
 setAlignment : function () {},
-
-/**
- * @method recordLetterInfo
- * @return A value converted from C/C++ "bool"
- * @param {const cocos2d::Point&}
- * @param {unsigned short}
- * @param {int}
- */
-recordLetterInfo : function () {},
 
 /**
  * @method createWithBMFont
