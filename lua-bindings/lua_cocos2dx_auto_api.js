@@ -4793,123 +4793,6 @@ SpriteBatchNode : function () {},
 };
 
 /**
- * @class LabelBMFont
- */
-cc.LabelBMFont = {
-
-/**
- * @method setLineBreakWithoutSpace
- * @param {bool}
- */
-setLineBreakWithoutSpace : function () {},
-
-/**
- * @method setScaleY
- * @param {float}
- */
-setScaleY : function () {},
-
-/**
- * @method setScaleX
- * @param {float}
- */
-setScaleX : function () {},
-
-/**
- * @method isOpacityModifyRGB
- * @return A value converted from C/C++ "bool"
- */
-isOpacityModifyRGB : function () {},
-
-/**
- * @method createFontChars
- */
-createFontChars : function () {},
-
-/**
- * @method getString
- * @return A value converted from C/C++ "const std::string&"
- */
-getString : function () {},
-
-/**
- * @method initWithString
- * @return A value converted from C/C++ "bool"
- * @param {const std::string&}
- * @param {const std::string&}
- * @param {float}
- * @param {cocos2d::TextHAlignment}
- * @param {cocos2d::Point}
- */
-initWithString : function () {},
-
-/**
- * @method setCString
- * @param {const char*}
- */
-setCString : function () {},
-
-/**
- * @method setScale
- * @param {float}
- */
-setScale : function () {},
-
-/**
- * @method setOpacityModifyRGB
- * @param {bool}
- */
-setOpacityModifyRGB : function () {},
-
-/**
- * @method setFntFile
- * @param {const std::string&}
- */
-setFntFile : function () {},
-
-/**
- * @method init
- * @return A value converted from C/C++ "bool"
- */
-init : function () {},
-
-/**
- * @method getFntFile
- * @return A value converted from C/C++ "const std::string&"
- */
-getFntFile : function () {},
-
-/**
- * @method updateLabel
- */
-updateLabel : function () {},
-
-/**
- * @method setAlignment
- * @param {cocos2d::TextHAlignment}
- */
-setAlignment : function () {},
-
-/**
- * @method setWidth
- * @param {float}
- */
-setWidth : function () {},
-
-/**
- * @method purgeCachedData
- */
-purgeCachedData : function () {},
-
-/**
- * @method LabelBMFont
- * @constructor
- */
-LabelBMFont : function () {},
-
-};
-
-/**
  * @class Label
  */
 cc.Label = {
@@ -4985,6 +4868,7 @@ getMaxLineWidth : function () {},
  * @method setBMFontFilePath
  * @return A value converted from C/C++ "bool"
  * @param {const std::string&}
+ * @param {const cocos2d::Point&}
  */
 setBMFontFilePath : function () {},
 
@@ -5031,6 +4915,7 @@ setAlignment : function () {},
  * @param {const std::string&}
  * @param {const cocos2d::TextHAlignment&}
  * @param {int}
+ * @param {const cocos2d::Point&}
  */
 createWithBMFont : function () {},
 
@@ -5039,6 +4924,104 @@ createWithBMFont : function () {},
  * @return A value converted from C/C++ "cocos2d::Label*"
  */
 create : function () {},
+
+};
+
+/**
+ * @class LabelBMFont
+ */
+cc.LabelBMFont = {
+
+/**
+ * @method setLineBreakWithoutSpace
+ * @param {bool}
+ */
+setLineBreakWithoutSpace : function () {},
+
+/**
+ * @method getBlendFunc
+ * @return A value converted from C/C++ "const cocos2d::BlendFunc&"
+ */
+getBlendFunc : function () {},
+
+/**
+ * @method isOpacityModifyRGB
+ * @return A value converted from C/C++ "bool"
+ */
+isOpacityModifyRGB : function () {},
+
+/**
+ * @method getLetter
+ * @return A value converted from C/C++ "cocos2d::Sprite*"
+ * @param {int}
+ */
+getLetter : function () {},
+
+/**
+ * @method getString
+ * @return A value converted from C/C++ "const std::string&"
+ */
+getString : function () {},
+
+/**
+ * @method setBlendFunc
+ * @param {const cocos2d::BlendFunc&}
+ */
+setBlendFunc : function () {},
+
+/**
+ * @method setString
+ * @param {const std::string&}
+ */
+setString : function () {},
+
+/**
+ * @method initWithString
+ * @return A value converted from C/C++ "bool"
+ * @param {const std::string&}
+ * @param {const std::string&}
+ * @param {float}
+ * @param {cocos2d::TextHAlignment}
+ * @param {const cocos2d::Point&}
+ */
+initWithString : function () {},
+
+/**
+ * @method setOpacityModifyRGB
+ * @param {bool}
+ */
+setOpacityModifyRGB : function () {},
+
+/**
+ * @method getFntFile
+ * @return A value converted from C/C++ "const std::string&"
+ */
+getFntFile : function () {},
+
+/**
+ * @method setFntFile
+ * @param {const std::string&}
+ * @param {const cocos2d::Point&}
+ */
+setFntFile : function () {},
+
+/**
+ * @method setAlignment
+ * @param {cocos2d::TextHAlignment}
+ */
+setAlignment : function () {},
+
+/**
+ * @method setWidth
+ * @param {float}
+ */
+setWidth : function () {},
+
+/**
+ * @method LabelBMFont
+ * @constructor
+ */
+LabelBMFont : function () {},
 
 };
 

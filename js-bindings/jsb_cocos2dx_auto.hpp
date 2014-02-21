@@ -1668,34 +1668,6 @@ bool js_cocos2dx_SpriteBatchNode_create(JSContext *cx, uint32_t argc, jsval *vp)
 bool js_cocos2dx_SpriteBatchNode_createWithTexture(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_SpriteBatchNode_SpriteBatchNode(JSContext *cx, uint32_t argc, jsval *vp);
 
-extern JSClass  *jsb_cocos2d_LabelBMFont_class;
-extern JSObject *jsb_cocos2d_LabelBMFont_prototype;
-
-bool js_cocos2dx_LabelBMFont_constructor(JSContext *cx, uint32_t argc, jsval *vp);
-void js_cocos2dx_LabelBMFont_finalize(JSContext *cx, JSObject *obj);
-void js_register_cocos2dx_LabelBMFont(JSContext *cx, JSObject *global);
-void register_all_cocos2dx(JSContext* cx, JSObject* obj);
-bool js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_setScaleY(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_setScaleX(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_createFontChars(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_getString(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_setString(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_initWithString(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_setCString(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_setScale(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_setFntFile(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_init(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_getFntFile(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_updateLabel(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_setAlignment(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_setWidth(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_purgeCachedData(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_create(JSContext *cx, uint32_t argc, jsval *vp);
-bool js_cocos2dx_LabelBMFont_LabelBMFont(JSContext *cx, uint32_t argc, jsval *vp);
-
 extern JSClass  *jsb_cocos2d_Label_class;
 extern JSObject *jsb_cocos2d_Label_prototype;
 
@@ -1724,6 +1696,29 @@ bool js_cocos2dx_Label_setAlignment(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Label_createWithBMFont(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Label_create(JSContext *cx, uint32_t argc, jsval *vp);
 bool js_cocos2dx_Label_createWithCharMap(JSContext *cx, uint32_t argc, jsval *vp);
+
+extern JSClass  *jsb_cocos2d_LabelBMFont_class;
+extern JSObject *jsb_cocos2d_LabelBMFont_prototype;
+
+bool js_cocos2dx_LabelBMFont_constructor(JSContext *cx, uint32_t argc, jsval *vp);
+void js_cocos2dx_LabelBMFont_finalize(JSContext *cx, JSObject *obj);
+void js_register_cocos2dx_LabelBMFont(JSContext *cx, JSObject *global);
+void register_all_cocos2dx(JSContext* cx, JSObject* obj);
+bool js_cocos2dx_LabelBMFont_setLineBreakWithoutSpace(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_getBlendFunc(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_isOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_getLetter(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_getString(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_setBlendFunc(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_setString(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_initWithString(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_setOpacityModifyRGB(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_getFntFile(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_setFntFile(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_setAlignment(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_setWidth(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_create(JSContext *cx, uint32_t argc, jsval *vp);
+bool js_cocos2dx_LabelBMFont_LabelBMFont(JSContext *cx, uint32_t argc, jsval *vp);
 
 extern JSClass  *jsb_cocos2d_Layer_class;
 extern JSObject *jsb_cocos2d_Layer_prototype;
