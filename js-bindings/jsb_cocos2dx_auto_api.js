@@ -4161,11 +4161,6 @@ getOffsetPosition : function () {},
 removeAllChildrenWithCleanup : function () {},
 
 /**
- * @method updateQuadVertices
- */
-updateQuadVertices : function () {},
-
-/**
  * @method updateTransform
  */
 updateTransform : function () {},
