@@ -1147,12 +1147,6 @@ getColor : function () {},
 getBoundingBox : function () {},
 
 /**
- * @method updatePhysicsTransform
- * @return A value converted from C/C++ "bool"
- */
-updatePhysicsTransform : function () {},
-
-/**
  * @method setEventDispatcher
  * @param {cocos2d::EventDispatcher*}
  */

@@ -521,10 +521,9 @@ setAngularDamping : function () {},
 setVelocityLimit : function () {},
 
 /**
- * @method setEnable
- * @param {bool}
+ * @method setResting
  */
-setEnable : function () {},
+setResting : function () {},
 
 /**
  * @method setCategoryBitmask
@@ -549,6 +548,12 @@ getAngularVelocity : function () {},
  * @return A value converted from C/C++ "cocos2d::Point"
  */
 getPosition : function () {},
+
+/**
+ * @method setEnable
+ * @param {bool}
+ */
+setEnable : function () {},
 
 /**
  * @method setGravityEnable
@@ -937,16 +942,10 @@ cc.PhysicsContactPreSolve = {
 getFriction : function () {},
 
 /**
- * @method getElasticity
+ * @method getRestitution
  * @return A value converted from C/C++ "float"
  */
-getElasticity : function () {},
-
-/**
- * @method setElasticity
- * @param {float}
- */
-setElasticity : function () {},
+getRestitution : function () {},
 
 /**
  * @method setFriction
@@ -971,6 +970,12 @@ getSurfaceVelocity : function () {},
  */
 setSurfaceVelocity : function () {},
 
+/**
+ * @method setRestitution
+ * @param {float}
+ */
+setRestitution : function () {},
+
 };
 
 /**
@@ -991,10 +996,10 @@ getFriction : function () {},
 getSurfaceVelocity : function () {},
 
 /**
- * @method getElasticity
+ * @method getRestitution
  * @return A value converted from C/C++ "float"
  */
-getElasticity : function () {},
+getRestitution : function () {},
 
 };
 
