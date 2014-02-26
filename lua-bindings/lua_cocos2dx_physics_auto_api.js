@@ -843,7 +843,6 @@ getShapes : function () {},
 
 /**
  * @method removeAllJoints
- * @param {bool}
  */
 removeAllJoints : function () {},
 

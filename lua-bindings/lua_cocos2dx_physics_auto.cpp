@@ -5969,6 +5969,16 @@ int lua_cocos2dx_physics_PhysicsWorld_removeJoint(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
+    if (argc == 1) 
+    {
+        cocos2d::PhysicsJoint* arg0;
+
+        ok &= luaval_to_object<cocos2d::PhysicsJoint>(tolua_S, 2, "cc.PhysicsJoint",&arg0);
+        if(!ok)
+            return 0;
+        cobj->removeJoint(arg0);
+        return 0;
+    }
     if (argc == 2) 
     {
         cocos2d::PhysicsJoint* arg0;
@@ -5982,7 +5992,7 @@ int lua_cocos2dx_physics_PhysicsWorld_removeJoint(lua_State* tolua_S)
         cobj->removeJoint(arg0, arg1);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeJoint",argc, 2);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeJoint",argc, 1);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
@@ -6155,6 +6165,13 @@ int lua_cocos2dx_physics_PhysicsWorld_removeAllJoints(lua_State* tolua_S)
 #endif
 
     argc = lua_gettop(tolua_S)-1;
+    if (argc == 0) 
+    {
+        if(!ok)
+            return 0;
+        cobj->removeAllJoints();
+        return 0;
+    }
     if (argc == 1) 
     {
         bool arg0;
@@ -6165,7 +6182,7 @@ int lua_cocos2dx_physics_PhysicsWorld_removeAllJoints(lua_State* tolua_S)
         cobj->removeAllJoints(arg0);
         return 0;
     }
-    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeAllJoints",argc, 1);
+    CCLOG("%s has wrong number of arguments: %d, was expecting %d \n", "removeAllJoints",argc, 0);
     return 0;
 
 #if COCOS2D_DEBUG >= 1
